@@ -1,7 +1,7 @@
 """Pydantic models for pipeline provenance and metadata tracking."""
 
 from datetime import datetime, timezone
-from typing import Literal, Optional
+from typing import ClassVar, Literal, Optional
 
 from pydantic import BaseModel, ConfigDict, Field
 
@@ -15,19 +15,36 @@ class ProvenanceColumns(BaseModel):
     """Row-level provenance columns added to every parquet file.
 
     These columns track data origin per DAMA DMBOK requirements.
+
+    Note: Field names use serialization aliases to produce underscore-prefixed
+    column names in parquet files (e.g., source_file -> _source_file).
     """
 
     model_config = ConfigDict(
         json_encoders={datetime: lambda v: v.isoformat()},
+        populate_by_name=True,
     )
 
-    _source_file: str = Field(description="Original source filename/path")
-    _ingested_at: datetime = Field(
+    source_file: str = Field(
+        description="Original source filename/path",
+        serialization_alias="_source_file",
+    )
+    ingested_at: datetime = Field(
         default_factory=utc_now,
         description="UTC timestamp of ingestion",
+        serialization_alias="_ingested_at",
     )
-    _batch_id: str = Field(description="Unique batch identifier (UUID)")
-    _layer: str = Field(description="Current medallion layer name")
+    batch_id: str = Field(
+        description="Unique batch identifier (UUID)",
+        serialization_alias="_batch_id",
+    )
+    layer: str = Field(
+        description="Current medallion layer name",
+        serialization_alias="_layer",
+    )
+
+    # Class-level constants for column names used in DataFrames
+    COLUMN_NAMES: ClassVar[list[str]] = ["_source_file", "_ingested_at", "_batch_id", "_layer"]
 
 
 class LayerTransitionLog(BaseModel):
