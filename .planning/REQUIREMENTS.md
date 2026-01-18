@@ -9,7 +9,7 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Data Pipeline
 
-- [ ] **PIPE-01**: Implement medallion pipeline (staged → bronze → silver → gold with parquet files)
+- [ ] **PIPE-01**: Implement medallion pipeline (staged -> bronze -> silver -> gold with parquet files)
 - [ ] **PIPE-02**: Ingest DIM NOC table
 - [ ] **PIPE-03**: Ingest NOC attribute tables (Element, Oasis)
 - [ ] **PIPE-04**: Ingest NOC COPS forecasting data
@@ -87,22 +87,22 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| PIPE-01 | TBD | Pending |
-| PIPE-02 | TBD | Pending |
-| PIPE-03 | TBD | Pending |
-| PIPE-04 | TBD | Pending |
-| PIPE-05 | TBD | Pending |
-| PIPE-06 | TBD | Pending |
-| WIQ-01 | TBD | Pending |
-| PBI-01 | TBD | Pending |
-| GOV-01 | TBD | Pending |
-| CONV-01 | TBD | Pending |
+| PIPE-01 | Phase 1: Pipeline Infrastructure | Pending |
+| PIPE-02 | Phase 2: Data Ingestion | Pending |
+| PIPE-03 | Phase 2: Data Ingestion | Pending |
+| PIPE-04 | Phase 2: Data Ingestion | Pending |
+| PIPE-05 | Phase 2: Data Ingestion | Pending |
+| PIPE-06 | Phase 2: Data Ingestion | Pending |
+| WIQ-01 | Phase 3: WiQ Semantic Model | Pending |
+| PBI-01 | Phase 4: Power BI Deployment | Pending |
+| GOV-01 | Phase 5: Data Governance and Lineage | Pending |
+| CONV-01 | Phase 5: Data Governance and Lineage | Pending |
 
 **Coverage:**
 - v1 requirements: 10 total
-- Mapped to phases: 0
-- Unmapped: 10 (pending roadmap creation)
+- Mapped to phases: 10
+- Unmapped: 0
 
 ---
 *Requirements defined: 2026-01-18*
-*Last updated: 2026-01-18 after initial definition*
+*Last updated: 2026-01-18 after roadmap creation*
