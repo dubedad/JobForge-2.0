@@ -19,6 +19,13 @@ JobForge 2.0 delivers a workforce intelligence platform in five phases following
 **Requirements:**
 - PIPE-01: Implement medallion pipeline (staged -> bronze -> silver -> gold with parquet files)
 
+**Plans:** 3 plans
+
+Plans:
+- [ ] 01-01-PLAN.md - Project setup and data directory structure with Pydantic models
+- [ ] 01-02-PLAN.md - Core pipeline engine with layer classes and provenance tracking
+- [ ] 01-03-PLAN.md - Metadata catalog, DuckDB query interface, and end-to-end tests
+
 **Success Criteria:**
 1. Pipeline can accept a source file and write it through all four layers (staged -> bronze -> silver -> gold)
 2. Each layer produces parquet files with provenance columns (_source_file, _ingested_at, _batch_id)
@@ -108,7 +115,7 @@ JobForge 2.0 delivers a workforce intelligence platform in five phases following
 
 | Phase | Name | Status | Requirements |
 |-------|------|--------|--------------|
-| 1 | Pipeline Infrastructure | Not Started | PIPE-01 |
+| 1 | Pipeline Infrastructure | Planned | PIPE-01 |
 | 2 | Data Ingestion | Not Started | PIPE-02, PIPE-03, PIPE-04, PIPE-05, PIPE-06 |
 | 3 | WiQ Semantic Model | Not Started | WIQ-01 |
 | 4 | Power BI Deployment | Not Started | PBI-01 |
@@ -140,4 +147,4 @@ Linear dependency chain: each phase unblocks exactly one subsequent phase.
 
 ---
 *Roadmap created: 2026-01-18*
-*Last updated: 2026-01-18*
+*Last updated: 2026-01-18 - Phase 1 planned*
