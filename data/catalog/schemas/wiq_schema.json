@@ -1,0 +1,3839 @@
+{
+  "name": "WiQ",
+  "tables": [
+    {
+      "name": "cops_employment",
+      "table_type": "fact",
+      "columns": [
+        {
+          "name": "unit_group_id",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": true,
+          "references_table": "dim_noc",
+          "references_column": "unit_group_id"
+        },
+        {
+          "name": "code",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "occupation_name_en",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "occupation_name_fr",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "2023",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "2024",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "2025",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "2026",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "2027",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "2028",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "2029",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "2030",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "2031",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "2032",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "2033",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        }
+      ],
+      "primary_key": null,
+      "description": ""
+    },
+    {
+      "name": "cops_employment_growth",
+      "table_type": "fact",
+      "columns": [
+        {
+          "name": "unit_group_id",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": true,
+          "references_table": "dim_noc",
+          "references_column": "unit_group_id"
+        },
+        {
+          "name": "code",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "occupation_name_en",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "occupation_name_fr",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "2023",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "2024",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "2025",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "2026",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "2027",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "2028",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "2029",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "2030",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "2031",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "2032",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "2033",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        }
+      ],
+      "primary_key": null,
+      "description": ""
+    },
+    {
+      "name": "cops_immigration",
+      "table_type": "fact",
+      "columns": [
+        {
+          "name": "unit_group_id",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": true,
+          "references_table": "dim_noc",
+          "references_column": "unit_group_id"
+        },
+        {
+          "name": "code",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "occupation_name_en",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "occupation_name_fr",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "2023",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "2024",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "2025",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "2026",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "2027",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "2028",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "2029",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "2030",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "2031",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "2032",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "2033",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        }
+      ],
+      "primary_key": null,
+      "description": ""
+    },
+    {
+      "name": "cops_other_replacement",
+      "table_type": "fact",
+      "columns": [
+        {
+          "name": "unit_group_id",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": true,
+          "references_table": "dim_noc",
+          "references_column": "unit_group_id"
+        },
+        {
+          "name": "code",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "occupation_name_en",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "occupation_name_fr",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "2023",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "2024",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "2025",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "2026",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "2027",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "2028",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "2029",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "2030",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "2031",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "2032",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "2033",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        }
+      ],
+      "primary_key": null,
+      "description": ""
+    },
+    {
+      "name": "cops_other_seekers",
+      "table_type": "fact",
+      "columns": [
+        {
+          "name": "unit_group_id",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": true,
+          "references_table": "dim_noc",
+          "references_column": "unit_group_id"
+        },
+        {
+          "name": "code",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "occupation_name_en",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "occupation_name_fr",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "2023",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "2024",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "2025",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "2026",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "2027",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "2028",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "2029",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "2030",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "2031",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "2032",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "2033",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        }
+      ],
+      "primary_key": null,
+      "description": ""
+    },
+    {
+      "name": "cops_retirement_rates",
+      "table_type": "fact",
+      "columns": [
+        {
+          "name": "unit_group_id",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": true,
+          "references_table": "dim_noc",
+          "references_column": "unit_group_id"
+        },
+        {
+          "name": "code",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "occupation_name_en",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "occupation_name_fr",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "2023",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "2024",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "2025",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "2026",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "2027",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "2028",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "2029",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "2030",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "2031",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "2032",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "2033",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        }
+      ],
+      "primary_key": null,
+      "description": ""
+    },
+    {
+      "name": "cops_retirements",
+      "table_type": "fact",
+      "columns": [
+        {
+          "name": "unit_group_id",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": true,
+          "references_table": "dim_noc",
+          "references_column": "unit_group_id"
+        },
+        {
+          "name": "code",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "occupation_name_en",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "occupation_name_fr",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "2023",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "2024",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "2025",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "2026",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "2027",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "2028",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "2029",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "2030",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "2031",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "2032",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "2033",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        }
+      ],
+      "primary_key": null,
+      "description": ""
+    },
+    {
+      "name": "cops_school_leavers",
+      "table_type": "fact",
+      "columns": [
+        {
+          "name": "unit_group_id",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": true,
+          "references_table": "dim_noc",
+          "references_column": "unit_group_id"
+        },
+        {
+          "name": "code",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "occupation_name_en",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "occupation_name_fr",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "2023",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "2024",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "2025",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "2026",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "2027",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "2028",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "2029",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "2030",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "2031",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "2032",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "2033",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        }
+      ],
+      "primary_key": null,
+      "description": ""
+    },
+    {
+      "name": "dim_noc",
+      "table_type": "dimension",
+      "columns": [
+        {
+          "name": "unit_group_id",
+          "data_type": "VARCHAR",
+          "is_primary_key": true,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "noc_code",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "class_title",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "class_definition",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "hierarchical_structure",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        }
+      ],
+      "primary_key": "unit_group_id",
+      "description": ""
+    },
+    {
+      "name": "dim_occupations",
+      "table_type": "dimension",
+      "columns": [
+        {
+          "name": "job_family_en",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "job_family_fr",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "job_function_en",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "job_function_fr",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "occupation_group_id",
+          "data_type": "VARCHAR",
+          "is_primary_key": true,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        }
+      ],
+      "primary_key": "occupation_group_id",
+      "description": ""
+    },
+    {
+      "name": "element_additional_information",
+      "table_type": "attribute",
+      "columns": [
+        {
+          "name": "unit_group_id",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": true,
+          "references_table": "dim_noc",
+          "references_column": "unit_group_id"
+        },
+        {
+          "name": "noc_element_code",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "oasis_profile_code",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Additional information (EN)",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        }
+      ],
+      "primary_key": null,
+      "description": ""
+    },
+    {
+      "name": "element_employment_requirements",
+      "table_type": "attribute",
+      "columns": [
+        {
+          "name": "unit_group_id",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": true,
+          "references_table": "dim_noc",
+          "references_column": "unit_group_id"
+        },
+        {
+          "name": "noc_element_code",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "oasis_profile_code",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Employment requirement",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        }
+      ],
+      "primary_key": null,
+      "description": ""
+    },
+    {
+      "name": "element_example_titles",
+      "table_type": "attribute",
+      "columns": [
+        {
+          "name": "unit_group_id",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": true,
+          "references_table": "dim_noc",
+          "references_column": "unit_group_id"
+        },
+        {
+          "name": "noc_element_code",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "oasis_profile_code",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Concordance number",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Job title type",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Job title text",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        }
+      ],
+      "primary_key": null,
+      "description": ""
+    },
+    {
+      "name": "element_exclusions",
+      "table_type": "attribute",
+      "columns": [
+        {
+          "name": "unit_group_id",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": true,
+          "references_table": "dim_noc",
+          "references_column": "unit_group_id"
+        },
+        {
+          "name": "noc_element_code",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "oasis_profile_code",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Excluded code",
+          "data_type": "DOUBLE",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Job title",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        }
+      ],
+      "primary_key": null,
+      "description": ""
+    },
+    {
+      "name": "element_labels",
+      "table_type": "attribute",
+      "columns": [
+        {
+          "name": "unit_group_id",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": true,
+          "references_table": "dim_noc",
+          "references_column": "unit_group_id"
+        },
+        {
+          "name": "noc_element_code",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "oasis_profile_code",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Label",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        }
+      ],
+      "primary_key": null,
+      "description": ""
+    },
+    {
+      "name": "element_lead_statement",
+      "table_type": "attribute",
+      "columns": [
+        {
+          "name": "unit_group_id",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": true,
+          "references_table": "dim_noc",
+          "references_column": "unit_group_id"
+        },
+        {
+          "name": "noc_element_code",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "oasis_profile_code",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Lead statement",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        }
+      ],
+      "primary_key": null,
+      "description": ""
+    },
+    {
+      "name": "element_main_duties",
+      "table_type": "attribute",
+      "columns": [
+        {
+          "name": "unit_group_id",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": true,
+          "references_table": "dim_noc",
+          "references_column": "unit_group_id"
+        },
+        {
+          "name": "noc_element_code",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "oasis_profile_code",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Main duties",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        }
+      ],
+      "primary_key": null,
+      "description": ""
+    },
+    {
+      "name": "element_workplaces_employers",
+      "table_type": "attribute",
+      "columns": [
+        {
+          "name": "unit_group_id",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": true,
+          "references_table": "dim_noc",
+          "references_column": "unit_group_id"
+        },
+        {
+          "name": "noc_element_code",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "oasis_profile_code",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Workplace/employer name",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Profile name",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        }
+      ],
+      "primary_key": null,
+      "description": ""
+    },
+    {
+      "name": "job_architecture",
+      "table_type": "attribute",
+      "columns": [
+        {
+          "name": "jt_id",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "unit_group_id",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": true,
+          "references_table": "dim_noc",
+          "references_column": "unit_group_id"
+        },
+        {
+          "name": "job_title_en",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "job_title_fr",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "job_function_en",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "job_function_fr",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "job_family_en",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "job_family_fr",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "managerial_level_en",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "managerial_level_fr",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "noc_2021_uid",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "noc_2021_title",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        }
+      ],
+      "primary_key": null,
+      "description": ""
+    },
+    {
+      "name": "oasis_abilities",
+      "table_type": "attribute",
+      "columns": [
+        {
+          "name": "unit_group_id",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": true,
+          "references_table": "dim_noc",
+          "references_column": "unit_group_id"
+        },
+        {
+          "name": "noc_element_code",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "oasis_code",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "oasis_label",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Categorization Flexibility ",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Deductive Reasoning ",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Fluency of Ideas ",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Inductive Reasoning",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Information Ordering ",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Mathematical Reasoning",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Memorizing",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Multitasking",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Numerical Ability ",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Pattern Identification ",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Pattern Organization Speed",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Perceptual Speed",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Problem Identification",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Selective Attention ",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Spatial Orientation ",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Spatial Visualization",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Verbal Ability",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Written Comprehension",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Written Expression",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Body Flexibility",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Dynamic Strength",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Explosive Strength ",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Gross Body Coordination",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Gross Body Equilibrium",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Multi-Limb Coordination",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Stamina",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Static Strength ",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Trunk Strength",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Arm-Hand Steadiness ",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Control of Settings",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Finger Dexterity",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Manual Dexterity",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Multi-Signal Response",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Rate Control",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Reaction Time",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Speed of Limb Movement",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Finger-Hand-Wrist Motion",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Auditory Attention ",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Depth Perception",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Far Vision ",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Glare Tolerance ",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Hearing Sensitivity",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Near Vision",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Night Vision",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Peripheral Vision",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Speech Clarity",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Speech Recognition",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Sound Localization",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Colour Perception",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        }
+      ],
+      "primary_key": null,
+      "description": ""
+    },
+    {
+      "name": "oasis_knowledges",
+      "table_type": "attribute",
+      "columns": [
+        {
+          "name": "unit_group_id",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": true,
+          "references_table": "dim_noc",
+          "references_column": "unit_group_id"
+        },
+        {
+          "name": "noc_element_code",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "oasis_code",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "oasis_label",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Accounting",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Business Administration",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Clerical",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Finance",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Human Resources and Labour relations",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Sale and Marketing",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Client Services",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Communications and Media",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Teaching",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Training, Mentoring and Coaching",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Hospitality",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Mental Health",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Physical Health",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Recreation, Leisure and Fitness",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Veterinarian and Animal Care",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Law",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Public Affairs and Government relations",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Public Safety and Security",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Manufacturing, Processing and Production",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Logistics",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Performance Measurement",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Technical Design",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Agriculture and horticulture",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Forestry",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Geological Resources",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Livestock, Farm animals & Wildlife",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Water Resources",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Biology",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Chemistry",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Geoscience",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Physics ",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Arts",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Economics",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Humanities",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Library, Conservation, and Heritage",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Theology and Philosophy",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Building and Construction",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Computer, technology and Information Systems",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Electrical and Electronics",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Mechanics and Machinery",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Telecommunications",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Vehicles and Machinery Operations",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Languages",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Mathematics",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        }
+      ],
+      "primary_key": null,
+      "description": ""
+    },
+    {
+      "name": "oasis_skills",
+      "table_type": "attribute",
+      "columns": [
+        {
+          "name": "unit_group_id",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": true,
+          "references_table": "dim_noc",
+          "references_column": "unit_group_id"
+        },
+        {
+          "name": "noc_element_code",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "oasis_code",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "oasis_label",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Reading Comprehension",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Writing  ",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Numeracy ",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": " Digital Literacy",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Oral Communication: Active Listening   ",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Oral Communication: Oral Comprehension   ",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Oral Communication: Oral Expression ",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Critical Thinking",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Decision Making",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Evaluation",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Learning and Teaching Strategies",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Problem Solving",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Systems Analysis",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Digital Production",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Preventative Maintenance",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Equipment and Tool Selection",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Operation and Control",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Operation Monitoring of Machinery and Equipment",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Quality Control Testing",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Repairing",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Setting up",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Product Design",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Troubleshooting",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Management of Financial Resources",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Management of Material Resources",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Management of Personnel Resources",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Monitoring",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Time Management",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Coordinating",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Instructing",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Negotiating",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Persuading",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Social Perceptiveness",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        }
+      ],
+      "primary_key": null,
+      "description": ""
+    },
+    {
+      "name": "oasis_workactivities",
+      "table_type": "attribute",
+      "columns": [
+        {
+          "name": "unit_group_id",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": true,
+          "references_table": "dim_noc",
+          "references_column": "unit_group_id"
+        },
+        {
+          "name": "noc_element_code",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "oasis_code",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "oasis_label",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Estimate Quantifiable Charact. of Prod., Events or Info.",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Getting Information",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Identifying Objects, Actions, and Events",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Inspecting Equipment, Structures, or Material",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Monitoring Processes, Materials, or Surroundings ",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Controlling Machines and Processes",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Developing Technical Instructions",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Clerical Activities",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Electronic Maintenance",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Handling and Moving Objects",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Interacting with Computers",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Managing Resources",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Mechanical Maintenance",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Operating Vehicles, Mechanized Devices, or Equipment",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Performing General Physical Activities",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Processing Information",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Analyzing Data or Information",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Developing Objectives and Strategies",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Evaluating Information to Determine Compliance with Standards",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Judging Quality",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Making Decisions",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Planning and Organizing",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Scheduling Work and Activities",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Thinking Creatively",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Using New Relevant Knowledge",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Assisting and Caring for Others",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Coaching and Developing Others",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Communicating with Persons Outside Organization",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Communicating with Coworkers",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Coordinating the Work and Activities of Others",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Establishing and Maintaining Interpersonal Relationships",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Interpreting the Meaning of Information for Others",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Performing for or Working Directly with the Public",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Providing Consultation and Advice",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Resolving Conflicts and Negotiating with Others",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Selling or Influencing Others",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Staffing ",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Supervising Subordinates",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Team Building",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Training and Teaching ",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        }
+      ],
+      "primary_key": null,
+      "description": ""
+    },
+    {
+      "name": "oasis_workcontext",
+      "table_type": "attribute",
+      "columns": [
+        {
+          "name": "unit_group_id",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": true,
+          "references_table": "dim_noc",
+          "references_column": "unit_group_id"
+        },
+        {
+          "name": "noc_element_code",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "oasis_code",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "oasis_label",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Automation",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Competition",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Consequence of Error",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Freedom to Make Decisions",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Frequency of Decision Making",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Impact of Decisions",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Pace Determined by Speed of Equipment",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Precision",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Structured versus Unstructured Work",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Tasks Repetition",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Time Pressure",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Time Pressure2",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Work Schedule",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Work Week Duration",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Biological Agents",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Dangerous Chemical Substances",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Extremely Bright or Inadequate Lighting",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Extreme Temperatures",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Hazardous Conditions",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Hazardous Equipment, Machinery, Tools",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "High Places",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "In an Enclosed Vehicle or Equipment",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "In an Enclosed Vehicle or Equipment3",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "In an Open Vehicle or Equipment",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "In an Open Vehicle or Equipment4",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Indoors, Environmentally Controlled",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Indoors, Environmentally Controlled5",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Indoors, Not Environmentally Controlled",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Indoors, Not Environmentally Controlled6",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Outside, Exposed to Weather",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Outside, Exposed to Weather7",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Outside, Under Cover",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Outside, Under Cover8",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Physical Proximity",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Radiation ",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Sound and Noise ",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Sound and Noise 9",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Specialized Safety Equipment",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Standard Safety Equipment",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Vibration",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Skin Injury",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Bending or Twisting the Body",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Climbing ",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Cramped Work Space, Awkward Positions",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Handling Material Manually",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Keeping or Regaining Balance",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Making Repetitive Motions",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Sitting",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Standing",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Walking and Running",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Conflict Situations",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Contact With Others",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Contact With Others10",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Coordinating or Leading Others",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Deal With External Customers",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Deal With Physically Aggressive People",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Dealing With Unpleasant or Angry People",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Electronic Mail",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Face-to-Face Discussions",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Written Communications",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Public Speaking",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Responsibility for Outcomes and Results of Other Workers",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Responsible for Others' Health and Safety",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Telephone",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Work With Work Group or Team",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "Work With Work Group or Team11",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        }
+      ],
+      "primary_key": null,
+      "description": ""
+    }
+  ],
+  "relationships": [
+    {
+      "from_table": "dim_noc",
+      "from_column": "unit_group_id",
+      "to_table": "oasis_abilities",
+      "to_column": "unit_group_id",
+      "cardinality": "1:*",
+      "cross_filter_direction": "Single",
+      "is_active": true
+    },
+    {
+      "from_table": "dim_noc",
+      "from_column": "unit_group_id",
+      "to_table": "oasis_knowledges",
+      "to_column": "unit_group_id",
+      "cardinality": "1:*",
+      "cross_filter_direction": "Single",
+      "is_active": true
+    },
+    {
+      "from_table": "dim_noc",
+      "from_column": "unit_group_id",
+      "to_table": "oasis_skills",
+      "to_column": "unit_group_id",
+      "cardinality": "1:*",
+      "cross_filter_direction": "Single",
+      "is_active": true
+    },
+    {
+      "from_table": "dim_noc",
+      "from_column": "unit_group_id",
+      "to_table": "oasis_workactivities",
+      "to_column": "unit_group_id",
+      "cardinality": "1:*",
+      "cross_filter_direction": "Single",
+      "is_active": true
+    },
+    {
+      "from_table": "dim_noc",
+      "from_column": "unit_group_id",
+      "to_table": "oasis_workcontext",
+      "to_column": "unit_group_id",
+      "cardinality": "1:*",
+      "cross_filter_direction": "Single",
+      "is_active": true
+    },
+    {
+      "from_table": "dim_noc",
+      "from_column": "unit_group_id",
+      "to_table": "element_additional_information",
+      "to_column": "unit_group_id",
+      "cardinality": "1:*",
+      "cross_filter_direction": "Single",
+      "is_active": true
+    },
+    {
+      "from_table": "dim_noc",
+      "from_column": "unit_group_id",
+      "to_table": "element_employment_requirements",
+      "to_column": "unit_group_id",
+      "cardinality": "1:*",
+      "cross_filter_direction": "Single",
+      "is_active": true
+    },
+    {
+      "from_table": "dim_noc",
+      "from_column": "unit_group_id",
+      "to_table": "element_example_titles",
+      "to_column": "unit_group_id",
+      "cardinality": "1:*",
+      "cross_filter_direction": "Single",
+      "is_active": true
+    },
+    {
+      "from_table": "dim_noc",
+      "from_column": "unit_group_id",
+      "to_table": "element_exclusions",
+      "to_column": "unit_group_id",
+      "cardinality": "1:*",
+      "cross_filter_direction": "Single",
+      "is_active": true
+    },
+    {
+      "from_table": "dim_noc",
+      "from_column": "unit_group_id",
+      "to_table": "element_labels",
+      "to_column": "unit_group_id",
+      "cardinality": "1:*",
+      "cross_filter_direction": "Single",
+      "is_active": true
+    },
+    {
+      "from_table": "dim_noc",
+      "from_column": "unit_group_id",
+      "to_table": "element_lead_statement",
+      "to_column": "unit_group_id",
+      "cardinality": "1:*",
+      "cross_filter_direction": "Single",
+      "is_active": true
+    },
+    {
+      "from_table": "dim_noc",
+      "from_column": "unit_group_id",
+      "to_table": "element_main_duties",
+      "to_column": "unit_group_id",
+      "cardinality": "1:*",
+      "cross_filter_direction": "Single",
+      "is_active": true
+    },
+    {
+      "from_table": "dim_noc",
+      "from_column": "unit_group_id",
+      "to_table": "element_workplaces_employers",
+      "to_column": "unit_group_id",
+      "cardinality": "1:*",
+      "cross_filter_direction": "Single",
+      "is_active": true
+    },
+    {
+      "from_table": "dim_noc",
+      "from_column": "unit_group_id",
+      "to_table": "cops_employment",
+      "to_column": "unit_group_id",
+      "cardinality": "1:*",
+      "cross_filter_direction": "Single",
+      "is_active": true
+    },
+    {
+      "from_table": "dim_noc",
+      "from_column": "unit_group_id",
+      "to_table": "cops_employment_growth",
+      "to_column": "unit_group_id",
+      "cardinality": "1:*",
+      "cross_filter_direction": "Single",
+      "is_active": true
+    },
+    {
+      "from_table": "dim_noc",
+      "from_column": "unit_group_id",
+      "to_table": "cops_immigration",
+      "to_column": "unit_group_id",
+      "cardinality": "1:*",
+      "cross_filter_direction": "Single",
+      "is_active": true
+    },
+    {
+      "from_table": "dim_noc",
+      "from_column": "unit_group_id",
+      "to_table": "cops_other_replacement",
+      "to_column": "unit_group_id",
+      "cardinality": "1:*",
+      "cross_filter_direction": "Single",
+      "is_active": true
+    },
+    {
+      "from_table": "dim_noc",
+      "from_column": "unit_group_id",
+      "to_table": "cops_other_seekers",
+      "to_column": "unit_group_id",
+      "cardinality": "1:*",
+      "cross_filter_direction": "Single",
+      "is_active": true
+    },
+    {
+      "from_table": "dim_noc",
+      "from_column": "unit_group_id",
+      "to_table": "cops_retirement_rates",
+      "to_column": "unit_group_id",
+      "cardinality": "1:*",
+      "cross_filter_direction": "Single",
+      "is_active": true
+    },
+    {
+      "from_table": "dim_noc",
+      "from_column": "unit_group_id",
+      "to_table": "cops_retirements",
+      "to_column": "unit_group_id",
+      "cardinality": "1:*",
+      "cross_filter_direction": "Single",
+      "is_active": true
+    },
+    {
+      "from_table": "dim_noc",
+      "from_column": "unit_group_id",
+      "to_table": "cops_school_leavers",
+      "to_column": "unit_group_id",
+      "cardinality": "1:*",
+      "cross_filter_direction": "Single",
+      "is_active": true
+    },
+    {
+      "from_table": "dim_noc",
+      "from_column": "unit_group_id",
+      "to_table": "job_architecture",
+      "to_column": "unit_group_id",
+      "cardinality": "1:*",
+      "cross_filter_direction": "Single",
+      "is_active": true
+    }
+  ],
+  "validated": true,
+  "validation_date": "2026-01-19T04:21:38.544204Z"
+}
