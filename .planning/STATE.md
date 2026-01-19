@@ -1,22 +1,22 @@
 # Project State: JobForge 2.0
 
-**Last Updated:** 2026-01-18
+**Last Updated:** 2026-01-19
 
 ## Project Reference
 
 **Core Value:** Auditable provenance from source to output - every artifact traces back to authoritative sources with DADM compliance scoring.
 
-**Current Focus:** Phase 2 (Data Ingestion) COMPLETE. All source tables ingested to gold layer with FK relationships.
+**Current Focus:** Phase 5 (Data Governance and Lineage) IN PROGRESS. LineageGraph built from 123 transition logs, enabling upstream/downstream queries.
 
 ## Current Position
 
-**Phase:** 2 of 5 (Data Ingestion)
-**Plan:** 3 of 3 complete
-**Status:** Phase Complete
-**Last activity:** 2026-01-18 - Completed 02-03-PLAN.md
+**Phase:** 5 of 5 (Data Governance and Lineage)
+**Plan:** 1 of 3 complete
+**Status:** In Progress
+**Last activity:** 2026-01-19 - Completed 05-01-PLAN.md (LineageGraph with NetworkX)
 
 ```
-[████████████████████░░░░░░░░░░] 67% (6/9 plans)
+[██████████████████████████████░░] 91% (10/11 plans)
 ```
 
 ## Phases Overview
@@ -25,17 +25,17 @@
 |-------|------|--------|
 | 1 | Pipeline Infrastructure | Complete (3/3 plans) |
 | 2 | Data Ingestion | Complete (3/3 plans) |
-| 3 | WiQ Semantic Model | Not Started |
-| 4 | Power BI Deployment | Not Started |
-| 5 | Data Governance and Lineage | Not Started |
+| 3 | WiQ Semantic Model | Complete (2/2 plans) |
+| 4 | Power BI Deployment | Complete (2/2 plans) |
+| 5 | Data Governance and Lineage | In Progress (1/3 plans) |
 
 ## Performance Metrics
 
 | Metric | Value |
 |--------|-------|
-| Plans completed | 6 |
-| Requirements delivered | 6/10 |
-| Phases completed | 2/5 |
+| Plans completed | 10 |
+| Requirements delivered | 9/10 |
+| Phases completed | 4/5 |
 | Blockers encountered | 0 |
 | Blockers resolved | 0 |
 
@@ -59,6 +59,7 @@
 | Float reconstruction for OaSIS codes | Reconstruct XXXXX.YY format from Polars f64 inference using floor/modulo | 02-02 |
 | Filter 00000 aggregate | 00000 is "All occupations" aggregate, exclude from unit_group_id derivation | 02-03 |
 | Flexible column rename | Filter rename dict to only existing columns for varying Job Architecture CSVs | 02-03 |
+| Lineage node ID format | "{layer}.{table_name}" for unambiguous identification | 05-01 |
 
 ### Technical Discoveries
 
@@ -67,6 +68,7 @@
 | Pydantic field naming | Cannot use `_source_file` as field name; must use `serialization_alias` | 01-01 |
 | Polars CSV type inference | Numeric-looking strings like "00010" are inferred as int64; must cast to Utf8 | 02-01 |
 | Polars float inference for decimals | "00010.00" is inferred as f64 (10.0); must reconstruct format from numeric value | 02-02 |
+| NetworkX DAG from transition logs | 123 logs deduplicate to 106 nodes, 79 edges; use nx.ancestors/descendants for traversal | 05-01 |
 
 ### Pending Todos
 
@@ -86,51 +88,38 @@ None active.
 
 ### Last Session
 
-**Date:** 2026-01-18
-**Activity:** Executed 02-03-PLAN.md (COPS and Job Architecture Ingestion)
-**Outcome:** COPS forecasting and Job Architecture modules created; DIM Occupations extracted; 14 new tests pass (40 total).
+**Date:** 2026-01-19
+**Activity:** Completed 05-01-PLAN.md - Built LineageGraph with NetworkX
+**Outcome:** LineageGraph aggregates 123 transition logs into queryable DAG with upstream/downstream traversal. All tests pass.
 
 ### Next Session Priorities
 
-1. Begin Phase 3: WiQ Semantic Model
-2. Create dimension model relationships (DIM NOC as central dimension)
-3. Define fact/dimension star schema for Power BI
+1. Continue Phase 5: Plan 05-02 (LineageQueryEngine for natural language queries)
+2. Complete Phase 5: Plan 05-03 (Data Catalogue generation integration)
 
 ### Context for Claude
 
 When resuming this project:
 - Phase 1 COMPLETE (3/3 plans) - Pipeline infrastructure
 - Phase 2 COMPLETE (3/3 plans) - Data ingestion
+- Phase 3 COMPLETE (2/2 plans) - WiQ semantic model
+- Phase 4 COMPLETE (2/2 plans) - Power BI deployment tooling
+- Phase 5 IN PROGRESS (1/3 plans) - Data Governance and Lineage
 - jobforge package installable with `pip install -e .`
 - PipelineEngine orchestrates medallion layer transitions
 - Layer classes: StagedLayer, BronzeLayer, SilverLayer, GoldLayer
-- Provenance helpers: add_provenance_columns, generate_batch_id, update_layer_column
+- Semantic model: src/jobforge/semantic/ with models.py, schema.py, validator.py, introspect.py
+- Deployment: src/jobforge/deployment/ with mcp_client.py, deployer.py, ui.py, types.py
+- **Governance: src/jobforge/governance/ with graph.py, models.py, catalogue.py**
+- **LineageGraph: NetworkX DAG with get_upstream(), get_downstream(), get_path()**
+- CLI: /stagegold command via commands.py
 - CatalogManager: saves/loads table metadata, queries lineage logs
 - GoldQueryEngine: DuckDB SQL on gold parquet files
-- SourceRegistry: manages source metadata with Pydantic models
-- Ingestion modules:
-  - noc.py: ingest_dim_noc()
-  - oasis.py: ingest_oasis_table(), OASIS_TABLES
-  - element.py: ingest_element_table(), ELEMENT_TABLES
-  - cops.py: ingest_cops_table(), COPS_TABLES
-  - job_architecture.py: ingest_job_architecture(), extract_dim_occupations()
-- Gold tables (all with unit_group_id FK):
-  - dim_noc.parquet (NOC dimension)
-  - oasis_*.parquet (OaSIS attributes)
-  - element_*.parquet (Element data)
-  - cops_*.parquet (COPS forecasting)
-  - job_architecture.parquet (Job titles)
-  - dim_occupations.parquet (Job families)
-- Tests: 40 total (6 e2e + 8 DIM NOC + 12 attributes + 14 COPS/Job Arch)
-- Stack: Python 3.11, Polars 1.37+, DuckDB 1.4+, Pydantic 2.12+, structlog, pytest
-- Summaries:
-  - `.planning/phases/01-pipeline-infrastructure/01-01-SUMMARY.md`
-  - `.planning/phases/01-pipeline-infrastructure/01-02-SUMMARY.md`
-  - `.planning/phases/01-pipeline-infrastructure/01-03-SUMMARY.md`
-  - `.planning/phases/02-data-ingestion/02-01-SUMMARY.md`
-  - `.planning/phases/02-data-ingestion/02-02-SUMMARY.md`
-  - `.planning/phases/02-data-ingestion/02-03-SUMMARY.md`
+- 123 lineage JSON files in data/catalog/lineage/
+- WiQ schema exported to data/catalog/schemas/wiq_schema.json
+- Tests: 53+ total
+- Stack: Python 3.11, Polars 1.37+, DuckDB 1.4+, Pydantic 2.12+, structlog, pytest, Rich, NetworkX 3.0+
 
 ---
 *State initialized: 2026-01-18*
-*Session count: 7*
+*Session count: 9*
