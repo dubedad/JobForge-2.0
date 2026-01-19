@@ -12,13 +12,13 @@ See: .planning/PROJECT.md (updated 2026-01-19)
 ## Current Position
 
 **Phase:** 6 of 10 (Imputation Foundation)
-**Plan:** 1 of 3 complete
+**Plan:** 2 of 3 complete
 **Status:** In progress
-**Last activity:** 2026-01-19 — Completed 06-01-PLAN.md (NOC Resolution Service)
+**Last activity:** 2026-01-19 — Completed 06-02-PLAN.md (Attribute Inheritance)
 
 ```
 v1.0 [####################] 100% SHIPPED
-v2.0 [##                  ]   9% Phase 6 plan 1/3
+v2.0 [####                ]  18% Phase 6 plan 2/3
 ```
 
 ## Performance Metrics
@@ -29,8 +29,8 @@ v2.0 [##                  ]   9% Phase 6 plan 1/3
 - Total execution time: ~5.4 hours
 
 **v2.0 Progress:**
-- Plans completed: 1 of 11
-- Phase 6 progress: 1/3 plans
+- Plans completed: 2 of 11
+- Phase 6 progress: 2/3 plans
 
 *Updated after each plan completion*
 
@@ -41,6 +41,7 @@ v2.0 [##                  ]   9% Phase 6 plan 1/3
 | ID | Decision | Rationale | Date |
 |----|----------|-----------|------|
 | 06-01-D1 | Use dataclasses for internal types | Internal-only types don't need Pydantic overhead | 2026-01-19 |
+| 06-02-D1 | Use 0.85 default confidence for batch | 64% of UGs are single-label; exact confidence requires per-title resolution | 2026-01-19 |
 
 ### Key Decisions (v1.0)
 
@@ -88,26 +89,26 @@ None.
 ### Last Session
 
 **Date:** 2026-01-19
-**Activity:** Execute 06-01-PLAN.md (NOC Resolution Service)
-**Outcome:** 3 tasks completed, 21 tests added, rapidfuzz dependency added
+**Activity:** Execute 06-02-PLAN.md (Attribute Inheritance)
+**Outcome:** 3 tasks completed, 19 tests added, inheritance and provenance modules created
 
 ### Next Session Priorities
 
-1. Execute 06-02-PLAN.md (Attribute Inheritance)
-2. Continue Phase 6 implementation
-3. Validate against known prototype outputs
+1. Execute 06-03-PLAN.md (complete Phase 6)
+2. Begin Phase 7 (O*NET API integration)
+3. Validate imputation outputs against prototype
 
 ### Context for Claude
 
 When resuming this project:
 - **v1.0 SHIPPED** — 10 requirements delivered, 13 plans complete
-- **v2.0 IN PROGRESS** — Phase 6 plan 1 complete (NOC Resolution Service)
-- `jobforge.imputation` package created with resolution service
+- **v2.0 IN PROGRESS** — Phase 6 plans 1-2 complete (Resolution + Inheritance)
+- `jobforge.imputation` package has resolution, inheritance, provenance modules
 - Resolution service: 5 confidence tiers (1.00, 0.95, 0.85, 0.60, 0.40)
-- rapidfuzz added for fuzzy matching
+- Inheritance: L5 attributes cascade to job titles with 5 provenance columns
 - Stack: Python 3.11, Polars, DuckDB, Pydantic 2, NetworkX, Rich, rapidfuzz
-- 21 new tests in test_noc_resolution.py
+- 140 tests total (19 new in test_inheritance.py)
 
 ---
 *State updated: 2026-01-19*
-*Session count: 14*
+*Session count: 15*
