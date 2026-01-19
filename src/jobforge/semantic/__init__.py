@@ -9,6 +9,10 @@ Example:
     >>> print(schema.to_json())
 """
 
+from jobforge.semantic.introspect import (
+    introspect_all_gold_tables,
+    introspect_parquet_schema,
+)
 from jobforge.semantic.models import (
     Cardinality,
     Column,
@@ -27,4 +31,6 @@ __all__ = [
     "Table",
     "Relationship",
     "SemanticSchema",
+    "introspect_parquet_schema",
+    "introspect_all_gold_tables",
 ]
