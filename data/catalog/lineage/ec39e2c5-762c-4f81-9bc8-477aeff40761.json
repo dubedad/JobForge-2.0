@@ -1,0 +1,19 @@
+{
+  "transition_id": "ec39e2c5-762c-4f81-9bc8-477aeff40761",
+  "batch_id": "a0205b10-ae75-43b1-b327-d647043386d3",
+  "source_layer": "bronze",
+  "target_layer": "silver",
+  "source_files": [
+    "data\\bronze\\oasis_knowledges.parquet"
+  ],
+  "target_file": "data\\silver\\oasis_knowledges.parquet",
+  "row_count_in": 900,
+  "row_count_out": 900,
+  "transforms_applied": [
+    "derive_fk_columns"
+  ],
+  "started_at": "2026-01-19T02:20:33.753720+00:00",
+  "completed_at": "2026-01-19T02:20:33.767720+00:00",
+  "status": "success",
+  "errors": null
+}

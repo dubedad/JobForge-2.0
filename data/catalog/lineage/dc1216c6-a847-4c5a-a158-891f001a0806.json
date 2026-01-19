@@ -1,0 +1,19 @@
+{
+  "transition_id": "dc1216c6-a847-4c5a-a158-891f001a0806",
+  "batch_id": "e0175427-7158-4195-9bc9-1d2b78dbc212",
+  "source_layer": "staged",
+  "target_layer": "bronze",
+  "source_files": [
+    "data\\staged\\cops_school_leavers.parquet"
+  ],
+  "target_file": "data\\bronze\\cops_school_leavers.parquet",
+  "row_count_in": 533,
+  "row_count_out": 533,
+  "transforms_applied": [
+    "rename_columns"
+  ],
+  "started_at": "2026-01-19T02:22:22.359951+00:00",
+  "completed_at": "2026-01-19T02:22:22.374722+00:00",
+  "status": "success",
+  "errors": null
+}

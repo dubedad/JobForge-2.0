@@ -1,0 +1,19 @@
+{
+  "transition_id": "391a416c-f059-495f-9ea7-99bf550bc3ca",
+  "batch_id": "ac79fd06-8d76-4597-b9f1-a4935c02528a",
+  "source_layer": "silver",
+  "target_layer": "gold",
+  "source_files": [
+    "data\\silver\\job_architecture.parquet"
+  ],
+  "target_file": "data\\gold\\job_architecture.parquet",
+  "row_count_in": 1987,
+  "row_count_out": 1987,
+  "transforms_applied": [
+    "select_gold_columns"
+  ],
+  "started_at": "2026-01-19T02:23:21.567314+00:00",
+  "completed_at": "2026-01-19T02:23:21.582313+00:00",
+  "status": "success",
+  "errors": null
+}

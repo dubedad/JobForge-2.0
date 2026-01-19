@@ -4,74 +4,54 @@
 
 ## Project Reference
 
-**Core Value:** Auditable provenance from source to output - every artifact traces back to authoritative sources with DADM compliance scoring.
+See: .planning/PROJECT.md (updated 2026-01-19)
 
-**Current Focus:** Phase 5 (Data Governance and Lineage) COMPLETE. LineageQueryEngine enables natural language lineage queries via /lineage CLI command.
+**Core value:** Auditable provenance from source to output
+**Current focus:** Planning next milestone
 
 ## Current Position
 
-**Phase:** 5 of 5 (Data Governance and Lineage)
-**Plan:** 3 of 3 complete
-**Status:** PHASE COMPLETE
-**Last activity:** 2026-01-19 - Completed 05-03-PLAN.md (Lineage Query Engine)
+**Phase:** v1.0 complete — ready for v2 planning
+**Plan:** Not started
+**Status:** Milestone shipped
+**Last activity:** 2026-01-19 — v1.0 MVP shipped
 
 ```
-[████████████████████████████████████] 100% (12/12 plans)
+v1.0 [████████████████████████████████████] 100% SHIPPED
 ```
 
-## Phases Overview
+## Milestones
 
-| Phase | Name | Status |
-|-------|------|--------|
-| 1 | Pipeline Infrastructure | Complete (3/3 plans) |
-| 2 | Data Ingestion | Complete (3/3 plans) |
-| 3 | WiQ Semantic Model | Complete (2/2 plans) |
-| 4 | Power BI Deployment | Complete (2/2 plans) |
-| 5 | Data Governance and Lineage | Complete (3/3 plans) |
+| Milestone | Status | Phases | Shipped |
+|-----------|--------|--------|---------|
+| v1.0 MVP | SHIPPED | 1-5 (13 plans) | 2026-01-19 |
 
-## Performance Metrics
+See `.planning/MILESTONES.md` for full details.
 
-| Metric | Value |
-|--------|-------|
-| Plans completed | 12 |
-| Requirements delivered | 10/10 |
-| Phases completed | 5/5 |
-| Blockers encountered | 0 |
-| Blockers resolved | 0 |
+## v1.0 Deliverables
+
+- 24 gold tables in parquet format
+- 516 NOC occupations, 1,987 job titles
+- WiQ semantic model with 22 relationships
+- `/stagegold` deployment command
+- `/lineage` query command
+- 24 table catalogues
+- 100 tests passing
 
 ## Accumulated Context
 
-### Key Decisions
+### Key Decisions (v1.0)
 
-| Decision | Rationale | Phase |
-|----------|-----------|-------|
-| Linear phase dependency | Each phase produces output consumed by next; no parallel tracks for v1 | Roadmap |
-| Pipeline before semantic model | Cannot define relationships without data to relate | Roadmap |
-| GOV + CONV in same phase | Both require stable semantic model; both about explainability | Roadmap |
-| Serialization aliases for provenance | Pydantic disallows underscore-prefixed field names; use alias for serialization | 01-01 |
-| Separate catalog directories | DAMA DMBOK structure: tables, lineage, glossary, schemas | 01-01 |
-| scan_parquet for lazy evaluation | Use scan_parquet() not read_parquet().lazy() for optimal memory | 01-02 |
-| JSON transition logs | Logs saved to catalog/lineage/{transition_id}.json using Pydantic | 01-02 |
-| CatalogManager JSON storage | Table metadata saved as {table_name}.json for debugging/readability | 01-03 |
-| DuckDB views not tables | Using CREATE VIEW for gold parquet keeps data in parquet, no duplication | 01-03 |
-| Persistent DuckDB connection | GoldQueryEngine maintains one connection for all queries | 01-03 |
-| Cast noc_code to Utf8 | Polars infers numeric-looking strings as int64, losing leading zeros | 02-01 |
-| Float reconstruction for OaSIS codes | Reconstruct XXXXX.YY format from Polars f64 inference using floor/modulo | 02-02 |
-| Filter 00000 aggregate | 00000 is "All occupations" aggregate, exclude from unit_group_id derivation | 02-03 |
-| Flexible column rename | Filter rename dict to only existing columns for varying Job Architecture CSVs | 02-03 |
-| Lineage node ID format | "{layer}.{table_name}" for unambiguous identification | 05-01 |
-| Dimension table_type mapping | WiQ schema uses "dimension" not "dim"; map to "reference" domain | 05-02 |
-| UTF-8 encoding for Windows | Explicit encoding="utf-8" required for JSON I/O on Windows | 05-02 |
-| Rule-based NLP for lineage | Regex pattern matching instead of LLM/ML - deterministic, fast, no dependencies | 05-03 |
+All decisions documented in PROJECT.md with outcomes marked "Good".
 
-### Technical Discoveries
+### Technical Discoveries (v1.0)
 
-| Discovery | Details | Phase |
-|-----------|---------|-------|
-| Pydantic field naming | Cannot use `_source_file` as field name; must use `serialization_alias` | 01-01 |
-| Polars CSV type inference | Numeric-looking strings like "00010" are inferred as int64; must cast to Utf8 | 02-01 |
-| Polars float inference for decimals | "00010.00" is inferred as f64 (10.0); must reconstruct format from numeric value | 02-02 |
-| NetworkX DAG from transition logs | 123 logs deduplicate to 106 nodes, 79 edges; use nx.ancestors/descendants for traversal | 05-01 |
+| Discovery | Details |
+|-----------|---------|
+| Pydantic field naming | Cannot use `_source_file` as field name; use serialization_alias |
+| Polars CSV type inference | Numeric-looking strings cast as int64; must cast to Utf8 |
+| Polars float inference | "00010.00" inferred as f64; reconstruct format from numeric |
+| NetworkX DAG efficiency | 123 logs deduplicate to 106 nodes, 79 edges |
 
 ### Pending Todos
 
@@ -83,50 +63,35 @@
 
 *3 todos pending in `.planning/todos/pending/`*
 
-### Blockers
+### Open Blockers
 
-None active.
+None.
 
 ## Session Continuity
 
 ### Last Session
 
 **Date:** 2026-01-19
-**Activity:** Completed 05-03-PLAN.md - Lineage Query Engine
-**Outcome:** LineageQueryEngine enables natural language queries like "Where does DIM NOC come from?" with formatted answers including provenance metadata. CLI /lineage command works. 34 tests pass.
+**Activity:** v1.0 milestone completion
+**Outcome:** Milestone archived, PROJECT.md evolved, ready for v2 planning
 
 ### Next Session Priorities
 
-1. Project wrap-up and documentation
-2. Address pending governance compliance todos
+1. Run `/gsd:new-milestone` to start v2 planning
+2. Define v2 requirements and roadmap
+3. Consider O*NET/SOC integration as v2 focus
 
 ### Context for Claude
 
 When resuming this project:
-- **ALL PHASES COMPLETE** - 12/12 plans executed
-- Phase 1 COMPLETE (3/3 plans) - Pipeline infrastructure
-- Phase 2 COMPLETE (3/3 plans) - Data ingestion
-- Phase 3 COMPLETE (2/2 plans) - WiQ semantic model
-- Phase 4 COMPLETE (2/2 plans) - Power BI deployment tooling
-- Phase 5 COMPLETE (3/3 plans) - Data Governance and Lineage
+- **v1.0 SHIPPED** — all 10 requirements delivered
+- Archives in `.planning/milestones/v1-*`
+- PROJECT.md has Validated requirements and Active backlog
+- No ROADMAP.md or REQUIREMENTS.md — created fresh for v2
 - jobforge package installable with `pip install -e .`
-- PipelineEngine orchestrates medallion layer transitions
-- Layer classes: StagedLayer, BronzeLayer, SilverLayer, GoldLayer
-- Semantic model: src/jobforge/semantic/ with models.py, schema.py, validator.py, introspect.py
-- Deployment: src/jobforge/deployment/ with mcp_client.py, deployer.py, ui.py, types.py
-- **Governance: src/jobforge/governance/ with graph.py, models.py, catalogue.py, query.py**
-- **LineageGraph: NetworkX DAG with get_upstream(), get_downstream(), get_path()**
-- **CatalogueGenerator: Produces 24 per-table JSON catalogues from WiQ schema + parquet**
-- **LineageQueryEngine: Natural language lineage queries with provenance answers**
-- CLI: /stagegold and /lineage commands via commands.py
-- CatalogManager: saves/loads table metadata, queries lineage logs
-- GoldQueryEngine: DuckDB SQL on gold parquet files
-- 123 lineage JSON files in data/catalog/lineage/
-- 24 table catalogue JSON files in data/catalog/tables/
-- WiQ schema exported to data/catalog/schemas/wiq_schema.json
-- Tests: 101+ total (67 prior + 34 new lineage query tests)
-- Stack: Python 3.11, Polars 1.37+, DuckDB 1.4+, Pydantic 2.12+, structlog, pytest, Rich, NetworkX 3.0+
+- Stack: Python 3.11, Polars, DuckDB, Pydantic 2, NetworkX, Rich
+- 5,779 LOC Python, 100 tests passing
 
 ---
-*State initialized: 2026-01-18*
-*Session count: 11*
+*State updated: 2026-01-19*
+*Session count: 12*

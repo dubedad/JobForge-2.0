@@ -1,0 +1,19 @@
+{
+  "transition_id": "123a8d2a-8efb-476c-bbb1-c2de05ef45f7",
+  "batch_id": "3b83ec28-f709-44de-af88-a5083b5d43f4",
+  "source_layer": "staged",
+  "target_layer": "bronze",
+  "source_files": [
+    "data\\staged\\element_workplaces_employers.parquet"
+  ],
+  "target_file": "data\\bronze\\element_workplaces_employers.parquet",
+  "row_count_in": 3418,
+  "row_count_out": 3418,
+  "transforms_applied": [
+    "rename_columns"
+  ],
+  "started_at": "2026-01-19T02:20:53.381346+00:00",
+  "completed_at": "2026-01-19T02:20:53.394346+00:00",
+  "status": "success",
+  "errors": null
+}

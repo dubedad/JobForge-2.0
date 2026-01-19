@@ -1,0 +1,20 @@
+{
+  "transition_id": "b5ce18ba-6b7b-41a9-9c8d-b28ad01b509c",
+  "batch_id": "701941e3-53e6-4de1-a572-9e3a2f30aa32",
+  "source_layer": "bronze",
+  "target_layer": "silver",
+  "source_files": [
+    "data\\bronze\\cops_other_seekers.parquet"
+  ],
+  "target_file": "data\\silver\\cops_other_seekers.parquet",
+  "row_count_in": 533,
+  "row_count_out": 516,
+  "transforms_applied": [
+    "derive_unit_group_id",
+    "filter_unit_groups_only"
+  ],
+  "started_at": "2026-01-19T02:22:22.513319+00:00",
+  "completed_at": "2026-01-19T02:22:22.526886+00:00",
+  "status": "success",
+  "errors": null
+}

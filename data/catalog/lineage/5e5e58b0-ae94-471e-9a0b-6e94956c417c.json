@@ -1,0 +1,20 @@
+{
+  "transition_id": "5e5e58b0-ae94-471e-9a0b-6e94956c417c",
+  "batch_id": "653ed952-46be-44ab-bf91-9b0f55651019",
+  "source_layer": "staged",
+  "target_layer": "bronze",
+  "source_files": [
+    "data\\staged\\dim_noc.parquet"
+  ],
+  "target_file": "data\\bronze\\dim_noc.parquet",
+  "row_count_in": 822,
+  "row_count_out": 822,
+  "transforms_applied": [
+    "rename_columns",
+    "cast_types"
+  ],
+  "started_at": "2026-01-19T02:20:14.671028+00:00",
+  "completed_at": "2026-01-19T02:20:14.688610+00:00",
+  "status": "success",
+  "errors": null
+}

@@ -1,0 +1,20 @@
+{
+  "transition_id": "fe206383-f604-47e4-b54b-70569ff3b085",
+  "batch_id": "25bddbda-50e2-46f0-b547-3a173155f50f",
+  "source_layer": "staged",
+  "target_layer": "bronze",
+  "source_files": [
+    "data\\source\\labels_oasis_2023_v1.0.csv"
+  ],
+  "target_file": "data\\staged\\element_labels.parquet",
+  "row_count_in": 900,
+  "row_count_out": 900,
+  "transforms_applied": [
+    "ingest",
+    "add_provenance"
+  ],
+  "started_at": "2026-01-19T02:20:53.233832+00:00",
+  "completed_at": "2026-01-19T02:20:53.245832+00:00",
+  "status": "success",
+  "errors": null
+}

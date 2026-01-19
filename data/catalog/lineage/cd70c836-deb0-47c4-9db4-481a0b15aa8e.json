@@ -1,0 +1,19 @@
+{
+  "transition_id": "cd70c836-deb0-47c4-9db4-481a0b15aa8e",
+  "batch_id": "1b0f9a27-a544-4ef6-99f3-15e82363e0ce",
+  "source_layer": "silver",
+  "target_layer": "gold",
+  "source_files": [
+    "data\\silver\\cops_immigration.parquet"
+  ],
+  "target_file": "data\\gold\\cops_immigration.parquet",
+  "row_count_in": 516,
+  "row_count_out": 516,
+  "transforms_applied": [
+    "reorder_columns"
+  ],
+  "started_at": "2026-01-19T02:22:22.464405+00:00",
+  "completed_at": "2026-01-19T02:22:22.478495+00:00",
+  "status": "success",
+  "errors": null
+}

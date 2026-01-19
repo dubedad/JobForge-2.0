@@ -1,0 +1,901 @@
+﻿OaSIS profile code,Lead statement
+00010.00,"Legislators participate in the activities of a federal, provincial, territorial or local government legislative body or executive council, band council or school board as elected or appointed members."
+00011.00,"Senior government managers and officials plan, organize, direct, control and evaluate, through middle managers, the major activities of municipal or regional governments or of provincial, territorial or federal departments, boards, agencies or commissions. They establish the direction to be taken by these organizations in accordance with legislation and policies made by elected representatives or legislative bodies."
+00012.00,"Senior managers in financial, communications and other business services are usually appointed by a board of directors, to which they report. They work either alone or in conjunction with the board of directors to develop and establish objectives for the company, and to develop or approve policies and programs. They plan, organize, direct, control and evaluate, through middle managers, the operations of their organization in relation to established objectives. "
+00013.00,"Senior managers in health, education, social and community services and membership organizations plan, organize, direct, control and evaluate, through middle managers, membership and other organizations or institutions that deliver health, education, social or community services. They formulate policies which establish the direction to be taken by these organizations, either alone or in conjunction with a board of directors."
+00014.00,"Senior managers in trade, broadcasting and other customer services plan, organize, direct, control and evaluate, through middle managers, trade, broadcasting and other service industry companies. They formulate policies which establish the direction to be taken by these companies, either alone or in conjunction with a board of directors."
+00015.00,"Senior managers in construction, transportation, production and utilities plan, organize, direct, control and evaluate, through middle managers, the overall operations of goods production, utility, transportation and construction companies. They formulate policies which establish the direction to be taken by these companies, either alone or in conjunction with other members of a board of directors. "
+10010.00,"Financial managers plan, organize, direct, control and evaluate the operation of financial and accounting departments. They develop and implement the financial policies and systems of establishments. Financial managers establish performance standards and prepare various financial reports for senior management. "
+10011.00,"Human resources managers plan, organize, direct, control and evaluate the operations of human resources and personnel departments, and develop and implement policies, programs and procedures regarding human resource planning, recruitment, collective bargaining, training and development, occupation classification and pay and benefit administration. They represent management and participate actively on various joint committees to maintain ongoing relations between management and employees. "
+10012.00,"Purchasing managers plan, organize, direct, control and evaluate the activities of a purchasing department and develop and implement the purchasing policies of a business or institution."
+10019.00,"Other administrative services managers plan, organize, direct, control and evaluate departments responsible for corporate governance and regulatory compliance, records management, security services, admissions and other administrative services. Also included in this unit group are managers responsible for departments involved in two or more of the following activities: finance, human resources, purchasing or administrative services. "
+10020.01,"Insurance managers plan, organize, direct, control and evaluate the activities of departments or establishments that provide insurance services. They are generally responsible for business development and must ensure that their group reaches performance levels related to established objectives. "
+10020.02,"Real estate managers plan, organize, direct, control and evaluate the activities of departments or establishments that provide real estate services. They are generally responsible for business development and must ensure that their group reaches performance levels related to established objectives."
+10020.03,"Financial brokerage managers plan, organize, direct, control and evaluate the activities of departments or establishments that provide mortgage services. They are generally responsible for business development and must ensure that their group reaches performance levels related to established objectives."
+10020.04,"Securities managers plan, organize, direct, control and evaluate the activities of departments or establishments that provide investment services. They are generally responsible for business development and must ensure that their group reaches performance levels related to established objectives."
+10021.01,"Banking and other investment managers plan, organize, direct, control and evaluate the activities of financial establishments or operational departments within such establishments. They develop business relations, promote the sale of loan, investment and other banking services and attract corporate and individual customers."
+10021.02,"Credit managers plan, organize, direct, control and evaluate the activities of credit departments in industrial and commercial establishments. They evaluate and review loan and credit applications and collateral and make recommendations. "
+10022.01,"Advertising managers plan, organize, direct, control and evaluate the activities of establishments and departments involved in commercial, industrial and e-business advertising."
+10022.02,"Marketing managers plan, organize, direct, control and evaluate the activities of establishments and departments involved in commercial, industrial and e-business marketing."
+10022.03,"Public relations managers organize, direct, control and evaluate the activities of establishments and departments involved in commercial, industrial and e-business public relations."
+10022.04,"E-business managers plan, organize, direct, control and evaluate the activities of establishments and departments involved in commercial and industrial e-business."
+10029.00,"Other business services managers plan, organize, direct, control and evaluate the operations of establishments that provide services to business, and ensure the quality of those services and client satisfaction. "
+10030.00,"Telecommunication carriers managers plan, organize, direct, control and evaluate the operations of a telecommunications establishment, department or facility. "
+11100.01,Financial auditors examine and analyze the accounting and financial records of individuals and establishments to ensure accuracy and compliance with established accounting standards and procedures.
+11100.02,"Accountants plan, organize and administer accounting systems for individuals and establishments. Articling students in accounting firms are included in this occupation."
+11101.01,"Financial analysts collect and analyze financial information such as economic forecasts, trading volumes and the movement of capital, financial backgrounds of companies, historical performances and future trends of stocks, bonds and other investment instruments to provide financial and investment or financing advice for their companies or their companies' clients. Their studies and evaluations cover areas such as takeover bids, private placements, merges and acquisitions."
+11101.02,"Investment analysts collect and analyze financial information such as economic forecasts, trading volumes and the movement of capital, financial backgrounds of companies, historical performances and future trends of stocks, bonds and other investment instruments to provide investment advice for their companies or their companies' clients. Their studies and evaluations cover areas such as takeover bids, private placements, merges and acquisitions."
+11102.00,"Financial advisors counsel individuals on financial decisions such as investments, cash management, and estate planning. They establish personal financial plans according to clients’ objectives and guide them through the implementation of the proposed strategies that may be adjusted as the situation evolve. "
+11103.01,"Securities agents and investment dealers buy and sell stocks, bonds, treasury bills, mutual funds and other securities for individual investors, pension fund managers, banks, trust companies, insurance firms and other establishments."
+11103.02,"Brokers buy and sell stocks, bonds, commodity futures, foreign currencies and other securities at stock exchanges on behalf of investment dealers."
+11109.01,Financial examiners and inspectors review financial establishments and services.
+11109.02,Financial investigators investigate the practices of securities and commodity futures traders and other financial service providers.
+11109.03,"Underwriters provide services related to the issuing of new stocks, bonds and securities."
+11109.04,"Trust officers administer trusts, direct trust investments and disburse trust funds."
+11109.05,Mortgage brokers provide services related to procuring mortgages.
+11200.00,"Human resources professionals develop, implement and evaluate human resources and labour relations policies, programs and procedures and advise employers and employees on human resources matters."
+11201.00,"Professionals in business management consulting occupations provide services to management such as analyzing the structure, operations, managerial methods or functions of an organization in order to propose, plan and implement improvements. "
+11202.00,"Professional occupations in advertising, marketing and public relations analyse, develop and implement communication and promotion strategies and information programs, analyse advertising needs and develop appropriate advertising and marketing plans, publicize activities and events, and maintain media relations on behalf of businesses, governments and other organizations, and for performers, athletes, writers and other talented individuals. "
+12010.00,"Supervisors of general office and administrative support workers supervise and coordinate the activities of workers in the following minor groups: Office support and court services occupations (14.10) and Survey, statistical and data entry occupations (14.11). "
+12011.00,"Supervisors of finance and insurance office workers supervise and coordinate the activities of workers in the following unit groups: Payroll administrators (13.102), Accounting and related clerks (14.200), Banking, insurance and other financial clerks (14.201) and Collection clerks (14.202)."
+12012.00,"Supervisors of library, correspondence and related information workers supervise and coordinate the activities of workers in the following unit groups: Survey interviewers and statistical clerks (14.110), Library assistants and clerks (14.300), and Correspondence, publication and regulatory clerks (14.301). "
+12013.00,"Supervisors of supply chain, tracking and scheduling coordination occupations supervise the activities of workers in unit group 13201 Production and transportation logistics coordinators and in sub-major group 144 Supply chain logistics, tracking and scheduling coordination occupations."
+12100.00,"Executive assistants coordinate administrative procedures, public relations activities and research and analysis functions for members of legislative assemblies, ministers, deputy ministers, corporate officials and executives, committees and boards of directors."
+12101.00,"Human resources and recruitment officers identify and advertise job vacancies, recruit candidates, and assist in the selection and reassignment of employees."
+12102.00,"Procurement and purchasing agents and officers source and purchase general and specialized equipment, materials, business services and land or access rights for use or for further processing by their establishment. "
+12103.00,"Conference and event planners plan, organize and coordinate conferences, conventions, meetings, seminars, exhibitions, trade shows, festivals and other events."
+12104.01,Excise tax revenue officers administer and enforce laws and regulations related to tax revenue.
+12104.02,Government benefits services officers administer and enforce laws and regulations related to employment insurance and other government benefit services.
+12110.01,"Court reporters record and transcribe verbatim the proceedings of courts, legislative assemblies and committees, and prepare transcripts for use by judges, tribunals and quasi-judicial panels. "
+12110.02,"Medical transcriptionists record, transcribe and edit dictation by physicians and other health care providers, surgical proceedings, health-related reports and other medical documentation. "
+12111.00,"Health information management workers collect, code, record, review and manage health information. Health information management occupations who are supervisors are included in this unit group."
+12112.00,"Records management technicians operate and maintain systems for the collection, classification, retrieval and retention of records, images, documents and information. "
+12113.00,"Statistical officers and workers in related research support occupations provide statistical and research support services to a wide range of businesses and organizations. These workers conduct statistical routines, monitor trends, compile data and prepare charts, graphs, summaries and reports in support of organizational information needs and research activities."
+12200.00,"Accounting technicians and bookkeepers maintain complete sets of books, keep records of accounts, verify the procedures used for recording financial transactions, and provide personal bookkeeping services. "
+12201.01,Insurance adjusters investigate insurance claims and determine the amount of loss or damages covered by insurance policies. 
+12201.02,Insurance claims examiners examine claims investigated by insurance adjusters and authorize payments. 
+12202.00,"Insurance underwriters review and evaluate insurance applications to determine insurance risks, insurance premiums and extent of insurance coverage according to company policies."
+12203.01,"Assessors determine the value of land, businesses, estates and other real property, for purposes of sale, purchase, taxation and disposal of assets."
+12203.02,"Business valuators quantify the value of a business, its securities or its intangible assets."
+12203.03,"Appraisers determine the value of property, building, industrial and commercial machinery and equipment and personal and household items."
+13100.00,"Administrative officers oversee and implement administrative procedures, establish work priorities, conduct analyses of administrative operations and coordinate acquisition of administrative services such as office space, supplies and security services. Administrative officers who are supervisors are included in this unit group."
+13101.00,Property administrators perform administrative duties and coordinate activities related to the management and rental of investment property and real estate on behalf of property and strata property owners. 
+13102.00,"Payroll administrators collect, verify and process payroll information, determine pay and benefit entitlements for employees, maintain accurate payroll records, and provide payroll information within a department, company or other establishment. "
+13110.00,Administrative assistants perform a variety of administrative duties in support of managerial and professional employers.
+13111.00,"Legal administrative assistants perform a variety of secretarial and administrative duties in law offices, legal departments of large firms, real estate companies, land title offices, municipal, provincial and federal courts and government."
+13112.00,"Medical administrative assistants perform a variety of secretarial and administrative duties in doctor's offices, hospitals, medical clinics and other medical settings."
+13200.01,Customs brokers clear goods through customs and to their destination on behalf of importer and exporter clients.
+13200.02,"Shipbrokers buy and sell cargo space on ships and buy and sell ships, yachts and other watercraft on behalf of clients. "
+13201.01,"Production logistics coordinators coordinate and expedite the flow of work within an establishment, prepare work and production schedules and monitor the progress of production and construction projects. "
+13201.02,Transportation logistics coordinators coordinate and monitor the movement of products and ensure that products are shipped and received on schedule. 
+14100.01,"General office support workers prepare correspondence, reports, statements and other material, operate office equipment, answer telephones and perform clerical duties of a general nature according to established procedures."
+14100.02,"File clerks organize papers, records, documents and other material according to subject matter or other filing system."
+14101.01,"Receptionists greet people arriving at offices, hospitals and other establishments, direct visitors to appropriate persons and services, answer and forward telephone calls, take messages, schedule appointments and perform other clerical duties."
+14101.02,Hospital admitting clerks greet people arriving at hospitals and obtain information to direct them to medical service areas.
+14101.03,"Switchboard and answering service operators operate a telephone system or switchboard to answer, screen and forward telephone calls and provide information."
+14101.04,Telephone operators operate telephone systems to advance and complete customers’ telephone calls.
+14102.00,"Personnel clerks assist personnel officers and human resources specialists and compile, maintain and process information relating to staffing, recruitment, training, labour relations, performance evaluations and classifications"
+14103.00,"Court clerks and workers in related court services occupations perform administrative, security, and other support functions for courts of law such as scheduling trials, processing service fees, calling court to order, preparing court dockets and maintaining exhibits, recording trial proceedings and maintaining  court records. They also facilitate court security and public safety, liaise with law enforcement organizations, and provide support to the judiciary. "
+14110.01,"Survey interviewers contact individuals to gather information for market research, public opinion polls or election and census enumeration. "
+14110.02,"Statistical clerks code and compile interview and other data into reports, lists, directories and other documents. "
+14111.00,"Data entry clerks input coded, statistical, financial and other information into computerized databases, spreadsheets or other templates using a keyboard, mouse, or optical scanner, speech recognition software or other data entry tools. "
+14112.01,"Desktop publishing operators operate desktop publishing software and equipment to design, lay out and produce copy ready to be print. "
+14112.02,Typesetting input and output operators use computers to enter copy into a typesetting system or operate typesetting output equipment to produce text that is ready to print.
+14200.00,"Accounting and related clerks calculate, prepare and process bills, invoices, accounts payable and receivable, budgets and other financial records according to established procedures."
+14201.01,"Bank clerks compile, process and maintain banking and other financial information. "
+14201.02,"Insurance clerks compile, process and maintain insurance information."
+14201.03,"Financial clerks compile, process and maintain financial information."
+14202.00,Collection clerks collect payments on overdue accounts and bad cheques and locate debtors to make collection arrangements.
+14300.00,"Library assistants and clerks issue and receive library materials, sort and shelve books and provide general library information to users. They also perform clerical functions."
+14301.01,"Classified advertising clerks take orders, calculate rates, bill customers for classified advertisements, write and edit ad copy and perform other related clerical duties."
+14301.02,"Correspondence clerks write correspondence, proofread material for accuracy and perform other related clerical duties in accordance with established procedures, guidelines and schedules."
+14301.03,"Proofreaders and editorial assistants assist in the preparation of periodicals, advertisements, catalogues, directories and other material for publication by conducting research, verifying facts and detecting grammatical, typographical or compositional errors."
+14301.04,"Readers and press clippers read newspapers, magazines, press releases and other publications to locate, file and distribute articles and to perform other related clerical duties in accordance with established procedures, guidelines and schedules."
+14301.05,"Regulatory clerks compile, verify, record and process applications, licences, permits, contracts, registrations, requisitions and other forms and documents in accordance with established procedures using processing systems; and authorize and issue licences, permits, registration papers, reimbursements and other material after requested documents have been processed and approved."
+14400.00,"Shippers and receivers ship, receive and record the movement of parts, supplies, materials, equipment and stock to and from an establishment. "
+14401.00,"Storekeepers and partspersons sort, store and issue parts and supplies for use by the establishment in which they work and for sale to the public. Apprentices are also included in this unit group."
+14402.00,Production logistics workers expedite the flow of work and materials within an establishment and prepare merchandise ready for shipment. 
+14403.01,"Purchasing control workers process purchasing transactions, resolve supply problems and prepare and maintain files, reports and price lists."
+14403.02,"Inventory control workers compile and maintain inventories of materials, equipment and stock, and monitor inventory levels."
+14404.00,"Dispatchers operate radios and other telecommunication equipment to dispatch emergency vehicles and to coordinate the activities of drivers and other personnel. They are employed by police, fire and health departments, other emergency service agencies, taxi, delivery and courier services, trucking and utilities companies, and other commercial and industrial establishments."
+14405.00,Transportation route and crew schedulers prepare operational and crew schedules for transportation equipment and operating personnel. 
+20010.00,"Engineering managers plan, organize, direct, control and evaluate the activities of an engineering department, service or firm. "
+20011.01,"Architecture and urban planning managers plan, organize, direct, control and evaluate the activities and operations of an urban planning service or an architectural firm. They develop and implement policies, standards and procedures for the architectural and urban planning work performed in the department, service, or firm. "
+20011.02,"Science managers plan, organize, direct, control and evaluate the research, development or production activities of a scientific research and development laboratory or firm. They develop and implement policies, standards and procedures for the scientific and technical work performed in the laboratory, department, service, or firm. "
+20012.00,"Computer and information systems managers plan, organize, direct, control and evaluate the activities of organizations that analyze, design, develop, implement, operate and administer computer and telecommunications software, networks and information systems. "
+21100.01,"Physicists conduct theoretical and applied research to extend knowledge of natural phenomena and to develop new processes and devices in fields such as electronics, communications, power generation and distribution, aerodynamics, optics and lasers, remote sensing, biotechnology, medicine and health. "
+21100.02,Astronomers conduct observational and theoretical research to extend knowledge of the universe. 
+21101.00,"Chemists conduct research and analysis in support of industrial operations, product and process development, quality control, environmental control, medical diagnosis and treatment, biotechnology, nanotechnology and other applications. They also conduct theoretical, experimental and applied research into basic chemical and biochemical processes to create or synthesize new products and processes. "
+21102.01,"Geoscientists include geologists, geochemists and geophysicists who conduct programs of exploration and research to extend knowledge of the structure, composition and processes of the earth, to locate, identify and extract hydrocarbon, mineral and groundwater resources and to assess and mitigate the effects of development and waste disposal projects on the environment."
+21102.02,"Oceanographers conduct programs of exploration and research on ocean processes and phenomena, biological, chemical and physical characteristics of oceans, interactions with atmospheric and geological environments and impacts of human activity on oceans and marine ecosystems"
+21103.00,"Meteorologists and climatologists analyze and forecast weather, provide consultation on atmospheric phenomena and conduct research into the processes and phenomena of weather, climate and atmosphere. "
+21109.01,Metallurgists conduct theoretical and applied research in metallurgy.
+21109.02,"Materials scientists conduct theoretical and applied research into the properties, composition and production of materials."
+21109.03,Soil scientists conduct theoretical and applied research in soil science.
+21109.04,"Astronauts command, pilot or serve as crew members of a spacecraft to conduct scientific experiments and research, and participate in space missions as mission specialists to maintain spacecraft, install and repair space station equipment and launch and recapture satellites."
+21110.01,"Biologists conduct basic and applied research to extend knowledge of living organisms, to manage natural resources, and to develop new practices and products related to medicine and agriculture."
+21110.02,"Microbiologists conduct basic and applied research to extend knowledge of living micro-organisms, to manage natural resources, and to develop new practices and products related to medicine and agriculture."
+21111.00,"Forestry professionals conduct research, develop plans and administer and direct programs related to the management and harvesting of forest resources."
+21112.00,"Agricultural representatives, consultants and specialists provide assistance and advice to farmers on all aspects of farm management, cultivation, fertilization, harvesting, soil erosion and composition, disease prevention, nutrition, crop rotation and marketing."
+21120.00,"Public and environmental health and safety professionals review, evaluate and monitor public health and environmental safety hazards and develop strategies to prevent, control and eliminate disease and environmental impact caused by biological and chemical factors. They inspect restaurants, industrial establishments, municipal water systems, public facilities, and institutions to ensure compliance with government regulations regarding sanitation, pollution control and the handling and storage of hazardous substances. "
+21200.00,"Architects conceptualize, plan and develop designs for the construction and renovation of commercial, institutional and residential buildings. "
+21201.00,"Landscape architects conceptualize, design, plan and manage the construction of natural, cultural and built landscape development for commercial projects, office complexes, parks, golf courses and residential development. "
+21202.00,"Urban and land use planners develop plans and recommend policies for managing land use, physical facilities and associated services for urban and rural areas and remote regions."
+21203.00,"Land surveyors plan, direct and conduct legal surveys to establish the location of real property boundaries, contours and other natural or human-made features, and prepare and maintain cross-sectional drawings, official plans, records and documents pertaining to these surveys. "
+21210.01,"Mathematicians research mathematical theories and develop and apply mathematical techniques to solve problems in such fields as science, engineering, business and social sciences."
+21210.02,"Statisticians research statistical theories, and develop and apply statistical techniques to solve problems in such fields as science, engineering, business and social sciences. "
+21210.03,"Actuaries apply mathematics, statistics, probability and risk theory to assess potential financial impacts of future events."
+21211.00,"Data scientists use advanced analytics technologies, including machine learning and predictive modelling, to support the identification of trends, scrape information from unstructured data sources and provide automated recommendations.  "
+21220.00,"Cybersecurity specialists develop, plan, recommend, implement, improve and monitor security measures to protect an organization's computer networks, connected devices and information to prevent unauthorized access, use, disclosure, disruption, modification, or destruction of the information or of the systems on which the information resides. "
+21221.00,"Business systems specialists perform detailed system tests, produce reports and develop new system architectures. They must also identify the strategic objectives of a company and  translate these objectives into achievable tasks for an organization's information technology department."
+21222.00,"Information systems specialists analyze, test and assess systems requirements, develop and implement information systems development plans, policies and procedures, and provide advice on a wide range of information systems issues. "
+21223.01,"Database analysts design, develop and administer data management solutions. "
+21223.02,"Data administrators develop and implement data administration policy, standards and models. "
+21230.00,"Computer systems developers and programmers write, modify, integrate and test computer code for software applications, data processing applications, operating systems-level software and communications software. "
+21231.00,"Software engineers and designers research, design, evaluate, integrate and maintain software applications, technical environments, operating systems, embedded software, information warehouses and telecommunications software. "
+21232.00,"Software developers and programmers design, write, and test code for new systems and software to ensure efficiency. They create the foundations for operative systems and run diagnostic programs to certify effectiveness."
+21233.00,"Web designers develop and create the visual presentation, layout and functionality of the Web sites and related applications. They are responsible for ensuring that the Web site is easy to use, and that the information is easy to access. "
+21234.00,"Web developers and programmers use a variety of programming languages to design, create and modify Web sites. They analyze users’ needs to implement content, graphics, performance, and Web site capacity. They may also integrate Web sites with other computer applications. "
+21300.00,"Civil engineers plan, design, develop and manage projects for the construction or repair of buildings, earth structures, powerhouses, roads, airports, railways, rapid transit facilities, bridges, tunnels, canals, dams, ports and coastal installations and systems related to highway and transportation services, water distribution and sanitation. They may also specialize in foundation analysis, building and structural inspection, surveying, geomatics and municipal planning. "
+21301.00,"Mechanical engineers research, design and develop machinery and systems for heating, ventilating and air conditioning, power generation, transportation, processing and manufacturing. They also perform duties related to the evaluation, installation, operation and maintenance of mechanical systems."
+21310.00,"Electrical and electronics engineers design, plan, research, evaluate and test electrical and electronic equipment and systems. "
+21311.01,"Computer and telecommunications hardware engineers research, plan, design, develop, modify, evaluate and integrate computer and telecommunications hardware and related equipment."
+21311.02,"Network system and data communication engineers research, plan, design, develop, modify, evaluate and integrate information and communication system networks including mainframe systems, local and wide area networks, fibre-optic networks, wireless communication networks, intranets, the Internet and other data communications systems."
+21320.00,"Chemical engineers research, design, and develop chemical processes and equipment, oversee the operation and maintenance of industrial chemical, plastics, pharmaceutical, resource, pulp and paper, and food processing plants and perform duties related to chemical quality control, environmental protection and biochemical or biotechnical engineering. "
+21321.00,"Industrial and manufacturing engineers conduct studies, and develop and supervise programs to achieve the best use of equipment, human resources, technology, materials and procedures to enhance efficiency and productivity. "
+21322.00,"Metallurgical and materials engineers conduct studies of the properties and characteristics of metals and other non-metallic materials and plan, design and develop machinery and processes to concentrate, extract, refine and process metals, alloys and other materials such as ceramics, semiconductors and composite materials. "
+21330.00,"Mining engineers plan, design, organize and supervise the development of mines, mine facilities, systems and equipment; and prepare and supervise the extraction of metallic or non-metallic minerals and ores from underground or surface mines. "
+21331.00,"Geological engineers conduct geological and geotechnical studies to assess suitability of locations for civil engineering, mining and oil and gas projects; and plan, design, develop and supervise programs of geological data acquisition and analysis and the preparation of geological engineering reports and recommendations. "
+21332.00,"Petroleum engineers conduct studies for the exploration, development and extraction of oil and gas deposits; and plan, design, develop and supervise projects for the drilling, completion, testing and re-working of oil and gas wells. "
+21390.00,"Aerospace engineers research, design and develop aerospace vehicles, aerospace systems and their components, and perform duties related to their testing, evaluation, installation, operation and maintenance. "
+21399.01,"Agricultural and bio-resource engineers design and develop machinery, structures, equipment and systems related to agriculture and food processing."
+21399.02,Biomedical engineers apply established engineering principles to design and develop new diagnostic and clinical instrumentation and procedures for medical practice and biomedical research.
+21399.03,Engineering physicists and engineering scientists conduct research to expand fundamental knowledge in applied sciences.
+21399.04,"Marine and naval engineers design and supervise installations and repairs of power plants, propulsion systems, heating and ventilating systems and other mechanical and electrical equipment in marine and naval facilities."
+21399.05,"Textile engineers design and develop processes, equipment and procedures for the production of fibres, yarns and textiles."
+22100.01,"Chemical technologists provide technical support and services or may work independently in chemical engineering, chemical and biochemical research and analysis, industrial chemistry, chemical quality control and environmental protection."
+22100.02,"Chemical technicians provide technical support and services or may work independently in chemical engineering, chemical and biochemical research and analysis, industrial chemistry, chemical quality control and environmental protection."
+22101.01,"Geological and mineral technologists provide technical support and services or may work independently in the fields of oil and gas exploration and production, geophysics, petroleum engineering, geology, mining and mining engineering, mineralogy, extractive and physical metallurgy, metallurgical engineering and environmental protection."
+22101.02,"Geological and mineral technicians provide technical support and services or may work independently in the fields of oil and gas exploration and production, geophysics, petroleum engineering, geology, mining and mining engineering, mineralogy, extractive and physical metallurgy, metallurgical engineering and environmental protection."
+22110.01,"Biological technologists provide technical support and services to scientists, engineers and other professionals working in fields such as agriculture, resource management, environmental protection, plant and animal biology, microbiology, cell and molecular biology and health sciences, or may work independently in these fields."
+22110.02,"Biological technicians provide technical support and services to scientists, engineers and other professionals working in fields such as agriculture, resource management, environmental protection, plant and animal biology, microbiology, cell and molecular biology and health sciences, or may work independently in these fields."
+22111.01,"Fish and fish products inspectors inspect fish products for conformity to prescribed production, storage and transportation standards. Supervisors of fish products inspectors are also included in this occupation."
+22111.02,"Fruit and vegetable inspectors inspect agricultural products for conformity to prescribed production, storage and transportation standards. Supervisors of agricultural products inspectors are also included in this occupation."
+22111.03,"Grain inspectors ensure that grain products conform to production, storage and transportation standards. Supervisors of agricultural products inspectors are also included in this occupation."
+22111.04,"Meat inspectors inspect meat products for conformity to prescribed production, storage and transportation standards. Other agricultural products inspectors inspecting dairy and poultry products, and supervisors of agricultural products inspectors, are also included in this occupation."
+22111.05,"Plant protection inspectors inspect agricultural products for conformity to prescribed production, storage and transportation standards. Supervisors of agricultural products inspectors are also included in this occupation."
+22112.00,"Forestry technologists and technicians may work independently or perform technical and supervisory functions in support of forestry research, forest management, forest harvesting, forest resource conservation and environmental protection. "
+22113.00,"Conservation and fishery officers, inspectors and observers enforce federal and provincial regulations established for the protection of fish, wildlife and other natural resources and collect and relay information on resource management. "
+22114.01,Arborists and tree service technicians examine and treat injured and diseased trees and plants.
+22114.02,"Golf course superintendents supervise, and co-ordinate activities of workers engaged in maintaining grounds, greens and turf of golf courses."
+22114.03,Horticulturists conduct experiments and studies of fruits and flowers to develop and improve plant varieties and production methods.
+22114.04,Landscape designers and landscape architectural technicians and technologists survey and assess landscapes and assist in designing landscaped environments.
+22114.05,"Landscape gardeners assist in landscaping grounds around residential, commercial and industrial establishments."
+22114.06,Landscapers plan and construct landscaped environments.
+22114.07,Lawn care specialists apply products to customers' lawns and promote lawn care services.
+22210.00,"Architectural technologists and technicians may work independently or provide technical assistance to professional architects and civil design engineers in conducting research, preparing drawings, architectural models, specifications and contracts and in supervising construction projects."
+22211.00,Industrial designers conceptualize and produce designs for manufactured products.
+22212.01,"Drafting technologists prepare engineering designs, drawings and related technical information, in multidisciplinary engineering teams or in support of engineers, architects and industrial designers, or they may work independently."
+22212.02,"Drafting technicians prepare engineering designs, drawings and related technical information, in multidisciplinary engineering teams or in support of engineers, architects and industrial designers, or they may work independently."
+22213.01,"Land survey technologists conduct or participate in surveys to determine the exact locations and relative positions of natural features and other structures on the earth's surface, underground and underwater."
+22213.02,"Land survey technicians participate in surveys to determine the exact locations and relative positions of natural features and other structures on the earth's surface, underground and underwater."
+22214.01,"Cartographic technologists and technicians prepare and revise maps and charts from photographs, manuscripts, survey notes and other maps."
+22214.02,"Photogrammetric technologists and technicians co-ordinate the preparation of topographical maps, charts and related material from aerial photographs and other data."
+22214.03,Aerial survey technologists and technicians operate remote sensing equipment and interpret aerial photographs.
+22214.04,"Geographic information systems technologists and technicians operate computer-based systems to model and manage geospatial data and prepare geographic reports, maps and charts."
+22214.05,"Meteorological technologists and technicians observe weather and atmospheric conditions, record, interpret, transmit and report on meteorological data, and provide weather information to the agricultural, natural resources and transportation industries and the public."
+22220.01,"Computer and network operators establish, operate, maintain, and co-ordinate the use of local and wide area networks (LANs and WANs), mainframe networks, hardware, software and related computer equipment. Supervisors of computer and network operators and web technicians are included in this occupation."
+22220.02,"Web technicians set up and maintain Internet, extranet and intranet Web sites and Web server hardware and software, and monitor and optimize network connectivity and performance. Supervisors of web technicians are included in this occupation."
+22221.00,User support technicians provide first-line technical support to computer users experiencing difficulties with computer hardware and with computer applications and communications software.
+22222.00,Information systems testing technicians execute test plans to evaluate the performance of software applications and information and telecommunications systems. 
+22230.00,"Non-destructive testers and inspectors operate radiographic, ultrasonic, liquid penetrant, magnetic particle, eddy current and similar testing equipment to detect discontinuities in objects of various compositions and materials."
+22231.01,Motor vehicle defects inspectors examine automobiles and trucks to ensure that they conform to government and industry standards and regulations.
+22231.02,Railway accident investigation officers examine railway accidents to determine their causes and inspect railway property and equipment to ensure that they conform to standards and regulations.
+22231.03,"Airworthiness inspectors examine aircraft and instruments, processes and equipment to ensure that they conform to government and industry standards and regulations."
+22231.04,"Inspectors, weights and measures examine devices, such as scales, meters and industrial instruments and equipment, to ensure that they conform to government and industry standards and regulations."
+22231.05,Oil and gas drilling rig inspectors conduct onshore and offshore inspections of drilling and well servicing equipment and processes to ensure compliance with regulations and policies and to recommend improvements and corrective action.
+22232.00,"Occupational health and safety specialists review, evaluate and monitor health and safety hazards and develop strategies to prevent, control and eliminate accidents and occupational injuries. They inspect the workplace environments, equipment and practices to ensure compliance with organization and government environment, health and safety standards and regulations. "
+22233.00,"Construction inspectors inspect the construction and maintenance of new and existing buildings, bridges, highways and industrial construction to ensure that specifications and building codes are observed and monitor work site safety. "
+22300.01,"Civil engineering technologists provide technical support and services to scientists, engineers and other professionals."
+22300.02,"Civil engineering technicians provide technical support and services to scientists, engineers and other professionals."
+22301.01,"Mechanical engineering technologists provide technical support and services or may work independently in mechanical engineering fields such as the design, development, maintenance and testing of machines, components, tools, heating and ventilating systems, geothermal power plants, power generation and power conversion plants, manufacturing plants and equipment."
+22301.02,"Mechanical engineering technicians provide technical support and services or may work independently in mechanical engineering fields such as the design, development, maintenance and testing of machines, components, tools, heating and ventilating systems, power generation and power conversion plants, manufacturing plants and equipment."
+22302.01,"Industrial engineering and manufacturing technologists may work independently or provide technical support and services in the development of production methods, facilities and systems, and the planning, estimating, measuring and scheduling of work."
+22302.02,"Industrial engineering and manufacturing technicians may work independently or provide technical support and services in the development of production methods, facilities and systems, and the planning, estimating, measuring and scheduling of work."
+22303.00,"Construction estimators analyze costs of and prepare estimates on civil engineering, architectural, structural, electrical and mechanical construction projects. "
+22310.01,"Electrical and electronics engineering technologists may work independently or provide technical support and services in the design, development, testing, production and operation of electrical and electronic equipment and systems."
+22310.02,"Electrical and electronics engineering technicians may work independently or provide technical support and services in the design, development, testing, production and operation of electrical and electronic equipment and systems."
+22311.00,"Electronic service technicians service and repair household and business electronic equipment such as audio and video systems, computers and peripherals, office equipment and other consumer electronic equipment and assemblies. "
+22312.00,"Industrial instrument technicians and mechanics repair, maintain, calibrate, adjust, and install industrial measuring and controlling instrumentation. "
+22313.01,"Aircraft instrument mechanics and technicians install, adjust, repair, overhaul and test engine, navigation and gyroscopic instrument components and aircraft instruments used for measuring and indicating physical characteristics such as altitude, airspeed, temperature and pressure."
+22313.02,"Aircraft electrical mechanics and technicians install, repair and service aircraft electrical equipment and systems."
+22313.03,"Avionics mechanics and technicians modify, repair and overhaul aircraft electronic systems."
+22313.04,"Avionics inspectors examine instrument, electrical and avionics systems following assembly, modification, repair and overhaul."
+30010.00,"Managers in health care plan, organize, direct, control and evaluate the delivery of health care services, such as diagnosis and treatment, nursing and therapy, within institutions, and in other settings, that provide health care services. "
+31100.01,"Anesthesiologists administer anesthetics prior to, during, or after surgery or other medical procedures."
+31100.02,"Internists, general diagnose and provide non-surgical treatment of diseases and injuries of internal organ systems."
+31100.03,"Pediatricians, general diagnose, treat, and help prevent children's diseases and injuries."
+31100.04,Psychiatrists diagnose and treat psychiatric disorders and act as consultants to other physicians.
+31100.05,"Allergists and immunologists diagnose, treat, and help prevent allergic diseases and disease processes affecting the immune system."
+31100.06,"Hospitalists manage, coordinate and provide inpatient care predominantly in settings such as medical wards, intensive care units, rehabilitation centers, or emergency rooms."
+31100.07,"Neurologists diagnose, treat, and help prevent diseases and disorders of the nervous system involving the brain and spinal cord and other nerve and muscular conditions."
+31100.08,Nuclear medicine physicians diagnose and treat diseases using radioactive materials.
+31100.09,"Dermatologists diagnose, treat, and help prevent diseases or other conditions of the skin."
+31100.10,"Physical medicine and rehabilitation physicians diagnose and treat disorders requiring physiotherapy to provide physical, mental, and occupational rehabilitation."
+31100.11,"Preventive medicine physicians apply knowledge of general preventive medicine and public health issues to promote health care to groups or individuals, and aid in the prevention or reduction of risk of disease, injury, disability, or death."
+31100.12,Radiologists examine and diagnose disorders and diseases using x-rays and radioactive materials. 
+31100.13,"Other specialists in clinical medicine diagnose and treat diseases and physiological or psychiatric disorders, prescribe medications and treatments and refer patients for surgery."
+31100.14,"Specialists in laboratory medicine, including pathologists, diagnose presence and stage of diseases using laboratory techniques and patient specimens. They study the nature, cause and development of diseases in humans and the structural and functional changes caused by diseases."
+31101.01,"General surgeons treat diseases, injuries and deformities by performing surgical procedures."
+31101.02,"Obstetricians and gynecologists diagnose, treat, and help prevent diseases of women, particularly those affecting the reproductive system."
+31101.03,"Ophthalmologists diagnose, treat, and help prevent diseases and injuries of the eyes and related structures."
+31101.04,"Urologists diagnose, treat, and help prevent benign and malignant medical and surgical disorders of the genitourinary system and the renal glands."
+31101.05,Other specialists in surgery assess diseases or disorders to determine appropriate surgical procedures and perform surgical procedures to correct physical abnormalities and deficiencies and repair injuries. 
+31102.00,"General practitioners and family physicians diagnose and treat the diseases, physiological disorders and injuries of patients. They provide primary contact and continuous care toward the management of patients' health. Residents in training to be general practitioners or family physicians are included in this unit group."
+31103.00,"Veterinarians prevent, diagnose and treat diseases and disorders in animals and advise clients on the feeding, hygiene, housing and general care of animals. They can also perform surgical procedures.  "
+31110.01,"Dentists diagnose, treat, prevent and control disorders of the teeth and mouth."
+31110.02,Oral and maxillofacial surgeons perform surgery to prepare the mouth for dental implants orto aid in the regeneration of deficient bone and gum tissues. 
+31110.03,"Orthodontists examine and diagnose dental, jaw or other oral and facial abnormalities, provide orthodontic treatment and place braces in patients' mouths to change the position and relationship of the teeth and jaws."
+31110.04,"Prosthodontists examine the patient's teeth, gums and jaws to diagnose disease, injury and decay, provide treatments to enhance dental and facial aesthetics, and replace missing teeth and associated oral structures with permanent devices, such as implant-supported dentures."
+31111.00,Optometrists examine eyes to assess and diagnose ocular diseases and disorders. They prescribe and fit eyeglasses and contact lenses and recommend treatments such as exercises to correct vision problems or ocular disorders. 
+31112.01,"Audiologists diagnose, evaluate and treat individuals with peripheral and central hearing loss, tinnitus and balance problems. Audiologists who are supervisors are included in this occupation."
+31112.02,"Speech-language pathologists diagnose, assess and treat human communication disorders including speech, fluency, language, voice and swallowing disorders. Speech-language pathologists who are supervisors are included in this occupation."
+31120.01,Community pharmacists and hospital pharmacists compound and dispense prescribed pharmaceuticals and provide consultative services to both clients and health care providers.
+31120.02,"Industrial pharmacists participate in the research, development, promotion and manufacture of pharmaceutical products. "
+31121.00,"Dietitians and nutritionists assess nutrition related issues of individuals and groups and develop, implement and evaluate nutrition care plans to prevent, treat and manage disease. They manage food and nutrition service systems, and plan health promotion programs."
+31200.00,"Psychologists assess and diagnose behavioural, emotional and cognitive disorders, counsel clients, provide therapy, conduct research and apply theory relating to behaviour and mental processes. Psychologists help clients work toward the maintenance and enhancement of psychological, physical, intellectual, emotional, social and interpersonal functioning. "
+31201.00,"Chiropractors assess, diagnose, treat and prevent patients' neuromuscular-skeletal disorders of the spine, nervous system, pelvis and other body joints using corrective manipulation including spinal column adjustments or other complementary therapies. "
+31202.00,"Physiotherapists assess clients and plan and carry out individually designed treatment programs to maintain, improve or restore physical functioning and mobility, alleviate pain and prevent physical dysfunction in clients. "
+31203.00,"Occupational therapists develop individual and group programs with people affected by illness, injury, developmental disorders, emotional or psychological problems and aging to maintain, restore or increase their ability to care for themselves and to engage in work, school or leisure. They also develop and implement health promotion programs with individuals, community groups and employers. "
+31204.01,"Recreational therapists implement treatment plans by carrying out specialized therapy sessions employing approaches and techniques such as recreational, sports or other movement therapy. "
+31204.02,"Kinesiologists and exercise therapists conduct fitness and human movement tests and assessments. They design and implement programs to maintain, rehabilitate or enhance movement and performance in the areas of sports, recreation, work and exercise."
+31209.01,"Doctors of podiatric medicine diagnose and treat diseases, deformities and injuries of the human foot."
+31209.02,"Chiropodists and diploma or first-degree trained podiatrists treat diseases, deformities and injuries of the human foot."
+31209.03,Doctors of osteopathic Medicine use natural healing methods to treat patients' diseases and disorders.
+31209.04,"Doctors of osteopathic medicine diagnose and treat disorders and injuries of the musculoskeletal, circulatory and nervous systems."
+31300.00,"Nursing coordinators and supervisors coordinate and supervise the activities of registered nurses, registered psychiatric nurses, licensed practical nurses and other nursing personnel in the provision of patient care. "
+31301.01,"General duty registered nurses provide direct nursing care to patients, deliver health education programs and provide consultative services regarding issues relevant to the practice of nursing. "
+31301.02,Occupational health nurses are registered nurses who develop and implement employee health education programs and provide direct nursing care in businesses and industry. 
+31301.03,Community health nurses are registered nurses who provide health education and direct nursing care in public health units and through home visits.
+31301.04,Registered psychiatric nurses provide direct nursing care and supportive counselling and life skills programming to patients. 
+31301.05,Nursing researchers and consultants engage in research activities on issues relevant to the practice of nursing and provide consultative services regarding issues and concerns relevant to the practice of nursing.
+31301.06,"Clinical nurses are registered nurses who provide leadership, advice and counsel on the provision of research-based care for specific patient groups within the care of particular health care organizations."
+31302.00,"Nurse practitioners are registered nurses with additional education, advanced knowledge and nursing experience, and a specialty of practice. They provide a range of health services to patients and deliver preventive and continuous care toward the management of patients' health. Nurse practitioners work in conjunction with physicians and collaboratively with other nursing colleagues and health-care providers, or they may work independently. Nurse practitioners may specialize in primary healthcare or acute care."
+31303.01,Physician assistants provide a range of health services to patients delivering preventive and continuous care toward the management of patients' health. 
+31303.02,Midwives provide full-course care to women and their babies during the pre- and post-natal period.
+31303.03,"Genetic counsellors assess individual or family risk of genetic conditions, and provide information to individuals, families and healthcare providers to promote informed choice. "
+31303.04, Orthoptists diagnose and treat binocular disorders.
+31303.05,"Pathologists’ assistants assist at autopsies and examinations of surgical specimens, or perform autopsies under a pathologist’s supervision. "
+32100.00,"Opticians assist clients in the selection of eyeglass frames, take the necessary measurements and arrange for the production of eyeglasses or contact lenses, mount lenses in eyeglass frames and fit clients with final prescription eyeglasses and contact lenses. Student opticians and opticians who are managers of optical retail outlets are included in this unit group."
+32101.01,"Licensed practical nurses provide nursing care usually under the direction of medical practitioners, registered nurses or other health team members."
+32101.02,Operating room technicians prepare patients and provide assistance to medical practitioners prior to and during surgery. 
+32102.00,Workers in paramedical occupations administer pre-hospital emergency medical care to patients with injuries or medical illnesses and transport them to hospitals or other medical facilities for further medical care. Paramedics who are supervisors are included in this unit group.
+32103.01,"Respiratory therapists assist physicians in the evaluation, diagnosis, treatment and care of patients with respiratory and cardiopulmonary disorders. Respiratory therapists who are supervisors or instructors are included in this occupation."
+32103.02,Clinical perfusionists provide technical support to patients undergoing cardiac surgery and patients requiring cardio-respiratory support. Clinical perfusionists who are supervisors or instructors are included in this occupation.
+32103.03,Cardiopulmonary technologists assist physicians in the technical aspects of diagnosis and treatment of cardiovascular and pulmonary disease. Cardiopulmonary technologists who are supervisors or instructors are included in this occupation.
+32104.00,Animal health technologists and veterinary technicians provide technical support to veterinarians by caring for animals and assisting in the diagnosis and treatment of animal health disorders. Animal health technologists and veterinary technicians who are supervisors are included in this unit group.
+32109.01,Hearing instrument practitioners perform technical therapy and assessment functions to assist audiologists.
+32109.02,Communicative disorders assistants and speech-language pathology assistants assist speech-language pathologists with remedial programs.
+32109.03,"Ophthalmic medical technologists and technicians assist ophthalmologists in performing ophthalmic procedures, and surgeries. "
+32109.04,"Physical rehabilitation therapists develop, implement and monitor treatment plans of clients in collaboration with the physiotherapist or physician. "
+32109.05,Physiotherapy assistants and occupational therapy assistants assist physiotherapists and/or occupational therapists in treating patients with injuries and physical disabilities.
+32110.00,"Denturists examine patients and design, construct and repair removable dentures."
+32111.01,ental hygienists provide dental hygiene treatment and services related to oral health promotion and disease and mouth injury prevention.
+32111.02, Dental therapists provide limited restorative dental treatment in addition to dental hygiene services.
+32112.00,"Dental technologists and technicians design, prepare and fabricate dentures and dental devices as prescribed by dentists and other specialists. "
+32120.00,"Medical laboratory technologists conduct medical laboratory tests, experiments and analyses to assist in the diagnosis, treatment, monitoring and prevention of disease. Medical laboratory technologists who are supervisors are included in this unit group."
+32121.01,Radiological technologists operate radiographic and other equipment to produce images of body structures for the diagnosis of disease and injury. Medical radiation technologists who are supervisors or instructors are included in this occupation.
+32121.02,Nuclear medicine technologists operate radiation therapy equipment to administer radiation treatment and produce images of body structures for the diagnosis of diseases. This occupation includes supervisors and instructors.
+32121.03,Radiation therapists operate radiation therapy equipment to administer radiation treatments. This occupation includes supervisors and instructors.
+32121.04,Magnetic resonance technologists operate magnetic resonance imaging (MRI) scanners to produce anatomic images of the human body for diagnosis by radiologists of disease or injury. This occupation includes supervisors and instructors.
+32122.00,"Medical sonographers operate ultrasound equipment to produce and record images of various parts of the body to aid physicians in monitoring pregnancies and in diagnosing cardiac, ophthalmic, vascular and other medical disorders. Medical sonographers who are supervisors or instructors are included in this unit group."
+32123.01,"Cardiology technologists operate electrocardiogram equipment and use medical imaging technologies to record cardiac activity of patients to aid in the diagnosis, monitoring and treatment of heart disease. Cardiology technologists who are supervisors or instructors are included in this occupation."
+32123.02,"Electrophysiological diagnostic technologists operate electroencephalographic, electromyographic and other electrophysiological diagnostic equipment to assist physicians in diagnosing diseases, injuries and abnormalities. Electrophysiological diagnostic technologists who are supervisors or instructors are included in this occupation."
+32124.00,"Pharmacy technicians perform technical functions relating to prescriptions including gathering patients’ information, product preparation, product distribution and inventory control. Pharmacy technicians who are supervisors are included in this unit group."
+32129.01,Dietary technicians help dietitians and nutritionists plan and supervise food service operations.
+32129.02,"Ocularists design, fabricate and fit ocular prostheses."
+32129.03,"Prosthetists and orthotists design, fabricate, fit and repair prosthetic and orthotic devices."
+32129.04,"Prosthetic and orthotic technicians assemble, build and repair prosthetic and orthotic appliances."
+32200.01,Traditional Chinese medical practitioners are practitioners of natural healing who provide an alternative form of health care to patients.
+32200.02,Acupuncturists are practitioners of natural healing who provide an alternative form of health care to patients.
+32201.00,"Massage therapists assess soft tissues and joints of the body for treatment and prevention of dysfunction, injury, pain and physical disorders. "
+32209.01,Herbalists are practitioners of natural healing who provide an alternative form of health care to patients.
+32209.02,"Osteopathic manual practitioners assess, treat and manage musculoskeletal and other related disorders of the body's structure. "
+32209.03,Homeopaths are practitioners of natural healing who provide an alternative form of health care to patients.
+32209.04,Reflexologists are practitioners of natural healing who provide an alternative form of health care to patients.
+32209.05,Holistic nutritionists evaluate the overall health and wellness of clients and recommend nutritional and lifestyle adjustments to address their health issues and to support health goals.
+32209.06,"Naturotherapists assess and treat illness and injury through the use of holistic approaches such as herbal remedies, massage, as well as counselling in nutrition and exercise."
+33100.01,"Dental assistants assist dentists, dental hygienists and dental therapists during the examination and treatment of patients and perform clerical functions. "
+33100.02,Dental laboratory assistants assist dental technologists and technicians in preparing and fabricating dentures and other dental devices. Dental laboratory assistants are employed in dental laboratories.
+33101.00,"Medical laboratory assistants and workers in related technical occupations perform pre-analysis and pre-testing tasks such as collecting blood and other samples, processing specimens, and preparing special chemicals called reagents for use in testing. They conduct routine medical laboratory tests and set up, clean and maintain medical laboratory equipment. "
+33102.00,"Nurse aides, orderlies and patient service associates assist nurses, hospital staff and physicians in the basic care of patients. "
+33103.00,Pharmacy technical assistants perform technical tasks related to preparing medications under a pharmacist’s supervision. They also assist in filling prescriptions and managing patient files. Pharmacy assistants perform clerical functions and assists pharmacists and pharmacy technicians with drug dispensing tasks.
+33109.01,"Audiometric technicians administer tests such as pure tone hearing screening, impedance tests and noise level measurements using equipment such as audiometers and sound level meters to determine hearing thresholds of patients. "
+33109.02,Orthopedic technologists assist orthopedic surgeons in the treatment of orthopedic diseases and injuries.
+33109.03,Rehabilitation aids prepare and maintain equipment and supplies and provide assistance and services to health care professionals and others in activities related to patient rehabilitation.
+33109.04,Ophthalmic assistants operate ophthalmic testing and measuring instruments to aid ophthalmologists in assessing patients' vision and assist ophthalmologists in minor office surgery. 
+33109.05,Optical/ophthalmic laboratory technicians and assistants use laboratory equipment to fit lenses into frames and make minor repairs for customers. 
+33109.06,"Sterile processing technicians operate and maintain sterilization equipment to clean and disinfect instruments, equipment and other accessories according to safe practice standards so that they can be reused."
+33109.07,Blood donor clinic assistants perform a variety of support functions to assist health care professionals and other health care staff.
+33109.08,Morgue attendants provide support services and assistance to pathologists.
+40010.00,"Government managers in health and social policy development and program administration plan, organize, direct, control and evaluate the development and administration of health care policies, social policies and related programs designed to protect and promote the health and social welfare of individuals and communities. "
+40011.00,"Government managers in economic analysis, policy development and program administration plan, organize, direct, control and evaluate economic policy, research and programs in areas of government activity such as taxation, international trade, labour markets, transportation or agriculture. They also plan and direct policies and programs to promote industrial and commercial business development in urban and rural areas. "
+40012.00,"Government managers in education policy development and program administration organize, direct, control and evaluate the development and administration of elementary, secondary and post-secondary education policies and programs."
+40019.00,"Other managers in public administration plan, organize, direct, control and evaluate the development of policies and programs which govern the daily operations of legislatures and other activities unique to government such as intergovernmental affairs and elections. "
+40020.01,Faculty administrators manage the academic and related activities of faculties of colleges and universities.
+40020.02,Registrars manage registration activities and academic record systems of colleges and universities.
+40020.03,"Administrators of vocational training schools manage the operations of private vocational schools specializing in trades, technology, business and other vocational subjects."
+40021.01,"School principals plan, organize, direct, control and evaluate the activities of teachers and other staff of an elementary or secondary school."
+40021.02,"Administrators of elementary and secondary education plan, organize, direct, control and evaluate the academic affairs of a school system."
+40030.00,"Managers in social, community and correctional services plan, organize, direct, control and evaluate the programs and activities of social service and community agencies, correctional institutions, counselling departments, labour organizations, professional associations, political parties and non-governmental organizations."
+40040.00,"Commissioned police officers and related occupations in public protection services plan, organize, direct, control and evaluate police force administration and police activities such as maintaining law and order and detecting and preventing crime. This unit group includes officers from the rank of staff sergeant to police commissioner. Commissioned officers in the railway police, deputy chief coroners, and deputy chief medical examiners are also included in this unit group."
+40041.00,"Fire chiefs and senior firefighting officers plan, organize, direct, control and evaluate firefighting operations and fire prevention activities in fire departments."
+40042.00,"Commissioned officers of the Canadian Armed Forces plan, organize, command, direct, control and evaluate, the operations of their organization in relation to established objectives. Senior commissioned officers formulate military and strategic policies which establish the direction to be taken by the Canadian Forces. All ranks of commissioned officers in the Royal Canadian Air Force, Canadian Army, and Royal Canadian Navy are included in this unit group."
+41100.00,Judges adjudicate civil and criminal cases and administer justice in courts of law. 
+41101.00,"Lawyers and Quebec notaries advise clients on legal matters, represent clients before administration boards and draw up legal documents such as contracts and wills. Lawyers also plead cases, represent clients before tribunals and conduct prosecutions in courts of law. Articling students are included in this unit group."
+41200.00,University professors and lecturers teach courses to undergraduate and graduate students and conduct research at universities. University professors who are heads of departments are included in this unit group.
+41201.01,"Post-secondary teaching assistants assist university professors, community college and CEGEP teachers and other faculty members in teaching activities at universities and colleges."
+41201.02,"Post-secondary research assistants assist university professors, community college and CEGEP teachers and other faculty members in research activities at universities and colleges."
+41210.00,"College and other vocational instructors teach applied arts, academic, technical and vocational subjects to students at community colleges, CEGEPs, agricultural colleges, technical and vocational institutes, language schools and other college level schools. This unit group also includes trainers who are employed by private training establishments, companies, community agencies and governments to deliver internal training or development courses. College teachers who are heads of departments are included in this unit group."
+41220.00,"Secondary school teachers prepare and teach academic, technical, vocational or specialized subjects at public and private secondary schools. Secondary school teachers who are heads of departments are included in this unit group."
+41221.00,"Elementary school and kindergarten teachers teach basic subjects such as reading, writing and arithmetic or specialized subjects such as English or French as a second language at public and private elementary schools."
+41300.00,"Social workers help individuals, couples, families, groups, communities and organizations develop the skills and resources they need to enhance social functioning and provide counselling, therapy and referral to other supportive social services. Social workers also respond to other social needs and issues such as unemployment, racism and poverty. "
+41301.00,"Therapists in counselling and related specialized therapies assist individuals and groups of clients to identify, understand and overcome personal problems and achieve personal objectives. They can be specialized to work on specific problems and they may practice psychotherapy. "
+41302.00,"Religious leaders conduct religious services, administer the rites of a religious faith or denomination, provide spiritual and moral guidance and perform other functions associated with the practice of a religion. "
+41310.01,"Police investigators and professionals in related investigative occupations follow leads and investigate circumstances relating to crimes committed and obtain information to prevent crimes. They plan and coordinate investigations, collect evidence, interview suspects, victims, witnesses and other stakeholders, conduct surveillance and testify in court."
+41310.02,"Coroners and medical examiners conduct death investigations, perform autopsies and other medical tests, issue death certificates, and testify in proceedings about observations made during investigations."
+41311.00,Probation officers monitor the conduct and behaviour of criminal offenders serving probation terms and serving sentences of two years less a day. They are employed by provincial government. Parole officers monitor the reintegration of criminal offenders serving the remainder of sentences on conditional release and individuals that are subject to a long term supervision order. They also assess inmates and develop rehabilitation programs for criminal offenders who are incarcerated in correctional facilities. 
+41320.00,"Educational counsellors advise current and prospective students on educational issues, career planning and personal development, and coordinate the provision of counselling services to students, parents, teachers, faculty and staff. "
+41321.00,Career development practitioners and career counsellors (except education) provide assistance and information to job seeker clients on all aspects of employment search and career planning. They also provide advice and information to employer clients regarding employment issues and human resources. Supervisors of career development practitioners and career counsellors (except education) are included in this unit group.
+41400.01,"Ergonomists or human factors specialists conduct research, prepare reports and provide consultation and advice on, and intervene in, the physical, social and psychological interrelationships between persons, their equipment and the environment."
+41400.02,"Occupational and industrial hygienists conduct research, prepare reports, provide consultation and advice, and administer programs related to physical and chemical hazards and stresses in the workplace."
+41400.03,"Patent agents represent inventors and companies in dealings with the Canadian Patent Office to obtain grants of patents for them, and to advise inventors and applicants on aspects of patent law."
+41400.04,"Science policy and program officers conduct research, prepare reports, provide consultation and advice, administer programs in areas related to the natural and applied sciences."
+41400.05,"Technology transfer officers transfer and integrate new technologies, usually from university or government research and development environments, to commercial and industrial applications and ensure the protection of intellectual property of researchers and developers."
+41401.00,"Economists and economic policy researchers and analysts conduct research, monitor data, analyze information and prepare reports and plans to resolve economic and business problems and develop models to analyze, explain and forecast economic behaviour and patterns. They advise on matters such as finance, fiscal and monetary policy, international trade, agricultural and natural resource commodities and labour and industrial markets."
+41402.00,"Business development officers and market researchers and analysts conduct research, provide statistical and analytical supports, identify market trends and potential opportunities, formulate policies and manage programs to stimulate industrial and commercial business investment or tourism in urban and rural areas, or to promote commercial or industrial products and services. "
+41403.01,"Social policy researchers conduct research, develop policy and implement and administer programs in areas such as employment, immigration, law enforcement, corrections, human rights, housing, labour and family services."
+41403.02,"Home economists conduct research, develop policy, and implement and administer programs related to consumer affairs and on the selection and proper use of food products, textiles and other consumer goods."
+41403.03,"Housing policy analysts conduct research, develop policy, and implement and administer housing programs."
+41403.04,"Immigration and citizenship consultants conduct research, advise clients and prepare immigration, citizenship and visas applications."
+41403.05,"International aid and development project officers conduct research, develop policy, and implement and administer programs in international aid and international development."
+41403.06,"Social survey researchers conduct research, develop policy and implement or administer programs in areas such as employment, immigration, corrections, housing, labour and family services."
+41403.07,"Social services planners conduct research, develop social programs and assess, co-ordinate and develop awareness of existing social services."
+41404.00,"Health policy researchers, consultants and program officers conduct research, produce reports and administer health care policies and programs."
+41405.00,"Education policy researchers, consultants and program officers conduct research, produce reports and administer elementary, secondary and post-secondary education policies and programs. "
+41406.01,"Recreation, sports and fitness consultants provide consulting services, conduct research and develop programs and policies related to recreation, sports and physical fitness."
+41406.02,"Recreation, sports and fitness policy analysts develop policies related to recreation, sports and physical fitness."
+41406.03,"Recreation, sports and fitness program supervisors oversee and administer programs and activities related to recreation, sports and physical fitness."
+41407.00,"Program officers unique to government are primarily concerned with the administration and operation of government institutions, such as Parliament, and activities unique to the operations of government, such as international relations, federal-provincial affairs, elections and tribunals."
+41409.01,"Anthropologists conduct studies of the origin, development and functioning of human societies and cultures and of human evolution, changing physical characteristics and geographical distribution."
+41409.02,"Archaeologists study artifacts to reconstruct the economic, social, political and intellectual lives of past societies."
+41409.03,"Geographers study and analyze the spatial distribution and interrelationships of physical, biological, cultural and social patterns."
+41409.04,Historians conduct research into phases and aspects of past human activities.
+41409.05,"Linguists study the origin, structure and development of languages and apply linguistic theory to problems in teaching, translation and communications."
+41409.06,"Political scientists conduct research into the theory, origin, development, interrelationships and functioning of political institutions, political movements and individual political behaviour."
+41409.07,"Psychometricians develop psychological tests, scales and measures, and may administer or apply and interpret such tests, scales and measures. Psychometrists administer and score psychological tests, usually under the supervision of a registered psychologist."
+41409.08,"Sociologists study the development, structure, social patterns and interrelationships of human societies."
+41409.09,Other social science professionals specialize in particular areas of social sciences and humanities disciplines.
+42100.00,"Police officers maintain order and enforce laws and regulations. They respond to emergency calls, patrol public areas, regulate traffic, control crowds, arrest offenders and build community relationships. "
+42101.00,"Firefighters carry out firefighting and fire prevention activities, and assist in other emergencies. Apprentices are also included in this unit group."
+42102.00,"Specialized members of the Canadian Armed Forces provide critical technological support for military armament. They are primarily responsible for the maintenance, inspection and technical support of all Canadian Army equipment. They also follow the military and strategic policies established by the leadership of the Canadian Army, the Royal Canadian Airforce, and the Royal Canadian Navy. "
+42200.01,Paralegals prepare legal documents and conduct research to assist lawyers or other professionals.
+42200.02,"Independent paralegals provide legal services to the public as allowed by government legislation, or provide paralegal services on contract to law firms or other establishments."
+42200.03,"Notaries public administer oaths, take affidavits, sign legal documents and perform other activities according to the scope of their practice."
+42200.04,Trademark agents advise clients on intellectual property matters. 
+42200.05,"Justices of the peace administer oaths, issue subpoenas, summonses and warrants and perform other court-related duties such as conducting bail hearings."
+42201.00,"Social and community service workers administer and implement a variety of social assistance programs and community services, and assist clients to deal with personal and social problems. "
+42202.01,"Early childhood educators plan, organize, and implement programs for children between the ages of infancy and 12 years. They lead children in activities to stimulate and develop their intellectual, physical and emotional growth and ensure their security and well-being. Supervisors of early childhood educators are included in this occupation."
+42202.02,"Early childhood educator assistants provide care for infants and preschool- to school-age children under the guidance of early childhood educators. They lead children in activities to stimulate and develop their intellectual, physical and emotional growth and ensure their security and well-being."
+42203.00,"Instructors of persons with disabilities teach children and adults using a variety of techniques to facilitate communication, rehabilitation, social skills and increased independence."
+42204.00,"Religion workers include brothers, nuns, monks, religious education workers and others who provide support to ministers of religion or to a religious community and who perform certain functions associated with the practice of a religion. "
+43100.00,"Elementary and secondary school teacher assistants support students, and assist teachers and counsellors with teaching and non-instructional tasks. They assist in areas of personal care, teaching and behaviour management under the supervision of teachers or other child care professionals. "
+43109.01,Driving instructors teach motor vehicle and motorcycle driving courses that are outside of educational institutions.
+43109.02,Driver's licence examiners conduct road tests and evaluate driving ability of individuals.
+43109.03,Sewing instructors teach sewing courses that are outside of educational institutions.
+43109.04,Modelling instructors teach modelling courses that are outside of educational institutions.
+43200.00,"Sheriffs execute and enforce court orders, warrants and writs, participate in seizure and sale of property and perform courtroom and other related duties. Bailiffs serve legal orders and documents, seize or repossess properties, evict tenants and perform other related activities. Sheriffs and bailiffs must usually complete a training program offered by the province to work in the provincial courts."
+43201.00,Correctional service officers guard offenders and detainees and maintain order in correctional institutions and other places of detention. Primary workers develop women offender’s correctional plan and work with other service officers in the correctional team. Correctional service officers who are supervisors are included in this unit group.
+43202.01,"Animal control officers enforce by-laws and regulations of provincial and municipal governments concerning stray domestic animals, livestock and wildlife."
+43202.02,By-law enforcement officers enforce municipal and provincial regulations.
+43202.03,"Commercial transport inspectors ensure compliance with regulations governing load restrictions, the transportation of hazardous materials and public safety."
+43202.04,Garbage collection inspectors investigate complaints concerning infractions of garbage collection by-laws.
+43202.05,Liquor licence inspectors enforce provincial liquor laws.
+43202.06,"Parking control officers enforce by-laws and regulations of provincial and municipal governments concerning parking by-laws on city streets, regional roads and municipal properties."
+43202.07,"Taxi inspectors inspect taxicabs for mechanical reliability, cleanliness, licensing and meter accuracy."
+43202.08,Zoning inspectors investigate properties in violation of zoning and related by-laws.
+43203.01,Border services and customs officers administer and enforce laws and regulations related to customs and border crossing. They conduct interviews and inspections at border crossings to detect undeclared goods and contraband.
+43203.02,Immigration officers administer and enforce laws and regulations related to immigration. They determine admissibility of persons seeking entry into Canada by examining documents and conducting interviews.
+43204.00,"Operations members of the Canadian Armed Forces provide operational support to soldiers including the proper functioning and testing of military equipment such as vehicles, ships and weapons. They follow the military and strategic policies established by the leadership of the Canadian Army, the Royal Canadian Airforce and the Royal Canadian Navy. "
+44100.01,"Home child care providers care for children on an ongoing or short-term basis. They care for the well-being and physical and social development of children, assist parents with child care and may assist with household duties."
+44100.02,"Foster parents care for foster children, usually on an emergency or temporary basis, as a primary guardian under general direction of foster parent agency."
+44101.00,"Home support workers, caregivers and related occupations, provide personal care and companionship for seniors, persons with disabilities and convalescent clients. They provide care in the client's residence, where they may also reside. "
+44200.00,"Primary combat members of the Canadian Armed Forces provide collective defence measures to protect Canadian waters, land, air space and other interests. They conduct raids and ambushes in combat missions and conduct patrols and escorts in security and stability missions. They also follow the military and strategic policies established by the leadership of the Canadian Army, the Royal Canadian Airforce and the Royal Canadian Navy."
+45100.01,Student monitors supervise students to ensure their safety and monitor their behaviour during indoor or outdoor breaks and before and after school hours.
+45100.02,Crossing guards monitor pedestrians crossing at intersections on their way to and from school to prevent traffic accidents.
+50010.00,"Library, archive, museum and art gallery managers plan, organize, direct, control and evaluate the activities of libraries, archives, museums, art galleries or departments within such institutions. "
+50011.00,"Managers in publishing, motion pictures, broadcasting and performing arts plan, organize, direct, control and evaluate operations within publishing firms, film, theatre and record production companies and broadcasting facilities. "
+50012.00,"Recreation, sports and fitness program and service directors plan, organize, direct, control and evaluate the operations of comprehensive recreational, sports and fitness programs and services, national or provincial sports governing agencies and professional athletic teams. "
+51100.00,"Librarians select, develop, organize and maintain library collections and provide advisory services for users. "
+51101.01,"Conservators restore and conserve artifacts belonging to museums, galleries and owners of cultural property. "
+51101.02, Curators recommend the acquisition of museum artifacts and gallery works of art and research their artistic history. 
+51102.00,"Archivists manage, process, store and disseminate information contained in an organization's archives. They acquire, store and research textual material, pictures, maps, architectural documents, electronic materials, films and videos, and sound recordings and multimedia materials."
+51110.00,"Editors review, evaluate and edit manuscripts, articles, news reports and other material for publication, broadcast or interactive media and coordinate the activities of writers, journalists and other staff. "
+51111.01,"Novelists, playwrights, script writers, poets and other creative writers conceive and write novels, plays, scripts, poetry and other material for publication or presentation. "
+51111.02,"Content writers (non-technical) write e-copy, blog posts, e-books, podcasts and other forms of Web-based content. "
+51111.03,Copywriters write text for advertisements and commercials.
+51112.00,Technical writers write manuals and specifications for publication or presentation. 
+51113.00,"Journalists research, investigate, interpret and communicate news and public affairs through newspapers, television, radio and other media."
+51114.01,Translators and translator-revisers translate written material from one language to another.
+51114.02,"Terminologists conduct research to itemize terms connected with a certain field, define them and find equivalents in another language. "
+51114.03,"Interpreters translate oral communication from one language to another during speeches, meetings, conferences, debates and conversation, or in court or before administrative tribunals."
+51114.04,"Sign language interpreters use sign language to translate spoken language and vice versa during meetings, conversations, television programs or in other instances. "
+51120.01,"Film, radio, television and video game producers oversee the various stages and scheduling involved in the production of presentations, motion pictures, television shows and radio programs. "
+51120.02,Directors direct actors and technical crew throughout production and post-production to achieve desired presentation.
+51120.03,"Choreographers create dances for film, theatre and television performances that convey stories, ideas and moods, and direct rehearsals for dancers to achieve desired interpretation."
+51120.04,"Art directors oversee and control artistic aspects of film, television, video game, radio, dance and theatre productions."
+51120.05,"Film editors arrange motion picture film segments into sequences to achieve continuity and desired dramatic, comedic and thematic effects."
+51120.06,"Record producers coordinate the production of musical recordings and manage technicians involved in duplicating, dubbing and mastering of recordings."
+51120.07,Directors of photography coordinate and direct the photography of motion pictures. 
+51121.01,"Conductors select and interpret musical works and lead bands, orchestras and choirs during rehearsals and performances."
+51121.02,"Composers create musical compositions such as television and film scores, theme music, songs, symphonies and music for interactive products such as video games."
+51121.03,Arrangers adapt and modify musical compositions to convey desired themes and to suit particular instrumental and vocal performances.
+51122.01,"Musicians play one or more instruments in orchestras, opera companies and popular bands in establishments such as concert halls, lounges and theatres and in film, television and recording studios."
+51122.02,"Singers sing musical arrangements in musicals, choirs, opera companies and popular music groups, in establishments such as concert halls, lounges and theaters, in film productions, on television and in recording studios."
+51122.03,"Teachers of music or voice teach technique, interpretation and music theory to students through private or group lessons."
+52100.01,Library technicians assist users in accessing library resources and describing new acquisitions and conduct reference searches.
+52100.02,"Public archive technicians assist users in accessing archive resources and describing new acquisitions, participate in archive processing and storage and conduct reference searches."
+52110.00,"Film and video camera operators operate motion picture and video cameras and related equipment to record news, live events, films, videos and television broadcasts. "
+52111.00,"Graphic arts technicians assist in conceptualizing a project, interpreting design specifications or sketches, preparing the page make-up, lay-out and lettering, and preparing production materials for press, electronic or multimedia publishing. "
+52112.00,"Broadcast technicians install, set up, test, operate and repair electronic equipment used to record and transmit live and taped radio and television programs and to produce audio and video streaming broadcasts for the Internet. "
+52113.00,"Audio and video recording technicians operate equipment to record, mix and edit sound, music and videotape, for motion pictures, television and radio programs, videos, recordings and live events."
+52114.00,"Announcers and other broadcasters read news, sports, weather, commercial and public service messages and host entertainment and information programs for broadcast on radio or television. "
+52119.01,"Floor managers oversee the work of camera operators and other technical staff, and cue announcers, actors and performers during news broadcasts and television program tapings."
+52119.02,"Key grips supervise grips, gaffers and stagehands who rig, place, move and dismantle lights, sets, backdrops, scenery and other stage equipment."
+52119.03,"Gaffers and lighting technicians set up, operate and make repairs to lights and other electrical equipment in studios and on sets and stages."
+52119.04,"Stunt co-ordinators and special effects technicians design and coordinate special effects such as fires, explosions and crashes for television and motion picture productions. "
+52119.05,"Make-up artists apply cosmetic and special effects make-up on actors and other performers for television, motion picture productions, and theatre and stage productions. "
+52119.06,"Costumiers oversee the acquisition, fitting and maintenance of costumes for television, motion picture productions, and theatre and stage productions. "
+52119.07,"Settings shop foremen and property masters assist in preparing the construction specifications for sets used in television, motion picture productions, news broadcasts, and theatre and stage productions. "
+52120.01,"Graphic designers conceptualize and produce graphic art and visual materials to effectively communicate information for publications, advertising, films, packaging, posters, signs and interactive media such as Web sites and CDs. Graphic designers who are also supervisors, project managers or consultants are included in this occupation.  "
+52120.02,Illustrators conceptualize and create illustrations to represent information through images. 
+52121.00,"Interior designers and interior decorators conceptualize and produce aesthetic, functional and safe designs for interior spaces in residential, commercial, cultural, institutional and industrial buildings. "
+53100.01,Conservation and restoration technicians assist in the conservation and restoration of artifacts under the direction of a conservator.
+53100.02,"Preparators and picture framers work on the construction and installation of exhibits and displays, prepare artifacts for storage and shipping, and assist in framing art objects."
+53100.03,"Museum interpreters conduct tours of museums, gallery exhibitions and historical, heritage and other sites, answer inquiries and provide information concerning exhibits or sites."
+53100.04,"Curatorial assistants, museum extension officers, museology technicians and museum registrars and cataloguers assist in the research, handling, and storage of artifacts, as well as the planning and development of traveling exhibitions and special events."
+53100.05,"Taxidermists prepare, stuff and mount skins of animals for preservation, scientific or display purposes."
+53110.00,"Photographers operate still cameras to photograph people, events, scenes, materials, products and other subjects. "
+53111.01,Camera crane operators assist technical workers and perform other support duties related to broadcasting and the production of motion pictures and the performing arts.
+53111.02,Motion picture projectionists show films by operating and maintaining projection equipment.
+53111.03,Props persons and set builders assist technical workers and perform other support duties related to broadcasting and the production of motion pictures and the performing arts.
+53111.04,Script assistants help technical workers and perform other support duties related to broadcasting and the production of motion pictures and the performing arts. 
+53111.05,Grips and riggers assist technical workers and perform other support duties related to broadcasting and the production of motion pictures and the performing arts.
+53111.06,Dressers assist cast members with wardrobes and perform support duties related to broadcasting and the production of motion pictures and the performing arts.
+53111.07,"Production assistants provide support duties related to broadcasting and to the production of motion pictures and the performing arts, such as preparing schedules, setting up equipment, and making travel arrangements to various shooting locations."
+53120.01,"Dancers perform as soloists, with partners and with other dancers as members of dance groups and companies."
+53120.02,Dance teachers teach dance technique and artistic interpretation.
+53121.01,"Actors and comedians perform roles in motion picture, television, theatre and radio productions to entertain a variety of audiences."
+53121.02,"Acting teachers instruct acting students in interpretation of scripts, speech, movement, and dramatic theory. "
+53121.03,Circus performers perform circus skills in circuses to entertain a variety of audiences.
+53122.01,"Painters create original paintings, drawings, and other artistic works."
+53122.02,"Sculptors create sculptures, statues and other three-dimensional artwork. "
+53122.03,"Art instructors and teachers teach students the techniques and methods of drawing, painting, sculpting and other forms of artistic expression."
+53123.01,"Theatre designers conceptualize and produce set, costume and lighting designs for film, television, theatre and video productions."
+53123.02,"Fashion designers conceptualize and produce designs for garments, textiles and accessories. "
+53123.03,Exhibit designers conceptualize and produce designs for displays and exhibits.
+53124.01,Carvers use manual and artistic skills to design and make ornamental objects and carvings.
+53124.02,Glass blowers use manual and artistic skills to design and make ornamental and specialty glass objects.
+53124.03,"Metal arts workers use manual and artistic skills to design and make ornamental objects, jewellery and other craft objects from metal."
+53124.04,Potters use manual and artistic skills to design and make pottery.
+53124.05,Stained glass artists use manual and artistic skills to design and make ornamental objects and windows from stained glass.
+53124.06,Instrument makers use manual and artistic skills to design and make stringed musical instruments.
+53124.07,"Weavers use manual and artistic skills to design and make rugs, blankets, cloth and other handicrafts."
+53124.08,"Craft instructors teach manual and artistic skills used to design and make ornamental objects, pottery, stained glass, jewellery, rugs, blankets and other handicrafts."
+53124.09,Artistic floral arrangers design floral arrangements.
+53125.00,"Patternmakers in this unit group create master patterns for the production of garments, footwear and other textile, leather or fur products."
+53200.00,"Athletes participate in competitive sports events on an amateur or professional basis. They play team sports such as hockey, baseball, football and lacrosse; or compete in individual sports such as skiing, figure skating, boxing or track and field; or in games such as poker or chess. "
+53201.01,Coaches prepare and train individual athletes or teams for competitive events. 
+53201.02,Sports scouts identify and recruit athletes for professional sports teams.
+53202.00,"Sports officials and referees observe and enforce rules and regulations governing sporting events, athletic games and sports competitions."
+54100.01,"Program leaders and instructors in recreation, sport and fitness lead and instruct groups and individuals in recreational, sports, fitness or athletic programs."
+54100.02,"Fitness appraisers conduct fitness tests and assessments and design, develop and deliver fitness programs."
+55109.01,"Buskers entertain passers-by on sidewalks and in parks with magic tricks, juggling acts, short dramatic works, music and other entertaining displays."
+55109.02,"Magicians and illusionists perform sleight-of-hand tricks, disappearing acts and other illusions."
+55109.03,Fashion models display clothing and merchandise to audiences through a variety of media.
+55109.04,Influencers create and share personal and branded content for social media or other digital platforms.
+60010.00,"Corporate sales managers plan, organize, direct, control and evaluate the activities of establishments and departments involved in commercial, industrial, institutional, e-business and wholesale and retail sales. "
+60020.00,"Retail and wholesale trade managers plan, organize, direct, control and evaluate the operations of establishments that sell merchandise or services on a retail or wholesale basis. "
+60030.00,"Restaurant and food service managers plan, organize, direct, control and evaluate the operations of restaurants, bars, cafeterias and other food and beverage services. "
+60031.00,"Accommodation service managers plan, organize, direct, control and evaluate the operations of an accommodation establishment or of a department within such an establishment. "
+60040.00,"Managers in customer and personal services include managers of establishments that provide services such as dry cleaning, hairdressing or residential cleaning. This unit group also includes managers of schools that provide non-vocational instruction in driving, languages, music, dance, art, cooking or fashion."
+62010.00,"Retail sales supervisors supervise and coordinate the activities of workers in the following unit groups: Retail salespersons and visual merchandisers (64.100), Cashiers (65.100), Store shelf stockers, clerks and order fillers (65.102) and Other sales related occupations (65.109). "
+62020.00,"Food service supervisors supervise, direct and coordinate the activities of workers who prepare, portion and serve food. "
+62021.00,"Executive housekeepers direct and control the operations of housekeeping departments within hotels, hospitals and other establishments."
+62022.00,"Accommodation, travel, tourism and related services supervisors supervise and coordinate the activities of hotel accommodation service clerks, casino workers, reservation clerks and other travel and accommodations workers. "
+62023.01,Customer service representatives supervisors - financial services supervise and co-ordinate the activities of workers in the following group: Customer service representatives - financial institutions (64.400). 
+62023.02,Customer service representatives supervisors (except financial services) supervise and co-ordinate the activities of workers in the following group: Other customer and information services representatives (64409).
+62024.00,"Cleaning supervisors supervise and coordinate the activities of workers in the following unit groups: Light duty cleaners (65.310), Specialized cleaners (65.311), and Janitors, caretakers and building superintendents (73.201). "
+62029.00,"Other services supervisors supervise and coordinate the activities of dry cleaning, laundry, ironing, pressing and finishing workers, theatre ushers and attendants, spa, sports and recreation club workers, commissionaires, security guards and other service workers. "
+62100.00,"Technical sales specialists, wholesale trade, sell a range of technical goods and services, such as scientific, agricultural and industrial products, electricity, telecommunications services and computer services, to governments and to commercial and industrial establishments in domestic and international localities. Technical sales specialists in wholesale trade who are supervisors are included in this unit group."
+62101.00,Retail and wholesale buyers buy merchandise for resale by retail or wholesale establishments and are usually responsible for the merchandising operations of retail or wholesale establishments. Retail and wholesale buyers who are supervisors and those who are assistants are included in this unit group.
+62200.01,Head chefs plan and direct food preparation and cooking activities and prepare and cook meals and specialty foods.
+62200.02,Sous-chefs plan and direct food preparation and cooking activities. They may prepare and cook meals and specialty foods.
+62200.03,Chefs and specialist chefs prepare and cook meals and specialty foods. They also plan and supervise cooking activities.
+62201.01,Funeral directors coordinate and arrange all aspects of funeral services. 
+62201.02,Embalmers prepare the remains of deceased persons for public visitation and burial. 
+62202.01,"Jewellers and workers in related occupations fabricate, assemble, repair and appraise fine jewellery. "
+62202.02,"Watch repairers and related workers repair, clean, adjust and fabricate parts for clocks and watches."
+63100.00,"Insurance agents and brokers sell life, automobile, property, health and other types of insurance to individuals, businesses and public institutions. Supervisors of insurance agents are included in this unit group."
+63101.00,"Real estate agents and salespersons act as agents for the sale or purchase of houses, apartments, commercial buildings, land and other real estate. "
+63102.00,"Financial sales representatives sell basic deposit, investment and loan products and services to individuals and businesses. "
+63200.00,Cooks prepare and cook a wide variety of foods. Apprentices are also included in this unit group.
+63201.00,"Butchers prepare standard and specialty cuts of meat, poultry, fish and shellfish for sale in retail or wholesale food establishments. Butchers who are supervisors or heads of departments are included in this unit group. Apprentices are also included in this unit group"
+63202.00,"Bakers prepare bread, rolls, muffins, pies, pastries, cakes and cookies in retail and wholesale bakeries and dining establishments. Bakers who are supervisors are included in this unit group.  Apprentices are also included in this unit group."
+63210.01,Hairstylists cut and style hair and perform related services.
+63210.02,Barbers cut and style hair and perform related services.
+63211.01,Estheticians provide facial and body treatments designed to enhance their clients' physical appearance. 
+63211.02,Cosmeticians provide facial and body treatments designed to enhance their clients' physical appearance.
+63211.03,Electrologists provide electrolysis treatments to enhance their clients' physical appearance. 
+63211.04,Manicurists and pedicurists provide treatment to hands and feet to enhance their clients' physical appearance.
+63211.05,Scalp treatment specialists provide scalp treatments to enhance their clients' physical appearance. 
+63211.06,Tattoo artists provide tattoos to enhance their clients' physical appearance. 
+63211.07,"Hair replacement technicians (non-medical) prepare and apply custom made hair pieces to customers' scalp, weave customers' hair to hair pieces and provide scalp treatments."
+63220.01,Shoemakers make specialized and custom shoes and boots
+63220.02,Shoe repairers mend footwear.
+63221.00,"Upholsterers cover furniture, fixtures and similar items with fabric, leather or other upholstery materials."
+64100.01,"Retail salespersons sell, rent or lease a range of technical and non-technical goods and services directly to consumers. "
+64100.02,"Visual merchandisers plan, create and implement windows and in-store displays. "
+64101.00,"Sales representatives in wholesale trade (non-technical), sell non-technical goods and services to retail, wholesale, commercial, industrial, professional and other clients domestically and internationally. Auctioneers are included in this unit group. Sales representatives in wholesale trade who are supervisors are also included in this unit group."
+64200.01,"Tailors, dressmakers and alterationists make, alter and repair tailored clothing, dresses, coats and other made-to-measure garments."
+64200.02,"Furriers make, alter and repair fur coats and other fur garments and accessories."
+64200.03,"Milliners design, alter and repair hats. "
+64201.01,"Image consultants advise clients on their personal appearance, speaking style, manners or other behaviours in order to improve personal or business images. "
+64201.02,Wedding consultants advise clients on their wedding plans.
+64201.03,Weight loss consultants advise clients on their personal appearance and weight-loss goals to improve their personal or business images.
+64300.00,"Maîtres d'hôtel and hosts/hostesses greet patrons and escort them to tables, and supervise and coordinate the activities of food and beverage servers. "
+64301.00,Bartenders mix and serve alcoholic and non-alcoholic beverages. Supervisors of bartenders are included in this unit group.
+64310.00,"Travel counsellors advise clients on travel options and tour packages, make bookings and reservations, prepare tickets and receive payment."
+64311.01,Flight attendants ensure the safety and comfort of passengers and crew members aboard aircraft.
+64311.02,Flight pursers and passenger service directors ensure the safety and comfort of passengers and crew members aboard aircraft.
+64311.03,Ship pursers attend to the safety and comfort of passengers aboard ships.
+64312.01,"Airline passenger, baggage and ticket agents issue tickets, provide fare quotations, make reservations, conduct passenger check-in, trace missing baggage, arrange for cargo shipments and provide related customer services to assist airline passengers."
+64312.02,Airline cargo and freight agents arrange for cargo shipments and provide related customer services.
+64312.03,"Airline reservation agents issue tickets, make reservations and provide related customer services."
+64313.01,"Ticket agents and related clerks (except airline) quote fares and rates, make reservations, issue tickets, check baggage and provide related customer services to assist travellers."
+64313.02,"Cargo service representatives quote fares and rates, process cargo shipments, check baggage and provide related customer services to assist travellers."
+64314.00,"Hotel front desk clerks make room reservations, provide information and services to guests and receive payment for services."
+64320.01,"Tour guides escort individuals and groups on trips, sightseeing tours of cities and tours of historical sites and establishments such as famous buildings, manufacturing plants, cathedrals and theme parks."
+64320.02,"Travel guides escort individuals and groups on trips, sightseeing tours of cities and tours of historical sites and establishments such as famous buildings, manufacturing plants, cathedrals and theme parks."
+64321.00,"Casino workers operate gaming tables, assist patrons using slot machines, accept keno wagers, pay out winning bets and jackpots and collect losing bets. "
+64322.00,"Outdoor sport and recreational guides organize and conduct trips or expeditions for sports enthusiasts, adventurers, tourists and resort guests. "
+64400.00,Customer service representatives in financial institutions process customers' financial transactions and provide information on related banking products and services. 
+64401.00,Postal services representatives serve customers and record transactions at sales counters and postal wickets. They maintain inventory and order supplies in post offices and internal mail rooms. 
+64409.00,"Other customer and information services representatives answer enquiries, provide information regarding an establishment's goods, services and policies and provide customer services such as receiving payments and processing requests for services."
+64410.01,"Security guards guard property against theft and vandalism, control access to establishments, maintain order and enforce regulations at public events and within organizations or areas."
+64410.02,"Armoured car guards drive and guard armoured trucks, pick-up and deliver cash and valuables to banks, automated teller machines and retail establishments."
+64410.03,"Corporate security officers conduct private investigations for clients and employers, implement security measures to protect properties against theft and fire, and provide other protective services."
+64410.04,Private investigators conduct private investigations for clients and employers.
+64410.05,"Retail loss prevention officers conduct private investigations for clients and employers, implement security measures to protect properties against theft and fire, and provide other protective services."
+65100.00,"Cashiers operate cash registers, optical price scanners, computers or other equipment to record and accept payment for the purchase of goods, services and admissions. "
+65101.00,"Service station attendants employed in automotive service stations sell fuel and other automotive products and perform such services as fuelling, cleaning, lubricating and performing minor repairs to motor vehicles. Those employed in marinas sell fuel, rent boats and related equipment, and maintain marina facilities."
+65102.00,"Store shelf stockers, clerks and order fillers pack customers' purchases, price items, stock shelves with merchandise, and fill online, mail and telephone orders. "
+65109.01,Demonstrators and direct distributors sell products and services by phone or in person at home demonstrations or trade shows. 
+65109.02,Door-to-door salespersons and street vendors solicit individuals in their homes or on the street and sell goods and services.
+65109.03,Telephone solicitors and telemarketers sell goods and services by telephone.
+65200.00,Food and beverage servers take patrons' food and beverage orders and serve orders to patrons.
+65201.01,"Food counter attendants and food preparers prepare, heat and finish cooking simple food items and serve customers at food counters."
+65201.02,Kitchen helpers perform various other activities to assist workers who prepare or serve food and beverages.
+65201.03,Food service helpers clear and clean tables and trays in eating establishments. 
+65201.04,"Dishwashers wash dishes, glassware, flatware, pots and pans using dishwasher or by hand. "
+65202.00,"Meat cutters and fishmongers prepare and package pieces of meat, poultry and fish that are sold by food retailers or wholesalers. They use tools to cut, trim and package meat, poultry and fish on a daily basis."
+65210.01,Guest service attendants and baggage porters escort incoming guests to their rooms and carry travellers' luggage. 
+65210.02,Ship and train service attendants carry luggage for passengers aboard and maintain public areas and passengers' rooms aboard ships and trains.
+65210.03,"Facilities workers set-up, install, reconfigure, relocate and dismantle temporary partitions and furnishings of rooms. They also assemble, rotate and disassemble window displays, showcases and signage according to floor plans or instructions."
+65211.01,Amusement attraction operators operate rides and other attractions and perform routine maintenance and safety inspections of attraction equipment. 
+65211.02,"Attendants in amusement, recreation and sport assist patrons, collect tickets and fees and supervise the use of recreational and sports equipment."
+65220.00,"Animal care workers feed, handle, train and groom animals and assist veterinarians, animal health technologists and technicians and animal breeders. Pet groomers clip coats, bathe and otherwise groom pets. "
+65229.00,"Workers in other support occupations in personal services provide psychic consulting, fortune-telling, astrological services and other personal services. "
+65310.01,"Light duty cleaners clean lobbies, hallways, offices and rooms of hotels, motels, resorts, hospitals, schools, office buildings and private residences. "
+65310.02,"Housekeepers perform housekeeping duties in residential, and institutional settings."
+65311.01,Carpet and upholstery cleaners clean carpets and upholstery using specialized equipment and techniques.
+65311.02,"Chimney cleaners and sandblasters clean chimneys and building exteriors using hand tools and sandblasting, pressurized steam or other equipment. "
+65311.03,Furnace and ventilation system cleaners clean furnaces and ventilation systems using specialized equipment and techniques.
+65311.04,Vehicle cleaners clean interiors and exteriors of vehicles using specialized equipment and techniques.
+65311.05,Window cleaners clean windows and other glass surfaces using specialized equipment and techniques.
+65312.00,"Janitors, caretakers and heavy-duty cleaners clean and maintain the interior and exterior of commercial, institutional and residential buildings and their surrounding grounds. "
+65320.01,Dry cleaning and laundry machine operators operate machines to dry-clean and launder garments and other articles.
+65320.02,"Dry cleaning and laundry inspectors and assemblers check finished garments and other articles to make sure that they meet required standards for dry cleaning, laundering and pressing, and assemble and bag finished garments."
+65320.03,"Ironing, pressing and finishing workers iron, press or otherwise finish garments and household articles."
+65329.01,Beauty salon attendants provide services in beauty salons.
+65329.02,Door attendants provide services in retail service establishments.
+65329.03,Funeral home attendants provide services for funeral homes.
+65329.04,Laundromat attendants provide services in laundromats.
+65329.05,Parking lot attendants and car jockeys provide services in parking lots.
+65329.06,Ticket takers and ushers provide services in retail service establishments. 
+65329.07,Other elemental workers perform services specific to the establishments in which their occupations are found.
+70010.00,"Construction managers plan, organize, direct, control and evaluate the activities of a construction company or a construction department within a company, under the direction of a general manager or other senior manager."
+70011.00,"Home building managers own, operate and manage companies engaged in the construction of new residential homes. Home renovation managers own, operate and manage companies engaged in the renovation of existing residential homes."
+70012.01,"Facility operation managers plan, organize, direct, control and evaluate the operations of commercial, transportation and recreational facilities and the included real estate."
+70012.02,"Maintenance managers plan, organize, direct, control and evaluate the maintenance department within commercial, industrial, institutional, recreational and other facilities. "
+70020.01,"Managers in transportation operations plan, organize, direct, control and evaluate the operations of transportation companies such as railways, airlines, bus lines, municipal transit systems, shipping lines and trucking companies, under the direction of a general manager or another senior manager. "
+70020.02,"Managers in transportation freight traffic plan, organize, direct, control and evaluate companies or departments responsible for the transportation and movement of goods, under the direction of a general manager or another senior manager. "
+70021.00,"Postal and courier services managers plan, organize, direct, control and evaluate the activities and operations in postal facilities and in establishments that provide courier services. "
+72010.00,"Contractors and supervisors in machining, metal forming, shaping and erecting trades and related occupations supervise and coordinate the activities of workers classified in the following unit groups: Machinists and machining and tooling inspectors (72.100), Tool and die makers (72.101), Sheet metal workers (72.102), Boilermakers (72.103), Structural metal and platework fabricators and fitters (72.104), Ironworkers (72.105), Welders and related machine operators (72.106) and Machining tool operators (94.106)."
+72011.00,"Contractors and supervisors in electrical trades and telecommunications occupations supervise and coordinate the activities of workers classified in the following unit groups: Electricians (72.200), Industrial electricians (72.201), Power system electricians (72.202), Electrical power line and cable workers (72.203), Telecommunications line and cable installers and repairers (72.204) and Telecommunications equipment installation and cable television service technicians (72.205)."
+72012.00,"Contractors and supervisors in pipefitting trades supervise and coordinate the activities of workers classified in the following unit groups: Plumbers (72.300), Steamfitters, pipefitters and sprinkler system installers (72.301) and Gas fitters (72.302). "
+72013.00,Contractors and supervisors in carpentry trades supervise and coordinate the activities of workers classified in the following unit groups: Carpenters (72.310) and Cabinetmakers (72.311).
+72014.00,"Contractors and supervisors, other construction trades, installers, repairers and servicers supervise and coordinate the activities of various tradespersons, installers, repairers and servicers classified in the following minor groups: Bricklayers and Insulators (72.32), Concrete finishers, tilesetters and plasterers (73.10), Roofers, Glaziers, Painters, decorators and floor covering installers (73.11) and Building maintenance installers, servicers and repairers (73.20). This unit group also includes prefabricated product installation and service contractors and proprietors of some repair and service establishments."
+72020.00,"Contractors and supervisors in mechanic trades supervise and coordinate the activities of workers classified in unit groups within the following minor groups: Machinery and transportation equipment mechanics (except motor vehicle) (72.40), Automotive service technicians (72.41) and Small motor, engine and equipment mechanics and related repairers (including electrical components) (72.42). "
+72021.00,"Contractors and supervisors of heavy equipment operator crews supervise and coordinate the activities of workers classified in the following unit groups: Crane operators (72.500), Water well drillers (72.501), Heavy equipment operators (73.400), Drillers and blasters – surface mining, quarrying and construction (73.402), Railway yard and track maintenance workers (74.200), Public works maintenance equipment operators and related workers (74.205), Longshore workers (75.100), Material handlers (75.101), and Public works and maintenance labourers (75.212)."
+72022.00,"Supervisors of printing and related occupations supervise and coordinate the activities of workers who produce camera work and printing plates and cylinders, process film, print text and illustrations on paper, metal and other material, and bind and finish printed products."
+72023.00,"Supervisors of railway transport operations supervise and coordinate the activities of railway and yard locomotive engineers, railway yard workers and railway labourers. "
+72024.00,"Supervisors of motor transport and other ground transit operators supervise and coordinate activities of truck drivers, bus drivers, delivery drivers, subway and other transit operators, chauffeurs and taxi and limousine drivers. This unit group also includes bus dispatchers who co-ordinate the activities of transit system bus drivers and subway traffic controllers who operate and monitor signal and track switch control panels. "
+72025.00,"Supervisors of mail and message distribution occupations supervise and co-ordinate the activities of workers in the following unit groups: Postal services representatives (64.401), Letter carriers (74.101), Mail and parcel sorters and related occupations (74.100) and Couriers and messengers (74.102)."
+72100.01,"Machinists set up and operate a variety of machine tools to cut or grind metal, plastic or other materials to make or modify parts or products with precise dimensions. Apprentices are also included in this occupation."
+72100.02,Machining and tooling inspectors inspect machined parts and tooling in order to maintain quality control standards. Apprentices are also included in this occupation.
+72101.01,"Tool and die makers make, repair and modify custom-made prototype and special tools, dies, jigs, fixtures and gauges using various metals, alloys and plastics which require precise dimensions."
+72101.02,"Metal mould makers and patternmakers make, modify and repair custom-made moulds and foundry patterns, using various metals, alloys and plastics used for the mass production of industrial and consumer plastic and metal products."
+72102.00,"Sheet metal workers fabricate, assemble, install and repair sheet metal products. Apprentices are also included in this unit group."
+72103.00,"Boilermakers fabricate, assemble, erect, test, maintain and repair boilers, vessels, tanks, towers, heat exchangers and other heavy-metal structures. Apprentices are also included in this unit group."
+72104.00,"Structural metal and platework fabricators and fitters fabricate, assemble, fit and install steel or other metal components for buildings, bridges, tanks, towers, boilers, pressure vessels and other similar structures and products. Apprentices are also included in this unit group."
+72105.00,"Ironworkers fabricate, erect, hoist, install, repair and service structural ironwork, precast concrete, concrete reinforcing materials, curtain walls, ornamental iron and other metals used in the construction of buildings, bridges, highways, dams and other structures and equipment. Apprentices are also included in this unit group."
+72106.01,Welders operate welding equipment to weld ferrous and non-ferrous metals.
+72106.02,"Welding, brazing and soldering machine operators operate previously set up production welding, brazing and soldering equipment."
+72200.00,"Electricians (except industrial and power system) lay out, assemble, install, test, troubleshoot and repair electrical wiring, fixtures, control devices and related equipment in buildings and other structures. Apprentices are also included in this unit group."
+72201.00,"Industrial electricians install, maintain, test, troubleshoot and repair industrial electrical equipment and associated electrical and electronic controls. Apprentices are also included in this unit group."
+72202.00,"Power system electricians install, maintain, test and repair electrical power generation, transmission and distribution system equipment and apparatus. Apprentices are also included in this unit group."
+72203.00,"Electrical power line and cable workers construct, maintain and repair overhead and underground electrical power transmission and distribution systems. Apprentices are also included in this unit group."
+72204.00,"Telecommunications line and cable installers and repairers install, repair and maintain telecommunication lines and cables, cable television transmission and distribution systems and associated hardware. Apprentices are also included in this unit group."
+72205.01,"Telephone installers and repairers install, test, maintain and repair telephones. Apprentices are also included in this occupation."
+72205.02,"Switch network installers and repairers install, test, maintain and repair telephone switching equipment. Apprentices are also included in this occupation."
+72205.03,Telecommunications service testers check telephones and telephone switching equipment. Apprentices are also included in this occupation.
+72205.04,"Telecommunications equipment technicians install, test, maintain and repair telecommunications equipment related to transmission and processing of voice, video signals and other data over a variety of media including fibre optics, microwave, radio and satellite. Apprentices are also included in this occupation."
+72205.05,"Television cable service technicians install, test, maintain and repair cable equipment and related accessories to provide quality service to customers. Apprentices are also included in this occupation."
+72300.00,"Plumbers install, repair and maintain pipes, fixtures and other plumbing equipment used for water distribution and waste water disposal in residential, commercial and industrial buildings. Apprentices are also included in this unit group."
+72301.01,"Steamfitters and pipefitters lay out, assemble, fabricate, maintain, troubleshoot and repair piping systems carrying water, steam, chemicals and fuel in heating, cooling, lubricating and other process piping systems. Apprentices are also included in this occupation."
+72301.02,"Sprinkler system installers fabricate, install, test, maintain and repair water, foam, carbon dioxide and dry chemical sprinkler systems in buildings for fire protection purposes. Apprentices are also included in this occupation."
+72302.00,"Gas fitters install, inspect, repair and maintain gas lines and gas equipment such as meters, regulators and heating units in residential, commercial and industrial establishments. Apprentices are also included in this unit group."
+72310.00,"Carpenters construct, erect, install, maintain and repair structures and components of structures made of wood, wood substitutes, lightweight steel and other materials. Apprentices are also included in this unit group."
+72311.00,"Cabinetmakers use a variety of woods and laminates to construct and repair wooden cabinets, furniture, fixtures and related products. Apprentices are also included in this unit group."
+72320.00,"Bricklayers lay bricks, concrete blocks, stone and other similar materials to construct or repair walls, arches, chimneys, fireplaces and other structures in accordance with blueprints and specifications. Apprentices are also included in this unit group."
+72321.00,"Insulators apply insulation materials to plumbing, air-handling, heating, cooling and refrigeration systems, piping equipment and pressure vessels, and walls, floors and ceilings of buildings and other structures, to prevent or reduce the passage of heat, cold, sound or fire. Apprentices are also included in this unit group."
+72400.01,"Construction millwrights and industrial mechanics install, maintain, troubleshoot, overhaul and repair stationary industrial machinery and mechanical equipment. Apprentices are also included in this occupation."
+72400.02,"Textile machinery mechanics and repairers install, maintain, repair, overhaul and set up textile machinery such as looms, knitting machines, spinning frames and carding machines. Apprentices are also included in this occupation."
+72401.00,"Heavy-duty equipment mechanics repair, troubleshoot, adjust, overhaul and maintain mobile heavy-duty equipment used in construction, transportation, forestry, mining, oil and gas, material handling, landscaping, land clearing, farming and similar activities. Apprentices are also included in this unit group."
+72402.00,"Heating, refrigeration and air conditioning mechanics install, maintain, repair and overhaul residential central air conditioning systems, commercial and industrial refrigeration and air conditioning systems and combined heating, ventilation and cooling systems. Transport refrigeration mechanics are included in this unit group.  Apprentices are also included in this unit group."
+72403.00,"Railway carmen/women inspect, troubleshoot, maintain and repair structural and mechanical components of railway freight, passenger and urban transit rail cars. Apprentices are also included in this unit group."
+72404.01,"Aircraft mechanics maintain, repair, overhaul, modify and test aircraft structural, mechanical and hydraulic systems.  Apprentices are also included in this occupation."
+72404.02,"Aircraft inspectors inspect aircraft and aircraft systems following manufacture, modification, maintenance, repair or overhaul. Apprentices are also included in this occupation."
+72405.00,"Machine fitters fit, assemble and otherwise build heavy industrial machinery and transportation equipment, including aircraft engines."
+72406.00,"Elevator constructors and mechanics assemble, install, maintain and repair freight and passenger elevators, escalators, moving walkways and other related equipment. Apprentices are also included in this unit group."
+72410.01,"Automotive service technicians inspect, diagnose, repair and service mechanical, electrical and electronic systems and components of cars and light trucks. Apprentices are also included in this occupation."
+72410.02,Mechanical repairers perform major repairs and replacement of mechanical units on newly assembled motor vehicles. Apprentices are also included in this occupation.
+72410.03,"Transport truck and trailer mechanics inspect, diagnose, repair and service mechanical, electrical and electronic systems and components of commercial transport trucks, trailers and buses. Apprentices are also included in this occupation."
+72411.00,"Auto body collision, refinishing and glass technicians repair and restore damaged motor vehicle body parts and interior finishing; repaint body surfaces; repair and/or replace automotive glass and repair defective automobile body parts and damage to the bodies of newly assembled cars. Damage repair estimators assess the degree of damage to a vehicle and estimate the cost of parts and labour.  This unit group also includes metal repairers. Apprentices are also included in this unit group"
+72420.00,"Oil and solid fuel heating mechanics install and maintain oil, coal and wood heating systems in residential and commercial buildings. Apprentices are also included in this unit group."
+72421.01,Small appliance servicers and repairers service and repair small domestic electrical appliances. Apprentices are also included in this occupation.
+72421.02,Major appliance repairers and technicians service and repair major domestic electric appliances. Apprentices are also included in this occupation.
+72422.00,"Electrical mechanics maintain, test, rebuild and repair electric motors, transformers, switchgear and other electrical apparatus. Apprentices are also included in this unit group."
+72423.01,"Motorcycle, all-terrain vehicle and other related mechanics test, repair and service motorcycles, motor scooters, forklifts and all-terrain vehicles. Apprentices are also included in this occupation."
+72423.02,"Recreation vehicle technicians test, repair and service snowmobiles, outboard motors, and other recreation vehicles. Apprentices are also included in this occupation."
+72429.00,"Other small engine and small equipment repairers test, repair and service small gasoline and diesel-powered engines and equipment, such as garden tractors, lawn mowers and other related equipment. Apprentices are also included in this unit group."
+72500.00,"Crane operators operate cranes or draglines to lift, move, position or place machinery, equipment and other large objects at construction or industrial sites, ports, railway yards, surface mines and other similar locations. Apprentices are also included in this unit group."
+72501.00,"Water well drillers operate a variety of mobile water well drilling rigs and equipment to drill and monitor residential, commercial and industrial water wells. Apprentices are also included in this unit group."
+72600.01,Air pilots fly fixed wing aircraft and helicopters to provide air transportation and other services such as crop spraying and aerial surveying. 
+72600.02,"Flight engineers assist air pilots with monitoring, troubleshooting and maintenance of aircraft systems and with pre- and post-flight inspections. "
+72600.03,Flying instructors teach flying techniques and procedures to student and licensed pilots. 
+72601.01,"Air traffic controllers direct air traffic within assigned airspace, and control moving aircraft and service vehicles at airports."
+72601.02,Flight dispatchers authorize airline flights over assigned routes.
+72601.03,Flight service specialists provide pilots with flight information essential to aviation safety.
+72602.00,"Deck officers, water transport, operate and command ships or self-propelled vessels to transport passengers and cargo on oceans and coastal and inland waters, and supervise and coordinate the activities of deck crews. This unit group also includes Canadian Coast Guard deck officers."
+72603.00,"Engineer officers, water transport, operate and maintain main engines, machinery and auxiliary equipment aboard ships and other self-propelled vessels, and supervise and coordinate the activities of engine room crews"
+72604.01,Railway traffic controllers coordinate passenger and freight train traffic on railways.
+72604.02,Marine traffic regulators monitor and regulate coastal and inland marine traffic within assigned waterways. 
+72999.01,Gunsmiths fabricate guns and repair and modify firearms according to blueprints or customers' specifications. Apprentices are also included in this occupation.
+72999.02,"Locksmiths repair, install and adjust locks, make keys and change lock combinations. Apprentices are also included in this occupation."
+72999.03,"Safe and vault servicers install, repair and maintain safes and vaults in banks and other establishments. Apprentices are also included in this occupation."
+72999.04,"Saw fitters repair, set and sharpen band saws, chain saws, circular saws and other types of saw blades according to specifications. Apprentices are also included in this occupation."
+72999.05,Die setters select dies for forging according to work order and specifications; position align and bolt dies to ram and anvil of power presses and hammers. Apprentices are also included in this occupation.
+72999.06,"Commercial divers perform underwater activities related to construction, inspection, search, salvage, repair and photography. Apprentices are also included in this occupation."
+73100.00,"Concrete finishers smooth and finish freshly poured concrete, apply curing or surface treatments and install, maintain and restore various masonry structures such as foundations, floors, ceilings, sidewalks, roads, patios and highrise buildings. Apprentices are also included in this unit group."
+73101.00,"Tilesetters cover interior and exterior walls, floors and ceilings with ceramic, marble and quarry tile, mosaics or terrazzo. Apprentices are also included in this unit group."
+73102.01,"Plasterers apply finish, and maintain and restore plaster or similar materials, on interior and exterior walls, ceilings and building partitions to produce plain or decorative surfaces. Apprentices are also included in this occupation."
+73102.02,Drywall installers and finishers install and finish drywall sheets and various types of ceiling systems. Apprentices are also included in this occupation.
+73102.03,"Lathers install support framework for ceiling systems, interior and exterior walls and building partitions. Apprentices are also included in this occupation."
+73110.01,"Roofers install, repair or replace flat roofs as well as shingles, shakes or other roofing tiles on sloped roofs. Apprentices are also included in this occupation."
+73110.02,"Shinglers install and replace shingles, tiles and similar coverings on sloped roofs. Apprentices are also included in this occupation."
+73111.00,"Glaziers cut, fit, install and replace glass in residential, commercial and industrial buildings, on exterior walls of buildings and other structures and in furniture and other products. Apprentices are also included in this unit group."
+73112.00,"Painters and decorators apply paint, wallpaper and other finishes to interior and exterior surfaces of buildings and other structures. Apprentices are also included in this unit group."
+73113.00,"Floor covering installers install carpet, wood, linoleum, vinyl and other resilient floor coverings in residential, commercial, industrial and institutional buildings. Apprentices are also included in this unit group."
+73200.00,"Residential and commercial installers and servicers install and service a wide variety of interior and exterior prefabricated products such as windows, doors, electrical appliances, water heaters, fences, play structures and septic and irrigation systems at residential, commercial or institutional properties."
+73201.00,"General building maintenance workers perform tasks related to the general maintenance of buildings. They execute minor repair work, maintain equipment and installations and perform preventive inspection of systems relating to building mechanics. Building superintendents employed in large establishments are responsible for the operation of the establishment and may also supervise other workers."
+73202.00,"Pest controllers and fumigators inspect buildings and outside areas for pest infestation and spray chemical treatments to kill noxious and destructive insects, rodents and other pests or set cage traps to capture and remove animals. "
+73209.00,"Other repairers and servicers repair and service a wide variety of products, such as cameras, scales, musical instruments, coin machines, vending machines, sporting goods and other miscellaneous products and equipment. "
+73300.01,"Long-haul truck drivers operate heavy trucks to transport goods and materials over urban, interurban, provincial and international routes."
+73300.02,Short-haul and local transport truck drivers operate heavy trucks to transport goods and materials over urban and short interurban routes.
+73301.01,Bus and streetcar drivers transport passengers on established routes.
+73301.02,School bus drivers transport students by bus on established routes to and from schools.
+73301.03,Subway train and light rail transit operators transport passengers on established routes.
+73310.01,Railway locomotive engineers Railway locomotive engineers operate railway locomotives to transport passengers and freight.
+73310.02,"Yard locomotive engineers operate locomotives within yards of railway, industrial or other establishments."
+73311.01,Railway conductors coordinate and supervise the activities of passenger and freight train crew members.
+73311.02,"Brakemen check train brakes and other systems and equipment prior to train run, and assist railway conductors in activities en route."
+73400.00,"Heavy equipment operators operate heavy equipment used in the construction and maintenance of roads, bridges, airports, gas and oil pipelines, tunnels, buildings and other structures; in surface mining and quarrying activities; and in material handling work. Apprentices are also included in this unit group."
+73401.00,"Printing press operators set up and operate sheet and web-fed presses to print text, illustrations and designs on a wide variety of materials such as paper, plastic, glass, leather and metal.  Apprentices are also included in this unit group."
+73402.01,Drillers operate mobile drilling machines to bore blast holes in open-pit mines and quarries and to bore holes for blasting and for building foundations at construction sites.
+73402.02,"Blasters - surface mining, quarrying and construction fill blast holes with explosives and detonate explosives to dislodge coal, ore and rock or to demolish structures."
+74100.01,"Mail sorters process and sort mail and parcels in post offices, mail processing plants and internal mail rooms."
+74100.02,"Mailroom clerks receive, process, sort and distribute manually or electronically incoming and outgoing mail, faxes, messages and courier packages; maintain address databases and produce personalized mailings."
+74101.00,"Letter carriers sort and deliver mail, record delivery of registered mail and collect money for cash-on-delivery parcels."
+74102.00,"Couriers and messengers pick up and deliver letters, parcels, packages, messages, and other items within and between establishments. "
+74200.01,"Railway yard workers regulate yard traffic, couple and uncouple trains and perform related yard activities"
+74200.02,"Railway track maintenance workers operate machines and equipment to lay, maintain and repair railway tracks."
+74201.01,"Engine room crew - water transport assist ship engineer officers to operate, maintain and repair engines, machinery and auxiliary equipment aboard ships and self-propelled vessels."
+74201.02,"Deck crew, water transport stand watch, operate and maintain deck equipment and perform other deck and bridge duties aboard ships and self-propelled vessels under the direction of deck officers."
+74202.00,"Air transport ramp attendants operate ramp-servicing vehicles and equipment, handle cargo and baggage and perform other ground support duties at airports. "
+74203.00,"Automotive and heavy truck and equipment parts installers and servicers install replacement automotive mechanical parts such as mufflers, exhaust pipes, shock absorbers, springs and radiators and perform routine maintenance service such as oil changes, lubrication and tire repairs on automobiles, trucks and heavy equipment. "
+74204.01,"Waterworks maintenance workers locate, repair, install and perform maintenance on waterworks equipment and facilities."
+74204.02,"Gas maintenance workers  locate, repair, install and perform maintenance and minor repairs to exterior and underground gas mains and distribution lines."
+74205.00,"Public works maintenance equipment operators and related workers operate vehicles and equipment to maintain streets, highways and sewer systems and operate trucks to collect garbage and recyclable materials. This unit group also includes workers who clear vegetation close to power lines."
+75100.00,Longshore workers transfer cargo throughout dock area and onto and from ships and other vessels. 
+75101.01,"Material handlers (manual) handle, move, load and unload materials by hand."
+75101.02,"Material handlers (equipment operators) handle, move, load and unload materials by using a variety of material handling equipment."
+75110.00,"Construction trades helpers and labourers assist skilled tradespersons and perform labouring activities at construction sites, in quarries and in surface mines. "
+75119.00,"Other trades helpers and labourers assist skilled tradespersons and perform labouring activities in the installation, maintenance and repair of industrial machinery, refrigeration, heating and air conditioning equipment, in the maintenance and repair of transportation and heavy equipment, in the installation and repair of telecommunication and power cables and in other repair and service work settings."
+75200.01,Taxi and limousine drivers drive automobiles and limousines to transport passengers. 
+75200.02,"Chauffeurs drive automobiles and limousines to transport personnel and visitors of businesses, government or other organizations or members of private households. "
+75201.00,"Delivery service drivers drive automobiles, vans and light trucks to pick up and deliver various products. Door-to-door distributors deliver items to residences and businesses. "
+75210.01,"Lock equipment operators operate lock gates, bridges and similar equipment along canal systems."
+75210.02,Cable ferry operators operate cable ferries.
+75210.03,Ferry terminal workers operate equipment required to perform work at ferry terminals.
+75210.04,"Boat operators, and owner-operators, operate small motorboats or watercraft to transport passengers or freight."
+75211.01,Railway labourers perform a variety of tasks to assist track maintenance workers and railway yard workers. 
+75211.02,Motor transport labourers perform a variety of tasks to assist motor transport operators.
+75212.00,"Public works and maintenance labourers perform a variety of labouring activities to maintain sidewalks, streets, roads and similar areas."
+80010.00,"Managers in natural resources production and fishing plan, organize, direct, control and evaluate the operations of establishments in forestry and logging, mining and quarrying, oil and gas drilling, production and servicing operations, and commercial fishing."
+80020.00,"Managers in agriculture plan, organize, direct, control and evaluate the operations and functions of farms. They are responsible for growing crops, raising and breeding livestock, poultry and other animals, marketing farm products and enhancing farms’ sustainability through, notably, the implementation of new technologies. "
+80021.00,"Managers in horticulture plan, organize, direct and control the activities of nursery and greenhouse staff who grow and market trees, shrubs, flowers and plants."
+80022.00,"Managers in aquaculture manage operations of facilities which cultivate and harvest fish, shellfish or marine plants for replenishment of wildlife stocks or for commercial sale."
+82010.00,Supervisors in logging and forestry supervise and coordinate the activities of workers engaged in logging operations and silvicultural operations. 
+82020.00,Supervisors in mining and quarrying supervise and coordinate activities of workers engaged in underground and surface mining operations and quarries.
+82021.00,"Contractors and supervisors in oil and gas drilling and services supervise and coordinate the activities in drilling for oil or gas, operating service rigs, or providing oil and gas well services."
+82030.01,"Agricultural service contractors provide agricultural services such as livestock and poultry breeding, soil preparation, crop planting, crop spraying, cultivating or harvesting."
+82030.02,"Farm supervisors supervise the work of specialized livestock workers, farm machinery operators, livestock labourers, aquaculture labourers and harvesting labourers. "
+82031.00,"Contractors and supervisors, landscaping, grounds maintenance and horticulture services supervise and coordinate the activities of workers in the following unit groups: Nursery and greenhouse workers (85.103) and Landscaping and grounds maintenance labourers (85.191)."
+83100.00,"Underground production and development miners drill, blast, operate mining machinery, and perform related duties to extract coal and ore in underground mines and to construct tunnels, passageways and shafts to facilitate mining operations. Apprentices are also included in this unit group."
+83101.01,"Oil and gas well drillers and well servicers control the operation of drilling and hoisting equipment on drilling and service rigs, and direct the activities of the rig crew under supervision of the rig manager."
+83101.02,"Oil and gas well loggers, testers and related workers operate specialized mechanical or electronic equipment, tools or instruments to provide services in conjunction with well drilling, completion or servicing."
+83110.00,"Logging machinery operators operate cable yarding systems, mechanical harvesters and forwarders and mechanical tree processors and loaders to fell, yard and process trees at logging sites. "
+83120.00,Fishing masters and officers manage and operate saltwater and freshwater fishing vessels greater than 100 gross tonnes to pursue and land fish and other marine life. 
+83121.00,Fishermen/women operate fishing vessels less than 100 gross tonnes to pursue and land fish and other marine life.
+84100.00,"Underground mine service and support workers perform a range of duties related to the operation of orepasses, chutes and conveyor systems, the construction and support of underground structures, passages and roadways, and the supply of materials and supplies to support underground mining."
+84101.01,Oil and gas well drilling workers operate drilling and service rig machinery as intermediate members of the rig crew.
+84101.02,"Oil and gas well services operators drive trucks and operate specialized hydraulic pumping systems to place cement in wells or to treat wells with chemicals, sand mixtures or gases to stimulate production. "
+84110.00,"Chain saw and skidder operators operate chain saws to fell, delimb and buck trees, and operate skidders to move or yard the felled trees from the logging site to the landing area for processing and transportation. "
+84111.00,"Silviculture and forestry workers perform a variety of duties related to reforestation and to the management, improvement and conservation of forest lands. "
+84120.01,"Specialized livestock workers carry out feeding, health and breeding programs on dairy, beef, sheep, poultry, swine and other livestock farms. "
+84120.02,Farm machinery operators operate and maintain farm machinery and equipment. 
+84121.00,"Fishing vessel deckhands perform a variety of manual tasks on commercial fishing voyages, and maintain fishing vessels."
+85100.00,"Livestock labourers assist other farm workers to raise cattle, poultry and other animals, to help carry out feeding, health and breeding programs, to process animal products and to assist in the maintenance and repair of  farm equipment and buildings."
+85101.00,"Harvesting labourers and related workers assist other farm workers to plant, harvest, sort and pack crops. They participate in soil preparation, irrigation and crop planting, spraying and thinning. "
+85102.00,"Aquaculture and marine harvest labourers include aquaculture support workers, marine plant gatherers, shellfish diggers and other labourers in aquaculture and fishing. "
+85103.00,"Nursery and greenhouse labourers plant, cultivate and harvest trees, shrubs, flowers and plants, and serve nursery and greenhouse customers."
+85104.00,Trappers and hunters trap and hunt wild animals for pelts or live sale. 
+85110.00,"Mine labourers carry out a variety of general labouring duties to assist in the extraction of coal, minerals and ore, and in other services in support of underground mining."
+85111.00,"Oil and gas drilling, servicing and related labourers carry out a variety of general labouring duties and operate equipment to assist in the drilling and servicing of oil and gas wells. This unit group also includes labourers who assist in geophysical prospecting for oil and gas. "
+85120.00,"Logging and forestry labourers perform a variety of manual tasks such as attaching choker cables to logs, planting trees, clearing brush, spraying chemicals, cleaning up landing areas and assisting other workers in woodlands operations. "
+85121.00,"Landscaping and grounds maintenance labourers perform work to assist in the construction of landscapes and related structures, and to maintain lawns, gardens, athletic fields, golf courses, cemeteries, parks, landscaped interiors and other landscaped areas. "
+90010.00,"Manufacturing managers plan, organize, direct, control and evaluate the operations of a manufacturing establishment or of a production department within a manufacturing establishment, under the direction of a general manager or other senior manager. "
+90011.01,"Water supply managers plan, organize, direct, control and evaluate the operations and services of water purification and distribution companies."
+90011.02,"Electrical power distribution managers plan, organize, direct, control and evaluate the operations of electric power distribution services and utility companies."
+90011.03,"Natural gas and petroleum supply managers plan, organize, direct, control and evaluate the operations and services of natural gas and heating oil distribution services and companies. "
+90011.04,"Water pollution control managers plan, organize, direct, control and evaluate the operations of water purification and treatment companies and services."
+90011.05,"Waste systems managers plan, organize, direct, control and evaluate the operations of utility companies and services engaged in waste disposal and waste recycling."
+92010.00,Supervisors in mineral and metal processing supervise and coordinate the activities of workers engaged in mineral and metal processing and manufacturing. 
+92011.00,"Supervisors in petroleum, gas and chemical processing and utilities supervise and coordinate the activities of workers in the following unit groups: Central control and process operators, petroleum, gas and chemical processing (93.101), Power engineers and power systems operators (92.100), Water and waste treatment plant operators (92.101), Chemical plant machine operators (94.110) and Labourers in chemical products processing and utilities (95.102)."
+92012.00,"Supervisors in food and beverage processing supervise and coordinate the activities of workers who operate processing and packaging machines, and workers who grade food and beverage products. "
+92013.00,"Supervisors in plastic and rubber products manufacturing supervise and coordinate the activities of workers who operate processing machines and who fabricate, assemble and inspect rubber or plastic products. "
+92014.00,Supervisors in forest products processing supervise and coordinate the activities of workers engaged in pulp and paper production and wood processing and manufacturing. 
+92015.00,"Supervisors in textile, fabric, fur and leather products processing and manufacturing supervise and coordinate the activities of workers engaged in textile, fabric, fur and leather products processing and manufacturing."
+92020.00,Supervisors in motor vehicle assembling supervise and coordinate the activities of workers in motor vehicle production departments. 
+92021.00,"Supervisors in electronics manufacturing supervise and coordinate the activities of workers who assemble, fabricate, test, repair and inspect electronic parts, components and systems."
+92022.00,Supervisors in furniture and fixtures manufacturing supervise and coordinate the activities of workers who manufacture furniture and fixtures made of wood or other materials. 
+92023.00,"Supervisors in other mechanical and metal products manufacturing supervise and coordinate the activities of workers who fabricate, assemble and inspect mechanical and metal products, such as aircraft and aircraft parts, heavy trucks, buses, trailers, motor vehicle engines, transmissions, heating equipment, commercial refrigeration and similar metal products. "
+92024.00,"Supervisors in other products manufacturing and assembly supervise and coordinate the activities of workers who assemble, fabricate and inspect a variety of products not elsewhere classified, such as jewellery, clocks and watches, millwork, sporting goods, toys and other miscellaneous products. "
+92100.01,"Power engineers operate and maintain reactors, turbines, boilers, generators, stationary engines and auxiliary equipment to generate electrical power and to provide heat, light, refrigeration and other utility services for commercial, institutional and industrial buildings and other work sites. Apprentices are also included in this occupation."
+92100.02, Power systems operators monitor and operate switchboards and related equipment in electrical control centres to control the distribution of electrical power in transmission networks. Apprentices are also included in this occupation.
+92101.01,Water treatment plant operators monitor and operate computerized control systems and related equipment in water filtration and treatment plants to regulate the treatment and distribution of water.
+92101.02,"Liquid waste plant operators monitor and operate computerized control systems and related equipment in wastewater, sewage treatment and liquid waste plants to regulate the treatment and disposal of sewage and wastes."
+93100.00,"Central control and process operators, mineral and metal processing, operate and monitor multi-function process control machinery and equipment to control the processing of mineral ores, metals or cement. "
+93101.00,"Central control and process operators in petroleum, gas and chemical processing monitor and operate petroleum, petrochemical and chemical plants and monitor, adjust and maintain processing units and equipment in these plants."
+93102.00,"Pulping, papermaking and coating control operators operate and monitor multi-function process control machinery and equipment to control the processing of wood, scrap pulp, recyclable paper, cellulose materials, paper pulp and paperboard. "
+93200.01,"Aircraft assemblers assemble, fit and install prefabricated parts to manufacture fixed wing or rotary wing aircraft or aircraft subassemblies. "
+93200.02,Aircraft assembly inspectors inspect aircraft assemblies for adherence to engineering specifications. 
+94100.00,Machine operators in mineral and metal processing operate machinery to process mineral ore and metal.
+94101.01,Mouldmakers and coremakers make foundry cores by hand and machines to make foundry moulds and cores. 
+94101.02,Metal casters operate machines to cast molten metal for use in foundries.
+94101.03,Foundry furnace operators run furnaces to melt and cast metals in foundries.
+94102.01,"Glass process control operators run multi-functional process control machinery to melt, form and cut float glass and glass products."
+94102.02,Glass forming machine operators run single-function machines to melt and form glassware and glass products.
+94102.03,"Glass finishing machine operators run single-function machines to finish flat glass, glassware, bottles and other glass products."
+94102.04,Glass cutters cut flat glass of various thicknesses to specified sizes and shapes by hand.
+94103.01,"Concrete products forming and finiching machine operators and workers operate single function machines to mix, punch, grind and cut concrete and cast and finish concrete product. "
+94103.02,"Clay products forming and finishing machine operators run machines to mix, extrude, mould, press and bake clay in order to form clay products."
+94103.03,"Stone forming and finishing workers operate machines to form, cut and finish stone products."
+94104.00,"Inspectors and testers in mineral and metal processing inspect, grade, sample or test raw materials and products from mineral ore and metal processing operations. "
+94105.01,Light metalworking machine operators operate metalworking machines which shape and form sheet or other light metal into parts or products. Heavy metalworking machine operators operate metalworking machines which shape and form steel or other heavy metal into parts or products.
+94105.02,"Forging machine operators operate forging machines to form and shape metal into various shapes and sizes and impart desired strength, hardness or other characteristics."
+94106.00,Machining tool operators set up and operate or tend metal-cutting machines designed for repetitive machining work. This unit group also includes workers who etch or chemically mill metal pieces.
+94107.00,"Machine operators of other metal products operate one or more automatic or multi-purpose machines to produce a variety of metal parts and products, such as wire mesh, nails, bolts and chains. "
+94110.00,"Chemical plant machine operators monitor and operate units and machinery to blend, mix, process and package a wide range of specialty chemicals, pharmaceuticals, cleaning and toiletry products. "
+94111.01,Mixing machine operators set up and operate mixing machines used in the manufacture of plastic parts and products.
+94111.02,Calendering process operators set up and operate calendering machines used in the manufacture of plastic parts and products.
+94111.03,Extruding process operators set up and operate extruding machines used in the manufacture of plastic parts and products.
+94111.04,Moulding process operators set up and operate moulding processing machines used in the manufacture of plastic parts and products.
+94112.01,Rubber processing machine operators operate processing machines used in the manufacture of rubber products.
+94112.02,"Assemblers, rubber products put together rubber products."
+94112.03,Rubber products inspectors examine products to ensure that they conform to specifications and quality standards.
+94120.00,"Sawmill machine operators operate, monitor and control automated lumbermill equipment to saw timber logs into rough lumber; saw, trim and plane rough lumber into dressed lumber of various sizes; and saw or split shingles and shakes."
+94121.00,"Pulp mill and papermaking and finishing machine operators operate and monitor various types of processing machinery and equipment to produce pulp and assist papermaking and coating control operators to produce, coat and finish paper."
+94122.00,"Paper converting machine operators operate various machines which fabricate and assemble paper products such as paper bags, containers, boxes, envelopes and similar articles. "
+94123.01,"Lumber graders inspect and grade lumber to identify defects, to ensure that the lumber conforms to company specifications, and to classify lumber according to industry standards."
+94123.02,"Inspectors and graders iinspect and grade shingles, veneer, waferboard and similar wood products to identify defects, to ensure that they conform to company specifications and to classify products according to industry standards."
+94124.00,"Woodworking machine operators set up, program and operate one or more woodworking machines to fabricate or repair wooden parts for furniture, fixtures or other wood products. "
+94129.00,"Other wood processing machine operators operate and tend wood processing equipment and machines to remove bark from logs, produce wood chips, preserve and treat wood, and produce waferboards, particleboards, hardboards, insulation boards, plywood, veneers and similar wood products. "
+94130.01,"Textile fibre, yarn, hide and pelt processing machine operators operate machines to prepare textile fibres and spin, wind or twist yarn or thread."
+94130.02,"Textile, hide and pelt dyeing and finishing machine operators operate machines to bleach, dye, coat and finish fabric, thread, other textile products, hide or pelt."
+94131.00,"Weavers, knitters and other workers in fabric making occupations operate machines to process yarn or thread into woven, non-woven and knitted products such as cloth, lace, carpets, rope, industrial fabric, hosiery and knitted garments or to quilt and embroider fabric. This unit group also includes workers who perform activities such as reproducing patterns, drawing-in and tying warps and setting up looms. "
+94132.00,"Industrial sewing machine operators operate sewing machines to sew fabric, fur, leather or synthetic materials to produce or repair garments and other articles. "
+94133.00,"Inspectors and graders in textile, fabric, fur and leather products manufacturing inspect and grade textile, fabric, fur and leather products. "
+94140.01,"Process control operators, food and beverage processing operate multi-function process control machinery to process and package food and beverage products."
+94140.02,"Machine operators, food and beverage operate single-function machines to process and package food and beverage products."
+94141.01,Industrial butchers prepare meat and poultry for further processing or for packaging for wholesale distribution.
+94141.02,Industrial meat cutters prepare meat and poultry for further processing or for packaging for wholesale distribution.
+94141.03,Poultry preparers prepare poultry for further processing or for packaging for wholesale distribution.
+94142.01,Fish and seafood plant machine operators set up and operate machinery to process and package fish and seafood products.
+94142.02,"Fish and seafood plant cutters and cleaners cut, trim and clean fish or seafood by hand. "
+94143.00,Testers and graders in food and beverage processing test or grade ingredients and finished food or beverage products to ensure conformance to company standards.
+94150.00,"Plateless printing equipment operators operate laser printers, computerized high speed colour copiers and other printing machines to print text, illustrations and designs on a wide variety of materials such as paper, plastic, glass, leather, and metal."
+94151.01,"Graphic arts camera operators, scanner operators, film strippers and assemblers operate graphic arts cameras and scanners, assemble film and negatives and prepare printing plates or cylinders for various types of printing presses. "
+94151.02,"Etchers and engravers etch or engrave texts, designs or patterns onto the workpiece using hand tools, etching machines, photogravure or laser processes."
+94151.03,"Prepress technicians, platemakers, proofmakers, and pre-flight/file-preparation operators prepare printing plates or cylinders for various types of printing presses. "
+94152.00,"Binding and finishing machine operators set up, operate or oversee the operation of machines, equipment or computerized units that bind and finish printed material. Workers who perform finishing operations in the paper, carton and packaging industries, as well as those who encode and stamp plastic cards, are included in this unit group."
+94153.00,Photographic and film processors process and finish still photographic film and motion picture film.
+94200.01,Motor vehicle assemblers assemble and install prefabricated motor vehicle parts and components to form subassemblies and finished motor vehicles. 
+94200.02,"Motor vehicle inspectors and testers inspect and test parts, subassemblies, accessories and finished products to ensure proper performance and conformity to quality standards. "
+94201.01,"Electronics assemblers and fabricators assemble and fabricate electronic equipment, parts and components. "
+94201.02,"Electronics inspectors and testers inspect and test electronic and electromechanical assemblies, subassemblies, parts and components to ensure conformance to prescribed standards."
+94202.01,"Assemblers, electrical appliance, apparatus and equipment manufacturing assemble prefabricated parts to produce household, commercial and industrial appliances and equipment. Workers who set up and prepare assembly lines for operation are included in this occupation."
+94202.02,"Inspectors and testers, electrical appliance, apparatus and equipment manufacturing inspect and test assembled products."
+94203.01,"Assemblers, industrial electrical motors and transformers assemble and fit heavy-duty industrial electrical equipment."
+94203.02,"Electrical fitters and wirers, industrial electrical motors and transformers assemble, fabricate, fit and wire heavy-duty industrial electrical equipment."
+94203.03,"Inspectors, industrial electrical motors and transformers inspect heavy-duty industrial electrical equipment."
+94204.01,"Mechanical assemblers assemble a wide variety of mechanical products such as trucks, buses, snowmobiles, garden tractors, automotive engines, transmissions, outboard motors, gearboxes, hydraulic pumps and sewing machines."
+94204.02,Mechanical inspectors check and inspect subassemblies and finished products to ensure proper quality and product specifications.
+94205.01,"Machine operators in electrical apparatus manufacturing operate machinery or equipment to fabricate complete products or parts for use in the assembly of electrical appliances and equipment, and electrical apparatus, such as batteries, fuses and plugs. "
+94205.02,"Inspectors and testers, electrical apparatus manufacturing inspect and test completed parts and production items."
+94210.01,Furniture and fixture assemblers assemble parts to form subassemblies or complete articles of furniture and fixtures.
+94210.02,Furniture finishers finish new wood or metal furniture to specified colour and finish. 
+94210.03,"Furniture refinishers refinish repaired, used or old furniture. "
+94210.04,Furniture and fixture inspectors inspect furniture and fixture subassemblies and finished products to ensure product quality. 
+94211.01,"Assemblers of other wood products assemble a variety of wood products and millwork, such as window sashes and doors."
+94211.02,Inspectors of other wood products inspect wood products to ensure product quality.
+94212.01,"Plastics products assemblers and finishers assemble, finish plastic parts and finished products."
+94212.02,Plastics products inspectors inspect plastic parts and finished products.
+94213.01,"Industrial painters and coaters operate and tend machines or use brushes and spray equipment to apply paint, enamel, lacquer or other non-metallic protective and decorative coatings to surfaces of various products."
+94213.02,"Industrial metal finishing process operators operate machines or equipment to deposit metallized substances on workpieces and surfaces to provide decorative, protective and restorative coatings."
+94219.01,"Product assemblers and finishers assembled products such as jewellery, silverware, buttons, pencils, non-prescription lenses, brushes, clocks and watches, musical instruments, sporting good and toys."
+94219.02,"Product inspectors inspect assembled products such as jewellery, silverware, buttons, pencils, non-prescription lenses, brushes, clocks and watches, musical instruments, sporting good and toys."
+95100.00,"Labourers in mineral and metal processing perform material handling, clean-up, packaging and other elemental activities related to mineral ore and metal processing. "
+95101.00,"Labourers in metal fabrication remove excess metal and unwanted materials from metal parts, castings and other metal products and perform other labouring activities. "
+95102.00,"Labourers in chemical products processing and utilities carry out a variety of material handling, cleaning and routine general labouring activities. "
+95103.00,"Labourers in wood, pulp and paper processing carry out a variety of general labouring and routine wood processing activities and assist pulp mill and papermaking machine operators. "
+95104.00,"Labourers in rubber and plastic products manufacturing assist machine operators, transport materials and perform similar tasks. "
+95105.01,"Labourers in textile processing perform a variety of manual duties to assist in processing fibres into yarn or thread, or to assist in weaving, knitting, bleaching, dyeing or finishing textile fabrics or other textile products. "
+95105.02,"Fabric cutters cut fabric to make parts for garments, linens and other articles."
+95105.03,Fur cutters cut fur pelts to make parts for garments and other fur articles.
+95105.04,"Leather cutters cut leather to make parts for shoes, garments and other leather articles."
+95106.00,"Labourers in food and beverage processing perform material handling, clean-up, packaging and other elemental activities related to food and beverage processing."
+95107.00,"Labourers in fish and seafood processing perform clean-up, packaging, material handling and other elemental activities related to fish and seafood processing. "
+95109.00,"Other labourers in processing, manufacturing and utilities perform material handling, clean-up, packaging and other elemental activities in processing, manufacturing and utilities."

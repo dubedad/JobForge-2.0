@@ -1,0 +1,20 @@
+{
+  "transition_id": "ad085484-b341-455a-a9e2-e77175c58208",
+  "batch_id": "5fb75c2a-cd83-4693-83de-896c7dbadf18",
+  "source_layer": "staged",
+  "target_layer": "bronze",
+  "source_files": [
+    "data\\source\\exclusions_oasis_2023_v1.0.csv"
+  ],
+  "target_file": "data\\staged\\element_exclusions.parquet",
+  "row_count_in": 3074,
+  "row_count_out": 3074,
+  "transforms_applied": [
+    "ingest",
+    "add_provenance"
+  ],
+  "started_at": "2026-01-19T02:20:53.743006+00:00",
+  "completed_at": "2026-01-19T02:20:53.753704+00:00",
+  "status": "success",
+  "errors": null
+}

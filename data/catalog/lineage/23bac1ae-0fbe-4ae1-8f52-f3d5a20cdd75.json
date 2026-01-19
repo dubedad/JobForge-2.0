@@ -1,0 +1,20 @@
+{
+  "transition_id": "23bac1ae-0fbe-4ae1-8f52-f3d5a20cdd75",
+  "batch_id": "c1868204-a567-4109-be4a-cb9d078ebdc7",
+  "source_layer": "staged",
+  "target_layer": "bronze",
+  "source_files": [
+    "data\\source\\abilities_oasis_2023_v1.0.csv"
+  ],
+  "target_file": "data\\staged\\oasis_abilities.parquet",
+  "row_count_in": 900,
+  "row_count_out": 900,
+  "transforms_applied": [
+    "ingest",
+    "add_provenance"
+  ],
+  "started_at": "2026-01-19T02:20:33.647246+00:00",
+  "completed_at": "2026-01-19T02:20:33.659246+00:00",
+  "status": "success",
+  "errors": null
+}

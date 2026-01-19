@@ -1,0 +1,20 @@
+{
+  "transition_id": "b91e7347-295e-4555-9e93-116147ff6b95",
+  "batch_id": "2095b843-b6fe-447d-a8d6-5c8137822ecb",
+  "source_layer": "staged",
+  "target_layer": "bronze",
+  "source_files": [
+    "data\\source\\noc_structure_en.csv"
+  ],
+  "target_file": "data\\staged\\dim_noc.parquet",
+  "row_count_in": 10,
+  "row_count_out": 10,
+  "transforms_applied": [
+    "ingest",
+    "add_provenance"
+  ],
+  "started_at": "2026-01-19T00:55:30.599378+00:00",
+  "completed_at": "2026-01-19T00:55:30.612378+00:00",
+  "status": "success",
+  "errors": null
+}

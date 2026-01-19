@@ -1,0 +1,20 @@
+{
+  "transition_id": "ec8630e2-32c7-4240-bb39-c1a56b01a5a7",
+  "batch_id": "2095b843-b6fe-447d-a8d6-5c8137822ecb",
+  "source_layer": "bronze",
+  "target_layer": "silver",
+  "source_files": [
+    "data\\bronze\\dim_noc.parquet"
+  ],
+  "target_file": "data\\silver\\dim_noc.parquet",
+  "row_count_in": 10,
+  "row_count_out": 9,
+  "transforms_applied": [
+    "filter_unit_groups",
+    "derive_unit_group_id"
+  ],
+  "started_at": "2026-01-19T00:55:30.631957+00:00",
+  "completed_at": "2026-01-19T00:55:30.644399+00:00",
+  "status": "success",
+  "errors": null
+}

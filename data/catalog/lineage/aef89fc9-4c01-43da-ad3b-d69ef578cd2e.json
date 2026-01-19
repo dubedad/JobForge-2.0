@@ -1,0 +1,19 @@
+{
+  "transition_id": "aef89fc9-4c01-43da-ad3b-d69ef578cd2e",
+  "batch_id": "3b83ec28-f709-44de-af88-a5083b5d43f4",
+  "source_layer": "silver",
+  "target_layer": "gold",
+  "source_files": [
+    "data\\silver\\element_workplaces_employers.parquet"
+  ],
+  "target_file": "data\\gold\\element_workplaces_employers.parquet",
+  "row_count_in": 3418,
+  "row_count_out": 3418,
+  "transforms_applied": [
+    "reorder_columns"
+  ],
+  "started_at": "2026-01-19T02:20:53.414346+00:00",
+  "completed_at": "2026-01-19T02:20:53.429977+00:00",
+  "status": "success",
+  "errors": null
+}

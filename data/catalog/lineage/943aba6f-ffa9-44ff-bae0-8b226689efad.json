@@ -1,0 +1,20 @@
+{
+  "transition_id": "943aba6f-ffa9-44ff-bae0-8b226689efad",
+  "batch_id": "aa7182a8-1d7a-484b-b505-0e7d751964aa",
+  "source_layer": "staged",
+  "target_layer": "bronze",
+  "source_files": [
+    "data\\source\\skills_oasis_sample.csv"
+  ],
+  "target_file": "data\\staged\\oasis_skills_test.parquet",
+  "row_count_in": 5,
+  "row_count_out": 5,
+  "transforms_applied": [
+    "ingest",
+    "add_provenance"
+  ],
+  "started_at": "2026-01-19T01:01:16.438808+00:00",
+  "completed_at": "2026-01-19T01:01:16.455807+00:00",
+  "status": "success",
+  "errors": null
+}

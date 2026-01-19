@@ -1,0 +1,20 @@
+{
+  "transition_id": "ca7396cf-ee50-4f07-b9b6-9bb1dcd15281",
+  "batch_id": "a248957d-c225-4307-8666-017467a369f2",
+  "source_layer": "bronze",
+  "target_layer": "silver",
+  "source_files": [
+    "data\\bronze\\cops_retirements.parquet"
+  ],
+  "target_file": "data\\silver\\cops_retirements.parquet",
+  "row_count_in": 533,
+  "row_count_out": 516,
+  "transforms_applied": [
+    "derive_unit_group_id",
+    "filter_unit_groups_only"
+  ],
+  "started_at": "2026-01-19T02:22:22.719309+00:00",
+  "completed_at": "2026-01-19T02:22:22.734149+00:00",
+  "status": "success",
+  "errors": null
+}

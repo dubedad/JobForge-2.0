@@ -1,0 +1,20 @@
+{
+  "transition_id": "f5505790-93e7-476b-9d4c-72b5de5f6efe",
+  "batch_id": "e0175427-7158-4195-9bc9-1d2b78dbc212",
+  "source_layer": "staged",
+  "target_layer": "bronze",
+  "source_files": [
+    "data\\source\\school_leavers_sortants_scolaires_2024_2033_noc2021.csv"
+  ],
+  "target_file": "data\\staged\\cops_school_leavers.parquet",
+  "row_count_in": 533,
+  "row_count_out": 533,
+  "transforms_applied": [
+    "ingest",
+    "add_provenance"
+  ],
+  "started_at": "2026-01-19T02:22:22.339951+00:00",
+  "completed_at": "2026-01-19T02:22:22.354952+00:00",
+  "status": "success",
+  "errors": null
+}

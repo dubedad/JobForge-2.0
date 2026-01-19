@@ -1,0 +1,19 @@
+{
+  "transition_id": "7f02dd97-2f5a-413e-8b5b-ba21dab72dc7",
+  "batch_id": "e0175427-7158-4195-9bc9-1d2b78dbc212",
+  "source_layer": "silver",
+  "target_layer": "gold",
+  "source_files": [
+    "data\\silver\\cops_school_leavers.parquet"
+  ],
+  "target_file": "data\\gold\\cops_school_leavers.parquet",
+  "row_count_in": 516,
+  "row_count_out": 516,
+  "transforms_applied": [
+    "reorder_columns"
+  ],
+  "started_at": "2026-01-19T02:22:22.398721+00:00",
+  "completed_at": "2026-01-19T02:22:22.411720+00:00",
+  "status": "success",
+  "errors": null
+}

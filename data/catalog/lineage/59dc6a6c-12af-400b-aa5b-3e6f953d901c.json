@@ -1,0 +1,20 @@
+{
+  "transition_id": "59dc6a6c-12af-400b-aa5b-3e6f953d901c",
+  "batch_id": "1ed31f3a-ef50-4e1f-9185-95cfae4a110b",
+  "source_layer": "staged",
+  "target_layer": "bronze",
+  "source_files": [
+    "data\\source\\workcontext_oasis_2023_v1.0.csv"
+  ],
+  "target_file": "data\\staged\\oasis_workcontext.parquet",
+  "row_count_in": 900,
+  "row_count_out": 900,
+  "transforms_applied": [
+    "ingest",
+    "add_provenance"
+  ],
+  "started_at": "2026-01-19T02:20:33.862397+00:00",
+  "completed_at": "2026-01-19T02:20:33.875961+00:00",
+  "status": "success",
+  "errors": null
+}

@@ -1,0 +1,19 @@
+{
+  "transition_id": "d5248064-1643-4458-929f-18fa9094010a",
+  "batch_id": "45f0f431-67df-4232-a089-97ee7c52e0a5",
+  "source_layer": "staged",
+  "target_layer": "bronze",
+  "source_files": [
+    "data\\staged\\element_main_duties_test.parquet"
+  ],
+  "target_file": "data\\bronze\\element_main_duties_test.parquet",
+  "row_count_in": 8,
+  "row_count_out": 8,
+  "transforms_applied": [
+    "rename_columns"
+  ],
+  "started_at": "2026-01-19T01:04:44.286795+00:00",
+  "completed_at": "2026-01-19T01:04:44.302951+00:00",
+  "status": "success",
+  "errors": null
+}

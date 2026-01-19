@@ -1,0 +1,19 @@
+{
+  "transition_id": "1c7e2eb1-52ea-4df2-b98a-ded52af52dbb",
+  "batch_id": "32ebcf05-b771-4807-b8fb-3950197737a4",
+  "source_layer": "silver",
+  "target_layer": "gold",
+  "source_files": [
+    "data\\silver\\element_example_titles.parquet"
+  ],
+  "target_file": "data\\gold\\element_example_titles.parquet",
+  "row_count_in": 18666,
+  "row_count_out": 18666,
+  "transforms_applied": [
+    "reorder_columns"
+  ],
+  "started_at": "2026-01-19T02:20:53.508598+00:00",
+  "completed_at": "2026-01-19T02:20:53.529708+00:00",
+  "status": "success",
+  "errors": null
+}

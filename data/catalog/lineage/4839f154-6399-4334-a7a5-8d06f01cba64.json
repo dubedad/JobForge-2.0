@@ -1,0 +1,20 @@
+{
+  "transition_id": "4839f154-6399-4334-a7a5-8d06f01cba64",
+  "batch_id": "754d4b27-05da-478c-ba37-a35483e2ca1e",
+  "source_layer": "staged",
+  "target_layer": "bronze",
+  "source_files": [
+    "data\\source\\other_replacement_autre_remplacement_2024_2033_noc2021.csv"
+  ],
+  "target_file": "data\\staged\\cops_other_replacement.parquet",
+  "row_count_in": 533,
+  "row_count_out": 533,
+  "transforms_applied": [
+    "ingest",
+    "add_provenance"
+  ],
+  "started_at": "2026-01-19T02:22:22.817664+00:00",
+  "completed_at": "2026-01-19T02:22:22.828267+00:00",
+  "status": "success",
+  "errors": null
+}

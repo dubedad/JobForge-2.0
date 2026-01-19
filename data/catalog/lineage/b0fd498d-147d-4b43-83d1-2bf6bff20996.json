@@ -1,0 +1,19 @@
+{
+  "transition_id": "b0fd498d-147d-4b43-83d1-2bf6bff20996",
+  "batch_id": "8d989a1f-4bfb-4203-a956-ef449afe6d71",
+  "source_layer": "silver",
+  "target_layer": "gold",
+  "source_files": [
+    "data\\silver\\oasis_workactivities.parquet"
+  ],
+  "target_file": "data\\gold\\oasis_workactivities.parquet",
+  "row_count_in": 900,
+  "row_count_out": 900,
+  "transforms_applied": [
+    "reorder_columns"
+  ],
+  "started_at": "2026-01-19T02:20:33.843398+00:00",
+  "completed_at": "2026-01-19T02:20:33.857399+00:00",
+  "status": "success",
+  "errors": null
+}

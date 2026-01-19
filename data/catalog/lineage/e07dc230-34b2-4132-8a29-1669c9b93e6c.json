@@ -1,0 +1,19 @@
+{
+  "transition_id": "e07dc230-34b2-4132-8a29-1669c9b93e6c",
+  "batch_id": "ac79fd06-8d76-4597-b9f1-a4935c02528a",
+  "source_layer": "staged",
+  "target_layer": "bronze",
+  "source_files": [
+    "data\\staged\\job_architecture.parquet"
+  ],
+  "target_file": "data\\bronze\\job_architecture.parquet",
+  "row_count_in": 1987,
+  "row_count_out": 1987,
+  "transforms_applied": [
+    "rename_columns"
+  ],
+  "started_at": "2026-01-19T02:23:21.524740+00:00",
+  "completed_at": "2026-01-19T02:23:21.542740+00:00",
+  "status": "success",
+  "errors": null
+}

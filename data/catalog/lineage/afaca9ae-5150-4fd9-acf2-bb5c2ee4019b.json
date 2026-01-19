@@ -1,0 +1,19 @@
+{
+  "transition_id": "afaca9ae-5150-4fd9-acf2-bb5c2ee4019b",
+  "batch_id": "d4632d8f-b017-4340-b5f9-5c3182fecf2c",
+  "source_layer": "staged",
+  "target_layer": "bronze",
+  "source_files": [
+    "data\\staged\\cops_employment.parquet"
+  ],
+  "target_file": "data\\bronze\\cops_employment.parquet",
+  "row_count_in": 5,
+  "row_count_out": 5,
+  "transforms_applied": [
+    "rename_columns"
+  ],
+  "started_at": "2026-01-19T02:22:22.567360+00:00",
+  "completed_at": "2026-01-19T02:22:22.579953+00:00",
+  "status": "success",
+  "errors": null
+}

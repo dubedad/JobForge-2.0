@@ -1,0 +1,20 @@
+{
+  "transition_id": "44b4018f-55b9-484a-b4d4-702e5924758f",
+  "batch_id": "981781b2-aa25-4e4a-8eec-ce0b5abf8f56",
+  "source_layer": "staged",
+  "target_layer": "bronze",
+  "source_files": [
+    "data\\source\\employment-requirements_oasis_2023_v1.0.csv"
+  ],
+  "target_file": "data\\staged\\element_employment_requirements.parquet",
+  "row_count_in": 2851,
+  "row_count_out": 2851,
+  "transforms_applied": [
+    "ingest",
+    "add_provenance"
+  ],
+  "started_at": "2026-01-19T02:20:53.599814+00:00",
+  "completed_at": "2026-01-19T02:20:53.610811+00:00",
+  "status": "success",
+  "errors": null
+}

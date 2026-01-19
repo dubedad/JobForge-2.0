@@ -1,0 +1,19 @@
+{
+  "transition_id": "80133ed6-c768-42f0-9e05-167cc713e293",
+  "batch_id": "40bedb91-2d06-4f1a-aa1a-817f1139f5e4",
+  "source_layer": "silver",
+  "target_layer": "gold",
+  "source_files": [
+    "data\\silver\\cops_retirement_rates.parquet"
+  ],
+  "target_file": "data\\gold\\cops_retirement_rates.parquet",
+  "row_count_in": 516,
+  "row_count_out": 516,
+  "transforms_applied": [
+    "reorder_columns"
+  ],
+  "started_at": "2026-01-19T02:22:22.800663+00:00",
+  "completed_at": "2026-01-19T02:22:22.813662+00:00",
+  "status": "success",
+  "errors": null
+}

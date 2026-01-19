@@ -1,0 +1,20 @@
+{
+  "transition_id": "a079f876-f940-46ec-96fb-daff7ae857ed",
+  "batch_id": "45f0f431-67df-4232-a089-97ee7c52e0a5",
+  "source_layer": "staged",
+  "target_layer": "bronze",
+  "source_files": [
+    "data\\source\\main_duties_element_sample.csv"
+  ],
+  "target_file": "data\\staged\\element_main_duties_test.parquet",
+  "row_count_in": 8,
+  "row_count_out": 8,
+  "transforms_applied": [
+    "ingest",
+    "add_provenance"
+  ],
+  "started_at": "2026-01-19T01:04:44.270211+00:00",
+  "completed_at": "2026-01-19T01:04:44.283795+00:00",
+  "status": "success",
+  "errors": null
+}

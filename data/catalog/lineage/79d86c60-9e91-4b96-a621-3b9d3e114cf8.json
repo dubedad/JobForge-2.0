@@ -1,0 +1,20 @@
+{
+  "transition_id": "79d86c60-9e91-4b96-a621-3b9d3e114cf8",
+  "batch_id": "506d8135-3adc-4d8c-be6f-148a1f672b42",
+  "source_layer": "bronze",
+  "target_layer": "silver",
+  "source_files": [
+    "data\\bronze\\cops_employment_test.parquet"
+  ],
+  "target_file": "data\\silver\\cops_employment_test.parquet",
+  "row_count_in": 5,
+  "row_count_out": 4,
+  "transforms_applied": [
+    "derive_unit_group_id",
+    "filter_unit_groups_only"
+  ],
+  "started_at": "2026-01-19T01:00:45.333715+00:00",
+  "completed_at": "2026-01-19T01:00:45.353717+00:00",
+  "status": "success",
+  "errors": null
+}

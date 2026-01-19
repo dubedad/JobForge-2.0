@@ -1,0 +1,20 @@
+{
+  "transition_id": "eb957ea9-c95c-44f8-8890-d51095354419",
+  "batch_id": "3b83ec28-f709-44de-af88-a5083b5d43f4",
+  "source_layer": "staged",
+  "target_layer": "bronze",
+  "source_files": [
+    "data\\source\\workplaces-employers_oasis_2023_v1.0.csv"
+  ],
+  "target_file": "data\\staged\\element_workplaces_employers.parquet",
+  "row_count_in": 3418,
+  "row_count_out": 3418,
+  "transforms_applied": [
+    "ingest",
+    "add_provenance"
+  ],
+  "started_at": "2026-01-19T02:20:53.369474+00:00",
+  "completed_at": "2026-01-19T02:20:53.378345+00:00",
+  "status": "success",
+  "errors": null
+}

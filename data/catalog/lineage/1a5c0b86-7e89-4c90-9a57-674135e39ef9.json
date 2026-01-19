@@ -1,0 +1,20 @@
+{
+  "transition_id": "1a5c0b86-7e89-4c90-9a57-674135e39ef9",
+  "batch_id": "e34a08d0-37c2-4a29-81b3-1ac6d4568f80",
+  "source_layer": "staged",
+  "target_layer": "bronze",
+  "source_files": [
+    "data\\source\\employment_emploi_2024_2033_noc2021.csv"
+  ],
+  "target_file": "data\\staged\\cops_employment.parquet",
+  "row_count_in": 533,
+  "row_count_out": 533,
+  "transforms_applied": [
+    "ingest",
+    "add_provenance"
+  ],
+  "started_at": "2026-01-19T02:24:38.562601+00:00",
+  "completed_at": "2026-01-19T02:24:38.579408+00:00",
+  "status": "success",
+  "errors": null
+}

@@ -1,0 +1,19 @@
+{
+  "transition_id": "c87bdffe-3af9-4fbc-8de1-d4fe3d275585",
+  "batch_id": "a248957d-c225-4307-8666-017467a369f2",
+  "source_layer": "silver",
+  "target_layer": "gold",
+  "source_files": [
+    "data\\silver\\cops_retirements.parquet"
+  ],
+  "target_file": "data\\gold\\cops_retirements.parquet",
+  "row_count_in": 516,
+  "row_count_out": 516,
+  "transforms_applied": [
+    "reorder_columns"
+  ],
+  "started_at": "2026-01-19T02:22:22.737150+00:00",
+  "completed_at": "2026-01-19T02:22:22.750148+00:00",
+  "status": "success",
+  "errors": null
+}

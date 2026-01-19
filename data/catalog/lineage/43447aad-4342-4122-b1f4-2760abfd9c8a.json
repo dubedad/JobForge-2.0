@@ -1,0 +1,19 @@
+{
+  "transition_id": "43447aad-4342-4122-b1f4-2760abfd9c8a",
+  "batch_id": "b5d873d3-08b7-4dd6-a8b5-904c5bc37fb7",
+  "source_layer": "silver",
+  "target_layer": "gold",
+  "source_files": [
+    "data\\silver\\cops_employment_growth.parquet"
+  ],
+  "target_file": "data\\gold\\cops_employment_growth.parquet",
+  "row_count_in": 516,
+  "row_count_out": 516,
+  "transforms_applied": [
+    "reorder_columns"
+  ],
+  "started_at": "2026-01-19T02:22:22.668177+00:00",
+  "completed_at": "2026-01-19T02:22:22.681176+00:00",
+  "status": "success",
+  "errors": null
+}

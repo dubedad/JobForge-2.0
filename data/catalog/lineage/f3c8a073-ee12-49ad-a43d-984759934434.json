@@ -1,0 +1,19 @@
+{
+  "transition_id": "f3c8a073-ee12-49ad-a43d-984759934434",
+  "batch_id": "6f998919-6604-42e1-bc8b-27cd7b27fdb0",
+  "source_layer": "silver",
+  "target_layer": "gold",
+  "source_files": [
+    "data\\silver\\oasis_skills.parquet"
+  ],
+  "target_file": "data\\gold\\oasis_skills.parquet",
+  "row_count_in": 900,
+  "row_count_out": 900,
+  "transforms_applied": [
+    "reorder_columns"
+  ],
+  "started_at": "2026-01-19T02:20:33.628735+00:00",
+  "completed_at": "2026-01-19T02:20:33.642726+00:00",
+  "status": "success",
+  "errors": null
+}

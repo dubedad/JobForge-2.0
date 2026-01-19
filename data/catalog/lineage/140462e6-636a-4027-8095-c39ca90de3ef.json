@@ -1,0 +1,20 @@
+{
+  "transition_id": "140462e6-636a-4027-8095-c39ca90de3ef",
+  "batch_id": "692e5d6d-d1c9-4a9f-8e21-7245223e5ae0",
+  "source_layer": "staged",
+  "target_layer": "bronze",
+  "source_files": [
+    "data\\source\\main-duties_oasis-2023_v1.0.csv"
+  ],
+  "target_file": "data\\staged\\element_main_duties.parquet",
+  "row_count_in": 4991,
+  "row_count_out": 4991,
+  "transforms_applied": [
+    "ingest",
+    "add_provenance"
+  ],
+  "started_at": "2026-01-19T02:23:41.333681+00:00",
+  "completed_at": "2026-01-19T02:23:41.353684+00:00",
+  "status": "success",
+  "errors": null
+}

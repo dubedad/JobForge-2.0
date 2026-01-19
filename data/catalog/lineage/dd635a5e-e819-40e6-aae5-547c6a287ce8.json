@@ -1,0 +1,20 @@
+{
+  "transition_id": "dd635a5e-e819-40e6-aae5-547c6a287ce8",
+  "batch_id": "ed241959-aa7c-4178-a47c-5d3c15f7e1a4",
+  "source_layer": "staged",
+  "target_layer": "bronze",
+  "source_files": [
+    "data\\source\\summary_sommaire_2024_2033_noc2021.csv"
+  ],
+  "target_file": "data\\staged\\cops_summary.parquet",
+  "row_count_in": 533,
+  "row_count_out": 533,
+  "transforms_applied": [
+    "ingest",
+    "add_provenance"
+  ],
+  "started_at": "2026-01-19T02:22:22.880564+00:00",
+  "completed_at": "2026-01-19T02:22:22.891564+00:00",
+  "status": "success",
+  "errors": null
+}

@@ -1,0 +1,534 @@
+Code,Occupation Name,Nom de la profession,2023,2024,2025,2026,2027,2028,2029,2030,2031,2032,2033
+00000,All Occupations,Toutes les professions,20170900,20504200,20889800,21227500,21474700,21696400,21908500,22117100,22332300,22546900,22760800
+TEER_0,TEER 0: Management occupations,FÉER 0: Professions en gestion,1985100,2005800,2042100,2070900,2089300,2105900,2121200,2136000,2151700,2167500,2182500
+TEER_1,TEER 1: Occupations usually require a university degree,FÉER 1: Une formation universitaire caractérise habituellement les professions,4552000,4665100,4739000,4824600,4901000,4974300,5044900,5115100,5187400,5259700,5334400
+TEER_2,TEER 2: Occupations usually require a college diploma or apprenticeship training of two or more years; or supervisory occupations,"FÉER 2: Un diplôme d’études collégiales, un programme d’apprentissage de deux ans ou plus, ou des responsabilités de supervision caractérisent habituellement les professions",4855300,4947400,5049400,5143200,5212600,5275300,5336200,5397200,5458500,5520300,5581600
+TEER_3,TEER 3: Occupations usually require a college diploma or apprenticeship training of less than two years; or more than six months of on-the-job training,"FÉER 3: Un diplôme d’études collégiales, un programme d’apprentissage de deux ans ou moins, ou plus de six mois de formation en cours d’emploi caractérisent habituellement les professions",3062600,3121800,3183300,3237500,3277900,3315600,3351600,3386000,3422200,3458200,3493700
+TEER_4,TEER 4: Occupations usually require a secondary school diploma; or several weeks of on-the-job training,FÉER 4: Un diplôme d’études secondaires ou plusieurs semaines de formation en cours d’emploi caractérisent habituellement les professions,3071200,3100300,3154100,3193100,3213900,3229000,3241000,3252000,3263600,3274700,3284400
+TEER_5,TEER 5: Occupations usually require short-term work demonstration and no formal education,FÉER 5: Une formation en cours d'emploi et aucune exigence scolaire particulière caractérisent habituellement les professions,2644800,2663700,2721900,2758300,2779900,2796400,2813600,2830800,2848900,2866500,2884200
+NOC1_0,Management occupations,Gestion,65400,67600,68500,68700,69400,69800,70300,70700,71100,71600,72000
+NOC1_1,"Business, finance and administration occupations","Affaires, finance et administration",3629100,3700300,3761200,3819500,3864500,3904300,3939800,3974400,4010600,4046800,4082000
+NOC1_2,"Natural and applied sciences and related occupations, except management",Sciences naturelles et appliquées et domaines apparentés,1929200,1979300,2008200,2043500,2076600,2107000,2136600,2164500,2194700,2224300,2255300
+NOC1_3,"Health occupations, except management",Secteur de la santé,1616300,1648800,1688900,1737000,1781200,1827400,1873400,1921800,1968600,2016400,2066800
+NOC1_4,"Occupations in education, law and social, community and government services, except management","Enseignement, droit et services sociaux, communautaires et gouvernementaux",2483200,2567400,2614100,2657700,2687600,2716500,2744800,2773600,2803600,2832900,2863000
+NOC1_5,"Occupations in art, culture, recreation and sport, except management","Occupations in art, culture, recreation and sport",654800,672600,682000,690300,698100,705300,712400,720000,727300,734600,741700
+NOC1_6,"Sales and service occupations, except management",Vente et services,4953500,4974600,5071600,5139400,5174500,5203700,5232000,5260100,5287400,5314900,5340500
+NOC1_7,"Trades, transport and equipment operators and related occupations, except management","Métiers, transport, machinerie et domaines apparentés",3373800,3442800,3513300,3570600,3609100,3642000,3674200,3705100,3737400,3769000,3798200
+NOC1_8,"Natural resources, agriculture and related production occupations, except management","Ressources naturelles, agriculture et production connexe",498200,481400,499200,506300,510000,511500,512900,512500,514300,516400,518200
+NOC1_9,"Occupations in manufacturing and utilities, except management",Fabrication et services d'utilité publique,967600,969400,982800,994500,1003600,1008900,1012000,1014400,1017300,1020100,1023100
+00010,Legislators,Membres des corps législatifs,4700,4900,5000,5000,5000,5000,5000,5000,5000,5000,5000
+00011,Senior government managers and officials,Cadres supérieurs/cadres supérieures - administration publique,6300,6600,6700,6700,6700,6600,6600,6500,6500,6500,6400
+00012,"Senior managers - financial, communications and other business services","Cadres supérieurs/cadres supérieures - services financiers, communications et autres services aux entreprises",52900,54700,55400,55500,56200,56600,57100,57600,58000,58500,59000
+00013,"Senior managers - health, education, social and community services and membership organizations","Cadres supérieurs/cadres supérieures - santé, enseignement, services sociaux et communautaires et associations mutuelles",N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+00014,"Senior managers - trade, broadcasting and other services","Cadres supérieurs/cadres supérieures - commerce, radiotélédiffusion et autres services",N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+00015,"Senior managers - construction, transportation, production and utilities","Cadres supérieurs/cadres supérieures - construction, transport, production et services d'utilité publique",N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+10010,Financial managers,Directeurs financiers/directrices financières,78000,79800,80500,81800,82300,83200,83800,84500,85100,85900,86500
+10011,Human resources managers,Directeurs/directrices des ressources humaines,54400,56700,57300,58200,58900,59400,59900,60500,60800,61400,62000
+10012,Purchasing managers,Directeurs/directrices des achats,20000,20500,21000,21300,21600,21800,22000,22100,22400,22600,22800
+10019,Other administrative services managers,Directeurs/directrices d'autres services administratifs,11600,12300,11800,11900,11800,11800,11700,11700,11800,11800,11900
+10020,"Insurance, real estate and financial brokerage managers","Directeurs/directrices des assurances, de l'immobilier et du courtage financier",45100,45700,46500,47200,47900,48400,48800,49200,49500,49800,50100
+10021,"Banking, credit and other investment managers","Directeurs/directrices de banque, du crédit et d'autres services de placements",71000,70200,72100,73700,75100,76300,77200,78000,78800,79500,80100
+10022,"Advertising, marketing and public relations managers","Directeurs/directrices de la publicité, du marketing et des relations publiques",53300,54300,55100,55800,56600,57400,58200,58900,59900,60800,61800
+10029,Other business services managers,Directeurs/directrices d'autres services aux entreprises,19800,20700,20600,21100,21500,22000,22400,22900,23400,23900,24300
+10030,Telecommunication carriers managers,Directeurs/directrices d'entreprises de télécommunications,11000,11100,11200,11200,11200,11200,11200,11200,11200,11200,11100
+11100,Financial auditors and accountants,Vérificateurs/vérificatrices et comptables,247300,251400,253400,256400,258800,260300,261300,262600,263700,265100,266500
+11101,Financial and investment analysts,Analystes financiers/analystes financières et analystes en placements,77000,79700,81100,82700,83800,84900,85600,86200,87000,87600,88300
+11102,Financial advisors,Conseillers financiers/conseillères financières,118800,120000,120200,121900,124900,127300,129000,131600,133000,134700,136400
+11103,"Securities agents, investment dealers and brokers","Agents/agentes en valeurs, agents/agentes en placements et négociateurs/négociatrices en valeurs",26200,26600,27100,27500,27800,28100,28200,28400,28500,28700,28800
+11109,Other financial officers,Autres agents financiers/agentes financières,46600,48000,49500,50800,52000,53100,54000,54900,55900,56800,57600
+11200,Human resources professionals,Professionnels/professionnelles en ressources humaines,126700,128800,131900,135200,138000,140600,143100,145600,148200,150700,153200
+11201,Professional occupations in business management consulting,Professionnels/professionnelles des services-conseils en gestion aux entreprises,122300,124800,127800,129900,131600,133200,134700,136100,137700,139300,140900
+11202,"Professional occupations in advertising, marketing and public relations","Professionnels/professionnelles en publicité, en marketing et en relations publiques",233600,242100,245600,249500,252800,256400,260000,263300,267300,271200,275100
+12010,"Supervisors, general office and administrative support workers",Superviseurs/superviseures de commis de bureau et du personnel de soutien administratif,21300,21300,22000,22500,22900,23200,23500,23800,24100,24400,24600
+12011,"Supervisors, finance and insurance office workers",Superviseurs/superviseures de commis de finance et d'assurance,45900,47000,47600,48400,48900,49600,50100,50500,51000,51600,52100
+12012,"Supervisors, library, correspondence and related information workers","Superviseurs/superviseures de commis de bibliothèque, de correspondanciers et d'autres commis à l'information",3700,3800,3900,3900,4000,4000,4000,4000,4000,4000,4000
+12013,"Supervisors, supply chain, tracking and scheduling coordination occupations","Superviseurs/superviseures du personnel de coordination de la chaîne d'approvisionnement, du suivi et des horaires",81400,83300,83700,85900,88200,89400,90500,91600,92700,93800,94900
+12100,Executive assistants,Adjoints/adjointes de direction,41500,42600,43400,44200,44800,45200,45400,45700,46000,46300,46600
+12101,Human resources and recruitment officers,Agents/agentes des ressources humaines et de recrutement,52100,53300,53700,55700,56500,57200,58200,59200,60000,60900,61900
+12102,Procurement and purchasing agents and officers,Agents/agentes en approvisionnement et aux achats,80500,84100,85000,86500,88000,89300,90600,91800,93200,94700,96200
+12103,Conference and event planners,Planificateurs/planificatrices de congrès et d'événements,28400,28900,29900,30300,30800,31200,31700,32100,32500,32900,33300
+12104,Employment insurance and revenue officers,Agents/agentes d'assurance-emploi et du revenu,65700,65600,66900,67700,68200,68800,69400,69800,70600,71300,72100
+12110,"Court reporters, medical transcriptionists and related occupations","Sténographes judiciaires, transcripteurs médicaux/transcriptrices médicales et personnel assimilé",7900,7500,7900,8300,8500,8700,8800,9000,9100,9300,9400
+12111,Health information management occupations,Personnel en gestion de l'information sur la santé,6000,6100,6200,6400,6500,6600,6700,6900,7000,7100,7300
+12112,Records management technicians,Techniciens/techniciennes à la gestion des documents,8300,8400,8600,8800,9000,9100,9300,9400,9500,9700,9800
+12113,Statistical officers and related research support occupations,Agents/agentes de statistiques et professions connexes du soutien de la recherche,6800,7000,7000,7000,7100,7100,7200,7200,7300,7300,7400
+12200,Accounting technicians and bookkeepers,Techniciens/techniciennes en comptabilité et teneurs/teneuses de livres,204400,209600,212700,215400,217200,219300,221600,223700,226200,228800,231400
+12201,Insurance adjusters and claims examiners,Experts/expertes en sinistres et rédacteurs/rédactrices sinistres,46000,47700,49900,51600,52900,54100,55200,56100,57300,58400,59400
+12202,Insurance underwriters,Assureurs/assureures,28100,27800,28900,29400,30100,30700,31100,31600,32000,32400,32800
+12203,"Assessors, business valuators and appraisers","Estimateurs/estimatrices, évaluateurs/évaluatrices d'entreprise et autres évaluateurs/évaluatrices",17200,17600,17900,18200,18300,18400,18500,18500,18500,18600,18600
+13100,Administrative officers,Agents/agentes d'administration,238500,243800,247600,251500,254400,257400,260200,262900,265800,268500,271300
+13101,Property administrators,Agents/agentes de gestion immobilière,48200,48700,49600,50900,51900,52800,53500,54200,55000,55700,56400
+13102,Payroll administrators,Administrateurs/administratrices de la paye,53300,54400,56600,57400,58400,59300,59900,60700,61500,62300,63100
+13110,Administrative assistants,Adjoints administratifs/adjointes administratives,233800,237700,242100,244800,247100,248300,249600,251000,252100,253300,254300
+13111,Legal administrative assistants,Adjoints administratifs juridiques/adjointes administratives juridiques,54900,55300,56600,57800,58200,58800,59300,59700,60200,60800,61300
+13112,Medical administrative assistants,Adjoints administratifs médicaux/adjointes administratives médicales,84300,85300,86800,88700,90300,92000,93700,95400,97100,98800,100500
+13200,"Customs, ship and other brokers","Courtiers/courtières en douanes, courtiers maritimes/courtières maritimes et autres courtiers/courtières",7800,8000,8200,8300,8300,8400,8400,8500,8600,8600,8700
+13201,Production and transportation logistics coordinators,Coordonnateurs/coordonnatrices de la logistique de la production et du transport,33400,34700,34900,35100,35600,36200,36800,37200,37700,38200,38600
+14100,General office support workers,Employés/employées de bureau - soutien général,129200,131800,133300,133400,132900,132000,131100,130300,129100,127900,126700
+14101,Receptionists,Réceptionnistes,144600,148400,149900,151600,152500,153600,154500,155300,156100,156800,157500
+14102,Personnel clerks,Commis des services du personnel,12800,13200,13500,13600,13800,14000,14200,14300,14500,14700,14900
+14103,Court clerks and related court services occupations,Commis des services judiciaires et autres professions des services judiciaires,8500,9000,9100,9200,9300,9400,9400,9500,9600,9700,9700
+14110,Survey interviewers and statistical clerks,Intervieweurs/intervieweuses pour enquêtes et commis aux statistiques,6200,6100,6100,6200,6100,6100,6100,6100,6100,6000,6000
+14111,Data entry clerks,Commis à la saisie de données,36000,36400,36800,37200,37200,37200,37100,37000,36900,36800,36700
+14112,Desktop publishing operators and related occupations,Opérateurs/opératrices d'équipement d'éditique et personnel assimilé,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+14200,Accounting and related clerks,Commis à la comptabilité et personnel assimilé,151100,152700,155800,157800,158700,159500,160200,160600,161300,161900,162300
+14201,"Banking, insurance and other financial clerks","Commis de banque, d'assurance et d'autres services financiers",28200,28400,28800,29000,29200,29300,29300,29300,29300,29300,29300
+14202,Collection clerks,Commis de recouvrement,9800,9800,10000,10100,10100,10100,10100,10000,10000,10000,9900
+14300,Library assistants and clerks,Commis et assistants/assistantes dans les bibliothèques,15100,15100,15300,15500,15600,15600,15700,15700,15800,15900,15900
+14301,"Correspondence, publication and regulatory clerks",Correspondanciers/correspondancières et commis aux publications et aux règlements,19100,18900,19000,19900,19900,20300,20500,20600,20800,21000,21200
+14400,Shippers and receivers,Expéditeurs/expéditrices et réceptionnaires,114600,114300,116500,117800,118200,118400,118600,118700,118800,118900,119000
+14401,Storekeepers and partspersons,Magasiniers/magasinières et commis aux pièces,21600,21600,22800,22800,22700,22600,22600,22500,22500,22400,22300
+14402,Production logistics workers,Travailleurs/travailleuses de la logistique de la production,3100,3000,3100,3100,3200,3200,3200,3200,3200,3200,3300
+14403,Purchasing and inventory control workers,Commis aux achats et au contrôle de l'inventaire,30000,31000,31600,31800,31900,32000,32100,32200,32400,32500,32600
+14404,Dispatchers,Répartiteurs/répartitrices,33100,34400,35000,35700,36100,36300,36500,36600,36800,37000,37200
+14405,Transportation route and crew schedulers,Horairistes de trajets et d'équipages,3400,3200,3100,3400,3500,3400,3400,3500,3500,3500,3500
+20010,Engineering managers,Directeurs/directrices des services de génie,34300,34800,35200,35700,36000,36400,36700,37100,37400,37700,38000
+20011,Architecture and science managers,Directeurs/directrices des services d'architecture et de sciences,16300,16900,17000,17200,17400,17600,17800,18000,18200,18400,18600
+20012,Computer and information systems managers,Gestionnaires des systèmes informatiques,124200,131100,133100,136200,139400,143000,146500,150000,153600,157200,161000
+21100,Physicists and astronomers,Physiciens/physiciennes et astronomes,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+21101,Chemists,Chimistes,12100,11600,12200,12400,12500,12600,12800,12700,12700,12800,12900
+21102,Geoscientists and oceanographers,Géoscientifiques et océanographes,10000,10000,10200,10300,10300,10300,10300,10200,10200,10200,10300
+21103,Meteorologists and climatologists,Météorologues et climatologues,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+21109,Other professional occupations in physical sciences,Autres professionnels/professionnelles des sciences physiques,1800,1800,1800,1800,1800,1800,1800,1800,1800,1800,1800
+21110,Biologists and related scientists,Biologistes et personnel scientifique assimilé,30900,31300,31300,31600,31900,32100,32300,32500,32700,32800,33000
+21111,Forestry professionals,Professionnels/professionnelles des sciences forestières,4200,4400,4500,4500,4500,4500,4500,4500,4600,4600,4600
+21112,"Agricultural representatives, consultants and specialists","Agronomes, conseillers/conseillères et spécialistes en agriculture",5600,5500,5700,5800,5900,6000,6100,6100,6200,6300,6400
+21120,Public and environmental health and safety professionals,Professionnels/professionnelles de la santé et sécurité publique et environnementale,12100,12300,12500,12700,12800,12900,13000,13000,13100,13200,13300
+21200,Architects,Architectes,26900,27600,27700,27900,27900,27900,28000,28000,28100,28100,28100
+21201,Landscape architects,Architectes paysagistes,3300,3500,3500,3500,3500,3500,3500,3500,3500,3500,3500
+21202,Urban and land use planners,Urbanistes et planificateurs/planificatrices de l'utilisation des sols,15600,16100,16500,16700,16900,17000,17200,17300,17500,17600,17700
+21203,Land surveyors,Arpenteurs-géomètres/arpenteuses-géomètres,7200,7300,7300,7400,7400,7300,7300,7300,7300,7200,7200
+21210,"Mathematicians, statisticians and actuaries","Mathématiciens/mathématiciennes, statisticiens/statisticiennes et actuaires",16000,16100,16500,16700,17000,17200,17400,17500,17700,17800,18000
+21211,Data scientists,Scientifiques de données,36600,38000,38500,39100,39600,40100,40600,41200,41700,42200,42700
+21220,Cybersecurity specialists,Spécialistes de la cybersécurité,31800,33700,34200,34900,35600,36300,37100,37800,38700,39500,40400
+21221,Business systems specialists,Spécialistes des systèmes commerciaux,34900,36300,37100,38000,38800,39600,40400,41200,42100,42900,43800
+21222,Information systems specialists,Spécialistes en informatique,229400,232700,237300,242300,248400,253100,258300,263200,268100,272900,278000
+21223,Database analysts and data administrators,Analystes de bases de données et administrateurs/administratrices de données,52400,53600,54800,56400,58000,59500,60800,62100,63400,64800,66100
+21230,Computer systems developers and programmers,Développeurs/développeuses et programmeurs/programmeuses de systèmes informatiques,45700,46200,46600,47000,47100,47100,47100,47100,47200,47200,47300
+21231,Software engineers and designers,Ingénieurs/ingénieures et concepteurs/conceptrices en logiciel,113100,118100,119300,122300,125000,127600,130100,132600,135100,137800,140600
+21232,Software developers and programmers,Développeurs/développeuses et programmeurs/programmeuses de logiciels,155700,160800,163600,168300,173400,178500,183400,188400,193300,198100,203300
+21233,Web designers,Concepteurs/conceptrices Web,13100,13200,13300,13600,13700,13900,14000,14200,14400,14600,14800
+21234,Web developers and programmers,Développeurs/développeuses et programmeurs/programmeuses Web,28700,30000,29200,29900,30200,30700,31200,31800,32200,32700,33100
+21300,Civil engineers,Ingénieurs civils/ingénieures civiles,65600,68200,67900,68500,69000,69400,69900,70300,70700,71100,71500
+21301,Mechanical engineers,Ingénieurs mécaniciens/ingénieures mécaniciennes,44900,45500,46000,46600,47000,47300,47500,47700,47800,48000,48200
+21310,Electrical and electronics engineers,Ingénieurs électriciens et électroniciens/ingénieures électriciennes et électroniciennes,41300,42500,43100,43700,44200,44600,44900,45100,45400,45700,46100
+21311,Computer engineers (except software engineers and designers),Ingénieurs informaticiens/ingénieures informaticiennes (sauf ingénieurs/ingénieures et concepteurs/conceptrices en logiciel),32500,34300,33600,34300,35400,36500,37300,37900,38700,39400,40200
+21320,Chemical engineers,Ingénieurs chimistes/ingénieures chimistes,14100,14200,14600,14800,15000,15200,15200,15200,15300,15400,15400
+21321,Industrial and manufacturing engineers,Ingénieurs/ingénieures d'industrie et de fabrication,20400,20600,20400,20600,20900,21100,21300,21500,21700,22000,22200
+21322,Metallurgical and materials engineers,Ingénieurs/ingénieures métallurgistes et des matériaux,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+21330,Mining engineers,Ingénieurs miniers/ingénieures minières,5300,5100,5200,5300,5400,5500,5500,5500,5500,5600,5600
+21331,Geological engineers,Ingénieurs/ingénieures géologiques,3500,3600,3900,3800,3900,4000,4000,4000,4000,4100,4100
+21332,Petroleum engineers,Ingénieurs/ingénieures de l'extraction et du raffinage du pétrole,11300,11400,11800,11900,11800,11700,11700,11300,11200,11200,11100
+21390,Aerospace engineers,Ingénieurs/ingénieures en aérospatiale,5400,5600,5600,5600,5600,5600,5600,5600,5600,5600,5600
+21399,Other professional engineers,Autres ingénieurs/ingénieures,42900,44400,44800,45200,45500,45700,45900,46100,46300,46500,46700
+22100,Chemical technologists and technicians,Technologues et techniciens/techniciennes en chimie,26300,27000,27500,27600,27900,28300,28600,28700,29100,29500,29900
+22101,Geological and mineral technologists and technicians,Technologues et techniciens/techniciennes en géologie et en minéralogie,9100,9200,9400,9600,9600,9600,9600,9500,9500,9500,9500
+22110,Biological technologists and technicians,Technologues et techniciens/techniciennes en biologie,6700,6800,6900,6900,6800,6800,6700,6700,6600,6600,6500
+22111,Agricultural and fish products inspectors,Inspecteurs/inspectrices des produits agricoles et de la pêche,2000,2000,2100,2100,2100,2000,2000,2000,2000,2000,2000
+22112,Forestry technologists and technicians,Technologues et techniciens/techniciennes en sciences forestières,6200,6700,6700,6800,6800,6800,6900,6900,6900,7000,7000
+22113,Conservation and fishery officers,Techniciens/techniciennes du milieu naturel et de la pêche,3200,3300,3300,3400,3400,3400,3400,3400,3400,3400,3400
+22114,Landscape and horticulture technicians and specialists,Techniciens/techniciennes et spécialistes de l'aménagement paysager et de l'horticulture,15100,14100,15000,15400,15600,15700,16000,15900,16300,16700,17200
+22210,Architectural technologists and technicians,Technologues et techniciens/techniciennes en architecture,9300,9500,9700,9700,9800,9900,9900,9900,10000,10000,10000
+22211,Industrial designers,Designers industriels/designers industrielles,10000,10000,10200,10300,10400,10400,10500,10600,10600,10700,10800
+22212,Drafting technologists and technicians,Technologues et techniciens/techniciennes en dessin,37700,38000,38500,39000,39100,39200,39200,39200,39200,39200,39200
+22213,Land survey technologists and technicians,Technologues et techniciens/techniciennes en arpentage,7400,7500,7600,7700,7700,7700,7700,7700,7700,7700,7700
+22214,Technical occupations in geomatics and meteorology,Personnel technique en géomatique et en météorologie,8700,9300,9500,9300,9100,9000,9000,9000,8900,8800,8700
+22220,Computer network and web technicians,Techniciens/techniciennes de réseau informatique et Web,40800,41500,41600,42100,42200,42200,42200,42300,42500,42500,42500
+22221,User support technicians,Agents/agentes de soutien aux utilisateurs,119200,122700,126000,128000,130400,132500,134800,137100,139500,141900,144300
+22222,Information systems testing technicians,Évaluateurs/évaluatrices de systèmes informatiques,20000,20800,20800,21200,21400,21700,22000,22300,22600,22900,23200
+22230,Non-destructive testers and inspectors,Vérificateurs/vérificatrices et inspecteurs/inspectrices des essais non destructifs,4800,4600,4600,4700,4700,4600,4600,4600,4600,4600,4600
+22231,Engineering inspectors and regulatory officers,Inspecteurs/inspectrices d'ingénierie et officiers/officières de réglementation,7100,7200,7400,7600,7700,7700,7800,7800,7900,7900,8000
+22232,Occupational health and safety specialists,Spécialistes de l'hygiène et de la sécurité au travail,33400,33800,34400,35200,35800,36500,37100,37800,38500,39100,39800
+22233,Construction inspectors,Inspecteurs/inspectrices en construction,25700,26300,26700,27200,27700,28100,28500,28900,29400,29900,30400
+22300,Civil engineering technologists and technicians,Technologues et techniciens/techniciennes en génie civil,27400,28400,28500,28400,28600,28700,28900,29100,29200,29300,29400
+22301,Mechanical engineering technologists and technicians,Technologues et techniciens/techniciennes en génie mécanique,21900,21900,22400,22800,23100,23500,23700,24000,24200,24500,24700
+22302,Industrial engineering and manufacturing technologists and technicians,Technologues et techniciens/techniciennes en génie industriel et en génie de fabrication,22400,23100,23200,23600,24000,24200,24400,24600,24900,25100,25400
+22303,Construction estimators,Estimateurs/estimatrices en construction,22900,23200,24200,25100,25700,26300,26800,27400,28000,28500,29100
+22310,Electrical and electronics engineering technologists and technicians,Technologues et techniciens/techniciennes en génie électrique et électronique,28500,28600,29200,29700,30000,30200,30400,30700,30800,31000,31100
+22311,Electronic service technicians (household and business equipment),Électroniciens/électroniciennes d'entretien (biens domestiques et commerciaux),44600,45600,46700,47300,47500,47800,47900,48100,48200,48400,48600
+22312,Industrial instrument technicians and mechanics,Techniciens/techniciennes et mécaniciens/mécaniciennes d'instruments industriels,12100,12200,12600,12900,13100,13300,13300,13200,13300,13400,13500
+22313,"Aircraft instrument, electrical and avionics mechanics, technicians and inspectors","Mécaniciens/mécaniciennes, techniciens/techniciennes et contrôleurs/contrôleuses d'avionique et d'instruments et d'appareillages électriques d'aéronefs",3500,3600,3600,3700,3700,3700,3700,3700,3700,3700,3700
+30010,Managers in health care,Directeurs/directrices des soins de santé,43600,44600,45800,47200,48500,49900,51300,52700,54200,55600,57100
+31100,Specialists in clinical and laboratory medicine,Spécialistes en médecine clinique et de laboratoire,34000,34500,35400,36400,37300,38100,38900,39700,40500,41400,42300
+31101,Specialists in surgery,Spécialistes en chirurgie,10500,10700,10900,11200,11400,11700,12000,12300,12500,12800,13100
+31102,General practitioners and family physicians,Omnipraticiens/omnipraticiennes et médecins en médecine familiale,76000,78800,80600,83000,85600,88300,91100,94000,96900,99800,102900
+31103,Veterinarians,Vétérinaires,12600,13100,13600,13900,14200,14400,14600,14900,15100,15400,15600
+31110,Dentists,Dentistes,21400,21800,22400,23100,23700,24300,24900,25600,26200,26900,27600
+31111,Optometrists,Optométristes,6400,6500,6700,6800,7000,7200,7400,7600,7800,8000,8200
+31112,Audiologists and speech-language pathologists,Audiologistes et orthophonistes,18300,18900,19400,20000,20400,20800,21200,21600,22000,22400,22800
+31120,Pharmacists,Pharmaciens/pharmaciennes,47700,47300,49200,50700,51900,53200,54400,55700,57000,58300,59700
+31121,Dietitians and nutritionists,Diététistes et nutritionnistes,12300,12500,12800,13100,13400,13700,14000,14300,14600,14900,15200
+31200,Psychologists,Psychologues,24900,25500,26100,26700,27200,27800,28400,29000,29600,30200,30900
+31201,Chiropractors,Chiropraticiens/chiropraticiennes,9800,10200,10500,10800,11100,11400,11600,11900,12100,12400,12700
+31202,Physiotherapists,Physiothérapeutes,38300,39200,40400,41700,43000,44300,45700,47000,48400,49800,51200
+31203,Occupational therapists,Ergothérapeutes,22700,22800,23400,24100,24900,25700,26500,27200,28000,28900,29700
+31204,Kinesiologists and other professional occupations in therapy and assessment,Kinésiologues et autres professionnels/professionnelles en thérapie et en diagnostic,9400,9600,9800,10100,10300,10600,10800,11100,11300,11600,11900
+31209,Other professional occupations in health diagnosing and treating,Autres professionnels/professionnelles en diagnostic et en traitement de la santé,8700,8900,9100,9400,9600,9900,10100,10400,10600,10900,11200
+31300,Nursing coordinators and supervisors,Coordonnateurs/coordonnatrices et superviseurs/superviseures des soins infirmiers,28000,28000,28600,29500,30500,31400,32500,33500,34600,35700,36900
+31301,Registered nurses and registered psychiatric nurses,Infirmiers autorisés/infirmières autorisées et infirmiers psychiatriques autorisés/infirmières psychiatriques autorisées,363100,370400,378800,388800,398300,408300,418500,428900,439200,449700,460900
+31302,Nurse practitioners,Infirmiers praticiens/infirmières praticiennes,5600,5700,5900,6100,6300,6500,6700,6900,7100,7300,7500
+31303,"Physician assistants, midwives and allied health professionals","Adjoints au médecin, sages-femmes et professionnels paramédicaux",6400,6600,6700,6800,6900,7100,7200,7400,7500,7700,7800
+32100,Opticians,Opticiens/opticiennes d'ordonnances,11700,12500,12700,12800,12900,13100,13400,13700,14000,14300,14700
+32101,Licensed practical nurses,Infirmiers auxiliaires/infirmières auxiliaires,62600,64300,64400,65300,66400,67900,69500,71700,73300,75000,76800
+32102,Paramedical occupations,Personnel ambulancier et paramédical,40700,42400,44000,45700,47100,48500,49900,51300,52600,53900,55300
+32103,"Respiratory therapists, clinical perfusionists and cardiopulmonary technologists","Inhalothérapeutes, perfusionnistes cardiovasculaires et technologues cardiopulmonaires",13400,14200,13500,13600,13900,14200,14600,14900,15300,15700,16100
+32104,Animal health technologists and veterinary technicians,Technologues en santé animale et techniciens/techniciennes vétérinaires,25800,25900,27300,27800,28200,29300,29500,30400,30900,31500,32100
+32109,Other technical occupations in therapy and assessment,Autre personnel technique en thérapie et en diagnostic,20600,21000,21700,22500,23200,23900,24600,25200,26000,26700,27500
+32110,Denturists,Denturologistes,2000,2000,2000,2100,2100,2100,2200,2200,2200,2200,2200
+32111,Dental hygienists and dental therapists,Hygiénistes et thérapeutes dentaires,33900,34400,35200,36800,37700,38900,39900,40700,41800,42900,44000
+32112,Dental technologists and technicians,Technologues et techniciens/techniciennes dentaires,6400,6800,6700,6700,6800,6800,6900,6900,7000,7000,7100
+32120,Medical laboratory technologists,Technologues de laboratoires médicaux,24300,24500,25200,26000,26700,27500,28300,29100,29900,30800,31600
+32121,Medical radiation technologists,Technologues en radiation médicale,28100,28700,29400,30300,31100,31900,32700,33600,34400,35300,36200
+32122,Medical sonographers,Technologues en échographie,9600,9700,10000,10300,10600,10800,11100,11400,11700,12000,12300
+32123,Cardiology technologists and electrophysiological diagnostic technologists,Technologues en cardiologie et technologues en électrophysiologie diagnostique,5600,5700,5800,6000,6200,6300,6500,6700,6800,7000,7200
+32124,Pharmacy technicians,Techniciens/techniciennes en pharmacie,32600,32500,33200,34400,35100,35800,36400,37300,37900,38400,39000
+32129,Other medical technologists and technicians,Autres technologues et techniciens/techniciennes des sciences de la santé,7300,7400,7500,7600,7700,7700,7800,7900,8000,8000,8100
+32200,Traditional Chinese medicine practitioners and acupuncturists,Praticiens/praticiennes en médecine traditionnelle chinoise et acupuncteurs/acupunctrices,8100,8300,8500,8700,9000,9200,9500,9700,10000,10200,10500
+32201,Massage therapists,Massothérapeutes,45000,45900,47100,48400,49700,51000,52300,53600,55000,56300,57800
+32209,Other practitioners of natural healing,Autres praticiens/praticiennes des médecines douces,4700,4700,4900,5000,5100,5200,5300,5300,5400,5500,5600
+33100,Dental assistants and dental laboratory assistants,Assistants/assistantes dentaires et auxiliaires dans les laboratoires dentaires,38000,38800,39800,41000,42100,43200,44400,45500,46700,47900,49200
+33101,Medical laboratory assistants and related technical occupations,Assistants/assistantes de laboratoires médicaux et préposés/préposées techniques reliés,33400,34100,34800,35700,36500,37400,38400,39400,40400,41400,42400
+33102,"Nurse aides, orderlies and patient service associates","Aides-infirmiers/aides-infirmières, aides-soignants/aides-soignantes et préposés/préposées aux bénéficiaires",296900,303500,310900,319800,328200,336900,345700,354600,363500,372500,382000
+33103,Pharmacy technical assistants and pharmacy assistants,Assistants techniques/assistantes techniques en pharmacie et assistants/assistantes en pharmacie,33900,33800,34600,36100,37200,37900,38600,39800,40300,40900,41500
+33109,Other assisting occupations in support of health services,Autre personnel de soutien des services de santé,32000,32300,33700,35000,36100,37200,38200,39300,40300,41400,42500
+40010,Government managers - health and social policy development and program administration,Gestionnaires de la fonction publique - élaboration de politiques et administration de programmes sociaux et de santé,7800,8100,8300,8400,8500,8600,8600,8700,8800,8800,8800
+40011,"Government managers - economic analysis, policy development and program administration","Gestionnaires de la fonction publique - analyse économique, élaboration de politiques et administration de programmes",12700,13000,13200,13300,13400,13400,13400,13400,13400,13400,13400
+40012,Government managers - education policy development and program administration,Gestionnaires de la fonction publique - élaboration de politiques en matière d'éducation et administration de programmes,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+40019,Other managers in public administration,Autres gestionnaires de la fonction publique,32300,33500,34500,35200,35700,36100,36500,36900,37400,37800,38100
+40020,Administrators - post-secondary education and vocational training,Administrateurs/administratrices - enseignement postsecondaire et formation professionnelle,17000,17400,17500,17600,17700,17800,18000,18100,18200,18300,18500
+40021,School principals and administrators of elementary and secondary education,Directeurs/directrices d'école et administrateurs/administratrices de programmes d'enseignement aux niveaux primaire et secondaire,39500,41100,42000,42300,42100,41900,41600,41500,41200,41000,40800
+40030,"Managers in social, community and correctional services","Directeurs/directrices des services sociaux, communautaires et correctionnels",46700,48500,49100,49600,49800,50000,50200,50100,50300,50500,50600
+40040,Commissioned police officers and related occupations in public protection services,Officiers/officières de direction des services de police et professions connexes des services de la protection du public,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+40041,Fire chiefs and senior firefighting officers,Chefs et officiers supérieurs/officières supérieures des services d'incendie,2700,2800,2900,2900,3000,3000,3000,3000,3100,3100,3100
+40042,Commissioned officers of the Canadian Armed Forces,Officiers/officières de direction des Forces armées canadiennes,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+41100,Judges,Juges,4100,4200,4400,4400,4500,4500,4500,4500,4500,4500,4600
+41101,Lawyers and Quebec notaries,Avocats/avocates (partout au Canada) et notaires (au Québec),124300,128600,132100,133600,134600,135500,136400,137300,138300,139200,140300
+41200,University professors and lecturers,Professeurs/professeures et chargés/chargées de cours au niveau universitaire,86000,88500,89000,90000,91100,91800,92800,93400,94300,95000,95700
+41201,Post-secondary teaching and research assistants,Assistants/assistantes d'enseignement et de recherche au niveau postsecondaire,84200,85500,86000,87100,88600,90200,91500,92900,93800,94900,95500
+41210,College and other vocational instructors,Enseignants/enseignantes au niveau collégial et autres instructeurs/instructrices en formation professionnelle,131100,131300,132200,133800,135700,137400,139400,141400,143500,145400,147400
+41220,Secondary school teachers,Enseignants/enseignantes au niveau secondaire,175100,179900,183500,186200,187500,188800,189900,190900,192200,193500,195000
+41221,Elementary school and kindergarten teachers,Enseignants/enseignantes aux niveaux primaire et préscolaire,337300,346500,353500,358600,361100,363700,365800,367700,370300,372800,375600
+41300,Social workers,Travailleurs sociaux/travailleuses sociales,77500,82700,82700,84100,85200,86500,87800,89300,90600,92000,93400
+41301,Therapists in counselling and related specialized therapies,Thérapeutes en counseling et thérapies spécialisées connexes,69900,74500,75200,76500,77500,78700,79900,81200,82500,83700,85100
+41302,Religious leaders,Chefs religieux,22300,23400,23400,23500,23500,23600,23600,23700,23700,23800,23800
+41310,Police investigators and other investigative occupations,Enquêteurs/enquêteuses de police et autres professions d'enquête,11900,12400,12600,12800,12900,13000,13100,13300,13400,13500,13600
+41311,Probation and parole officers,Agents/agentes de probation et de libération conditionnelle,7600,7800,8000,8000,8100,8100,8100,8100,8100,8100,8100
+41320,Educational counsellors,Conseillers/conseillères en information scolaire,24500,24800,25300,25800,26300,26800,27300,27800,28200,28600,29000
+41321,Career development practitioners and career counsellors (except education),Conseillers/conseillères en développement de carrière et conseillers/conseillères en orientation (sauf éducation),20900,21500,21600,21800,21900,22000,22100,22200,22300,22400,22500
+41400,"Natural and applied science policy researchers, consultants and program officers","Recherchistes, experts-conseils/expertes-conseils et agents/agentes de programmes, en sciences naturelles et appliquées",37800,38100,38500,40000,40500,41400,42100,42800,43600,44400,45200
+41401,Economists and economic policy researchers and analysts,"Économistes, recherchistes et analystes des politiques économiques",20100,20500,20900,21200,21300,21500,21700,21800,22000,22100,22300
+41402,Business development officers and market researchers and analysts,Agents/agentes de développement économique et recherchistes et analystes en marketing,33700,33400,34300,34900,35400,35800,36200,36700,37000,37400,37800
+41403,"Social policy researchers, consultants and program officers","Recherchistes, experts-conseils/expertes-conseils et agents/agentes de programmes en politiques sociales",80400,82400,83000,83300,84000,84700,85800,86600,88000,89200,90500
+41404,"Health policy researchers, consultants and program officers","Recherchistes, experts-conseils/expertes-conseils et agents/agentes de programmes en politiques de la santé",45100,46200,47300,48400,49200,50000,50900,51800,52600,53400,54300
+41405,"Education policy researchers, consultants and program officers","Recherchistes, experts-conseils/expertes-conseils et agents/agentes de programmes en politiques de l'enseignement",32200,33700,34500,35100,35700,36100,36600,37000,37400,37700,38100
+41406,"Recreation, sports and fitness policy researchers, consultants and program officers","Recherchistes, experts-conseils/expertes-conseils et agents/agentes de programme en sports, en loisirs et en conditionnement physique",9300,9400,9400,9600,9700,9900,10100,10300,10500,10700,10900
+41407,Program officers unique to government,Agents/agentes de programmes propres au gouvernement,10700,11000,11200,11300,11300,11300,11300,11300,11300,11300,11300
+41409,Other professional occupations in social science,Autres professionnels/professionnelles des sciences sociales,3700,3800,3800,3700,3700,3700,3700,3700,3600,3600,3600
+42100,Police officers (except commissioned),Policiers/policières (sauf cadres supérieurs),79800,80300,81700,83100,83500,83700,83900,84000,84200,84200,84100
+42101,Firefighters,Pompiers/pompières,39800,40200,40800,41300,41400,41500,41600,41600,41800,41900,41900
+42102,Specialized members of the Canadian Armed Forces,Membres spécialisés des Forces armées canadiennes,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+42200,Paralegals and related occupations,Techniciens/techniciennes juridiques et personnel assimilé,36000,35600,37400,38700,39400,40100,40700,41300,42000,42600,43300
+42201,Social and community service workers,Travailleurs/travailleuses des services sociaux et communautaires,155600,163300,165800,168500,170200,172000,173600,175300,177000,178600,180300
+42202,Early childhood educators and assistants,Éducateurs/éducatrices et aides-éducateurs/aides-éducatrices de la petite enfance,246800,264600,274400,285900,295600,305200,314900,325100,335300,345800,356800
+42203,Instructors of persons with disabilities,Instructeurs/instructrices pour personnes ayant une déficience,7100,7600,7700,7800,7700,7700,7700,7700,7600,7500,7500
+42204,Religion workers,Travailleurs/travailleuses de la religion,6500,6400,6600,6600,6500,6500,6500,6500,6500,6500,6500
+43100,Elementary and secondary school teacher assistants,Aides-enseignants/aides-enseignantes aux niveaux primaire et secondaire,105300,109900,112600,113900,113700,113400,112900,112900,112500,112200,112000
+43109,Other instructors,Autres instructeurs/instructrices,31900,32100,32500,32800,33400,33900,34500,35100,35700,36300,36800
+43200,Sheriffs and bailiffs,Shérifs et huissiers/huissières de justice,3400,3500,3500,3400,3500,3500,3500,3600,3600,3600,3600
+43201,Correctional service officers,Agents/agentes de services correctionnels,26100,26900,27400,27600,27700,27800,27800,27900,27900,27900,27900
+43202,By-law enforcement and other regulatory officers,Agents/agentes d'application de règlements municipaux et autres agents/agentes de réglementation,11000,11500,11800,12000,12100,12300,12400,12600,12700,12900,13000
+43203,"Border services, customs, and immigration officers","Agents/agentes de services frontaliers, des douanes et de l'immigration",14700,14800,14900,15100,15100,15200,15300,15400,15400,15500,15600
+43204,Operations Members of the Canadian Armed Forces,Membres des opérations des Forces armées canadiennes,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+44100,Home child care providers,Gardiens/gardiennes d'enfants en milieu familial,19900,20500,21100,21000,21200,21200,21400,21400,21600,21700,21800
+44101,"Home support workers, caregivers and related occupations","Aides de maintien à domicile, aides familiaux/familiales et personnel assimilé",67400,71300,71300,71900,71800,71700,71400,71000,70700,70400,70100
+44200,Primary combat members of the Canadian Armed Forces,Combattants/combattantes de première ligne des Forces armées canadiennes,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+45100,"Student monitors, crossing guards and related occupations","Surveillants/surveillantes d’élèves, brigadiers/brigadières et autres professions connexes",19300,20000,20500,20800,20800,20800,20700,20800,20700,20700,20700
+50010,"Library, archive, museum and art gallery managers","Directeurs/directrices de bibliothèques, des archives, de musées et de galeries d'art",3300,3400,3500,3500,3500,3500,3500,3500,3500,3600,3600
+50011,"Managers - publishing, motion pictures, broadcasting and performing arts","Directeurs/directrices - édition, cinéma, radiotélédiffusion et arts de la scène",5600,5500,5600,5600,5600,5600,5700,5700,5700,5700,5700
+50012,"Recreation, sports and fitness program and service directors","Directeurs/directrices de programmes et de services de sports, de loisirs et de conditionnement physique",5800,6300,6500,6600,6600,6600,6700,6700,6800,6800,6900
+51100,Librarians,Bibliothécaires,10400,10200,10400,10500,10600,10600,10600,10600,10600,10600,10600
+51101,Conservators and curators,Restaurateurs/restauratrices et conservateurs/conservatrices,3000,3100,3100,3200,3200,3200,3300,3300,3300,3400,3400
+51102,Archivists,Archivistes,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+51110,Editors,"Réviseurs/réviseures, rédacteurs-réviseurs/rédactrices-réviseures et chefs du service des nouvelles",14000,14100,14200,14400,14500,14600,14700,14800,14900,15100,15200
+51111,Authors and writers (except technical),"Auteurs/auteures, écrivains/écrivaines et rédacteurs/rédactrices (sauf techniques)",27200,29100,28500,28600,28800,29000,29200,29500,29700,29900,30100
+51112,Technical writers,Rédacteurs/rédactrices techniques,8000,8200,8300,8400,8500,8500,8600,8600,8700,8700,8800
+51113,Journalists,Journalistes,10900,11100,11200,11400,11500,11600,11600,11700,11800,11900,11900
+51114,"Translators, terminologists and interpreters","Traducteurs/traductrices, terminologues et interprètes",24500,24700,25000,25400,25800,26100,26400,26900,27000,27200,27500
+51120,"Producers, directors, choreographers and related occupations","Producteurs/productrices, réalisateurs/réalisatrices, chorégraphes et personnel assimilé",37600,37800,39900,40300,40700,41100,41500,41700,42300,42800,43200
+51121,"Conductors, composers and arrangers","Chefs d'orchestre, compositeurs/compositrices et arrangeurs/arrangeuses",3500,3600,3700,3700,3800,3800,3800,3900,3900,4000,4000
+51122,Musicians and singers,Musiciens/musiciennes et chanteurs/chanteuses,29700,30400,30400,30700,31100,31400,31800,32100,32500,32800,33100
+52100,Library and public archive technicians,Techniciens/techniciennes dans les bibliothèques et les services d'archives publiques,7200,7200,7300,7400,7400,7400,7400,7400,7300,7300,7400
+52110,Film and video camera operators,Cadreurs/cadreuses de films et cadreurs/cadreuses vidéo,7600,8000,8000,8000,8100,8100,8200,8300,8300,8400,8500
+52111,Graphic arts technicians,Techniciens/techniciennes en graphisme,14800,15100,15500,15800,16100,16400,16700,16900,17200,17500,17700
+52112,Broadcast technicians,Techniciens/techniciennes en radiotélédiffusion,1500,1600,1600,1600,1600,1600,1600,1500,1500,1500,1500
+52113,Audio and video recording technicians,Techniciens/techniciennes en enregistrement audio et vidéo,13100,13200,13300,13500,13600,13700,13800,13900,14000,14000,14100
+52114,Announcers and other broadcasters,Annonceurs/annonceuses et autres communicateurs/communicatrices,3700,3400,3500,3600,3600,3600,3500,3500,3500,3400,3400
+52119,"Other technical and coordinating occupations in motion pictures, broadcasting and the performing arts","Autre personnel technique et personnel de coordination du cinéma, de la radiotélédiffusion et des arts de la scène",14700,14800,15100,15200,15400,15500,15700,15800,15900,16000,16100
+52120,Graphic designers and illustrators,Designers graphiques et illustrateurs/illustratrices,93200,95400,96000,97600,98600,99900,100900,102200,103100,104400,105500
+52121,Interior designers and interior decorators,Designers d'intérieur et décorateurs/décoratrices d'intérieur,32900,33800,34200,34400,34600,34900,35100,35400,35700,35900,36100
+53100,"Registrars, restorers, interpreters and other occupations related to museum and art galleries","Registraires, restaurateurs/restauratrices, interprètes et autres travailleurs/travailleuses dans les domaines apparentés des musées et des galeries d'art",9400,10200,9900,10000,10100,10200,10300,10500,10600,10800,10900
+53110,Photographers,Photographes,22400,22800,23500,23800,23900,24000,24200,24300,24400,24500,24700
+53111,"Motion pictures, broadcasting, photography and performing arts assistants and operators","Assistants/assistantes et opérateurs/opératrices du domaine du cinéma, de la radiotélédiffusion, de la photographie et des arts de la scène",7700,7600,7700,7800,7900,8000,8000,8100,8100,8200,8300
+53120,Dancers,Danseurs/danseuses,13600,13900,14200,14300,14600,14900,15200,15500,15800,16100,16300
+53121,"Actors, comedians and circus performers","Acteurs/actrices, comédiens/comédiennes et artistes de cirque",14900,15500,15800,16000,16200,16400,16600,16800,17000,17100,17300
+53122,"Painters, sculptors and other visual artists","Peintres, sculpteurs/sculpteures et autres artistes des arts visuels",17100,17800,18300,18400,18400,18400,18400,18500,18500,18500,18500
+53123,"Theatre, fashion, exhibit and other creative designers","Ensembliers/ensemblières de théâtre, dessinateurs/dessinatrices de mode, concepteurs/conceptrices d'expositions et autres concepteurs/conceptrices artistiques",9600,9900,10000,10200,10300,10300,10300,10300,10400,10500,10600
+53124,Artisans and craftspersons,Artisans/artisanes,8900,9300,9200,9400,9500,9600,9800,9900,10000,10200,10300
+53125,"Patternmakers - textile, leather and fur products",Patronniers/patronnières de produits textiles et d'articles en cuir et en fourrure,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+53200,Athletes,Athlètes,2700,2900,3000,3000,3000,3000,3000,3100,3100,3100,3100
+53201,Coaches,Entraîneurs/entraîneuses,13300,13600,13700,13900,14000,14200,14400,14500,14700,14900,15000
+53202,Sports officials and referees,Arbitres et officiels/officielles de sports,6200,6500,6600,6700,6800,6900,7000,7100,7100,7200,7300
+54100,"Program leaders and instructors in recreation, sport and fitness","Animateurs/animatrices et responsables de programmes de sports, de loisirs et de conditionnement physique",149300,154700,157600,160000,162700,165000,167500,169900,172400,174800,177200
+55109,Other performers,Autres artistes de spectacle,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+60010,Corporate sales managers,Directeurs/directrices des ventes corporatives,28300,29700,29900,30200,30400,30500,30600,30700,30800,30800,30900
+60020,Retail and wholesale trade managers,Directeurs/directrices - commerce de détail et de gros,355000,352700,357700,360400,361000,361300,361700,362000,362300,362800,363200
+60030,Restaurant and food service managers,Directeurs/directrices de la restauration et des services alimentaires,110200,108800,111400,114100,114800,115600,116300,117100,117600,118200,118600
+60031,Accommodation service managers,Directeurs/directrices des services d'hébergement,51100,52300,54600,56000,56500,56800,57200,57600,58100,58500,58800
+60040,Managers in customer and personal services,Directeurs/directrices du service à la clientèle et des services personnels,13400,13500,13600,13600,13600,13600,13600,13600,13600,13600,13600
+62010,Retail sales supervisors,Superviseurs/superviseures des ventes - commerce de détail,239100,235800,240100,242600,243500,244300,245100,245800,246600,247400,248100
+62020,Food service supervisors,Superviseurs/superviseures des services alimentaires,75800,75700,76500,78400,79900,81000,82100,83000,84000,84900,85900
+62021,Executive housekeepers,Gouvernants principaux/gouvernantes principales,1900,1900,2000,2000,2000,2000,2000,2000,2000,2000,2000
+62022,"Accommodation, travel, tourism and related services supervisors","Superviseurs/superviseures des services d'hébergement, de voyages, de tourisme et des services connexes",16900,17300,17000,17400,17600,18000,18200,18600,18800,19100,19400
+62023,Customer and information services supervisors,Superviseurs/superviseures des services d'information et des services à la clientèle,29000,29300,29100,29500,30200,30700,31000,31500,31800,32100,32400
+62024,Cleaning supervisors,Surveillants/surveillantes des services de nettoyage,39700,40300,40700,41300,42000,42600,43300,44200,44700,45300,45900
+62029,Other services supervisors,Surveillants/surveillantes des autres services,27000,27700,28100,28600,29000,29400,29800,30200,30600,31000,31400
+62100,Technical sales specialists - wholesale trade,Spécialistes des ventes techniques - commerce de gros,133000,137300,138900,140200,141000,141700,142400,143200,143900,144600,145400
+62101,Retail and wholesale buyers,Acheteurs/acheteuses des commerces de détail et de gros,22900,23300,23500,23500,23500,23500,23500,23500,23600,23600,23600
+62200,Chefs,Chefs,64500,64000,65400,67400,68600,69400,70400,71500,72100,72900,73800
+62201,Funeral directors and embalmers,Directeurs/directrices de funérailles et embaumeurs/embaumeuses,8900,9300,9400,9500,9500,9700,9700,9800,9900,10000,10100
+62202,"Jewellers, jewellery and watch repairers and related occupations","Bijoutiers/bijoutières, réparateurs/réparatrices de bijoux, horlogers-rhabilleurs/horlogères-rhabilleuses et personnel assimilé",1900,1900,1900,2000,2000,2000,2000,2000,2000,2000,2000
+63100,Insurance agents and brokers,Agents/agentes et courtiers/courtières d'assurance,86800,88000,90100,91400,92400,93100,93500,93800,94100,94400,94600
+63101,Real estate agents and salespersons,Agents/agentes et vendeurs/vendeuses en immobilier,106800,108400,110500,112100,113600,114700,115400,116000,116700,117300,117800
+63102,Financial sales representatives,Représentants/représentantes des ventes financières,61300,62100,63600,65000,66200,67200,67900,68600,69400,70100,70800
+63200,Cooks,Cuisiniers/cuisinières,171700,169800,174000,176500,177400,178000,178600,179200,179600,180000,180300
+63201,Butchers - retail and wholesale,Bouchers/bouchères - commerce de gros et de détail,14400,14300,14500,14700,14700,14800,14800,14900,14900,15000,15000
+63202,Bakers,Boulangers-pâtissiers/boulangères-pâtissières,32500,31800,32600,32900,32900,33000,33000,33100,33100,33200,33200
+63210,Hairstylists and barbers,Coiffeurs/coiffeuses et barbiers,90500,94200,95600,96200,96600,97300,97800,98300,98700,99200,99600
+63211,"Estheticians, electrologists and related occupations","Esthéticiens/esthéticiennes, électrolystes et personnel assimilé",71300,74800,76300,77700,78900,80300,81600,82900,84200,85500,86700
+63220,Shoe repairers and shoemakers,Cordonniers/cordonnières et fabricants/fabricantes de chaussures,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+63221,Upholsterers,Tapissiers-garnisseurs/tapissières-garnisseuses,4000,4100,4300,4300,4300,4300,4200,4200,4200,4100,4100
+64100,Retail salespersons and visual merchandisers,Vendeurs/vendeuses et décorateurs-étalagistes/décoratrices-étalagistes en commerce de détail,579600,572400,583000,588800,591000,592500,594100,595600,596900,598500,600000
+64101,Sales and account representatives - wholesale trade (non-technical),Représentants/représentantes des ventes et des comptes - commerce de gros (non-technique),240900,242500,246700,249900,252100,254100,255800,257500,259300,261100,262800
+64200,"Tailors, dressmakers, furriers and milliners","Tailleurs/tailleuses, couturiers/couturières, fourreurs/fourreuses et modistes",12600,12400,12500,12500,12600,12700,12700,12700,12800,12800,12800
+64201,"Image, social and other personal consultants","Conseillers/conseillères imagistes, conseillers mondains/conseillères mondaines et autres conseillers/conseillères en soins personnalisés",1600,1700,1700,1700,1700,1700,1700,1700,1700,1800,1800
+64300,Maîtres d'hôtel and hosts/hostesses,Maîtres d'hôtel et hôtes/hôtesses,54500,56100,58000,58900,59200,59300,59500,59700,59900,60000,60100
+64301,Bartenders,Barmans/barmaids,29400,29800,31200,31300,31000,30600,30300,30100,29900,29600,29300
+64310,Travel counsellors,Conseillers/conseillères en voyages,14600,14400,14700,14800,14900,15000,15100,15100,15200,15300,15300
+64311,Pursers and flight attendants,Commissaires et agents/agentes de bord,14600,15100,15200,15300,15400,15400,15500,15500,15600,15600,15700
+64312,Airline ticket and service agents,Agents/agentes à la billetterie et aux services aériens,15900,16700,16900,17000,17100,17100,17100,17100,17200,17200,17200
+64313,"Ground and water transport ticket agents, cargo service representatives and related clerks","Agents/agentes à la billetterie, représentants/représentantes du service en matière de fret et personnel assimilé dans le transport routier et maritime",3600,3700,3800,3800,3800,3800,3800,3800,3900,3900,3900
+64314,Hotel front desk clerks,Réceptionnistes d'hôtel,19100,19300,19500,20100,20500,20900,21200,21500,21800,22000,22300
+64320,Tour and travel guides,Guides touristiques et guides itinérants/guides itinérantes,3800,3800,3900,3900,3900,4000,4000,4000,4000,4000,4000
+64321,Casino workers,Travailleurs/travailleuses dans les casinos,7600,7600,7600,7600,7600,7600,7600,7600,7600,7600,7500
+64322,Outdoor sport and recreational guides,Guides d'activités récréatives et sportives de plein air,1700,1700,1700,1800,1800,1800,1800,1800,1800,1800,1800
+64400,Customer services representatives - financial institutions,Représentants/représentantes au service à la clientèle - institutions financières,71500,72100,75000,76800,77600,78300,78600,78400,78800,78900,78800
+64401,Postal services representatives,Représentants/représentantes des services postaux,10300,10600,10700,10800,10900,10900,10900,10800,10800,10800,10800
+64409,Other customer and information services representatives,Autres préposés/préposées aux services d'information et aux services à la clientèle,181700,184900,186300,189000,190600,191800,193000,194900,195900,197200,198100
+64410,Security guards and related security service occupations,Agents/agentes de sécurité et personnel assimilé des services de sécurité,104200,107200,107700,109700,110400,111400,112200,113200,114100,115000,115700
+65100,Cashiers,Caissiers/caissières,349600,344200,351600,355500,356700,357800,358900,360000,361100,362200,363300
+65101,Service station attendants,Préposés/préposées de stations-service,12000,11800,11500,11000,10700,10400,10100,9900,9700,9400,9200
+65102,"Store shelf stockers, clerks and order fillers","Garnisseurs/garnisseuses de tablettes, commis et préposés/préposées aux commandes dans les magasins",262900,261000,267100,271600,274300,276800,279400,281900,284300,286800,289200
+65109,Other sales related occupations,Autre personnel assimilé des ventes,16200,15700,16800,17000,17100,17100,17000,16900,16900,16800,16800
+65200,Food and beverage servers,Serveurs/serveuses d'aliments et de boissons,175800,177900,182400,184400,184400,184100,183900,183600,183300,183000,182600
+65201,"Food counter attendants, kitchen helpers and related support occupations","Serveurs/serveuses au comptoir, aides de cuisine et personnel de soutien assimilé",383000,388900,398900,405500,408700,410900,413300,415600,418000,420300,422600
+65202,Meat cutters and fishmongers – retail and wholesale,Coupeurs/coupeuses de viande et poissonniers/poissonnières – commerce de gros et de détail,5100,3600,3700,3700,3900,4000,4100,4100,4200,4200,4200
+65210,"Support occupations in accommodation, travel and facilities set-up services","Personnel de soutien en services d'hébergement, de voyage et en services de montage d'installation",3600,3700,3800,3800,3800,3800,3800,3800,3800,3800,3800
+65211,"Operators and attendants in amusement, recreation and sport","Opérateurs/opératrices et préposés/préposées aux sports, aux loisirs et dans les parcs d'attractions",65200,68000,68800,70000,70800,71700,72600,73500,74400,75300,76200
+65220,Pet groomers and animal care workers,Soigneurs/soigneuses d'animaux et travailleurs/travailleuses en soins des animaux,35500,37500,37700,38300,39500,39200,40400,40400,41100,41600,42100
+65229,Other support occupations in personal services,Autres professions de soutien dans les services personnels,3800,3900,4000,4000,4000,4000,4000,4000,4000,4100,4100
+65310,Light duty cleaners,Préposés/préposées à l'entretien ménager et au nettoyage - travaux légers,228000,228300,234700,238800,242000,245400,249000,252300,256400,260800,265000
+65311,Specialized cleaners,Nettoyeurs spécialisés/nettoyeuses spécialisées,41900,42500,43200,43700,44100,44600,44600,45100,45500,45600,45900
+65312,"Janitors, caretakers and heavy-duty cleaners",Concierges et nettoyeurs/nettoyeuses – gros travaux,107000,108100,110500,111200,111000,110900,110700,110700,110500,110400,110200
+65320,"Dry cleaning, laundry and related occupations",Personnel de blanchisseries et d'établissements de nettoyage à sec et personnel assimilé,13900,14100,14000,13900,13800,13900,14000,14200,14300,14400,14500
+65329,Other service support occupations,Autre personnel de soutien en service,24500,25100,25300,25400,25300,25200,25200,25200,25200,25200,25200
+70010,Construction managers,Directeurs/directrices de la construction,108900,110100,113200,115900,117300,118500,119700,120900,122100,123300,124200
+70011,Home building and renovation managers,Gestionnaires en construction et rénovation domiciliaire,146000,146400,151100,155000,156900,158600,160400,162000,163700,165400,166700
+70012,Facility operation and maintenance managers,Directeurs/directrices de l'exploitation et de l'entretien d'immeubles,35300,37200,36900,37100,37400,37600,37900,38200,38500,38900,39200
+70020,Managers in transportation,Directeurs/directrices des transports,37700,39100,39800,40300,40700,41100,41500,41800,42200,42600,43000
+70021,Postal and courier services managers,Directeurs/directrices des services postaux et de messageries,3300,3500,3600,3600,3700,3700,3700,3700,3700,3700,3700
+72010,"Contractors and supervisors, machining, metal forming, shaping and erecting trades and related occupations","Entrepreneurs/entrepreneuses et contremaîtres/contremaîtresses des machinistes et du personnel des métiers du formage, du profilage et du montage des métaux et personnel assimilé",20200,20300,20800,21100,21300,21600,21700,21900,22100,22200,22400
+72011,"Contractors and supervisors, electrical trades and telecommunications occupations",Entrepreneurs/entrepreneuses et contremaîtres/contremaîtresses en électricité et en télécommunications,32400,31900,32800,33400,33700,34000,34300,34600,34900,35200,35500
+72012,"Contractors and supervisors, pipefitting trades",Entrepreneurs/entrepreneuses et contremaîtres/contremaîtresses en tuyauterie,14100,14200,14600,15000,15100,15300,15500,15600,15800,15900,16100
+72013,"Contractors and supervisors, carpentry trades",Entrepreneurs/entrepreneuses et contremaîtres/contremaîtresses en charpenterie,31500,31700,32800,33600,34000,34300,34700,35100,35400,35800,36100
+72014,"Contractors and supervisors, other construction trades, installers, repairers and servicers",Entrepreneurs/entrepreneuses et contremaîtres/contremaîtresses des autres métiers de la construction et des services de réparation et d'installation,63000,63500,65100,66100,66000,66000,66100,66100,65900,65700,65300
+72020,"Contractors and supervisors, mechanic trades",Entrepreneurs/entrepreneuses et contremaîtres/contremaîtresses en mécanique,73800,75100,77000,78100,78700,79400,80000,80600,81200,81900,82500
+72021,"Contractors and supervisors, heavy equipment operator crews",Entrepreneurs/entrepreneuses et contremaîtres/contremaîtresses des équipes d'opérateurs d'équipement lourd,64000,64400,66300,68000,68900,69600,70400,71100,71800,72500,73000
+72022,"Supervisors, printing and related occupations",Surveillants/surveillantes de l'imprimerie et du personnel assimilé,5100,5100,5200,5200,5200,5200,5100,5100,5100,5100,5100
+72023,"Supervisors, railway transport operations",Surveillants/surveillantes des opérations du transport ferroviaire,1300,1300,1300,1400,1400,1400,1400,1400,1400,1400,1400
+72024,"Supervisors, motor transport and other ground transit operators",Surveillants/surveillantes du transport routier et du transport en commun,35500,37000,37300,37900,38300,38800,39200,39500,40000,40400,40900
+72025,"Supervisors, mail and message distribution occupations",Superviseurs/superviseures de services postaux et de messageries,11200,11900,11900,12100,12100,12100,12000,12000,12000,12000,11900
+72100,Machinists and machining and tooling inspectors,Machinistes et vérificateurs/vérificatrices d'usinage et d'outillage,43400,43400,43800,44300,44500,44700,44700,44700,44600,44500,44400
+72101,Tool and die makers,Outilleurs-ajusteurs/outilleuses-ajusteuses,11700,11600,11800,12000,12000,12100,12000,12000,12000,12000,11900
+72102,Sheet metal workers,Tôliers/tôlières,13900,14000,14300,14500,14500,14600,14700,14700,14800,14900,14900
+72103,Boilermakers,Chaudronniers/chaudronnières,2800,2900,2900,3000,3000,3000,3000,3100,3100,3100,3100
+72104,Structural metal and platework fabricators and fitters,Assembleurs/assembleuses et ajusteurs/ajusteuses de plaques et de charpentes métalliques,4300,4100,4200,4200,4200,4300,4300,4300,4200,4200,4200
+72105,Ironworkers,Monteurs/monteuses de charpentes métalliques,14700,14600,15100,15500,15800,16000,16200,16400,16500,16700,16800
+72106,Welders and related machine operators,Soudeurs/soudeuses et opérateurs/opératrices de machines à souder et à braser,90900,91000,92300,93000,93900,94400,94900,95500,95900,96100,96500
+72200,Electricians (except industrial and power system),Électriciens/électriciennes (sauf électriciens industriels/électriciennes industrielles et de réseaux électriques),119300,122100,129800,133700,137700,140400,143500,146500,149500,152300,154900
+72201,Industrial electricians,Électriciens industriels/électriciennes industrielles,35600,36100,36700,37300,37500,37800,38000,38000,38200,38400,38600
+72202,Power system electricians,Électriciens/électriciennes de réseaux électriques,4600,4800,4900,5000,5000,5100,5100,5200,5300,5300,5400
+72203,Electrical power line and cable workers,Monteurs/monteuses de lignes électriques et de câbles,12900,12900,13200,13500,13600,13700,13800,13800,13900,13900,14000
+72204,Telecommunications line and cable installers and repairers,Installateurs/installatrices et réparateurs/réparatrices de lignes et de câbles de télécommunications,10100,10100,10300,10400,10400,10500,10500,10600,10600,10600,10700
+72205,Telecommunications equipment installation and cable television service technicians,Techniciens/techniciennes en installation de matériel de télécommunication et en services de câblodistribution,25900,26400,26800,27400,27800,28200,28500,28700,29100,29400,29700
+72300,Plumbers,Plombiers/plombières,59900,61800,63600,65200,66100,67100,68300,69400,70500,71700,72600
+72301,"Steamfitters, pipefitters and sprinkler system installers","Tuyauteurs/tuyauteuses, monteurs/monteuses d'appareils de chauffage et poseurs/poseuses de gicleurs",25800,25900,26400,26800,27000,27200,27400,27500,27700,27900,28100
+72302,Gas fitters,Monteurs/monteuses d'installations au gaz,5500,5500,5600,5700,5700,5700,5700,5700,5700,5800,5800
+72310,Carpenters,Charpentiers-menuisiers/charpentières-menuisières,132000,133200,136800,139700,140800,141900,143200,144200,145400,146600,147600
+72311,Cabinetmakers,Ébénistes,5200,5100,5200,5300,5300,5300,5300,5300,5300,5300,5300
+72320,Bricklayers,Briqueteurs-maçons/briqueteuses-maçonnes,10700,10600,10900,11100,11200,11300,11300,11400,11400,11500,11500
+72321,Insulators,Calorifugeurs/calorifugeuses,9700,9800,10100,10400,10600,10700,10900,11000,11200,11300,11400
+72400,Construction millwrights and industrial mechanics,Mécaniciens/mécaniciennes de chantier et mécaniciens industriels/mécaniciennes industrielles,88500,87200,88700,90200,91000,91600,92000,92500,92900,93400,93700
+72401,Heavy-duty equipment mechanics,Mécaniciens/mécaniciennes d'équipement lourd,70600,73400,74700,75700,76400,77100,77800,78500,79200,80000,80700
+72402,"Heating, refrigeration and air conditioning mechanics","Mécaniciens/mécaniciennes en chauffage, réfrigération et climatisation",46100,46600,48400,50000,51000,51900,52900,53700,54700,55600,56400
+72403,Railway carmen/women,Réparateurs/réparatrices de wagons,3100,3400,3300,3400,3300,3300,3300,3400,3400,3400,3400
+72404,Aircraft mechanics and aircraft inspectors,Mécaniciens/mécaniciennes et contrôleurs/contrôleuses d'aéronefs,18500,19100,19300,19700,20000,20300,20600,20900,21200,21400,21700
+72405,Machine fitters,Ajusteurs/ajusteuses de machines,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+72406,Elevator constructors and mechanics,Constructeurs/constructrices et mécaniciens/mécaniciennes d'ascenseurs,6000,6000,6200,6400,6600,6700,6800,6900,7000,7100,7200
+72410,"Automotive service technicians, truck and bus mechanics and mechanical repairers","Mécaniciens/mécaniciennes et réparateurs/réparatrices de véhicules automobiles, de camions et d'autobus",140400,145200,147900,148400,150200,151300,152200,153100,154000,154900,155800
+72411,"Auto body collision, refinishing and glass technicians and damage repair estimators","Techniciens/techniciennes en collision, en carrosserie, en peinture et en glace de véhicule automobile et estimateurs/estimatrices de dommages",29700,30700,30900,31000,31000,31100,31200,31300,31300,31400,31500
+72420,Oil and solid fuel heating mechanics,Installateurs/installatrices de brûleurs à l'huile et à combustibles solides,2100,2100,2100,2200,2200,2200,2300,2300,2300,2300,2300
+72421,Appliance servicers and repairers,Réparateurs/réparatrices et préposés/préposées à l'entretien d'appareils,3900,4100,4200,4300,4300,4300,4200,4200,4200,4200,4200
+72422,Electrical mechanics,Électromécaniciens/électromécaniciennes,10900,11100,11300,11600,11700,11900,12100,12200,12400,12600,12700
+72423,"Motorcycle, all-terrain vehicle and other related mechanics","Mécaniciens/mécaniciennes de motocyclettes, de véhicules tout-terrain et personnel mécanicien assimilé",12500,12500,12700,12800,12900,13000,13100,13200,13200,13300,13400
+72429,Other small engine and small equipment repairers,Autres réparateurs/réparatrices de petits moteurs et de petits équipements,3500,3600,3600,3600,3600,3600,3600,3600,3600,3600,3600
+72500,Crane operators,Grutiers/grutières,16600,16400,16800,17200,17400,17600,17800,17900,18000,18200,18300
+72501,Water well drillers,Foreurs/foreuses de puits d'eau,1200,1300,1300,1400,1400,1400,1400,1400,1500,1500,1500
+72600,"Air pilots, flight engineers and flying instructors","Pilotes, navigateurs/navigatrices et instructeurs/instructrices de pilotage du transport aérien",19200,19800,20400,20700,21000,21300,21600,21800,22000,22300,22500
+72601,Air traffic controllers and related occupations,Contrôleurs aériens/contrôleuses aériennes et personnel assimilé,4600,4600,4900,4900,5000,5000,5000,5100,5100,5100,5100
+72602,"Deck officers, water transport",Officiers/officières de pont du transport par voies navigables,6200,6300,6400,6500,6600,6600,6600,6600,6600,6700,6700
+72603,"Engineer officers, water transport",Officiers mécaniciens/officières mécaniciennes du transport par voies navigables,4100,4200,4500,4500,4600,4600,4600,4600,4700,4700,4700
+72604,Railway traffic controllers and marine traffic regulators,Contrôleurs/contrôleuses de la circulation ferroviaire et régulateurs/régulatrices de la circulation maritime,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+72999,Other technical trades and related occupations,Autres métiers techniques et personnel assimilé,9700,9600,9800,9900,10100,10200,10300,10400,10500,10600,10700
+73100,Concrete finishers,Finisseurs/finisseuses de béton,13400,13400,13800,14200,14400,14500,14700,14800,15000,15100,15200
+73101,Tilesetters,Carreleurs/carreleuses,10100,10500,10600,10800,11000,11100,11100,11300,11400,11500,11500
+73102,"Plasterers, drywall installers and finishers and lathers","Plâtriers/plâtrières, poseurs/poseuses et finisseurs/finisseuses de systèmes intérieurs et latteurs/latteuses",27500,27300,28000,28500,28700,28800,28900,28900,29000,29100,29100
+73110,Roofers and shinglers,Couvreurs/couvreuses et poseurs/poseuses de bardeaux,23000,23200,24000,24600,24900,25200,25500,25800,26100,26500,26700
+73111,Glaziers,Vitriers/vitrières,5400,5500,5600,5700,5700,5800,5900,5900,6000,6100,6100
+73112,Painters and decorators (except interior decorators),Peintres et décorateurs/décoratrices (sauf décorateurs/décoratrices d'intérieur),39200,39700,40200,40700,40700,40700,40800,41000,41100,41200,41200
+73113,Floor covering installers,Poseurs/poseuses de revêtements d'intérieur,16600,16900,17300,17600,17800,17900,18100,18200,18400,18500,18600
+73200,Residential and commercial installers and servicers,"Personnel d'installation, d'entretien et de réparation d'équipement résidentiel et commercial",57400,57600,58200,59000,59400,59800,60100,60600,61000,61300,61600
+73201,General building maintenance workers and building superintendents,Préposés à l’entretien général et surintendants/surintendantes,76400,80400,79500,81100,82400,84000,85500,87000,88500,89900,91300
+73202,Pest controllers and fumigators,Fumigateurs/fumigatrices et préposés/préposées au contrôle de la vermine,3500,3500,3600,3700,3800,3900,3900,4000,4100,4200,4300
+73209,Other repairers and servicers,Autres réparateurs/réparatrices et préposés/préposées à l'entretien,16600,17500,17400,17500,17700,17800,18000,18100,18300,18400,18600
+73300,Transport truck drivers,Conducteurs/conductrices de camions de transport,319400,325100,331900,337500,341300,344900,348300,351200,354600,358200,361700
+73301,"Bus drivers, subway operators and other transit operators",Conducteurs/conductrices d'autobus et opérateurs/opératrices de métro et autres transports en commun,101000,106300,106500,107600,108800,110300,111800,113100,114800,116400,118100
+73310,Railway and yard locomotive engineers,Mécaniciens/mécaniciennes de locomotive et de cour de triage,6200,6400,6500,6600,6600,6700,6700,6700,6800,6800,6800
+73311,Railway conductors and brakemen/women,Chefs de train et serre-freins,5700,5900,5900,6000,6000,6000,6000,6000,6000,6000,6000
+73400,Heavy equipment operators,Conducteurs/conductrices d'équipement lourd,75900,75800,78000,79700,80500,81200,81900,82600,83200,83900,84400
+73401,Printing press operators,Opérateurs/opératrices de presses à imprimer,14600,14700,14700,14800,14800,14600,14400,14300,14200,14100,14000
+73402,"Drillers and blasters - surface mining, quarrying and construction","Foreurs/foreuses et dynamiteurs/dynamiteuses de mines à ciel ouvert, de carrières et de chantiers de construction",2200,2200,2300,2400,2400,2400,2400,2400,2500,2500,2500
+74100,Mail and parcel sorters and related occupations,Trieurs/trieuses de courrier et de colis et professions connexes,22200,23900,24200,24500,24700,24800,24800,24800,24900,25000,25000
+74101,Letter carriers,Facteurs/factrices,33000,33200,33900,34300,34900,35400,35800,36100,36500,36600,36900
+74102,Couriers and messengers,Messagers/messagères,20100,21600,21900,22200,22400,22500,22600,22700,22900,23000,23100
+74200,Railway yard and track maintenance workers,Ouvriers/ouvrières de gares de triage et à l'entretien de la voie ferrée,7600,7800,7900,7900,7900,7900,7900,7900,7900,7900,7900
+74201,Water transport deck and engine room crew,Matelots de pont et matelots de salle des machines du transport par voies navigables,5500,5600,5700,5800,5800,5900,5900,5900,5900,5900,5900
+74202,Air transport ramp attendants,Agents/agentes de piste dans le transport aérien,13600,14000,14300,14500,14600,14700,14800,14800,14900,15000,15100
+74203,Automotive and heavy truck and equipment parts installers and servicers,Préposés/préposées à la pose et à l'entretien des pièces mécaniques d'automobiles et de camions et équipements lourds,14900,15000,15300,15400,15500,15600,15700,15700,15800,15900,16000
+74204,Utility maintenance workers,Personnel d'entretien des services publics,8100,8100,8400,8500,8600,8700,8700,8800,8800,8900,9000
+74205,Public works maintenance equipment operators and related workers,Conducteurs/conductrices de machinerie d'entretien public et personnel assimilé,29800,29700,30500,31000,31400,31800,32100,32400,32700,33100,33300
+75100,Longshore workers,Débardeurs/débardeuses,7300,7500,7600,7800,7900,8000,8100,8200,8300,8400,8500
+75101,Material handlers,Manutentionnaires,229400,235600,239100,241100,244200,245800,247000,249400,250900,252400,254800
+75110,Construction trades helpers and labourers,Aides de soutien des métiers et manoeuvres en construction,143200,150200,151800,153700,154600,155700,156900,158100,159400,160600,161400
+75119,Other trades helpers and labourers,Autres manoeuvres et aides de soutien de métiers,7300,7500,7800,7700,7600,7600,7600,7600,7600,7600,7600
+75200,Taxi and limousine drivers and chauffeurs,"Chauffeurs/chauffeuses de taxi, chauffeurs/chauffeuses de limousine et chauffeurs/chauffeuses",62100,64700,65500,66500,67300,68100,68900,69600,70400,71300,72300
+75201,Delivery service drivers and door-to-door distributors,Chauffeurs-livreurs/chauffeuses-livreuses de services de livraison et distributeurs/distributrices porte-à-porte,97900,101800,103600,105300,106200,107100,107900,108500,109300,110200,111000
+75210,Boat and cable ferry operators and related occupations,"Opérateurs/opératrices de bateau à moteur, de bac à câble et personnel assimilé",2600,2700,2800,2800,2800,2900,2900,2900,2900,2900,3000
+75211,Railway and motor transport labourers,Manoeuvres dans le transport ferroviaire et routier,4600,4900,4900,5000,5000,5000,5100,5100,5200,5200,5300
+75212,Public works and maintenance labourers,Manoeuvres à l'entretien des travaux publics,28100,28300,29200,29700,29900,30100,30300,30500,30700,30900,31000
+80010,Managers in natural resources production and fishing,Directeurs/directrices de l'exploitation des ressources naturelles et de la pêche,13800,14000,14700,15100,15300,15400,15500,15500,15600,15800,15900
+80020,Managers in agriculture,Gestionnaires en agriculture,122400,112600,116400,115900,115500,114600,113500,112500,111600,110700,109900
+80021,Managers in horticulture,Gestionnaires en horticulture,7300,6700,7000,7000,7000,7000,7000,7000,7000,7000,7000
+80022,Managers in aquaculture,Gestionnaires en aquaculture,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+82010,"Supervisors, logging and forestry",Surveillants/surveillantes de l'exploitation forestière,4900,5100,5100,5200,5200,5200,5200,5200,5300,5300,5300
+82020,"Supervisors, mining and quarrying",Surveillants/surveillantes de l'exploitation des mines et des carrières,8500,8100,8600,8800,8900,8900,9000,9100,9100,9100,9200
+82021,"Contractors and supervisors, oil and gas drilling and services",Entrepreneurs/entrepreneuses et surveillants/surveillantes du forage et des services reliés à l'extraction de pétrole et de gaz,17900,18700,19100,19400,19600,19700,19700,19600,19700,19900,20000
+82030,Agricultural service contractors and farm supervisors,Entrepreneurs/entrepreneuses de services agricoles et surveillants/surveillantes d'exploitations agricoles,8700,8000,8100,8600,9100,9100,9100,9200,9300,9400,9500
+82031,"Contractors and supervisors, landscaping, grounds maintenance and horticulture services","Entrepreneurs/entrepreneuses et superviseurs/superviseures des services de l'aménagement paysager, de l'entretien des terrains et de l'horticulture",25200,25300,25500,25700,25800,25900,26000,26100,26200,26300,26400
+83100,Underground production and development miners,"Mineurs/mineuses d'extraction et de préparation, mines souterraines",29400,29000,30600,31400,31600,31800,32000,32100,32400,32700,32900
+83101,"Oil and gas well drillers, servicers, testers and related workers",Foreurs/foreuses et personnel de mise à l'essai et des autres services reliés à l'extraction de pétrole et de gaz,23500,24300,25600,26300,26500,26600,26700,25500,25600,25800,26000
+83110,Logging machinery operators,Conducteurs/conductrices de machines d'abattage d'arbres,7800,7900,8100,8300,8500,8600,8800,8900,9100,9200,9400
+83120,Fishing masters and officers,Capitaines et officiers/officières de bâtiments de pêche,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+83121,Fishermen/women,Pêcheurs indépendants/pêcheuses indépendantes,10600,10500,10600,10600,10500,10500,10500,10400,10400,10300,10300
+84100,Underground mine service and support workers,Travailleurs/travailleuses d'entretien et de soutien des mines souterraines,3100,2900,3000,3100,3100,3100,3100,3200,3200,3200,3200
+84101,Oil and gas well drilling and related workers and services operators,Travailleurs/travailleuses du forage et de l'entretien des puits de pétrole et de gaz et personnel assimilé,4300,4300,4400,4500,4500,4500,4500,4300,4300,4300,4300
+84110,Chain saw and skidder operators,Opérateurs/opératrices de scies à chaîne et d'engins de débardage,4200,4600,4600,4600,4600,4600,4600,4600,4500,4500,4500
+84111,Silviculture and forestry workers,Ouvriers/ouvrières en sylviculture et en exploitation forestière,3000,3300,3300,3300,3300,3300,3400,3400,3400,3400,3400
+84120,Specialized livestock workers and farm machinery operators,Ouvriers spécialisés/ouvrières spécialisées dans l’élevage et opérateurs/opératrices de machineries agricoles,29100,29300,30700,31100,31400,31500,31600,31700,31800,31900,32100
+84121,Fishing vessel deckhands,Matelots de pont sur les bâtiments de pêche,3300,3400,3400,3300,3300,3200,3200,3200,3200,3200,3100
+85100,Livestock labourers,Manoeuvres aux soins du bétail,30600,28100,29400,29700,29900,29900,29900,29900,29900,29900,30000
+85101,Harvesting labourers,Manoeuvres à la récolte,22900,20800,21800,22100,22100,22000,21800,21700,21600,21400,21300
+85102,Aquaculture and marine harvest labourers,Manoeuvres de l'aquaculture et de la mariculture,3100,2800,2900,3000,3000,3100,3100,3100,3200,3200,3200
+85103,Nursery and greenhouse labourers,Manoeuvres de pépinières et de serres,22200,20300,21600,22300,22500,22600,22700,22800,22800,22900,23000
+85104,Trappers and hunters,Trappeurs/trappeuses et chasseurs/chasseuses,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+85110,Mine labourers,Manoeuvres des mines,3100,2900,3100,3100,3100,3100,3100,3100,3100,3100,3100
+85111,"Oil and gas drilling, servicing and related labourers","Manoeuvres de forage et d'entretien des puits de pétrole et de gaz, et personnel assimilé",5100,5200,5400,5500,5500,5500,5500,5500,5500,5500,5400
+85120,Logging and forestry labourers,Manoeuvres de l'exploitation forestière,2300,2500,2500,2500,2500,2500,2500,2500,2500,2500,2500
+85121,Landscaping and grounds maintenance labourers,Manoeuvres en aménagement paysager et en entretien des terrains,80300,79200,82000,84100,85900,87400,88900,90600,92200,93900,95400
+90010,Manufacturing managers,Directeurs/directrices de la fabrication,110100,112200,112100,112800,113900,114800,115400,116000,116700,117300,118000
+90011,Utilities managers,Directeurs/directrices des services d'utilité publique,16400,16700,17000,17300,17400,17600,17800,17900,18100,18300,18400
+92010,"Supervisors, mineral and metal processing",Surveillants/surveillantes dans la transformation des métaux et des minerais,10100,9700,9700,9900,10000,10100,10200,10200,10300,10300,10400
+92011,"Supervisors, petroleum, gas and chemical processing and utilities","Surveillants/surveillantes dans le raffinage du pétrole, dans le traitement du gaz et des produits chimiques et dans les services d'utilité publique",19900,20000,20100,20300,20600,20900,21100,21300,21400,21600,21800
+92012,"Supervisors, food and beverage processing",Surveillants/surveillantes dans la transformation des aliments et des boissons,26800,26900,28000,28600,28900,29200,29500,29800,30200,30500,30800
+92013,"Supervisors, plastic and rubber products manufacturing",Surveillants/surveillantes dans la fabrication de produits en caoutchouc et en plastique,9400,9500,9600,9800,10100,10300,10500,10600,10800,11100,11300
+92014,"Supervisors, forest products processing",Surveillants/surveillantes dans la transformation des produits forestiers,11300,10800,11000,11100,11100,11000,11000,10900,10900,10900,10900
+92015,"Supervisors, textile, fabric, fur and leather products processing and manufacturing","Surveillants/surveillantes dans la transformation et la fabrication de produits textiles, de tissus, de fourrure et de cuir",3400,3600,3600,3600,3600,3500,3500,3400,3400,3400,3400
+92020,"Supervisors, motor vehicle assembling",Surveillants/surveillantes dans la fabrication de véhicules automobiles,13000,13500,13600,14000,14400,14700,14900,15100,15200,15400,15600
+92021,"Supervisors, electronics and electrical products manufacturing",Surveillants/surveillantes dans la fabrication de matériel électronique et d'appareils électriques,4400,4400,4500,4600,4600,4600,4700,4700,4700,4700,4700
+92022,"Supervisors, furniture and fixtures manufacturing",Surveillants/surveillantes dans la fabrication de meubles et d'accessoires,5700,5900,5900,5900,5800,5800,5700,5700,5600,5600,5600
+92023,"Supervisors, other mechanical and metal products manufacturing",Surveillants/surveillantes dans la fabrication d'autres produits métalliques et de pièces mécaniques,18600,18300,18500,18700,18800,18900,18900,19000,19000,19000,19000
+92024,"Supervisors, other products manufacturing and assembly",Surveillants/surveillantes dans la fabrication et le montage de produits divers,12600,13600,13300,13200,13200,13100,13000,13000,12900,12800,12800
+92100,Power engineers and power systems operators,Mécaniciens/mécaniciennes de centrales et opérateurs/opératrices de réseaux électriques,27600,27200,27800,27900,27800,27900,28200,28200,28200,28200,28300
+92101,Water and waste treatment plant operators,Opérateurs/opératrices d'installations du traitement de l'eau et des déchets,11800,12300,12600,12700,12900,13000,13200,13300,13400,13600,13700
+93100,"Central control and process operators, mineral and metal processing",Opérateurs/opératrices de poste central de contrôle et de conduite de procédés industriels dans le traitement des métaux et des minerais,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+93101,"Central control and process operators, petroleum, gas and chemical processing",Opérateurs/opératrices de salle de commande centrale et de conduite de procédés industriels dans le raffinage du pétrole et le traitement du gaz et des produits chimiques,16200,16200,16300,16300,16400,16400,16400,16300,16300,16300,16300
+93102,"Pulping, papermaking and coating control operators","Opérateurs/opératrices au contrôle de la réduction en pâte des pâtes et papiers, de la fabrication du papier et du couchage",N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+93200,Aircraft assemblers and aircraft assembly inspectors,Monteurs/monteuses d'aéronefs et contrôleurs/contrôleuses de montage d'aéronefs,9900,10400,10400,10400,10500,10500,10500,10500,10500,10500,10500
+94100,"Machine operators, mineral and metal processing",Opérateurs/opératrices de machines dans le traitement des métaux et des minerais,14200,13600,13800,14100,14300,14600,14800,14900,15100,15200,15400
+94101,Foundry workers,Ouvriers/ouvrières de fonderies,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+94102,Glass forming and finishing machine operators and glass cutters,Opérateurs/opératrices de machines à former et à finir le verre et coupeurs/coupeuses de verre,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+94103,"Concrete, clay and stone forming operators","Opérateurs/opératrices de machines dans le façonnage et la finition des produits en béton, en argile ou en pierre",4600,4400,4500,4600,4600,4600,4700,4600,4700,4600,4600
+94104,"Inspectors and testers, mineral and metal processing",Contrôleurs/contrôleuses et essayeurs/essayeuses dans la transformation des métaux et des minerais,4300,4100,4100,4100,4200,4200,4200,4100,4100,4100,4100
+94105,Metalworking and forging machine operators,Opérateurs/opératrices de machines à forger et à travailler les métaux,26200,25500,26100,26600,27000,27100,27100,27100,27000,26900,26800
+94106,Machining tool operators,Opérateurs/opératrices de machines d'usinage,11900,11600,11800,12100,12300,12500,12500,12500,12600,12600,12600
+94107,Machine operators of other metal products,Opérateurs/opératrices de machines d'autres produits métalliques,38100,38000,38300,39400,40100,40600,40800,41000,41000,41100,41100
+94110,Chemical plant machine operators,Opérateurs/opératrices d'installations de traitement des produits chimiques,14400,14200,14600,14700,14900,15000,15100,15100,15200,15200,15300
+94111,Plastics processing machine operators,Opérateurs/opératrices de machines de traitement des matières plastiques,15000,14300,14400,14500,14700,14900,15000,15100,15300,15400,15600
+94112,Rubber processing machine operators and related workers,Opérateurs/opératrices de machines de transformation du caoutchouc et personnel assimilé,5400,5200,5200,5200,5200,5200,5200,5200,5200,5100,5100
+94120,Sawmill machine operators,Opérateurs/opératrices de machines à scier dans les scieries,7200,6900,7100,7200,7300,7300,7300,7300,7300,7300,7300
+94121,"Pulp mill, papermaking and finishing machine operators",Opérateurs/opératrices de machines dans la fabrication et la finition du papier dans les usines de pâte à papier,7700,7300,7200,7200,7100,7100,7100,7100,7100,7100,7100
+94122,Paper converting machine operators,Opérateurs/opératrices de machines à façonner le papier,6300,6000,5900,6000,6000,5900,6000,6000,6000,6100,6100
+94123,Lumber graders and other wood processing inspectors and graders,Classeurs/classeuses de bois d'oeuvre et autres vérificateurs/vérificatrices et classeurs/classeuses dans la transformation du bois,2900,2800,2800,2800,2900,2800,2800,2800,2800,2800,2800
+94124,Woodworking machine operators,Opérateurs/opératrices de machines à travailler le bois,6400,6200,6300,6300,6300,6300,6200,6200,6100,6100,6100
+94129,Other wood processing machine operators,Autres opérateurs/opératrices de machines dans la transformation du bois,4200,4000,4100,4200,4200,4200,4200,4300,4300,4300,4300
+94130,"Textile fibre and yarn, hide and pelt processing machine operators and workers","Opérateurs/opératrices de machines et travailleurs/travailleuses de traitement des fibres et des fils textiles, du cuir et des peaux",2300,2400,2400,2400,2400,2300,2300,2300,2300,2300,2200
+94131,"Weavers, knitters and other fabric making occupations","Tisseurs/tisseuses, tricoteurs/tricoteuses et autres opérateurs/opératrices de machines textiles",N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+94132,Industrial sewing machine operators,Opérateurs/opératrices de machines à coudre industrielles,17700,18400,18500,18300,18200,18000,17800,17700,17500,17400,17400
+94133,"Inspectors and graders, textile, fabric, fur and leather products manufacturing","Contrôleurs/contrôleuses et trieurs/trieuses dans la fabrication de produits textiles, de tissus, de fourrure et de cuir",N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+94140,"Process control and machine operators, food and beverage processing",Opérateurs/opératrices de machines et de procédés industriels dans la transformation des aliments et des boissons,66300,65600,68500,69900,70600,71200,71700,71900,72400,72800,73300
+94141,"Industrial butchers and meat cutters, poultry preparers and related workers","Bouchers industriels/bouchères industrielles, dépeceurs-découpeurs/dépeceuses-découpeuses de viande, préparateurs/préparatrices de volaille et personnel assimilé",18600,18400,19100,19200,19100,19100,19100,19100,19100,19000,19000
+94142,Fish and seafood plant workers,Ouvriers/ouvrières dans les usines de transformation du poisson et de fruits de mer,3300,3300,3400,3500,3500,3500,3500,3500,3500,3500,3500
+94143,"Testers and graders, food and beverage processing",Échantillonneurs/échantillonneuses et trieurs/trieuses dans la transformation des aliments et des boissons,8700,8800,9000,9100,9100,9200,9200,9300,9300,9400,9400
+94150,Plateless printing equipment operators,Opérateurs/opératrices d'équipement d'impression sans plaque,5800,5800,5900,5900,6000,6000,6000,6000,6000,6100,6100
+94151,"Camera, platemaking and other prepress occupations","Photograveurs-clicheurs/photograveuses-clicheuses, photograveurs-reporteurs/photograveuses-reporteuses et autre personnel de prépresse",N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+94152,Binding and finishing machine operators,Opérateurs/opératrices de machines à relier et de finition,1900,1900,1900,1900,1900,1800,1800,1800,1800,1700,1700
+94153,Photographic and film processors,Développeurs/développeuses de films et de photographies,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+94200,"Motor vehicle assemblers, inspectors and testers","Assembleurs/assembleuses, contrôleurs/contrôleuses et vérificateurs/vérificatrices de véhicules automobiles",31100,31800,32200,33200,34000,34300,34300,34400,34400,34500,34500
+94201,"Electronics assemblers, fabricators, inspectors and testers","Assembleurs/assembleuses, monteurs/monteuses, contrôleurs/contrôleuses et vérificateurs/vérificatrices de matériel électronique",18400,18400,18900,19300,19700,19800,20000,20100,20100,20200,20300
+94202,"Assemblers and inspectors, electrical appliance, apparatus and equipment manufacturing","Monteurs/monteuses et contrôleurs/contrôleuses dans la fabrication de matériel, d'appareils et d'accessoires électriques",12200,12300,12600,12900,13200,13300,13400,13500,13600,13700,13800
+94203,"Assemblers, fabricators and inspectors, industrial electrical motors and transformers","Assembleurs/assembleuses, monteurs/monteuses et contrôleurs/contrôleuses dans la fabrication de transformateurs et de moteurs électriques industriels",10800,10500,10900,11200,11400,11500,11500,11600,11600,11600,11600
+94204,Mechanical assemblers and inspectors,Monteurs/monteuses et contrôleurs/contrôleuses de matériel mécanique,17400,17000,17200,17700,18100,18400,18500,18700,18800,18900,19000
+94205,"Machine operators and inspectors, electrical apparatus manufacturing",Opérateurs/opératrices de machines et contrôleurs/contrôleuses dans la fabrication d'appareils électriques,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+94210,"Furniture and fixture assemblers, finishers, refinishers and inspectors","Monteurs/monteuses, finisseurs/finisseuses, restaurateurs/restauratrices et contrôleurs/contrôleuses de meubles et d’accessoires",29700,32300,32300,31800,31600,31200,30900,30600,30400,30200,30100
+94211,Assemblers and inspectors of other wood products,Monteurs/monteuses et contrôleurs/contrôleuses d'autres produits en bois,14000,13500,14000,14400,14600,14700,14800,14900,15000,15100,15100
+94212,"Plastic products assemblers, finishers and inspectors","Assembleurs/assembleuses, finisseurs/finisseuses et contrôleurs/contrôleuses de produits en plastique",8800,8900,9000,9200,9300,9500,9600,9700,9800,10000,10100
+94213,"Industrial painters, coaters and metal finishing process operators","Peintres, enduiseurs/enduiseuses et opérateurs/opératrices de procédés dans le finissage du métal - secteur industriel",14700,14900,15200,15500,15800,15900,16000,16100,16200,16200,16300
+94219,"Other products assemblers, finishers and inspectors","Monteurs/monteuses, finisseurs/finisseuses et contrôleurs/contrôleuses de produits divers",38500,39800,39500,39600,39600,39500,39400,39300,39100,38900,38700
+95100,Labourers in mineral and metal processing,Manoeuvres dans le traitement des métaux et des minerais,5000,4700,4800,4800,4800,4800,4800,4800,4800,4800,4800
+95101,Labourers in metal fabrication,Manoeuvres en métallurgie,18200,17900,18300,18800,19100,19400,19500,19700,19800,19900,20000
+95102,Labourers in chemical products processing and utilities,Manoeuvres dans le traitement des produits chimiques et les services d'utilité publique,9800,10300,10500,10500,10700,10800,10900,10900,11000,11100,11200
+95103,"Labourers in wood, pulp and paper processing",Manoeuvres dans le traitement des pâtes et papiers et la transformation du bois,19300,18400,18800,19000,19100,19200,19300,19400,19500,19600,19700
+95104,Labourers in rubber and plastic products manufacturing,Manoeuvres dans la fabrication des produits en caoutchouc et en plastique,6800,6600,6600,6700,6800,6800,6900,6900,7000,7000,7100
+95105,Labourers in textile processing and cutting,Manoeuvres dans la fabrication et la coupe des produits du textile,3000,3100,3100,3000,3000,2900,2900,2800,2800,2700,2700
+95106,Labourers in food and beverage processing,Manoeuvres dans la transformation des aliments et des boissons,53400,52500,53600,54300,54500,54700,54900,55000,54900,54800,54700
+95107,Labourers in fish and seafood processing,Manoeuvres dans la transformation du poisson et des fruits de mer,3400,3500,3600,3500,3500,3400,3400,3400,3400,3300,3300
+95109,"Other labourers in processing, manufacturing and utilities","Autres manoeuvres des services de transformation, de fabrication et d'utilité publique",20900,21900,21700,21700,21600,21400,21300,21100,20900,20800,20700

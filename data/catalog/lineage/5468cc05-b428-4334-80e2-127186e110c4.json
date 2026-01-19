@@ -1,0 +1,20 @@
+{
+  "transition_id": "5468cc05-b428-4334-80e2-127186e110c4",
+  "batch_id": "a248957d-c225-4307-8666-017467a369f2",
+  "source_layer": "staged",
+  "target_layer": "bronze",
+  "source_files": [
+    "data\\source\\retirements_retraites_2024_2033_noc2021.csv"
+  ],
+  "target_file": "data\\staged\\cops_retirements.parquet",
+  "row_count_in": 533,
+  "row_count_out": 533,
+  "transforms_applied": [
+    "ingest",
+    "add_provenance"
+  ],
+  "started_at": "2026-01-19T02:22:22.690175+00:00",
+  "completed_at": "2026-01-19T02:22:22.700720+00:00",
+  "status": "success",
+  "errors": null
+}

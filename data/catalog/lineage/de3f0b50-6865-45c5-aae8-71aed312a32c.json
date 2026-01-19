@@ -1,0 +1,20 @@
+{
+  "transition_id": "de3f0b50-6865-45c5-aae8-71aed312a32c",
+  "batch_id": "b5d873d3-08b7-4dd6-a8b5-904c5bc37fb7",
+  "source_layer": "staged",
+  "target_layer": "bronze",
+  "source_files": [
+    "data\\source\\employment_growth_croissance_emploi_2024_2033_noc2021.csv"
+  ],
+  "target_file": "data\\staged\\cops_employment_growth.parquet",
+  "row_count_in": 533,
+  "row_count_out": 533,
+  "transforms_applied": [
+    "ingest",
+    "add_provenance"
+  ],
+  "started_at": "2026-01-19T02:22:22.618951+00:00",
+  "completed_at": "2026-01-19T02:22:22.630543+00:00",
+  "status": "success",
+  "errors": null
+}
