@@ -4,17 +4,21 @@ This module provides utilities for deploying the WiQ semantic model to Power BI
 via the Power BI Modeling MCP Server.
 
 Example:
-    >>> from jobforge.deployment import MCPClient, TableSpec, RelationshipSpec
-    >>> from jobforge.semantic import build_wiq_schema
+    >>> from jobforge.deployment import WiQDeployer, DeploymentUI
     >>>
-    >>> schema = build_wiq_schema()
-    >>> client = MCPClient()
+    >>> # Create deployer with UI
+    >>> ui = DeploymentUI()
+    >>> deployer = WiQDeployer(ui=ui)
     >>>
-    >>> # Convert schema to MCP specifications
-    >>> table_specs = [client.table_to_spec(t) for t in schema.tables]
-    >>> rel_specs = [client.relationship_to_spec(r) for r in schema.relationships]
+    >>> # Load schema and get deployment order
+    >>> schema = deployer.load_schema()
+    >>> tables, rels = deployer.get_deployment_order(schema)
+    >>>
+    >>> # Generate deployment script for Claude Code
+    >>> print(deployer.generate_deployment_script())
 """
 
+from jobforge.deployment.deployer import DeploymentResult, WiQDeployer
 from jobforge.deployment.mcp_client import (
     MCPClient,
     MCPToolResult,
@@ -28,8 +32,15 @@ from jobforge.deployment.types import (
     get_summarize_by,
     map_duckdb_to_powerbi,
 )
+from jobforge.deployment.ui import DeploymentUI, get_table_source
 
 __all__ = [
+    # Deployer classes
+    "WiQDeployer",
+    "DeploymentResult",
+    # UI classes
+    "DeploymentUI",
+    "get_table_source",
     # MCP Client classes
     "MCPClient",
     "MCPToolResult",
