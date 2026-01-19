@@ -214,12 +214,12 @@ WIQ_RELATIONSHIPS: list[Relationship] = [
         cross_filter_direction=CrossFilterDirection.SINGLE,
         is_active=True,
     ),
-    # DIM Occupations -> Job Architecture
+    # DIM NOC -> Job Architecture (job titles link to NOC via unit_group_id)
     Relationship(
-        from_table="dim_occupations",
-        from_column="occupation_id",
+        from_table="dim_noc",
+        from_column="unit_group_id",
         to_table="job_architecture",
-        to_column="occupation_id",
+        to_column="unit_group_id",
         cardinality=Cardinality.ONE_TO_MANY,
         cross_filter_direction=CrossFilterDirection.SINGLE,
         is_active=True,
@@ -253,10 +253,10 @@ def build_wiq_schema(config: Optional[PipelineConfig] = None) -> SemanticSchema:
                     col.is_primary_key = True
                     break
         elif table.name == "dim_occupations":
-            table.primary_key = "occupation_id"
+            table.primary_key = "occupation_group_id"
             # Mark the column as primary key
             for col in table.columns:
-                if col.name == "occupation_id":
+                if col.name == "occupation_group_id":
                     col.is_primary_key = True
                     break
 
@@ -267,10 +267,10 @@ def build_wiq_schema(config: Optional[PipelineConfig] = None) -> SemanticSchema:
                 col.is_foreign_key = True
                 col.references_table = "dim_noc"
                 col.references_column = "unit_group_id"
-            elif col.name == "occupation_id" and table.name not in ("dim_occupations", "dim_noc"):
+            elif col.name == "occupation_group_id" and table.name != "dim_occupations":
                 col.is_foreign_key = True
                 col.references_table = "dim_occupations"
-                col.references_column = "occupation_id"
+                col.references_column = "occupation_group_id"
 
     # Create schema (not yet validated)
     schema = SemanticSchema(
