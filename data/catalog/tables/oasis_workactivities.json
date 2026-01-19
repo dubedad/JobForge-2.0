@@ -1,0 +1,641 @@
+{
+  "table_name": "oasis_workactivities",
+  "layer": "gold",
+  "domain": "general",
+  "file_path": "data\\gold\\oasis_workactivities.parquet",
+  "row_count": 900,
+  "column_count": 44,
+  "file_size_bytes": 50112,
+  "schema_version": "1.0.0",
+  "created_at": "2026-01-19T06:44:38.707049+00:00",
+  "updated_at": "2026-01-19T06:44:38.707049+00:00",
+  "description": "Data table",
+  "business_purpose": "General data storage",
+  "data_owner": "JobForge WiQ Pipeline",
+  "data_steward": null,
+  "upstream_tables": [],
+  "downstream_tables": [],
+  "transform_script": null,
+  "retention_days": null,
+  "classification": "internal",
+  "columns": [
+    {
+      "name": "unit_group_id",
+      "data_type": "VARCHAR",
+      "nullable": true,
+      "description": "Foreign key referencing dim_noc.unit_group_id",
+      "glossary_term_id": null,
+      "source_columns": [
+        "dim_noc.unit_group_id"
+      ],
+      "pii_classification": null,
+      "example_values": [
+        "00010",
+        "00011",
+        "00012"
+      ]
+    },
+    {
+      "name": "noc_element_code",
+      "data_type": "VARCHAR",
+      "nullable": true,
+      "description": "Column of type VARCHAR",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "00",
+        "00",
+        "00"
+      ]
+    },
+    {
+      "name": "oasis_code",
+      "data_type": "VARCHAR",
+      "nullable": true,
+      "description": "Column of type VARCHAR",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "00010.00",
+        "00011.00",
+        "00012.00"
+      ]
+    },
+    {
+      "name": "oasis_label",
+      "data_type": "VARCHAR",
+      "nullable": true,
+      "description": "Column of type VARCHAR",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "Legislators",
+        "Senior government managers and officials",
+        "Senior managers - financial, communications and other business services"
+      ]
+    },
+    {
+      "name": "Estimate Quantifiable Charact. of Prod., Events or Info.",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "4",
+        "5",
+        "5"
+      ]
+    },
+    {
+      "name": "Getting Information",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "5",
+        "5",
+        "5"
+      ]
+    },
+    {
+      "name": "Identifying Objects, Actions, and Events",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "4",
+        "4",
+        "4"
+      ]
+    },
+    {
+      "name": "Inspecting Equipment, Structures, or Material",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "name": "Monitoring Processes, Materials, or Surroundings ",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "4",
+        "4",
+        "4"
+      ]
+    },
+    {
+      "name": "Controlling Machines and Processes",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "0",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "name": "Developing Technical Instructions",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "0",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "name": "Clerical Activities",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "4",
+        "4",
+        "4"
+      ]
+    },
+    {
+      "name": "Electronic Maintenance",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "0",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "name": "Handling and Moving Objects",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "name": "Interacting with Computers",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "3",
+        "3",
+        "4"
+      ]
+    },
+    {
+      "name": "Managing Resources",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "5",
+        "5",
+        "5"
+      ]
+    },
+    {
+      "name": "Mechanical Maintenance",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "0",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "name": "Operating Vehicles, Mechanized Devices, or Equipment",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "0",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "name": "Performing General Physical Activities",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "name": "Processing Information",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "5",
+        "5",
+        "5"
+      ]
+    },
+    {
+      "name": "Analyzing Data or Information",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "5",
+        "5",
+        "5"
+      ]
+    },
+    {
+      "name": "Developing Objectives and Strategies",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "5",
+        "5",
+        "5"
+      ]
+    },
+    {
+      "name": "Evaluating Information to Determine Compliance with Standards",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "5",
+        "5",
+        "5"
+      ]
+    },
+    {
+      "name": "Judging Quality",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "5",
+        "5",
+        "5"
+      ]
+    },
+    {
+      "name": "Making Decisions",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "5",
+        "5",
+        "5"
+      ]
+    },
+    {
+      "name": "Planning and Organizing",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "5",
+        "5",
+        "5"
+      ]
+    },
+    {
+      "name": "Scheduling Work and Activities",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "4",
+        "3",
+        "3"
+      ]
+    },
+    {
+      "name": "Thinking Creatively",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "4",
+        "4",
+        "4"
+      ]
+    },
+    {
+      "name": "Using New Relevant Knowledge",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "4",
+        "4",
+        "4"
+      ]
+    },
+    {
+      "name": "Assisting and Caring for Others",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "2",
+        "2",
+        "2"
+      ]
+    },
+    {
+      "name": "Coaching and Developing Others",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "5",
+        "5",
+        "5"
+      ]
+    },
+    {
+      "name": "Communicating with Persons Outside Organization",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "5",
+        "5",
+        "5"
+      ]
+    },
+    {
+      "name": "Communicating with Coworkers",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "5",
+        "5",
+        "5"
+      ]
+    },
+    {
+      "name": "Coordinating the Work and Activities of Others",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "5",
+        "5",
+        "5"
+      ]
+    },
+    {
+      "name": "Establishing and Maintaining Interpersonal Relationships",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "5",
+        "5",
+        "5"
+      ]
+    },
+    {
+      "name": "Interpreting the Meaning of Information for Others",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "5",
+        "5",
+        "5"
+      ]
+    },
+    {
+      "name": "Performing for or Working Directly with the Public",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "4",
+        "3",
+        "3"
+      ]
+    },
+    {
+      "name": "Providing Consultation and Advice",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "5",
+        "5",
+        "5"
+      ]
+    },
+    {
+      "name": "Resolving Conflicts and Negotiating with Others",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "5",
+        "5",
+        "5"
+      ]
+    },
+    {
+      "name": "Selling or Influencing Others",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "5",
+        "5",
+        "5"
+      ]
+    },
+    {
+      "name": "Staffing ",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "5",
+        "5",
+        "5"
+      ]
+    },
+    {
+      "name": "Supervising Subordinates",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "5",
+        "5",
+        "5"
+      ]
+    },
+    {
+      "name": "Team Building",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "5",
+        "5",
+        "5"
+      ]
+    },
+    {
+      "name": "Training and Teaching ",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "3",
+        "4",
+        "4"
+      ]
+    }
+  ]
+}

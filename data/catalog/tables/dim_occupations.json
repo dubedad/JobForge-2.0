@@ -1,0 +1,93 @@
+{
+  "table_name": "dim_occupations",
+  "layer": "gold",
+  "domain": "reference",
+  "file_path": "data\\gold\\dim_occupations.parquet",
+  "row_count": 212,
+  "column_count": 5,
+  "file_size_bytes": 11441,
+  "schema_version": "1.0.0",
+  "created_at": "2026-01-19T06:44:38.535392+00:00",
+  "updated_at": "2026-01-19T06:44:38.535392+00:00",
+  "description": "Reference dimension data",
+  "business_purpose": "Provides reference data for dimensional analysis",
+  "data_owner": "JobForge WiQ Pipeline",
+  "data_steward": null,
+  "upstream_tables": [],
+  "downstream_tables": [],
+  "transform_script": null,
+  "retention_days": null,
+  "classification": "internal",
+  "columns": [
+    {
+      "name": "job_family_en",
+      "data_type": "VARCHAR",
+      "nullable": true,
+      "description": "Column of type VARCHAR",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "",
+        "Administrative Support",
+        "Corporate Administration"
+      ]
+    },
+    {
+      "name": "job_family_fr",
+      "data_type": "VARCHAR",
+      "nullable": true,
+      "description": "Column of type VARCHAR",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "",
+        "Soutien administratif",
+        "Administration ministérielle"
+      ]
+    },
+    {
+      "name": "job_function_en",
+      "data_type": "VARCHAR",
+      "nullable": true,
+      "description": "Column of type VARCHAR",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "",
+        "Administration",
+        "Administration"
+      ]
+    },
+    {
+      "name": "job_function_fr",
+      "data_type": "VARCHAR",
+      "nullable": true,
+      "description": "Column of type VARCHAR",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "",
+        "Administration",
+        "Administration"
+      ]
+    },
+    {
+      "name": "occupation_group_id",
+      "data_type": "VARCHAR",
+      "nullable": false,
+      "description": "Primary key",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "76592649",
+        "11110429",
+        "57727625"
+      ]
+    }
+  ]
+}

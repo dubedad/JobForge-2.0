@@ -1,0 +1,95 @@
+{
+  "table_name": "element_exclusions",
+  "layer": "gold",
+  "domain": "general",
+  "file_path": "data\\gold\\element_exclusions.parquet",
+  "row_count": 3074,
+  "column_count": 5,
+  "file_size_bytes": 21432,
+  "schema_version": "1.0.0",
+  "created_at": "2026-01-19T06:44:38.587004+00:00",
+  "updated_at": "2026-01-19T06:44:38.587004+00:00",
+  "description": "Data table",
+  "business_purpose": "General data storage",
+  "data_owner": "JobForge WiQ Pipeline",
+  "data_steward": null,
+  "upstream_tables": [],
+  "downstream_tables": [],
+  "transform_script": null,
+  "retention_days": null,
+  "classification": "internal",
+  "columns": [
+    {
+      "name": "unit_group_id",
+      "data_type": "VARCHAR",
+      "nullable": true,
+      "description": "Foreign key referencing dim_noc.unit_group_id",
+      "glossary_term_id": null,
+      "source_columns": [
+        "dim_noc.unit_group_id"
+      ],
+      "pii_classification": null,
+      "example_values": [
+        "00010",
+        "00010",
+        "10010"
+      ]
+    },
+    {
+      "name": "noc_element_code",
+      "data_type": "VARCHAR",
+      "nullable": true,
+      "description": "Column of type VARCHAR",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "00",
+        "00",
+        "00"
+      ]
+    },
+    {
+      "name": "oasis_profile_code",
+      "data_type": "VARCHAR",
+      "nullable": true,
+      "description": "Column of type VARCHAR",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "00010.00",
+        "00010.00",
+        "10010.00"
+      ]
+    },
+    {
+      "name": "Excluded code",
+      "data_type": "DOUBLE",
+      "nullable": true,
+      "description": "Column of type DOUBLE",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "11.0",
+        "13.0",
+        "10029.0"
+      ]
+    },
+    {
+      "name": "Job title",
+      "data_type": "VARCHAR",
+      "nullable": true,
+      "description": "Column of type VARCHAR",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "commissioner - government services",
+        "chief executive officer (CEO) - health, education, social and community services and membership organizations",
+        "accounting firm manager"
+      ]
+    }
+  ]
+}

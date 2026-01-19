@@ -1,0 +1,193 @@
+{
+  "table_name": "job_architecture",
+  "layer": "gold",
+  "domain": "general",
+  "file_path": "data\\gold\\job_architecture.parquet",
+  "row_count": 1987,
+  "column_count": 12,
+  "file_size_bytes": 70916,
+  "schema_version": "1.0.0",
+  "created_at": "2026-01-19T06:44:38.652048+00:00",
+  "updated_at": "2026-01-19T06:44:38.652048+00:00",
+  "description": "Data table",
+  "business_purpose": "General data storage",
+  "data_owner": "JobForge WiQ Pipeline",
+  "data_steward": null,
+  "upstream_tables": [],
+  "downstream_tables": [],
+  "transform_script": null,
+  "retention_days": null,
+  "classification": "internal",
+  "columns": [
+    {
+      "name": "jt_id",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "1",
+        "2",
+        "3"
+      ]
+    },
+    {
+      "name": "unit_group_id",
+      "data_type": "VARCHAR",
+      "nullable": true,
+      "description": "Foreign key referencing dim_noc.unit_group_id",
+      "glossary_term_id": null,
+      "source_columns": [
+        "dim_noc.unit_group_id"
+      ],
+      "pii_classification": null,
+      "example_values": [
+        "00011",
+        "13110",
+        "14100"
+      ]
+    },
+    {
+      "name": "job_title_en",
+      "data_type": "VARCHAR",
+      "nullable": true,
+      "description": "Column of type VARCHAR",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "Assistant Deputy Minister - Administration",
+        "Administrative Assistant",
+        "Administrative Clerk"
+      ]
+    },
+    {
+      "name": "job_title_fr",
+      "data_type": "VARCHAR",
+      "nullable": true,
+      "description": "Column of type VARCHAR",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "Sous-ministre adjoint(e) - Administration",
+        "Adjoint(e) administratif(ive)",
+        "Commis administratif(ive)"
+      ]
+    },
+    {
+      "name": "job_function_en",
+      "data_type": "VARCHAR",
+      "nullable": true,
+      "description": "Column of type VARCHAR",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "Administration",
+        "Administration",
+        "Administration"
+      ]
+    },
+    {
+      "name": "job_function_fr",
+      "data_type": "VARCHAR",
+      "nullable": true,
+      "description": "Column of type VARCHAR",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "Administration",
+        "Administration",
+        "Administration"
+      ]
+    },
+    {
+      "name": "job_family_en",
+      "data_type": "VARCHAR",
+      "nullable": true,
+      "description": "Column of type VARCHAR",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "General Administration",
+        "Administrative Support",
+        "Administrative Support"
+      ]
+    },
+    {
+      "name": "job_family_fr",
+      "data_type": "VARCHAR",
+      "nullable": true,
+      "description": "Column of type VARCHAR",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "Administration générale",
+        "Soutien administratif",
+        "Soutien administratif"
+      ]
+    },
+    {
+      "name": "managerial_level_en",
+      "data_type": "VARCHAR",
+      "nullable": true,
+      "description": "Column of type VARCHAR",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "Assistant Deputy Minister or equivalent",
+        "Employee",
+        "Employee"
+      ]
+    },
+    {
+      "name": "managerial_level_fr",
+      "data_type": "VARCHAR",
+      "nullable": true,
+      "description": "Column of type VARCHAR",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "Sous-ministre adjoint(e) ou équivalent",
+        "Employé(e)",
+        "Employé(e)"
+      ]
+    },
+    {
+      "name": "noc_2021_uid",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "11",
+        "13110",
+        "14100"
+      ]
+    },
+    {
+      "name": "noc_2021_title",
+      "data_type": "VARCHAR",
+      "nullable": true,
+      "description": "Column of type VARCHAR",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "Senior government managers and officials",
+        "Administrative Assistants",
+        "General office support workers"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1005 @@
+{
+  "table_name": "oasis_workcontext",
+  "layer": "gold",
+  "domain": "general",
+  "file_path": "data\\gold\\oasis_workcontext.parquet",
+  "row_count": 900,
+  "column_count": 70,
+  "file_size_bytes": 66412,
+  "schema_version": "1.0.0",
+  "created_at": "2026-01-19T06:44:38.720674+00:00",
+  "updated_at": "2026-01-19T06:44:38.720674+00:00",
+  "description": "Data table",
+  "business_purpose": "General data storage",
+  "data_owner": "JobForge WiQ Pipeline",
+  "data_steward": null,
+  "upstream_tables": [],
+  "downstream_tables": [],
+  "transform_script": null,
+  "retention_days": null,
+  "classification": "internal",
+  "columns": [
+    {
+      "name": "unit_group_id",
+      "data_type": "VARCHAR",
+      "nullable": true,
+      "description": "Foreign key referencing dim_noc.unit_group_id",
+      "glossary_term_id": null,
+      "source_columns": [
+        "dim_noc.unit_group_id"
+      ],
+      "pii_classification": null,
+      "example_values": [
+        "00010",
+        "00011",
+        "00012"
+      ]
+    },
+    {
+      "name": "noc_element_code",
+      "data_type": "VARCHAR",
+      "nullable": true,
+      "description": "Column of type VARCHAR",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "00",
+        "00",
+        "00"
+      ]
+    },
+    {
+      "name": "oasis_code",
+      "data_type": "VARCHAR",
+      "nullable": true,
+      "description": "Column of type VARCHAR",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "00010.00",
+        "00011.00",
+        "00012.00"
+      ]
+    },
+    {
+      "name": "oasis_label",
+      "data_type": "VARCHAR",
+      "nullable": true,
+      "description": "Column of type VARCHAR",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "Legislators",
+        "Senior government managers and officials",
+        "Senior managers - financial, communications and other business services"
+      ]
+    },
+    {
+      "name": "Automation",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "1",
+        "2",
+        "2"
+      ]
+    },
+    {
+      "name": "Competition",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "5",
+        "5",
+        "5"
+      ]
+    },
+    {
+      "name": "Consequence of Error",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "3",
+        "4",
+        "4"
+      ]
+    },
+    {
+      "name": "Freedom to Make Decisions",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "5",
+        "5",
+        "5"
+      ]
+    },
+    {
+      "name": "Frequency of Decision Making",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "5",
+        "5",
+        "5"
+      ]
+    },
+    {
+      "name": "Impact of Decisions",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "5",
+        "5",
+        "5"
+      ]
+    },
+    {
+      "name": "Pace Determined by Speed of Equipment",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "1",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "name": "Precision",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "4",
+        "4",
+        "4"
+      ]
+    },
+    {
+      "name": "Structured versus Unstructured Work",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "5",
+        "5",
+        "5"
+      ]
+    },
+    {
+      "name": "Tasks Repetition",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "3",
+        "2",
+        "2"
+      ]
+    },
+    {
+      "name": "Time Pressure",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "4",
+        "5",
+        "5"
+      ]
+    },
+    {
+      "name": "Time Pressure2",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "4",
+        "5",
+        "5"
+      ]
+    },
+    {
+      "name": "Work Schedule",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "2",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "name": "Work Week Duration",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "3",
+        "3",
+        "3"
+      ]
+    },
+    {
+      "name": "Biological Agents",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "0",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "name": "Dangerous Chemical Substances",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "0",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "name": "Extremely Bright or Inadequate Lighting",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "1",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "name": "Extreme Temperatures",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "1",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "name": "Hazardous Conditions",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "0",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "name": "Hazardous Equipment, Machinery, Tools",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "0",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "name": "High Places",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "0",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "name": "In an Enclosed Vehicle or Equipment",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "2",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "name": "In an Enclosed Vehicle or Equipment3",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "1",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "name": "In an Open Vehicle or Equipment",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "0",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "name": "In an Open Vehicle or Equipment4",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "0",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "name": "Indoors, Environmentally Controlled",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "5",
+        "5",
+        "5"
+      ]
+    },
+    {
+      "name": "Indoors, Environmentally Controlled5",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "5",
+        "5",
+        "5"
+      ]
+    },
+    {
+      "name": "Indoors, Not Environmentally Controlled",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "0",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "name": "Indoors, Not Environmentally Controlled6",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "0",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "name": "Outside, Exposed to Weather",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "0",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "name": "Outside, Exposed to Weather7",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "0",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "name": "Outside, Under Cover",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "1",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "name": "Outside, Under Cover8",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "1",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "name": "Physical Proximity",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "3",
+        "3",
+        "3"
+      ]
+    },
+    {
+      "name": "Radiation ",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "0",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "name": "Sound and Noise ",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "2",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "name": "Sound and Noise 9",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "name": "Specialized Safety Equipment",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "0",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "name": "Standard Safety Equipment",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "0",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "name": "Vibration",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "0",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "name": "Skin Injury",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "0",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "name": "Bending or Twisting the Body",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "name": "Climbing ",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "0",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "name": "Cramped Work Space, Awkward Positions",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "0",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "name": "Handling Material Manually",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "name": "Keeping or Regaining Balance",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "0",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "name": "Making Repetitive Motions",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "2",
+        "2",
+        "2"
+      ]
+    },
+    {
+      "name": "Sitting",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "4",
+        "4",
+        "4"
+      ]
+    },
+    {
+      "name": "Standing",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "2",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "name": "Walking and Running",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "2",
+        "2",
+        "2"
+      ]
+    },
+    {
+      "name": "Conflict Situations",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "4",
+        "3",
+        "3"
+      ]
+    },
+    {
+      "name": "Contact With Others",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "5",
+        "5",
+        "5"
+      ]
+    },
+    {
+      "name": "Contact With Others10",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "4",
+        "4",
+        "4"
+      ]
+    },
+    {
+      "name": "Coordinating or Leading Others",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "5",
+        "5",
+        "5"
+      ]
+    },
+    {
+      "name": "Deal With External Customers",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "4",
+        "4",
+        "4"
+      ]
+    },
+    {
+      "name": "Deal With Physically Aggressive People",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "name": "Dealing With Unpleasant or Angry People",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "3",
+        "3",
+        "3"
+      ]
+    },
+    {
+      "name": "Electronic Mail",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "5",
+        "5",
+        "5"
+      ]
+    },
+    {
+      "name": "Face-to-Face Discussions",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "4",
+        "4",
+        "4"
+      ]
+    },
+    {
+      "name": "Written Communications",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "5",
+        "5",
+        "5"
+      ]
+    },
+    {
+      "name": "Public Speaking",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "3",
+        "3",
+        "3"
+      ]
+    },
+    {
+      "name": "Responsibility for Outcomes and Results of Other Workers",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "4",
+        "5",
+        "5"
+      ]
+    },
+    {
+      "name": "Responsible for Others' Health and Safety",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "3",
+        "4",
+        "4"
+      ]
+    },
+    {
+      "name": "Telephone",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "5",
+        "5",
+        "5"
+      ]
+    },
+    {
+      "name": "Work With Work Group or Team",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "5",
+        "5",
+        "5"
+      ]
+    },
+    {
+      "name": "Work With Work Group or Team11",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "5",
+        "5",
+        "5"
+      ]
+    }
+  ]
+}

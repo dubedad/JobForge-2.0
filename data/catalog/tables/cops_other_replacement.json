@@ -1,0 +1,235 @@
+{
+  "table_name": "cops_other_replacement",
+  "layer": "gold",
+  "domain": "forecasting",
+  "file_path": "data\\gold\\cops_other_replacement.parquet",
+  "row_count": 516,
+  "column_count": 15,
+  "file_size_bytes": 31001,
+  "schema_version": "1.0.0",
+  "created_at": "2026-01-19T06:44:38.467897+00:00",
+  "updated_at": "2026-01-19T06:44:38.467897+00:00",
+  "description": "Forecasting and projection data",
+  "business_purpose": "Supports workforce forecasting and labour market analysis",
+  "data_owner": "JobForge WiQ Pipeline",
+  "data_steward": null,
+  "upstream_tables": [],
+  "downstream_tables": [],
+  "transform_script": null,
+  "retention_days": null,
+  "classification": "internal",
+  "columns": [
+    {
+      "name": "unit_group_id",
+      "data_type": "VARCHAR",
+      "nullable": true,
+      "description": "Foreign key referencing dim_noc.unit_group_id",
+      "glossary_term_id": null,
+      "source_columns": [
+        "dim_noc.unit_group_id"
+      ],
+      "pii_classification": null,
+      "example_values": [
+        "00010",
+        "00011",
+        "00012"
+      ]
+    },
+    {
+      "name": "code",
+      "data_type": "VARCHAR",
+      "nullable": true,
+      "description": "Column of type VARCHAR",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "00010",
+        "00011",
+        "00012"
+      ]
+    },
+    {
+      "name": "occupation_name_en",
+      "data_type": "VARCHAR",
+      "nullable": true,
+      "description": "Column of type VARCHAR",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "Legislators",
+        "Senior government managers and officials",
+        "Senior managers - financial, communications and other business services"
+      ]
+    },
+    {
+      "name": "occupation_name_fr",
+      "data_type": "VARCHAR",
+      "nullable": true,
+      "description": "Column of type VARCHAR",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "Membres des corps législatifs",
+        "Cadres supérieurs/cadres supérieures - administration publique",
+        "Cadres supérieurs/cadres supérieures - services financiers, communications et autres services aux entreprises"
+      ]
+    },
+    {
+      "name": "2023",
+      "data_type": "VARCHAR",
+      "nullable": true,
+      "description": "Column of type VARCHAR",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "100",
+        "0",
+        "400"
+      ]
+    },
+    {
+      "name": "2024",
+      "data_type": "VARCHAR",
+      "nullable": true,
+      "description": "Column of type VARCHAR",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "100",
+        "0",
+        "400"
+      ]
+    },
+    {
+      "name": "2025",
+      "data_type": "VARCHAR",
+      "nullable": true,
+      "description": "Column of type VARCHAR",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "100",
+        "0",
+        "300"
+      ]
+    },
+    {
+      "name": "2026",
+      "data_type": "VARCHAR",
+      "nullable": true,
+      "description": "Column of type VARCHAR",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "100",
+        "0",
+        "400"
+      ]
+    },
+    {
+      "name": "2027",
+      "data_type": "VARCHAR",
+      "nullable": true,
+      "description": "Column of type VARCHAR",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "100",
+        "0",
+        "400"
+      ]
+    },
+    {
+      "name": "2028",
+      "data_type": "VARCHAR",
+      "nullable": true,
+      "description": "Column of type VARCHAR",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "100",
+        "0",
+        "400"
+      ]
+    },
+    {
+      "name": "2029",
+      "data_type": "VARCHAR",
+      "nullable": true,
+      "description": "Column of type VARCHAR",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "100",
+        "0",
+        "400"
+      ]
+    },
+    {
+      "name": "2030",
+      "data_type": "VARCHAR",
+      "nullable": true,
+      "description": "Column of type VARCHAR",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "100",
+        "0",
+        "400"
+      ]
+    },
+    {
+      "name": "2031",
+      "data_type": "VARCHAR",
+      "nullable": true,
+      "description": "Column of type VARCHAR",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "100",
+        "0",
+        "400"
+      ]
+    },
+    {
+      "name": "2032",
+      "data_type": "VARCHAR",
+      "nullable": true,
+      "description": "Column of type VARCHAR",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "100",
+        "0",
+        "400"
+      ]
+    },
+    {
+      "name": "2033",
+      "data_type": "VARCHAR",
+      "nullable": true,
+      "description": "Column of type VARCHAR",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "100",
+        "0",
+        "400"
+      ]
+    }
+  ]
+}

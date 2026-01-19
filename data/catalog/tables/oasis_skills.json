@@ -1,0 +1,543 @@
+{
+  "table_name": "oasis_skills",
+  "layer": "gold",
+  "domain": "general",
+  "file_path": "data\\gold\\oasis_skills.parquet",
+  "row_count": 900,
+  "column_count": 37,
+  "file_size_bytes": 41553,
+  "schema_version": "1.0.0",
+  "created_at": "2026-01-19T06:44:38.693048+00:00",
+  "updated_at": "2026-01-19T06:44:38.693048+00:00",
+  "description": "Data table",
+  "business_purpose": "General data storage",
+  "data_owner": "JobForge WiQ Pipeline",
+  "data_steward": null,
+  "upstream_tables": [],
+  "downstream_tables": [],
+  "transform_script": null,
+  "retention_days": null,
+  "classification": "internal",
+  "columns": [
+    {
+      "name": "unit_group_id",
+      "data_type": "VARCHAR",
+      "nullable": true,
+      "description": "Foreign key referencing dim_noc.unit_group_id",
+      "glossary_term_id": null,
+      "source_columns": [
+        "dim_noc.unit_group_id"
+      ],
+      "pii_classification": null,
+      "example_values": [
+        "00010",
+        "00011",
+        "00012"
+      ]
+    },
+    {
+      "name": "noc_element_code",
+      "data_type": "VARCHAR",
+      "nullable": true,
+      "description": "Column of type VARCHAR",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "00",
+        "00",
+        "00"
+      ]
+    },
+    {
+      "name": "oasis_code",
+      "data_type": "VARCHAR",
+      "nullable": true,
+      "description": "Column of type VARCHAR",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "00010.00",
+        "00011.00",
+        "00012.00"
+      ]
+    },
+    {
+      "name": "oasis_label",
+      "data_type": "VARCHAR",
+      "nullable": true,
+      "description": "Column of type VARCHAR",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "Legislators",
+        "Senior government managers and officials",
+        "Senior managers - financial, communications and other business services"
+      ]
+    },
+    {
+      "name": "Reading Comprehension",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "5",
+        "5",
+        "5"
+      ]
+    },
+    {
+      "name": "Writing  ",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "4",
+        "5",
+        "5"
+      ]
+    },
+    {
+      "name": "Numeracy ",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "4",
+        "4",
+        "4"
+      ]
+    },
+    {
+      "name": " Digital Literacy",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "4",
+        "4",
+        "4"
+      ]
+    },
+    {
+      "name": "Oral Communication: Active Listening   ",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "4",
+        "4",
+        "4"
+      ]
+    },
+    {
+      "name": "Oral Communication: Oral Comprehension   ",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "5",
+        "5",
+        "5"
+      ]
+    },
+    {
+      "name": "Oral Communication: Oral Expression ",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "5",
+        "5",
+        "5"
+      ]
+    },
+    {
+      "name": "Critical Thinking",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "5",
+        "5",
+        "5"
+      ]
+    },
+    {
+      "name": "Decision Making",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "5",
+        "5",
+        "5"
+      ]
+    },
+    {
+      "name": "Evaluation",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "5",
+        "5",
+        "5"
+      ]
+    },
+    {
+      "name": "Learning and Teaching Strategies",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "5",
+        "5",
+        "5"
+      ]
+    },
+    {
+      "name": "Problem Solving",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "5",
+        "5",
+        "5"
+      ]
+    },
+    {
+      "name": "Systems Analysis",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "5",
+        "5",
+        "5"
+      ]
+    },
+    {
+      "name": "Digital Production",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "0",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "name": "Preventative Maintenance",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "0",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "name": "Equipment and Tool Selection",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "0",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "name": "Operation and Control",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "0",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "name": "Operation Monitoring of Machinery and Equipment",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "0",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "name": "Quality Control Testing",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "0",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "name": "Repairing",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "0",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "name": "Setting up",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "0",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "name": "Product Design",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "0",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "name": "Troubleshooting",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "0",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "name": "Management of Financial Resources",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "5",
+        "5",
+        "5"
+      ]
+    },
+    {
+      "name": "Management of Material Resources",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "5",
+        "5",
+        "5"
+      ]
+    },
+    {
+      "name": "Management of Personnel Resources",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "5",
+        "5",
+        "5"
+      ]
+    },
+    {
+      "name": "Monitoring",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "5",
+        "5",
+        "5"
+      ]
+    },
+    {
+      "name": "Time Management",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "5",
+        "5",
+        "5"
+      ]
+    },
+    {
+      "name": "Coordinating",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "5",
+        "5",
+        "5"
+      ]
+    },
+    {
+      "name": "Instructing",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "4",
+        "4",
+        "4"
+      ]
+    },
+    {
+      "name": "Negotiating",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "5",
+        "5",
+        "5"
+      ]
+    },
+    {
+      "name": "Persuading",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "5",
+        "5",
+        "5"
+      ]
+    },
+    {
+      "name": "Social Perceptiveness",
+      "data_type": "BIGINT",
+      "nullable": true,
+      "description": "Column of type BIGINT",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "5",
+        "4",
+        "4"
+      ]
+    }
+  ]
+}

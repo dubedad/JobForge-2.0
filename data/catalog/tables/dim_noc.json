@@ -1,0 +1,93 @@
+{
+  "table_name": "dim_noc",
+  "layer": "gold",
+  "domain": "reference",
+  "file_path": "data\\gold\\dim_noc.parquet",
+  "row_count": 516,
+  "column_count": 5,
+  "file_size_bytes": 70346,
+  "schema_version": "1.0.0",
+  "created_at": "2026-01-19T06:44:38.524389+00:00",
+  "updated_at": "2026-01-19T06:44:38.524389+00:00",
+  "description": "Reference dimension data",
+  "business_purpose": "Provides reference data for dimensional analysis",
+  "data_owner": "JobForge WiQ Pipeline",
+  "data_steward": null,
+  "upstream_tables": [],
+  "downstream_tables": [],
+  "transform_script": null,
+  "retention_days": null,
+  "classification": "internal",
+  "columns": [
+    {
+      "name": "unit_group_id",
+      "data_type": "VARCHAR",
+      "nullable": false,
+      "description": "Primary key",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "00010",
+        "00011",
+        "00012"
+      ]
+    },
+    {
+      "name": "noc_code",
+      "data_type": "VARCHAR",
+      "nullable": true,
+      "description": "Column of type VARCHAR",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "10",
+        "11",
+        "12"
+      ]
+    },
+    {
+      "name": "class_title",
+      "data_type": "VARCHAR",
+      "nullable": true,
+      "description": "Column of type VARCHAR",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "Legislators",
+        "Senior government managers and officials",
+        "Senior managers - financial, communications and other business services"
+      ]
+    },
+    {
+      "name": "class_definition",
+      "data_type": "VARCHAR",
+      "nullable": true,
+      "description": "Column of type VARCHAR",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "Legislators participate in the activities of a federal, provincial, territorial or local government legislative body or executive council, band council or school board as elected or appointed members.",
+        "Senior government managers and officials plan, organize, direct, control and evaluate, through middle managers, the major activities of municipal or regional governments or of provincial, territorial or federal departments, boards, agencies or commissions. They establish the direction to be taken by these organizations in accordance with legislation and policies made by elected representatives or legislative bodies.",
+        "Senior managers in financial, communications and other business services are usually appointed by a board of directors, to which they report. They work either alone or in conjunction with the board of directors to develop and establish objectives for the company, and to develop or approve policies and programs. They plan, organize, direct, control and evaluate, through middle managers, the operations of their organization in relation to established objectives. They work in establishments throughout the telecommunications, finance, insurance, real estate, and data processing, hosting and related services industries as well as other business service industries or they may own and operate their own business."
+      ]
+    },
+    {
+      "name": "hierarchical_structure",
+      "data_type": "VARCHAR",
+      "nullable": true,
+      "description": "Column of type VARCHAR",
+      "glossary_term_id": null,
+      "source_columns": [],
+      "pii_classification": null,
+      "example_values": [
+        "Unit Group",
+        "Unit Group",
+        "Unit Group"
+      ]
+    }
+  ]
+}

@@ -23,21 +23,24 @@ logger = structlog.get_logger(__name__)
 # Table type to domain mapping
 TABLE_TYPE_DOMAINS = {
     "fact": "forecasting",
-    "dim": "reference",
+    "dimension": "reference",
+    "dim": "reference",  # alias
     "bridge": "relationship",
 }
 
 # Table type to business description mapping
 TABLE_TYPE_DESCRIPTIONS = {
     "fact": "Forecasting and projection data",
-    "dim": "Reference dimension data",
+    "dimension": "Reference dimension data",
+    "dim": "Reference dimension data",  # alias
     "bridge": "Relationship mapping data",
 }
 
 # Table type to business purpose mapping
 TABLE_TYPE_PURPOSES = {
     "fact": "Supports workforce forecasting and labour market analysis",
-    "dim": "Provides reference data for dimensional analysis",
+    "dimension": "Provides reference data for dimensional analysis",
+    "dim": "Provides reference data for dimensional analysis",  # alias
     "bridge": "Maps relationships between entities",
 }
 
