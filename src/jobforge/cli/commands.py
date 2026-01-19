@@ -4,11 +4,13 @@ This module provides Typer-based CLI commands for the JobForge platform.
 
 Commands:
     stagegold: Deploy WiQ semantic model to Power BI
+    lineage: Answer lineage questions about the WiQ data pipeline
 
 Example:
     $ jobforge stagegold
     $ jobforge stagegold --dry-run
     $ jobforge stagegold --schema custom_schema.json
+    $ jobforge lineage "Where does dim_noc come from?"
 """
 
 from pathlib import Path
@@ -96,6 +98,53 @@ def stagegold(
 
     # Print deployment script for Claude Code to execute
     typer.echo(deployer.generate_deployment_script(schema_path))
+
+
+@app.command()
+def lineage(
+    question: str = typer.Argument(
+        ...,
+        help="Lineage question to answer (e.g., 'Where does dim_noc come from?')",
+    ),
+) -> None:
+    """Answer lineage questions about the WiQ data pipeline.
+
+    Query the lineage graph to understand data flow and provenance.
+    Supports natural language questions about upstream/downstream
+    dependencies, transformation paths, and full lineage.
+
+    Examples:
+        # Upstream lineage (where data comes from)
+        jobforge lineage "Where does dim_noc come from?"
+        jobforge lineage "What tables feed cops_employment?"
+
+        # Downstream lineage (what uses this data)
+        jobforge lineage "What depends on dim_noc?"
+        jobforge lineage "What does noc_structure feed?"
+
+        # Full lineage (both directions)
+        jobforge lineage "Show lineage for dim_noc"
+
+        # Transformation path
+        jobforge lineage "Path from dim_noc to dim_noc"
+    """
+    from rich.console import Console
+
+    from jobforge.governance import LineageGraph, LineageQueryEngine
+    from jobforge.pipeline.config import PipelineConfig
+
+    console = Console()
+
+    try:
+        config = PipelineConfig()
+        graph = LineageGraph(config)
+        engine = LineageQueryEngine(graph)
+
+        answer = engine.query(question)
+        console.print(answer)
+    except Exception as e:
+        console.print(f"[red]Error:[/red] {e}", style="bold")
+        raise typer.Exit(code=1)
 
 
 @app.command()
