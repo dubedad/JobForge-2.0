@@ -1,0 +1,6 @@
+JT_ID,Job_Title,Titre_de_poste,Job_Function,Fonction_professionnelle,Job_Family,Famille_d'emplois,Managerial_Level,Niveau_de_gestion,2021_NOC_UID,2021_NOC_Title,2016_NOC_UID,2016_NOC_Title,Match_Key
+1,Senior Policy Analyst,Analyste principal des politiques,Policy,Politiques,Policy Analysis,Analyse des politiques,Employee,Employe,41400,Policy analysts,4164,Policy analysts,1001
+2,Director of Finance,Directeur des finances,Finance,Finance,Financial Management,Gestion financiere,Director,Directeur,10010,Financial managers,0111,Financial managers,1002
+3,HR Advisor,Conseiller en RH,Human Resources,Ressources humaines,HR Advisory,Conseil en RH,Employee,Employe,11200,Human resources professionals,1121,Human resources professionals,1003
+4,IT Project Manager,Gestionnaire de projet TI,Information Technology,Technologie de l'information,Project Management,Gestion de projet,Manager,Gestionnaire,21231,Computer systems developers,2171,Computer systems developers,1004
+5,Administrative Assistant,Adjoint administratif,Administration,Administration,Administrative Support,Soutien administratif,Employee,Employe,12011,Administrative assistants,1241,Administrative assistants,1005
