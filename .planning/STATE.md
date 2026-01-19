@@ -6,17 +6,17 @@
 
 **Core Value:** Auditable provenance from source to output - every artifact traces back to authoritative sources with DADM compliance scoring.
 
-**Current Focus:** Phase 5 (Data Governance and Lineage) IN PROGRESS. LineageGraph built from 123 transition logs, enabling upstream/downstream queries.
+**Current Focus:** Phase 5 (Data Governance and Lineage) IN PROGRESS. Data Catalogue generated for 24 WiQ tables with column metadata, FK relationships, and sample values.
 
 ## Current Position
 
 **Phase:** 5 of 5 (Data Governance and Lineage)
-**Plan:** 1 of 3 complete
+**Plan:** 2 of 3 complete
 **Status:** In Progress
-**Last activity:** 2026-01-19 - Completed 05-01-PLAN.md (LineageGraph with NetworkX)
+**Last activity:** 2026-01-19 - Completed 05-02-PLAN.md (Data Catalogue Generation)
 
 ```
-[██████████████████████████████░░] 91% (10/11 plans)
+[█████████████████████████████████░] 97% (11/12 plans)
 ```
 
 ## Phases Overview
@@ -27,13 +27,13 @@
 | 2 | Data Ingestion | Complete (3/3 plans) |
 | 3 | WiQ Semantic Model | Complete (2/2 plans) |
 | 4 | Power BI Deployment | Complete (2/2 plans) |
-| 5 | Data Governance and Lineage | In Progress (1/3 plans) |
+| 5 | Data Governance and Lineage | In Progress (2/3 plans) |
 
 ## Performance Metrics
 
 | Metric | Value |
 |--------|-------|
-| Plans completed | 10 |
+| Plans completed | 11 |
 | Requirements delivered | 9/10 |
 | Phases completed | 4/5 |
 | Blockers encountered | 0 |
@@ -60,6 +60,8 @@
 | Filter 00000 aggregate | 00000 is "All occupations" aggregate, exclude from unit_group_id derivation | 02-03 |
 | Flexible column rename | Filter rename dict to only existing columns for varying Job Architecture CSVs | 02-03 |
 | Lineage node ID format | "{layer}.{table_name}" for unambiguous identification | 05-01 |
+| Dimension table_type mapping | WiQ schema uses "dimension" not "dim"; map to "reference" domain | 05-02 |
+| UTF-8 encoding for Windows | Explicit encoding="utf-8" required for JSON I/O on Windows | 05-02 |
 
 ### Technical Discoveries
 
@@ -89,13 +91,13 @@ None active.
 ### Last Session
 
 **Date:** 2026-01-19
-**Activity:** Completed 05-01-PLAN.md - Built LineageGraph with NetworkX
-**Outcome:** LineageGraph aggregates 123 transition logs into queryable DAG with upstream/downstream traversal. All tests pass.
+**Activity:** Completed 05-02-PLAN.md - Data Catalogue Generation
+**Outcome:** CatalogueGenerator produces 24 per-table JSON catalogues with column types, FK relationships, sample values. Fixed UTF-8 encoding for Windows. All 14 tests pass.
 
 ### Next Session Priorities
 
-1. Continue Phase 5: Plan 05-02 (LineageQueryEngine for natural language queries)
-2. Complete Phase 5: Plan 05-03 (Data Catalogue generation integration)
+1. Complete Phase 5: Plan 05-03 (Governance Dashboard/Reporting integration)
+2. Final project wrap-up and documentation
 
 ### Context for Claude
 
@@ -104,7 +106,7 @@ When resuming this project:
 - Phase 2 COMPLETE (3/3 plans) - Data ingestion
 - Phase 3 COMPLETE (2/2 plans) - WiQ semantic model
 - Phase 4 COMPLETE (2/2 plans) - Power BI deployment tooling
-- Phase 5 IN PROGRESS (1/3 plans) - Data Governance and Lineage
+- Phase 5 IN PROGRESS (2/3 plans) - Data Governance and Lineage
 - jobforge package installable with `pip install -e .`
 - PipelineEngine orchestrates medallion layer transitions
 - Layer classes: StagedLayer, BronzeLayer, SilverLayer, GoldLayer
@@ -112,14 +114,16 @@ When resuming this project:
 - Deployment: src/jobforge/deployment/ with mcp_client.py, deployer.py, ui.py, types.py
 - **Governance: src/jobforge/governance/ with graph.py, models.py, catalogue.py**
 - **LineageGraph: NetworkX DAG with get_upstream(), get_downstream(), get_path()**
+- **CatalogueGenerator: Produces 24 per-table JSON catalogues from WiQ schema + parquet**
 - CLI: /stagegold command via commands.py
 - CatalogManager: saves/loads table metadata, queries lineage logs
 - GoldQueryEngine: DuckDB SQL on gold parquet files
 - 123 lineage JSON files in data/catalog/lineage/
+- 24 table catalogue JSON files in data/catalog/tables/
 - WiQ schema exported to data/catalog/schemas/wiq_schema.json
-- Tests: 53+ total
+- Tests: 67+ total
 - Stack: Python 3.11, Polars 1.37+, DuckDB 1.4+, Pydantic 2.12+, structlog, pytest, Rich, NetworkX 3.0+
 
 ---
 *State initialized: 2026-01-18*
-*Session count: 9*
+*Session count: 10*
