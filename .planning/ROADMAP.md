@@ -79,12 +79,12 @@ Plans:
   3. TBS Occupational Groups page scraped with full provenance (URL, timestamp, extraction method)
   4. Embedded links on TBS page followed to retrieve occupational group metadata
   5. DIM Occupations schema extended with scraped fields, queryable in gold layer
-**Plans**: TBD
+**Plans**: 3 plans
 
 Plans:
-- [ ] 07-01: O*NET API integration for SOC-aligned attributes
-- [ ] 07-02: LLM-powered attribute imputation service
-- [ ] 07-03: TBS scraping with embedded link traversal and schema extension
+- [ ] 07-01-PLAN.md — O*NET API integration with NOC-SOC crosswalk and attribute adapter
+- [ ] 07-02-PLAN.md — LLM-powered attribute imputation service with structured outputs
+- [ ] 07-03-PLAN.md — TBS scraping with bilingual support and schema extension
 
 ### Phase 8: Description Generation
 **Goal**: Users can generate descriptions for job titles, families, and functions from multiple sources with clear provenance
@@ -141,7 +141,7 @@ Phases execute in numeric order: 6 -> 7 -> 8 -> 9 -> 10
 |-------|-----------|----------------|--------|-----------|
 | 1-5 | v1.0 | 13/13 | Complete | 2026-01-19 |
 | 6. Imputation Foundation | v2.0 | 2/2 | Complete | 2026-01-19 |
-| 7. External Data Integration | v2.0 | 0/3 | Not started | - |
+| 7. External Data Integration | v2.0 | 0/3 | Planned | - |
 | 8. Description Generation | v2.0 | 0/2 | Not started | - |
 | 9. Demo Infrastructure | v2.0 | 0/2 | Not started | - |
 | 10. Governance and Conversational | v2.0 | 0/2 | Not started | - |
