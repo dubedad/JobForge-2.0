@@ -256,22 +256,22 @@ def get_imputation_summary(imputed_df: pl.LazyFrame) -> dict:
     if source_level_col in cols:
         level_counts = (
             df.group_by(source_level_col)
-            .count()
+            .len()
             .to_dicts()
         )
         summary["rows_by_source_level"] = {
-            row[source_level_col]: row["count"] for row in level_counts
+            row[source_level_col]: row["len"] for row in level_counts
         }
 
     # Group by provenance
     if provenance_col in cols:
         prov_counts = (
             df.group_by(provenance_col)
-            .count()
+            .len()
             .to_dicts()
         )
         summary["rows_by_provenance"] = {
-            row[provenance_col]: row["count"] for row in prov_counts
+            row[provenance_col]: row["len"] for row in prov_counts
         }
 
     # Confidence statistics
