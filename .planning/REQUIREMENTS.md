@@ -18,19 +18,19 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Semantic Model
 
-- [ ] **WIQ-01**: Create WiQ schema with relationships and proper cardinality
+- [x] **WIQ-01**: Create WiQ schema with relationships and proper cardinality
 
 ### Power BI Deployment
 
-- [ ] **PBI-01**: `/stagegold` command deploys entire WiQ model to Power BI in one operation
+- [x] **PBI-01**: `/stagegold` command deploys entire WiQ model to Power BI in one operation
 
 ### Data Governance
 
-- [ ] **GOV-01**: Generate Data Catalogue for WiQ
+- [x] **GOV-01**: Generate Data Catalogue for WiQ
 
 ### Conversational Interface
 
-- [ ] **CONV-01**: WiQ can answer lineage queries (explain its own data pipeline)
+- [x] **CONV-01**: WiQ can answer lineage queries (explain its own data pipeline)
 
 ## v2 Requirements
 
@@ -93,10 +93,10 @@ Which phases cover which requirements. Updated during roadmap creation.
 | PIPE-04 | Phase 2: Data Ingestion | Complete |
 | PIPE-05 | Phase 2: Data Ingestion | Complete |
 | PIPE-06 | Phase 2: Data Ingestion | Complete |
-| WIQ-01 | Phase 3: WiQ Semantic Model | Pending |
-| PBI-01 | Phase 4: Power BI Deployment | Pending |
-| GOV-01 | Phase 5: Data Governance and Lineage | Pending |
-| CONV-01 | Phase 5: Data Governance and Lineage | Pending |
+| WIQ-01 | Phase 3: WiQ Semantic Model | Complete |
+| PBI-01 | Phase 4: Power BI Deployment | Complete |
+| GOV-01 | Phase 5: Data Governance and Lineage | Complete |
+| CONV-01 | Phase 5: Data Governance and Lineage | Complete |
 
 **Coverage:**
 - v1 requirements: 10 total
@@ -105,4 +105,4 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 ---
 *Requirements defined: 2026-01-18*
-*Last updated: 2026-01-18 - Phase 2 requirements complete*
+*Last updated: 2026-01-19 - All v1 requirements complete*
