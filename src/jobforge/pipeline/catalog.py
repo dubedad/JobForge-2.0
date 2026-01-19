@@ -114,7 +114,7 @@ class CatalogManager:
         tables_dir.mkdir(parents=True, exist_ok=True)
 
         metadata_path = tables_dir / f"{metadata.table_name}.json"
-        metadata_path.write_text(metadata.model_dump_json(indent=2))
+        metadata_path.write_text(metadata.model_dump_json(indent=2), encoding="utf-8")
 
         return metadata_path
 
@@ -135,7 +135,7 @@ class CatalogManager:
         if not metadata_path.exists():
             raise FileNotFoundError(f"Table metadata not found: {table_name}")
 
-        return TableMetadata.model_validate_json(metadata_path.read_text())
+        return TableMetadata.model_validate_json(metadata_path.read_text(encoding="utf-8"))
 
     def list_tables(self, layer: Optional[str] = None) -> list[str]:
         """List all tables in the catalog.
@@ -155,7 +155,7 @@ class CatalogManager:
         for json_file in tables_dir.glob("*.json"):
             if layer is not None:
                 # Load and check layer
-                metadata = TableMetadata.model_validate_json(json_file.read_text())
+                metadata = TableMetadata.model_validate_json(json_file.read_text(encoding="utf-8"))
                 if metadata.layer == layer:
                     table_names.append(json_file.stem)
             else:
@@ -181,7 +181,7 @@ class CatalogManager:
 
         logs = []
         for json_file in lineage_dir.glob("*.json"):
-            log = LayerTransitionLog.model_validate_json(json_file.read_text())
+            log = LayerTransitionLog.model_validate_json(json_file.read_text(encoding="utf-8"))
             if batch_id is None or log.batch_id == batch_id:
                 logs.append(log)
 
