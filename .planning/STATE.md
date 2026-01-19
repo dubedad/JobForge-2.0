@@ -68,9 +68,15 @@
 | Polars CSV type inference | Numeric-looking strings like "00010" are inferred as int64; must cast to Utf8 | 02-01 |
 | Polars float inference for decimals | "00010.00" is inferred as f64 (10.0); must reconstruct format from numeric value | 02-02 |
 
-### Todo Items (Deferred)
+### Pending Todos
 
-None yet.
+| Todo | Area | Created |
+|------|------|---------|
+| DADM traceability log for Directive compliance | governance | 2026-01-19 |
+| DAMA traceability log for DMBOK compliance | governance | 2026-01-19 |
+| Job classification log for Classification Policy compliance | governance | 2026-01-19 |
+
+*3 todos pending in `.planning/todos/pending/`*
 
 ### Blockers
 
