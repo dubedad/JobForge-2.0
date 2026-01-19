@@ -31,26 +31,34 @@ def ingest_job_architecture(
     Returns:
         Dict with gold_path, batch_id, and row counts
     """
+    source_path = Path(source_path)
     engine = PipelineEngine(config=config)
 
-    # Bronze: clean column names
+    # Full rename mapping for all possible columns
+    full_rename = {
+        "JT_ID": "jt_id",
+        "Job_Title": "job_title_en",
+        "Titre_de_poste": "job_title_fr",
+        "Job_Function": "job_function_en",
+        "Fonction_professionnelle": "job_function_fr",
+        "Job_Family": "job_family_en",
+        "Famille_d'emplois": "job_family_fr",
+        "Managerial_Level": "managerial_level_en",
+        "Niveau_de_gestion": "managerial_level_fr",
+        "2021_NOC_UID": "noc_2021_uid",
+        "2021_NOC_Title": "noc_2021_title",
+        "2016_NOC_UID": "noc_2016_uid",
+        "2016_NOC_Title": "noc_2016_title",
+        "Match_Key": "match_key",
+    }
+
+    # Read source columns and filter rename to only existing columns
+    source_cols = pl.scan_csv(source_path).collect_schema().names()
+    rename_existing = {k: v for k, v in full_rename.items() if k in source_cols}
+
+    # Bronze: clean column names (only rename columns that exist)
     bronze_schema = {
-        "rename": {
-            "JT_ID": "jt_id",
-            "Job_Title": "job_title_en",
-            "Titre_de_poste": "job_title_fr",
-            "Job_Function": "job_function_en",
-            "Fonction_professionnelle": "job_function_fr",
-            "Job_Family": "job_family_en",
-            "Famille_d'emplois": "job_family_fr",
-            "Managerial_Level": "managerial_level_en",
-            "Niveau_de_gestion": "managerial_level_fr",
-            "2021_NOC_UID": "noc_2021_uid",
-            "2021_NOC_Title": "noc_2021_title",
-            "2016_NOC_UID": "noc_2016_uid",
-            "2016_NOC_Title": "noc_2016_title",
-            "Match_Key": "match_key",
-        },
+        "rename": rename_existing,
     }
 
     # Silver transforms
