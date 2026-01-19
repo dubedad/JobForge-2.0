@@ -1,0 +1,11 @@
+Level,Hierarchical structure,Code - NOC 2021 V1.0,Class title,Class definition
+1,Broad occupational category,0,Legislative and senior management occupations,This broad occupational category comprises occupations concerned with formulating government policy
+5,Unit group,00010,Legislators,This unit group includes elected or appointed members of legislative bodies
+5,Unit group,00011,Senior government managers and officials,Senior government managers plan and direct organizational units
+5,Unit group,00012,Senior managers - financial and business services,Senior managers plan and direct operations of companies
+5,Unit group,00013,Senior managers - trade broadcasting and other services,Senior managers plan and direct operations of trade organizations
+5,Unit group,00014,Senior managers - health education social and community services,Senior managers plan and direct operations of health institutions
+5,Unit group,00015,Senior managers - construction transportation and production utilities,Senior managers plan and direct operations of construction companies
+5,Unit group,10010,Financial managers,Financial managers plan and direct the operation of financial departments
+5,Unit group,10011,Human resources managers,Human resources managers plan and direct the operations of human resources departments
+5,Unit group,10012,Purchasing managers,Purchasing managers plan and direct the activities of a purchasing department
