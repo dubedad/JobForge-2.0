@@ -10,11 +10,11 @@ Requirements for initial release. Each maps to roadmap phases.
 ### Data Pipeline
 
 - [x] **PIPE-01**: Implement medallion pipeline (staged -> bronze -> silver -> gold with parquet files)
-- [ ] **PIPE-02**: Ingest DIM NOC table
-- [ ] **PIPE-03**: Ingest NOC attribute tables (Element, Oasis)
-- [ ] **PIPE-04**: Ingest NOC COPS forecasting data
-- [ ] **PIPE-05**: Ingest Job Architecture table
-- [ ] **PIPE-06**: Ingest DIM Occupations (Occupational Groups) table
+- [x] **PIPE-02**: Ingest DIM NOC table
+- [x] **PIPE-03**: Ingest NOC attribute tables (Element, Oasis)
+- [x] **PIPE-04**: Ingest NOC COPS forecasting data
+- [x] **PIPE-05**: Ingest Job Architecture table
+- [x] **PIPE-06**: Ingest DIM Occupations (Occupational Groups) table
 
 ### Semantic Model
 
@@ -88,11 +88,11 @@ Which phases cover which requirements. Updated during roadmap creation.
 | Requirement | Phase | Status |
 |-------------|-------|--------|
 | PIPE-01 | Phase 1: Pipeline Infrastructure | Complete |
-| PIPE-02 | Phase 2: Data Ingestion | Pending |
-| PIPE-03 | Phase 2: Data Ingestion | Pending |
-| PIPE-04 | Phase 2: Data Ingestion | Pending |
-| PIPE-05 | Phase 2: Data Ingestion | Pending |
-| PIPE-06 | Phase 2: Data Ingestion | Pending |
+| PIPE-02 | Phase 2: Data Ingestion | Complete |
+| PIPE-03 | Phase 2: Data Ingestion | Complete |
+| PIPE-04 | Phase 2: Data Ingestion | Complete |
+| PIPE-05 | Phase 2: Data Ingestion | Complete |
+| PIPE-06 | Phase 2: Data Ingestion | Complete |
 | WIQ-01 | Phase 3: WiQ Semantic Model | Pending |
 | PBI-01 | Phase 4: Power BI Deployment | Pending |
 | GOV-01 | Phase 5: Data Governance and Lineage | Pending |
@@ -105,4 +105,4 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 ---
 *Requirements defined: 2026-01-18*
-*Last updated: 2026-01-18 after roadmap creation*
+*Last updated: 2026-01-18 - Phase 2 requirements complete*

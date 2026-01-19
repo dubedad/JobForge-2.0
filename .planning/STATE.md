@@ -34,7 +34,7 @@
 | Metric | Value |
 |--------|-------|
 | Plans completed | 6 |
-| Requirements delivered | 3/10 |
+| Requirements delivered | 6/10 |
 | Phases completed | 2/5 |
 | Blockers encountered | 0 |
 | Blockers resolved | 0 |
