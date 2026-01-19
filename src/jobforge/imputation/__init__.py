@@ -18,10 +18,22 @@ from jobforge.imputation.models import (
     ProvenanceEnum,
     ResolutionMethodEnum,
 )
+from jobforge.imputation.resolution import (
+    ResolutionContext,
+    build_resolution_context,
+    clear_resolution_cache,
+    resolve_job_title,
+)
 
 __all__ = [
+    # Models
     "ResolutionMethodEnum",
     "ProvenanceEnum",
     "NOCResolutionResult",
     "ImputedValue",
+    # Resolution service
+    "resolve_job_title",
+    "build_resolution_context",
+    "ResolutionContext",
+    "clear_resolution_cache",
 ]
