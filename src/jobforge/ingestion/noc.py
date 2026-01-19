@@ -43,6 +43,7 @@ def ingest_dim_noc(
         },
         "cast": {
             "level": pl.Int32,
+            "noc_code": pl.Utf8,  # Ensure NOC codes are strings for zero-padding
         },
     }
 

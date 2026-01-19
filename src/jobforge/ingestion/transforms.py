@@ -56,7 +56,7 @@ def normalize_noc_code(df: pl.LazyFrame, code_column: str = "Code") -> pl.LazyFr
     """
     return df.with_columns(
         pl.col(code_column)
-        .str.replace(r"\\..*$", "")  # Remove decimal portion if present
+        .str.replace(r"\..*$", "")  # Remove decimal portion if present
         .str.zfill(5)
         .alias("unit_group_id")
     )
