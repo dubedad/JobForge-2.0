@@ -32,6 +32,9 @@ dependencies = [
     "typer>=0.12.0",
 ]
 
+[project.scripts]
+jobforge = "jobforge.cli.commands:app"
+
 [project.optional-dependencies]
 dev = [
     "pytest>=8.0.0",
