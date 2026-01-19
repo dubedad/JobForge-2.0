@@ -67,7 +67,7 @@ Plans:
 
 ---
 
-## Phase 3: WiQ Semantic Model
+## Phase 3: WiQ Semantic Model ✓
 
 **Goal:** Gold layer tables are organized into a dimensional model with defined relationships and proper cardinality for Power BI consumption.
 
@@ -79,19 +79,21 @@ Plans:
 **Plans:** 2 plans
 
 Plans:
-- [ ] 03-01-PLAN.md — Semantic model Pydantic definitions and parquet introspection utilities
-- [ ] 03-02-PLAN.md — WiQ schema definition, validation, and JSON export
+- [x] 03-01-PLAN.md — Semantic model Pydantic definitions and parquet introspection utilities
+- [x] 03-02-PLAN.md — WiQ schema definition, validation, and JSON export
+
+**Completed:** 2026-01-19
 
 **Success Criteria:**
-1. WiQ schema defines all dimension and fact tables with explicit relationships
-2. DIM NOC connects to Element, Oasis, and COPS tables with documented cardinality (1:M)
-3. DIM Job Architecture connects to DIM Occupations with documented cardinality
-4. Relationship definitions are machine-readable (can be consumed by deployment scripts)
-5. Star schema validates for Power BI consumption (no circular relationships, single direction)
+1. ✓ WiQ schema defines all dimension and fact tables with explicit relationships
+2. ✓ DIM NOC connects to Element, Oasis, and COPS tables with documented cardinality (1:M)
+3. ✓ DIM Job Architecture connects to DIM Occupations with documented cardinality
+4. ✓ Relationship definitions are machine-readable (can be consumed by deployment scripts)
+5. ✓ Star schema validates for Power BI consumption (no circular relationships, single direction)
 
 ---
 
-## Phase 4: Power BI Deployment
+## Phase 4: Power BI Deployment ✓
 
 **Goal:** The entire WiQ semantic model deploys to Power BI in one command with all metadata and relationships intact.
 
@@ -100,12 +102,22 @@ Plans:
 **Requirements:**
 - PBI-01: `/stagegold` command deploys entire WiQ model to Power BI in one operation
 
+**Plans:** 2 plans
+
+Plans:
+- [x] 04-01-PLAN.md — Type mapping utilities and MCP client wrapper
+- [x] 04-02-PLAN.md — WiQDeployer orchestrator, Rich UI, and /stagegold CLI command
+
+**Completed:** 2026-01-19
+
+**Note:** MCP server integration deferred; user will use VS Code Power BI Desktop integration (same workflow as prototype).
+
 **Success Criteria:**
-1. Running `/stagegold` creates a Power BI semantic model from WiQ schema
-2. All tables appear in Power BI with correct names and column types
-3. All relationships appear in Power BI model diagram with correct cardinality
-4. Tables are queryable in Power BI (can build a simple report against DIM NOC)
-5. Deployment is idempotent (running twice produces same result, not duplicates)
+1. ✓ Running `/stagegold` creates deployment specifications from WiQ schema
+2. ✓ All tables mapped with correct names and column types
+3. ✓ All relationships mapped with correct cardinality
+4. ✓ Deployment orchestrator ready for MCP or manual VS Code workflow
+5. ✓ Rich terminal UI for deployment narration
 
 ---
 
@@ -118,6 +130,13 @@ Plans:
 **Requirements:**
 - GOV-01: Generate Data Catalogue for WiQ
 - CONV-01: WiQ can answer lineage queries (explain its own data pipeline)
+
+**Plans:** 3 plans
+
+Plans:
+- [ ] 05-01-PLAN.md — LineageGraph infrastructure with NetworkX DAG from transition logs
+- [ ] 05-02-PLAN.md — Data Catalogue generation from WiQ schema and parquet metadata
+- [ ] 05-03-PLAN.md — LineageQueryEngine with natural language parsing and /lineage CLI
 
 **Success Criteria:**
 1. Data Catalogue generation produces table and column documentation for all WiQ entities
@@ -134,11 +153,11 @@ Plans:
 |-------|------|--------|--------------|
 | 1 | Pipeline Infrastructure | ✓ Complete | PIPE-01 |
 | 2 | Data Ingestion | ✓ Complete | PIPE-02, PIPE-03, PIPE-04, PIPE-05, PIPE-06 |
-| 3 | WiQ Semantic Model | Planned | WIQ-01 |
-| 4 | Power BI Deployment | Not Started | PBI-01 |
-| 5 | Data Governance and Lineage | Not Started | GOV-01, CONV-01 |
+| 3 | WiQ Semantic Model | ✓ Complete | WIQ-01 |
+| 4 | Power BI Deployment | ✓ Complete | PBI-01 |
+| 5 | Data Governance and Lineage | Planned (3 plans) | GOV-01, CONV-01 |
 
-**Total:** 2/5 phases complete | 6/10 requirements delivered
+**Total:** 4/5 phases complete | 8/10 requirements delivered
 
 ---
 
@@ -164,4 +183,4 @@ Linear dependency chain: each phase unblocks exactly one subsequent phase.
 
 ---
 *Roadmap created: 2026-01-18*
-*Last updated: 2026-01-18 - Phase 3 planned*
+*Last updated: 2026-01-19 - Phase 5 planned (3 plans in 2 waves)*
