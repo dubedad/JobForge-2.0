@@ -6,17 +6,17 @@
 
 **Core Value:** Auditable provenance from source to output - every artifact traces back to authoritative sources with DADM compliance scoring.
 
-**Current Focus:** Phase 5 (Data Governance and Lineage) IN PROGRESS. Data Catalogue generated for 24 WiQ tables with column metadata, FK relationships, and sample values.
+**Current Focus:** Phase 5 (Data Governance and Lineage) COMPLETE. LineageQueryEngine enables natural language lineage queries via /lineage CLI command.
 
 ## Current Position
 
 **Phase:** 5 of 5 (Data Governance and Lineage)
-**Plan:** 2 of 3 complete
-**Status:** In Progress
-**Last activity:** 2026-01-19 - Completed 05-02-PLAN.md (Data Catalogue Generation)
+**Plan:** 3 of 3 complete
+**Status:** PHASE COMPLETE
+**Last activity:** 2026-01-19 - Completed 05-03-PLAN.md (Lineage Query Engine)
 
 ```
-[█████████████████████████████████░] 97% (11/12 plans)
+[████████████████████████████████████] 100% (12/12 plans)
 ```
 
 ## Phases Overview
@@ -27,15 +27,15 @@
 | 2 | Data Ingestion | Complete (3/3 plans) |
 | 3 | WiQ Semantic Model | Complete (2/2 plans) |
 | 4 | Power BI Deployment | Complete (2/2 plans) |
-| 5 | Data Governance and Lineage | In Progress (2/3 plans) |
+| 5 | Data Governance and Lineage | Complete (3/3 plans) |
 
 ## Performance Metrics
 
 | Metric | Value |
 |--------|-------|
-| Plans completed | 11 |
-| Requirements delivered | 9/10 |
-| Phases completed | 4/5 |
+| Plans completed | 12 |
+| Requirements delivered | 10/10 |
+| Phases completed | 5/5 |
 | Blockers encountered | 0 |
 | Blockers resolved | 0 |
 
@@ -62,6 +62,7 @@
 | Lineage node ID format | "{layer}.{table_name}" for unambiguous identification | 05-01 |
 | Dimension table_type mapping | WiQ schema uses "dimension" not "dim"; map to "reference" domain | 05-02 |
 | UTF-8 encoding for Windows | Explicit encoding="utf-8" required for JSON I/O on Windows | 05-02 |
+| Rule-based NLP for lineage | Regex pattern matching instead of LLM/ML - deterministic, fast, no dependencies | 05-03 |
 
 ### Technical Discoveries
 
@@ -91,39 +92,41 @@ None active.
 ### Last Session
 
 **Date:** 2026-01-19
-**Activity:** Completed 05-02-PLAN.md - Data Catalogue Generation
-**Outcome:** CatalogueGenerator produces 24 per-table JSON catalogues with column types, FK relationships, sample values. Fixed UTF-8 encoding for Windows. All 14 tests pass.
+**Activity:** Completed 05-03-PLAN.md - Lineage Query Engine
+**Outcome:** LineageQueryEngine enables natural language queries like "Where does DIM NOC come from?" with formatted answers including provenance metadata. CLI /lineage command works. 34 tests pass.
 
 ### Next Session Priorities
 
-1. Complete Phase 5: Plan 05-03 (Governance Dashboard/Reporting integration)
-2. Final project wrap-up and documentation
+1. Project wrap-up and documentation
+2. Address pending governance compliance todos
 
 ### Context for Claude
 
 When resuming this project:
+- **ALL PHASES COMPLETE** - 12/12 plans executed
 - Phase 1 COMPLETE (3/3 plans) - Pipeline infrastructure
 - Phase 2 COMPLETE (3/3 plans) - Data ingestion
 - Phase 3 COMPLETE (2/2 plans) - WiQ semantic model
 - Phase 4 COMPLETE (2/2 plans) - Power BI deployment tooling
-- Phase 5 IN PROGRESS (2/3 plans) - Data Governance and Lineage
+- Phase 5 COMPLETE (3/3 plans) - Data Governance and Lineage
 - jobforge package installable with `pip install -e .`
 - PipelineEngine orchestrates medallion layer transitions
 - Layer classes: StagedLayer, BronzeLayer, SilverLayer, GoldLayer
 - Semantic model: src/jobforge/semantic/ with models.py, schema.py, validator.py, introspect.py
 - Deployment: src/jobforge/deployment/ with mcp_client.py, deployer.py, ui.py, types.py
-- **Governance: src/jobforge/governance/ with graph.py, models.py, catalogue.py**
+- **Governance: src/jobforge/governance/ with graph.py, models.py, catalogue.py, query.py**
 - **LineageGraph: NetworkX DAG with get_upstream(), get_downstream(), get_path()**
 - **CatalogueGenerator: Produces 24 per-table JSON catalogues from WiQ schema + parquet**
-- CLI: /stagegold command via commands.py
+- **LineageQueryEngine: Natural language lineage queries with provenance answers**
+- CLI: /stagegold and /lineage commands via commands.py
 - CatalogManager: saves/loads table metadata, queries lineage logs
 - GoldQueryEngine: DuckDB SQL on gold parquet files
 - 123 lineage JSON files in data/catalog/lineage/
 - 24 table catalogue JSON files in data/catalog/tables/
 - WiQ schema exported to data/catalog/schemas/wiq_schema.json
-- Tests: 67+ total
+- Tests: 101+ total (67 prior + 34 new lineage query tests)
 - Stack: Python 3.11, Polars 1.37+, DuckDB 1.4+, Pydantic 2.12+, structlog, pytest, Rich, NetworkX 3.0+
 
 ---
 *State initialized: 2026-01-18*
-*Session count: 10*
+*Session count: 11*
