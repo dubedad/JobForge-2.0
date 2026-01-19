@@ -7,18 +7,18 @@
 See: .planning/PROJECT.md (updated 2026-01-19)
 
 **Core value:** Auditable provenance from source to output
-**Current focus:** Phase 6 - Imputation Foundation
+**Current focus:** Phase 7 - External Data Integration
 
 ## Current Position
 
-**Phase:** 6 of 10 (Imputation Foundation)
-**Plan:** 2 of 3 complete
-**Status:** In progress
-**Last activity:** 2026-01-19 — Completed 06-02-PLAN.md (Attribute Inheritance)
+**Phase:** 7 of 10 (External Data Integration)
+**Plan:** Not started
+**Status:** Ready to plan
+**Last activity:** 2026-01-19 — Completed Phase 6 (Imputation Foundation)
 
 ```
 v1.0 [####################] 100% SHIPPED
-v2.0 [####                ]  18% Phase 6 plan 2/3
+v2.0 [####                ]  20% Phase 6 complete
 ```
 
 ## Performance Metrics
@@ -30,7 +30,7 @@ v2.0 [####                ]  18% Phase 6 plan 2/3
 
 **v2.0 Progress:**
 - Plans completed: 2 of 11
-- Phase 6 progress: 2/3 plans
+- Phases complete: 1 of 5 (Phase 6)
 
 *Updated after each plan completion*
 
@@ -89,26 +89,27 @@ None.
 ### Last Session
 
 **Date:** 2026-01-19
-**Activity:** Execute 06-02-PLAN.md (Attribute Inheritance)
-**Outcome:** 3 tasks completed, 19 tests added, inheritance and provenance modules created
+**Activity:** Execute Phase 6 (Imputation Foundation)
+**Outcome:** 2 plans complete, 40 tests added, imputation package fully functional
 
 ### Next Session Priorities
 
-1. Execute 06-03-PLAN.md (complete Phase 6)
-2. Begin Phase 7 (O*NET API integration)
-3. Validate imputation outputs against prototype
+1. Run `/gsd:discuss-phase 7` or `/gsd:plan-phase 7`
+2. O*NET API integration for SOC-aligned attributes
+3. LLM-powered attribute imputation
+4. TBS scraping with provenance
 
 ### Context for Claude
 
 When resuming this project:
 - **v1.0 SHIPPED** — 10 requirements delivered, 13 plans complete
-- **v2.0 IN PROGRESS** — Phase 6 plans 1-2 complete (Resolution + Inheritance)
-- `jobforge.imputation` package has resolution, inheritance, provenance modules
+- **v2.0 Phase 6 COMPLETE** — Imputation Foundation verified
+- `jobforge.imputation` package: resolution, inheritance, provenance modules
 - Resolution service: 5 confidence tiers (1.00, 0.95, 0.85, 0.60, 0.40)
 - Inheritance: L5 attributes cascade to job titles with 5 provenance columns
 - Stack: Python 3.11, Polars, DuckDB, Pydantic 2, NetworkX, Rich, rapidfuzz
-- 140 tests total (19 new in test_inheritance.py)
+- 140 tests total (21 resolution + 19 inheritance)
 
 ---
 *State updated: 2026-01-19*
-*Session count: 15*
+*Session count: 16*

@@ -9,8 +9,8 @@ Requirements for self-imputing model and live demo. Each maps to roadmap phases.
 
 ### Imputation & Data Quality
 
-- [ ] **IMP-01**: Validate and port imputation system from prototype
-- [ ] **IMP-02**: Hierarchical attribute inheritance (L5->L6->L7 filtered context)
+- [x] **IMP-01**: Validate and port imputation system from prototype
+- [x] **IMP-02**: Hierarchical attribute inheritance (L5->L6->L7 filtered context)
 - [ ] **IMP-03**: O*NET API integration for SOC-aligned attribute candidates
 - [ ] **IMP-04**: LLM-powered attribute imputation for empty cells
 - [ ] **IMP-05**: Description generation (job titles, families, functions)
@@ -82,8 +82,8 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| IMP-01 | Phase 6 | Pending |
-| IMP-02 | Phase 6 | Pending |
+| IMP-01 | Phase 6 | Complete |
+| IMP-02 | Phase 6 | Complete |
 | IMP-03 | Phase 7 | Pending |
 | IMP-04 | Phase 7 | Pending |
 | IMP-05 | Phase 8 | Pending |

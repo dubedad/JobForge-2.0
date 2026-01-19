@@ -46,7 +46,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 
 **Milestone Goal:** Enable WiQ to impute missing data using authoritative sources, O*NET API, and LLM calls with full provenance, demonstrated live via MCP.
 
-- [ ] **Phase 6: Imputation Foundation** - Port and validate core imputation system with hierarchical inheritance
+- [x] **Phase 6: Imputation Foundation** - Port and validate core imputation system with hierarchical inheritance
 - [ ] **Phase 7: External Data Integration** - O*NET API, LLM imputation, and TBS scraping with provenance
 - [ ] **Phase 8: Description Generation** - Multi-source descriptions with authoritative vs LLM provenance
 - [ ] **Phase 9: Demo Infrastructure** - MCP porting and live demo capability with basic UI
@@ -66,8 +66,8 @@ Decimal phases appear between their surrounding integers in numeric order.
 **Plans**: 2 plans
 
 Plans:
-- [ ] 06-01-PLAN.md — Port NOC resolution service with Pydantic models and validation tests
-- [ ] 06-02-PLAN.md — Implement hierarchical attribute inheritance with provenance tracking
+- [x] 06-01-PLAN.md — Port NOC resolution service with Pydantic models and validation tests
+- [x] 06-02-PLAN.md — Implement hierarchical attribute inheritance with provenance tracking
 
 ### Phase 7: External Data Integration
 **Goal**: Users can enrich WiQ with O*NET attributes and TBS occupational group metadata
@@ -140,7 +140,7 @@ Phases execute in numeric order: 6 -> 7 -> 8 -> 9 -> 10
 | Phase | Milestone | Plans Complete | Status | Completed |
 |-------|-----------|----------------|--------|-----------|
 | 1-5 | v1.0 | 13/13 | Complete | 2026-01-19 |
-| 6. Imputation Foundation | v2.0 | 0/2 | Planned | - |
+| 6. Imputation Foundation | v2.0 | 2/2 | Complete | 2026-01-19 |
 | 7. External Data Integration | v2.0 | 0/3 | Not started | - |
 | 8. Description Generation | v2.0 | 0/2 | Not started | - |
 | 9. Demo Infrastructure | v2.0 | 0/2 | Not started | - |
