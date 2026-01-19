@@ -12,13 +12,13 @@ See: .planning/PROJECT.md (updated 2026-01-19)
 ## Current Position
 
 **Phase:** 6 of 10 (Imputation Foundation)
-**Plan:** Not started
-**Status:** Ready to plan
-**Last activity:** 2026-01-19 — v2.0 roadmap created
+**Plan:** 1 of 3 complete
+**Status:** In progress
+**Last activity:** 2026-01-19 — Completed 06-01-PLAN.md (NOC Resolution Service)
 
 ```
 v1.0 [####################] 100% SHIPPED
-v2.0 [                    ]   0% Phase 6 ready
+v2.0 [##                  ]   9% Phase 6 plan 1/3
 ```
 
 ## Performance Metrics
@@ -28,11 +28,19 @@ v2.0 [                    ]   0% Phase 6 ready
 - Average duration: ~25 min
 - Total execution time: ~5.4 hours
 
-**v2.0 Plans:** 11 planned across 5 phases
+**v2.0 Progress:**
+- Plans completed: 1 of 11
+- Phase 6 progress: 1/3 plans
 
 *Updated after each plan completion*
 
 ## Accumulated Context
+
+### Key Decisions (v2.0)
+
+| ID | Decision | Rationale | Date |
+|----|----------|-----------|------|
+| 06-01-D1 | Use dataclasses for internal types | Internal-only types don't need Pydantic overhead | 2026-01-19 |
 
 ### Key Decisions (v1.0)
 
@@ -46,11 +54,18 @@ All decisions documented in PROJECT.md with outcomes marked "Good".
 | Polars CSV type inference | Numeric-looking strings cast as int64; must cast to Utf8 |
 | NetworkX DAG efficiency | 123 logs deduplicate to 106 nodes, 79 edges |
 
+### Technical Discoveries (v2.0)
+
+| Discovery | Details |
+|-----------|---------|
+| Single-label UGs | 64.3% of UGs (332/516) have single label; enables UG_DOMINANT optimization |
+| Gold column names | element_labels uses "Label", element_example_titles uses "Job title text" |
+
 ### v2.0 Prototype Assets
 
 Reference implementations in `/JobForge/` sibling directory:
 - description_imputation_service.py (160+ lines)
-- noc_resolution_service.py (420 lines)
+- noc_resolution_service.py (420 lines) - PORTED in 06-01
 - onet_adapter.py (393 lines)
 - llm_service.py (199 lines)
 
@@ -73,25 +88,26 @@ None.
 ### Last Session
 
 **Date:** 2026-01-19
-**Activity:** v2.0 roadmap creation
-**Outcome:** 5 phases defined (6-10), 17 requirements mapped
+**Activity:** Execute 06-01-PLAN.md (NOC Resolution Service)
+**Outcome:** 3 tasks completed, 21 tests added, rapidfuzz dependency added
 
 ### Next Session Priorities
 
-1. Run `/gsd:plan-phase 6` to plan Imputation Foundation
-2. Port imputation system from prototype
+1. Execute 06-02-PLAN.md (Attribute Inheritance)
+2. Continue Phase 6 implementation
 3. Validate against known prototype outputs
 
 ### Context for Claude
 
 When resuming this project:
 - **v1.0 SHIPPED** — 10 requirements delivered, 13 plans complete
-- **v2.0 ROADMAPPED** — 17 requirements across 5 phases (6-10)
-- Phase 6 ready for planning (Imputation Foundation)
-- Prototype at `/JobForge/` has working implementations to port
-- Stack: Python 3.11, Polars, DuckDB, Pydantic 2, NetworkX, Rich
-- 5,779 LOC Python, 100 tests passing
+- **v2.0 IN PROGRESS** — Phase 6 plan 1 complete (NOC Resolution Service)
+- `jobforge.imputation` package created with resolution service
+- Resolution service: 5 confidence tiers (1.00, 0.95, 0.85, 0.60, 0.40)
+- rapidfuzz added for fuzzy matching
+- Stack: Python 3.11, Polars, DuckDB, Pydantic 2, NetworkX, Rich, rapidfuzz
+- 21 new tests in test_noc_resolution.py
 
 ---
 *State updated: 2026-01-19*
-*Session count: 13*
+*Session count: 14*
