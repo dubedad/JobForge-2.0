@@ -9,7 +9,7 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Data Pipeline
 
-- [ ] **PIPE-01**: Implement medallion pipeline (staged -> bronze -> silver -> gold with parquet files)
+- [x] **PIPE-01**: Implement medallion pipeline (staged -> bronze -> silver -> gold with parquet files)
 - [ ] **PIPE-02**: Ingest DIM NOC table
 - [ ] **PIPE-03**: Ingest NOC attribute tables (Element, Oasis)
 - [ ] **PIPE-04**: Ingest NOC COPS forecasting data
@@ -87,7 +87,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| PIPE-01 | Phase 1: Pipeline Infrastructure | Pending |
+| PIPE-01 | Phase 1: Pipeline Infrastructure | Complete |
 | PIPE-02 | Phase 2: Data Ingestion | Pending |
 | PIPE-03 | Phase 2: Data Ingestion | Pending |
 | PIPE-04 | Phase 2: Data Ingestion | Pending |
