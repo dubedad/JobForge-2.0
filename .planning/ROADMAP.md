@@ -76,6 +76,12 @@ Plans:
 **Requirements:**
 - WIQ-01: Create WiQ schema with relationships and proper cardinality
 
+**Plans:** 2 plans
+
+Plans:
+- [ ] 03-01-PLAN.md — Semantic model Pydantic definitions and parquet introspection utilities
+- [ ] 03-02-PLAN.md — WiQ schema definition, validation, and JSON export
+
 **Success Criteria:**
 1. WiQ schema defines all dimension and fact tables with explicit relationships
 2. DIM NOC connects to Element, Oasis, and COPS tables with documented cardinality (1:M)
@@ -128,7 +134,7 @@ Plans:
 |-------|------|--------|--------------|
 | 1 | Pipeline Infrastructure | ✓ Complete | PIPE-01 |
 | 2 | Data Ingestion | ✓ Complete | PIPE-02, PIPE-03, PIPE-04, PIPE-05, PIPE-06 |
-| 3 | WiQ Semantic Model | Not Started | WIQ-01 |
+| 3 | WiQ Semantic Model | Planned | WIQ-01 |
 | 4 | Power BI Deployment | Not Started | PBI-01 |
 | 5 | Data Governance and Lineage | Not Started | GOV-01, CONV-01 |
 
@@ -158,4 +164,4 @@ Linear dependency chain: each phase unblocks exactly one subsequent phase.
 
 ---
 *Roadmap created: 2026-01-18*
-*Last updated: 2026-01-18 - Phase 2 complete*
+*Last updated: 2026-01-18 - Phase 3 planned*
