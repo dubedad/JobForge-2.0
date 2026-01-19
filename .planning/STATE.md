@@ -7,36 +7,30 @@
 See: .planning/PROJECT.md (updated 2026-01-19)
 
 **Core value:** Auditable provenance from source to output
-**Current focus:** Planning next milestone
+**Current focus:** Phase 6 - Imputation Foundation
 
 ## Current Position
 
-**Phase:** v1.0 complete — ready for v2 planning
+**Phase:** 6 of 10 (Imputation Foundation)
 **Plan:** Not started
-**Status:** Milestone shipped
-**Last activity:** 2026-01-19 — v1.0 MVP shipped
+**Status:** Ready to plan
+**Last activity:** 2026-01-19 — v2.0 roadmap created
 
 ```
-v1.0 [████████████████████████████████████] 100% SHIPPED
+v1.0 [####################] 100% SHIPPED
+v2.0 [                    ]   0% Phase 6 ready
 ```
 
-## Milestones
+## Performance Metrics
 
-| Milestone | Status | Phases | Shipped |
-|-----------|--------|--------|---------|
-| v1.0 MVP | SHIPPED | 1-5 (13 plans) | 2026-01-19 |
+**Velocity (v1.0):**
+- Total plans completed: 13
+- Average duration: ~25 min
+- Total execution time: ~5.4 hours
 
-See `.planning/MILESTONES.md` for full details.
+**v2.0 Plans:** 11 planned across 5 phases
 
-## v1.0 Deliverables
-
-- 24 gold tables in parquet format
-- 516 NOC occupations, 1,987 job titles
-- WiQ semantic model with 22 relationships
-- `/stagegold` deployment command
-- `/lineage` query command
-- 24 table catalogues
-- 100 tests passing
+*Updated after each plan completion*
 
 ## Accumulated Context
 
@@ -50,16 +44,23 @@ All decisions documented in PROJECT.md with outcomes marked "Good".
 |-----------|---------|
 | Pydantic field naming | Cannot use `_source_file` as field name; use serialization_alias |
 | Polars CSV type inference | Numeric-looking strings cast as int64; must cast to Utf8 |
-| Polars float inference | "00010.00" inferred as f64; reconstruct format from numeric |
 | NetworkX DAG efficiency | 123 logs deduplicate to 106 nodes, 79 edges |
+
+### v2.0 Prototype Assets
+
+Reference implementations in `/JobForge/` sibling directory:
+- description_imputation_service.py (160+ lines)
+- noc_resolution_service.py (420 lines)
+- onet_adapter.py (393 lines)
+- llm_service.py (199 lines)
 
 ### Pending Todos
 
 | Todo | Area | Created |
 |------|------|---------|
-| DADM traceability log for Directive compliance | governance | 2026-01-19 |
-| DAMA traceability log for DMBOK compliance | governance | 2026-01-19 |
-| Job classification log for Classification Policy compliance | governance | 2026-01-19 |
+| DADM traceability log | governance | 2026-01-19 |
+| DAMA traceability log | governance | 2026-01-19 |
+| Job classification log | governance | 2026-01-19 |
 
 *3 todos pending in `.planning/todos/pending/`*
 
@@ -72,26 +73,25 @@ None.
 ### Last Session
 
 **Date:** 2026-01-19
-**Activity:** v1.0 milestone completion
-**Outcome:** Milestone archived, PROJECT.md evolved, ready for v2 planning
+**Activity:** v2.0 roadmap creation
+**Outcome:** 5 phases defined (6-10), 17 requirements mapped
 
 ### Next Session Priorities
 
-1. Run `/gsd:new-milestone` to start v2 planning
-2. Define v2 requirements and roadmap
-3. Consider O*NET/SOC integration as v2 focus
+1. Run `/gsd:plan-phase 6` to plan Imputation Foundation
+2. Port imputation system from prototype
+3. Validate against known prototype outputs
 
 ### Context for Claude
 
 When resuming this project:
-- **v1.0 SHIPPED** — all 10 requirements delivered
-- Archives in `.planning/milestones/v1-*`
-- PROJECT.md has Validated requirements and Active backlog
-- No ROADMAP.md or REQUIREMENTS.md — created fresh for v2
-- jobforge package installable with `pip install -e .`
+- **v1.0 SHIPPED** — 10 requirements delivered, 13 plans complete
+- **v2.0 ROADMAPPED** — 17 requirements across 5 phases (6-10)
+- Phase 6 ready for planning (Imputation Foundation)
+- Prototype at `/JobForge/` has working implementations to port
 - Stack: Python 3.11, Polars, DuckDB, Pydantic 2, NetworkX, Rich
 - 5,779 LOC Python, 100 tests passing
 
 ---
 *State updated: 2026-01-19*
-*Session count: 12*
+*Session count: 13*

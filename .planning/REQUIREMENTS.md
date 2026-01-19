@@ -10,7 +10,7 @@ Requirements for self-imputing model and live demo. Each maps to roadmap phases.
 ### Imputation & Data Quality
 
 - [ ] **IMP-01**: Validate and port imputation system from prototype
-- [ ] **IMP-02**: Hierarchical attribute inheritance (L5→L6→L7 filtered context)
+- [ ] **IMP-02**: Hierarchical attribute inheritance (L5->L6->L7 filtered context)
 - [ ] **IMP-03**: O*NET API integration for SOC-aligned attribute candidates
 - [ ] **IMP-04**: LLM-powered attribute imputation for empty cells
 - [ ] **IMP-05**: Description generation (job titles, families, functions)
@@ -82,29 +82,29 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| IMP-01 | TBD | Pending |
-| IMP-02 | TBD | Pending |
-| IMP-03 | TBD | Pending |
-| IMP-04 | TBD | Pending |
-| IMP-05 | TBD | Pending |
-| IMP-06 | TBD | Pending |
-| SRC-01 | TBD | Pending |
-| SRC-02 | TBD | Pending |
-| SRC-03 | TBD | Pending |
-| MCP-01 | TBD | Pending |
-| MCP-02 | TBD | Pending |
-| MCP-03 | TBD | Pending |
-| GOV-02 | TBD | Pending |
-| GOV-03 | TBD | Pending |
-| GOV-04 | TBD | Pending |
-| GOV-05 | TBD | Pending |
-| GOV-06 | TBD | Pending |
+| IMP-01 | Phase 6 | Pending |
+| IMP-02 | Phase 6 | Pending |
+| IMP-03 | Phase 7 | Pending |
+| IMP-04 | Phase 7 | Pending |
+| IMP-05 | Phase 8 | Pending |
+| IMP-06 | Phase 8 | Pending |
+| SRC-01 | Phase 7 | Pending |
+| SRC-02 | Phase 7 | Pending |
+| SRC-03 | Phase 7 | Pending |
+| MCP-01 | Phase 9 | Pending |
+| MCP-02 | Phase 9 | Pending |
+| MCP-03 | Phase 9 | Pending |
+| GOV-02 | Phase 10 | Pending |
+| GOV-03 | Phase 10 | Pending |
+| GOV-04 | Phase 10 | Pending |
+| GOV-05 | Phase 10 | Pending |
+| GOV-06 | Phase 10 | Pending |
 
 **Coverage:**
 - v2.0 requirements: 17 total
-- Mapped to phases: 0
-- Unmapped: 17 ⚠️
+- Mapped to phases: 17
+- Unmapped: 0
 
 ---
 *Requirements defined: 2026-01-19*
-*Last updated: 2026-01-19 after initial definition*
+*Last updated: 2026-01-19 after roadmap creation*
