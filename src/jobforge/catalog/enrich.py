@@ -77,22 +77,27 @@ def _get_year_description(table_name: str, year: str) -> str:
     return f"Projected {metric} for {year}"
 
 
-def _enrich_table(table_data: dict[str, Any], table_name: str) -> int:
+def _enrich_table(table_data: dict[str, Any], table_name: str) -> tuple[int, bool]:
     """
     Enrich a single table's metadata.
 
-    Returns the number of columns enriched.
+    Returns tuple of (columns_enriched, table_modified).
     """
     columns_enriched = 0
+    table_modified = False
 
     # Add table description if available
     if table_name in TABLE_DESCRIPTIONS:
-        table_data["description"] = TABLE_DESCRIPTIONS[table_name]
+        if table_data.get("description") != TABLE_DESCRIPTIONS[table_name]:
+            table_data["description"] = TABLE_DESCRIPTIONS[table_name]
+            table_modified = True
 
     # Add workforce_dynamic field for COPS tables
     workforce_dynamic = _get_workforce_dynamic(table_name)
     if workforce_dynamic:
-        table_data["workforce_dynamic"] = workforce_dynamic
+        if table_data.get("workforce_dynamic") != workforce_dynamic:
+            table_data["workforce_dynamic"] = workforce_dynamic
+            table_modified = True
 
     # Enrich column descriptions
     for column in table_data.get("columns", []):
@@ -116,8 +121,9 @@ def _enrich_table(table_data: dict[str, Any], table_name: str) -> int:
         if new_description and new_description != original_description:
             column["description"] = new_description
             columns_enriched += 1
+            table_modified = True
 
-    return columns_enriched
+    return columns_enriched, table_modified
 
 
 def enrich_catalog(catalog_path: Path | None = None) -> dict[str, int]:
@@ -150,11 +156,11 @@ def enrich_catalog(catalog_path: Path | None = None) -> dict[str, int]:
             table_data = json.load(f)
 
         # Enrich the table
-        enriched_count = _enrich_table(table_data, table_name)
+        enriched_count, table_modified = _enrich_table(table_data, table_name)
 
-        if enriched_count > 0:
-            columns_enriched += enriched_count
+        if table_modified:
             tables_updated += 1
+            columns_enriched += enriched_count
 
             # Write back the enriched data
             with open(json_file, "w", encoding="utf-8") as f:
