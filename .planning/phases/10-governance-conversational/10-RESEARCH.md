@@ -14,7 +14,7 @@ The research reveals that:
 3. **Conversational data queries** benefit from a hybrid approach: Claude API with structured outputs for SQL generation, DuckDB for query execution on parquet files
 4. **Conversational metadata queries** extend the existing rule-based LineageQueryEngine with additional patterns for provenance, lineage, and governance questions
 
-**Primary recommendation:** Use the RTM pattern for all three compliance logs (JSON-based traceability matrices), extend LineageQueryEngine for metadata queries, and implement a new Claude-powered SQL generation service for data queries over DuckDB.
+**Primary recommendation:** Use the RTM pattern for all three compliance logs (JSON-based traceability matrices). For the conversational interface, use **Orbit** ([schmitech/orbit](https://github.com/schmitech/orbit)) as the gateway layer — it provides intent-aware routing, multi-LLM support, and pre-built UIs (React, CLI, embeddable widget). JobForge exposes HTTP APIs for data and metadata queries; Orbit handles intent classification and response formatting.
 
 ## Standard Stack
 
@@ -45,6 +45,138 @@ The established libraries/tools for this domain:
 pip install anthropic duckdb
 # networkx, pydantic, structlog already in project
 ```
+
+## Orbit: Conversational Gateway
+
+**Repository:** [schmitech/orbit](https://github.com/schmitech/orbit)
+
+### What Orbit Provides
+
+Orbit is a self-hosted gateway that unifies LLM providers with data sources through a single interface:
+
+| Capability | Details |
+|------------|---------|
+| **LLM Support** | 20+ providers (OpenAI, Anthropic, Google) + local (Ollama, vLLM, llama.cpp) |
+| **Intent Routing** | Natural language → SQL, Elasticsearch DSL, MongoDB filters, HTTP API calls |
+| **RAG Adapters** | SQL, MongoDB, Elasticsearch, Pinecone, Qdrant, Chroma, Redis, HTTP APIs |
+| **Pre-built UIs** | React web app, Python CLI, embeddable JavaScript widget, Node.js SDK |
+| **API Compatibility** | OpenAI-compatible endpoint for drop-in replacement |
+
+### How Orbit Enables Phase 10
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                         USER                                     │
+│              (React UI / CLI / Widget / API)                    │
+└─────────────────────────────────────────────────────────────────┘
+                              │
+                              ▼
+┌─────────────────────────────────────────────────────────────────┐
+│                      ORBIT GATEWAY                               │
+│  ┌───────────────────────────────────────────────────────────┐  │
+│  │              Intent Classification                         │  │
+│  │   "How many software developers?" → DATA_QUERY            │  │
+│  │   "Where does dim_noc come from?" → METADATA_QUERY        │  │
+│  │   "Is WiQ DADM compliant?" → COMPLIANCE_QUERY             │  │
+│  └───────────────────────────────────────────────────────────┘  │
+│                    │              │              │               │
+│              ┌─────┴─────┐  ┌────┴────┐  ┌─────┴─────┐         │
+│              │ DuckDB    │  │  HTTP   │  │  HTTP     │         │
+│              │ Retriever │  │ Adapter │  │ Adapter   │         │
+│              │ (new)     │  │ (meta)  │  │ (comply)  │         │
+│              └─────┬─────┘  └────┬────┘  └─────┬─────┘         │
+└────────────────────┼─────────────┼─────────────┼────────────────┘
+                     │             │             │
+                     ▼             ▼             ▼
+              ┌───────────┐  ┌──────────┐  ┌──────────┐
+              │  DuckDB   │  │ JobForge │  │ JobForge │
+              │  Parquet  │  │ /lineage │  │/compliance│
+              │  (gold)   │  │   API    │  │   API    │
+              └───────────┘  └──────────┘  └──────────┘
+```
+
+### What JobForge Needs to Build
+
+**For Orbit integration:**
+
+1. **HTTP API endpoints** (FastAPI or Starlette):
+   - `POST /api/query/data` - Accepts question, returns SQL + results
+   - `POST /api/query/metadata` - Accepts question, returns lineage/provenance
+   - `GET /api/compliance/{framework}` - Returns compliance log (DADM, DAMA, Classification)
+
+2. **DuckDBRetriever for Orbit** (extends Orbit's BaseRetriever):
+   ```python
+   class DuckDBRetriever(BaseRetriever):
+       """Orbit retriever for DuckDB parquet queries."""
+
+       def initialize(self):
+           self.conn = duckdb.connect(":memory:")
+           # Register all gold tables as views
+           for parquet in Path("data/gold").glob("*.parquet"):
+               table_name = parquet.stem
+               self.conn.execute(f"CREATE VIEW {table_name} AS SELECT * FROM '{parquet}'")
+
+       def retrieve(self, query: str, collection_name: str) -> list[dict]:
+           # Use Claude structured outputs for text-to-SQL
+           sql = self._generate_sql(query)
+           return self.conn.execute(sql).fetchdf().to_dict(orient="records")
+   ```
+
+3. **Intent templates for WiQ domain**:
+   ```yaml
+   # config/adapters/jobforge.yaml
+   name: jobforge-wiq
+   enabled: true
+   type: retriever
+   datasource: duckdb
+   adapter: intent
+   implementation: retrievers.duckdb.DuckDBRetriever
+   config:
+     parquet_path: "data/gold/"
+     schema_file: "data/catalog/schemas/wiq_schema.json"
+     domain_templates:
+       - occupation_queries.yaml
+       - forecast_queries.yaml
+       - attribute_queries.yaml
+   ```
+
+### Why Orbit Over Custom Build
+
+| Aspect | Custom Build | Orbit |
+|--------|--------------|-------|
+| **UI Development** | Build React app, CLI, widget from scratch | Pre-built, tested, documented |
+| **Multi-LLM** | Implement provider switching | Built-in with unified API |
+| **Intent Routing** | Build classifier from scratch | Template-based, configurable |
+| **Maintenance** | Own all code | Community-maintained |
+| **Time to Demo** | Weeks | Days |
+
+### Orbit Deployment
+
+```bash
+# Clone Orbit
+git clone https://github.com/schmitech/orbit.git
+cd orbit
+
+# Add JobForge adapter config
+cp jobforge-adapter.yaml config/adapters/
+
+# Start with Docker
+docker-compose up -d
+
+# Or run locally
+./bin/orbit.sh start
+```
+
+### Gap: DuckDB Retriever Not Built-In
+
+Orbit supports SQLite, PostgreSQL, MySQL but **not DuckDB**. Creating `DuckDBRetriever`:
+
+1. Extend `BaseRetriever` (same pattern as SQLiteRetriever)
+2. Use DuckDB's Python API for parquet queries
+3. Register in Orbit's retriever factory
+4. Configure via `adapters.yaml`
+
+This is ~100 lines of Python, following established patterns.
 
 ## Architecture Patterns
 
@@ -432,6 +564,8 @@ Things that couldn't be fully resolved:
 - [DADM Directive - Treasury Board](https://www.tbs-sct.canada.ca/pol/doc-eng.aspx?id=32592) - Official directive text, section numbers
 - [Anthropic Structured Outputs](https://platform.claude.com/docs/en/build-with-claude/structured-outputs) - Claude API structured output documentation
 - [Anthropic SQL Cookbook](https://github.com/anthropics/anthropic-cookbook/blob/main/misc/how_to_make_sql_queries.ipynb) - Text-to-SQL patterns
+- [Orbit - schmitech/orbit](https://github.com/schmitech/orbit) - Conversational gateway with intent routing
+- [Orbit Adapters Documentation](https://github.com/schmitech/orbit/blob/main/docs/adapters/adapters.md) - SQL adapter patterns
 - Existing codebase: `governance/graph.py`, `governance/query.py` - Established patterns
 
 ### Secondary (MEDIUM confidence)
@@ -439,22 +573,24 @@ Things that couldn't be fully resolved:
 - [DAMA International](https://dama.org/learning-resources/dama-data-management-body-of-knowledge-dmbok/) - Official DMBOK reference
 - [Requirements Traceability Matrix - Perforce](https://www.perforce.com/resources/alm/requirements-traceability-matrix) - RTM pattern
 - [National Occupational Classification](https://noc.esdc.gc.ca/) - NOC structure and standards
+- [Orbit Tutorial](https://github.com/schmitech/orbit/blob/main/docs/tutorial.md) - Setup and intent routing
 
 ### Tertiary (LOW confidence)
 - [Text-to-SQL State of Art - VLDB 2025](https://www.vldb.org/pvldb/vol18/p5466-luo.pdf) - Academic survey (may be stale)
-- [Vanna.ai DuckDB](https://github.com/vanna-ai/vanna) - Alternative approach (not recommended)
+- [Vanna.ai DuckDB](https://github.com/vanna-ai/vanna) - Alternative approach (not recommended for this use case)
 - [Audit Logging Patterns](https://microservices.io/patterns/observability/audit-logging.html) - General patterns
 
 ## Metadata
 
 **Confidence breakdown:**
 - Standard stack: HIGH - Claude structured outputs verified, DuckDB already in use
-- Architecture: MEDIUM - RTM pattern well-established; hybrid query routing is sound approach
+- Architecture: HIGH - Orbit provides battle-tested intent routing and UI layer
 - Compliance mappings: MEDIUM - DADM sections verified; DAMA knowledge areas verified; Classification Policy needs user input
-- Conversational patterns: MEDIUM - Extension of proven LineageQueryEngine approach
+- Conversational patterns: HIGH - Orbit handles UI/routing; JobForge just exposes HTTP API
+- Orbit integration: MEDIUM - DuckDBRetriever needs to be built; follows established patterns
 
-**Research date:** 2026-01-20
-**Valid until:** 30 days (DADM directive under review; Claude API stable)
+**Research date:** 2026-01-20 (updated with Orbit research)
+**Valid until:** 30 days (DADM directive under review; Orbit actively maintained)
 
 ---
 
@@ -476,14 +612,28 @@ Things that couldn't be fully resolved:
 3. `compliance/dama.py` - DAMATraceabilityLog with 11 knowledge area mappings
 4. `compliance/classification.py` - ClassificationTraceabilityLog for NOC-based classification
 
-**Conversational Interface (GOV-05, GOV-06):**
-1. `conversational/data_query.py` - DataQueryEngine using Claude + DuckDB
-2. `conversational/metadata_query.py` - MetadataQueryEngine extending LineageQueryEngine
-3. CLI commands: `jobforge query-data "..."` and `jobforge query-metadata "..."`
+**JobForge HTTP API (for Orbit integration):**
+1. `api/routes.py` - FastAPI/Starlette routes for data, metadata, and compliance queries
+2. `api/data_query.py` - DataQueryService using Claude + DuckDB (same logic, exposed via HTTP)
+3. `api/metadata_query.py` - MetadataQueryService wrapping LineageQueryEngine
+
+**Orbit Integration (GOV-05, GOV-06):**
+1. `DuckDBRetriever` - Orbit retriever for parquet queries (~100 lines)
+2. `jobforge-adapter.yaml` - Orbit adapter configuration for WiQ
+3. Intent templates - Domain-specific query templates for occupations, forecasts, attributes
 
 ### Integration Points
 - Read from: `config.catalog_tables_path()` for table metadata
 - Read from: `config.catalog_lineage_path()` for lineage logs
 - Read from: `config.gold_path()` for parquet files (DuckDB)
 - Write to: `config.catalog_path() / "compliance/"` for compliance logs
-- Extend: `cli/commands.py` with new query commands
+- Expose: HTTP API at `localhost:8000/api/` for Orbit to call
+- Deploy: Orbit gateway at `localhost:3000` with JobForge adapters
+
+### Revised Plan Structure
+
+| Plan | Focus | Deliverables |
+|------|-------|--------------|
+| **10-01** | Compliance Logs | RTM models, DADM/DAMA/Classification logs, CLI commands |
+| **10-02** | JobForge HTTP API | FastAPI app, data query endpoint, metadata query endpoint |
+| **10-03** | Orbit Integration | DuckDBRetriever, adapter config, intent templates, deployment |
