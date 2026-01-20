@@ -105,12 +105,12 @@ def _enrich_table(table_data: dict[str, Any], table_name: str) -> int:
         # Check if it's a year column
         if column_name.isdigit() and len(column_name) == 4:
             new_description = _get_year_description(table_name, column_name)
+        # Check dim_noc column descriptions first (more specific)
+        elif table_name == "dim_noc" and column_name in DIM_NOC_COLUMN_DESCRIPTIONS:
+            new_description = DIM_NOC_COLUMN_DESCRIPTIONS[column_name]
         # Check COPS column descriptions
         elif column_name in COPS_COLUMN_DESCRIPTIONS:
             new_description = COPS_COLUMN_DESCRIPTIONS[column_name]
-        # Check dim_noc column descriptions
-        elif table_name == "dim_noc" and column_name in DIM_NOC_COLUMN_DESCRIPTIONS:
-            new_description = DIM_NOC_COLUMN_DESCRIPTIONS[column_name]
 
         # Update if we found a better description
         if new_description and new_description != original_description:
