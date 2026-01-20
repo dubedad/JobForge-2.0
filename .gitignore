@@ -62,8 +62,12 @@ data/quarantine/**/*.parquet
 # OS
 .DS_Store
 Thumbs.db
+nul
 
 # Secrets
 *.env
 .env.*
 !.env.example
+
+# Power BI
+*.pbix
