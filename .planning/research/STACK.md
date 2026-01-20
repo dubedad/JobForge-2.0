@@ -1,7 +1,7 @@
 # Technology Stack
 
 **Project:** JobForge 2.0 - Workforce Intelligence Platform
-**Researched:** 2026-01-18
+**Researched:** 2026-01-18 (Updated 2026-01-20 for Orbit integration)
 **Overall Confidence:** HIGH (verified via PyPI/official docs)
 
 ---
@@ -12,9 +12,142 @@ This stack is optimized for a Government of Canada workforce intelligence platfo
 
 1. **Microsoft Fabric ecosystem** for Power BI semantic model deployment (semantic-link-labs)
 2. **Modern Python data processing** (Polars + DuckDB) over legacy Pandas
-3. **LlamaIndex for RAG** with Qdrant for production vector search
+3. **Orbit for conversational UI** with HTTP adapter pattern to JobForge API
 4. **RDFLib for knowledge graphs** with SKOS vocabulary support
 5. **OpenLineage for data governance** artifacts and lineage tracking
+
+---
+
+## Orbit Integration (v3.0 Milestone)
+
+### Summary
+
+Orbit integration requires minimal stack additions because JobForge 2.0 already includes the core dependencies (DuckDB 1.4+, anthropic 0.43+, FastAPI). The primary work is configuration and adapter development, not library installation.
+
+**Key finding:** Orbit does NOT have a built-in DuckDBRetriever. Use HTTP adapter pattern to route queries through JobForge's existing FastAPI endpoints. This keeps DuckDB logic in JobForge and treats Orbit as a UI/routing layer only.
+
+### Required Addition (Optional for Development)
+
+| Package | Version | Purpose | Rationale |
+|---------|---------|---------|-----------|
+| schmitech-orbit-client | 1.1.6 | CLI testing interface | Test Orbit integration without full UI deployment |
+
+**Installation:**
+```bash
+pip install schmitech-orbit-client==1.1.6
+```
+
+**Note:** This is optional. JobForge API works standalone without Orbit.
+
+### Already in Project (No Changes Needed)
+
+| Package | Current Version | Purpose | Status |
+|---------|-----------------|---------|--------|
+| duckdb | >=1.4.0 | SQL on Parquet | Current LTS is 1.4.3 (Dec 2025) - compatible |
+| anthropic | >=0.43.0 | Claude Structured Outputs | Supports structured-outputs-2025-11-13 beta |
+| fastapi | >=0.115.0 | HTTP API endpoints | Already exposes /api/query/* endpoints |
+| pydantic | >=2.12.0 | Schema validation | Used for SQLQuery response model |
+| httpx | >=0.27.0 | Async HTTP | Already in dependencies |
+
+### Architecture: HTTP Adapter Pattern
+
+```
+User Question
+     |
+     v
++------------------+
+|  Orbit Gateway   |  <-- Intent classification, UI, conversation history
+|  localhost:3000  |
++--------+---------+
+         |
+    HTTP calls to JobForge API
+         |
+         v
++------------------+
+|  JobForge API    |  <-- Claude text-to-SQL, DuckDB queries
+|  localhost:8000  |
++--------+---------+
+         |
+         v
++------------------+
+|  Gold Parquet    |  <-- 24 tables, star schema
+|  data/gold/*.parquet
++------------------+
+```
+
+### Why HTTP Adapter Over Custom DuckDBRetriever
+
+| Approach | Pros | Cons |
+|----------|------|------|
+| **HTTP Adapter (recommended)** | Keep DuckDB logic in JobForge; Orbit is pure UI; no Orbit source modification | Extra HTTP hop (~2ms) |
+| Custom DuckDBRetriever | Slightly faster; native Orbit integration | Must maintain code in two repos; Orbit upgrades break adapter |
+
+**Decision:** Use HTTP adapter. The latency difference is negligible vs. Claude API call time (~500-2000ms), and it keeps all data logic in JobForge.
+
+### Orbit Version Details
+
+| Component | Version | Source | Confidence |
+|-----------|---------|--------|------------|
+| Orbit Server | v2.3.0 | [GitHub releases](https://github.com/schmitech/orbit) | HIGH |
+| orbit-client (CLI) | 1.1.6 | [Libraries.io](https://libraries.io/pypi/schmitech-orbit-client) | HIGH |
+| Docker image | schmitech/orbit:basic | [Docker README](https://github.com/schmitech/orbit/blob/main/docker/README.md) | HIGH |
+
+### Orbit Installation
+
+```bash
+# Option A: Docker (recommended for production)
+docker pull schmitech/orbit:basic
+docker run -d --name orbit \
+  -p 5173:5173 -p 3000:3000 \
+  -v $(pwd)/orbit/config:/orbit/config \
+  schmitech/orbit:basic
+
+# Option B: Local (for development)
+git clone https://github.com/schmitech/orbit.git
+cd orbit
+cp env.example .env
+./install/setup.sh
+source venv/bin/activate
+./bin/orbit.sh start
+```
+
+**System Requirements:**
+- Python 3.12+ (Orbit server)
+- Node.js 18+ (Orbit web UI)
+- 4GB+ RAM for Docker
+- 2GB+ disk space
+
+### Claude Structured Outputs Configuration
+
+```python
+response = client.messages.create(
+    model="claude-sonnet-4-20250514",
+    max_tokens=1024,
+    extra_headers={"anthropic-beta": "structured-outputs-2025-11-13"},
+    response_format={
+        "type": "json_schema",
+        "json_schema": {
+            "name": "sql_query",
+            "schema": SQLQuery.model_json_schema(),
+        }
+    },
+    # ...
+)
+```
+
+**Performance Notes:**
+- First request with new schema: +100-300ms (grammar compilation)
+- Subsequent requests: No overhead (cached 24 hours)
+- Model support: Claude Sonnet 4.5, Opus 4.1 (Haiku 4.5 coming)
+
+### What NOT to Add for Orbit
+
+| Package | Why Not |
+|---------|---------|
+| langchain | Overkill - Claude Structured Outputs is simpler for text-to-SQL |
+| vanna | Requires schema training - Claude with DDL prompt is zero-config |
+| raglite | Document RAG - WiQ is structured SQL queries |
+| Custom DuckDBRetriever | HTTP adapter provides same functionality with better separation |
 
 ---
 
@@ -166,6 +299,7 @@ client = DataMapClient(
 | Knowledge Graph | RDFLib | Neo4j | Neo4j requires separate server. RDFLib is pure Python, W3C standard RDF/SKOS support, simpler for vocabulary use case. |
 | Lineage | OpenLineage | Custom | OpenLineage is the industry standard. Custom lineage creates vendor lock-in. |
 | Power BI Deploy | semantic-link-labs | pyadomd/pytabular | pyadomd is Windows-only, inactive development. semantic-link-labs is Microsoft-supported, Fabric-native. |
+| Conversational UI | Orbit | Custom React | Orbit provides tested UI, intent routing, multi-LLM support. Custom build takes weeks vs hours. |
 
 ---
 
@@ -189,6 +323,9 @@ Delta Lake is excellent for Databricks but adds complexity for a Parquet-based m
 ### Avoid: Spark/PySpark
 PySpark requires cluster infrastructure. DuckDB + Polars achieves comparable performance for single-node workloads up to ~100GB. Only consider Spark if data exceeds single-node capacity.
 
+### Avoid: LangChain for Text-to-SQL
+Claude Structured Outputs (Nov 2025) provides schema-guaranteed JSON without abstraction overhead. LangChain SQLDatabaseChain adds unnecessary complexity for this use case.
+
 ---
 
 ## Python Version
@@ -202,8 +339,9 @@ PySpark requires cluster infrastructure. DuckDB + Polars achieves comparable per
 | DuckDB | Python 3.9-3.14 |
 | LlamaIndex | Python >=3.10 |
 | Pydantic | Python >=3.8 |
+| Orbit (server) | Python >=3.12 (runs separately in Docker) |
 
-Python 3.11 is the sweet spot: compatible with all libraries, stable, and performant.
+Python 3.11 is the sweet spot: compatible with all libraries, stable, and performant. Orbit server runs in its own environment (Docker) with Python 3.12.
 
 ---
 
@@ -239,6 +377,9 @@ pip install pydantic==2.12.5 pandera
 
 # Supporting
 pip install httpx tenacity structlog python-dotenv typer
+
+# Orbit CLI (optional, for testing)
+pip install schmitech-orbit-client==1.1.6
 ```
 
 ### Development Dependencies
@@ -296,6 +437,7 @@ typer>=0.12.0
 | Power BI Semantic Model | semantic-link-labs + TMDL |
 | Vocabulary Index (NOC/ONET) | RDFLib + SKOS |
 | Conversational RAG | LlamaIndex + Qdrant |
+| Conversational UI | Orbit (HTTP adapter to JobForge API) |
 | Data Dictionary Export | Pydantic schemas + OpenLineage |
 | Lineage Documentation | OpenLineage + SQLLineage |
 | Purview Integration | azure-purview-datamap |
@@ -317,6 +459,16 @@ typer>=0.12.0
 - [Microsoft Learn - Semantic Link](https://learn.microsoft.com/en-us/fabric/data-science/semantic-link-power-bi)
 - [Microsoft Learn - Purview Python SDK](https://learn.microsoft.com/en-us/purview/data-gov-python-sdk)
 - [DuckDB - Parquet Documentation](https://duckdb.org/docs/stable/data/parquet/overview)
+- [DuckDB 1.4.3 LTS Announcement](https://duckdb.org/2025/12/09/announcing-duckdb-143)
+
+### Orbit Integration (HIGH Confidence)
+- [schmitech/orbit GitHub](https://github.com/schmitech/orbit) - Orbit repository, v2.3.0 release
+- [Orbit Docker README](https://github.com/schmitech/orbit/blob/main/docker/README.md) - Docker deployment guide
+- [schmitech-orbit-client on Libraries.io](https://libraries.io/pypi/schmitech-orbit-client) - Version 1.1.6 details
+
+### Claude API (HIGH Confidence)
+- [Anthropic Structured Outputs Docs](https://platform.claude.com/docs/en/build-with-claude/structured-outputs) - Official documentation
+- [Hands-On with Anthropic Structured Outputs](https://towardsdatascience.com/hands-on-with-anthropics-new-structured-output-capabilities/) - Practical examples
 
 ### Framework Comparisons (MEDIUM Confidence)
 - [LangChain vs LlamaIndex 2025 Comparison](https://latenode.com/blog/platform-comparisons-alternatives/automation-platform-comparisons/langchain-vs-llamaindex-2025-complete-rag-framework-comparison)

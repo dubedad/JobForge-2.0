@@ -1,7 +1,7 @@
 # Architecture Patterns
 
 **Domain:** Workforce Intelligence Platform (Data Pipeline + Semantic Model + RAG)
-**Researched:** 2026-01-18
+**Researched:** 2026-01-18 (Updated: 2026-01-20 for Orbit Integration)
 **Confidence:** HIGH (patterns verified via authoritative sources)
 
 ## Executive Summary
@@ -16,7 +16,276 @@ These patterns are synergistic: the medallion pipeline feeds the semantic model,
 
 ---
 
-## System Architecture Overview
+## Orbit Integration Architecture (v2.1 Milestone)
+
+### Overview
+
+Orbit provides a conversational gateway layer that sits between users and the JobForge API. The integration adds a new deployment path without disrupting the existing Power BI deployment.
+
+```
+                                 EXISTING ARCHITECTURE
+                                 ====================
+                                    +-------------------+
+                                    |   Power BI        |
+                                    |   Semantic Model  |
+                                    +--------+----------+
+                                             ^
+                                             |
+                    +------------------------+------------------------+
+                    |                   WiQ Gold Layer                |
+                    |  24 Parquet tables in data/gold/                |
+                    +------------------------+------------------------+
+                                             ^
+                                             |
+                    +------------------------+------------------------+
+                    |              Medallion Pipeline                 |
+                    |  staged -> bronze -> silver -> gold             |
+                    +------------------------------------------------+
+
+                                   NEW: ORBIT INTEGRATION
+                                   ======================
+                                             |
+                                             v
++-------------------------------------------------------------------------------------+
+|                              ORBIT GATEWAY (localhost:3000)                          |
+|  +-----------------------------------------------------------------------------+    |
+|  |                         Intent Classification                                |    |
+|  |   "How many developers?" -> DATA_QUERY                                       |    |
+|  |   "Where does dim_noc come from?" -> METADATA_QUERY                         |    |
+|  |   "Is WiQ DADM compliant?" -> COMPLIANCE_QUERY                              |    |
+|  +------------------------------------+----------------------------------------+    |
+|                                       |                                             |
+|        +------------------------------+------------------------------+              |
+|        |                              |                              |              |
+|        v                              v                              v              |
+|  +------------+                +------------+                +------------+         |
+|  | DuckDB     |                | HTTP       |                | HTTP       |         |
+|  | Retriever  |                | Adapter    |                | Adapter    |         |
+|  | (new)      |                | (meta)     |                | (comply)   |         |
+|  +-----+------+                +-----+------+                +-----+------+         |
++--------|-------------------------------|-------------------------------|------------+
+         |                               |                               |
+         v                               v                               v
++----------------+            +------------------+            +------------------+
+| DuckDB         |            | JobForge API     |            | JobForge API     |
+| In-Memory      |            | /api/query/      |            | /api/compliance/ |
+| (gold/*.parquet)|           | metadata         |            | {framework}      |
++----------------+            +------------------+            +------------------+
+```
+
+### Integration Points with Existing System
+
+| Component | Current Role | Orbit Integration Point |
+|-----------|--------------|------------------------|
+| **data/gold/*.parquet** | Gold layer storage, Power BI source | DuckDBRetriever reads directly via DuckDB views |
+| **DataQueryService** | Claude text-to-SQL for FastAPI | Exposed via `/api/query/data` for Orbit HTTP adapter |
+| **MetadataQueryService** | Rule-based lineage queries | Exposed via `/api/query/metadata` for Orbit HTTP adapter |
+| **GoldQueryEngine** | DuckDB interface for pipeline | Pattern reused by DuckDBRetriever |
+| **PipelineConfig** | Path management | Used by DuckDBRetriever for gold_path() |
+| **generate_schema_ddl()** | DDL for text-to-SQL prompts | Used by DuckDBRetriever for schema context |
+
+### New Components Required
+
+| Component | Location | Purpose | Dependencies |
+|-----------|----------|---------|--------------|
+| **DuckDBRetriever** | `orbit/retrievers/duckdb.py` | Orbit retriever for parquet queries | duckdb, anthropic, PipelineConfig |
+| **jobforge.yaml** | `orbit/config/adapters/` | Adapter configuration for JobForge | None |
+| **wiq_intents.yaml** | `orbit/config/intents/` | Domain-specific intent templates | None |
+| **orbit-integration.md** | `docs/` | Integration documentation | None |
+
+### Data Flow: User Query to Response
+
+```
+1. USER QUERY
+   "How many software developers are in WiQ?"
+            |
+            v
+2. ORBIT GATEWAY (localhost:3000)
+   - Receives query via React UI, CLI, or widget
+   - Classifies intent using patterns + LLM
+   - Determines: DATA_QUERY (matches "how many")
+            |
+            v
+3. ROUTING DECISION
+   Intent: DATA_QUERY
+   Adapter: DuckDBRetriever (or HTTP to /api/query/data)
+            |
+            v
+4a. DUCKDB RETRIEVER PATH (Direct)
+    - Load parquet files as DuckDB views
+    - Generate SQL via Claude structured outputs
+    - Execute SQL on DuckDB
+    - Return results
+            |
+            v
+4b. HTTP ADAPTER PATH (Via API)
+    - POST to http://localhost:8000/api/query/data
+    - JobForge DataQueryService handles text-to-SQL
+    - Returns SQL + results
+            |
+            v
+5. RESPONSE FORMATTING
+   Orbit formats response for UI/CLI
+   User sees: "There are 12 software developer occupations in WiQ..."
+```
+
+### Component Details
+
+#### DuckDBRetriever (New)
+
+```python
+# orbit/retrievers/duckdb.py
+class DuckDBRetriever:
+    """Orbit retriever for DuckDB parquet queries.
+
+    Configuration (adapters.yaml):
+        implementation: retrievers.duckdb.DuckDBRetriever
+        config:
+            parquet_path: "data/gold/"
+            anthropic_model: "claude-sonnet-4-20250514"
+    """
+
+    def __init__(self, config: dict[str, Any]):
+        self.parquet_path = Path(config.get("parquet_path", "data/gold"))
+        self.model = config.get("anthropic_model", "claude-sonnet-4-20250514")
+        self._conn: duckdb.DuckDBPyConnection | None = None
+        self._schema_ddl: str | None = None
+
+    def initialize(self) -> None:
+        """Register parquet files as DuckDB views."""
+        self._conn = duckdb.connect(":memory:")
+        for parquet in self.parquet_path.glob("*.parquet"):
+            table_name = parquet.stem
+            self._conn.execute(
+                f"CREATE VIEW {table_name} AS SELECT * FROM '{parquet}'"
+            )
+        # Generate DDL for text-to-SQL prompts
+        self._schema_ddl = self._generate_ddl()
+
+    def retrieve(self, query: str, collection_name: str = "") -> list[dict]:
+        """Generate SQL from query and execute."""
+        if self._conn is None:
+            self.initialize()
+        sql = self._text_to_sql(query)
+        return self._conn.execute(sql).fetchdf().to_dict(orient="records")
+```
+
+**Key design decisions:**
+1. **In-memory DuckDB** - No persistent state, clean isolation per session
+2. **Lazy initialization** - Views created on first query, not at startup
+3. **Schema DDL generation** - Same pattern as DataQueryService for consistency
+4. **Claude structured outputs** - Guaranteed SQL schema compliance
+
+#### Adapter Configuration (New)
+
+```yaml
+# orbit/config/adapters/jobforge.yaml
+name: jobforge-wiq
+description: "Workforce Intelligence Query interface for Canadian occupational data"
+enabled: true
+type: http
+
+http:
+  base_url: "http://localhost:8000"
+  endpoints:
+    data:
+      path: "/api/query/data"
+      method: POST
+      body:
+        question: "{{query}}"
+    metadata:
+      path: "/api/query/metadata"
+      method: POST
+      body:
+        question: "{{query}}"
+    compliance:
+      path: "/api/compliance/{{framework}}"
+      method: GET
+
+intents:
+  - name: data_query
+    endpoint: data
+    patterns: ["how many", "count of", "list all", "show me"]
+  - name: metadata_query
+    endpoint: metadata
+    patterns: ["where does", "lineage", "come from", "depends on"]
+  - name: compliance_query
+    endpoint: compliance
+    patterns: ["dadm compliance", "dama compliance"]
+```
+
+#### Intent Templates (New)
+
+```yaml
+# orbit/config/intents/wiq_intents.yaml
+domain: workforce_intelligence
+description: "Canadian Occupational Classification and Workforce Projections"
+
+intent_categories:
+  occupation_queries:
+    keywords: [NOC, occupation, job title, unit group, TEER]
+    sample_questions:
+      - "What occupations are in broad category 2?"
+      - "Show all TEER 1 unit groups"
+
+  forecast_queries:
+    keywords: [projection, forecast, employment growth, retirement]
+    sample_questions:
+      - "What is the projected employment for software developers?"
+
+  lineage_queries:
+    keywords: [source, lineage, come from, transform, upstream]
+    sample_questions:
+      - "Where does dim_noc data come from?"
+```
+
+### Deployment Topology
+
+```
+DEVELOPMENT (Single Machine)
+============================
+
++------------------+     +------------------+     +------------------+
+| Orbit Gateway    |     | JobForge API     |     | Gold Parquet     |
+| localhost:3000   |---->| localhost:8000   |---->| data/gold/*.pq   |
++------------------+     +------------------+     +------------------+
+        |
+        +--------------> DuckDB (in-memory) -----> data/gold/*.pq
+
+
+PRODUCTION (Containerized)
+==========================
+
++------------------+     +------------------+     +------------------+
+| Orbit Container  |     | JobForge API     |     | Object Storage   |
+| orbit:3000       |---->| jobforge:8000    |---->| (S3/Azure Blob)  |
++------------------+     +------------------+     +------------------+
+        |                        |
+        |                        v
+        |                +------------------+
+        +--------------->| DuckDB           |
+                         | (in container)   |
+                         +------------------+
+```
+
+### Integration with Power BI Path
+
+The Orbit integration is **additive** - it does not modify the existing Power BI deployment path:
+
+| Aspect | Power BI Path (Existing) | Orbit Path (New) |
+|--------|--------------------------|------------------|
+| **Data source** | data/gold/*.parquet | data/gold/*.parquet (same) |
+| **Schema** | WiQ semantic model JSON | DuckDB views from parquet |
+| **Query** | DAX, Power Query | Natural language -> SQL |
+| **User interface** | Power BI Service | Orbit React UI, CLI, widget |
+| **Refresh** | Scheduled import | Real-time (queries parquet directly) |
+| **Governance** | RLS in Power BI | Intent routing in Orbit |
+
+Both paths read from the same gold layer - changes to parquet files propagate to both consumers automatically.
+
+---
+
+## System Architecture Overview (Original)
 
 ```
                                     +-----------------------+
@@ -509,139 +778,68 @@ Audit trail         -----+      (PDF, JSON)
 
 ---
 
-## Build Order and Dependencies
+## Build Order: Orbit Integration (v2.1 Milestone)
 
-Based on the architecture, components should be built in this order:
+Based on the architecture, the Orbit integration should be built in this order:
 
-### Phase 1: Pipeline Foundation
-
-```
-[1.1] Staged Layer
-       |
-       v
-[1.2] Bronze Layer
-       |
-       v
-[1.3] Silver Layer
-       |
-       v
-[1.4] Gold Layer (dimensional tables only, no relationships yet)
-```
-
-**Rationale:** Pipeline must exist before any downstream components can be tested.
-
-### Phase 2: Semantic Model Core
+### Phase 1: DuckDBRetriever (Core Component)
 
 ```
-[2.1] DIM_NOC (hub dimension)
-       |
-       v
-[2.2] NOC Attribute tables (Element, Oasis) --> connects to DIM_NOC
-       |
-       v
-[2.3] FACT_COPS --> connects to DIM_NOC
-       |
-       v
-[2.4] DIM_JOB_ARCH (hub dimension)
-       |
-       v
-[2.5] BRIDGE_NOC_JOB --> connects hubs
+[1.1] Create orbit/retrievers/duckdb.py
+      - DuckDBRetriever class following Orbit BaseRetriever pattern
+      - Initialize DuckDB connection with gold parquet views
+      - Text-to-SQL using Claude structured outputs
+      - retrieve() method returning list[dict]
+
+[1.2] Create orbit/retrievers/__init__.py
+      - Export DuckDBRetriever
 ```
 
-**Rationale:** Build outward from hub dimensions. Each step validates referential integrity.
+**Rationale:** DuckDBRetriever is the core integration point. It can be tested independently before Orbit configuration.
 
-### Phase 3: Power BI Deployment
-
-```
-[3.1] Power BI semantic model (Direct Lake connection)
-       |
-       v
-[3.2] DAX measures
-       |
-       v
-[3.3] RLS rules
-       |
-       v
-[3.4] Business descriptions (glossary population)
-```
-
-**Rationale:** Model structure before logic before access control before documentation.
-
-### Phase 4: Knowledge Graph
+### Phase 2: Orbit Configuration
 
 ```
-[4.1] Entity extraction from WiQ
-       |
-       v
-[4.2] Relationship mapping
-       |
-       v
-[4.3] Graph indexing
-       |
-       v
-[4.4] Graph querying API
+[2.1] Create orbit/config/adapters/jobforge.yaml
+      - HTTP adapter pointing to JobForge API
+      - Intent routing rules
+      - Endpoint mappings
+
+[2.2] Create orbit/config/intents/wiq_intents.yaml
+      - Domain-specific intent templates
+      - Sample questions for each category
 ```
 
-**Rationale:** Can be built in parallel with Phase 3 once Gold layer exists.
+**Rationale:** Configuration files define how Orbit routes queries. Depends on understanding JobForge API structure.
 
-### Phase 5: RAG Interface
-
-```
-[5.1] Vector embeddings for entities
-       |
-       v
-[5.2] Vector store indexing
-       |
-       v
-[5.3] Hybrid retriever (vector + graph)
-       |
-       v
-[5.4] LLM integration
-       |
-       v
-[5.5] Conversational interface
-```
-
-**Rationale:** Depends on both Power BI deployment (for testing queries) and Knowledge Graph.
-
-### Phase 6: Artifact Export
+### Phase 3: Documentation and Testing
 
 ```
-[6.1] Data dictionary generation
-       |
-       v
-[6.2] Lineage documentation
-       |
-       v
-[6.3] Purview export adapter
-       |
-       v
-[6.4] Denodo export adapter
+[3.1] Create docs/orbit-integration.md
+      - Architecture diagram
+      - Quick start guide
+      - API examples
+      - Troubleshooting
+
+[3.2] Manual verification
+      - Start JobForge API
+      - Test endpoints with curl
+      - Deploy Orbit (optional)
+      - End-to-end test
 ```
 
-**Rationale:** Can be built in parallel with RAG once model metadata is stable.
+**Rationale:** Documentation ensures the integration is usable. Manual testing validates the full flow.
 
 ### Dependency Graph
 
 ```
-Phase 1 (Pipeline)
+Phase 1 (DuckDBRetriever)
     |
     v
-Phase 2 (Semantic Model)
+Phase 2 (Configuration)
     |
-    +-------+-------+
-    |       |       |
-    v       v       v
-Phase 3  Phase 4  Phase 6
-(Power   (Know-   (Artifact
- BI)     ledge    Export)
-         Graph)
-    |       |
-    +---+---+
-        |
-        v
-    Phase 5
-    (RAG)
+    v
+Phase 3 (Documentation + Testing)
 ```
 
 ---
@@ -678,6 +876,12 @@ Phase 3  Phase 4  Phase 6
 **Why bad:** Lineage becomes untraceable; access control impossible
 **Instead:** Separate workspaces per medallion layer
 
+### Anti-Pattern 6: Duplicating Query Logic in Orbit (New)
+
+**What:** Rebuilding DataQueryService logic inside DuckDBRetriever
+**Why bad:** Two implementations to maintain; potential drift
+**Instead:** DuckDBRetriever can use HTTP adapter to call existing JobForge API, or share code via imports
+
 ---
 
 ## Scalability Considerations
@@ -689,6 +893,7 @@ Phase 3  Phase 4  Phase 6
 | **Graph size** | NetworkX in-memory | Neo4j single node | Neo4j cluster |
 | **Pipeline refresh** | Full refresh OK | Incremental only | Streaming ingestion |
 | **Artifact export** | On-demand | Scheduled | Event-driven |
+| **Orbit gateway** | Single instance | Load balanced | CDN + caching |
 
 ---
 
@@ -702,6 +907,7 @@ Phase 3  Phase 4  Phase 6
 | **Vector store** | ChromaDB (MVP) / Pinecone (prod) | Weaviate | Simplicity for MVP |
 | **LLM** | Claude API | OpenAI, local models | Quality for reasoning queries |
 | **Power BI deployment** | python-pptx + REST API | Tabular Editor | Python-native for consistency |
+| **Conversational gateway** | Orbit | Custom build | Pre-built UI, intent routing, multi-LLM |
 
 ---
 
@@ -734,3 +940,8 @@ Phase 3  Phase 4  Phase 6
 **Data Governance:**
 - [Microsoft Purview - Data Lineage](https://learn.microsoft.com/en-us/purview/data-gov-classic-lineage-user-guide)
 - [Microsoft Purview - Best Practices](https://learn.microsoft.com/en-us/purview/concept-best-practices-lineage-azure-data-factory)
+
+**Orbit Integration:**
+- [Orbit GitHub Repository](https://github.com/schmitech/orbit)
+- [Orbit Adapters Documentation](https://github.com/schmitech/orbit/blob/main/docs/adapters/adapters.md)
+- [MotherDuck - Semantic Layer with DuckDB](https://motherduck.com/blog/semantic-layer-duckdb-tutorial/)

@@ -1,248 +1,323 @@
-# Project Research Summary
+# Research Summary: Orbit Integration (v2.1)
 
-**Project:** JobForge 2.0 - Workforce Intelligence Platform
-**Domain:** Workforce Intelligence / Occupational Data Governance for Government of Canada
-**Researched:** 2026-01-18
-**Confidence:** HIGH
+**Synthesized:** 2026-01-20
+**Overall Confidence:** MEDIUM-HIGH
+
+---
 
 ## Executive Summary
 
-JobForge 2.0 is a workforce intelligence platform combining three mature architecture patterns: medallion data pipeline (bronze/silver/gold), hub-and-spoke dimensional modeling for Power BI semantic models, and hybrid GraphRAG for conversational queries. The platform's core mission is occupational data governance with NOC (National Occupational Classification) as the authoritative Canadian source, supplemented by O*NET for richer skill/task descriptors, deployed via Power BI semantic models with conversational RAG capabilities.
+Orbit integration for JobForge 2.0 is a **low-risk, high-value milestone** because the existing codebase already contains 85% of the required components. The `orbit/` directory has a working DuckDBRetriever implementation, HTTP adapter configuration, and domain-specific intent templates. The v2.1 milestone should focus on **productionizing and hardening** what exists rather than building from scratch. The HTTP adapter pattern is the correct approach: Orbit acts as a conversational gateway that routes queries to JobForge's existing FastAPI endpoints, keeping all DuckDB logic in JobForge and treating Orbit as a UI/routing layer only.
 
-The recommended approach builds from foundation up: establish the medallion pipeline first (Polars + DuckDB + Parquet), then the WiQ dimensional model with DIM_NOC as the hub, followed by Power BI deployment via semantic-link-labs, and finally the knowledge graph and RAG layer (LlamaIndex + Qdrant). This order respects dependencies - each layer feeds the next - and aligns with the research consensus that data governance foundations must be solid before building consumption interfaces.
+The primary technical challenge is **text-to-SQL accuracy**, not infrastructure. Research indicates that well-documented schemas with column descriptions and relationship hints can push accuracy from the 70-85% baseline to 90%+. The existing Claude Structured Outputs integration (Nov 2025) provides schema-guaranteed SQL generation without needing additional frameworks like LangChain or Vanna. The key pitfalls center on intent pattern collision, schema DDL drift after updates, and potential memory leaks in async environments using DuckDB.
 
-Key risks center on three areas: (1) layer responsibility leakage in the medallion architecture causing "semantic sprawl" where metrics diverge, (2) DADM (Directive on Automated Decision-Making) compliance treated as afterthought rather than designed into schemas from day one, and (3) RAG deployment without evaluation frameworks leading to confident-but-wrong answers. Mitigation requires explicit layer contracts documented before building, provenance tracking in every schema, and golden Q&A test datasets before any RAG features ship.
+Stack changes are minimal: the only optional addition is `schmitech-orbit-client==1.1.6` for CLI testing. All core dependencies (DuckDB 1.4+, anthropic 0.43+, FastAPI, httpx) are already in the project. Deployment uses Docker with the `schmitech/orbit:basic` image. The estimated effort is **5 developer-days** to complete v2.1, making this an efficient milestone with clear deliverables.
+
+---
 
 ## Key Findings
 
-### Recommended Stack
+### From STACK.md
 
-The stack is optimized for Microsoft Fabric ecosystem, modern Python data processing, and production-ready RAG. All core libraries are verified via PyPI and official documentation.
+- **No new dependencies required** - DuckDB, anthropic, FastAPI, httpx already installed
+- **HTTP adapter pattern recommended** over custom DuckDBRetriever inside Orbit (2ms latency vs. maintenance burden)
+- **Claude Structured Outputs** (Nov 2025 beta) provides schema-guaranteed SQL - no LangChain needed
+- **Orbit v2.3.0** available via Docker (`schmitech/orbit:basic`) or local install
+- **Python 3.11 for JobForge**, Python 3.12+ for Orbit server (runs separately in Docker)
+- Optional CLI client: `schmitech-orbit-client==1.1.6` for testing without full UI
 
-**Core technologies:**
-- **Polars 1.37.1**: DataFrame operations, ETL transformations - 3-10x faster than Pandas, native Parquet support, lazy evaluation
-- **DuckDB 1.4.3**: SQL analytics on Parquet, medallion layer queries - in-process OLAP, projection/filter pushdown, zero-copy Arrow integration
-- **semantic-link-labs 0.12.9**: Power BI semantic model deployment - Microsoft's official library for programmatic deployment, Direct Lake support
-- **RDFLib 7.5.0**: Knowledge graph operations - built-in SKOS namespace support for NOC/O*NET vocabulary indexing
-- **LlamaIndex 0.14.12**: RAG orchestration - superior retrieval accuracy, designed for document-heavy applications
-- **Qdrant 1.16.2**: Production vector database - Rust-based, HNSW with metadata filtering, ready for GC production workloads
-- **OpenLineage 1.42.1**: Data governance lineage - open standard adopted by Airflow/dbt/Spark
+### From FEATURES.md
 
-**Critical constraint:** Python 3.11 required (semantic-link-labs does not support Python 3.12+).
+- **Table stakes 85% complete** - DuckDBRetriever working, intent routing configured, schema context generated
+- **Remaining work is polish**: error handling improvements, deployment documentation
+- **Differentiators already configured**: entity recognition for NOC codes, TEER levels, broad categories
+- **Anti-features clear**: no vector embeddings (v3.0 scope), no multi-turn conversation, no custom fine-tuned model
+- **Estimated effort: 5 developer-days**
 
-### Expected Features
+### From ARCHITECTURE.md
 
-**Must have (table stakes):**
-- NOC ingestion and parsing (516 unit groups, hierarchical structure)
-- O*NET/SOC integration for skill/task descriptors
-- NOC-SOC crosswalk mapping with confidence scores
-- Power BI semantic model deployment (Direct Lake to Gold layer)
-- Measure definitions with DAX (headcount, FTE, vacancy rates)
-- Row-Level Security for department-level access control
-- Data dictionary generation from model metadata
-- Business glossary for workforce domain terms
-- Data lineage tracking (source-to-report traceability)
+- **Additive integration** - does not modify existing Power BI deployment path
+- **Both paths read same gold layer** - changes to parquet propagate to both consumers
+- **Three routing options**: DATA_QUERY (DuckDB), METADATA_QUERY (lineage API), COMPLIANCE_QUERY (DADM API)
+- **DuckDBRetriever uses in-memory DuckDB** with lazy initialization
+- **Build order**: DuckDBRetriever first, then Orbit configuration, then documentation/testing
 
-**Should have (competitive):**
-- Natural language query interface ("Show me IT occupations requiring Python")
-- Occupation similarity scoring via embeddings
-- Auto-generated glossary terms from metadata
-- Lineage visualization (interactive data flow diagrams)
+### From PITFALLS.md
 
-**Defer (v2+):**
-- Skills ontology (taxonomy sufficient for MVP)
-- Job description generation (manager persona is later phase)
-- Skills gap analysis (requires organizational data not in initial scope)
-- Emerging skills detection (NLP on job postings)
-- Real-time job posting ingestion (Job Bank already does this)
+- **C1: Intent Pattern Collision** - "how many tables contain NOC" matches both data and metadata patterns
+- **P1: Memory Leak in Async** - musl malloc (Alpine) + DuckDB can cause RSS creep; use jemalloc
+- **I1: Column Hallucination** - LLM generates plausible but wrong column names; add descriptions to DDL
+- **I3: Conflicting Interfaces** - JobForge has DataQueryService AND new DuckDBRetriever; avoid duplication
+- **D4: CORS Not Configured** - React UI on 3000 cannot reach API on 8000 without middleware
 
-### Architecture Approach
+---
 
-The architecture is a six-layer system where each layer feeds the next: medallion pipeline produces staged/bronze/silver/gold Parquet files; gold feeds the WiQ semantic model with hub-and-spoke dimensional design; WiQ feeds both Power BI (via Direct Lake) and the knowledge graph; the knowledge graph powers hybrid RAG retrieval; and artifact export generates governance documentation for Purview/Denodo.
+## Recommended Stack
 
-**Major components:**
-1. **Medallion Pipeline** (Staged/Bronze/Silver/Gold) - Progressive data refinement with checkpoints
-2. **WiQ Semantic Model** - Hub-and-spoke dimensional model with DIM_NOC and DIM_JOB_ARCH as hubs, bridge tables for M:N relationships
-3. **Knowledge Graph** - Vocabulary indexing for entity resolution and relationship traversal
-4. **RAG Interface** - Hybrid retriever combining vector search (semantic) and graph traversal (structured)
-5. **Power BI Layer** - Semantic model with DAX measures, RLS, Direct Lake connection
-6. **Artifact Export** - Data dictionary and lineage documentation to Purview/Denodo formats
+**Additions for v2.1:**
 
-### Critical Pitfalls
+| Package | Version | Purpose | Required? |
+|---------|---------|---------|-----------|
+| schmitech-orbit-client | 1.1.6 | CLI testing interface | Optional |
 
-1. **Layer responsibility leakage** - Business logic appearing in Bronze/Silver instead of Gold causes conflicting metric definitions. **Avoid:** Document layer contracts explicitly; enforce naming conventions (bronze_*, silver_*, gold_*); code review flags business logic outside Gold.
+**Already Present (No Changes):**
 
-2. **DADM compliance as afterthought** - Bolting on compliance tracking after building creates incomplete audit trails. **Avoid:** Design provenance tracking into schemas from day 1 (source_system, ingestion_timestamp, transform_version); map each data element to DADM requirements early.
+| Package | Version | Role in Orbit Integration |
+|---------|---------|---------------------------|
+| duckdb | >=1.4.0 | SQL on gold Parquet files |
+| anthropic | >=0.43.0 | Claude Structured Outputs for text-to-SQL |
+| fastapi | >=0.115.0 | HTTP API endpoints for Orbit HTTP adapter |
+| httpx | >=0.27.0 | Async HTTP client |
+| pydantic | >=2.12.0 | SQLQuery response model |
 
-3. **NOC-to-ONET mapping without imputation strategy** - Treating O*NET as directly joinable with NOC ignores taxonomy differences (SOC vs NOC). **Avoid:** Treat NOC as authoritative; build explicit crosswalk table with confidence scores; quarantine NOC codes without reliable O*NET mapping.
+**Deployment:**
 
-4. **Power BI semantic model without star schema** - Importing Gold tables directly without dimensional transformation creates performance issues and incorrect calculations. **Avoid:** Gold layer should already model toward star schema; single direction relationships with DAX USERELATIONSHIP.
+```bash
+# Orbit via Docker (recommended)
+docker pull schmitech/orbit:basic
+docker run -d --name orbit -p 5173:5173 -p 3000:3000 \
+  -v $(pwd)/orbit/config:/orbit/config schmitech/orbit:basic
+```
 
-5. **Knowledge Graph RAG without evaluation framework** - "72% of enterprise RAG implementations fail within their first year" due to no accuracy baselines. **Avoid:** Build evaluation dataset before building RAG (golden Q&A pairs); measure retrieval precision; require source citation in every answer; set accuracy threshold (85%+) before release.
+---
 
-## Implications for Roadmap
+## Feature Scope
 
-Based on research, suggested phase structure:
+### Table Stakes (Must Ship)
 
-### Phase 1: Data Foundation / Pipeline Infrastructure
+| Feature | Status | Notes |
+|---------|--------|-------|
+| DuckDBRetriever working with 24 gold tables | COMPLETE | `orbit/retrievers/duckdb.py` exists |
+| Intent routing for data queries | COMPLETE | `jobforge.yaml` configured |
+| Schema DDL context for LLM | COMPLETE | Generated dynamically from parquet |
+| SELECT-only enforcement | COMPLETE | System prompt enforces |
+| Error handling (user-friendly) | PARTIAL | Needs improvement |
+| Basic deployment documentation | TODO | Required for milestone completion |
 
-**Rationale:** Pipeline must exist before any downstream components can be tested. Architecture research confirms medallion pipeline is foundational; all other layers depend on Gold output.
+### Differentiators (Should Ship)
 
-**Delivers:**
-- Staged/Bronze/Silver/Gold layer infrastructure
-- NOC 2021 v1.3 ingestion pipeline
-- Schema validation framework with quarantine tables
-- Provenance tracking in every table (_ingested_at, _source_file, _batch_id)
+| Feature | Value | Build in v2.1? |
+|---------|-------|----------------|
+| Domain entity recognition (NOC, TEER) | Already configured | YES - validate |
+| Query explanation surfacing | Already generated | YES - expose |
+| Metadata query pathway | Already built | YES - wire up |
 
-**Addresses:** NOC ingestion, metadata storage, version management (from FEATURES.md)
+### Anti-Features (Do Not Build)
 
-**Avoids:** Layer responsibility leakage, deferred data quality rules, DADM afterthought (from PITFALLS.md)
+| Feature | Why Avoid |
+|---------|-----------|
+| Vector embeddings | RAG-03 is v3.0 scope |
+| Multi-turn conversation | Requires session state |
+| Custom fine-tuned model | Claude Structured Outputs sufficient |
+| Query builder UI | JDB-01 through JDB-05 are v3.0 |
+| Auto-visualization | Different product |
 
-**Stack:** Polars, DuckDB, PyArrow, Pydantic for validation
+---
 
-### Phase 2: WiQ Semantic Model Core
+## Architecture Approach
 
-**Rationale:** Semantic model structure must be designed before Power BI deployment. Hub-and-spoke pattern requires careful relationship design; bridge tables need cardinality rules.
+### Integration Pattern
 
-**Delivers:**
-- DIM_NOC hub dimension with hierarchy (4-digit to 1-digit)
-- NOC attribute tables (Element, Oasis)
-- FACT_NOC_COPS for forecasting data
-- Star schema validated for Power BI consumption
-- Business key preservation alongside surrogates
+```
+User Question
+     |
+     v
++------------------+
+|  Orbit Gateway   |  <-- Intent classification, UI, conversation history
+|  localhost:3000  |
++--------+---------+
+         |
+    HTTP calls to JobForge API (or direct DuckDB)
+         |
+         v
++------------------+
+|  JobForge API    |  <-- Claude text-to-SQL, DuckDB queries
+|  localhost:8000  |
++--------+---------+
+         |
+         v
++------------------+
+|  Gold Parquet    |  <-- 24 tables, star schema
+|  data/gold/*.parquet
++------------------+
+```
 
-**Addresses:** Relationships & star schema, measure definitions infrastructure (from FEATURES.md)
+### Key Architectural Decisions
 
-**Uses:** Gold layer output, dimensional modeling patterns (from ARCHITECTURE.md)
+1. **HTTP adapter over custom retriever** - Keeps DuckDB logic in JobForge; Orbit is pure UI
+2. **Single source of truth** - DuckDBRetriever should delegate to DataQueryService (avoid parallel implementations)
+3. **In-memory DuckDB** - Clean isolation per session; lazy initialization
+4. **Same gold layer** - Both Power BI and Orbit read from `data/gold/*.parquet`
 
-**Avoids:** Snowflaking, Power BI semantic model without star schema (from PITFALLS.md)
+### New Components
 
-### Phase 3: Power BI Deployment
+| Component | Location | Purpose |
+|-----------|----------|---------|
+| DuckDBRetriever | `orbit/retrievers/duckdb.py` | EXISTS - validate |
+| jobforge.yaml | `orbit/config/adapters/` | EXISTS - validate |
+| wiq_intents.yaml | `orbit/config/intents/` | EXISTS - validate |
+| orbit-integration.md | `docs/` | TODO - create |
 
-**Rationale:** Primary consumption point for Government of Canada analysts. Must be deployed before RAG since RAG queries should be validated against semantic model answers.
+---
 
-**Delivers:**
-- Power BI semantic model (Direct Lake connection)
-- DAX measures (headcount, FTE, vacancy rates, turnover)
-- Row-Level Security by department
-- Business descriptions (glossary population in model)
-- Model documentation export
+## Critical Pitfalls
 
-**Addresses:** Power BI semantic model deployment, RLS, model documentation export (from FEATURES.md)
+### 1. Intent Pattern Collision (CRITICAL)
 
-**Uses:** semantic-link-labs, TMDL for version control (from STACK.md)
+**Risk:** "How many tables contain NOC?" matches both data ("how many") and metadata ("tables contain") intents.
 
-**Avoids:** Embedded data in reports, RLS implemented too late (from PITFALLS.md)
+**Prevention:**
+- Design mutually exclusive patterns
+- Add priority ordering (metadata checked before data)
+- Include negative patterns in data_query
 
-### Phase 4: O*NET Integration and Crosswalk
+### 2. Column Hallucination (HIGH)
 
-**Rationale:** O*NET enriches NOC with skill/task data but requires explicit crosswalk with confidence scores. Keeping this separate from Phase 1 prevents NOC-ONET mapping pitfalls.
+**Risk:** LLM generates `job_title` when actual column is `class_title`.
 
-**Delivers:**
-- O*NET-SOC 2019 ingestion pipeline
-- NOC-SOC crosswalk table with confidence scores and match methodology
-- O*NET attribute integration (skills, tasks, work context)
-- Quarantine for NOC codes without reliable mapping
+**Prevention:**
+- Add column descriptions to schema DDL:
+  ```sql
+  class_title VARCHAR,  -- Official occupation title (not "job_title")
+  ```
+- Validate SQL against actual schema before execution
+- Log failed queries for schema improvement
 
-**Addresses:** O*NET/SOC integration, NOC-SOC crosswalk (from FEATURES.md)
+### 3. Memory Leak in Async (MEDIUM)
 
-**Avoids:** NOC-to-ONET mapping without imputation strategy (from PITFALLS.md)
+**Risk:** DuckDB + musl malloc (Alpine) causes RSS creep in async FastAPI.
 
-### Phase 5: Data Governance Artifacts
+**Prevention:**
+- Use jemalloc allocator in production Docker images
+- Monitor memory trends over time
+- Set memory limits with buffer
 
-**Rationale:** Governance documentation can be generated once semantic model is stable. Metadata lives in code; documentation is generated, not hand-edited.
+### 4. CORS Not Configured (HIGH for deployment)
 
-**Delivers:**
-- Data dictionary generation (automated from schema)
-- Business glossary (structured format, CI/CD validated)
-- Lineage documentation (cross-system coverage)
-- Purview export adapter
-- Denodo export adapter
+**Risk:** React UI on port 3000 cannot reach API on port 8000.
 
-**Addresses:** Data dictionary, business glossary, metadata catalog, export to standard formats (from FEATURES.md)
+**Prevention:**
+- Add CORS middleware to FastAPI:
+  ```python
+  app.add_middleware(CORSMiddleware, allow_origins=["http://localhost:3000"])
+  ```
 
-**Uses:** OpenLineage, SQLLineage, azure-purview-datamap (from STACK.md)
+### 5. Schema DDL Drift (MEDIUM)
 
-**Avoids:** Metadata catalog as static wiki, lineage without cross-system coverage (from PITFALLS.md)
+**Risk:** Gold tables updated but Orbit not restarted; LLM uses stale schema.
 
-### Phase 6: Knowledge Graph and RAG
+**Prevention:**
+- Document that Orbit restart required after schema changes
+- Consider schema DDL TTL (regenerate periodically)
 
-**Rationale:** RAG is high-complexity differentiator that depends on stable semantic model. Architecture research shows hybrid GraphRAG (vector + graph) outperforms either alone. Must build evaluation framework first.
+---
 
-**Delivers:**
-- Knowledge graph indexing from WiQ entities
-- Vector embeddings for entity descriptions
-- Hybrid retriever (vector search + graph traversal)
-- LLM integration with source citations
-- Evaluation framework with golden Q&A dataset (85% accuracy threshold)
+## Roadmap Implications
 
-**Addresses:** Natural language query, contextual follow-up, query explanation (from FEATURES.md)
+### Suggested Phase Structure
 
-**Uses:** LlamaIndex, Qdrant, RDFLib (from STACK.md)
+Based on dependency analysis and architecture patterns, v2.1 should be structured as:
 
-**Avoids:** RAG without evaluation framework (from PITFALLS.md)
+#### Phase 1: Validation and Hardening (1-2 days)
 
-### Phase Ordering Rationale
+**Deliverables:**
+- Validate existing DuckDBRetriever works with all 24 gold tables
+- Validate intent routing handles ambiguous queries correctly
+- Test entity recognition patterns (NOC codes, TEER levels)
 
-- **Foundation before consumption:** Pipeline (1) feeds semantic model (2), which feeds Power BI (3) and RAG (6). This order is non-negotiable based on architecture dependencies.
-- **NOC before O*NET:** O*NET integration (4) is deliberately separate to avoid crosswalk pitfalls. NOC is authoritative; O*NET supplements.
-- **Power BI before RAG:** Analysts need working Power BI before conversational interface. RAG answers can be validated against semantic model.
-- **Governance parallel track:** Artifact export (5) can be developed in parallel with O*NET integration once semantic model is stable.
-- **RAG is final:** Highest complexity, highest risk of failure. Build only after foundation is solid and evaluation framework exists.
+**Features from FEATURES.md:** Table stakes validation
+**Pitfalls to avoid:** C1 (intent collision), I1 (column hallucination)
+**Research needed:** NO - patterns well-documented
+
+#### Phase 2: Error Handling and API Polish (1 day)
+
+**Deliverables:**
+- User-friendly error messages (not raw SQL errors)
+- CORS configuration for cross-origin requests
+- API health check validates credentials at startup
+
+**Features from FEATURES.md:** Error handling improvement
+**Pitfalls to avoid:** I5 (error exposure), D4 (CORS), C3 (missing API key)
+**Research needed:** NO - standard FastAPI patterns
+
+#### Phase 3: Deployment Configuration (1 day)
+
+**Deliverables:**
+- Docker Compose for Orbit + JobForge
+- Environment variable configuration (not hardcoded localhost)
+- Port conflict resolution
+
+**Features from FEATURES.md:** Deployment configuration
+**Pitfalls to avoid:** C2 (hardcoded localhost), D1 (port conflicts), D2 (version mismatch)
+**Research needed:** NO - Docker patterns standard
+
+#### Phase 4: Documentation and Testing (1 day)
+
+**Deliverables:**
+- `docs/orbit-integration.md` with architecture diagram, quick start, troubleshooting
+- End-to-end test from question to answer
+- Manual verification checklist
+
+**Features from FEATURES.md:** Basic deployment documentation
+**Pitfalls to avoid:** D3 (retriever not registered)
+**Research needed:** NO
 
 ### Research Flags
 
-Phases likely needing deeper research during planning:
-- **Phase 4 (O*NET Integration):** Crosswalk methodology requires detailed research on SOC-NOC alignment; confidence scoring approach needs validation
-- **Phase 6 (Knowledge Graph / RAG):** Evaluation framework design, hybrid retrieval tuning, multi-hop reasoning testing - sparse documentation on GC-specific implementations
+| Phase | Needs `/gsd:research-phase`? | Rationale |
+|-------|------------------------------|-----------|
+| Phase 1 | NO | Existing code provides patterns |
+| Phase 2 | NO | Standard FastAPI middleware |
+| Phase 3 | NO | Docker Compose well-documented |
+| Phase 4 | NO | Documentation task |
 
-Phases with standard patterns (skip research-phase):
-- **Phase 1 (Pipeline Foundation):** Medallion architecture is well-documented; Polars/DuckDB patterns established
-- **Phase 3 (Power BI Deployment):** semantic-link-labs has official documentation; Direct Lake patterns documented by Microsoft
-- **Phase 5 (Governance Artifacts):** OpenLineage is industry standard; Purview SDK has official documentation
+**Conclusion:** v2.1 requires NO additional research phases. All patterns are well-documented and existing code provides implementation guidance.
+
+---
 
 ## Confidence Assessment
 
 | Area | Confidence | Notes |
 |------|------------|-------|
-| Stack | HIGH | All versions verified via PyPI; official Microsoft documentation for semantic-link-labs |
-| Features | MEDIUM-HIGH | Feature landscape synthesized from multiple workforce intelligence platforms; DADM requirements from official directive |
-| Architecture | HIGH | Medallion, hub-and-spoke, GraphRAG patterns verified via authoritative sources (Databricks, Kimball, Neo4j) |
-| Pitfalls | HIGH | Multiple sources cross-referenced; GC-specific warnings from official DADM documentation |
+| Stack | HIGH | Verified via PyPI; minimal additions needed |
+| Features | MEDIUM-HIGH | Existing implementation provides grounding; Orbit docs sparse |
+| Architecture | HIGH | HTTP adapter pattern well-documented; existing code validates |
+| Pitfalls | MEDIUM | DuckDB/text-to-SQL well-documented; Orbit-specific patterns inferred |
 
-**Overall confidence:** HIGH
+### Gaps to Address During Planning
 
-### Gaps to Address
+1. **Orbit retriever registration process** - Documentation unclear on exact factory registration steps
+2. **Intent pattern testing methodology** - Need systematic test suite for ambiguous queries
+3. **Memory monitoring baseline** - Establish RSS baseline before deployment to detect leaks
 
-- **O*NET imputation methodology:** Explicit crosswalk approach needs validation during Phase 4 planning. Research shows many-to-many mapping complexity but doesn't prescribe specific confidence scoring.
-- **RAG evaluation benchmarks:** What constitutes "acceptable" accuracy for GC workforce intelligence queries? Research cites 85% as common threshold but domain-specific validation needed.
-- **Denodo AI SDK maturity:** Newer (2025) SDK with limited community validation. REST API fallback available if SDK proves unstable.
-- **DADM transition requirements:** New requirements effective June 24, 2025 with compliance deadline June 24, 2026. Monitor TBS announcements during development.
+### Overall Assessment
+
+**Confidence: MEDIUM-HIGH**
+
+The integration is well-scoped with minimal unknowns. The primary risk is text-to-SQL accuracy, which is a known challenge with documented mitigations (column descriptions, relationship hints, SQL validation). The existing codebase provides strong implementation guidance.
+
+---
 
 ## Sources
 
-### Primary (HIGH confidence)
-- [PyPI - semantic-link-labs 0.12.9](https://pypi.org/project/semantic-link-labs/)
-- [PyPI - Polars 1.37.1](https://pypi.org/project/polars/)
+### Stack Research (HIGH Confidence)
 - [PyPI - DuckDB 1.4.3](https://pypi.org/project/duckdb/)
-- [PyPI - LlamaIndex 0.14.12](https://pypi.org/project/llama-index/)
-- [Microsoft Learn - Semantic Link](https://learn.microsoft.com/en-us/fabric/data-science/semantic-link-power-bi)
-- [Microsoft Learn - Medallion Architecture](https://learn.microsoft.com/en-us/azure/databricks/lakehouse/medallion)
-- [Databricks - Medallion Architecture](https://www.databricks.com/glossary/medallion-architecture)
-- [Kimball Group - Bridge Tables](https://www.kimballgroup.com/2012/02/design-tip-142-building-bridges/)
-- [Canada DADM Directive](https://www.tbs-sct.canada.ca/pol/doc-eng.aspx?id=32592)
+- [Anthropic Structured Outputs](https://platform.claude.com/docs/en/build-with-claude/structured-outputs)
+- [schmitech/orbit GitHub](https://github.com/schmitech/orbit)
+- [schmitech-orbit-client on Libraries.io](https://libraries.io/pypi/schmitech-orbit-client)
 
-### Secondary (MEDIUM confidence)
-- [Neo4j - RAG Tutorial](https://neo4j.com/blog/developer/rag-tutorial/)
-- [Microsoft GraphRAG](https://microsoft.github.io/graphrag/)
-- [O*NET Resource Center - Crosswalks](https://www.onetcenter.org/crosswalks.html)
-- [LangChain vs LlamaIndex 2025 Comparison](https://latenode.com/blog/platform-comparisons-alternatives/automation-platform-comparisons/langchain-vs-llamaindex-2025-complete-rag-framework-comparison)
-- [ChromaDB vs Qdrant Comparison](https://aloa.co/ai/comparisons/vector-database-comparison/chroma-vs-qdrant)
+### Features Research (MEDIUM Confidence)
+- [Google Cloud - Techniques for improving text-to-SQL](https://cloud.google.com/blog/products/databases/techniques-for-improving-text-to-sql)
+- [Text to SQL: Ultimate Guide 2025](https://medium.com/@ayushgs/text-to-sql-the-ultimate-guide-for-2025-3fa4e78cbdf9)
+- [DuckDB Information Schema](https://duckdb.org/docs/stable/sql/meta/information_schema)
 
-### Tertiary (LOW confidence)
-- [Denodo AI SDK](https://community.denodo.com/docs/html/document/denodoconnects/latest/en/Denodo%20AI%20SDK%20-%20User%20Manual) - newer SDK, limited community validation
-- [ESCO-O*NET Crosswalk Technical Report](https://esco.ec.europa.eu/en/about-esco/data-science-and-esco/crosswalk-between-esco-and-onet) - European context, needs adaptation for NOC
+### Architecture Research (HIGH Confidence)
+- [Orbit Adapters Documentation](https://github.com/schmitech/orbit/blob/main/docs/adapters/adapters.md)
+- [Orbit Docker README](https://github.com/schmitech/orbit/blob/main/docker/README.md)
+- [MotherDuck - Semantic Layer with DuckDB](https://motherduck.com/blog/semantic-layer-duckdb-tutorial/)
 
----
-*Research completed: 2026-01-18*
-*Ready for roadmap: yes*
+### Pitfalls Research (MEDIUM Confidence)
+- [BetterUp - Async FastAPI Memory Leak with jemalloc](https://build.betterup.com/chasing-a-memory-leak-in-our-async-fastapi-service-how-jemalloc-fixed-our-rss-creep/)
+- [K2View - LLM text-to-SQL challenges](https://www.k2view.com/blog/llm-text-to-sql/)
+- [Six Failures of Text-to-SQL](https://medium.com/google-cloud/the-six-failures-of-text-to-sql-and-how-to-fix-them-with-agents-ef5fd2b74b68)
+- [DuckDB Issue #18031 - Memory leak](https://github.com/duckdb/duckdb/issues/18031)

@@ -1,451 +1,615 @@
-# Domain Pitfalls
+# Pitfalls Research: Orbit Integration
 
-**Domain:** Workforce intelligence platform with medallion architecture, Power BI semantic model, DADM compliance, and knowledge graph RAG
-**Researched:** 2026-01-18
-**Confidence:** HIGH (multiple authoritative sources cross-referenced)
+**Domain:** Orbit/DuckDBRetriever integration with existing JobForge 2.0 data platform
+**Researched:** 2026-01-20
+**Confidence:** MEDIUM (Orbit documentation limited; DuckDB and text-to-SQL pitfalls well-documented)
+**Context:** Adding Orbit as deployment target to existing system with 24 gold Parquet tables and working text-to-SQL capability
 
 ---
 
-## Critical Pitfalls
+## Configuration Pitfalls
 
-Mistakes that cause rewrites, compliance failures, or major architectural issues.
+Mistakes in intent configuration and adapter setup that cause routing failures or incorrect behavior.
 
-### Pitfall 1: Leaking Responsibilities Across Medallion Layers
+### Pitfall C1: Intent Pattern Collision
 
-**What goes wrong:** Teams ingest raw data directly into Gold, have Silver pipelines depend on unrefined Bronze data, or build business KPIs in Silver instead of Gold. This creates "semantic sprawl" where different teams define metrics differently with no single authoritative version.
+**What goes wrong:** User questions match multiple intent patterns, causing inconsistent routing. For example, "How many tables contain NOC data?" matches both data patterns ("how many") and metadata patterns ("tables contain").
 
-**Why it happens:** Pressure to deliver quickly leads to shortcuts. Teams misunderstand layer purposes or interpret them differently without shared definitions.
-
-**Consequences:**
-- Multiple conflicting metric definitions (e.g., "active employee count" means different things)
-- Breaking changes cascade unpredictably through layers
-- Reprocessing requires rebuilding downstream tables
-- Audit trail becomes unreliable
+**Why it happens:** Intent patterns are additive and don't account for phrase context. Pattern matching is greedy without priority weighting.
 
 **Warning signs:**
-- Business logic appearing in Silver transformations
-- DAX measures duplicating logic already in Gold aggregations
-- Different teams producing different numbers for "the same" metric
-- Bronze tables being queried directly for reporting
+- Same question routes differently on repeated attempts
+- Users report inconsistent answers to similar questions
+- Orbit logs show intent classification flip-flopping
+- Questions with mixed vocabulary return unexpected results
+
+**Consequences:**
+- Data queries routed to metadata endpoint return error/no results
+- Metadata queries routed to data endpoint generate invalid SQL
+- User trust erodes from inconsistent behavior
 
 **Prevention:**
-- Document layer purposes explicitly in PROJECT.md before building
-- Bronze = raw/immutable, Silver = validated/conformed, Gold = business-ready aggregates
-- Enforce with naming conventions: `bronze_*`, `silver_*`, `gold_*`
-- Code review should flag any business logic in Bronze/Silver transforms
+- Design intent patterns with mutual exclusivity in mind
+- Add priority ordering to intents (metadata patterns checked before data patterns for ambiguous queries)
+- Include negative patterns: data_query should exclude "where does", "lineage", "come from"
+- Test with ambiguous queries during development:
+  - "How many sources feed dim_noc?" (metadata, not data)
+  - "List tables with employment data" (metadata, not data)
+  - "What is the source of cops_employment?" (metadata)
 
-**Phase mapping:** Address in Phase 1 (Foundation) with explicit layer contracts
+**Phase to address:** Intent configuration phase (Plan 10-03)
 
-**Sources:** [Weld Blog](https://weld.app/blog/medallion-layers), [InfoQ](https://www.infoq.com/articles/rethinking-medallion-architecture/), [DataKitchen](https://datakitchen.io/the-race-for-data-quality-in-a-medallion-architecture/)
+**Source:** [Orbit GitHub - Intent Routing](https://github.com/schmitech/orbit)
 
 ---
 
-### Pitfall 2: Deferring Data Quality Rules Until Gold
+### Pitfall C2: Hardcoded localhost in Production
 
-**What goes wrong:** Teams treat Bronze and Silver as pass-through layers, implementing all validation only at Gold. Invalid data propagates through the pipeline, creating expensive reprocessing when issues are finally caught.
+**What goes wrong:** Adapter configuration uses `http://localhost:8000` which works in development but fails when Orbit and JobForge run in separate containers or hosts.
 
-**Why it happens:** Bronze is documented as "raw data" so teams interpret this as "no validation." Quality work feels like it belongs at the end.
-
-**Consequences:**
-- Invalid records propagate and multiply through transforms
-- Late-stage failures require reprocessing entire pipeline
-- Audit questions about data quality become hard to answer
-- "Garbage in, garbage out" compounds at each layer
+**Why it happens:** Development convenience becomes production debt. Docker networking differs from local development.
 
 **Warning signs:**
-- No schema validation at Bronze ingestion
-- Silver layer has no null checks or quarantine tables
-- Quality issues discovered only in Power BI visuals
-- No count matching between layers
+- Orbit works locally but fails in Docker Compose
+- "Connection refused" errors in Orbit logs
+- curl from Orbit container to JobForge fails
+
+**Consequences:**
+- Deployment fails completely
+- Debugging requires understanding container networking
+- Production rollout delayed
 
 **Prevention:**
-- Bronze: Minimal validation (schema conformance, required fields present)
-- Silver: Core validation (null handling, type casting, referential integrity, quarantine invalid records)
-- Gold: Business rule validation (range checks, metric consistency)
-- Implement count matching between layers as automated checks
-- Quarantine tables at Silver for invalid records (don't drop silently)
+- Use environment variable: `base_url: "${JOBFORGE_API_URL:-http://localhost:8000}"`
+- Docker Compose: use service names (`http://jobforge-api:8000`)
+- Document network configuration in deployment guide
+- Test full Docker Compose stack before declaring integration complete
 
-**Phase mapping:** Implement validation framework in Phase 1; refine rules incrementally
+**Phase to address:** Deployment configuration phase
 
-**Sources:** [Azure Databricks](https://learn.microsoft.com/en-us/azure/databricks/lakehouse/medallion), [DataKitchen](https://datakitchen.io/the-race-for-data-quality-in-a-medallion-architecture/)
+**Source:** [Orbit Docker README](https://github.com/schmitech/orbit/blob/main/docker/README.md)
 
 ---
 
-### Pitfall 3: DADM Compliance as Afterthought
+### Pitfall C3: Missing API Key Configuration
 
-**What goes wrong:** Teams build the technical pipeline first, then attempt to bolt on DADM compliance tracking afterward. This results in incomplete audit trails, missing documentation, and inability to answer "where did this come from?"
+**What goes wrong:** Orbit starts without ANTHROPIC_API_KEY, appears healthy, but fails on first real query. Silent initialization means users discover failure only when querying.
 
-**Why it happens:** Compliance feels like bureaucracy. Technical teams prioritize functionality over governance. DADM requirements are complex and easy to defer.
-
-**Consequences:**
-- Failed compliance audits
-- Inability to demonstrate algorithmic fairness
-- Missing Algorithmic Impact Assessment (AIA) documentation
-- Rewrite required to add provenance tracking
+**Why it happens:** Orbit validates structure but not credentials at startup. API key errors surface at query time, not deployment time.
 
 **Warning signs:**
-- No provenance fields in schema design
-- Transforms don't preserve source attribution
-- No documentation of decision logic
-- DADM mentioned only in project docs, not in code
+- Orbit health check passes but queries fail
+- First query returns authentication error
+- Logs show "Anthropic API authentication error" only after user interaction
+
+**Consequences:**
+- Users experience failure on first interaction
+- Support tickets about "broken" system
+- Difficult to diagnose without checking query-time logs
 
 **Prevention:**
-- Design provenance tracking into schema from day 1 (source_system, ingestion_timestamp, transform_version)
-- Every transform must preserve or enhance lineage, never lose it
-- Create DADM compliance scorecard template before building
-- Map each data element to DADM requirements early
-- Human-in-the-loop review points documented for automated decisions
+- Validate ANTHROPIC_API_KEY at retriever initialization, not first query
+- Add startup health check that makes minimal API call
+- Document required environment variables prominently
+- Fail fast: refuse to start if required credentials missing
 
-**Phase mapping:** DADM schema design in Phase 1; compliance scoring in Phase 2
+**Phase to address:** Retriever implementation (DuckDBRetriever.initialize)
 
-**Sources:** [Canada DADM Directive](https://www.tbs-sct.canada.ca/pol/doc-eng.aspx?id=32592), [Statistics Canada](https://www.statcan.gc.ca/en/data-science/network/automated-systems)
+**Source:** [Anthropic API docs - Authentication](https://docs.claude.com/en/docs/build-with-claude/authentication)
 
 ---
 
-### Pitfall 4: NOC-to-ONET Mapping Without Imputation Strategy
+### Pitfall C4: Schema DDL Drift
 
-**What goes wrong:** Teams treat O*NET data as directly usable with NOC codes, ignoring that they use different taxonomies (SOC vs NOC) and O*NET requires imputation/crosswalk logic.
+**What goes wrong:** DuckDBRetriever generates schema DDL at initialization but gold tables are updated without restarting Orbit. LLM generates SQL for stale schema.
 
-**Why it happens:** Both are "occupation data" so they seem interchangeable. The crosswalk complexity is underestimated.
-
-**Consequences:**
-- Many-to-many mapping nightmares
-- Missing data for NOC codes without clean SOC equivalents
-- Inconsistent attribute coverage across occupations
-- Audit questions about data derivation become unanswerable
+**Why it happens:** Schema DDL is cached for performance. No mechanism to detect table changes.
 
 **Warning signs:**
-- Direct joins between NOC and O*NET tables
-- Null explosion when querying O*NET attributes for NOC codes
-- Different occupations showing identical O*NET profiles
-- No documentation of crosswalk methodology
+- Queries fail with "column not found" after schema updates
+- New tables not available in queries
+- Restarting Orbit "fixes" query issues
+
+**Consequences:**
+- Users can't query new or modified tables
+- SQL generation references stale columns
+- Requires service restart after any schema change
 
 **Prevention:**
-- Treat NOC as authoritative (source of truth for Canadian context)
-- Treat O*NET as supplementary (informing, not authoritative)
-- Build explicit crosswalk table with confidence scores
-- Document imputation methodology before building
-- Quarantine NOC codes without reliable O*NET mapping
-- Consider O*NET imputation as separate milestone (already in out-of-scope)
+- Document that Orbit restart required after schema changes
+- Consider schema DDL TTL (regenerate every N minutes)
+- Add schema version check endpoint
+- Log schema DDL generation with timestamp for debugging
 
-**Phase mapping:** NOC pipeline in Phase 1; O*NET integration as separate later phase
-
-**Sources:** [BLS Monthly Labor Review](https://www.bls.gov/opub/mlr/2021/article/mapping-employment-projections-and-onet-data.htm), [NCBI NOC Coding](https://pmc.ncbi.nlm.nih.gov/articles/PMC7439137/)
+**Phase to address:** Operational documentation and retriever lifecycle
 
 ---
 
-### Pitfall 5: Power BI Semantic Model Without Star Schema
+## Performance Pitfalls
 
-**What goes wrong:** Teams replicate the medallion architecture structure directly into Power BI instead of transforming Gold into a proper star schema. This creates performance issues, incorrect calculations, and confused users.
+Issues that cause slow queries, memory problems, or resource exhaustion.
 
-**Why it happens:** Gold tables feel "ready" so teams import them directly. Star schema design is perceived as extra work.
+### Pitfall P1: DuckDB Connection Memory Leak in Async Environment
 
-**Consequences:**
-- Snowflake complexity slows queries
-- Incorrect totals from ambiguous relationships
-- DAX measures become complex to compensate
-- Report slowness drives users away
+**What goes wrong:** Memory usage grows unbounded in async FastAPI context. DuckDB in-memory connections don't release memory properly when concurrent requests interleave allocations across memory spans.
+
+**Why it happens:** musl malloc (common in Alpine Docker images) keeps entire memory spans resident until all allocations freed. Async request interleaving prevents span cleanup.
 
 **Warning signs:**
-- Multiple hops between dimension and fact tables
-- Bi-directional relationships used to "fix" calculation issues
-- Same dimension data in multiple tables
-- DAX using CALCULATE with complex filter context
+- RSS memory creeps upward over time
+- Memory not released after request completion
+- Eventually OOM kills in Kubernetes
+- Memory profiler shows allocation outside Python runtime
+
+**Consequences:**
+- Production crashes from OOM
+- Requires pod restarts to reclaim memory
+- Memory limits cause early eviction
 
 **Prevention:**
-- Gold layer should already model toward star schema (fact tables, dimension tables)
-- One calendar dimension, one NOC dimension, one Job Architecture dimension
-- Fact tables grain clearly defined and documented
-- Bi-directional relationships used sparingly (prefer single direction with DAX USERELATIONSHIP)
-- Test with DAX Studio for performance before release
+- Use jemalloc allocator in production Docker images (designed for concurrent workloads)
+- Monitor memory trends, not just snapshots
+- Set memory limits with buffer for leak growth
+- Consider connection pooling with explicit cleanup
+- Alternative: subprocess pattern for DuckDB CLI execution (subprocess cleanup forces OS memory release)
 
-**Phase mapping:** Design star schema in Gold phase; validate before Power BI deployment
+**Phase to address:** Production deployment configuration
 
-**Sources:** [Microsoft Learn](https://learn.microsoft.com/en-us/power-bi/connect-data/service-datasets-understand), [425 Consulting](https://www.425consulting.com/blog/blog-business-intelligence/top-5-power-bi-semantic-model-mistakes-to-avoid), [SQLBI](https://www.sqlbi.com/blog/marco/2024/04/06/direct-lake-vs-import-mode-in-power-bi/)
+**Sources:**
+- [BetterUp - Async FastAPI Memory Leak with jemalloc fix](https://build.betterup.com/chasing-a-memory-leak-in-our-async-fastapi-service-how-jemalloc-fixed-our-rss-creep/)
+- [DuckDB Issue #18031 - Parallel insertion memory leak](https://github.com/duckdb/duckdb/issues/18031)
 
 ---
 
-### Pitfall 6: Knowledge Graph RAG Without Evaluation Framework
+### Pitfall P2: Full Schema in Every LLM Prompt
 
-**What goes wrong:** Teams build knowledge graph + RAG for conversational queries without systematic evaluation, leading to unreliable answers that erode trust. "72% of enterprise RAG implementations fail within their first year."
+**What goes wrong:** Schema DDL for all 24 gold tables included in every text-to-SQL request. This increases token usage, slows response time, and can exceed context window for large schemas.
 
-**Why it happens:** RAG demos are impressive. Teams ship before establishing accuracy baselines. Evaluation is hard and deferred.
-
-**Consequences:**
-- Answers that sound confident but are wrong
-- Multi-hop reasoning failures (connecting NOC -> Skills -> Jobs requires chain reasoning)
-- Stakeholders lose trust and build their own spreadsheets
-- Compliance risk from unexplainable answers
+**Why it happens:** Simpler to include full schema than implement dynamic schema selection. "More context is better" assumption.
 
 **Warning signs:**
-- No test dataset with expected answers
-- "It works" based on a few manual checks
-- Complex questions return plausible but wrong answers
-- Users stop trusting the conversational interface
-
-**Prevention:**
-- Build evaluation dataset before building RAG (golden Q&A pairs)
-- Test multi-hop reasoning explicitly: "Which skills are at risk of shortage and what job titles use them?"
-- Measure retrieval precision (are the right chunks retrieved?)
-- Require source citation in every answer
-- Set accuracy threshold (e.g., 85% correct on test set) before release
-
-**Phase mapping:** Evaluation framework in early RAG phase; do not ship without passing
-
-**Sources:** [FreeCodeCamp](https://www.freecodecamp.org/news/how-to-solve-5-common-rag-failures-with-knowledge-graphs/), [CIO](https://www.cio.com/article/3808569/knowledge-graphs-the-missing-link-in-enterprise-ai.html), [Databricks](https://www.databricks.com/blog/building-improving-and-deploying-knowledge-graph-rag-systems-databricks)
-
----
-
-## Moderate Pitfalls
-
-Mistakes that cause delays, technical debt, or user frustration.
-
-### Pitfall 7: Metadata Catalog as Static Wiki
-
-**What goes wrong:** Business glossary and data dictionary are created as static documents (Word, Confluence) instead of automated catalog capabilities. They drift from reality immediately.
-
-**Why it happens:** Documentation feels faster than tooling. Teams plan to "automate later."
+- High token usage per query (check Anthropic dashboard)
+- Response time scales with schema size, not query complexity
+- Cost unexpectedly high for simple queries
 
 **Consequences:**
-- Business terms drift without accountability
-- Data dictionary doesn't match actual schema
-- Purview/Denodo exports require manual reconciliation
-- Audit preparation becomes manual scramble
+- Higher API costs (input tokens)
+- Slower response times
+- LLM attention diffused across irrelevant tables
+- Schema grows, performance degrades
 
 **Prevention:**
-- Metadata lives in code (schema definitions, not documents)
-- Business glossary terms stored in structured format (JSON/YAML) alongside table definitions
-- Automated generation of data dictionary from schema
-- CI/CD validates that glossary terms exist for all exposed columns
-- Purview/Denodo export generated, never hand-edited
+- Implement schema pruning: only include tables likely relevant to query
+- Use two-stage approach: first LLM call identifies relevant tables, second generates SQL
+- Group tables by domain (occupation, forecast, attributes) and include relevant groups
+- Monitor token usage per query type
 
-**Phase mapping:** Metadata schema design in Phase 1; export automation in Phase 2
+**Phase to address:** Query optimization iteration (post-MVP)
 
-**Sources:** [Alation](https://www.alation.com/blog/metadata-management-best-practices/), [Decube](https://www.decube.io/post/data-catalog-metadata-management-guide)
+**Source:** [K2View - LLM text-to-SQL challenges](https://www.k2view.com/blog/llm-text-to-sql/)
 
 ---
 
-### Pitfall 8: Separate Semantic Model and Reports Not Enforced
+### Pitfall P3: No Query Result Caching
 
-**What goes wrong:** Reports embed their own data models instead of connecting to a shared semantic model. Each report becomes its own silo with its own version of "truth."
+**What goes wrong:** Same question asked repeatedly generates new LLM call and SQL execution each time. Common questions (e.g., "how many unit groups?") waste resources.
 
-**Why it happens:** Faster to build quick .pbix with embedded data. Shared semantic model requires coordination.
+**Why it happens:** Caching adds complexity. Each query "feels" unique even when semantically identical.
+
+**Warning signs:**
+- API costs scale linearly with query volume
+- Same questions appear repeatedly in logs
+- Response time consistent regardless of query history
 
 **Consequences:**
-- Multiple versions of metrics
-- Refresh failures cascade unpredictably
-- Cannot answer "where is this metric used?"
-- Storage and refresh costs multiply
+- Unnecessary API costs
+- Slower than necessary for common queries
+- Resource waste on repeated computations
 
 **Prevention:**
-- Deploy semantic model as standalone artifact
-- Reports connect to semantic model via Live Connection
-- Block publishing reports with embedded data to shared workspaces
-- Single refresh pipeline for semantic model; reports refresh automatically
+- Implement query result cache with TTL (1 hour for static data)
+- Cache key: normalized question text (lowercased, trimmed)
+- Consider semantic similarity for cache hits (fuzzy matching)
+- Cache both SQL and results (SQL cache enables human review)
 
-**Phase mapping:** Enforce from first Power BI deployment
-
-**Sources:** [Microsoft Learn](https://learn.microsoft.com/en-us/fabric/cicd/deployment-pipelines/understand-the-deployment-process), [Medium](https://medium.com/microsoft-power-bi/a-comprehensive-guide-to-modern-deployment-and-distribution-of-power-bi-solutions-34f6f69919f3)
+**Phase to address:** Performance optimization phase
 
 ---
 
-### Pitfall 9: Lineage Tracking Without Cross-System Coverage
+### Pitfall P4: Timeout Too Short for Complex Queries
 
-**What goes wrong:** Lineage is tracked within individual systems (dbt, Power BI) but not across the full pipeline. "Where did this number come from?" cannot be answered end-to-end.
+**What goes wrong:** Complex queries exceed 30-second HTTP timeout. LLM generates valid SQL but Orbit times out before results return.
 
-**Why it happens:** Each tool has its own lineage capability. Stitching them together requires explicit design.
+**Why it happens:** Default timeout reasonable for simple queries. Complex analytical queries (aggregations across multiple tables) take longer.
+
+**Warning signs:**
+- Timeout errors for queries involving multiple joins
+- Partial results or connection reset errors
+- Users report intermittent failures for complex questions
 
 **Consequences:**
-- Audit trail has gaps
-- Root cause analysis stops at system boundaries
-- Impact analysis misses upstream/downstream effects
-- DADM compliance incomplete
+- Complex queries always fail
+- Users learn to avoid certain question types
+- Capability underutilized
 
 **Prevention:**
-- Design cross-system lineage from the start using common identifiers
-- Every table/column has `source_system` and `transform_id` metadata
-- Lineage documentation generates from metadata, not manual tracking
-- Test lineage queries explicitly: "trace this Gold metric to its Bronze sources"
+- Set realistic timeout based on query complexity (60-120s for analytical queries)
+- Implement async query pattern: submit, poll for results
+- Add query complexity estimation before execution
+- Document expected response times for different query types
 
-**Phase mapping:** Lineage schema in Phase 1; cross-system documentation in Phase 2
-
-**Sources:** [Prophecy](https://www.prophecy.io/blog/data-lineage), [Acceldata](https://www.acceldata.io/blog/data-provenance)
+**Phase to address:** Adapter configuration (jobforge.yaml timeout setting)
 
 ---
 
-### Pitfall 10: RLS (Row-Level Security) Implemented Too Late
+## Deployment Pitfalls
 
-**What goes wrong:** Row-level security is treated as a final polish step. When implemented, it requires significant DAX rework and reveals architectural issues.
+Common failures when deploying Orbit with JobForge integration.
 
-**Why it happens:** "Let's get it working first, then add security." RLS feels like a Power BI-specific concern.
+### Pitfall D1: Port Conflicts
+
+**What goes wrong:** Orbit default ports (3000, 5173) conflict with existing services. Deployment fails silently or takes over wrong port.
+
+**Why it happens:** Common development ports. Existing services may use same defaults.
+
+**Warning signs:**
+- "Port already in use" errors
+- Orbit starts but connects to wrong service
+- React UI unreachable
 
 **Consequences:**
-- Complex RLS rules that tank performance
-- Rewiring relationships to support security filtering
-- Users see wrong data during development (normalization risk)
-- Hardcoded security logic scattered in measures
+- Deployment fails or breaks existing services
+- Debugging requires checking all port mappings
+- Production incident from port collision
 
 **Prevention:**
-- Design RLS roles during semantic model design
-- Test RLS with "View as" feature early and often
-- Keep RLS rules simple (role-based, not row-based logic in DAX)
-- Security requirements documented before build
+- Survey existing port usage before deployment
+- Use non-standard ports for Orbit (e.g., 3100, 5273)
+- Document all port assignments in deployment guide
+- Docker Compose: explicit port mappings, not defaults
 
-**Phase mapping:** RLS design in Phase 1; implementation in first Power BI phase
+**Phase to address:** Deployment planning phase
 
-**Sources:** [425 Consulting](https://www.425consulting.com/blog/blog-business-intelligence/top-5-power-bi-semantic-model-mistakes-to-avoid)
+**Source:** [Orbit GitHub README](https://github.com/schmitech/orbit)
 
 ---
 
-### Pitfall 11: DAMA DMBOK Full Implementation Upfront
+### Pitfall D2: Python/Node Version Mismatch
 
-**What goes wrong:** Teams attempt to implement all DAMA DMBOK knowledge areas simultaneously. Governance becomes overwhelming, adoption stalls, and teams revert to ungoverned practices.
+**What goes wrong:** Orbit requires Python 3.12+ and Node 18+. Older versions cause cryptic failures during installation or runtime.
 
-**Why it happens:** DAMA DMBOK is comprehensive. Completeness feels like correctness. Framework adoption is conflated with framework mastery.
+**Why it happens:** Version requirements buried in docs. System Python/Node often older.
+
+**Warning signs:**
+- Syntax errors during pip install
+- npm install fails with version warnings
+- Runtime errors about missing features
 
 **Consequences:**
-- Governance exists on paper but not in practice
-- Teams route around governance as burden
-- 80% of data governance initiatives fail (Gartner prediction)
-- Continuous improvement never starts
+- Installation fails
+- Partial installation causes confusing errors
+- Requires environment rebuild
 
 **Prevention:**
-- Start with 3-5 knowledge areas aligned to project goals
-- For JobForge: Data Governance, Data Quality, Metadata Management, Data Modeling
-- Add knowledge areas as maturity grows
-- Treat DAMA as vocabulary and principles, not checklist
+- Verify versions before starting installation
+- Use version managers (pyenv, nvm) for isolated environments
+- Docker: base on known-compatible images
+- CI pipeline validates versions match requirements
 
-**Phase mapping:** Core knowledge areas in Phase 1; expand over milestones
+**Phase to address:** Pre-deployment checklist
 
-**Sources:** [Atlan](https://atlan.com/dama-dmbok-framework/), [Alation](https://www.alation.com/blog/data-governance-challenges/)
+**Source:** [Orbit Prerequisites](https://github.com/schmitech/orbit)
 
 ---
 
-## Minor Pitfalls
+### Pitfall D3: DuckDBRetriever Not Registered in Orbit
 
-Mistakes that cause annoyance but are recoverable.
+**What goes wrong:** DuckDBRetriever copied to Orbit but not registered in retriever factory. Adapter references non-existent retriever class.
 
-### Pitfall 12: High-Cardinality Columns in Semantic Model
+**Why it happens:** Orbit uses factory pattern for retrievers. Adding a file isn't enough; must register class.
 
-**What goes wrong:** GUIDs, timestamps, or long text fields imported into Power BI, bloating model size and slowing queries.
+**Warning signs:**
+- "Unknown retriever type: duckdb" errors
+- Adapter configuration looks correct but doesn't work
+- Other retrievers work, DuckDB doesn't
+
+**Consequences:**
+- Integration fails at runtime
+- Confusing error messages about retriever not found
+- Manual registration step easy to miss
 
 **Prevention:**
-- Use surrogate integer keys, not GUIDs
-- Text descriptions in dimension tables only (not facts)
-- Timestamps as DateKey integers, not datetime columns
-- Profile column cardinality before import
+- Document full registration steps:
+  1. Copy duckdb.py to orbit/server/retrievers/
+  2. Add import to orbit/server/retrievers/__init__.py
+  3. Register in retriever factory (if applicable)
+- Verify registration with unit test before deployment
+- Create installation script that handles all steps
 
-**Phase mapping:** Schema review in Gold design phase
+**Phase to address:** Integration documentation (docs/orbit-integration.md)
 
 ---
 
-### Pitfall 13: Views Instead of Tables for Direct Lake
+### Pitfall D4: CORS Not Configured for Cross-Origin Requests
 
-**What goes wrong:** If using Fabric Direct Lake, views cause fallback to DirectQuery, losing performance benefits.
+**What goes wrong:** Orbit React UI running on port 3000 cannot make requests to JobForge API on port 8000 due to CORS policy.
+
+**Why it happens:** Browsers enforce CORS. Default FastAPI doesn't allow cross-origin requests.
+
+**Warning signs:**
+- "CORS policy" errors in browser console
+- API calls work from curl but fail from browser
+- Orbit UI shows "network error" for all queries
+
+**Consequences:**
+- Frontend completely non-functional
+- Users cannot access any queries through UI
+- Works in testing (same origin) but fails in deployment
 
 **Prevention:**
-- Materialize views as tables for Direct Lake sources
-- Test query performance, not just correctness
+- Configure CORS middleware in FastAPI:
+  ```python
+  from fastapi.middleware.cors import CORSMiddleware
+  app.add_middleware(
+      CORSMiddleware,
+      allow_origins=["http://localhost:3000", "http://orbit:3000"],
+      allow_methods=["*"],
+      allow_headers=["*"],
+  )
+  ```
+- Test cross-origin requests before deployment
+- Document CORS configuration for different deployment scenarios
 
-**Phase mapping:** Only relevant if/when Fabric adopted (future)
+**Phase to address:** API configuration (routes.py)
 
 ---
 
-### Pitfall 14: Expecting Real-Time from Gold Layer
+## Integration Pitfalls
 
-**What goes wrong:** Business users expect Gold to reflect changes immediately. Gold is designed for batch-refresh aggregates.
+Issues when adding Orbit to existing JobForge system.
+
+### Pitfall I1: Text-to-SQL Column Hallucination
+
+**What goes wrong:** LLM generates SQL referencing columns that don't exist, especially when column names are similar to common concepts (e.g., generating "job_title" when actual column is "class_title").
+
+**Why it happens:** LLM guesses based on semantic similarity. Schema provided but model doesn't always use it precisely.
+
+**Warning signs:**
+- DuckDB errors: "column X does not exist"
+- Generated SQL looks plausible but fails execution
+- Errors correlate with queries about concepts vs specific columns
+
+**Consequences:**
+- Query failures for valid questions
+- Users receive unhelpful error messages
+- Trust in system degrades
 
 **Prevention:**
-- Set expectations: Gold refreshes on schedule (daily, hourly)
-- If real-time needed, design separate hot path (not Gold)
-- Document refresh schedule prominently
+- Include column descriptions in schema DDL, not just names:
+  ```sql
+  CREATE TABLE dim_noc (
+    noc_code VARCHAR,  -- 5-digit NOC code like "21232"
+    class_title VARCHAR,  -- Official occupation title
+    ...
+  );
+  ```
+- Implement SQL validation before execution
+- Return "I couldn't generate a valid query" instead of raw SQL errors
+- Log failed queries for schema improvement
 
-**Phase mapping:** Communicate in user documentation
+**Phase to address:** Schema DDL generation enhancement
+
+**Sources:**
+- [Text-to-SQL LLM Comparison 2026](https://research.aimultiple.com/text-to-sql/)
+- [Six Failures of Text-to-SQL](https://medium.com/google-cloud/the-six-failures-of-text-to-sql-and-how-to-fix-them-with-agents-ef5fd2b74b68)
 
 ---
 
-### Pitfall 15: DAX Calculations Done in Power Query
+### Pitfall I2: Join Logic Errors
 
-**What goes wrong:** Business logic implemented in Power Query (M) instead of DAX. This limits flexibility and hurts performance for complex calculations.
+**What goes wrong:** LLM generates incorrect JOIN operations between tables, especially for complex questions involving multiple tables. May omit necessary JOINs or use wrong join keys.
+
+**Why it happens:** Multi-table queries require understanding relationships. LLM may not infer correct join keys from schema alone.
+
+**Warning signs:**
+- Results include all rows (missing WHERE/JOIN)
+- Cartesian products from missing join conditions
+- Queries return empty when data should exist
+
+**Consequences:**
+- Wrong answers that look correct (partial results)
+- Performance issues from Cartesian products
+- Users receive misleading information
 
 **Prevention:**
-- Power Query for data shaping (joins, filters, type conversions)
-- DAX for business logic (calculations, KPIs, measures)
-- Review any Power Query custom columns for business logic leakage
+- Include relationship hints in system prompt:
+  ```
+  Relationships:
+  - dim_noc.noc_code joins to cops_employment.noc_code
+  - dim_occupations.group_code joins to job_architecture.group_code
+  ```
+- Implement result validation: check for unexpected row counts
+- Consider agent pattern: LLM plans query, validates, then executes
+- Log and review queries that return 0 rows or >10K rows
 
-**Phase mapping:** Code review standard from first semantic model
+**Phase to address:** System prompt enhancement
 
----
-
-## Phase-Specific Warnings
-
-| Phase Topic | Likely Pitfall | Mitigation |
-|-------------|---------------|------------|
-| Medallion pipeline setup | Layer responsibility leakage | Document layer contracts before building |
-| Bronze ingestion | No schema validation | Implement minimal validation (schema, required fields) |
-| Silver transforms | Skipping quarantine tables | Invalid records go to quarantine, not dropped |
-| Gold aggregates | Business logic not in Gold | All KPI definitions live in Gold or DAX |
-| NOC dimension | Treating as simple lookup | Model NOC hierarchy properly (4-digit to 1-digit) |
-| O*NET integration | Direct join without crosswalk | Explicit crosswalk table with confidence scores |
-| Power BI deployment | Embedded data in reports | Enforce Live Connection to shared semantic model |
-| Metadata/glossary | Static documentation | Metadata in code, documentation generated |
-| DADM compliance | Compliance as afterthought | Provenance schema from day 1 |
-| Knowledge graph RAG | No evaluation framework | Golden Q&A dataset before shipping |
-| Lineage tracking | Per-system only | Cross-system identifiers in schema |
-| RLS security | Late implementation | Design roles during semantic model design |
+**Source:** [K2View - Join failures in text-to-SQL](https://www.k2view.com/blog/llm-text-to-sql/)
 
 ---
 
-## Government of Canada Specific Warnings
+### Pitfall I3: Conflicting Query Interfaces
 
-### DADM Transition Period
+**What goes wrong:** JobForge has existing text-to-SQL (DataQueryService) and now adds Orbit DuckDBRetriever. Two paths to same data with potentially different behaviors.
 
-The DADM directive has been updated with new requirements effective June 24, 2025. Systems developed before this date have until June 24, 2026 to comply. JobForge should target current requirements, not archived versions.
+**Why it happens:** Incremental development. New capability added without deprecating or aligning with existing.
 
-**Prevention:** Use current directive (not archived 2021/2023 versions), monitor TBS announcements.
+**Warning signs:**
+- Same question returns different results via API vs Orbit
+- Different system prompts in each implementation
+- Bug fixes applied to one but not the other
 
-### AIA Timing and Publication
+**Consequences:**
+- Inconsistent user experience
+- Maintenance burden doubles
+- Confusion about which interface is "correct"
 
-The directive doesn't specify timing for Algorithmic Impact Assessment release. This creates ambiguity.
+**Prevention:**
+- Single source of truth: DuckDBRetriever should delegate to DataQueryService
+- Or: DataQueryService wraps DuckDBRetriever
+- Avoid duplicating system prompts and SQL generation logic
+- Document authoritative path clearly
 
-**Prevention:** Establish internal AIA publication policy; document decision rationale.
-
-### Privacy and Organizational Data
-
-Departmental position data and employee data are explicitly out of scope due to privacy constraints. This is correct, but be cautious about:
-- Semantic matching that could inadvertently reveal organizational structure
-- Aggregate queries that could identify individuals
-- Job architecture that ties too closely to specific positions
-
-**Prevention:** Privacy impact assessment before any org data integration; aggregation thresholds.
+**Phase to address:** Architecture decision during integration
 
 ---
 
-## Sources Summary
+### Pitfall I4: Structured Output Model Compatibility
 
-**Medallion Architecture:**
-- [Azure Databricks Medallion](https://learn.microsoft.com/en-us/azure/databricks/lakehouse/medallion)
-- [InfoQ Rethinking Medallion](https://www.infoq.com/articles/rethinking-medallion-architecture/)
-- [DataKitchen Data Quality](https://datakitchen.io/the-race-for-data-quality-in-a-medallion-architecture/)
+**What goes wrong:** Structured outputs require specific Claude models (Sonnet 4.5, Opus 4.1). Using unsupported model (Haiku, older Sonnet) causes silent failures or unstructured responses.
 
-**Power BI Semantic Models:**
-- [Microsoft Learn Semantic Models](https://learn.microsoft.com/en-us/power-bi/connect-data/service-datasets-understand)
-- [425 Consulting Top 5 Mistakes](https://www.425consulting.com/blog/blog-business-intelligence/top-5-power-bi-semantic-model-mistakes-to-avoid)
-- [Microsoft Deployment Pipelines](https://learn.microsoft.com/en-us/fabric/cicd/deployment-pipelines/understand-the-deployment-process)
+**Why it happens:** Model selection based on cost/speed without checking feature compatibility. Beta feature has limited model support.
 
-**DADM Compliance:**
-- [Canada DADM Directive](https://www.tbs-sct.canada.ca/pol/doc-eng.aspx?id=32592)
-- [Statistics Canada Responsible AI](https://www.statcan.gc.ca/en/data-science/network/automated-systems)
-- [DADM 3rd Review](https://wiki.gccollab.ca/images/f/f4/DADM_3rd_Review_-_Phase_2_Consultation_Deck_(EN).pdf)
+**Warning signs:**
+- Response is freeform text instead of JSON
+- Parse errors when validating SQLQuery model
+- "structured-outputs" beta header has no effect
 
-**Knowledge Graph / RAG:**
-- [FreeCodeCamp RAG Failures](https://www.freecodecamp.org/news/how-to-solve-5-common-rag-failures-with-knowledge-graphs/)
-- [Databricks GraphRAG](https://www.databricks.com/blog/building-improving-and-deploying-knowledge-graph-rag-systems-databricks)
+**Consequences:**
+- SQL generation fails unpredictably
+- Fallback to freeform parsing unreliable
+- Query success rate drops
 
-**Data Governance:**
-- [Atlan DAMA DMBOK](https://atlan.com/dama-dmbok-framework/)
-- [Alation Data Governance Challenges](https://www.alation.com/blog/data-governance-challenges/)
+**Prevention:**
+- Hardcode compatible model in DuckDBRetriever
+- Validate model supports structured outputs before using
+- Document model requirements in adapter config
+- Add graceful fallback if structured output fails
 
-**Occupation Taxonomies:**
-- [BLS O*NET Mapping](https://www.bls.gov/opub/mlr/2021/article/mapping-employment-projections-and-onet-data.htm)
-- [NCBI NOC Coding](https://pmc.ncbi.nlm.nih.gov/articles/PMC7439137/)
+**Phase to address:** Retriever implementation
+
+**Source:** [Anthropic Structured Outputs](https://platform.claude.com/docs/en/build-with-claude/structured-outputs)
+
+---
+
+### Pitfall I5: Error Message Exposure
+
+**What goes wrong:** Raw DuckDB errors, API errors, or stack traces exposed to end users through Orbit responses.
+
+**Why it happens:** Error handling focuses on not crashing, not on user-friendly messages.
+
+**Warning signs:**
+- Users see SQL syntax errors
+- Stack traces in Orbit responses
+- Technical error codes without explanation
+
+**Consequences:**
+- Poor user experience
+- Potential security risk (schema exposure)
+- Support burden from confused users
+
+**Prevention:**
+- Wrap all retriever errors in user-friendly messages
+- Log technical details, return generic message
+- Categorize errors:
+  - "I couldn't understand that question" (parse failure)
+  - "I couldn't find data matching your query" (empty results)
+  - "Something went wrong, please try again" (system error)
+- Never expose raw SQL or column names in errors
+
+**Phase to address:** Error handling in DuckDBRetriever.retrieve()
+
+---
+
+## Prevention Strategies Summary
+
+| Pitfall | Category | Prevention Strategy | Phase |
+|---------|----------|---------------------|-------|
+| C1: Intent collision | Config | Mutual exclusivity patterns, priority ordering | 10-03 |
+| C2: Hardcoded localhost | Config | Environment variables, Docker service names | Deployment |
+| C3: Missing API key | Config | Fail-fast validation at initialization | 10-03 |
+| C4: Schema drift | Config | Restart documentation, schema TTL | Operations |
+| P1: Memory leak | Performance | jemalloc allocator, memory monitoring | Deployment |
+| P2: Full schema prompts | Performance | Schema pruning, two-stage approach | Post-MVP |
+| P3: No caching | Performance | Query result cache with TTL | Optimization |
+| P4: Short timeout | Performance | Increase timeout, async pattern | 10-03 |
+| D1: Port conflicts | Deployment | Port survey, explicit mappings | Pre-deployment |
+| D2: Version mismatch | Deployment | Version validation, Docker images | Pre-deployment |
+| D3: Retriever not registered | Deployment | Full registration documentation | 10-03 |
+| D4: CORS not configured | Deployment | CORS middleware, cross-origin testing | 10-02 |
+| I1: Column hallucination | Integration | Column descriptions in DDL | 10-03 |
+| I2: Join errors | Integration | Relationship hints in prompt | 10-03 |
+| I3: Conflicting interfaces | Integration | Single source of truth architecture | 10-03 |
+| I4: Model compatibility | Integration | Hardcode compatible model | 10-03 |
+| I5: Error exposure | Integration | User-friendly error wrapping | 10-03 |
+
+---
+
+## Phase-Specific Checklist
+
+### Pre-Deployment (Before Starting Integration)
+- [ ] Verify Python 3.12+ and Node 18+ available
+- [ ] Survey existing port usage (3000, 5173, 8000)
+- [ ] Confirm ANTHROPIC_API_KEY available and valid
+- [ ] Review existing DataQueryService for reuse opportunity
+
+### Plan 10-02 (JobForge HTTP API)
+- [ ] Configure CORS middleware for Orbit origins
+- [ ] Validate API health check includes credential verification
+- [ ] Test cross-origin requests from browser
+
+### Plan 10-03 (Orbit Integration)
+- [ ] Design intent patterns with mutual exclusivity
+- [ ] Add negative patterns to prevent collision
+- [ ] Include relationship hints in system prompt
+- [ ] Add column descriptions to schema DDL
+- [ ] Wrap errors in user-friendly messages
+- [ ] Document retriever registration steps
+- [ ] Test with ambiguous queries
+- [ ] Verify structured outputs model compatibility
+
+### Deployment
+- [ ] Use environment variables for URLs (not hardcoded localhost)
+- [ ] Configure jemalloc or monitor memory trends
+- [ ] Set appropriate timeouts (60s+ for complex queries)
+- [ ] Test full Docker Compose stack end-to-end
+
+### Operations
+- [ ] Document schema change requires Orbit restart
+- [ ] Monitor API costs and token usage
+- [ ] Track query failure rates by error type
+- [ ] Establish memory baseline and alert on drift
+
+---
+
+## Sources
+
+### Primary (HIGH confidence)
+- [Orbit GitHub Repository](https://github.com/schmitech/orbit) - Official documentation and requirements
+- [Orbit Docker README](https://github.com/schmitech/orbit/blob/main/docker/README.md) - Deployment configuration
+- [Anthropic Structured Outputs](https://platform.claude.com/docs/en/build-with-claude/structured-outputs) - Model compatibility and usage
+- [DuckDB Performance Guide](https://duckdb.org/docs/stable/guides/performance/overview) - Query optimization
+
+### Secondary (MEDIUM confidence)
+- [BetterUp - FastAPI Memory Leak](https://build.betterup.com/chasing-a-memory-leak-in-our-async-fastapi-service-how-jemalloc-fixed-our-rss-creep/) - jemalloc fix for async memory issues
+- [K2View - LLM Text-to-SQL Challenges](https://www.k2view.com/blog/llm-text-to-sql/) - Join and hallucination issues
+- [Six Failures of Text-to-SQL](https://medium.com/google-cloud/the-six-failures-of-text-to-sql-and-how-to-fix-them-with-agents-ef5fd2b74b68) - Agent patterns for error recovery
+- [DuckDB Issue #18031](https://github.com/duckdb/duckdb/issues/18031) - Parallel insertion memory leak
+
+### Tertiary (LOW confidence - needs validation)
+- [Text-to-SQL Comparison 2026](https://research.aimultiple.com/text-to-sql/) - General accuracy benchmarks
+- [DuckDB Concurrency Discussion #13719](https://github.com/duckdb/duckdb/discussions/13719) - In-memory DuckDB with FastAPI
+
+---
+
+## Metadata
+
+**Research focus:** Integration pitfalls specific to adding Orbit/DuckDBRetriever to existing JobForge 2.0 system
+**Excluded:** Generic pitfalls already documented in existing PITFALLS.md (medallion, DADM, Power BI)
+**Confidence assessment:**
+- Configuration pitfalls: HIGH (well-documented patterns)
+- Performance pitfalls: MEDIUM (DuckDB memory issues confirmed, Orbit-specific less documented)
+- Deployment pitfalls: HIGH (common patterns)
+- Integration pitfalls: MEDIUM (text-to-SQL well-documented, Orbit-specific patterns inferred)
+
+**Valid until:** 60 days (Orbit actively developed, patterns may change)
