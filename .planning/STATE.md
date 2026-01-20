@@ -12,15 +12,15 @@ See: .planning/PROJECT.md (updated 2026-01-20)
 ## Current Position
 
 **Milestone:** v2.1 Orbit Integration
-**Phase:** 11 of 13 (Validation and Hardening)
-**Plan:** 2 of 2 in current phase
-**Status:** Phase 11 COMPLETE
-**Last activity:** 2026-01-20 - Completed 11-02-PLAN.md (DuckDB and Intent Routing Validation)
+**Phase:** 12 of 13 (Schema and Domain Intelligence)
+**Plan:** 1 of 3 in current phase
+**Status:** Phase 12 IN PROGRESS
+**Last activity:** 2026-01-20 - Completed 12-01-PLAN.md (Catalog Enrichment)
 
 ```
 v1.0 [####################] 100% SHIPPED 2026-01-19
 v2.0 [####################] 100% SHIPPED 2026-01-20
-v2.1 [######              ]  33% IN PROGRESS
+v2.1 [########            ]  42% IN PROGRESS
 ```
 
 ## Performance Metrics
@@ -36,10 +36,10 @@ v2.1 [######              ]  33% IN PROGRESS
 - Timeline: 2 days (2026-01-19 -> 2026-01-20)
 
 **v2.1:**
-- Plans completed: 2
+- Plans completed: 3
 - Phases complete: 1 (Phase 11)
 - Requirements: 14
-- Tests added: 171 (15 + 156)
+- Tests added: 178 (15 + 156 + 7)
 
 *Updated after each milestone completion*
 
@@ -60,6 +60,14 @@ All v1.0 and v2.0 decisions archived in:
 | DuckDB information_schema for views | DuckDB doesn't use sqlite_master | Tests use information_schema.tables |
 | Intent confidence scoring | More specific patterns override generic matches | "how many tables" routes to metadata |
 
+**v2.1 Phase 12 Decisions:**
+| Decision | Rationale | Outcome |
+|----------|-----------|---------|
+| dim_noc description priority | Specificity: table-specific over generic | Primary key desc vs foreign key desc |
+| Workforce dynamic from folder structure | Preserve original bronze semantics | demand/supply taxonomy in catalog |
+| Year column templating | Table-specific context for Claude | "Projected {metric} for {year}" |
+| Table metadata writes always | Completeness even without column changes | workforce_dynamic written for all COPS |
+
 ### Technical Discoveries
 
 From v2.1 research:
@@ -74,6 +82,12 @@ From Phase 11 execution:
 - 24 gold tables validated and queryable
 - Intent classification needs confidence tiering for pattern specificity
 
+From Phase 12 execution:
+- 23 catalog tables enriched with 139 columns updated
+- Workforce dynamic taxonomy: demand (5 tables) vs supply (3 tables)
+- Year columns (2023-2033) vary by table metric
+- Description priority matters: table-specific > generic COPS
+
 ### Pending Todos
 
 *0 todos pending*
@@ -87,14 +101,15 @@ None.
 ### Last Session
 
 **Date:** 2026-01-20
-**Activity:** Execute Phase 11 Plan 02 - DuckDB and Intent Routing Validation
-**Outcome:** 3 tasks completed, 156 tests added (table coverage, intent routing, adapter config)
+**Activity:** Execute Phase 12 Plan 01 - Catalog Enrichment
+**Outcome:** 3 tasks completed, 7 tests added, 23 catalog tables enriched
 
 ### Next Session Priorities
 
-1. Execute Phase 12 Plan 01 (Schema and Domain Intelligence)
-2. Continue through Phase 12-13
-3. Complete v2.1 Orbit Integration
+1. Execute Phase 12 Plan 02 (Enhanced DDL Generation)
+2. Execute Phase 12 Plan 03 (Source Attribution)
+3. Continue through Phase 13
+4. Complete v2.1 Orbit Integration
 
 ### Context for Claude
 
@@ -107,12 +122,13 @@ When resuming this project:
 - Demo web UI: `jobforge demo` starts wizard at localhost:8080
 - Orbit adapter: 85% built in orbit/ directory
 - Stack: Python 3.11, Polars, DuckDB, Pydantic 2, NetworkX, Rich, rapidfuzz, httpx, tenacity, beautifulsoup4, openai, anthropic, fastapi, uvicorn, starlette, sse-starlette
-- **596 tests passing** (440 + 156 new from 11-02)
+- **603 tests passing** (440 + 156 from 11-02 + 7 from 12-01)
 - **New:** RFC 9457 error handling in src/jobforge/api/errors.py
 - **New:** CORS middleware configured in src/jobforge/api/routes.py
-- **New:** 83 table coverage tests, 40 intent routing tests, 33 adapter config tests
+- **New:** Catalog enrichment module in src/jobforge/catalog/enrich.py
+- **New:** 23 catalog tables enriched with workforce_dynamic and semantic descriptions
 
 ---
 *State updated: 2026-01-20*
-*Session count: 32*
-*v2.1 Phase 11 COMPLETE*
+*Session count: 33*
+*v2.1 Phase 12 IN PROGRESS*
