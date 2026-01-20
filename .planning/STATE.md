@@ -7,18 +7,18 @@
 See: .planning/PROJECT.md (updated 2026-01-19)
 
 **Core value:** Auditable provenance from source to output
-**Current focus:** Phase 8 - Description Generation (next)
+**Current focus:** Phase 8 - Description Generation (in progress)
 
 ## Current Position
 
 **Phase:** 8 of 10 (Description Generation)
-**Plan:** Not started
-**Status:** Ready to plan
-**Last activity:** 2026-01-20 — Completed Phase 7 (External Data Integration)
+**Plan:** 1 of 3 complete
+**Status:** In progress
+**Last activity:** 2026-01-20 — Completed 08-01-PLAN.md (Description Models and Sources)
 
 ```
 v1.0 [####################] 100% SHIPPED
-v2.0 [########            ]  45% Phase 7 complete
+v2.0 [#########           ]  50% Phase 8 in progress
 ```
 
 ## Performance Metrics
@@ -29,9 +29,9 @@ v2.0 [########            ]  45% Phase 7 complete
 - Total execution time: ~5.4 hours
 
 **v2.0 Progress:**
-- Plans completed: 5 of 11
+- Plans completed: 6 of 11
 - Phases complete: 2 of 5 (Phase 6, Phase 7)
-- Current phase: 07 (3/3 plans complete)
+- Current phase: 08 (1/3 plans complete)
 
 *Updated after each plan completion*
 
@@ -49,6 +49,8 @@ v2.0 [########            ]  45% Phase 7 complete
 | 07-03-D2 | Track unique URLs in link fetcher | Multiple rows may share same definition/standard pages | 2026-01-20 |
 | 07-02-D1 | Accept ALL LLM responses regardless of confidence | Per CONTEXT.md - store for downstream filtering | 2026-01-20 |
 | 07-02-D2 | Use gpt-4o-2024-08-06 model | Structured Outputs support for guaranteed schema compliance | 2026-01-20 |
+| 08-01-D1 | DescriptionProvenance.precedence as property | Maps source_type to SourcePrecedence dynamically | 2026-01-20 |
+| 08-01-D2 | lru_cache for lead statements | Single cache for 900 entries; cleared only when gold updates | 2026-01-20 |
 
 ### Key Decisions (v1.0)
 
@@ -72,6 +74,7 @@ All decisions documented in PROJECT.md with outcomes marked "Good".
 | Brookfield repo moved | Repository now at thedaisTMU/NOC_ONet_Crosswalk (was BrookfieldIIE) |
 | TBS bilingual structure | EN/FR pages have different column headers, same data structure |
 | TBS link deduplication | 217 rows yield 307 unique links (many shared standards) |
+| Lead statement count | 900 entries in element_lead_statement.parquet indexed by OASIS code |
 
 ### v2.0 Prototype Assets
 
@@ -100,14 +103,14 @@ None.
 ### Last Session
 
 **Date:** 2026-01-20
-**Activity:** Execute 07-02-PLAN.md (LLM Imputation)
-**Outcome:** LLM imputation service with Structured Outputs, 26 tests added, 225 total passing
+**Activity:** Execute 08-01-PLAN.md (Description Models and Sources)
+**Outcome:** Description models with provenance, lead statement loader (900 entries), 29 tests added, 254 total passing
 
 ### Next Session Priorities
 
-1. Run `/gsd:discuss-phase 8` or `/gsd:plan-phase 8`
-2. Description generation for job titles, families, and functions
-3. Multi-source provenance tracking (authoritative vs LLM)
+1. Execute 08-02-PLAN.md (Description Generation Service)
+2. Title description generation with source cascade
+3. Family/function description aggregation
 
 ### Context for Claude
 
@@ -115,14 +118,16 @@ When resuming this project:
 - **v1.0 SHIPPED** - 10 requirements delivered, 13 plans complete
 - **v2.0 Phase 6 COMPLETE** - Imputation Foundation verified
 - **v2.0 Phase 7 COMPLETE** - External Data Integration verified
+- **v2.0 Phase 8 Plan 1 COMPLETE** - Description models and sources
+- `jobforge.description` package: models, sources modules (NEW)
 - `jobforge.external.onet` package: crosswalk, client, adapter modules
 - `jobforge.external.tbs` package: scraper, parser, link_fetcher, schema modules
-- `jobforge.external.llm` package: client, service, prompts modules (NEW)
-- LLM imputation: GPT-4o Structured Outputs, accepts all confidence levels
-- External data cascade ready: Hierarchical -> O*NET -> LLM (all with provenance)
+- `jobforge.external.llm` package: client, service, prompts modules
+- Description cascade: AUTHORITATIVE (lead statement) -> LLM fallback
+- Lead statements: 900 entries cached, indexed by OASIS code
 - Stack: Python 3.11, Polars, DuckDB, Pydantic 2, NetworkX, Rich, rapidfuzz, httpx, tenacity, beautifulsoup4, lxml, openai
-- 225 tests total (26 LLM tests added)
+- 254 tests total (29 description tests added)
 
 ---
 *State updated: 2026-01-20*
-*Session count: 19*
+*Session count: 20*
