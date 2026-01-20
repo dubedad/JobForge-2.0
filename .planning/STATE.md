@@ -7,18 +7,18 @@
 See: .planning/PROJECT.md (updated 2026-01-20)
 
 **Core value:** Auditable provenance from source to output
-**Current focus:** Ready for v3.0 planning
+**Current focus:** v2.1 Orbit Integration
 
 ## Current Position
 
-**Milestone:** v2.0 COMPLETE — Ready for `/gsd:new-milestone`
-**Status:** Between milestones
-**Last activity:** 2026-01-20 — v2.0 archived
+**Milestone:** v2.1 Orbit Integration
+**Status:** Defining requirements
+**Last activity:** 2026-01-20 — v2.1 milestone started
 
 ```
 v1.0 [####################] 100% SHIPPED 2026-01-19
 v2.0 [####################] 100% SHIPPED 2026-01-20
-v3.0 [                    ]   0% PLANNING
+v2.1 [                    ]   0% DEFINING REQUIREMENTS
 ```
 
 ## Performance Metrics
@@ -52,7 +52,7 @@ Discoveries documented in milestone archives. Key ones:
 
 ### Pending Todos
 
-*0 todos pending — v2.0 complete*
+*0 todos pending — starting fresh*
 
 ### Open Blockers
 
@@ -63,22 +63,22 @@ None.
 ### Last Session
 
 **Date:** 2026-01-20
-**Activity:** Complete v2.0 milestone archival
-**Outcome:** v2.0 archived to milestones/, PROJECT.md evolved, git tag created
+**Activity:** Initialize v2.1 Orbit Integration milestone
+**Outcome:** PROJECT.md updated, STATE.md reset, research phase starting
 
 ### Next Session Priorities
 
-1. `/gsd:new-milestone` to start v3.0 planning
-2. Define v3.0 scope (RAG, Job Description Builder, Orbit integration)
-3. Create v3.0 requirements and roadmap
+1. Complete Orbit ecosystem research
+2. Define v2.1 requirements
+3. Create v2.1 roadmap
 
 ### Context for Claude
 
 When resuming this project:
 - **v1.0 SHIPPED** - 10 requirements, 13 plans (Phases 1-5)
 - **v2.0 SHIPPED** - 17 requirements, 11 plans (Phases 6-10)
+- **v2.1 IN PROGRESS** - Orbit integration focus
 - Archives in `.planning/milestones/`
-- No ROADMAP.md or REQUIREMENTS.md — fresh ones created by `/gsd:new-milestone`
 - Query API: `jobforge api` starts server on localhost:8000
 - Demo web UI: `jobforge demo` starts wizard at localhost:8080
 - Compliance logs: `jobforge compliance {dadm|dama|classification}`
@@ -87,5 +87,5 @@ When resuming this project:
 
 ---
 *State updated: 2026-01-20*
-*Session count: 28*
-*v2.0 ARCHIVED*
+*Session count: 29*
+*v2.1 INITIALIZING*

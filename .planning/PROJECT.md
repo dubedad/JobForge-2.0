@@ -8,6 +8,16 @@ A workforce intelligence platform that deploys a governed, self-imputing semanti
 
 Auditable provenance from source to output — every artifact traces back to authoritative sources. When asked "where did this come from?", JobForge can answer with the complete pipeline path, including DADM directive chapter and verse.
 
+## Current Milestone: v2.1 Orbit Integration
+
+**Goal:** Deploy WiQ model to Orbit via DuckDBRetriever adapter with intent configuration and natural language query capabilities.
+
+**Target features:**
+- DuckDBRetriever adapter connecting Orbit to gold Parquet layer
+- Intent configuration for workforce intelligence queries
+- Deployment pipeline for Orbit platform
+- Natural language query interface via Orbit
+
 ## Current State (v2.0 Shipped 2026-01-20)
 
 **Milestone delivered:** Self-imputing WiQ model with multi-source external data integration and live MCP demo.
@@ -142,4 +152,4 @@ HR job data across federal government is unstructured, non-standardized, fragmen
 | RTM for compliance logs | Industry-standard traceability format | ✓ Good — auditable compliance |
 
 ---
-*Last updated: 2026-01-20 after v2.0 milestone completion*
+*Last updated: 2026-01-20 after v2.1 milestone initialization*
