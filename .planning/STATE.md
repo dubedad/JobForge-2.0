@@ -12,13 +12,13 @@ See: .planning/PROJECT.md (updated 2026-01-19)
 ## Current Position
 
 **Phase:** 9 of 10 (Demo Infrastructure)
-**Plan:** Not started
-**Status:** Ready to plan
-**Last activity:** 2026-01-20 — Completed Phase 8 (Description Generation)
+**Plan:** 1 of 2 complete
+**Status:** In progress
+**Last activity:** 2026-01-20 — Completed 09-01-PLAN.md (MCP and SSE Backend)
 
 ```
 v1.0 [####################] 100% SHIPPED
-v2.0 [############        ]  60% Phase 8 complete
+v2.0 [#############       ]  65% Phase 9 in progress
 ```
 
 ## Performance Metrics
@@ -29,9 +29,9 @@ v2.0 [############        ]  60% Phase 8 complete
 - Total execution time: ~5.4 hours
 
 **v2.0 Progress:**
-- Plans completed: 7 of 11
+- Plans completed: 8 of 11
 - Phases complete: 3 of 5 (Phase 6, Phase 7, Phase 8)
-- Current phase: 09 (0/2 plans complete)
+- Current phase: 09 (1/2 plans complete)
 
 *Updated after each plan completion*
 
@@ -51,6 +51,8 @@ v2.0 [############        ]  60% Phase 8 complete
 | 07-02-D2 | Use gpt-4o-2024-08-06 model | Structured Outputs support for guaranteed schema compliance | 2026-01-20 |
 | 08-01-D1 | DescriptionProvenance.precedence as property | Maps source_type to SourcePrecedence dynamically | 2026-01-20 |
 | 08-01-D2 | lru_cache for lead statements | Single cache for 900 entries; cleared only when gold updates | 2026-01-20 |
+| 09-01-D1 | Narration-only orchestrator | Does NOT call MCP; reads schema, yields events only | 2026-01-20 |
+| 09-01-D2 | SSE streaming with visual delays | 0.05-0.1s delays between events for smooth progression | 2026-01-20 |
 
 ### Key Decisions (v1.0)
 
@@ -103,14 +105,14 @@ None.
 ### Last Session
 
 **Date:** 2026-01-20
-**Activity:** Execute Phase 8 (Description Generation)
-**Outcome:** Description generation service with NOC-style prompts, 73 new tests, 298 total passing
+**Activity:** Execute Phase 9 Plan 1 (MCP and SSE Backend)
+**Outcome:** MCP permissions ported, SSE backend streaming narration events, 32 new tests, 330 total passing
 
 ### Next Session Priorities
 
-1. Run `/gsd:discuss-phase 9` or `/gsd:plan-phase 9`
-2. Port MCP configuration from prototype
-3. Live demo with Power BI + narration UI
+1. Execute `/gsd:execute-phase 09-02` for web UI
+2. Test live demo with Power BI Desktop
+3. Complete Phase 9 and move to Phase 10
 
 ### Context for Claude
 
@@ -119,14 +121,15 @@ When resuming this project:
 - **v2.0 Phase 6 COMPLETE** - Imputation Foundation verified
 - **v2.0 Phase 7 COMPLETE** - External Data Integration verified
 - **v2.0 Phase 8 COMPLETE** - Description Generation verified
-- `jobforge.description` package: models, sources, prompts, service modules
-- `jobforge.external.onet` package: crosswalk, client, adapter modules
-- `jobforge.external.tbs` package: scraper, parser, link_fetcher, schema modules
-- `jobforge.external.llm` package: client, service, prompts modules
-- Description cascade: AUTHORITATIVE (900 NOC lead statements) -> LLM fallback with boundary words
-- Stack: Python 3.11, Polars, DuckDB, Pydantic 2, NetworkX, Rich, rapidfuzz, httpx, tenacity, beautifulsoup4, lxml, openai
-- 298 tests total (73 description tests)
+- **v2.0 Phase 9 Plan 1 COMPLETE** - MCP and SSE Backend
+- `jobforge.demo` package: events, orchestrator, app modules
+- `.claude/settings.local.json` with 14 MCP permissions
+- `.claude/commands/stage-gold.md` for Claude Code deployment
+- SSE endpoint at /api/deploy/stream
+- CLI: `jobforge demo` starts web server
+- Stack: Python 3.11, Polars, DuckDB, Pydantic 2, NetworkX, Rich, rapidfuzz, httpx, tenacity, beautifulsoup4, lxml, openai, uvicorn, starlette, sse-starlette
+- 330 tests total (32 demo tests)
 
 ---
 *State updated: 2026-01-20*
-*Session count: 22*
+*Session count: 23*
