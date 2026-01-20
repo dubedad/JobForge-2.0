@@ -34,6 +34,7 @@ from .parser import (
     validate_table_structure,
 )
 from .scraper import TBS_URLS, TBSScraper, scrape_occupational_groups
+from .link_fetcher import LinkMetadataFetcher, fetch_linked_metadata, REQUEST_DELAY_SECONDS
 
 __all__ = [
     # Models
@@ -55,4 +56,8 @@ __all__ = [
     "TBS_URLS",
     "TBSScraper",
     "scrape_occupational_groups",
+    # Link Fetcher
+    "REQUEST_DELAY_SECONDS",
+    "LinkMetadataFetcher",
+    "fetch_linked_metadata",
 ]
