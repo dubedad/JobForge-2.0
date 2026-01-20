@@ -47,7 +47,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 **Milestone Goal:** Enable WiQ to impute missing data using authoritative sources, O*NET API, and LLM calls with full provenance, demonstrated live via MCP.
 
 - [x] **Phase 6: Imputation Foundation** - Port and validate core imputation system with hierarchical inheritance
-- [ ] **Phase 7: External Data Integration** - O*NET API, LLM imputation, and TBS scraping with provenance
+- [x] **Phase 7: External Data Integration** - O*NET API, LLM imputation, and TBS scraping with provenance
 - [ ] **Phase 8: Description Generation** - Multi-source descriptions with authoritative vs LLM provenance
 - [ ] **Phase 9: Demo Infrastructure** - MCP porting and live demo capability with basic UI
 - [ ] **Phase 10: Governance and Conversational Interface** - Compliance logs and data/metadata query interface
@@ -82,9 +82,9 @@ Plans:
 **Plans**: 3 plans
 
 Plans:
-- [ ] 07-01-PLAN.md — O*NET API integration with NOC-SOC crosswalk and attribute adapter
-- [ ] 07-02-PLAN.md — LLM-powered attribute imputation service with structured outputs
-- [ ] 07-03-PLAN.md — TBS scraping with bilingual support and schema extension
+- [x] 07-01-PLAN.md — O*NET API integration with NOC-SOC crosswalk and attribute adapter
+- [x] 07-02-PLAN.md — LLM-powered attribute imputation service with structured outputs
+- [x] 07-03-PLAN.md — TBS scraping with bilingual support and schema extension
 
 ### Phase 8: Description Generation
 **Goal**: Users can generate descriptions for job titles, families, and functions from multiple sources with clear provenance
@@ -141,7 +141,7 @@ Phases execute in numeric order: 6 -> 7 -> 8 -> 9 -> 10
 |-------|-----------|----------------|--------|-----------|
 | 1-5 | v1.0 | 13/13 | Complete | 2026-01-19 |
 | 6. Imputation Foundation | v2.0 | 2/2 | Complete | 2026-01-19 |
-| 7. External Data Integration | v2.0 | 0/3 | Planned | - |
+| 7. External Data Integration | v2.0 | 3/3 | Complete | 2026-01-20 |
 | 8. Description Generation | v2.0 | 0/2 | Not started | - |
 | 9. Demo Infrastructure | v2.0 | 0/2 | Not started | - |
 | 10. Governance and Conversational | v2.0 | 0/2 | Not started | - |

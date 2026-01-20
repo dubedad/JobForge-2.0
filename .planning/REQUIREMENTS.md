@@ -11,16 +11,16 @@ Requirements for self-imputing model and live demo. Each maps to roadmap phases.
 
 - [x] **IMP-01**: Validate and port imputation system from prototype
 - [x] **IMP-02**: Hierarchical attribute inheritance (L5->L6->L7 filtered context)
-- [ ] **IMP-03**: O*NET API integration for SOC-aligned attribute candidates
-- [ ] **IMP-04**: LLM-powered attribute imputation for empty cells
+- [x] **IMP-03**: O*NET API integration for SOC-aligned attribute candidates
+- [x] **IMP-04**: LLM-powered attribute imputation for empty cells
 - [ ] **IMP-05**: Description generation (job titles, families, functions)
 - [ ] **IMP-06**: Multiple description sources with provenance (authoritative vs LLM-generated)
 
 ### New Data Sources
 
-- [ ] **SRC-01**: Scrape TBS Occupational Groups page with full provenance
-- [ ] **SRC-02**: Follow embedded links for occupational group metadata
-- [ ] **SRC-03**: Extend DIM Occupations schema with scraped fields
+- [x] **SRC-01**: Scrape TBS Occupational Groups page with full provenance
+- [x] **SRC-02**: Follow embedded links for occupational group metadata
+- [x] **SRC-03**: Extend DIM Occupations schema with scraped fields
 
 ### Demo & MCP
 
@@ -84,13 +84,13 @@ Which phases cover which requirements. Updated during roadmap creation.
 |-------------|-------|--------|
 | IMP-01 | Phase 6 | Complete |
 | IMP-02 | Phase 6 | Complete |
-| IMP-03 | Phase 7 | Pending |
-| IMP-04 | Phase 7 | Pending |
+| IMP-03 | Phase 7 | Complete |
+| IMP-04 | Phase 7 | Complete |
 | IMP-05 | Phase 8 | Pending |
 | IMP-06 | Phase 8 | Pending |
-| SRC-01 | Phase 7 | Pending |
-| SRC-02 | Phase 7 | Pending |
-| SRC-03 | Phase 7 | Pending |
+| SRC-01 | Phase 7 | Complete |
+| SRC-02 | Phase 7 | Complete |
+| SRC-03 | Phase 7 | Complete |
 | MCP-01 | Phase 9 | Pending |
 | MCP-02 | Phase 9 | Pending |
 | MCP-03 | Phase 9 | Pending |

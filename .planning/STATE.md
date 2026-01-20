@@ -7,14 +7,14 @@
 See: .planning/PROJECT.md (updated 2026-01-19)
 
 **Core value:** Auditable provenance from source to output
-**Current focus:** Phase 7 - External Data Integration (COMPLETE)
+**Current focus:** Phase 8 - Description Generation (next)
 
 ## Current Position
 
-**Phase:** 7 of 10 (External Data Integration) - COMPLETE
-**Plan:** 3 of 3 complete (07-01, 07-02, 07-03)
-**Status:** Phase complete
-**Last activity:** 2026-01-20 - Completed 07-02-PLAN.md (LLM Imputation)
+**Phase:** 8 of 10 (Description Generation)
+**Plan:** Not started
+**Status:** Ready to plan
+**Last activity:** 2026-01-20 — Completed Phase 7 (External Data Integration)
 
 ```
 v1.0 [####################] 100% SHIPPED
@@ -105,9 +105,9 @@ None.
 
 ### Next Session Priorities
 
-1. Begin Phase 8 (Gold Layer V2)
-2. Execute 08-01-PLAN.md
-3. Build complete imputation cascade: Hierarchical -> O*NET -> LLM
+1. Run `/gsd:discuss-phase 8` or `/gsd:plan-phase 8`
+2. Description generation for job titles, families, and functions
+3. Multi-source provenance tracking (authoritative vs LLM)
 
 ### Context for Claude
 
