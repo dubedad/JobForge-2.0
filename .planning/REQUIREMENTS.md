@@ -24,9 +24,9 @@ Requirements for self-imputing model and live demo. Each maps to roadmap phases.
 
 ### Demo & MCP
 
-- [ ] **MCP-01**: Port MCP configuration from prototype to JobForge 2.0
-- [ ] **MCP-02**: `/stagegold` live demo via MCP (Power BI + UI split screen)
-- [ ] **MCP-03**: Basic UI for demo narration (what JobForge is doing)
+- [x] **MCP-01**: Port MCP configuration from prototype to JobForge 2.0
+- [x] **MCP-02**: `/stagegold` live demo via MCP (Power BI + UI split screen)
+- [x] **MCP-03**: Basic UI for demo narration (what JobForge is doing)
 
 ### Governance & Compliance
 
