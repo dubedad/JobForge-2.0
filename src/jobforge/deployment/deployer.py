@@ -83,14 +83,24 @@ class WiQDeployer:
         """
         # Default schema path
         if schema_path is None:
-            # Try default location first
-            default_path = Path("data/catalog/schemas/wiq_schema.json")
+            # Try default location first (relative to project root)
+            # Use package location to find project root
+            project_root = Path(__file__).parent.parent.parent.parent
+            default_path = project_root / "data" / "catalog" / "schemas" / "wiq_schema.json"
             if default_path.exists():
                 schema_path = default_path
             else:
-                # Fallback: build from code
-                from jobforge.semantic.schema import build_wiq_schema
-                return build_wiq_schema()
+                # Also try current working directory
+                cwd_path = Path("data/catalog/schemas/wiq_schema.json")
+                if cwd_path.exists():
+                    schema_path = cwd_path
+                else:
+                    # Fallback: build from code
+                    from jobforge.semantic.schema import build_wiq_schema
+                    from jobforge.pipeline.config import PipelineConfig
+                    # Use project root for config
+                    config = PipelineConfig(data_root=project_root / "data")
+                    return build_wiq_schema(config)
 
         # Load from JSON
         if not schema_path.exists():
