@@ -95,11 +95,11 @@ Plans:
   2. User can generate descriptions for job families and functions
   3. Each description has provenance indicating source (authoritative text vs LLM-generated)
   4. Multiple description sources available with user ability to see which is which
-**Plans**: TBD
+**Plans**: 2 plans
 
 Plans:
-- [ ] 08-01: Description generation for job titles, families, and functions
-- [ ] 08-02: Multi-source provenance tracking for descriptions
+- [ ] 08-01-PLAN.md — Description models and source cascade logic
+- [ ] 08-02-PLAN.md — DescriptionGenerationService with NOC-style prompts
 
 ### Phase 9: Demo Infrastructure
 **Goal**: Users can run live demo showing Power BI building WiQ model in real-time via MCP
