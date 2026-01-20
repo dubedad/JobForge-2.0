@@ -35,6 +35,12 @@ from .parser import (
 )
 from .scraper import TBS_URLS, TBSScraper, scrape_occupational_groups
 from .link_fetcher import LinkMetadataFetcher, fetch_linked_metadata, REQUEST_DELAY_SECONDS
+from .schema import (
+    DIM_OCCUPATIONS_TBS_FIELDS,
+    DIM_OCCUPATIONS_TBS_FIELD_NAMES,
+    get_tbs_field_types,
+    get_tbs_field_descriptions,
+)
 
 __all__ = [
     # Models
@@ -60,4 +66,9 @@ __all__ = [
     "REQUEST_DELAY_SECONDS",
     "LinkMetadataFetcher",
     "fetch_linked_metadata",
+    # Schema Extension
+    "DIM_OCCUPATIONS_TBS_FIELDS",
+    "DIM_OCCUPATIONS_TBS_FIELD_NAMES",
+    "get_tbs_field_types",
+    "get_tbs_field_descriptions",
 ]
