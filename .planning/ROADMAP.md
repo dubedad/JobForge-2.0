@@ -30,7 +30,7 @@ See archived roadmap: `.planning/milestones/v2.0-ROADMAP.md`
 - Integer phases (11, 12, 13): Planned milestone work
 - Decimal phases (11.1, 11.2): Urgent insertions (marked with INSERTED)
 
-- [ ] **Phase 11: Validation and Hardening** - Validate existing orbit/ components, harden error handling
+- [x] **Phase 11: Validation and Hardening** - Validate existing orbit/ components, harden error handling
 - [ ] **Phase 12: Schema and Domain Intelligence** - Enhance DDL for SQL accuracy, add workforce-specific patterns
 - [ ] **Phase 13: Deployment and Documentation** - Production deployment config and integration guide
 
@@ -48,8 +48,8 @@ See archived roadmap: `.planning/milestones/v2.0-ROADMAP.md`
 **Plans**: 2 plans
 
 Plans:
-- [ ] 11-01-PLAN.md — RFC 9457 error handling + CORS middleware
-- [ ] 11-02-PLAN.md — Table coverage tests + intent validation tests
+- [x] 11-01-PLAN.md — RFC 9457 error handling + CORS middleware
+- [x] 11-02-PLAN.md — Table coverage tests + intent validation tests
 
 ### Phase 12: Schema and Domain Intelligence
 **Goal**: Text-to-SQL accuracy improved via enhanced DDL and workforce-specific entity recognition
@@ -91,7 +91,7 @@ Phases execute in numeric order: 11 -> 11.1 (if any) -> 12 -> 12.1 (if any) -> 1
 
 | Phase | Milestone | Plans Complete | Status | Completed |
 |-------|-----------|----------------|--------|-----------|
-| 11. Validation and Hardening | v2.1 | 0/2 | Planned | - |
+| 11. Validation and Hardening | v2.1 | 2/2 | Complete | 2026-01-20 |
 | 12. Schema and Domain Intelligence | v2.1 | 0/3 | Planned | - |
 | 13. Deployment and Documentation | v2.1 | 0/TBD | Not started | - |
 
