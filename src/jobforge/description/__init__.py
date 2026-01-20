@@ -5,37 +5,39 @@ This package provides:
 - Provenance tracking models for auditability
 - Generated description models for titles, families, and functions
 - Source cascade logic for determining description source
+- DescriptionGenerationService for orchestrating generation with provenance
 
 Example usage:
     from jobforge.description import (
         DescriptionSource,
         DescriptionProvenance,
         GeneratedDescription,
-    )
-    from datetime import datetime, timezone
-
-    # Create provenance for an authoritative description
-    provenance = DescriptionProvenance(
-        source_type=DescriptionSource.AUTHORITATIVE,
-        confidence=1.0,
-        timestamp=datetime.now(timezone.utc),
-        resolution_method="DIRECT_MATCH",
+        DescriptionGenerationService,
     )
 
-    # Create description with provenance
-    desc = GeneratedDescription(
-        entity_type="title",
-        entity_id="123",
-        entity_name="Data Analyst",
-        description="Data analysts collect, process, and analyze data...",
-        provenance=provenance,
+    # Create service and generate description
+    service = DescriptionGenerationService()
+    result = service.generate_title_description(
+        job_title="Data Analyst",
+        unit_group_id="21211",
     )
+    print(f"{result.description} (source: {result.provenance.source_type})")
 """
 
 from jobforge.description.models import (
     DescriptionProvenance,
     DescriptionSource,
     GeneratedDescription,
+)
+from jobforge.description.prompts import (
+    DESCRIPTION_SYSTEM_PROMPT,
+    DescriptionResponse,
+    build_aggregate_description_prompt,
+    build_title_description_prompt,
+)
+from jobforge.description.service import (
+    DescriptionGenerationService,
+    generate_description,
 )
 from jobforge.description.sources import (
     clear_lead_statement_cache,
@@ -49,6 +51,14 @@ __all__ = [
     "DescriptionSource",
     "DescriptionProvenance",
     "GeneratedDescription",
+    # Prompts
+    "DESCRIPTION_SYSTEM_PROMPT",
+    "DescriptionResponse",
+    "build_title_description_prompt",
+    "build_aggregate_description_prompt",
+    # Service
+    "DescriptionGenerationService",
+    "generate_description",
     # Source functions
     "load_lead_statements",
     "get_lead_statement_for_oasis",
