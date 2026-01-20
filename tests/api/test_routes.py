@@ -123,14 +123,14 @@ class TestDataQueryEndpoint:
             assert data["row_count"] > 0
 
     def test_query_data_error(self):
-        """Test data query handles errors."""
+        """Test data query handles errors with RFC 9457 format."""
         with patch("jobforge.api.data_query.anthropic.Anthropic") as mock_cls:
             mock_client = MagicMock()
             mock_client.messages.create.side_effect = Exception("API Error")
             mock_cls.return_value = mock_client
 
             app = create_api_app(PipelineConfig())
-            client = TestClient(app)
+            client = TestClient(app, raise_server_exceptions=False)
 
             response = client.post(
                 "/api/query/data",
@@ -138,7 +138,11 @@ class TestDataQueryEndpoint:
             )
 
             assert response.status_code == 400
-            assert "API Error" in response.json()["detail"]
+            data = response.json()
+            # RFC 9457 format: error info in 'detail' field within problem detail
+            assert "type" in data
+            assert "detail" in data
+            assert "API Error" in data["detail"]
 
 
 class TestComplianceEndpoint:
