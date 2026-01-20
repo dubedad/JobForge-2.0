@@ -1,0 +1,227 @@
+/**
+ * GC Theme - Government of Canada Color Palette
+ *
+ * Follows Federal Identity Program (FIP) guidelines with accessible
+ * color contrast ratios meeting WCAG 2.1 AA standards.
+ */
+
+:root {
+  /* FIP Primary Colors */
+  --gc-red: #eb2d37;
+  --gc-white: #ffffff;
+  --gc-black: #000000;
+
+  /* FIP Secondary Colors */
+  --gc-pewter: #969696;
+  --gc-dark-grey: #333333;
+
+  /* Functional Colors */
+  --gc-text: #333333;
+  --gc-text-light: #666666;
+  --gc-accent: #26374a;
+  --gc-accent-dark: #1c2939;
+
+  /* Link Colors (WCAG AA compliant) */
+  --gc-link: #284162;
+  --gc-link-hover: #0535d2;
+  --gc-link-visited: #7834bc;
+
+  /* Status Colors */
+  --gc-error: #d3080c;
+  --gc-error-light: #f3e9e8;
+  --gc-success: #278400;
+  --gc-success-light: #d8eeca;
+  --gc-warning: #ee7100;
+  --gc-warning-light: #f9f4d4;
+  --gc-info: #269abc;
+  --gc-info-light: #d7faff;
+
+  /* UI Colors - Light Theme */
+  --bg-primary: var(--gc-white);
+  --bg-secondary: #f5f5f5;
+  --bg-tertiary: #eaeaea;
+  --text-primary: var(--gc-text);
+  --text-secondary: var(--gc-text-light);
+  --border-color: #cccccc;
+  --border-light: #e0e0e0;
+  --shadow-color: rgba(0, 0, 0, 0.1);
+  --shadow-strong: rgba(0, 0, 0, 0.15);
+
+  /* Button Colors */
+  --button-primary-bg: var(--gc-accent);
+  --button-primary-text: var(--gc-white);
+  --button-primary-hover: var(--gc-accent-dark);
+  --button-secondary-bg: var(--gc-white);
+  --button-secondary-text: var(--gc-accent);
+  --button-secondary-border: var(--gc-accent);
+
+  /* Progress/Counter Colors */
+  --progress-bg: var(--gc-pewter);
+  --progress-fill: var(--gc-red);
+  --counter-badge-bg: var(--gc-accent);
+
+  /* Spacing */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  --spacing-2xl: 3rem;
+
+  /* Border Radius */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-round: 50%;
+
+  /* Typography */
+  --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-md: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-3xl: 2rem;
+  --line-height-tight: 1.25;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.75;
+
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-normal: 250ms ease;
+  --transition-slow: 400ms ease;
+}
+
+/* System Dark Mode Preference */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg-primary: #1a1a1a;
+    --bg-secondary: #2d2d2d;
+    --bg-tertiary: #3d3d3d;
+    --text-primary: #f0f0f0;
+    --text-secondary: #b0b0b0;
+    --border-color: #4d4d4d;
+    --border-light: #3d3d3d;
+    --shadow-color: rgba(0, 0, 0, 0.3);
+    --shadow-strong: rgba(0, 0, 0, 0.5);
+
+    --gc-link: #6b9fff;
+    --gc-link-hover: #99c2ff;
+    --gc-link-visited: #c49fff;
+
+    --button-primary-bg: #3a5a80;
+    --button-primary-hover: #4a6a90;
+    --button-secondary-bg: #2d2d2d;
+    --button-secondary-text: #6b9fff;
+    --button-secondary-border: #6b9fff;
+
+    --gc-error-light: #4a2020;
+    --gc-success-light: #1a3a1a;
+    --gc-warning-light: #3a2a0a;
+    --gc-info-light: #0a2a3a;
+  }
+}
+
+/* Manual Dark Mode Toggle */
+[data-theme="dark"] {
+  --bg-primary: #1a1a1a;
+  --bg-secondary: #2d2d2d;
+  --bg-tertiary: #3d3d3d;
+  --text-primary: #f0f0f0;
+  --text-secondary: #b0b0b0;
+  --border-color: #4d4d4d;
+  --border-light: #3d3d3d;
+  --shadow-color: rgba(0, 0, 0, 0.3);
+  --shadow-strong: rgba(0, 0, 0, 0.5);
+
+  --gc-link: #6b9fff;
+  --gc-link-hover: #99c2ff;
+  --gc-link-visited: #c49fff;
+
+  --button-primary-bg: #3a5a80;
+  --button-primary-hover: #4a6a90;
+  --button-secondary-bg: #2d2d2d;
+  --button-secondary-text: #6b9fff;
+  --button-secondary-border: #6b9fff;
+
+  --gc-error-light: #4a2020;
+  --gc-success-light: #1a3a1a;
+  --gc-warning-light: #3a2a0a;
+  --gc-info-light: #0a2a3a;
+}
+
+/* Manual Light Mode Toggle */
+[data-theme="light"] {
+  --bg-primary: var(--gc-white);
+  --bg-secondary: #f5f5f5;
+  --bg-tertiary: #eaeaea;
+  --text-primary: var(--gc-text);
+  --text-secondary: var(--gc-text-light);
+  --border-color: #cccccc;
+  --border-light: #e0e0e0;
+  --shadow-color: rgba(0, 0, 0, 0.1);
+  --shadow-strong: rgba(0, 0, 0, 0.15);
+
+  --gc-link: #284162;
+  --gc-link-hover: #0535d2;
+  --gc-link-visited: #7834bc;
+
+  --button-primary-bg: var(--gc-accent);
+  --button-primary-hover: var(--gc-accent-dark);
+  --button-secondary-bg: var(--gc-white);
+  --button-secondary-text: var(--gc-accent);
+  --button-secondary-border: var(--gc-accent);
+
+  --gc-error-light: #f3e9e8;
+  --gc-success-light: #d8eeca;
+  --gc-warning-light: #f9f4d4;
+  --gc-info-light: #d7faff;
+}
+
+/* Base Reset and Styles */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-family);
+  font-size: var(--font-size-md);
+  line-height: var(--line-height-normal);
+  color: var(--text-primary);
+  background-color: var(--bg-primary);
+  transition: background-color var(--transition-normal), color var(--transition-normal);
+}
+
+a {
+  color: var(--gc-link);
+  text-decoration: underline;
+  transition: color var(--transition-fast);
+}
+
+a:hover {
+  color: var(--gc-link-hover);
+}
+
+a:visited {
+  color: var(--gc-link-visited);
+}
+
+/* Header Accent Bar */
+.header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background-color: var(--gc-red);
+}

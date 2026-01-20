@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="JobForge - Workforce Intelligence Platform Demo">
+  <title data-i18n="app.title">JobForge Demo</title>
+  <link rel="stylesheet" href="css/gc-theme.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/a11y.css">
+</head>
+<body>
+  <a href="#main-content" class="skip-link" data-i18n="a11y.skipLink">Skip to main content</a>
+
+  <header class="header">
+    <div class="header-content">
+      <div class="branding">
+        <h1 class="brand-title">JobForge</h1>
+        <span class="brand-subtitle" data-i18n="app.subtitle">Workforce Intelligence / Intelligence de la main-d'oeuvre</span>
+      </div>
+      <div class="header-actions">
+        <button id="theme-toggle" class="icon-button" aria-label="Toggle dark mode" data-i18n-aria="a11y.themeToggle">
+          <svg class="icon icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          <svg class="icon icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+        <button id="lang-toggle" class="lang-button" aria-label="Switch to French" data-i18n-aria="a11y.langToggle">FR</button>
+      </div>
+    </div>
+  </header>
+
+  <nav class="wizard-progress" aria-label="Wizard progress">
+    <ol class="progress-list">
+      <li class="step active" data-step="1">
+        <span class="step-number">1</span>
+        <span class="step-label" data-i18n="step.load">Load</span>
+      </li>
+      <li class="step" data-step="2">
+        <span class="step-number">2</span>
+        <span class="step-label" data-i18n="step.powerbi">Power BI</span>
+      </li>
+      <li class="step" data-step="3">
+        <span class="step-number">3</span>
+        <span class="step-label" data-i18n="step.review">Review</span>
+      </li>
+      <li class="step" data-step="4">
+        <span class="step-number">4</span>
+        <span class="step-label" data-i18n="step.catalogue">Catalogue</span>
+      </li>
+    </ol>
+  </nav>
+
+  <main id="main-content" role="main">
+    <!-- Step 1: Load -->
+    <section class="wizard-step active" data-step="1" aria-labelledby="load-title">
+      <div class="step-content">
+        <h2 id="load-title" data-i18n="load.title">Load Data</h2>
+        <p class="step-description" data-i18n="load.description">Select the target directory containing your WiQ data.</p>
+
+        <div class="prerequisites-panel">
+          <h3 data-i18n="load.prerequisitesTitle">Before starting, ensure:</h3>
+          <ol class="prerequisites-list">
+            <li data-i18n="load.prerequisite1">Power BI Desktop is open with a saved .pbix file (blank or target)</li>
+            <li data-i18n="load.prerequisite2">The .pbix file has been SAVED (MCP requires a saved file to connect)</li>
+            <li data-i18n="load.prerequisite3">Claude Code is open in VS Code Pro</li>
+          </ol>
+        </div>
+
+        <div class="form-group">
+          <label for="data-path" data-i18n="load.pathLabel">Data Directory Path:</label>
+          <div class="input-group">
+            <input type="text" id="data-path" class="text-input" placeholder="C:\data\gold" aria-describedby="path-hint">
+          </div>
+          <span id="path-hint" class="input-hint" data-i18n="load.pathHint">Enter the path to your data directory or use default</span>
+        </div>
+
+        <button id="load-button" class="primary-button">
+          <span class="button-text" data-i18n="load.button">Load Data</span>
+          <span class="loading-indicator visually-hidden" aria-hidden="true">
+            <svg class="spinner" width="20" height="20" viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="60" stroke-linecap="round"/>
+            </svg>
+          </span>
+        </button>
+      </div>
+    </section>
+
+    <!-- Step 2: Power BI Prompts -->
+    <section class="wizard-step" data-step="2" aria-labelledby="powerbi-title">
+      <div class="step-content">
+        <h2 id="powerbi-title" data-i18n="powerbi.title">Power BI Building</h2>
+        <p class="step-description" data-i18n="powerbi.description">Watch as JobForge builds your semantic model in Power BI.</p>
+
+        <div class="instructions-panel">
+          <p data-i18n="powerbi.instructions">Run /stagegold in Claude Code (VS Code Pro) to start the deployment. Arrange your browser and Power BI Desktop windows side-by-side.</p>
+        </div>
+
+        <div class="counters">
+          <div class="counter">
+            <span class="counter-label" data-i18n="powerbi.tables">Tables</span>
+            <span class="counter-value"><span id="tables-current">0</span>/<span id="tables-total">0</span></span>
+          </div>
+          <div class="counter">
+            <span class="counter-label" data-i18n="powerbi.relationships">Relationships</span>
+            <span class="counter-value"><span id="relationships-current">0</span>/<span id="relationships-total">0</span></span>
+          </div>
+        </div>
+
+        <div class="progress-bar-container">
+          <div class="progress-bar" id="deployment-progress" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+            <div class="progress-fill"></div>
+          </div>
+        </div>
+
+        <div class="activity-log" id="activity-log" aria-live="polite" aria-label="Deployment activity">
+          <div class="log-placeholder" data-i18n="powerbi.waiting">Waiting for deployment to start...</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Step 3: Review -->
+    <section class="wizard-step" data-step="3" aria-labelledby="review-title">
+      <div class="step-content">
+        <h2 id="review-title" data-i18n="review.title">Review Model</h2>
+        <p class="step-description" data-i18n="review.description">Review data quality and traceability.</p>
+
+        <div class="review-panels">
+          <div class="review-panel">
+            <h3 data-i18n="review.sources">Data Sources</h3>
+            <ul class="source-list" id="source-list">
+              <li class="source-item">
+                <span class="source-badge source-noc">NOC</span>
+                <span class="source-name">National Occupational Classification</span>
+              </li>
+              <li class="source-item">
+                <span class="source-badge source-onet">O*NET</span>
+                <span class="source-name">Occupational Information Network</span>
+              </li>
+              <li class="source-item">
+                <span class="source-badge source-esdc">ESDC</span>
+                <span class="source-name">Employment and Social Development Canada</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="review-panel">
+            <h3 data-i18n="review.provenance">Provenance</h3>
+            <div class="provenance-summary" id="provenance-summary">
+              <div class="provenance-stat">
+                <span class="stat-value" id="total-tables">24</span>
+                <span class="stat-label" data-i18n="review.totalTables">Tables</span>
+              </div>
+              <div class="provenance-stat">
+                <span class="stat-value" id="total-relationships">23</span>
+                <span class="stat-label" data-i18n="review.totalRelationships">Relationships</span>
+              </div>
+              <div class="provenance-stat">
+                <span class="stat-value" id="data-quality">100%</span>
+                <span class="stat-label" data-i18n="review.dataQuality">Quality</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <button id="refresh-button" class="secondary-button">
+          <span data-i18n="review.refresh">Refresh Data</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- Step 4: Catalogue -->
+    <section class="wizard-step" data-step="4" aria-labelledby="catalogue-title">
+      <div class="step-content">
+        <h2 id="catalogue-title" data-i18n="catalogue.title">Create Catalogue</h2>
+        <p class="step-description" data-i18n="catalogue.description">Generate a DAMA DMBOK-compliant data catalogue.</p>
+
+        <div class="catalogue-preview" id="catalogue-preview">
+          <table class="catalogue-table">
+            <thead>
+              <tr>
+                <th data-i18n="catalogue.tableName">Table Name</th>
+                <th data-i18n="catalogue.tableType">Type</th>
+                <th data-i18n="catalogue.columns">Columns</th>
+                <th data-i18n="catalogue.source">Source</th>
+              </tr>
+            </thead>
+            <tbody id="catalogue-body">
+              <!-- Populated dynamically -->
+            </tbody>
+          </table>
+        </div>
+
+        <div class="catalogue-actions">
+          <button id="export-csv-button" class="primary-button">
+            <span data-i18n="catalogue.export">Export to CSV</span>
+          </button>
+        </div>
+
+        <div class="completion-message" id="completion-message">
+          <svg class="checkmark" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+          </svg>
+          <h3 data-i18n="catalogue.complete">Demo Complete</h3>
+          <p data-i18n="catalogue.completeDesc">Your semantic model has been deployed to Power BI Desktop.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-nav">
+      <button id="back-button" class="nav-button" disabled>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+        <span data-i18n="nav.back">Back</span>
+      </button>
+      <button id="next-button" class="nav-button primary">
+        <span data-i18n="nav.next">Next</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="9 18 15 12 9 6"></polyline>
+        </svg>
+      </button>
+    </div>
+    <div aria-live="polite" id="announcements" class="visually-hidden"></div>
+  </footer>
+
+  <script src="js/i18n.js"></script>
+  <script src="js/wizard.js"></script>
+  <script src="js/sse.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

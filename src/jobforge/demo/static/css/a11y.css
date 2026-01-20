@@ -1,0 +1,363 @@
+/**
+ * Accessibility Styles - WCAG 2.1 AA Compliance
+ *
+ * Includes screen reader utilities, focus indicators,
+ * high contrast mode support, and reduced motion preferences.
+ */
+
+/* Visually Hidden - Screen Reader Only */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Screen reader only but visible when focused (for skip links) */
+.visually-hidden.focusable:focus,
+.visually-hidden.focusable:active {
+  position: static;
+  width: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+}
+
+/* Skip Link */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 0;
+  z-index: 9999;
+  padding: var(--spacing-md) var(--spacing-lg);
+  background-color: var(--gc-accent);
+  color: var(--gc-white);
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 0 0 var(--radius-md) 0;
+  transition: top var(--transition-fast);
+}
+
+.skip-link:focus {
+  top: 0;
+  outline: 3px solid var(--gc-link-hover);
+  outline-offset: 2px;
+}
+
+/* Focus Indicators - WCAG 2.4.7 Focus Visible */
+:focus {
+  outline: 2px solid var(--gc-link-hover);
+  outline-offset: 2px;
+}
+
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+:focus-visible {
+  outline: 3px solid var(--gc-link-hover);
+  outline-offset: 2px;
+}
+
+/* Enhanced focus for interactive elements */
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+a:focus-visible {
+  outline: 3px solid var(--gc-link-hover);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 6px rgba(5, 53, 210, 0.15);
+}
+
+/* Remove default focus ring for buttons using :focus-visible */
+button:focus:not(:focus-visible),
+input:focus:not(:focus-visible),
+select:focus:not(:focus-visible),
+textarea:focus:not(:focus-visible),
+a:focus:not(:focus-visible) {
+  outline: none;
+  box-shadow: none;
+}
+
+/* High Contrast Mode - Windows High Contrast */
+@media (forced-colors: active) {
+  :root {
+    --gc-red: CanvasText;
+    --gc-accent: LinkText;
+    --gc-link: LinkText;
+    --gc-link-hover: LinkText;
+    --border-color: CanvasText;
+    --bg-primary: Canvas;
+    --text-primary: CanvasText;
+    --text-secondary: CanvasText;
+  }
+
+  .skip-link {
+    background-color: Canvas;
+    color: LinkText;
+    border: 2px solid LinkText;
+  }
+
+  .step-number {
+    forced-color-adjust: none;
+    border: 2px solid CanvasText;
+  }
+
+  .step.active .step-number {
+    background-color: Highlight;
+    border-color: Highlight;
+    color: HighlightText;
+  }
+
+  .step.completed .step-number {
+    background-color: Canvas;
+    border-color: CanvasText;
+    color: CanvasText;
+  }
+
+  .primary-button,
+  .nav-button.primary {
+    forced-color-adjust: none;
+    background-color: ButtonFace;
+    color: ButtonText;
+    border: 2px solid ButtonText;
+  }
+
+  .primary-button:hover,
+  .nav-button.primary:hover {
+    background-color: Highlight;
+    color: HighlightText;
+    border-color: Highlight;
+  }
+
+  .secondary-button,
+  .nav-button {
+    background-color: Canvas;
+    color: ButtonText;
+    border: 2px solid ButtonText;
+  }
+
+  .progress-bar {
+    border: 1px solid CanvasText;
+  }
+
+  .progress-fill {
+    background-color: CanvasText;
+  }
+
+  .prerequisites-panel,
+  .instructions-panel {
+    border: 2px solid CanvasText;
+    background-color: Canvas;
+  }
+
+  .source-badge {
+    border: 1px solid CanvasText;
+    background-color: Canvas;
+    color: CanvasText;
+  }
+
+  .log-icon {
+    background-color: Canvas;
+    border: 1px solid CanvasText;
+  }
+
+  /* Ensure links are visually distinct */
+  a {
+    text-decoration: underline;
+  }
+
+  a:visited {
+    color: VisitedText;
+  }
+}
+
+/* Reduced Motion - WCAG 2.3.3 Animation from Interactions */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .wizard-step.active {
+    animation: none;
+  }
+
+  .log-entry {
+    animation: none;
+  }
+
+  .spinner {
+    animation: none;
+  }
+
+  /* Show static indicator instead of spinner */
+  .spinner circle {
+    stroke-dasharray: none;
+    opacity: 0.6;
+  }
+
+  .progress-fill {
+    transition: none;
+  }
+}
+
+/* Print styles for accessibility */
+@media print {
+  .skip-link,
+  .header-actions,
+  .footer-nav,
+  .loading-indicator {
+    display: none;
+  }
+
+  body {
+    color: #000;
+    background: #fff;
+  }
+
+  a {
+    text-decoration: underline;
+    color: #000;
+  }
+
+  a[href]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.8em;
+  }
+
+  .step-content {
+    box-shadow: none;
+    border: 1px solid #000;
+  }
+}
+
+/* Touch target size - WCAG 2.5.5 Target Size */
+@media (pointer: coarse) {
+  button,
+  a,
+  input[type="checkbox"],
+  input[type="radio"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  .icon-button {
+    width: 48px;
+    height: 48px;
+  }
+
+  .lang-button {
+    min-height: 44px;
+    padding: var(--spacing-md);
+  }
+
+  .nav-button {
+    min-height: 44px;
+    padding: var(--spacing-md) var(--spacing-lg);
+  }
+}
+
+/* Screen reader announcements container */
+#announcements {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+/* Ensure sufficient color contrast for error states */
+.error-message {
+  color: var(--gc-error);
+  background-color: var(--gc-error-light);
+  padding: var(--spacing-md);
+  border-radius: var(--radius-md);
+  border-left: 4px solid var(--gc-error);
+}
+
+/* Success message styling */
+.success-message {
+  color: var(--gc-success);
+  background-color: var(--gc-success-light);
+  padding: var(--spacing-md);
+  border-radius: var(--radius-md);
+  border-left: 4px solid var(--gc-success);
+}
+
+/* Ensure text spacing can be overridden - WCAG 1.4.12 */
+p, li, dd {
+  line-height: 1.5;
+  letter-spacing: 0.12em;
+  word-spacing: 0.16em;
+}
+
+/* Reflow support - WCAG 1.4.10 */
+@media (max-width: 320px) {
+  html {
+    font-size: 14px;
+  }
+
+  .step-content {
+    padding: var(--spacing-md);
+  }
+
+  .counters {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .counter {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+/* Ensure interactive elements have visible boundaries */
+button,
+input,
+select,
+textarea {
+  border: 1px solid var(--border-color);
+}
+
+/* Disabled state indication beyond color */
+button:disabled,
+input:disabled,
+select:disabled,
+textarea:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+  position: relative;
+}
+
+/* Add pattern/texture to disabled buttons for colorblind users */
+button:disabled::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 2px,
+    rgba(128, 128, 128, 0.1) 2px,
+    rgba(128, 128, 128, 0.1) 4px
+  );
+  pointer-events: none;
+  border-radius: inherit;
+}
