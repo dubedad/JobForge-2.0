@@ -1,0 +1,62 @@
+{
+  "app": {
+    "title": "JobForge Demo",
+    "subtitle": "Workforce Intelligence / Intelligence de la main-d'oeuvre"
+  },
+  "step": {
+    "load": "Load",
+    "powerbi": "Power BI",
+    "review": "Review",
+    "catalogue": "Catalogue"
+  },
+  "load": {
+    "title": "Load Data",
+    "description": "Select the target directory containing your WiQ data.",
+    "pathLabel": "Data Directory Path:",
+    "pathHint": "Enter the path to your data directory or use default",
+    "button": "Load Data",
+    "loading": "Loading...",
+    "prerequisitesTitle": "Before starting, ensure:",
+    "prerequisite1": "Power BI Desktop is open with a saved .pbix file (blank or target)",
+    "prerequisite2": "The .pbix file has been SAVED (MCP requires a saved file to connect)",
+    "prerequisite3": "Claude Code is open in VS Code Pro"
+  },
+  "powerbi": {
+    "title": "Power BI Building",
+    "description": "Watch as JobForge builds your semantic model in Power BI.",
+    "instructions": "Run /stagegold in Claude Code (VS Code Pro) to start the deployment. Arrange your browser and Power BI Desktop windows side-by-side.",
+    "tables": "Tables",
+    "relationships": "Relationships",
+    "waiting": "Waiting for deployment to start..."
+  },
+  "review": {
+    "title": "Review Model",
+    "description": "Review data quality and traceability.",
+    "sources": "Data Sources",
+    "provenance": "Provenance",
+    "totalTables": "Tables",
+    "totalRelationships": "Relationships",
+    "dataQuality": "Quality",
+    "refresh": "Refresh Data"
+  },
+  "catalogue": {
+    "title": "Create Catalogue",
+    "description": "Generate a DAMA DMBOK-compliant data catalogue.",
+    "tableName": "Table Name",
+    "tableType": "Type",
+    "columns": "Columns",
+    "source": "Source",
+    "export": "Export to CSV",
+    "complete": "Demo Complete",
+    "completeDesc": "Your semantic model has been deployed to Power BI Desktop."
+  },
+  "nav": {
+    "back": "Back",
+    "next": "Next"
+  },
+  "a11y": {
+    "langToggle": "Switch to French",
+    "themeToggle": "Toggle dark mode",
+    "skipLink": "Skip to main content"
+  }
+}

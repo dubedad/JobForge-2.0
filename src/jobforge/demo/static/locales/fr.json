@@ -1,0 +1,62 @@
+{
+  "app": {
+    "title": "JobForge - Demo",
+    "subtitle": "Intelligence de la main-d'oeuvre / Workforce Intelligence"
+  },
+  "step": {
+    "load": "Charger",
+    "powerbi": "Power BI",
+    "review": "Revue",
+    "catalogue": "Catalogue"
+  },
+  "load": {
+    "title": "Charger les donnees",
+    "description": "Selectionnez le repertoire cible contenant vos donnees WiQ.",
+    "pathLabel": "Chemin du repertoire de donnees :",
+    "pathHint": "Entrez le chemin vers votre repertoire de donnees ou utilisez la valeur par defaut",
+    "button": "Charger les donnees",
+    "loading": "Chargement...",
+    "prerequisitesTitle": "Avant de commencer, assurez-vous que :",
+    "prerequisite1": "Power BI Desktop est ouvert avec un fichier .pbix enregistre (vierge ou cible)",
+    "prerequisite2": "Le fichier .pbix a ete ENREGISTRE (MCP necessite un fichier enregistre pour se connecter)",
+    "prerequisite3": "Claude Code est ouvert dans VS Code Pro"
+  },
+  "powerbi": {
+    "title": "Construction Power BI",
+    "description": "Observez JobForge construire votre modele semantique dans Power BI.",
+    "instructions": "Executez /stagegold dans Claude Code (VS Code Pro) pour demarrer le deploiement. Disposez votre navigateur et Power BI Desktop cote a cote.",
+    "tables": "Tables",
+    "relationships": "Relations",
+    "waiting": "En attente du demarrage du deploiement..."
+  },
+  "review": {
+    "title": "Revue du modele",
+    "description": "Examinez la qualite des donnees et la tracabilite.",
+    "sources": "Sources de donnees",
+    "provenance": "Provenance",
+    "totalTables": "Tables",
+    "totalRelationships": "Relations",
+    "dataQuality": "Qualite",
+    "refresh": "Actualiser les donnees"
+  },
+  "catalogue": {
+    "title": "Creer un catalogue",
+    "description": "Generez un catalogue de donnees conforme a DAMA DMBOK.",
+    "tableName": "Nom de la table",
+    "tableType": "Type",
+    "columns": "Colonnes",
+    "source": "Source",
+    "export": "Exporter en CSV",
+    "complete": "Demo terminee",
+    "completeDesc": "Votre modele semantique a ete deploye dans Power BI Desktop."
+  },
+  "nav": {
+    "back": "Retour",
+    "next": "Suivant"
+  },
+  "a11y": {
+    "langToggle": "Switch to English",
+    "themeToggle": "Basculer le mode sombre",
+    "skipLink": "Passer au contenu principal"
+  }
+}
