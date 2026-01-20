@@ -113,7 +113,7 @@ Plans:
 **Plans**: 2 plans
 
 Plans:
-- [ ] 09-01-PLAN.md — MCP configuration and SSE backend for live streaming
+- [x] 09-01-PLAN.md — MCP configuration and SSE backend for live streaming
 - [ ] 09-02-PLAN.md — Wizard UI with bilingual support and real-time updates
 
 ### Phase 10: Governance and Conversational Interface
@@ -126,11 +126,12 @@ Plans:
   3. Job classification log shows observable compliance with Classification Policy, Process and Practice
   4. User can query data conversationally and get accurate responses from WiQ
   5. User can query metadata conversationally and get lineage/provenance information
-**Plans**: TBD
+**Plans**: 3 plans
 
 Plans:
-- [ ] 10-01: DADM, DAMA, and Classification compliance logs
-- [ ] 10-02: Conversational interface for data and metadata queries
+- [ ] 10-01-PLAN.md — Compliance logs (DADM, DAMA, Classification RTM models and CLI)
+- [ ] 10-02-PLAN.md — JobForge HTTP API (data query with Claude, metadata query endpoints)
+- [ ] 10-03-PLAN.md — Orbit integration (DuckDBRetriever, adapter config, deployment)
 
 ## Progress
 
@@ -143,8 +144,8 @@ Phases execute in numeric order: 6 -> 7 -> 8 -> 9 -> 10
 | 6. Imputation Foundation | v2.0 | 2/2 | Complete | 2026-01-19 |
 | 7. External Data Integration | v2.0 | 3/3 | Complete | 2026-01-20 |
 | 8. Description Generation | v2.0 | 2/2 | Complete | 2026-01-20 |
-| 9. Demo Infrastructure | v2.0 | 0/2 | Not started | - |
-| 10. Governance and Conversational | v2.0 | 0/2 | Not started | - |
+| 9. Demo Infrastructure | v2.0 | 1/2 | In progress | - |
+| 10. Governance and Conversational | v2.0 | 0/3 | Not started | - |
 
 ---
 *Roadmap created: 2026-01-19*
