@@ -1,0 +1,103 @@
+# JobForge adapter configuration for Orbit
+# Copy to: orbit/config/adapters/jobforge.yaml
+#
+# This adapter enables Orbit to query WiQ (Workforce Intelligence) data
+# through the JobForge API endpoints.
+
+name: jobforge-wiq
+description: "Workforce Intelligence Query interface for Canadian occupational data"
+enabled: true
+type: http
+
+# HTTP adapter routes questions to JobForge API
+http:
+  base_url: "http://localhost:8000"
+  timeout: 30
+  endpoints:
+    data:
+      path: "/api/query/data"
+      method: POST
+      headers:
+        Content-Type: "application/json"
+      body:
+        question: "{{query}}"
+    metadata:
+      path: "/api/query/metadata"
+      method: POST
+      headers:
+        Content-Type: "application/json"
+      body:
+        question: "{{query}}"
+    compliance:
+      path: "/api/compliance/{{framework}}"
+      method: GET
+
+# Intent routing rules
+# Orbit uses these patterns to classify user questions and route to the correct endpoint
+intents:
+  - name: data_query
+    description: "Questions about WiQ data (counts, aggregations, lookups)"
+    endpoint: data
+    patterns:
+      - "how many"
+      - "count of"
+      - "list all"
+      - "what is the"
+      - "show me"
+      - "find"
+      - "total"
+      - "average"
+      - "sum"
+      - "group by"
+    examples:
+      - "How many software developers are projected for 2025?"
+      - "List all NOC unit groups in TEER 1"
+      - "What are the main duties for 21232?"
+      - "Show me all occupations in broad category 2"
+      - "Count unit groups by TEER level"
+
+  - name: metadata_query
+    description: "Questions about data lineage, provenance, and structure"
+    endpoint: metadata
+    patterns:
+      - "where does"
+      - "come from"
+      - "lineage"
+      - "what feeds"
+      - "depends on"
+      - "describe table"
+      - "what columns"
+      - "how many tables"
+      - "list tables"
+      - "source of"
+      - "upstream"
+      - "downstream"
+    examples:
+      - "Where does dim_noc come from?"
+      - "Show lineage for cops_employment"
+      - "What columns are in element_labels?"
+      - "How many gold tables are there?"
+      - "Describe table dim_occupations"
+
+  - name: compliance_query
+    description: "Questions about governance compliance"
+    endpoint: compliance
+    patterns:
+      - "dadm compliance"
+      - "dama compliance"
+      - "classification compliance"
+      - "is wiq compliant"
+      - "governance status"
+      - "compliance report"
+    examples:
+      - "Show DADM compliance status"
+      - "Is WiQ DAMA compliant?"
+      - "Generate classification compliance report"
+
+# LLM configuration for intent classification
+# Orbit uses this LLM when pattern matching is inconclusive
+llm:
+  provider: anthropic
+  model: claude-sonnet-4-20250514
+  temperature: 0
+  max_tokens: 256

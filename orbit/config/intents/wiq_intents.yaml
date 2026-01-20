@@ -1,0 +1,178 @@
+# WiQ domain-specific intent templates
+# These help Orbit classify user questions correctly for the WiQ domain
+#
+# The intent categories define the vocabulary and context for the
+# Workforce Intelligence (WiQ) system, which contains Canadian
+# occupational classification and projection data.
+
+domain: workforce_intelligence
+description: "Canadian Occupational Classification and Workforce Projections"
+version: "1.0"
+
+# Domain-specific entities that help with intent classification
+entities:
+  noc_code:
+    description: "National Occupational Classification code (4-5 digits)"
+    patterns:
+      - "\\b\\d{4,5}\\b"
+    examples:
+      - "21232"
+      - "2123"
+      - "21"
+
+  teer_level:
+    description: "Training, Education, Experience, Responsibilities level (0-5)"
+    patterns:
+      - "TEER\\s*[0-5]"
+      - "tier\\s*[0-5]"
+    examples:
+      - "TEER 1"
+      - "TEER 0"
+      - "tier 2"
+
+  broad_category:
+    description: "NOC broad category (0-9)"
+    patterns:
+      - "broad\\s*category\\s*\\d"
+      - "category\\s*\\d"
+    examples:
+      - "broad category 2"
+      - "category 0"
+
+# Intent categories with keywords and sample questions
+intent_categories:
+  occupation_queries:
+    description: "Questions about occupations, NOC codes, job titles"
+    keywords:
+      - NOC
+      - occupation
+      - job title
+      - unit group
+      - TEER
+      - broad category
+      - class title
+      - major group
+      - sub-major group
+    sample_questions:
+      - "What occupations are in broad category 2?"
+      - "Show all TEER 1 unit groups"
+      - "What is the class title for NOC 21232?"
+      - "List all job titles for software engineers"
+      - "How many unit groups are in major group 21?"
+
+  forecast_queries:
+    description: "Questions about COPS employment projections and workforce trends"
+    keywords:
+      - projection
+      - forecast
+      - employment growth
+      - retirement
+      - immigration
+      - school leavers
+      - replacement
+      - COPS
+      - workforce
+      - labor market
+      - labour market
+    sample_questions:
+      - "What is the projected employment for software developers?"
+      - "Show retirement rates for healthcare occupations"
+      - "Immigration numbers for TEER 2 occupations"
+      - "What is the employment growth forecast for NOC 21232?"
+      - "How many school leavers are expected in TEER 1?"
+
+  attribute_queries:
+    description: "Questions about occupational attributes (skills, abilities, knowledge)"
+    keywords:
+      - skill
+      - ability
+      - knowledge
+      - work activity
+      - work context
+      - OASIS
+      - competency
+      - requirement
+    sample_questions:
+      - "What skills are needed for 21232?"
+      - "List abilities for software developers"
+      - "What work activities are common in TEER 1?"
+      - "Show knowledge requirements for data analysts"
+      - "What work context attributes apply to nurses?"
+
+  element_queries:
+    description: "Questions about NOC element data (duties, requirements, titles)"
+    keywords:
+      - main duties
+      - employment requirements
+      - example titles
+      - lead statement
+      - exclusions
+      - additional information
+    sample_questions:
+      - "What are the main duties for NOC 21232?"
+      - "Show employment requirements for software engineers"
+      - "List example titles for data analysts"
+      - "What is the lead statement for 21232?"
+
+  lineage_queries:
+    description: "Questions about data sources and transformations"
+    keywords:
+      - source
+      - lineage
+      - come from
+      - transform
+      - upstream
+      - downstream
+      - feed
+      - depends on
+      - provenance
+    sample_questions:
+      - "Where does dim_noc data come from?"
+      - "What tables feed cops_employment?"
+      - "Show the transformation path for dim_occupations"
+      - "What is upstream of job_architecture?"
+      - "List downstream dependencies of dim_noc"
+
+  compliance_queries:
+    description: "Questions about governance framework compliance"
+    keywords:
+      - DADM
+      - DAMA
+      - compliance
+      - governance
+      - classification policy
+      - traceability
+      - audit
+      - DMBOK
+    sample_questions:
+      - "Is WiQ DADM compliant?"
+      - "Show DAMA DMBOK compliance"
+      - "Classification policy adherence status"
+      - "Generate compliance report for DADM"
+      - "What governance frameworks does WiQ follow?"
+
+  table_queries:
+    description: "Questions about table structure and metadata"
+    keywords:
+      - table
+      - column
+      - schema
+      - describe
+      - rows
+      - gold layer
+    sample_questions:
+      - "How many tables are in the gold layer?"
+      - "Describe table dim_noc"
+      - "What columns are in cops_employment?"
+      - "How many rows in dim_occupations?"
+      - "List all gold layer tables"
+
+# Fallback behavior when intent is unclear
+fallback:
+  strategy: "metadata_first"
+  description: "When intent is ambiguous, default to metadata query which is safer and doesn't require API key"
+  clarification_prompt: |
+    I'm not sure if you're asking about the data itself or about the data's structure/lineage.
+    - For data questions (counts, lookups), I'll query the database directly.
+    - For metadata questions (lineage, provenance), I'll explain where data comes from.
+    Which would you prefer?
