@@ -4,107 +4,55 @@
 
 ## Project Reference
 
-See: .planning/PROJECT.md (updated 2026-01-19)
+See: .planning/PROJECT.md (updated 2026-01-20)
 
 **Core value:** Auditable provenance from source to output
-**Current focus:** v2.0 SHIPPED - Ready for v3.0 planning
+**Current focus:** Ready for v3.0 planning
 
 ## Current Position
 
-**Phase:** 10 of 10 (Governance and Conversational)
-**Plan:** 2 of 2 complete (Orbit deferred to v3.0)
-**Status:** SHIPPED
-**Last activity:** 2026-01-20 - v2.0 milestone shipped
+**Milestone:** v2.0 COMPLETE — Ready for `/gsd:new-milestone`
+**Status:** Between milestones
+**Last activity:** 2026-01-20 — v2.0 archived
 
 ```
 v1.0 [####################] 100% SHIPPED 2026-01-19
 v2.0 [####################] 100% SHIPPED 2026-01-20
+v3.0 [                    ]   0% PLANNING
 ```
 
 ## Performance Metrics
 
-**Velocity (v1.0):**
-- Total plans completed: 13
+**v1.0:**
+- Plans completed: 13
 - Average duration: ~25 min
 - Total execution time: ~5.4 hours
 
-**v2.0 Progress:**
-- Plans completed: 11 of 11 (Orbit deferred to v3.0)
-- Phases complete: 5 of 5 (Phase 6, Phase 7, Phase 8, Phase 9, Phase 10)
-- Milestone: SHIPPED 2026-01-20
+**v2.0:**
+- Plans completed: 11
+- Phases complete: 5 (Phases 6-10)
+- Timeline: 2 days (2026-01-19 → 2026-01-20)
 
-*Updated after each plan completion*
+*Updated after each milestone completion*
 
 ## Accumulated Context
 
-### Key Decisions (v2.0)
+### Key Decisions
 
-| ID | Decision | Rationale | Date |
-|----|----------|-----------|------|
-| 06-01-D1 | Use dataclasses for internal types | Internal-only types don't need Pydantic overhead | 2026-01-19 |
-| 06-02-D1 | Use 0.85 default confidence for batch | 64% of UGs are single-label; exact confidence requires per-title resolution | 2026-01-19 |
-| 07-01-D1 | Use Brookfield/thedaisTMU NOC-SOC crosswalk CSV | MIT-licensed, 1,467 validated mappings, covers all 515 NOC unit groups | 2026-01-20 |
-| 07-01-D2 | Set ONET_CONFIDENCE=0.5 | Per CONTEXT.md - O*NET is lower precedence than authoritative Canadian sources | 2026-01-20 |
-| 07-03-D1 | Use language-aware validation for TBS parser | TBS pages have French column headers; single validation would fail | 2026-01-20 |
-| 07-03-D2 | Track unique URLs in link fetcher | Multiple rows may share same definition/standard pages | 2026-01-20 |
-| 07-02-D1 | Accept ALL LLM responses regardless of confidence | Per CONTEXT.md - store for downstream filtering | 2026-01-20 |
-| 07-02-D2 | Use gpt-4o-2024-08-06 model | Structured Outputs support for guaranteed schema compliance | 2026-01-20 |
-| 08-01-D1 | DescriptionProvenance.precedence as property | Maps source_type to SourcePrecedence dynamically | 2026-01-20 |
-| 08-01-D2 | lru_cache for lead statements | Single cache for 900 entries; cleared only when gold updates | 2026-01-20 |
-| 09-01-D1 | Narration-only orchestrator | Does NOT call MCP; reads schema, yields events only | 2026-01-20 |
-| 09-01-D2 | SSE streaming with visual delays | 0.05-0.1s delays between events for smooth progression | 2026-01-20 |
-| 09-02-D1 | GC FIP colors via CSS custom properties | Easy theming, dark mode support | 2026-01-20 |
-| 09-02-D2 | Half-screen width support | UI optimized for side-by-side with Power BI Desktop | 2026-01-20 |
-| 09-02-D3 | data-i18n attributes for bilingual text | Declarative approach for EN/FR switching | 2026-01-20 |
-| 10-01-D1 | Use RTM pattern for compliance logs | Industry-standard format mapping requirements to evidence artifacts | 2026-01-20 |
-| 10-01-D2 | Mark DADM 6.1, 6.5, 6.6 as NOT_APPLICABLE | WiQ is decision-SUPPORT tool, not decision-MAKING system | 2026-01-20 |
-| 10-01-D3 | Mark DAMA Security and Document as NOT_APPLICABLE | WiQ uses only public data (no PII), focuses on structured data | 2026-01-20 |
-| 10-02-D1 | Use Claude claude-sonnet-4-20250514 with structured outputs for SQL | Guarantees valid JSON response matching SQLQuery schema | 2026-01-20 |
-| 10-02-D2 | Extend LineageQueryEngine with catalogue patterns | Reuse existing rule-based engine, add describe/columns/count patterns | 2026-01-20 |
-| 10-02-D3 | Register gold parquet as DuckDB views | Memory-efficient, leverages DuckDB parquet scanning | 2026-01-20 |
+All v1.0 and v2.0 decisions archived in:
+- `.planning/milestones/v2.0-ROADMAP.md` (v2.0 decisions)
+- `.planning/PROJECT.md` (Key Decisions table with outcomes)
 
-### Key Decisions (v1.0)
+### Technical Discoveries
 
-All decisions documented in PROJECT.md with outcomes marked "Good".
-
-### Technical Discoveries (v1.0)
-
-| Discovery | Details |
-|-----------|---------|
-| Pydantic field naming | Cannot use `_source_file` as field name; use serialization_alias |
-| Polars CSV type inference | Numeric-looking strings cast as int64; must cast to Utf8 |
-| NetworkX DAG efficiency | 123 logs deduplicate to 106 nodes, 79 edges |
-
-### Technical Discoveries (v2.0)
-
-| Discovery | Details |
-|-----------|---------|
-| Single-label UGs | 64.3% of UGs (332/516) have single label; enables UG_DOMINANT optimization |
-| Gold column names | element_labels uses "Label", element_example_titles uses "Job title text" |
-| NOC-SOC cardinality | 1:N mapping - one NOC maps to avg 2.85 SOCs (max 37) |
-| Brookfield repo moved | Repository now at thedaisTMU/NOC_ONet_Crosswalk (was BrookfieldIIE) |
-| TBS bilingual structure | EN/FR pages have different column headers, same data structure |
-| TBS link deduplication | 217 rows yield 307 unique links (many shared standards) |
-| Lead statement count | 900 entries in element_lead_statement.parquet indexed by OASIS code |
-| Gold DDL generation | DuckDB DESCRIBE on parquet views provides column types for schema DDL |
-
-### v2.0 Prototype Assets
-
-Reference implementations in `/JobForge/` sibling directory:
-- description_imputation_service.py (160+ lines)
-- noc_resolution_service.py (420 lines) - PORTED in 06-01
-- onet_adapter.py (393 lines) - PORTED in 07-01
-- llm_service.py (199 lines)
+Discoveries documented in milestone archives. Key ones:
+- Single-label UGs: 64.3% of UGs enable UG_DOMINANT optimization
+- NOC-SOC cardinality: 1:N mapping, avg 2.85 SOCs per NOC
+- TBS bilingual: EN/FR pages have different column headers
 
 ### Pending Todos
 
-| Todo | Area | Created | Status |
-|------|------|---------|--------|
-| DADM traceability log | governance | 2026-01-19 | DONE (10-01) |
-| DAMA traceability log | governance | 2026-01-19 | DONE (10-01) |
-| Job classification log | governance | 2026-01-19 | DONE (10-01) |
-
-*0 todos pending*
+*0 todos pending — v2.0 complete*
 
 ### Open Blockers
 
@@ -115,37 +63,29 @@ None.
 ### Last Session
 
 **Date:** 2026-01-20
-**Activity:** Ship v2.0 milestone
-**Outcome:** All Phase 10 requirements verified, API endpoints tested, Orbit deferred to v3.0
+**Activity:** Complete v2.0 milestone archival
+**Outcome:** v2.0 archived to milestones/, PROJECT.md evolved, git tag created
 
 ### Next Session Priorities
 
-1. v3.0 planning (RAG, Job Description Builder, Orbit integration)
-2. Production deployment preparation
-3. User documentation
+1. `/gsd:new-milestone` to start v3.0 planning
+2. Define v3.0 scope (RAG, Job Description Builder, Orbit integration)
+3. Create v3.0 requirements and roadmap
 
 ### Context for Claude
 
 When resuming this project:
-- **v1.0 SHIPPED** - 10 requirements delivered, 13 plans complete
-- **v2.0 SHIPPED** - 17 requirements delivered, 11 plans complete
-- All 5 v2.0 phases complete (Imputation, External Data, Description, Demo, Governance)
-- Orbit integration deferred to v3.0 (INT-04)
+- **v1.0 SHIPPED** - 10 requirements, 13 plans (Phases 1-5)
+- **v2.0 SHIPPED** - 17 requirements, 11 plans (Phases 6-10)
+- Archives in `.planning/milestones/`
+- No ROADMAP.md or REQUIREMENTS.md — fresh ones created by `/gsd:new-milestone`
 - Query API: `jobforge api` starts server on localhost:8000
-- Endpoints: /api/query/data, /api/query/metadata, /api/compliance/{framework}
-- Requires ANTHROPIC_API_KEY for data queries
+- Demo web UI: `jobforge demo` starts wizard at localhost:8080
 - Compliance logs: `jobforge compliance {dadm|dama|classification}`
-- Demo web UI: 4-step wizard at http://localhost:8080
-- Static files in src/jobforge/demo/static/ (HTML, CSS, JS, locales)
-- Bilingual EN/FR with localStorage persistence
-- GC FIP color palette with dark mode
-- SSE narration connects to /api/deploy/stream
-- CLI: `jobforge demo` starts web server
-- `/stagegold` command triggers actual deployment in Claude Code
-- Stack: Python 3.11, Polars, DuckDB, Pydantic 2, NetworkX, Rich, rapidfuzz, httpx, tenacity, beautifulsoup4, lxml, openai, anthropic, fastapi, uvicorn, starlette, sse-starlette
-- 425 tests total (36 API tests, 59 governance tests)
+- Stack: Python 3.11, Polars, DuckDB, Pydantic 2, NetworkX, Rich, rapidfuzz, httpx, tenacity, beautifulsoup4, openai, anthropic, fastapi, uvicorn, starlette, sse-starlette
+- 425 tests passing
 
 ---
 *State updated: 2026-01-20*
-*Session count: 27*
-*v2.0 SHIPPED*
+*Session count: 28*
+*v2.0 ARCHIVED*
