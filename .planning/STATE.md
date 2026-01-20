@@ -7,18 +7,18 @@
 See: .planning/PROJECT.md (updated 2026-01-19)
 
 **Core value:** Auditable provenance from source to output
-**Current focus:** Phase 8 - Description Generation (in progress)
+**Current focus:** Phase 9 - Demo Infrastructure (next)
 
 ## Current Position
 
-**Phase:** 8 of 10 (Description Generation)
-**Plan:** 2 of 3 complete
-**Status:** In progress
-**Last activity:** 2026-01-20 — Completed 08-02-PLAN.md (Description Generation Service)
+**Phase:** 9 of 10 (Demo Infrastructure)
+**Plan:** Not started
+**Status:** Ready to plan
+**Last activity:** 2026-01-20 — Completed Phase 8 (Description Generation)
 
 ```
 v1.0 [####################] 100% SHIPPED
-v2.0 [##########          ]  55% Phase 8 in progress
+v2.0 [############        ]  60% Phase 8 complete
 ```
 
 ## Performance Metrics
@@ -30,8 +30,8 @@ v2.0 [##########          ]  55% Phase 8 in progress
 
 **v2.0 Progress:**
 - Plans completed: 7 of 11
-- Phases complete: 2 of 5 (Phase 6, Phase 7)
-- Current phase: 08 (2/3 plans complete)
+- Phases complete: 3 of 5 (Phase 6, Phase 7, Phase 8)
+- Current phase: 09 (0/2 plans complete)
 
 *Updated after each plan completion*
 
@@ -103,14 +103,14 @@ None.
 ### Last Session
 
 **Date:** 2026-01-20
-**Activity:** Execute 08-02-PLAN.md (Description Generation Service)
-**Outcome:** DescriptionGenerationService with NOC-style prompts, source cascade, 44 new tests, 298 total passing
+**Activity:** Execute Phase 8 (Description Generation)
+**Outcome:** Description generation service with NOC-style prompts, 73 new tests, 298 total passing
 
 ### Next Session Priorities
 
-1. Execute 08-03-PLAN.md (Batch Processing and Output)
-2. Batch description generation for job titles
-3. Output to gold layer with provenance
+1. Run `/gsd:discuss-phase 9` or `/gsd:plan-phase 9`
+2. Port MCP configuration from prototype
+3. Live demo with Power BI + narration UI
 
 ### Context for Claude
 
@@ -118,18 +118,15 @@ When resuming this project:
 - **v1.0 SHIPPED** - 10 requirements delivered, 13 plans complete
 - **v2.0 Phase 6 COMPLETE** - Imputation Foundation verified
 - **v2.0 Phase 7 COMPLETE** - External Data Integration verified
-- **v2.0 Phase 8 Plan 1 COMPLETE** - Description models and sources
-- **v2.0 Phase 8 Plan 2 COMPLETE** - Description generation service
+- **v2.0 Phase 8 COMPLETE** - Description Generation verified
 - `jobforge.description` package: models, sources, prompts, service modules
 - `jobforge.external.onet` package: crosswalk, client, adapter modules
 - `jobforge.external.tbs` package: scraper, parser, link_fetcher, schema modules
 - `jobforge.external.llm` package: client, service, prompts modules
-- Description cascade: AUTHORITATIVE (lead statement) -> LLM fallback
-- Lead statements: 900 entries cached, indexed by OASIS code
-- NOC boundary words in LLM prompts for semantic anchoring
+- Description cascade: AUTHORITATIVE (900 NOC lead statements) -> LLM fallback with boundary words
 - Stack: Python 3.11, Polars, DuckDB, Pydantic 2, NetworkX, Rich, rapidfuzz, httpx, tenacity, beautifulsoup4, lxml, openai
-- 298 tests total (44 description service tests added)
+- 298 tests total (73 description tests)
 
 ---
 *State updated: 2026-01-20*
-*Session count: 21*
+*Session count: 22*

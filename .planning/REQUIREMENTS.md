@@ -13,8 +13,8 @@ Requirements for self-imputing model and live demo. Each maps to roadmap phases.
 - [x] **IMP-02**: Hierarchical attribute inheritance (L5->L6->L7 filtered context)
 - [x] **IMP-03**: O*NET API integration for SOC-aligned attribute candidates
 - [x] **IMP-04**: LLM-powered attribute imputation for empty cells
-- [ ] **IMP-05**: Description generation (job titles, families, functions)
-- [ ] **IMP-06**: Multiple description sources with provenance (authoritative vs LLM-generated)
+- [x] **IMP-05**: Description generation (job titles, families, functions)
+- [x] **IMP-06**: Multiple description sources with provenance (authoritative vs LLM-generated)
 
 ### New Data Sources
 
@@ -86,8 +86,8 @@ Which phases cover which requirements. Updated during roadmap creation.
 | IMP-02 | Phase 6 | Complete |
 | IMP-03 | Phase 7 | Complete |
 | IMP-04 | Phase 7 | Complete |
-| IMP-05 | Phase 8 | Pending |
-| IMP-06 | Phase 8 | Pending |
+| IMP-05 | Phase 8 | Complete |
+| IMP-06 | Phase 8 | Complete |
 | SRC-01 | Phase 7 | Complete |
 | SRC-02 | Phase 7 | Complete |
 | SRC-03 | Phase 7 | Complete |
@@ -107,4 +107,4 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 ---
 *Requirements defined: 2026-01-19*
-*Last updated: 2026-01-19 after roadmap creation*
+*Last updated: 2026-01-20 after Phase 8 completion*
