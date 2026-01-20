@@ -4,10 +4,14 @@ Provides HTTP endpoints for conversational data and metadata queries,
 plus compliance log retrieval.
 """
 
-from fastapi import FastAPI, HTTPException
+import os
+
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 
 from jobforge.api.data_query import DataQueryResult, DataQueryService
+from jobforge.api.errors import QueryError, TableNotFoundError, register_error_handlers
 from jobforge.api.metadata_query import MetadataQueryService
 from jobforge.pipeline.config import PipelineConfig
 
@@ -42,6 +46,23 @@ def create_api_app(config: PipelineConfig | None = None) -> FastAPI:
         redoc_url="/redoc",
     )
 
+    # CORS middleware must be added FIRST (before other middleware)
+    # Get allowed origins from environment (comma-separated)
+    origins_str = os.getenv("CORS_ORIGINS", "http://localhost:3000,http://localhost:8080")
+    allowed_origins = [o.strip() for o in origins_str.split(",")]
+
+    api_app.add_middleware(
+        CORSMiddleware,
+        allow_origins=allowed_origins,
+        allow_credentials=True,
+        allow_methods=["GET", "POST", "OPTIONS"],
+        allow_headers=["Content-Type", "Authorization"],
+        max_age=3600,
+    )
+
+    # Register RFC 9457 error handlers
+    register_error_handlers(api_app)
+
     config = config or PipelineConfig()
     data_service = DataQueryService(config)
     metadata_service = MetadataQueryService(config)
@@ -60,11 +81,14 @@ def create_api_app(config: PipelineConfig | None = None) -> FastAPI:
             DataQueryResult with SQL, explanation, and results.
 
         Raises:
-            HTTPException: If query fails with error.
+            QueryError: If query fails with error (returns RFC 9457 response).
         """
         result = data_service.query(request.question)
         if result.error:
-            raise HTTPException(status_code=400, detail=result.error)
+            raise QueryError(
+                message=result.error,
+                guidance="Check your question syntax and ensure you're asking about available tables.",
+            )
         return result
 
     @api_app.post("/api/query/metadata", response_model=MetadataQueryResult)
@@ -102,7 +126,8 @@ def create_api_app(config: PipelineConfig | None = None) -> FastAPI:
             Compliance log as JSON.
 
         Raises:
-            HTTPException: If framework unknown or compliance module not available.
+            TableNotFoundError: If framework unknown (returns RFC 9457 response).
+            QueryError: If compliance module not available.
         """
         # Note: Compliance module is created in Plan 10-01
         # This endpoint will work once that plan is executed
@@ -120,8 +145,9 @@ def create_api_app(config: PipelineConfig | None = None) -> FastAPI:
             }
 
             if framework.lower() not in generators:
-                raise HTTPException(
-                    status_code=404, detail=f"Unknown framework: {framework}"
+                raise TableNotFoundError(
+                    table_name=framework,
+                    available_tables=list(generators.keys()),
                 )
 
             generator = generators[framework.lower()](config)
@@ -129,9 +155,9 @@ def create_api_app(config: PipelineConfig | None = None) -> FastAPI:
             return log.model_dump()
 
         except ImportError:
-            raise HTTPException(
-                status_code=501,
-                detail="Compliance module not yet available. Execute Plan 10-01 first.",
+            raise QueryError(
+                message="Compliance module not yet available",
+                guidance="Execute Plan 10-01 first to enable compliance features.",
             )
 
     @api_app.get("/api/health")
