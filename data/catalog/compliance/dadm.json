@@ -1,0 +1,80 @@
+{
+  "framework_name": "DADM - Directive on Automated Decision-Making",
+  "framework_version": "2019-04-01 (last amended 2023-10-01)",
+  "generated_at": "2026-01-20T19:19:05.545423Z",
+  "entries": [
+    {
+      "requirement_id": "DADM-6.1",
+      "requirement_text": "Complete an Algorithmic Impact Assessment to determine the impact level before production",
+      "section": "6.1 Algorithmic Impact Assessment",
+      "status": "not_applicable",
+      "evidence_type": "documentation",
+      "evidence_references": [],
+      "notes": "WiQ is a decision-SUPPORT tool providing occupational data for human analysts. It does not make automated decisions affecting individuals. The Directive applies to 'automated decision systems' that 'recommend or make an administrative decision'. WiQ provides reference data only, with no individual-level recommendations or decisions.",
+      "last_verified": "2026-01-20T19:19:05.545423Z"
+    },
+    {
+      "requirement_id": "DADM-6.2",
+      "requirement_text": "Provide a meaningful explanation to clients of how and why the decision was made",
+      "section": "6.2 Transparency",
+      "status": "compliant",
+      "evidence_type": "artifact",
+      "evidence_references": [
+        "src/jobforge/governance/graph.py",
+        "src/jobforge/governance/query.py",
+        "data/catalog/lineage/*.json"
+      ],
+      "notes": "WiQ provides full data provenance through LineageGraph (123 transition logs) and natural language query interface (LineageQueryEngine). Users can ask 'Where does dim_noc come from?' and receive detailed transformation history with source attribution.",
+      "last_verified": "2026-01-20T19:19:05.545423Z"
+    },
+    {
+      "requirement_id": "DADM-6.3",
+      "requirement_text": "Ensure data quality through established processes including validation and testing",
+      "section": "6.3 Data Quality",
+      "status": "compliant",
+      "evidence_type": "artifact",
+      "evidence_references": [
+        "src/jobforge/pipeline/layers.py",
+        "src/jobforge/pipeline/models.py",
+        "data/catalog/tables/*.json",
+        "data/catalog/schemas/wiq_schema.json"
+      ],
+      "notes": "WiQ uses a 4-layer medallion architecture (staged -> bronze -> silver -> gold) with validation at each transition. Table metadata (24 tables) includes row counts, column definitions, and data quality attributes. Transform functions apply type validation and structural checks.",
+      "last_verified": "2026-01-20T19:19:05.545423Z"
+    },
+    {
+      "requirement_id": "DADM-6.4",
+      "requirement_text": "Ensure that there is proper legal authority to operate the automated decision system",
+      "section": "6.4 Legal Authority",
+      "status": "compliant",
+      "evidence_type": "artifact",
+      "evidence_references": [
+        "data/gold/dim_noc.parquet",
+        "data/gold/dim_occupations.parquet",
+        "data/catalog/schemas/wiq_schema.json"
+      ],
+      "notes": "WiQ uses the National Occupational Classification (NOC) as its authoritative source for occupational taxonomy. NOC is maintained by Statistics Canada and ESDC. All job classifications reference NOC codes, providing traceable authority for occupational data. dim_noc.parquet present: True",
+      "last_verified": "2026-01-20T19:19:05.545423Z"
+    },
+    {
+      "requirement_id": "DADM-6.5",
+      "requirement_text": "Ensure affected individuals have opportunities to be heard and contest the decision",
+      "section": "6.5 Procedural Fairness",
+      "status": "not_applicable",
+      "evidence_type": "documentation",
+      "evidence_references": [],
+      "notes": "WiQ provides occupational reference data, not individual-level decisions. No individuals are directly affected by WiQ outputs. Downstream systems using WiQ data for individual decisions would need their own procedural fairness controls.",
+      "last_verified": "2026-01-20T19:19:05.545423Z"
+    },
+    {
+      "requirement_id": "DADM-6.6",
+      "requirement_text": "Provide affected individuals with clear and accessible information about avenues for recourse",
+      "section": "6.6 Recourse",
+      "status": "not_applicable",
+      "evidence_type": "documentation",
+      "evidence_references": [],
+      "notes": "As a decision-SUPPORT tool providing aggregate occupational data, WiQ does not produce decisions requiring individual recourse mechanisms. Downstream systems making individual decisions would implement their own recourse procedures.",
+      "last_verified": "2026-01-20T19:19:05.545423Z"
+    }
+  ]
+}

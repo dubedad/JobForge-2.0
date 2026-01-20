@@ -7,18 +7,18 @@
 See: .planning/PROJECT.md (updated 2026-01-19)
 
 **Core value:** Auditable provenance from source to output
-**Current focus:** Phase 10 - Polish and Documentation (next)
+**Current focus:** Phase 10 - Governance and Conversational Interface
 
 ## Current Position
 
-**Phase:** 9 of 10 (Demo Infrastructure) - COMPLETE
-**Plan:** 2 of 2 complete
-**Status:** Phase 9 complete
-**Last activity:** 2026-01-20 — Completed 09-02-PLAN.md (Web UI Implementation)
+**Phase:** 10 of 10 (Governance and Conversational)
+**Plan:** 1 of 3 complete
+**Status:** In progress
+**Last activity:** 2026-01-20 — Completed 10-01-PLAN.md (Compliance Traceability Logs)
 
 ```
 v1.0 [####################] 100% SHIPPED
-v2.0 [################    ]  80% Phase 9 complete
+v2.0 [##################  ]  90% Phase 10 in progress
 ```
 
 ## Performance Metrics
@@ -29,9 +29,9 @@ v2.0 [################    ]  80% Phase 9 complete
 - Total execution time: ~5.4 hours
 
 **v2.0 Progress:**
-- Plans completed: 9 of 11
+- Plans completed: 10 of 12
 - Phases complete: 4 of 5 (Phase 6, Phase 7, Phase 8, Phase 9)
-- Current phase: 09 complete, ready for Phase 10
+- Current phase: 10 in progress (1/3 plans complete)
 
 *Updated after each plan completion*
 
@@ -56,6 +56,9 @@ v2.0 [################    ]  80% Phase 9 complete
 | 09-02-D1 | GC FIP colors via CSS custom properties | Easy theming, dark mode support | 2026-01-20 |
 | 09-02-D2 | Half-screen width support | UI optimized for side-by-side with Power BI Desktop | 2026-01-20 |
 | 09-02-D3 | data-i18n attributes for bilingual text | Declarative approach for EN/FR switching | 2026-01-20 |
+| 10-01-D1 | Use RTM pattern for compliance logs | Industry-standard format mapping requirements to evidence artifacts | 2026-01-20 |
+| 10-01-D2 | Mark DADM 6.1, 6.5, 6.6 as NOT_APPLICABLE | WiQ is decision-SUPPORT tool, not decision-MAKING system | 2026-01-20 |
+| 10-01-D3 | Mark DAMA Security and Document as NOT_APPLICABLE | WiQ uses only public data (no PII), focuses on structured data | 2026-01-20 |
 
 ### Key Decisions (v1.0)
 
@@ -91,13 +94,13 @@ Reference implementations in `/JobForge/` sibling directory:
 
 ### Pending Todos
 
-| Todo | Area | Created |
-|------|------|---------|
-| DADM traceability log | governance | 2026-01-19 |
-| DAMA traceability log | governance | 2026-01-19 |
-| Job classification log | governance | 2026-01-19 |
+| Todo | Area | Created | Status |
+|------|------|---------|--------|
+| DADM traceability log | governance | 2026-01-19 | DONE (10-01) |
+| DAMA traceability log | governance | 2026-01-19 | DONE (10-01) |
+| Job classification log | governance | 2026-01-19 | DONE (10-01) |
 
-*3 todos pending in `.planning/todos/pending/`*
+*0 todos pending*
 
 ### Open Blockers
 
@@ -108,13 +111,13 @@ None.
 ### Last Session
 
 **Date:** 2026-01-20
-**Activity:** Execute Phase 9 Plan 2 (Web UI Implementation)
-**Outcome:** 4-step wizard UI with bilingual EN/FR, SSE narration display, WCAG 2.1 AA accessible
+**Activity:** Execute Phase 10 Plan 1 (Compliance Traceability Logs)
+**Outcome:** RTM-based compliance logs for DADM (6 entries), DAMA (11 entries), Classification (6 entries), plus CLI commands
 
 ### Next Session Priorities
 
-1. Execute Phase 10 Plan 1 for polish and documentation
-2. Test live demo end-to-end with Power BI Desktop
+1. Execute Phase 10 Plan 2 (Query API)
+2. Execute Phase 10 Plan 3 (Orbit Integration)
 3. Ship v2.0
 
 ### Context for Claude
@@ -125,6 +128,8 @@ When resuming this project:
 - **v2.0 Phase 7 COMPLETE** - External Data Integration verified
 - **v2.0 Phase 8 COMPLETE** - Description Generation verified
 - **v2.0 Phase 9 COMPLETE** - Demo Infrastructure (backend + UI)
+- **v2.0 Phase 10 Plan 1 COMPLETE** - Compliance Traceability Logs
+- Compliance logs: `jobforge compliance {dadm|dama|classification}`
 - Demo web UI: 4-step wizard at http://localhost:8080
 - Static files in src/jobforge/demo/static/ (HTML, CSS, JS, locales)
 - Bilingual EN/FR with localStorage persistence
@@ -133,8 +138,8 @@ When resuming this project:
 - CLI: `jobforge demo` starts web server
 - `/stagegold` command triggers actual deployment in Claude Code
 - Stack: Python 3.11, Polars, DuckDB, Pydantic 2, NetworkX, Rich, rapidfuzz, httpx, tenacity, beautifulsoup4, lxml, openai, uvicorn, starlette, sse-starlette
-- 330 tests total (32 demo tests)
+- 389 tests total (59 governance tests)
 
 ---
 *State updated: 2026-01-20*
-*Session count: 24*
+*Session count: 25*

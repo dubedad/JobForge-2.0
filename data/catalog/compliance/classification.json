@@ -1,0 +1,86 @@
+{
+  "framework_name": "Job Classification Policy - NOC-based Compliance",
+  "framework_version": "NOC 2021 v1.0",
+  "generated_at": "2026-01-20T19:19:18.676262Z",
+  "entries": [
+    {
+      "requirement_id": "CLASS-1",
+      "requirement_text": "Job classifications must use official National Occupational Classification (NOC) codes maintained by Statistics Canada/ESDC",
+      "section": "1. NOC Alignment",
+      "status": "compliant",
+      "evidence_type": "artifact",
+      "evidence_references": [
+        "data/gold/dim_noc.parquet",
+        "src/jobforge/ingestion/noc.py"
+      ],
+      "notes": "WiQ uses NOC 2021 codes as the authoritative source for occupational classification. dim_noc.parquet (present: True) contains the complete NOC structure ingested from Statistics Canada open data. All classifications reference official NOC unit group codes.",
+      "last_verified": "2026-01-20T19:19:18.676262Z"
+    },
+    {
+      "requirement_id": "CLASS-2",
+      "requirement_text": "NOC hierarchy levels (L1-L5) must be maintained with proper parent-child relationships",
+      "section": "2. Hierarchy Integrity",
+      "status": "compliant",
+      "evidence_type": "artifact",
+      "evidence_references": [
+        "data/gold/dim_noc.parquet",
+        "data/catalog/tables/dim_noc.json"
+      ],
+      "notes": "dim_noc maintains 5-level hierarchy: L1 (1-digit broad category), L2 (2-digit major group), L3 (3-digit minor group), L4 (4-digit unit group level 1), L5 (5-digit unit group). Foreign key relationships enforce hierarchy integrity. Each occupation traces to exactly one L5 unit group with full L1-L4 ancestry.",
+      "last_verified": "2026-01-20T19:19:18.676262Z"
+    },
+    {
+      "requirement_id": "CLASS-3",
+      "requirement_text": "Job titles must map to appropriate NOC unit groups using official example titles where available",
+      "section": "3. Title Mapping",
+      "status": "compliant",
+      "evidence_type": "artifact",
+      "evidence_references": [
+        "data/gold/element_example_titles.parquet",
+        "src/jobforge/imputation/resolution.py"
+      ],
+      "notes": "WiQ uses element_example_titles (present: True) containing official NOC example titles for each unit group. The resolution service matches job titles to NOC codes using fuzzy matching against official titles with confidence scoring. Title metadata present: True",
+      "last_verified": "2026-01-20T19:19:18.676262Z"
+    },
+    {
+      "requirement_id": "CLASS-4",
+      "requirement_text": "Occupational attributes should follow NOC hierarchy for inheritance when specific values are unavailable",
+      "section": "4. Attribute Inheritance",
+      "status": "compliant",
+      "evidence_type": "artifact",
+      "evidence_references": [
+        "src/jobforge/imputation/",
+        "src/jobforge/imputation/inheritance.py"
+      ],
+      "notes": "WiQ implements hierarchical attribute inheritance (module present: True). When attributes are unavailable for a specific unit group, the system walks up the NOC hierarchy (L5 -> L4 -> L3 -> L2 -> L1) to find parent values. Each imputation records inheritance depth for provenance.",
+      "last_verified": "2026-01-20T19:19:18.676262Z"
+    },
+    {
+      "requirement_id": "CLASS-5",
+      "requirement_text": "When using external classification systems (e.g., O*NET), crosswalks must map to NOC as the primary reference",
+      "section": "5. External Crosswalk",
+      "status": "compliant",
+      "evidence_type": "artifact",
+      "evidence_references": [
+        "src/jobforge/external/onet.py",
+        "src/jobforge/external/"
+      ],
+      "notes": "WiQ integrates O*NET attributes through NOC-SOC crosswalk (external module present: True). The onet adapter maps SOC codes to NOC unit groups using the Brookfield/DAIS crosswalk. O*NET attributes are assigned lower confidence (0.5) than authoritative Canadian sources.",
+      "last_verified": "2026-01-20T19:19:18.676262Z"
+    },
+    {
+      "requirement_id": "CLASS-6",
+      "requirement_text": "Classification decisions must be traceable to authoritative sources with documented provenance",
+      "section": "6. Evidence Traceability",
+      "status": "compliant",
+      "evidence_type": "artifact",
+      "evidence_references": [
+        "data/catalog/lineage/*.json",
+        "src/jobforge/governance/graph.py",
+        "src/jobforge/governance/query.py"
+      ],
+      "notes": "WiQ maintains 123 lineage logs documenting every data transformation. LineageGraph provides full upstream traceability to source files. LineageQueryEngine answers natural language provenance questions (e.g., 'Where does dim_noc come from?'). All classification decisions trace to NOC source data.",
+      "last_verified": "2026-01-20T19:19:18.676262Z"
+    }
+  ]
+}
