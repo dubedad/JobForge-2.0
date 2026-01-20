@@ -3,7 +3,7 @@
 ## Milestones
 
 - v1.0 MVP - Phases 1-5 (shipped 2026-01-19)
-- **v2.0 Self-Imputing Model + Live Demo** - Phases 6-10 (in progress)
+- v2.0 Self-Imputing Model + Live Demo - Phases 6-10 (shipped 2026-01-20)
 
 ## Overview
 
@@ -50,7 +50,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [x] **Phase 7: External Data Integration** - O*NET API, LLM imputation, and TBS scraping with provenance
 - [x] **Phase 8: Description Generation** - Multi-source descriptions with authoritative vs LLM provenance
 - [x] **Phase 9: Demo Infrastructure** - MCP porting and live demo capability with basic UI
-- [ ] **Phase 10: Governance and Conversational Interface** - Compliance logs and data/metadata query interface
+- [x] **Phase 10: Governance and Conversational Interface** - Compliance logs and data/metadata query interface
 
 ## Phase Details
 
@@ -126,12 +126,11 @@ Plans:
   3. Job classification log shows observable compliance with Classification Policy, Process and Practice
   4. User can query data conversationally and get accurate responses from WiQ
   5. User can query metadata conversationally and get lineage/provenance information
-**Plans**: 3 plans
+**Plans**: 2 plans (Orbit integration deferred to v3.0)
 
 Plans:
-- [ ] 10-01-PLAN.md — Compliance logs (DADM, DAMA, Classification RTM models and CLI)
-- [ ] 10-02-PLAN.md — JobForge HTTP API (data query with Claude, metadata query endpoints)
-- [ ] 10-03-PLAN.md — Orbit integration (DuckDBRetriever, adapter config, deployment)
+- [x] 10-01-PLAN.md — Compliance logs (DADM, DAMA, Classification RTM models and CLI)
+- [x] 10-02-PLAN.md — JobForge HTTP API (data query with Claude, metadata query endpoints)
 
 ## Progress
 
@@ -145,9 +144,57 @@ Phases execute in numeric order: 6 -> 7 -> 8 -> 9 -> 10
 | 7. External Data Integration | v2.0 | 3/3 | Complete | 2026-01-20 |
 | 8. Description Generation | v2.0 | 2/2 | Complete | 2026-01-20 |
 | 9. Demo Infrastructure | v2.0 | 2/2 | Complete | 2026-01-20 |
-| 10. Governance and Conversational | v2.0 | 0/3 | Not started | - |
+| 10. Governance and Conversational | v2.0 | 2/2 | Complete | 2026-01-20 |
+
+---
+
+## v3.0 Future Enhancements (Planned)
+
+**Milestone Goal:** Intelligent query interface, manager-facing UX, and enhanced semantic search capabilities.
+
+### Semantic Search & RAG
+
+- **RAG-01**: Vector database for semantic similarity search (job titles, descriptions, skills)
+- **RAG-02**: RAG pipeline for context-aware LLM responses using WiQ data
+- **RAG-03**: Knowledge graph enhancement — extend lineage DAG to full entity-relationship graph
+
+### Job Description Builder UX
+
+- **JDB-01**: Manager-facing web UI for job description creation
+- **JDB-02**: NOC-aware form with auto-populated fields from WiQ
+- **JDB-03**: Real-time validation against classification requirements
+- **JDB-04**: Export to GC-compliant formats (Word, PDF with bilingual support)
+- **JDB-05**: Audit trail — who edited what, when, with what justification
+
+### Enhanced Integration
+
+- **INT-01**: Extended O*NET/SOC crosswalk beyond imputation use case
+- **INT-02**: Confidence scoring refinements for NOC-SOC mappings
+- **INT-03**: Real-time Job Bank posting ingestion for market intelligence
+- **INT-04**: Orbit integration (DuckDBRetriever, adapter config, deployment)
+
+### Power BI Enhancements
+
+- **PBI-02**: Auto-populate table/column descriptions from business glossary
+- **PBI-03**: DAX measures for standard reporting (headcount, FTE, vacancy rates)
+- **PBI-04**: Status visuals for data management team
+- **PBI-05**: Planning visuals for HR team
+
+### Export & Interoperability
+
+- **GOV-07**: Export to MS Purview format
+- **GOV-08**: Export to Denodo format
+- **EXP-01**: HRIS integration adapters (PeopleSoft, SAP SuccessFactors)
+
+### Job Classification Automation
+
+- **CLASS-01**: Classification recommendation engine using WiQ + rules
+- **CLASS-02**: Classification audit log with rationale capture
+- **CLASS-03**: Integration with TBS classification standards
 
 ---
 *Roadmap created: 2026-01-19*
+*v2.0 shipped: 2026-01-20*
 *v2.0 phases: 5 (Phase 6-10)*
 *v2.0 requirements: 17 mapped*
+*v3.0 planned: 19 features across 6 categories*
