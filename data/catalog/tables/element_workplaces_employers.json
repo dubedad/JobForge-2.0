@@ -23,7 +23,7 @@
       "name": "unit_group_id",
       "data_type": "VARCHAR",
       "nullable": true,
-      "description": "Foreign key referencing dim_noc.unit_group_id",
+      "description": "Foreign key to dim_noc.unit_group_id - 5-digit NOC 2021 code",
       "glossary_term_id": null,
       "source_columns": [
         "dim_noc.unit_group_id"
