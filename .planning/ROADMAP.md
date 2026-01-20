@@ -110,11 +110,11 @@ Plans:
   2. `/stagegold` command can be triggered via MCP and shows Power BI building model live
   3. Basic UI displays narration of what JobForge is doing during demo
   4. Split screen demo works: Power BI on one side, JobForge UI on other
-**Plans**: TBD
+**Plans**: 2 plans
 
 Plans:
-- [ ] 09-01: Port MCP configuration from prototype
-- [ ] 09-02: Live demo with basic narration UI
+- [ ] 09-01-PLAN.md — MCP configuration and SSE backend for live streaming
+- [ ] 09-02-PLAN.md — Wizard UI with bilingual support and real-time updates
 
 ### Phase 10: Governance and Conversational Interface
 **Goal**: Users can demonstrate compliance via traceability logs and query data/metadata conversationally
