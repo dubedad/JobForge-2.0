@@ -39,7 +39,7 @@ See archived roadmap: `.planning/milestones/v2.0-ROADMAP.md`
 ### Phase 11: Validation and Hardening
 **Goal**: Orbit adapter routes queries to JobForge API with validated table coverage and user-friendly errors
 **Depends on**: Phase 10 (v2.0 completed)
-**Requirements**: ORB-01, ORB-02, ORB-03, ORB-04
+**Requirements**: ORB-01, ORB-02, ORB-03, ORB-04, ORB-12
 **Success Criteria** (what must be TRUE):
   1. User can send natural language query from Orbit and receive JobForge API response
   2. User query is classified into correct intent category (data, metadata, compliance, lineage)
@@ -61,16 +61,17 @@ Plans:
   3. Workforce intelligence queries match domain-specific intent patterns
   4. NOC codes, occupational groups, and job titles are recognized as entities in queries
   5. Query responses include source attribution showing data provenance
-**Plans**: TBD
+**Plans**: 3 plans
 
 Plans:
-- [ ] 12-01: TBD
-- [ ] 12-02: TBD
+- [ ] 12-01-PLAN.md — Catalog enrichment with semantic descriptions and workforce_dynamic
+- [ ] 12-02-PLAN.md — Enhanced DDL generator with COMMENT statements and relationship hints
+- [ ] 12-03-PLAN.md — Query enhancement with workforce patterns and source attribution
 
 ### Phase 13: Deployment and Documentation
 **Goal**: Orbit + JobForge stack deployable via Docker Compose with complete integration guide
 **Depends on**: Phase 12
-**Requirements**: ORB-10, ORB-11, ORB-12, ORB-13, ORB-14
+**Requirements**: ORB-10, ORB-11, ORB-13, ORB-14
 **Success Criteria** (what must be TRUE):
   1. User can start Orbit + JobForge stack with single `docker-compose up` command
   2. Environment variables configure API URLs, ports, and credentials without code changes
@@ -91,7 +92,7 @@ Phases execute in numeric order: 11 -> 11.1 (if any) -> 12 -> 12.1 (if any) -> 1
 | Phase | Milestone | Plans Complete | Status | Completed |
 |-------|-----------|----------------|--------|-----------|
 | 11. Validation and Hardening | v2.1 | 0/2 | Planned | - |
-| 12. Schema and Domain Intelligence | v2.1 | 0/TBD | Not started | - |
+| 12. Schema and Domain Intelligence | v2.1 | 0/3 | Planned | - |
 | 13. Deployment and Documentation | v2.1 | 0/TBD | Not started | - |
 
 ---
