@@ -156,13 +156,30 @@ class TestComplianceEndpoint:
         # Either 404 (unknown) or 501 (module not available)
         assert response.status_code in [404, 501]
 
-    def test_compliance_not_implemented(self, client):
-        """Test compliance endpoint returns 501 when module missing."""
+    def test_compliance_dadm_success(self, client):
+        """Test compliance endpoint returns DADM compliance log."""
         response = client.get("/api/compliance/dadm")
-        # Compliance module not yet created (Plan 10-01)
-        # Should return 501 Not Implemented
-        assert response.status_code == 501
-        assert "10-01" in response.json()["detail"]
+        assert response.status_code == 200
+        data = response.json()
+        assert "framework_name" in data
+        assert "entries" in data
+        assert "DADM" in data["framework_name"] or "Directive" in data["framework_name"]
+
+    def test_compliance_dama_success(self, client):
+        """Test compliance endpoint returns DAMA compliance log."""
+        response = client.get("/api/compliance/dama")
+        assert response.status_code == 200
+        data = response.json()
+        assert "framework_name" in data
+        assert "DAMA" in data["framework_name"]
+
+    def test_compliance_classification_success(self, client):
+        """Test compliance endpoint returns classification compliance log."""
+        response = client.get("/api/compliance/classification")
+        assert response.status_code == 200
+        data = response.json()
+        assert "framework_name" in data
+        assert "entries" in data
 
 
 class TestOpenAPIDocs:
