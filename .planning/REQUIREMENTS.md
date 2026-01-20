@@ -69,26 +69,26 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| ORB-01 | TBD | Pending |
-| ORB-02 | TBD | Pending |
-| ORB-03 | TBD | Pending |
-| ORB-04 | TBD | Pending |
-| ORB-05 | TBD | Pending |
-| ORB-06 | TBD | Pending |
-| ORB-07 | TBD | Pending |
-| ORB-08 | TBD | Pending |
-| ORB-09 | TBD | Pending |
-| ORB-10 | TBD | Pending |
-| ORB-11 | TBD | Pending |
-| ORB-12 | TBD | Pending |
-| ORB-13 | TBD | Pending |
-| ORB-14 | TBD | Pending |
+| ORB-01 | Phase 11 | Pending |
+| ORB-02 | Phase 11 | Pending |
+| ORB-03 | Phase 11 | Pending |
+| ORB-04 | Phase 11 | Pending |
+| ORB-05 | Phase 12 | Pending |
+| ORB-06 | Phase 12 | Pending |
+| ORB-07 | Phase 12 | Pending |
+| ORB-08 | Phase 12 | Pending |
+| ORB-09 | Phase 12 | Pending |
+| ORB-10 | Phase 13 | Pending |
+| ORB-11 | Phase 13 | Pending |
+| ORB-12 | Phase 13 | Pending |
+| ORB-13 | Phase 13 | Pending |
+| ORB-14 | Phase 13 | Pending |
 
 **Coverage:**
 - v2.1 requirements: 14 total
-- Mapped to phases: 0
-- Unmapped: 14 ⚠️
+- Mapped to phases: 14
+- Unmapped: 0
 
 ---
 *Requirements defined: 2026-01-20*
-*Last updated: 2026-01-20 after initial definition*
+*Last updated: 2026-01-20 after roadmap creation*
