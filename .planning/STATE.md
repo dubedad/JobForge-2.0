@@ -7,18 +7,18 @@
 See: .planning/PROJECT.md (updated 2026-01-19)
 
 **Core value:** Auditable provenance from source to output
-**Current focus:** Phase 9 - Demo Infrastructure (next)
+**Current focus:** Phase 10 - Polish and Documentation (next)
 
 ## Current Position
 
-**Phase:** 9 of 10 (Demo Infrastructure)
-**Plan:** 1 of 2 complete
-**Status:** In progress
-**Last activity:** 2026-01-20 — Completed 09-01-PLAN.md (MCP and SSE Backend)
+**Phase:** 9 of 10 (Demo Infrastructure) - COMPLETE
+**Plan:** 2 of 2 complete
+**Status:** Phase 9 complete
+**Last activity:** 2026-01-20 — Completed 09-02-PLAN.md (Web UI Implementation)
 
 ```
 v1.0 [####################] 100% SHIPPED
-v2.0 [#############       ]  65% Phase 9 in progress
+v2.0 [################    ]  80% Phase 9 complete
 ```
 
 ## Performance Metrics
@@ -29,9 +29,9 @@ v2.0 [#############       ]  65% Phase 9 in progress
 - Total execution time: ~5.4 hours
 
 **v2.0 Progress:**
-- Plans completed: 8 of 11
-- Phases complete: 3 of 5 (Phase 6, Phase 7, Phase 8)
-- Current phase: 09 (1/2 plans complete)
+- Plans completed: 9 of 11
+- Phases complete: 4 of 5 (Phase 6, Phase 7, Phase 8, Phase 9)
+- Current phase: 09 complete, ready for Phase 10
 
 *Updated after each plan completion*
 
@@ -53,6 +53,9 @@ v2.0 [#############       ]  65% Phase 9 in progress
 | 08-01-D2 | lru_cache for lead statements | Single cache for 900 entries; cleared only when gold updates | 2026-01-20 |
 | 09-01-D1 | Narration-only orchestrator | Does NOT call MCP; reads schema, yields events only | 2026-01-20 |
 | 09-01-D2 | SSE streaming with visual delays | 0.05-0.1s delays between events for smooth progression | 2026-01-20 |
+| 09-02-D1 | GC FIP colors via CSS custom properties | Easy theming, dark mode support | 2026-01-20 |
+| 09-02-D2 | Half-screen width support | UI optimized for side-by-side with Power BI Desktop | 2026-01-20 |
+| 09-02-D3 | data-i18n attributes for bilingual text | Declarative approach for EN/FR switching | 2026-01-20 |
 
 ### Key Decisions (v1.0)
 
@@ -105,14 +108,14 @@ None.
 ### Last Session
 
 **Date:** 2026-01-20
-**Activity:** Execute Phase 9 Plan 1 (MCP and SSE Backend)
-**Outcome:** MCP permissions ported, SSE backend streaming narration events, 32 new tests, 330 total passing
+**Activity:** Execute Phase 9 Plan 2 (Web UI Implementation)
+**Outcome:** 4-step wizard UI with bilingual EN/FR, SSE narration display, WCAG 2.1 AA accessible
 
 ### Next Session Priorities
 
-1. Execute `/gsd:execute-phase 09-02` for web UI
-2. Test live demo with Power BI Desktop
-3. Complete Phase 9 and move to Phase 10
+1. Execute Phase 10 Plan 1 for polish and documentation
+2. Test live demo end-to-end with Power BI Desktop
+3. Ship v2.0
 
 ### Context for Claude
 
@@ -121,15 +124,17 @@ When resuming this project:
 - **v2.0 Phase 6 COMPLETE** - Imputation Foundation verified
 - **v2.0 Phase 7 COMPLETE** - External Data Integration verified
 - **v2.0 Phase 8 COMPLETE** - Description Generation verified
-- **v2.0 Phase 9 Plan 1 COMPLETE** - MCP and SSE Backend
-- `jobforge.demo` package: events, orchestrator, app modules
-- `.claude/settings.local.json` with 14 MCP permissions
-- `.claude/commands/stage-gold.md` for Claude Code deployment
-- SSE endpoint at /api/deploy/stream
+- **v2.0 Phase 9 COMPLETE** - Demo Infrastructure (backend + UI)
+- Demo web UI: 4-step wizard at http://localhost:8080
+- Static files in src/jobforge/demo/static/ (HTML, CSS, JS, locales)
+- Bilingual EN/FR with localStorage persistence
+- GC FIP color palette with dark mode
+- SSE narration connects to /api/deploy/stream
 - CLI: `jobforge demo` starts web server
+- `/stagegold` command triggers actual deployment in Claude Code
 - Stack: Python 3.11, Polars, DuckDB, Pydantic 2, NetworkX, Rich, rapidfuzz, httpx, tenacity, beautifulsoup4, lxml, openai, uvicorn, starlette, sse-starlette
 - 330 tests total (32 demo tests)
 
 ---
 *State updated: 2026-01-20*
-*Session count: 23*
+*Session count: 24*
