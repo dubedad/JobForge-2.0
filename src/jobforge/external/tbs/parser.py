@@ -11,7 +11,7 @@ from bs4 import BeautifulSoup, Tag
 
 from .models import OccupationalGroupRow, ScrapedProvenance
 
-# Expected column headers in the TBS occupational groups table
+# Expected column headers in the TBS occupational groups table (English)
 # We validate against these to detect page structure changes
 TBS_EXPECTED_COLUMNS = [
     "group abbreviation",
@@ -24,17 +24,32 @@ TBS_EXPECTED_COLUMNS = [
     "qualification standard",
 ]
 
-# Minimum required columns for validation
+# French column headers (for bilingual support)
+TBS_EXPECTED_COLUMNS_FR = [
+    "abréviation de groupe",
+    "code",
+    "groupe professionnel",
+    "groupe",
+    "sous-groupe",
+    "définition",
+    "norme d'évaluation des emplois",
+    "norme de qualification",
+]
+
+# Minimum required columns for validation (bilingual)
 TBS_REQUIRED_COLUMNS = ["group abbreviation", "code", "occupational group"]
+TBS_REQUIRED_COLUMNS_FR = ["abréviation de groupe", "code", "groupe professionnel"]
 
 
-def validate_table_structure(table: Tag) -> bool:
+def validate_table_structure(table: Tag, language: str = "en") -> bool:
     """Validate that the table has expected column structure.
 
     Per CONTEXT.md: Fail loudly on page structure changes.
+    Supports both English and French pages.
 
     Args:
         table: BeautifulSoup Tag representing the table element.
+        language: Language code ('en' or 'fr') to select correct validation headers.
 
     Returns:
         True if structure is valid.
@@ -44,8 +59,11 @@ def validate_table_structure(table: Tag) -> bool:
     """
     headers = [th.get_text(strip=True).lower() for th in table.find_all("th")]
 
+    # Select appropriate required columns based on language
+    required_cols = TBS_REQUIRED_COLUMNS_FR if language == "fr" else TBS_REQUIRED_COLUMNS
+
     # Check required columns are present
-    for required_col in TBS_REQUIRED_COLUMNS:
+    for required_col in required_cols:
         if not any(required_col in h for h in headers):
             raise ValueError(
                 f"Missing expected column: '{required_col}'. "
@@ -60,15 +78,18 @@ def parse_occupational_groups_table(
     html: str,
     source_url: str,
     scraped_at: datetime,
+    language: str | None = None,
 ) -> list[OccupationalGroupRow]:
     """Parse TBS occupational groups HTML table into structured data.
 
     Per CONTEXT.md: Fail loudly on structure changes.
+    Supports both English and French pages.
 
     Args:
         html: Raw HTML content of the page.
         source_url: URL from which the HTML was fetched (for provenance).
         scraped_at: UTC timestamp when the page was scraped.
+        language: Language code ('en' or 'fr'). If None, detected from URL.
 
     Returns:
         List of OccupationalGroupRow objects with provenance.
@@ -76,6 +97,10 @@ def parse_occupational_groups_table(
     Raises:
         ValueError: If no table found or structure has changed.
     """
+    # Detect language from URL if not provided
+    if language is None:
+        language = "fr" if "/fr/" in source_url else "en"
+
     soup = BeautifulSoup(html, "lxml")
     table = soup.find("table")
 
@@ -85,8 +110,8 @@ def parse_occupational_groups_table(
             "TBS page structure may have changed - manual review required."
         )
 
-    # Validate structure before parsing
-    validate_table_structure(table)
+    # Validate structure before parsing (with language-aware validation)
+    validate_table_structure(table, language)
 
     # Extract page title for provenance
     title_tag = soup.find("title")

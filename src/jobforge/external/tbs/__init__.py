@@ -26,11 +26,14 @@ from .models import (
 )
 from .parser import (
     TBS_EXPECTED_COLUMNS,
+    TBS_EXPECTED_COLUMNS_FR,
     TBS_REQUIRED_COLUMNS,
+    TBS_REQUIRED_COLUMNS_FR,
     extract_embedded_links,
     parse_occupational_groups_table,
     validate_table_structure,
 )
+from .scraper import TBS_URLS, TBSScraper, scrape_occupational_groups
 
 __all__ = [
     # Models
@@ -42,8 +45,14 @@ __all__ = [
     "LinkedMetadataCollection",
     # Parser
     "TBS_EXPECTED_COLUMNS",
+    "TBS_EXPECTED_COLUMNS_FR",
     "TBS_REQUIRED_COLUMNS",
+    "TBS_REQUIRED_COLUMNS_FR",
     "validate_table_structure",
     "parse_occupational_groups_table",
     "extract_embedded_links",
+    # Scraper
+    "TBS_URLS",
+    "TBSScraper",
+    "scrape_occupational_groups",
 ]
