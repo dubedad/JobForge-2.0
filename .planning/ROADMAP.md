@@ -45,11 +45,11 @@ See archived roadmap: `.planning/milestones/v2.0-ROADMAP.md`
   2. User query is classified into correct intent category (data, metadata, compliance, lineage)
   3. User can query any of the 24 gold tables via DuckDBRetriever without errors
   4. User receives actionable error message when query fails (not raw stack trace)
-**Plans**: TBD
+**Plans**: 2 plans
 
 Plans:
-- [ ] 11-01: TBD
-- [ ] 11-02: TBD
+- [ ] 11-01-PLAN.md — RFC 9457 error handling + CORS middleware
+- [ ] 11-02-PLAN.md — Table coverage tests + intent validation tests
 
 ### Phase 12: Schema and Domain Intelligence
 **Goal**: Text-to-SQL accuracy improved via enhanced DDL and workforce-specific entity recognition
@@ -90,7 +90,7 @@ Phases execute in numeric order: 11 -> 11.1 (if any) -> 12 -> 12.1 (if any) -> 1
 
 | Phase | Milestone | Plans Complete | Status | Completed |
 |-------|-----------|----------------|--------|-----------|
-| 11. Validation and Hardening | v2.1 | 0/TBD | Not started | - |
+| 11. Validation and Hardening | v2.1 | 0/2 | Planned | - |
 | 12. Schema and Domain Intelligence | v2.1 | 0/TBD | Not started | - |
 | 13. Deployment and Documentation | v2.1 | 0/TBD | Not started | - |
 
