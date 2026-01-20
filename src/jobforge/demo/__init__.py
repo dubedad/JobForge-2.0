@@ -15,7 +15,8 @@ Example:
     >>> app = create_app()  # Creates Starlette app with SSE endpoint
 """
 
+from jobforge.demo.app import create_app
 from jobforge.demo.events import DemoEvent, EventType
 from jobforge.demo.orchestrator import DemoOrchestrator
 
-__all__ = ["DemoEvent", "EventType", "DemoOrchestrator"]
+__all__ = ["DemoEvent", "EventType", "DemoOrchestrator", "create_app"]

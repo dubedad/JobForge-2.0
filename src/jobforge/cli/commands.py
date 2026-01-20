@@ -148,6 +148,64 @@ def lineage(
 
 
 @app.command()
+def demo(
+    port: int = typer.Option(8080, "--port", "-p", help="Server port"),
+    host: str = typer.Option("127.0.0.1", "--host", help="Server host"),
+    schema_path: Optional[Path] = typer.Option(
+        None, "--schema", "-s", help="Path to WiQ schema JSON"
+    ),
+) -> None:
+    """Start demo web server for live deployment narration.
+
+    The web server streams deployment NARRATION showing what is being built.
+    Actual deployment is triggered separately via /stagegold in Claude Code
+    (VS Code Pro with MCP access).
+
+    PREREQUISITES:
+    - Power BI Desktop must be open with a saved .pbix file (blank or target)
+    - The .pbix file must be saved BEFORE running /stagegold
+
+    RECOMMENDED DEMO SETUP:
+    1. Open Power BI Desktop and save a blank .pbix file
+    2. Start this server: jobforge demo
+    3. Open browser to http://localhost:8080
+    4. Arrange windows side-by-side: browser + Power BI Desktop
+    5. In VS Code Pro, run /stagegold to trigger actual deployment
+
+    The web UI displays narration events describing deployment progress,
+    synchronized with the external Claude Code execution.
+
+    Examples:
+        # Start demo server on default port
+        jobforge demo
+
+        # Start on custom port
+        jobforge demo --port 3000
+
+        # Use custom schema
+        jobforge demo --schema custom_schema.json
+    """
+    import uvicorn
+
+    from jobforge.demo.app import create_app
+
+    # Static files location (will be created in Plan 02)
+    static_dir = Path(__file__).parent.parent / "demo" / "static"
+
+    app = create_app(static_dir if static_dir.exists() else None)
+
+    typer.echo(f"Starting JobForge demo server at http://{host}:{port}")
+    typer.echo("Press Ctrl+C to stop")
+    typer.echo()
+    typer.echo("API Endpoints:")
+    typer.echo(f"  GET http://{host}:{port}/api/deploy/stream  (SSE narration stream)")
+    typer.echo(f"  GET http://{host}:{port}/api/catalogue      (Table catalogue)")
+    typer.echo(f"  GET http://{host}:{port}/api/health         (Health check)")
+
+    uvicorn.run(app, host=host, port=port)
+
+
+@app.command()
 def version() -> None:
     """Show JobForge version."""
     typer.echo("JobForge 2.0.0")
