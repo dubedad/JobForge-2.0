@@ -12,13 +12,13 @@ See: .planning/PROJECT.md (updated 2026-01-19)
 ## Current Position
 
 **Phase:** 8 of 10 (Description Generation)
-**Plan:** 1 of 3 complete
+**Plan:** 2 of 3 complete
 **Status:** In progress
-**Last activity:** 2026-01-20 — Completed 08-01-PLAN.md (Description Models and Sources)
+**Last activity:** 2026-01-20 — Completed 08-02-PLAN.md (Description Generation Service)
 
 ```
 v1.0 [####################] 100% SHIPPED
-v2.0 [#########           ]  50% Phase 8 in progress
+v2.0 [##########          ]  55% Phase 8 in progress
 ```
 
 ## Performance Metrics
@@ -29,9 +29,9 @@ v2.0 [#########           ]  50% Phase 8 in progress
 - Total execution time: ~5.4 hours
 
 **v2.0 Progress:**
-- Plans completed: 6 of 11
+- Plans completed: 7 of 11
 - Phases complete: 2 of 5 (Phase 6, Phase 7)
-- Current phase: 08 (1/3 plans complete)
+- Current phase: 08 (2/3 plans complete)
 
 *Updated after each plan completion*
 
@@ -103,14 +103,14 @@ None.
 ### Last Session
 
 **Date:** 2026-01-20
-**Activity:** Execute 08-01-PLAN.md (Description Models and Sources)
-**Outcome:** Description models with provenance, lead statement loader (900 entries), 29 tests added, 254 total passing
+**Activity:** Execute 08-02-PLAN.md (Description Generation Service)
+**Outcome:** DescriptionGenerationService with NOC-style prompts, source cascade, 44 new tests, 298 total passing
 
 ### Next Session Priorities
 
-1. Execute 08-02-PLAN.md (Description Generation Service)
-2. Title description generation with source cascade
-3. Family/function description aggregation
+1. Execute 08-03-PLAN.md (Batch Processing and Output)
+2. Batch description generation for job titles
+3. Output to gold layer with provenance
 
 ### Context for Claude
 
@@ -119,15 +119,17 @@ When resuming this project:
 - **v2.0 Phase 6 COMPLETE** - Imputation Foundation verified
 - **v2.0 Phase 7 COMPLETE** - External Data Integration verified
 - **v2.0 Phase 8 Plan 1 COMPLETE** - Description models and sources
-- `jobforge.description` package: models, sources modules (NEW)
+- **v2.0 Phase 8 Plan 2 COMPLETE** - Description generation service
+- `jobforge.description` package: models, sources, prompts, service modules
 - `jobforge.external.onet` package: crosswalk, client, adapter modules
 - `jobforge.external.tbs` package: scraper, parser, link_fetcher, schema modules
 - `jobforge.external.llm` package: client, service, prompts modules
 - Description cascade: AUTHORITATIVE (lead statement) -> LLM fallback
 - Lead statements: 900 entries cached, indexed by OASIS code
+- NOC boundary words in LLM prompts for semantic anchoring
 - Stack: Python 3.11, Polars, DuckDB, Pydantic 2, NetworkX, Rich, rapidfuzz, httpx, tenacity, beautifulsoup4, lxml, openai
-- 254 tests total (29 description tests added)
+- 298 tests total (44 description service tests added)
 
 ---
 *State updated: 2026-01-20*
-*Session count: 20*
+*Session count: 21*
