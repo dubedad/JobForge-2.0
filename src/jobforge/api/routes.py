@@ -1,0 +1,161 @@
+"""FastAPI routes for JobForge Query API.
+
+Provides HTTP endpoints for conversational data and metadata queries,
+plus compliance log retrieval.
+"""
+
+from fastapi import FastAPI, HTTPException
+from pydantic import BaseModel
+
+from jobforge.api.data_query import DataQueryResult, DataQueryService
+from jobforge.api.metadata_query import MetadataQueryService
+from jobforge.pipeline.config import PipelineConfig
+
+
+class QueryRequest(BaseModel):
+    """Request body for query endpoints."""
+
+    question: str
+
+
+class MetadataQueryResult(BaseModel):
+    """Result of a metadata query."""
+
+    question: str
+    answer: str
+
+
+def create_api_app(config: PipelineConfig | None = None) -> FastAPI:
+    """Create FastAPI application for query endpoints.
+
+    Args:
+        config: Pipeline configuration. Defaults to standard PipelineConfig.
+
+    Returns:
+        Configured FastAPI application.
+    """
+    api_app = FastAPI(
+        title="JobForge Query API",
+        description="Conversational interface for WiQ data and metadata",
+        version="1.0.0",
+        docs_url="/docs",
+        redoc_url="/redoc",
+    )
+
+    config = config or PipelineConfig()
+    data_service = DataQueryService(config)
+    metadata_service = MetadataQueryService(config)
+
+    @api_app.post("/api/query/data", response_model=DataQueryResult)
+    async def query_data(request: QueryRequest) -> DataQueryResult:
+        """Query WiQ data using natural language.
+
+        Converts the question to SQL using Claude and executes against gold tables.
+        Requires ANTHROPIC_API_KEY environment variable.
+
+        Args:
+            request: Query request with question field.
+
+        Returns:
+            DataQueryResult with SQL, explanation, and results.
+
+        Raises:
+            HTTPException: If query fails with error.
+        """
+        result = data_service.query(request.question)
+        if result.error:
+            raise HTTPException(status_code=400, detail=result.error)
+        return result
+
+    @api_app.post("/api/query/metadata", response_model=MetadataQueryResult)
+    async def query_metadata(request: QueryRequest) -> MetadataQueryResult:
+        """Query WiQ metadata using natural language.
+
+        Answers questions about lineage, table structure, and data provenance.
+        Does not require external API keys.
+
+        Args:
+            request: Query request with question field.
+
+        Returns:
+            MetadataQueryResult with answer.
+        """
+        answer = metadata_service.query(request.question)
+        return MetadataQueryResult(question=request.question, answer=answer)
+
+    @api_app.get("/api/compliance/{framework}")
+    async def get_compliance(framework: str) -> dict:
+        """Get compliance log for a framework.
+
+        Generates a Requirements Traceability Matrix (RTM) showing how WiQ
+        artifacts map to governance framework requirements.
+
+        Supported frameworks:
+        - dadm: Directive on Automated Decision Making
+        - dama: DAMA DMBOK knowledge areas
+        - classification: Job classification policy alignment
+
+        Args:
+            framework: Framework name (dadm, dama, or classification).
+
+        Returns:
+            Compliance log as JSON.
+
+        Raises:
+            HTTPException: If framework unknown or compliance module not available.
+        """
+        # Note: Compliance module is created in Plan 10-01
+        # This endpoint will work once that plan is executed
+        try:
+            from jobforge.governance.compliance import (
+                ClassificationComplianceLog,
+                DADMComplianceLog,
+                DAMAComplianceLog,
+            )
+
+            generators = {
+                "dadm": DADMComplianceLog,
+                "dama": DAMAComplianceLog,
+                "classification": ClassificationComplianceLog,
+            }
+
+            if framework.lower() not in generators:
+                raise HTTPException(
+                    status_code=404, detail=f"Unknown framework: {framework}"
+                )
+
+            generator = generators[framework.lower()](config)
+            log = generator.generate()
+            return log.model_dump()
+
+        except ImportError:
+            raise HTTPException(
+                status_code=501,
+                detail="Compliance module not yet available. Execute Plan 10-01 first.",
+            )
+
+    @api_app.get("/api/health")
+    async def health() -> dict:
+        """Health check endpoint.
+
+        Returns:
+            Status dict indicating API is operational.
+        """
+        return {"status": "ok"}
+
+    @api_app.get("/api/tables")
+    async def list_tables() -> dict:
+        """List all available gold tables.
+
+        Returns:
+            Dict with list of table names and count.
+        """
+        gold_path = config.gold_path()
+        tables = sorted(p.stem for p in gold_path.glob("*.parquet"))
+        return {"tables": tables, "count": len(tables)}
+
+    return api_app
+
+
+# Export app instance for uvicorn
+app = create_api_app()
