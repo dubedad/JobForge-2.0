@@ -37,10 +37,21 @@ from jobforge.description.models import (
     DescriptionSource,
     GeneratedDescription,
 )
+from jobforge.description.sources import (
+    clear_lead_statement_cache,
+    determine_source_type,
+    get_lead_statement_for_oasis,
+    load_lead_statements,
+)
 
 __all__ = [
     # Models
     "DescriptionSource",
     "DescriptionProvenance",
     "GeneratedDescription",
+    # Source functions
+    "load_lead_statements",
+    "get_lead_statement_for_oasis",
+    "determine_source_type",
+    "clear_lead_statement_cache",
 ]
