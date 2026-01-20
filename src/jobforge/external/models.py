@@ -1,7 +1,7 @@
 """Pydantic models for external data sources with provenance tracking.
 
 This module defines the data models for external integrations including
-O*NET attributes and source precedence for provenance tracking.
+O*NET attributes, LLM imputation responses, and source precedence for provenance tracking.
 """
 
 from datetime import datetime, timezone
@@ -14,6 +14,76 @@ from pydantic import BaseModel, ConfigDict, Field
 def utc_now() -> datetime:
     """Get current UTC datetime."""
     return datetime.now(timezone.utc)
+
+
+# =============================================================================
+# LLM Imputation Models
+# =============================================================================
+
+
+class ImputedAttributeValue(BaseModel):
+    """Single imputed attribute from LLM with confidence and rationale.
+
+    This is the structure returned by the LLM for each requested attribute.
+    Used as part of ImputationResponse for Structured Outputs.
+    """
+
+    attribute_name: str = Field(description="Name of the attribute being imputed")
+    value: str = Field(description="The imputed attribute value")
+    confidence: float = Field(
+        ge=0.0, le=1.0, description="LLM's confidence in this imputation (0.0-1.0)"
+    )
+    rationale: str = Field(description="Explanation for the imputation")
+
+
+class ImputationResponse(BaseModel):
+    """LLM response for attribute imputation batch.
+
+    This is the top-level response format for Structured Outputs.
+    Contains all requested imputations plus context used.
+    """
+
+    imputations: list[ImputedAttributeValue] = Field(
+        description="List of imputed attribute values"
+    )
+    context_used: str = Field(
+        description="Summary of context that influenced the imputations"
+    )
+
+
+class LLMImputedAttribute(BaseModel):
+    """Imputed attribute with full provenance for storage.
+
+    Extended version of ImputedAttributeValue with provenance fields
+    for tracking the source and timestamp of imputation.
+
+    Attributes:
+        attribute_name: Name of the imputed attribute.
+        value: The imputed value.
+        confidence: LLM's confidence (0.0-1.0).
+        rationale: Explanation for the imputation.
+        source_type: Always "LLM" for provenance tracking.
+        model_used: The LLM model that generated this (e.g., "gpt-4o-2024-08-06").
+        imputed_at: UTC timestamp when imputation occurred.
+    """
+
+    model_config = ConfigDict(
+        json_encoders={datetime: lambda v: v.isoformat()},
+    )
+
+    attribute_name: str = Field(description="Name of the imputed attribute")
+    value: str = Field(description="The imputed attribute value")
+    confidence: float = Field(
+        ge=0.0, le=1.0, description="LLM's confidence in this imputation (0.0-1.0)"
+    )
+    rationale: str = Field(description="Explanation for the imputation")
+    source_type: Literal["LLM"] = Field(
+        default="LLM", description="Source type for provenance tracking"
+    )
+    model_used: str = Field(description="LLM model that generated this imputation")
+    imputed_at: datetime = Field(
+        default_factory=utc_now, description="UTC timestamp when imputation occurred"
+    )
 
 
 class SourcePrecedence(IntEnum):
