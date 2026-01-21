@@ -13,9 +13,9 @@ See: .planning/PROJECT.md (updated 2026-01-20)
 
 **Milestone:** v2.1 Orbit Integration
 **Phase:** 12 of 13 (Schema and Domain Intelligence)
-**Plan:** 1 of 3 in current phase
+**Plan:** 2 of 3 in current phase
 **Status:** Phase 12 IN PROGRESS
-**Last activity:** 2026-01-20 - Completed 12-01-PLAN.md (Catalog Enrichment)
+**Last activity:** 2026-01-21 - Completed 12-02-PLAN.md (Enhanced DDL Generation)
 
 ```
 v1.0 [####################] 100% SHIPPED 2026-01-19
@@ -36,10 +36,10 @@ v2.1 [########            ]  42% IN PROGRESS
 - Timeline: 2 days (2026-01-19 -> 2026-01-20)
 
 **v2.1:**
-- Plans completed: 3
+- Plans completed: 4
 - Phases complete: 1 (Phase 11)
 - Requirements: 14
-- Tests added: 178 (15 + 156 + 7)
+- Tests added: 185 (15 + 156 + 7 + 7)
 
 *Updated after each milestone completion*
 
@@ -67,6 +67,10 @@ All v1.0 and v2.0 decisions archived in:
 | Workforce dynamic from folder structure | Preserve original bronze semantics | demand/supply taxonomy in catalog |
 | Year column templating | Table-specific context for Claude | "Projected {metric} for {year}" |
 | Table metadata writes always | Completeness even without column changes | workforce_dynamic written for all COPS |
+| DDL comments from catalog | Single source of truth for metadata | COMMENT clauses from JSON files |
+| Filter generic descriptions | Avoid cluttering DDL with non-semantic content | Skip "Column of type" placeholders |
+| Hard-coded intelligence hints | Simplicity for initial implementation | Demand/supply lists in DDL generator |
+| Quoted numeric columns | DuckDB syntax requirement | Year columns as "2023" not 2023 |
 
 ### Technical Discoveries
 
@@ -87,6 +91,9 @@ From Phase 12 execution:
 - Workforce dynamic taxonomy: demand (5 tables) vs supply (3 tables)
 - Year columns (2023-2033) vary by table metric
 - Description priority matters: table-specific > generic COPS
+- DDL with COMMENT clauses improves Claude's text-to-SQL context
+- Numeric column names must be quoted in DuckDB DDL
+- RELATIONSHIPS section provides FK join hints to Claude
 
 ### Pending Todos
 
@@ -100,16 +107,15 @@ None.
 
 ### Last Session
 
-**Date:** 2026-01-20
-**Activity:** Execute Phase 12 Plan 01 - Catalog Enrichment
-**Outcome:** 3 tasks completed, 7 tests added, 23 catalog tables enriched
+**Date:** 2026-01-21
+**Activity:** Execute Phase 12 Plan 02 - Enhanced DDL Generation
+**Outcome:** 2 tasks completed, 7 tests added, DDL generator enhanced with COMMENT clauses
 
 ### Next Session Priorities
 
-1. Execute Phase 12 Plan 02 (Enhanced DDL Generation)
-2. Execute Phase 12 Plan 03 (Source Attribution)
-3. Continue through Phase 13
-4. Complete v2.1 Orbit Integration
+1. Execute Phase 12 Plan 03 (Source Attribution)
+2. Continue through Phase 13
+3. Complete v2.1 Orbit Integration
 
 ### Context for Claude
 
@@ -122,13 +128,14 @@ When resuming this project:
 - Demo web UI: `jobforge demo` starts wizard at localhost:8080
 - Orbit adapter: 85% built in orbit/ directory
 - Stack: Python 3.11, Polars, DuckDB, Pydantic 2, NetworkX, Rich, rapidfuzz, httpx, tenacity, beautifulsoup4, openai, anthropic, fastapi, uvicorn, starlette, sse-starlette
-- **603 tests passing** (440 + 156 from 11-02 + 7 from 12-01)
+- **610 tests passing** (440 + 156 from 11-02 + 7 from 12-01 + 7 from 12-02)
 - **New:** RFC 9457 error handling in src/jobforge/api/errors.py
 - **New:** CORS middleware configured in src/jobforge/api/routes.py
 - **New:** Catalog enrichment module in src/jobforge/catalog/enrich.py
 - **New:** 23 catalog tables enriched with workforce_dynamic and semantic descriptions
+- **New:** DDL generator with COMMENT clauses, RELATIONSHIPS section, and WORKFORCE INTELLIGENCE hints
 
 ---
-*State updated: 2026-01-20*
-*Session count: 33*
+*State updated: 2026-01-21*
+*Session count: 34*
 *v2.1 Phase 12 IN PROGRESS*
