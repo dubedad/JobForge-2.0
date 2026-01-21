@@ -15,7 +15,7 @@ See: .planning/PROJECT.md (updated 2026-01-20)
 **Phase:** 13 of 13 (Deployment and Documentation) COMPLETE
 **Plan:** 2 of 2 in current phase
 **Status:** MILESTONE COMPLETE
-**Last activity:** 2026-01-21 - Completed Phase 13 and v2.1 milestone
+**Last activity:** 2026-01-21 - Completed quick task 001 (User-facing landing page)
 
 ```
 v1.0 [####################] 100% SHIPPED 2026-01-19
@@ -42,6 +42,9 @@ v2.1 [####################] 100% SHIPPED 2026-01-21
 - Tests added: 185 (15 + 156 + 7 + 7)
 - Documentation pages: 3 (1,493 lines)
 - Timeline: 2 days (2026-01-20 -> 2026-01-21)
+
+**Quick Tasks:**
+- 001: User-facing landing page (23m 40s) - 2026-01-21
 
 *Updated after each milestone completion*
 
@@ -92,6 +95,14 @@ All v1.0 and v2.0 decisions archived in:
 | Step-by-step tutorial format | Scenario-based learning more effective | Certification query walkthrough |
 | Curl examples throughout | Portable, no dependencies, copy-paste ready | Immediate API testing without clients |
 
+**Quick Task 001 Decisions:**
+| Decision | Rationale | Outcome |
+|----------|-----------|---------|
+| FileResponse vs StaticFiles | StaticFiles mount at "/" conflicts with API routes | Explicit FileResponse for index.html only |
+| Automatic metadata fallback | Questions about metadata/lineage don't need data query | JS tries /api/query/data first, falls back on 4xx |
+| Vanilla HTML/CSS/JS | Zero build dependencies, immediate deployment | 601 lines including styles, fully functional |
+| Business use case organization | Users think in business domains | 4 categories (Forecasting, Skills, Compliance, Lineage) |
+
 ### Technical Discoveries
 
 From v2.1 research:
@@ -139,8 +150,8 @@ None.
 ### Last Session
 
 **Date:** 2026-01-21
-**Activity:** Complete v2.1 Orbit Integration milestone
-**Outcome:** Phase 13 verified, all 14 requirements complete, milestone shipped
+**Activity:** Quick task 001 - User-facing landing page
+**Outcome:** Landing page deployed at root (/), 3 tasks completed in 23m 40s
 
 ### Next Session Priorities
 
@@ -176,8 +187,11 @@ When resuming this project:
 - **New:** Mermaid architecture diagram showing Docker stack topology and data flow
 - **New:** 30+ example queries organized by domain (supply/demand, occupation, skills, trends, compliance)
 - **New:** Step-by-step intent extension tutorial with certification query example
+- **New:** User-facing landing page at http://localhost:8000/ with query UI and example queries
+- **New:** Automatic fallback from data query to metadata query on client errors (4xx)
 
 ---
 *State updated: 2026-01-21*
-*Session count: 37*
+*Session count: 38*
 *v2.1 MILESTONE COMPLETE - SHIPPED 2026-01-21*
+*Quick task 001 COMPLETE - 2026-01-21*
