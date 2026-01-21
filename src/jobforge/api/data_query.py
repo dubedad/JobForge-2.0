@@ -5,6 +5,7 @@ structured outputs, then executes them against gold parquet files.
 """
 
 import anthropic
+import json
 from pydantic import BaseModel, Field
 
 from jobforge.api.schema_ddl import generate_schema_ddl
@@ -29,6 +30,8 @@ class DataQueryResult(BaseModel):
     results: list[dict]
     row_count: int
     error: str | None = None
+    source_tables: list[str] = Field(default_factory=list, description="Tables used in query")
+    source_attribution: str = Field(default="", description="Human-readable source attribution")
 
 
 class DataQueryService:
@@ -93,6 +96,34 @@ IMPORTANT:
                     )
         return self._conn
 
+    def _build_source_attribution(self, tables: list[str]) -> str:
+        """Build source attribution string from table names."""
+        if not tables:
+            return ""
+
+        # Load catalog to get domain info
+        catalog_path = self.config.catalog_tables_path()
+        attributions = []
+
+        for table in tables:
+            json_path = catalog_path / f"{table}.json"
+            if json_path.exists():
+                metadata = json.loads(json_path.read_text())
+                domain = metadata.get("domain", "WiQ")
+                # Map domain to friendly name
+                source_map = {
+                    "forecasting": "COPS Open Canada",
+                    "noc": "Statistics Canada NOC",
+                    "oasis": "OaSIS",
+                    "job_architecture": "TBS Job Architecture",
+                }
+                source = source_map.get(domain, domain)
+                attributions.append(f"{table} ({source})")
+            else:
+                attributions.append(table)
+
+        return "Source: " + ", ".join(attributions)
+
     def query(self, question: str) -> DataQueryResult:
         """Generate SQL from question and execute.
 
@@ -136,6 +167,8 @@ IMPORTANT:
                 explanation=sql_result.explanation,
                 results=results,
                 row_count=len(results),
+                source_tables=sql_result.tables_used,
+                source_attribution=self._build_source_attribution(sql_result.tables_used),
             )
 
         except anthropic.AuthenticationError as e:
