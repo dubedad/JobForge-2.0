@@ -1,6 +1,6 @@
 # Project State: JobForge 2.0
 
-**Last Updated:** 2026-01-20
+**Last Updated:** 2026-01-21
 
 ## Project Reference
 
@@ -12,15 +12,15 @@ See: .planning/PROJECT.md (updated 2026-01-20)
 ## Current Position
 
 **Milestone:** v2.1 Orbit Integration
-**Phase:** 12 of 13 (Schema and Domain Intelligence)
-**Plan:** 3 of 3 in current phase
-**Status:** Phase 12 COMPLETE
-**Last activity:** 2026-01-21 - Completed 12-03-PLAN.md (Source Attribution and Workforce Patterns)
+**Phase:** 13 of 13 (Deployment and Documentation)
+**Plan:** 1 of 3 in current phase
+**Status:** In progress
+**Last activity:** 2026-01-21 - Completed 13-01-PLAN.md (Docker Compose Infrastructure)
 
 ```
 v1.0 [####################] 100% SHIPPED 2026-01-19
 v2.0 [####################] 100% SHIPPED 2026-01-20
-v2.1 [#############       ]  67% IN PROGRESS
+v2.1 [###############     ]  75% IN PROGRESS
 ```
 
 ## Performance Metrics
@@ -36,7 +36,7 @@ v2.1 [#############       ]  67% IN PROGRESS
 - Timeline: 2 days (2026-01-19 -> 2026-01-20)
 
 **v2.1:**
-- Plans completed: 5
+- Plans completed: 6
 - Phases complete: 2 (Phases 11-12)
 - Requirements: 14
 - Tests added: 185 (15 + 156 + 7 + 7)
@@ -76,6 +76,16 @@ All v1.0 and v2.0 decisions archived in:
 | Entity recognition guidance | Improve text-to-SQL accuracy | NOC codes, occupation names, year hints |
 | Orbit DDL enhancement | Consistent schema context | Import generate_schema_ddl with fallback |
 
+**v2.1 Phase 13 Decisions:**
+| Decision | Rationale | Outcome |
+|----------|-----------|---------|
+| Python 3.11-slim base image | Multi-architecture support (ARM64 + AMD64) | Smaller image size, cross-platform compatibility |
+| Editable install | Development workflow in container | pip install -e . enables live updates |
+| Healthcheck-based startup | Reliable service ordering | Demo waits for API health before starting |
+| Volume mount for data | Updates without rebuild | ./data:/app/data mounted as volume |
+| Environment variable ports | Configuration without code changes | ${API_PORT:-8000} and ${DEMO_PORT:-8080} |
+| Cross-platform browser launch | Seamless user experience | OS detection in start.sh (darwin/msys/Linux) |
+
 ### Technical Discoveries
 
 From v2.1 research:
@@ -103,6 +113,13 @@ From Phase 12 execution:
 - Entity recognition hints improve NOC code and occupation name handling
 - Orbit retriever can import jobforge modules for enhanced DDL with graceful fallback
 
+From Phase 13 execution:
+- Docker Compose v2 does not require version field (deprecated)
+- Healthcheck polling in startup scripts ensures services ready before browser launch
+- Docker layer caching: Copy pyproject.toml first, then install, then copy code
+- Exec form CMD required for proper signal handling in containers
+- Volume mounts enable data updates without container rebuilds
+
 ### Pending Todos
 
 *0 todos pending*
@@ -116,13 +133,14 @@ None.
 ### Last Session
 
 **Date:** 2026-01-21
-**Activity:** Execute Phase 12 Plan 03 - Source Attribution and Workforce Patterns
-**Outcome:** 3 tasks completed, Phase 12 complete, query results with source attribution
+**Activity:** Execute Phase 13 Plan 01 - Docker Compose Infrastructure
+**Outcome:** 3 tasks completed, single-command deployment with health-based orchestration
 
 ### Next Session Priorities
 
-1. Execute Phase 13 (Deployment and Documentation)
-2. Complete v2.1 Orbit Integration milestone
+1. Execute Phase 13 Plan 02 (User Documentation)
+2. Execute Phase 13 Plan 03 (Orbit Integration Documentation)
+3. Complete v2.1 Orbit Integration milestone
 
 ### Context for Claude
 
@@ -144,8 +162,12 @@ When resuming this project:
 - **New:** Query results with source attribution (table provenance mapping to friendly source names)
 - **New:** System prompts with workforce domain patterns (demand/supply tables, entity recognition)
 - **New:** Orbit retriever using enhanced DDL from jobforge with graceful fallback
+- **New:** Docker Compose stack with API and demo services
+- **New:** Healthcheck-based service orchestration (demo waits for API health)
+- **New:** Cross-platform startup scripts (start.sh, start.bat) with browser auto-open
+- **New:** Environment-based configuration (.env.example with API key and port settings)
 
 ---
 *State updated: 2026-01-21*
-*Session count: 35*
-*v2.1 Phase 12 COMPLETE*
+*Session count: 36*
+*v2.1 Phase 13 Plan 01 COMPLETE*
