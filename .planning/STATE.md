@@ -13,14 +13,14 @@ See: .planning/PROJECT.md (updated 2026-01-20)
 
 **Milestone:** v2.1 Orbit Integration
 **Phase:** 12 of 13 (Schema and Domain Intelligence)
-**Plan:** 2 of 3 in current phase
-**Status:** Phase 12 IN PROGRESS
-**Last activity:** 2026-01-21 - Completed 12-02-PLAN.md (Enhanced DDL Generation)
+**Plan:** 3 of 3 in current phase
+**Status:** Phase 12 COMPLETE
+**Last activity:** 2026-01-21 - Completed 12-03-PLAN.md (Source Attribution and Workforce Patterns)
 
 ```
 v1.0 [####################] 100% SHIPPED 2026-01-19
 v2.0 [####################] 100% SHIPPED 2026-01-20
-v2.1 [########            ]  42% IN PROGRESS
+v2.1 [##########          ]  50% IN PROGRESS
 ```
 
 ## Performance Metrics
@@ -36,8 +36,8 @@ v2.1 [########            ]  42% IN PROGRESS
 - Timeline: 2 days (2026-01-19 -> 2026-01-20)
 
 **v2.1:**
-- Plans completed: 4
-- Phases complete: 1 (Phase 11)
+- Plans completed: 5
+- Phases complete: 2 (Phases 11-12)
 - Requirements: 14
 - Tests added: 185 (15 + 156 + 7 + 7)
 
@@ -71,6 +71,10 @@ All v1.0 and v2.0 decisions archived in:
 | Filter generic descriptions | Avoid cluttering DDL with non-semantic content | Skip "Column of type" placeholders |
 | Hard-coded intelligence hints | Simplicity for initial implementation | Demand/supply lists in DDL generator |
 | Quoted numeric columns | DuckDB syntax requirement | Year columns as "2023" not 2023 |
+| Source attribution from catalog | Provide provenance in query results | Domain metadata maps to friendly source names |
+| Workforce pattern hints | Guide Claude on gap/shortage queries | Explicit demand/supply table lists in prompts |
+| Entity recognition guidance | Improve text-to-SQL accuracy | NOC codes, occupation names, year hints |
+| Orbit DDL enhancement | Consistent schema context | Import generate_schema_ddl with fallback |
 
 ### Technical Discoveries
 
@@ -94,6 +98,10 @@ From Phase 12 execution:
 - DDL with COMMENT clauses improves Claude's text-to-SQL context
 - Numeric column names must be quoted in DuckDB DDL
 - RELATIONSHIPS section provides FK join hints to Claude
+- Source attribution maps domain to friendly names (forecasting→COPS, noc→Statistics Canada NOC)
+- Workforce intelligence patterns guide Claude on gap calculations (demand vs supply)
+- Entity recognition hints improve NOC code and occupation name handling
+- Orbit retriever can import jobforge modules for enhanced DDL with graceful fallback
 
 ### Pending Todos
 
@@ -108,14 +116,13 @@ None.
 ### Last Session
 
 **Date:** 2026-01-21
-**Activity:** Execute Phase 12 Plan 02 - Enhanced DDL Generation
-**Outcome:** 2 tasks completed, 7 tests added, DDL generator enhanced with COMMENT clauses
+**Activity:** Execute Phase 12 Plan 03 - Source Attribution and Workforce Patterns
+**Outcome:** 3 tasks completed, Phase 12 complete, query results with source attribution
 
 ### Next Session Priorities
 
-1. Execute Phase 12 Plan 03 (Source Attribution)
-2. Continue through Phase 13
-3. Complete v2.1 Orbit Integration
+1. Execute Phase 13 (Deployment and Documentation)
+2. Complete v2.1 Orbit Integration milestone
 
 ### Context for Claude
 
@@ -134,8 +141,11 @@ When resuming this project:
 - **New:** Catalog enrichment module in src/jobforge/catalog/enrich.py
 - **New:** 23 catalog tables enriched with workforce_dynamic and semantic descriptions
 - **New:** DDL generator with COMMENT clauses, RELATIONSHIPS section, and WORKFORCE INTELLIGENCE hints
+- **New:** Query results with source attribution (table provenance mapping to friendly source names)
+- **New:** System prompts with workforce domain patterns (demand/supply tables, entity recognition)
+- **New:** Orbit retriever using enhanced DDL from jobforge with graceful fallback
 
 ---
 *State updated: 2026-01-21*
-*Session count: 34*
-*v2.1 Phase 12 IN PROGRESS*
+*Session count: 35*
+*v2.1 Phase 12 COMPLETE*
