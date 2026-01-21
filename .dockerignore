@@ -1,0 +1,61 @@
+# Version control
+.git/
+.gitignore
+
+# Planning artifacts
+.planning/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.so
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.nox/
+tests/
+
+# Virtual environments
+.env
+.venv
+env/
+venv/
+ENV/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Build artifacts
+build/
+dist/
+*.egg-info/
+
+# Data files - exclude parquet, mount as volume
+data/staged/
+data/bronze/
+data/silver/
+data/gold/
+data/quarantine/
+
+# Large binaries not needed in container
+WIQ.pbix
+*.parquet
+
+# OS files
+.DS_Store
+Thumbs.db
+nul
+
+# Secrets
+*.env
+.env.*
