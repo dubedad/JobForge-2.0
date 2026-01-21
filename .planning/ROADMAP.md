@@ -31,7 +31,7 @@ See archived roadmap: `.planning/milestones/v2.0-ROADMAP.md`
 - Decimal phases (11.1, 11.2): Urgent insertions (marked with INSERTED)
 
 - [x] **Phase 11: Validation and Hardening** - Validate existing orbit/ components, harden error handling
-- [ ] **Phase 12: Schema and Domain Intelligence** - Enhance DDL for SQL accuracy, add workforce-specific patterns
+- [x] **Phase 12: Schema and Domain Intelligence** - Enhance DDL for SQL accuracy, add workforce-specific patterns
 - [ ] **Phase 13: Deployment and Documentation** - Production deployment config and integration guide
 
 ## Phase Details
@@ -64,9 +64,9 @@ Plans:
 **Plans**: 3 plans
 
 Plans:
-- [ ] 12-01-PLAN.md — Catalog enrichment with semantic descriptions and workforce_dynamic
-- [ ] 12-02-PLAN.md — Enhanced DDL generator with COMMENT statements and relationship hints
-- [ ] 12-03-PLAN.md — Query enhancement with workforce patterns and source attribution
+- [x] 12-01-PLAN.md — Catalog enrichment with semantic descriptions and workforce_dynamic
+- [x] 12-02-PLAN.md — Enhanced DDL generator with COMMENT statements and relationship hints
+- [x] 12-03-PLAN.md — Query enhancement with workforce patterns and source attribution
 
 ### Phase 13: Deployment and Documentation
 **Goal**: Orbit + JobForge stack deployable via Docker Compose with complete integration guide
@@ -92,7 +92,7 @@ Phases execute in numeric order: 11 -> 11.1 (if any) -> 12 -> 12.1 (if any) -> 1
 | Phase | Milestone | Plans Complete | Status | Completed |
 |-------|-----------|----------------|--------|-----------|
 | 11. Validation and Hardening | v2.1 | 2/2 | Complete | 2026-01-20 |
-| 12. Schema and Domain Intelligence | v2.1 | 0/3 | Planned | - |
+| 12. Schema and Domain Intelligence | v2.1 | 3/3 | Complete | 2026-01-21 |
 | 13. Deployment and Documentation | v2.1 | 0/2 | Planned | - |
 
 ---

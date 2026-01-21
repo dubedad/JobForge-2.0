@@ -16,14 +16,14 @@ Requirements for Orbit integration milestone. Each maps to roadmap phases.
 
 ### Schema Enhancement
 
-- [ ] **ORB-05**: Schema DDL includes column descriptions for improved SQL accuracy
-- [ ] **ORB-06**: Relationship hints in DDL for multi-table joins
+- [x] **ORB-05**: Schema DDL includes column descriptions for improved SQL accuracy
+- [x] **ORB-06**: Relationship hints in DDL for multi-table joins
 
 ### Domain Intelligence
 
-- [ ] **ORB-07**: Domain-specific intent patterns for workforce intelligence queries
-- [ ] **ORB-08**: Entity recognition for NOC codes, occupational groups, job titles
-- [ ] **ORB-09**: Provenance-aware responses include source attribution
+- [x] **ORB-07**: Domain-specific intent patterns for workforce intelligence queries
+- [x] **ORB-08**: Entity recognition for NOC codes, occupational groups, job titles
+- [x] **ORB-09**: Provenance-aware responses include source attribution
 
 ### Deployment
 
@@ -73,11 +73,11 @@ Which phases cover which requirements. Updated during roadmap creation.
 | ORB-02 | Phase 11 | Complete |
 | ORB-03 | Phase 11 | Complete |
 | ORB-04 | Phase 11 | Complete |
-| ORB-05 | Phase 12 | Pending |
-| ORB-06 | Phase 12 | Pending |
-| ORB-07 | Phase 12 | Pending |
-| ORB-08 | Phase 12 | Pending |
-| ORB-09 | Phase 12 | Pending |
+| ORB-05 | Phase 12 | Complete |
+| ORB-06 | Phase 12 | Complete |
+| ORB-07 | Phase 12 | Complete |
+| ORB-08 | Phase 12 | Complete |
+| ORB-09 | Phase 12 | Complete |
 | ORB-10 | Phase 13 | Pending |
 | ORB-11 | Phase 13 | Pending |
 | ORB-12 | Phase 11 | Complete |
@@ -91,4 +91,4 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 ---
 *Requirements defined: 2026-01-20*
-*Last updated: 2026-01-20 after Phase 11 completion*
+*Last updated: 2026-01-21 after Phase 12 completion*

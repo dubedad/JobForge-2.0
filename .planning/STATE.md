@@ -7,7 +7,7 @@
 See: .planning/PROJECT.md (updated 2026-01-20)
 
 **Core value:** Auditable provenance from source to output
-**Current focus:** v2.1 Orbit Integration - Phase 11
+**Current focus:** v2.1 Orbit Integration - Phase 13
 
 ## Current Position
 
@@ -20,7 +20,7 @@ See: .planning/PROJECT.md (updated 2026-01-20)
 ```
 v1.0 [####################] 100% SHIPPED 2026-01-19
 v2.0 [####################] 100% SHIPPED 2026-01-20
-v2.1 [##########          ]  50% IN PROGRESS
+v2.1 [#############       ]  67% IN PROGRESS
 ```
 
 ## Performance Metrics
