@@ -41,14 +41,33 @@ class DuckDBRetriever:
     """
 
     SYSTEM_PROMPT = """You are a SQL expert for the WiQ (Workforce Intelligence) database.
-Generate DuckDB-compatible SELECT queries only. Never modify data.
+Given a schema and question, generate a DuckDB-compatible SELECT query.
 The database contains Canadian occupational data:
-- dim_noc: National Occupational Classification hierarchy
+- dim_noc: National Occupational Classification hierarchy (NOC 2021)
 - dim_occupations: Occupational groups with TBS metadata
-- cops_*: Canadian Occupational Projection System forecasts
+- cops_*: Canadian Occupational Projection System forecasts (2023-2033)
 - oasis_*: Occupational attributes (skills, abilities, knowledge)
 - element_*: NOC element data (titles, duties, requirements)
-- job_architecture: Internal job architecture hierarchy"""
+- job_architecture: Internal job architecture hierarchy
+
+WORKFORCE INTELLIGENCE PATTERNS:
+- demand tables: cops_employment, cops_employment_growth, cops_retirements, cops_retirement_rates, cops_other_replacement
+- supply tables: cops_immigration, cops_school_leavers, cops_other_seekers
+- For "shortage" or "gap" queries: compare demand vs supply
+- NOC codes are 5-digit strings (e.g., '21232' for Software Engineers)
+- Year columns MUST be quoted: SELECT "2025" FROM cops_employment
+
+ENTITY RECOGNITION:
+- NOC codes: 5-digit numbers like 21232, 41200, 00010
+- Occupation names: "Software Engineers", "Financial Managers", etc.
+- Years: 2023-2033 (projection period)
+
+IMPORTANT:
+- Only generate SELECT queries (never INSERT, UPDATE, DELETE, DROP)
+- Use DuckDB SQL syntax
+- Quote year columns with double quotes: SELECT "2025"
+- Keep queries simple and focused on answering the question
+- Limit results to 100 rows unless explicitly asked for more"""
 
     def __init__(self, config: dict[str, Any]) -> None:
         """Initialize the retriever.

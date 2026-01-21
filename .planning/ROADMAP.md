@@ -78,11 +78,11 @@ Plans:
   3. Cross-origin requests from Orbit frontend to JobForge API succeed (CORS configured)
   4. Integration guide explains architecture with diagram and step-by-step setup
   5. Intent configuration reference enables users to extend query patterns
-**Plans**: TBD
+**Plans**: 2 plans
 
 Plans:
-- [ ] 13-01: TBD
-- [ ] 13-02: TBD
+- [ ] 13-01-PLAN.md — Docker Compose infrastructure with healthchecks and startup scripts
+- [ ] 13-02-PLAN.md — Integration documentation with architecture diagram and intent tutorial
 
 ## Progress
 
@@ -93,7 +93,7 @@ Phases execute in numeric order: 11 -> 11.1 (if any) -> 12 -> 12.1 (if any) -> 1
 |-------|-----------|----------------|--------|-----------|
 | 11. Validation and Hardening | v2.1 | 2/2 | Complete | 2026-01-20 |
 | 12. Schema and Domain Intelligence | v2.1 | 0/3 | Planned | - |
-| 13. Deployment and Documentation | v2.1 | 0/TBD | Not started | - |
+| 13. Deployment and Documentation | v2.1 | 0/2 | Planned | - |
 
 ---
 *Roadmap created: 2026-01-20*
