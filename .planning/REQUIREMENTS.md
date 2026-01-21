@@ -9,10 +9,10 @@ Requirements for Orbit integration milestone. Each maps to roadmap phases.
 
 ### Core Integration
 
-- [ ] **ORB-01**: HTTP adapter configuration routes Orbit queries to JobForge API endpoints
-- [ ] **ORB-02**: Intent configuration classifies queries (data, metadata, compliance, lineage)
-- [ ] **ORB-03**: DuckDBRetriever validated with all 24 gold tables
-- [ ] **ORB-04**: Error responses are user-friendly with actionable guidance
+- [x] **ORB-01**: HTTP adapter configuration routes Orbit queries to JobForge API endpoints
+- [x] **ORB-02**: Intent configuration classifies queries (data, metadata, compliance, lineage)
+- [x] **ORB-03**: DuckDBRetriever validated with all 24 gold tables
+- [x] **ORB-04**: Error responses are user-friendly with actionable guidance
 
 ### Schema Enhancement
 
@@ -27,14 +27,14 @@ Requirements for Orbit integration milestone. Each maps to roadmap phases.
 
 ### Deployment
 
-- [ ] **ORB-10**: Docker Compose configuration for Orbit + JobForge stack
-- [ ] **ORB-11**: Environment variables for API URLs, ports, credentials
-- [ ] **ORB-12**: CORS middleware configured for cross-origin Orbit requests
+- [x] **ORB-10**: Docker Compose configuration for Orbit + JobForge stack
+- [x] **ORB-11**: Environment variables for API URLs, ports, credentials
+- [x] **ORB-12**: CORS middleware configured for cross-origin Orbit requests
 
 ### Documentation
 
-- [ ] **ORB-13**: Orbit integration guide with architecture diagram
-- [ ] **ORB-14**: Intent configuration reference for extending patterns
+- [x] **ORB-13**: Orbit integration guide with architecture diagram
+- [x] **ORB-14**: Intent configuration reference for extending patterns
 
 ## Future Requirements (v3.0+)
 
@@ -78,11 +78,11 @@ Which phases cover which requirements. Updated during roadmap creation.
 | ORB-07 | Phase 12 | Complete |
 | ORB-08 | Phase 12 | Complete |
 | ORB-09 | Phase 12 | Complete |
-| ORB-10 | Phase 13 | Pending |
-| ORB-11 | Phase 13 | Pending |
+| ORB-10 | Phase 13 | Complete |
+| ORB-11 | Phase 13 | Complete |
 | ORB-12 | Phase 11 | Complete |
-| ORB-13 | Phase 13 | Pending |
-| ORB-14 | Phase 13 | Pending |
+| ORB-13 | Phase 13 | Complete |
+| ORB-14 | Phase 13 | Complete |
 
 **Coverage:**
 - v2.1 requirements: 14 total
@@ -91,4 +91,4 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 ---
 *Requirements defined: 2026-01-20*
-*Last updated: 2026-01-21 after Phase 12 completion*
+*Last updated: 2026-01-21 after Phase 13 completion - v2.1 COMPLETE*

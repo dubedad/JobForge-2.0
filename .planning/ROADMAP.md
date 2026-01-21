@@ -4,7 +4,7 @@
 
 - v1.0 MVP - Phases 1-5 (shipped 2026-01-19)
 - v2.0 Self-Imputing WiQ - Phases 6-10 (shipped 2026-01-20)
-- **v2.1 Orbit Integration** - Phases 11-13 (in progress)
+- v2.1 Orbit Integration - Phases 11-13 (shipped 2026-01-21)
 
 ## Phases
 
@@ -22,7 +22,7 @@ See archived roadmap: `.planning/milestones/v2.0-ROADMAP.md`
 
 </details>
 
-### v2.1 Orbit Integration (In Progress)
+### v2.1 Orbit Integration (SHIPPED 2026-01-21)
 
 **Milestone Goal:** Deploy WiQ model to Orbit via DuckDBRetriever adapter with intent configuration and natural language query capabilities.
 
@@ -32,7 +32,7 @@ See archived roadmap: `.planning/milestones/v2.0-ROADMAP.md`
 
 - [x] **Phase 11: Validation and Hardening** - Validate existing orbit/ components, harden error handling
 - [x] **Phase 12: Schema and Domain Intelligence** - Enhance DDL for SQL accuracy, add workforce-specific patterns
-- [ ] **Phase 13: Deployment and Documentation** - Production deployment config and integration guide
+- [x] **Phase 13: Deployment and Documentation** - Production deployment config and integration guide
 
 ## Phase Details
 
@@ -81,8 +81,8 @@ Plans:
 **Plans**: 2 plans
 
 Plans:
-- [ ] 13-01-PLAN.md — Docker Compose infrastructure with healthchecks and startup scripts
-- [ ] 13-02-PLAN.md — Integration documentation with architecture diagram and intent tutorial
+- [x] 13-01-PLAN.md — Docker Compose infrastructure with healthchecks and startup scripts
+- [x] 13-02-PLAN.md — Integration documentation with architecture diagram and intent tutorial
 
 ## Progress
 
@@ -93,8 +93,8 @@ Phases execute in numeric order: 11 -> 11.1 (if any) -> 12 -> 12.1 (if any) -> 1
 |-------|-----------|----------------|--------|-----------|
 | 11. Validation and Hardening | v2.1 | 2/2 | Complete | 2026-01-20 |
 | 12. Schema and Domain Intelligence | v2.1 | 3/3 | Complete | 2026-01-21 |
-| 13. Deployment and Documentation | v2.1 | 0/2 | Planned | - |
+| 13. Deployment and Documentation | v2.1 | 2/2 | Complete | 2026-01-21 |
 
 ---
 *Roadmap created: 2026-01-20*
-*Milestone: v2.1 Orbit Integration*
+*Milestone: v2.1 Orbit Integration SHIPPED 2026-01-21*

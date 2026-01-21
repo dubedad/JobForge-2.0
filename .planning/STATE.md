@@ -7,20 +7,20 @@
 See: .planning/PROJECT.md (updated 2026-01-20)
 
 **Core value:** Auditable provenance from source to output
-**Current focus:** v2.1 Orbit Integration - Phase 13
+**Current focus:** v2.1 Orbit Integration SHIPPED
 
 ## Current Position
 
 **Milestone:** v2.1 Orbit Integration
-**Phase:** 13 of 13 (Deployment and Documentation)
-**Plan:** 2 of 3 in current phase
-**Status:** In progress
-**Last activity:** 2026-01-21 - Completed 13-02-PLAN.md (User Documentation)
+**Phase:** 13 of 13 (Deployment and Documentation) COMPLETE
+**Plan:** 2 of 2 in current phase
+**Status:** MILESTONE COMPLETE
+**Last activity:** 2026-01-21 - Completed Phase 13 and v2.1 milestone
 
 ```
 v1.0 [####################] 100% SHIPPED 2026-01-19
 v2.0 [####################] 100% SHIPPED 2026-01-20
-v2.1 [##################  ]  83% IN PROGRESS
+v2.1 [####################] 100% SHIPPED 2026-01-21
 ```
 
 ## Performance Metrics
@@ -37,10 +37,11 @@ v2.1 [##################  ]  83% IN PROGRESS
 
 **v2.1:**
 - Plans completed: 7
-- Phases complete: 2 (Phases 11-12)
-- Requirements: 14
+- Phases complete: 3 (Phases 11-13)
+- Requirements: 14 (all complete)
 - Tests added: 185 (15 + 156 + 7 + 7)
 - Documentation pages: 3 (1,493 lines)
+- Timeline: 2 days (2026-01-20 -> 2026-01-21)
 
 *Updated after each milestone completion*
 
@@ -138,21 +139,21 @@ None.
 ### Last Session
 
 **Date:** 2026-01-21
-**Activity:** Execute Phase 13 Plan 02 - User Documentation
-**Outcome:** 3 docs created (architecture, integration guide, intent extension tutorial) - 1,493 lines
+**Activity:** Complete v2.1 Orbit Integration milestone
+**Outcome:** Phase 13 verified, all 14 requirements complete, milestone shipped
 
 ### Next Session Priorities
 
-1. Execute Phase 13 Plan 03 (Orbit Integration Documentation)
-2. Complete v2.1 Orbit Integration milestone
-3. Archive v2.1 roadmap and update PROJECT.md
+1. Archive v2.1 roadmap to `.planning/milestones/v2.1-ROADMAP.md`
+2. Update PROJECT.md with v2.1 outcomes
+3. Plan v3.0 if desired (RAG milestone)
 
 ### Context for Claude
 
 When resuming this project:
 - **v1.0 SHIPPED** - 10 requirements, 13 plans (Phases 1-5)
 - **v2.0 SHIPPED** - 17 requirements, 11 plans (Phases 6-10)
-- **v2.1 IN PROGRESS** - 14 requirements, 3 phases (Phases 11-13)
+- **v2.1 SHIPPED** - 14 requirements, 7 plans (Phases 11-13)
 - Archives in `.planning/milestones/`
 - Query API: `jobforge api` starts server on localhost:8000
 - Demo web UI: `jobforge demo` starts wizard at localhost:8080
@@ -179,4 +180,4 @@ When resuming this project:
 ---
 *State updated: 2026-01-21*
 *Session count: 37*
-*v2.1 Phase 13 Plan 02 COMPLETE*
+*v2.1 MILESTONE COMPLETE - SHIPPED 2026-01-21*
