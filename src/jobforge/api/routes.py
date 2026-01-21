@@ -5,9 +5,11 @@ plus compliance log retrieval.
 """
 
 import os
+from pathlib import Path
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import FileResponse
 from pydantic import BaseModel
 
 from jobforge.api.data_query import DataQueryResult, DataQueryService
@@ -66,6 +68,15 @@ def create_api_app(config: PipelineConfig | None = None) -> FastAPI:
     config = config or PipelineConfig()
     data_service = DataQueryService(config)
     metadata_service = MetadataQueryService(config)
+
+    # Get the static directory path relative to this file
+    static_dir = Path(__file__).parent / "static"
+
+    # Serve landing page at root
+    @api_app.get("/", response_class=FileResponse)
+    async def landing_page():
+        """Serve the landing page HTML."""
+        return FileResponse(static_dir / "index.html")
 
     @api_app.post("/api/query/data", response_model=DataQueryResult)
     async def query_data(request: QueryRequest) -> DataQueryResult:
