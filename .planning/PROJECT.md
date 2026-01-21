@@ -8,19 +8,15 @@ A workforce intelligence platform that deploys a governed, self-imputing semanti
 
 Auditable provenance from source to output — every artifact traces back to authoritative sources. When asked "where did this come from?", JobForge can answer with the complete pipeline path, including DADM directive chapter and verse.
 
-## Current Milestone: v2.1 Orbit Integration
+## Current Milestone: v3.0 (Planning)
 
-**Goal:** Deploy WiQ model to Orbit via DuckDBRetriever adapter with intent configuration and natural language query capabilities.
+**Goal:** TBD - Candidate features include RAG/vector search, Job Description Builder UI, or enhanced integrations.
 
-**Target features:**
-- DuckDBRetriever adapter connecting Orbit to gold Parquet layer
-- Intent configuration for workforce intelligence queries
-- Deployment pipeline for Orbit platform
-- Natural language query interface via Orbit
+**Planning status:** Not started. See Future Requirements below for candidates.
 
-## Current State (v2.0 Shipped 2026-01-20)
+## Current State (v2.1 Shipped 2026-01-21)
 
-**Milestone delivered:** Self-imputing WiQ model with multi-source external data integration and live MCP demo.
+**Milestone delivered:** Orbit integration with Docker Compose deployment, enhanced text-to-SQL, workforce domain intelligence, and comprehensive documentation.
 
 **Capabilities:**
 - Medallion pipeline producing 24 gold tables with star schema
@@ -32,6 +28,13 @@ Auditable provenance from source to output — every artifact traces back to aut
 - Live demo via MCP with Power BI real-time model building
 - Compliance traceability logs (DADM, DAMA DMBOK, Classification)
 - Conversational query API (text-to-SQL + metadata queries)
+- **NEW (v2.1):** RFC 9457 error handling with actionable guidance
+- **NEW (v2.1):** CORS middleware for cross-origin Orbit access
+- **NEW (v2.1):** Enhanced DDL with semantic COMMENT clauses and relationship hints
+- **NEW (v2.1):** Workforce domain intelligence (demand/supply patterns, entity recognition)
+- **NEW (v2.1):** Source attribution in query results (table provenance mapping)
+- **NEW (v2.1):** Docker Compose one-command deployment with healthchecks
+- **NEW (v2.1):** Integration documentation with architecture diagram and tutorials
 
 ## Requirements
 
@@ -68,7 +71,23 @@ Auditable provenance from source to output — every artifact traces back to aut
 - [x] **GOV-05**: Conversational interface for data queries (text-to-SQL) — v2.0
 - [x] **GOV-06**: Conversational interface for metadata queries — v2.0
 
-### Active (v3.0 Scope)
+**v2.1 (Shipped 2026-01-21):**
+- [x] **ORB-01**: HTTP adapter configuration routes Orbit queries to JobForge API endpoints — v2.1
+- [x] **ORB-02**: Intent configuration classifies queries (data, metadata, compliance, lineage) — v2.1
+- [x] **ORB-03**: DuckDBRetriever validated with all 24 gold tables — v2.1
+- [x] **ORB-04**: Error responses are user-friendly with actionable guidance (RFC 9457) — v2.1
+- [x] **ORB-05**: Schema DDL includes column descriptions for improved SQL accuracy — v2.1
+- [x] **ORB-06**: Relationship hints in DDL for multi-table joins — v2.1
+- [x] **ORB-07**: Domain-specific intent patterns for workforce intelligence queries — v2.1
+- [x] **ORB-08**: Entity recognition for NOC codes, occupational groups, job titles — v2.1
+- [x] **ORB-09**: Provenance-aware responses include source attribution — v2.1
+- [x] **ORB-10**: Docker Compose configuration for Orbit + JobForge stack — v2.1
+- [x] **ORB-11**: Environment variables for API URLs, ports, credentials — v2.1
+- [x] **ORB-12**: CORS middleware configured for cross-origin Orbit requests — v2.1
+- [x] **ORB-13**: Orbit integration guide with architecture diagram — v2.1
+- [x] **ORB-14**: Intent configuration reference for extending patterns — v2.1
+
+### Future (v3.0+ Scope)
 
 **Semantic Search & RAG:**
 - [ ] **RAG-01**: Vector database for semantic similarity search
@@ -109,12 +128,13 @@ Auditable provenance from source to output — every artifact traces back to aut
 
 ## Context
 
-**Current State (v2.0 shipped 2026-01-20):**
-- 19,570 lines of Python
+**Current State (v2.1 shipped 2026-01-21):**
 - 24 gold tables in parquet format
 - 22 relationships in WiQ semantic model
-- 425 tests passing
-- Stack: Python 3.11, Polars, DuckDB, Pydantic 2, NetworkX, Rich, rapidfuzz, httpx, tenacity, beautifulsoup4, openai, anthropic, fastapi, uvicorn, starlette, sse-starlette
+- 610 tests passing
+- Docker Compose deployment ready
+- 3 documentation pages (1,493 lines)
+- Stack: Python 3.11, Polars, DuckDB, Pydantic 2, NetworkX, Rich, rapidfuzz, httpx, tenacity, beautifulsoup4, openai, anthropic, fastapi, uvicorn, starlette, sse-starlette, Docker
 
 **Government of Canada Context:**
 HR job data across federal government is unstructured, non-standardized, fragmented, siloed, and unreliable. This makes evidence-based workforce planning impossible. Meanwhile, mandate letters require AI-driven operational efficiencies and international workforce planning interoperability — while demonstrating DADM compliance.
@@ -150,6 +170,12 @@ HR job data across federal government is unstructured, non-standardized, fragmen
 | OpenAI Structured Outputs | Guaranteed schema compliance for LLM | ✓ Good — reliable imputation |
 | SSE for demo streaming | Real-time narration without WebSockets | ✓ Good — simple, reliable |
 | RTM for compliance logs | Industry-standard traceability format | ✓ Good — auditable compliance |
+| RFC 9457 error format | Standard, interoperable, tool support | ✓ Good — ProblemDetail model |
+| Environment-based CORS | Flexible deployment without code changes | ✓ Good — CORS_ORIGINS env var |
+| DDL comments from catalog | Single source of truth for metadata | ✓ Good — semantic COMMENT clauses |
+| Workforce dynamic taxonomy | Preserve bronze folder semantics | ✓ Good — demand/supply classification |
+| Docker healthcheck ordering | Reliable service startup | ✓ Good — demo waits for API |
+| Mermaid architecture diagrams | Renders in GitHub/VS Code | ✓ Good — visual documentation |
 
 ---
-*Last updated: 2026-01-20 after v2.1 milestone initialization*
+*Last updated: 2026-01-21 after v2.1 milestone completion*
