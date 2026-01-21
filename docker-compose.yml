@@ -1,0 +1,38 @@
+# JobForge Docker Compose Stack
+# Single-command deployment with automatic service orchestration
+
+services:
+  api:
+    build: .
+    container_name: jobforge-api
+    ports:
+      - "${API_PORT:-8000}:8000"
+    env_file: .env
+    environment:
+      - CORS_ORIGINS=http://localhost:${DEMO_PORT:-8080}
+    volumes:
+      - ./data:/app/data
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/api/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    networks:
+      - jobforge-network
+
+  demo:
+    build: .
+    container_name: jobforge-demo
+    command: ["jobforge", "demo", "--host", "0.0.0.0", "--port", "8080"]
+    ports:
+      - "${DEMO_PORT:-8080}:8080"
+    depends_on:
+      api:
+        condition: service_healthy
+    networks:
+      - jobforge-network
+
+networks:
+  jobforge-network:
+    driver: bridge
