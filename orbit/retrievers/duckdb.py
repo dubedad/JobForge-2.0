@@ -14,12 +14,19 @@ Configuration (adapters.yaml):
         anthropic_model: "claude-sonnet-4-20250514"
 """
 
+import sys
 from pathlib import Path
 from typing import Any
 
 import anthropic
 import duckdb
 from pydantic import BaseModel, Field
+
+# Add project root to path for jobforge imports
+sys.path.insert(0, str(Path(__file__).parent.parent.parent))
+
+from jobforge.api.schema_ddl import generate_schema_ddl
+from jobforge.pipeline.config import PipelineConfig
 
 
 class SQLQuery(BaseModel):
@@ -84,31 +91,35 @@ IMPORTANT:
         self._client: anthropic.Anthropic | None = None
 
     def initialize(self) -> None:
-        """Initialize DuckDB connection and register parquet tables as views.
-
-        Creates an in-memory DuckDB connection and registers each parquet file
-        in the parquet_path directory as a view. Also generates schema DDL for
-        use in the SQL generation prompt.
-        """
+        """Initialize DuckDB connection and generate enhanced schema DDL."""
         self._conn = duckdb.connect(":memory:")
         self._client = anthropic.Anthropic()
 
-        ddl_parts = []
+        # Register parquet files as views
         for parquet in sorted(self.parquet_path.glob("*.parquet")):
             table_name = parquet.stem
-            # Use absolute path for parquet file
             abs_path = str(parquet.resolve()).replace("\\", "/")
             self._conn.execute(
                 f"CREATE VIEW {table_name} AS SELECT * FROM '{abs_path}'"
             )
-            # Get schema for DDL
+
+        # Use enhanced DDL generator (reads enriched catalog)
+        try:
+            config = PipelineConfig()
+            self._schema_ddl = generate_schema_ddl(config)
+        except Exception:
+            # Fallback to basic DDL if jobforge not available
+            self._schema_ddl = self._generate_basic_ddl()
+
+    def _generate_basic_ddl(self) -> str:
+        """Generate basic DDL as fallback."""
+        ddl_parts = []
+        for parquet in sorted(self.parquet_path.glob("*.parquet")):
+            table_name = parquet.stem
             cols = self._conn.execute(f"DESCRIBE {table_name}").fetchall()
             col_defs = [f"  {col[0]} {col[1]}" for col in cols]
-            ddl_parts.append(
-                f"CREATE TABLE {table_name} (\n" + ",\n".join(col_defs) + "\n);"
-            )
-
-        self._schema_ddl = "\n\n".join(ddl_parts)
+            ddl_parts.append(f"CREATE TABLE {table_name} (\n" + ",\n".join(col_defs) + "\n);")
+        return "\n\n".join(ddl_parts)
 
     def retrieve(self, query: str, collection_name: str = "") -> list[dict]:
         """Generate SQL from query and execute.
