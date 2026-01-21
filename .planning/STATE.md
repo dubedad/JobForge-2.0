@@ -13,14 +13,14 @@ See: .planning/PROJECT.md (updated 2026-01-20)
 
 **Milestone:** v2.1 Orbit Integration
 **Phase:** 13 of 13 (Deployment and Documentation)
-**Plan:** 1 of 3 in current phase
+**Plan:** 2 of 3 in current phase
 **Status:** In progress
-**Last activity:** 2026-01-21 - Completed 13-01-PLAN.md (Docker Compose Infrastructure)
+**Last activity:** 2026-01-21 - Completed 13-02-PLAN.md (User Documentation)
 
 ```
 v1.0 [####################] 100% SHIPPED 2026-01-19
 v2.0 [####################] 100% SHIPPED 2026-01-20
-v2.1 [###############     ]  75% IN PROGRESS
+v2.1 [##################  ]  83% IN PROGRESS
 ```
 
 ## Performance Metrics
@@ -36,10 +36,11 @@ v2.1 [###############     ]  75% IN PROGRESS
 - Timeline: 2 days (2026-01-19 -> 2026-01-20)
 
 **v2.1:**
-- Plans completed: 6
+- Plans completed: 7
 - Phases complete: 2 (Phases 11-12)
 - Requirements: 14
 - Tests added: 185 (15 + 156 + 7 + 7)
+- Documentation pages: 3 (1,493 lines)
 
 *Updated after each milestone completion*
 
@@ -85,6 +86,10 @@ All v1.0 and v2.0 decisions archived in:
 | Volume mount for data | Updates without rebuild | ./data:/app/data mounted as volume |
 | Environment variable ports | Configuration without code changes | ${API_PORT:-8000} and ${DEMO_PORT:-8080} |
 | Cross-platform browser launch | Seamless user experience | OS detection in start.sh (darwin/msys/Linux) |
+| Mermaid graph TB syntax | Renders in GitHub/VS Code/most viewers | Architecture diagram shows complete topology |
+| Domain-organized examples | Users find relevant queries quickly | 5 categories with 30+ curl examples |
+| Step-by-step tutorial format | Scenario-based learning more effective | Certification query walkthrough |
+| Curl examples throughout | Portable, no dependencies, copy-paste ready | Immediate API testing without clients |
 
 ### Technical Discoveries
 
@@ -133,14 +138,14 @@ None.
 ### Last Session
 
 **Date:** 2026-01-21
-**Activity:** Execute Phase 13 Plan 01 - Docker Compose Infrastructure
-**Outcome:** 3 tasks completed, single-command deployment with health-based orchestration
+**Activity:** Execute Phase 13 Plan 02 - User Documentation
+**Outcome:** 3 docs created (architecture, integration guide, intent extension tutorial) - 1,493 lines
 
 ### Next Session Priorities
 
-1. Execute Phase 13 Plan 02 (User Documentation)
-2. Execute Phase 13 Plan 03 (Orbit Integration Documentation)
-3. Complete v2.1 Orbit Integration milestone
+1. Execute Phase 13 Plan 03 (Orbit Integration Documentation)
+2. Complete v2.1 Orbit Integration milestone
+3. Archive v2.1 roadmap and update PROJECT.md
 
 ### Context for Claude
 
@@ -166,8 +171,12 @@ When resuming this project:
 - **New:** Healthcheck-based service orchestration (demo waits for API health)
 - **New:** Cross-platform startup scripts (start.sh, start.bat) with browser auto-open
 - **New:** Environment-based configuration (.env.example with API key and port settings)
+- **New:** Complete documentation suite (docs/architecture.md, docs/integration-guide.md, docs/extending-intents.md)
+- **New:** Mermaid architecture diagram showing Docker stack topology and data flow
+- **New:** 30+ example queries organized by domain (supply/demand, occupation, skills, trends, compliance)
+- **New:** Step-by-step intent extension tutorial with certification query example
 
 ---
 *State updated: 2026-01-21*
-*Session count: 36*
-*v2.1 Phase 13 Plan 01 COMPLETE*
+*Session count: 37*
+*v2.1 Phase 13 Plan 02 COMPLETE*
