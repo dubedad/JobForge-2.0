@@ -1,6 +1,6 @@
 # Project State: JobForge 2.0
 
-**Last Updated:** 2026-01-21
+**Last Updated:** 2026-02-05
 
 ## Project Reference
 
@@ -12,16 +12,16 @@ See: .planning/PROJECT.md (updated 2026-01-20)
 ## Current Position
 
 **Milestone:** v3.0 Data Layer Expansion
-**Phase:** Not started (defining requirements)
-**Plan:** —
-**Status:** Defining requirements
-**Last activity:** 2026-02-04 - Milestone v3.0 initialized
+**Phase:** 14-og-core (OG Core Tables)
+**Plan:** 01 of 3 complete
+**Status:** In progress
+**Last activity:** 2026-02-05 - Completed 14-01-PLAN.md (TBS OG Subgroups and Definitions)
 
 ```
 v1.0 [####################] 100% SHIPPED 2026-01-19
 v2.0 [####################] 100% SHIPPED 2026-01-20
 v2.1 [####################] 100% SHIPPED 2026-01-21
-v3.0 [                    ]   0% DEFINING REQUIREMENTS
+v3.0 [#                   ]   5% IN PROGRESS
 ```
 
 ## Performance Metrics
@@ -104,6 +104,14 @@ All v1.0 and v2.0 decisions archived in:
 | Vanilla HTML/CSS/JS | Zero build dependencies, immediate deployment | 601 lines including styles, fully functional |
 | Business use case organization | Users think in business domains | 4 categories (Forecasting, Skills, Compliance, Lineage) |
 
+**v3.0 Phase 14-01 Decisions:**
+| Decision | Rationale | Outcome |
+|----------|-----------|---------|
+| Transform existing data | TBS already scraped; re-scraping would take hours | Instant generation from prior JSON files |
+| Regex pattern for subgroup codes | Consistent "Name(OG-CODE)" format | Clean extraction of AI-NOP, AO-CAI patterns |
+| 130 subgroups (not 200+) | Actual unique subgroups fewer than estimate | Correct count from 217 table rows |
+| 10k char cap on definitions | Prevent oversized JSON | Consistent file sizes |
+
 ### Technical Discoveries
 
 From v2.1 research:
@@ -150,15 +158,15 @@ None.
 
 ### Last Session
 
-**Date:** 2026-02-04
-**Activity:** Session resumed, proceeding to new milestone
-**Outcome:** Context restored from v2.1 completion state
+**Date:** 2026-02-05
+**Activity:** Executed 14-01-PLAN.md (TBS OG Subgroups and Definitions)
+**Outcome:** Extended TBS scraper with OGSubgroup/OGDefinition models, generated 130 subgroups and 213 definitions
 
 ### Next Session Priorities
 
-1. Start v3.0 milestone — data layer expansion
-2. Add Occupational Group Suite tables (from JD Builder Lite context)
-3. Add DND Careers tables (from user's POC artifacts)
+1. Continue v3.0 Phase 14 — execute 14-02-PLAN.md (OG Gold Tables)
+2. Create dim_og and dim_og_subgroup gold tables
+3. Add NOC-OG concordance bridge table
 
 ### Context for Claude
 
@@ -192,6 +200,6 @@ When resuming this project:
 - **New:** Automatic fallback from data query to metadata query on client errors (4xx)
 
 ---
-*State updated: 2026-02-04*
-*Session count: 39*
-*v3.0 MILESTONE INITIALIZED - 2026-02-04*
+*State updated: 2026-02-05*
+*Session count: 40*
+*v3.0 Phase 14-01 COMPLETE - 2026-02-05*
