@@ -70,7 +70,14 @@ See archived roadmap: `.planning/milestones/v2.1-ROADMAP.md`
   2. User can trace any data relationship in WiQ to the TBS directive clause it satisfies
   3. User can run automated DAMA DMBOK audit and see phase-level compliance scores
   4. User can query which policies govern a specific table or relationship
-**Plans:** TBD (estimated 4-6 plans)
+**Plans:** 5 plans
+
+Plans:
+- [ ] 17-01-PLAN.md - Policy models and registry (TDD)
+- [ ] 17-02-PLAN.md - Compliance scoring and DAMA audit (TDD)
+- [ ] 17-03-PLAN.md - Policy mappings data layer
+- [ ] 17-04-PLAN.md - Report generation (radar charts, PDF)
+- [ ] 17-05-PLAN.md - Governance CLI and API with REPL
 
 ### Phase 18: Data Quality Dashboard
 **Goal**: Users can assess and monitor data quality across all gold tables using GC DQMF 9-dimension framework
@@ -151,7 +158,7 @@ Phases execute in numeric order: 17 -> 17.1 (if any) -> 18 -> 18.1 (if any) -> 1
 
 | Phase | Milestone | Plans Complete | Status | Completed |
 |-------|-----------|----------------|--------|-----------|
-| 17. Governance Compliance | v4.0 | 0/TBD | Planned | - |
+| 17. Governance Compliance | v4.0 | 0/5 | Ready | - |
 | 18. Data Quality Dashboard | v4.0 | 0/TBD | Planned | - |
 | 19. Business Metadata | v4.0 | 0/TBD | Planned | - |
 | 20. O*NET Integration | v4.0 | 0/TBD | Planned | - |
@@ -164,3 +171,4 @@ Phases execute in numeric order: 17 -> 17.1 (if any) -> 18 -> 18.1 (if any) -> 1
 *v3.0 phases added: 2026-02-04*
 *v3.0 complete: 2026-02-05*
 *v4.0 phases added: 2026-02-05*
+*Phase 17 planned: 2026-02-05*
