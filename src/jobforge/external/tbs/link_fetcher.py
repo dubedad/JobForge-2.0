@@ -19,6 +19,7 @@ from .models import (
     LinkedPageContent,
     LinkedPageMetadata,
     OccupationalGroupRow,
+    OGDefinition,
     ScrapedProvenance,
 )
 
@@ -338,3 +339,89 @@ def fetch_linked_metadata(
     fetcher = LinkMetadataFetcher(output_dir)
     collection = fetcher.fetch_all_links(rows, language)
     return fetcher.save_to_json(collection)
+
+
+def fetch_og_definition(
+    url: str,
+    og_code: str,
+    subgroup_code: str | None = None,
+    timeout: int = 30,
+) -> OGDefinition | None:
+    """Fetch and extract definition from a TBS definition page.
+
+    Makes an HTTP request to the definition URL and extracts the
+    definition text content with provenance tracking.
+
+    Args:
+        url: URL of the definition page.
+        og_code: Parent occupational group code (e.g., "AI", "AS").
+        subgroup_code: Subgroup code if this is a subgroup definition, None for parent OG.
+        timeout: HTTP request timeout in seconds.
+
+    Returns:
+        OGDefinition object with extracted text, or None if fetch failed.
+
+    Note:
+        Includes 1.5 second delay after request to respect rate limits.
+        Handles 404 errors gracefully by returning None.
+    """
+    scraped_at = datetime.now(timezone.utc)
+
+    try:
+        logger.debug("fetching_og_definition", url=url, og_code=og_code, subgroup_code=subgroup_code)
+        response = requests.get(url, timeout=timeout)
+        response.raise_for_status()
+
+        soup = BeautifulSoup(response.text, "lxml")
+
+        # Extract page title
+        title_tag = soup.find("h1") or soup.find("title")
+        page_title = title_tag.get_text(strip=True) if title_tag else "Unknown"
+
+        # Extract definition content
+        # TBS definition pages typically have content in article/main tags
+        # or in a div with mwsgeneric-base-html class
+        content_tag = (
+            soup.find("article")
+            or soup.find("main")
+            or soup.find("div", {"class": "mwsgeneric-base-html"})
+            or soup.find("div", {"id": "content"})
+        )
+
+        if content_tag:
+            # Get text from paragraphs and list items
+            paragraphs = content_tag.find_all(["p", "li"])
+            definition_text = "\n\n".join(
+                p.get_text(strip=True) for p in paragraphs if p.get_text(strip=True)
+            )
+        else:
+            # Fallback: get body text
+            definition_text = soup.get_text(separator="\n", strip=True)[:10000]
+
+        # Rate limit delay
+        time.sleep(1.5)
+
+        return OGDefinition(
+            og_code=og_code,
+            subgroup_code=subgroup_code,
+            definition_text=definition_text[:10000],  # Cap at 10k chars
+            page_title=page_title,
+            source_url=url,
+            scraped_at=scraped_at,
+        )
+
+    except requests.exceptions.HTTPError as e:
+        status = e.response.status_code if e.response is not None else "unknown"
+        logger.warning("http_error_fetching_definition", url=url, status=status)
+        time.sleep(1.5)  # Still delay on error to be polite
+        return None
+
+    except requests.exceptions.Timeout:
+        logger.warning("timeout_fetching_definition", url=url)
+        time.sleep(1.5)
+        return None
+
+    except Exception as e:
+        logger.warning("error_fetching_definition", url=url, error=str(e))
+        time.sleep(1.5)
+        return None

@@ -9,7 +9,9 @@ from datetime import datetime
 
 from bs4 import BeautifulSoup, Tag
 
-from .models import OccupationalGroupRow, ScrapedProvenance
+import re
+
+from .models import OccupationalGroupRow, OGSubgroup, ScrapedProvenance
 
 # Expected column headers in the TBS occupational groups table (English)
 # We validate against these to detect page structure changes
@@ -188,3 +190,70 @@ def extract_embedded_links(rows: list[OccupationalGroupRow]) -> dict[str, list[s
             r.qualification_standard_url for r in rows if r.qualification_standard_url
         ],
     }
+
+
+def parse_og_subgroups(
+    rows: list[OccupationalGroupRow],
+    source_url: str,
+    scraped_at: "datetime",
+) -> list[OGSubgroup]:
+    """Parse subgroup information from occupational group rows.
+
+    Extracts structured subgroup data from rows that have subgroup values.
+    Parses subgroup codes and names from the subgroup cell text.
+
+    Args:
+        rows: List of OccupationalGroupRow objects from main table scrape.
+        source_url: URL from which data was scraped (for provenance).
+        scraped_at: UTC timestamp when scraping occurred.
+
+    Returns:
+        List of OGSubgroup objects for rows with valid subgroup data.
+
+    Example:
+        Row with subgroup="Non-Operational(AI-NOP)" produces:
+        OGSubgroup(og_code="AI", subgroup_code="AI-NOP", subgroup_name="Non-Operational", ...)
+    """
+    subgroups: list[OGSubgroup] = []
+
+    # Pattern to extract name and code from subgroup text like "Non-Operational(AI-NOP)"
+    # or "Civil Aviation Inspection(AO-CAI)"
+    subgroup_pattern = re.compile(r"^(.+?)\(([A-Z]{2,3}-[A-Z0-9]+)\)$")
+
+    for row in rows:
+        # Skip rows without subgroup data or with N/A
+        if not row.subgroup or row.subgroup.strip().upper() == "N/A":
+            continue
+
+        subgroup_text = row.subgroup.strip()
+        match = subgroup_pattern.match(subgroup_text)
+
+        if match:
+            subgroup_name = match.group(1).strip()
+            subgroup_code = match.group(2).strip()
+        else:
+            # Fallback: use entire text as name, construct code from parent
+            subgroup_name = subgroup_text
+            # Try to extract code if it appears after parenthesis
+            if "(" in subgroup_text and ")" in subgroup_text:
+                code_start = subgroup_text.rfind("(") + 1
+                code_end = subgroup_text.rfind(")")
+                subgroup_code = subgroup_text[code_start:code_end].strip()
+                subgroup_name = subgroup_text[:subgroup_text.rfind("(")].strip()
+            else:
+                subgroup_code = f"{row.group_abbrev}-{subgroup_text[:3].upper()}"
+
+        subgroups.append(
+            OGSubgroup(
+                og_code=row.group_abbrev,
+                subgroup_code=subgroup_code,
+                subgroup_name=subgroup_name,
+                definition_url=row.definition_url,
+                qualification_standard_url=row.qualification_standard_url,
+                rates_of_pay_url=None,  # Not present in main table, could be added later
+                source_url=source_url,
+                scraped_at=scraped_at,
+            )
+        )
+
+    return subgroups
