@@ -12,16 +12,16 @@ See: .planning/PROJECT.md (updated 2026-01-20)
 ## Current Position
 
 **Milestone:** v3.0 Data Layer Expansion
-**Phase:** 15-caf-core (CAF Core Tables) - IN PROGRESS
-**Plan:** 3 of 4 complete (Wave 3)
-**Status:** In progress
-**Last activity:** 2026-02-05 - Completed 15-03-PLAN.md (CAF Gold Tables)
+**Phase:** 15-caf-core (CAF Core Tables) - COMPLETE
+**Plan:** 4 of 4 complete (Wave 4)
+**Status:** Phase complete
+**Last activity:** 2026-02-05 - Completed 15-04-PLAN.md (CAF-NOC Bridge Table)
 
 ```
 v1.0 [####################] 100% SHIPPED 2026-01-19
 v2.0 [####################] 100% SHIPPED 2026-01-20
 v2.1 [####################] 100% SHIPPED 2026-01-21
-v3.0 [#########           ]  45% IN PROGRESS (Phase 15 Plan 03 complete)
+v3.0 [###########         ]  55% IN PROGRESS (Phase 15 COMPLETE)
 ```
 
 ## Performance Metrics
@@ -174,6 +174,13 @@ All v1.0 and v2.0 decisions archived in:
 | Job family inference in ingestion module | Link fetcher already provides job_families.json; ingestion validates FK | career_id pattern matching mirrors link_fetcher logic |
 | Gold files gitignored | Generated data should be regenerated, not versioned | Parquet files excluded; regenerate with ingest_dim_* functions |
 
+**v3.0 Phase 15-04 Decisions:**
+| Decision | Rationale | Outcome |
+|----------|-----------|---------|
+| Hybrid matching strategy | related_civilian_occupations more reliable than title-only matching | related_civilian matches prioritized in sorting |
+| 10 matches per CAF occupation | Provide comprehensive options for career transition planning | 880 total mappings for 88 CAF occupations |
+| JSON for human review | Enable manual verification and correction of automated matches | caf_noc_mappings.json groups matches by CAF occupation |
+
 ### Technical Discoveries
 
 From v2.1 research:
@@ -221,14 +228,13 @@ None.
 ### Last Session
 
 **Date:** 2026-02-05
-**Activity:** Executed 15-03-PLAN.md (CAF Gold Tables)
-**Outcome:** Created dim_caf_occupation (88 rows) and dim_caf_job_family (11 rows) with bilingual content and provenance; 21 tests
+**Activity:** Executed 15-04-PLAN.md (CAF-NOC Bridge Table)
+**Outcome:** Created bridge_caf_noc (880 rows) with fuzzy matching, confidence scores, and full audit trail; 27 tests
 
 ### Next Session Priorities
 
-1. **Execute 15-04-PLAN.md** - CAF Bridge Tables (NOC, Job Architecture)
-2. Execute Phase 16 (Extended Metadata)
-3. Complete v3.0 milestone
+1. Execute Phase 16 (Extended Metadata)
+2. Complete v3.0 milestone
 
 ### Pending Milestone Proposal
 
@@ -333,7 +339,16 @@ When resuming this project:
 - **New:** ingest_dim_caf_occupation() and ingest_dim_caf_job_family() functions
 - **806 tests passing** (785 + 21 from 15-03)
 
+- **New:** src/jobforge/external/caf/matchers.py - CAF-NOC fuzzy matching with confidence scoring
+- **New:** data/gold/bridge_caf_noc.parquet - 880 CAF-NOC mappings (gitignored, regenerated)
+- **New:** data/reference/caf_noc_mappings.json - Human-reviewable mapping file for verification
+- **New:** data/catalog/tables/bridge_caf_noc.json - Catalog metadata with FK relationships
+- **New:** tests/external/test_caf_matchers.py - 27 tests for CAF-NOC matching
+- **New:** CAFNOCMatcher class with hybrid matching (related_civilian + title_fuzzy)
+- **New:** ingest_bridge_caf_noc() generates bridge table with full audit trail
+- **833 tests passing** (806 + 27 from 15-04)
+
 ---
 *State updated: 2026-02-05*
-*Session count: 48*
-*v3.0 Phase 15 Plan 03 COMPLETE - 2026-02-05*
+*Session count: 49*
+*v3.0 Phase 15 COMPLETE - 2026-02-05*
