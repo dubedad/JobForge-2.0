@@ -1,0 +1,101 @@
+{
+  "table_name": "fact_og_allowances",
+  "domain": "occupational_groups",
+  "description": "TBS allowances including bilingual bonus, supervisory allowances, isolated post differentials, and other supplemental compensation beyond base pay",
+  "source": "Treasury Board Secretariat Compensation Directives",
+  "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/pay.html",
+  "layer": "gold",
+  "columns": {
+    "allowance_id": {
+      "type": "VARCHAR",
+      "description": "Primary key - unique allowance identifier (UUID)"
+    },
+    "allowance_type": {
+      "type": "VARCHAR",
+      "description": "Category: bilingual_bonus, supervisory, isolated_post, shift, standby"
+    },
+    "allowance_name": {
+      "type": "VARCHAR",
+      "description": "Official allowance name from TBS"
+    },
+    "amount": {
+      "type": "DOUBLE",
+      "description": "Dollar amount (annual unless rate_type differs), null for variable/negotiated rates"
+    },
+    "rate_type": {
+      "type": "VARCHAR",
+      "description": "Rate type: annual, hourly, percentage, per_diem"
+    },
+    "percentage": {
+      "type": "DOUBLE",
+      "description": "Percentage value for percentage-based allowances (e.g., 5% supervisory premium)"
+    },
+    "og_code": {
+      "type": "VARCHAR",
+      "description": "FK to dim_og (null if allowance applies universally to all occupational groups)",
+      "foreign_key": "dim_og.og_code",
+      "nullable": true
+    },
+    "classification_level": {
+      "type": "VARCHAR",
+      "description": "Classification level if level-specific (e.g., 'EX-01'), null if applies to all levels"
+    },
+    "eligibility_criteria": {
+      "type": "VARCHAR",
+      "description": "Text description of eligibility requirements for the allowance"
+    },
+    "effective_date": {
+      "type": "DATE",
+      "description": "Date allowance rate became effective (YYYY-MM-DD format)"
+    },
+    "_source_url": {
+      "type": "VARCHAR",
+      "description": "URL from which allowance data was scraped"
+    },
+    "_scraped_at": {
+      "type": "TIMESTAMP",
+      "description": "UTC timestamp when data was scraped"
+    },
+    "_source_file": {
+      "type": "VARCHAR",
+      "description": "Path to source JSON file"
+    },
+    "_ingested_at": {
+      "type": "TIMESTAMP",
+      "description": "UTC timestamp when data was ingested to gold layer"
+    },
+    "_batch_id": {
+      "type": "VARCHAR",
+      "description": "Batch identifier for provenance tracking"
+    },
+    "_layer": {
+      "type": "VARCHAR",
+      "description": "Data layer: bronze, silver, or gold"
+    }
+  },
+  "relationships": [
+    {
+      "to_table": "dim_og",
+      "from_column": "og_code",
+      "to_column": "og_code",
+      "cardinality": "many-to-one",
+      "nullable": true,
+      "notes": "og_code is null for allowances that apply universally (e.g., bilingual bonus applies to all OG codes)"
+    }
+  ],
+  "notes": [
+    "Bilingual bonus is $800/year for employees meeting language requirements",
+    "Isolated post allowances vary by location classification (Level 1-5)",
+    "Supervisory and shift allowances typically negotiated through collective agreements",
+    "Amount may be null for allowances with variable or negotiated rates",
+    "og_code is null for allowances applying to all occupational groups"
+  ],
+  "governance": {
+    "data_steward": "OG Data Team",
+    "data_owner": "Treasury Board Secretariat",
+    "refresh_frequency": "as_published",
+    "retention_period": "indefinite",
+    "security_classification": "Unclassified",
+    "intended_consumers": ["JD Builder", "WiQ", "Public API"]
+  }
+}
