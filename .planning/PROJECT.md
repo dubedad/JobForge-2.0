@@ -8,21 +8,36 @@ A workforce intelligence platform that deploys a governed, self-imputing semanti
 
 Auditable provenance from source to output — every artifact traces back to authoritative sources. When asked "where did this come from?", JobForge can answer with the complete pipeline path, including DADM directive chapter and verse.
 
-## Current Milestone: v3.0 Data Layer Expansion
+## Current Milestone: v4.0 Governed Data Foundation
 
-**Goal:** Expand the WiQ data layer with TBS Occupational Groups and CAF Careers data, enabling downstream apps (JD Builder Lite, veteran transition tools) to query governed gold models instead of scraping.
+**Goal:** Complete the governed data foundation with 5-taxonomy coverage (NOC, OG, CAF, JA, O*NET), governance compliance verification, data quality dashboards, and GC HR Data Model alignment with artifact-backed provenance.
 
 **Target features:**
-- TBS Occupational Groups suite (65 groups, ~200 subgroups, qualification standards, job evaluation standards, rates of pay)
-- CAF Careers data (107 military occupations from forces.ca with civilian equivalence mappings)
-- NOC → Occupational Group concordance (group/subgroup level, not classification levels)
-- CAF → Job Architecture bridge with confidence scoring
-- CAF → NOC linkage for military-to-civilian transition planning
-- DMBOK practice provenance (track HOW model was engineered)
+- Governance compliance framework (DAMA DMBOK audit, policy provenance, DADM compliance)
+- GC DQMF 9-dimension data quality dashboard with metrics API
+- Business metadata capture (purpose, questions, owners for core tables)
+- O*NET integration as 5th taxonomy (900 occupations, 5 attribute tables, NOC bridge)
+- Job Architecture enrichment (semantic descriptions, completeness)
+- PAA/DRF organizational context for 3 departments (DND, DFO, Elections)
+- GC HR Data Model alignment with artifact ingestion (data dictionary + ERD diagrams)
 
 **Consumer apps:**
-- JD Builder Lite — deterministic OG classification via concordance
-- Veteran transition tools — CAF → civilian career pathways
+- Data stewards — quality dashboards, governance evidence
+- Compliance officers — policy provenance, DADM audit trails
+- Analysts — complete 5-taxonomy occupational intelligence
+
+## Previous Milestone: v3.0 Data Layer Expansion (Shipped 2026-02-05)
+
+**Delivered:** TBS Occupational Groups and CAF Careers data with concordance bridges.
+
+**Capabilities:**
+- TBS Occupational Groups (31 groups, 111 subgroups, qualifications, pay rates)
+- CAF Careers (88 occupations, 11 job families, bilingual content)
+- NOC → OG concordance with fuzzy matching and confidence scoring
+- CAF → NOC bridge (880 mappings with provenance)
+- CAF → JA bridge with job function/family context
+- 28 gold tables, 27 relationships in WiQ schema
+- 899 tests passing
 
 ## Current State (v2.1 Shipped 2026-01-21)
 
@@ -138,13 +153,19 @@ Auditable provenance from source to output — every artifact traces back to aut
 
 ## Context
 
-**Current State (v2.1 shipped 2026-01-21):**
-- 24 gold tables in parquet format
-- 22 relationships in WiQ semantic model
-- 610 tests passing
+**Current State (v3.0 shipped 2026-02-05):**
+- 28 gold tables in parquet format
+- 27 relationships in WiQ semantic model
+- 1,091 tests passing
 - Docker Compose deployment ready
 - 3 documentation pages (1,493 lines)
-- Stack: Python 3.11, Polars, DuckDB, Pydantic 2, NetworkX, Rich, rapidfuzz, httpx, tenacity, beautifulsoup4, openai, anthropic, fastapi, uvicorn, starlette, sse-starlette, Docker
+- Stack: Python 3.11, Polars, DuckDB, Pydantic 2, NetworkX, Rich, rapidfuzz, httpx, tenacity, beautifulsoup4, openai, anthropic, fastapi, uvicorn, starlette, sse-starlette, pdfplumber, Docker
+
+**v4.0 planned additions:**
+- cuallee>=0.13.0 (GC DQMF quality validation)
+- ckanapi>=4.9 (Open Government Portal)
+- streamlit>=1.41.0 (quality dashboard)
+- plotly>=6.0.0 (interactive visualizations)
 
 **Government of Canada Context:**
 HR job data across federal government is unstructured, non-standardized, fragmented, siloed, and unreliable. This makes evidence-based workforce planning impossible. Meanwhile, mandate letters require AI-driven operational efficiencies and international workforce planning interoperability — while demonstrating DADM compliance.
@@ -188,4 +209,4 @@ HR job data across federal government is unstructured, non-standardized, fragmen
 | Mermaid architecture diagrams | Renders in GitHub/VS Code | ✓ Good — visual documentation |
 
 ---
-*Last updated: 2026-02-04 after v3.0 milestone initialization*
+*Last updated: 2026-02-05 after v4.0 milestone initialization*
