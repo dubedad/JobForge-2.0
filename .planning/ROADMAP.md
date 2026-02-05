@@ -38,7 +38,7 @@ See archived roadmap: `.planning/milestones/v2.1-ROADMAP.md`
 - Integer phases (14, 15, 16): Planned milestone work
 - Decimal phases (14.1, 14.2): Urgent insertions (marked with INSERTED)
 
-- [ ] **Phase 14: OG Core** - TBS Occupational Groups scraping, gold tables, NOC concordance
+- [x] **Phase 14: OG Core** - TBS Occupational Groups scraping, gold tables, NOC concordance ✓
 - [ ] **Phase 15: CAF Core** - CAF Careers scraping, gold tables, bridges to NOC/JA
 - [ ] **Phase 16: Extended Metadata** - Qualification standards, job evaluation, training, governance
 
@@ -56,12 +56,12 @@ See archived roadmap: `.planning/milestones/v2.1-ROADMAP.md`
   5. JD Builder Lite can consume `bridge_noc_og` for deterministic classification
 **Plans:** 6 plans
 Plans:
-- [ ] 14-01-PLAN.md - Extend TBS scraper for subgroups and definitions
-- [ ] 14-02-PLAN.md - Add pdfplumber and create PDF extractor
-- [ ] 14-03-PLAN.md - Create dim_og and dim_og_subgroup pipelines
-- [ ] 14-04-PLAN.md - Create pay rates fact table
-- [ ] 14-05-PLAN.md - Create qualification standards table
-- [ ] 14-06-PLAN.md - Build NOC-OG concordance bridge (TDD)
+- [x] 14-01-PLAN.md - Extend TBS scraper for subgroups and definitions ✓
+- [x] 14-02-PLAN.md - Add pdfplumber and create PDF extractor ✓
+- [x] 14-03-PLAN.md - Create dim_og and dim_og_subgroup pipelines ✓
+- [x] 14-04-PLAN.md - Create pay rates fact table ✓
+- [x] 14-05-PLAN.md - Create qualification standards table ✓
+- [x] 14-06-PLAN.md - Build NOC-OG concordance bridge (TDD) ✓
 
 ### Phase 15: CAF Core
 **Goal**: CAF Careers data scraped and loaded into gold tables with bridges to NOC and Job Architecture
@@ -105,7 +105,7 @@ Phases execute in numeric order: 14 -> 14.1 (if any) -> 15 -> 15.1 (if any) -> 1
 
 | Phase | Milestone | Plans Complete | Status | Completed |
 |-------|-----------|----------------|--------|-----------|
-| 14. OG Core | v3.0 | 0/6 | Planned | — |
+| 14. OG Core | v3.0 | 6/6 | ✓ Complete | 2026-02-05 |
 | 15. CAF Core | v3.0 | 0/6 | Planned | — |
 | 16. Extended Metadata | v3.0 | 0/? | Pending | — |
 
@@ -114,3 +114,4 @@ Phases execute in numeric order: 14 -> 14.1 (if any) -> 15 -> 15.1 (if any) -> 1
 *v3.0 phases added: 2026-02-04*
 *Phase 14 planned: 2026-02-04*
 *Phase 15 planned: 2026-02-05*
+*Phase 14 complete: 2026-02-05*
