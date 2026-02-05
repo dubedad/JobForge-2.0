@@ -1,0 +1,150 @@
+{
+  "table_name": "dim_og_qualification_standard",
+  "description": "TBS Qualification Standards per occupational group with structured fields for education, experience, bilingual requirements, and security clearance. Enhanced version with CONTEXT.md fields for JD Builder queries.",
+  "domain": "occupational_groups",
+  "source": "Treasury Board Secretariat",
+  "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/staffing/qualification-standards/core.html",
+  "layer": "gold",
+  "columns": {
+    "og_code": {
+      "type": "VARCHAR",
+      "description": "Primary key - TBS occupational group code (FK to dim_og)",
+      "foreign_key": "dim_og.og_code"
+    },
+    "og_subgroup_code": {
+      "type": "VARCHAR",
+      "description": "Subgroup code if subgroup-specific qualification",
+      "foreign_key": "dim_og_subgroup.og_subgroup_code"
+    },
+    "education_level": {
+      "type": "VARCHAR",
+      "description": "Standardized education level: high_school, certificate, diploma, bachelors, masters, phd, professional_degree"
+    },
+    "education_requirement_text": {
+      "type": "VARCHAR",
+      "description": "Original education requirement text extracted from qualification standard"
+    },
+    "min_years_experience": {
+      "type": "INTEGER",
+      "description": "Minimum years of experience required (numeric for filtering)"
+    },
+    "experience_requirement_text": {
+      "type": "VARCHAR",
+      "description": "Original experience requirement text extracted from qualification standard"
+    },
+    "essential_qualification_text": {
+      "type": "VARCHAR",
+      "description": "Essential/mandatory qualification requirements"
+    },
+    "asset_qualification_text": {
+      "type": "VARCHAR",
+      "description": "Asset/preferred qualification requirements"
+    },
+    "has_equivalency": {
+      "type": "BOOLEAN",
+      "description": "Whether an equivalency clause exists allowing alternative qualification paths"
+    },
+    "equivalency_statement": {
+      "type": "VARCHAR",
+      "description": "Full text of equivalency statement if present"
+    },
+    "bilingual_reading_level": {
+      "type": "VARCHAR",
+      "description": "Official language reading proficiency level (A, B, C, P, E, X)"
+    },
+    "bilingual_writing_level": {
+      "type": "VARCHAR",
+      "description": "Official language writing proficiency level (A, B, C, P, E, X)"
+    },
+    "bilingual_oral_level": {
+      "type": "VARCHAR",
+      "description": "Official language oral proficiency level (A, B, C, P, E, X)"
+    },
+    "security_clearance": {
+      "type": "VARCHAR",
+      "description": "Required security clearance level: Reliability, Secret, or Top Secret"
+    },
+    "requires_travel": {
+      "type": "BOOLEAN",
+      "description": "Position requires travel (condition of employment)"
+    },
+    "shift_work": {
+      "type": "BOOLEAN",
+      "description": "Position requires shift work (condition of employment)"
+    },
+    "physical_demands": {
+      "type": "BOOLEAN",
+      "description": "Position has physical demands (condition of employment)"
+    },
+    "overtime_required": {
+      "type": "BOOLEAN",
+      "description": "Position may require overtime (operational requirement)"
+    },
+    "on_call_required": {
+      "type": "BOOLEAN",
+      "description": "Position requires on-call availability (operational requirement)"
+    },
+    "deployments_required": {
+      "type": "BOOLEAN",
+      "description": "Position may require deployments (operational requirement)"
+    },
+    "certification_requirement": {
+      "type": "VARCHAR",
+      "description": "Professional/occupational certification requirements"
+    },
+    "full_text": {
+      "type": "VARCHAR",
+      "description": "Complete qualification standard text for full-text search"
+    },
+    "_source_url": {
+      "type": "VARCHAR",
+      "description": "URL of the source qualification standard page"
+    },
+    "_extracted_at": {
+      "type": "TIMESTAMP",
+      "description": "UTC timestamp when text was extracted from source"
+    },
+    "_ingested_at": {
+      "type": "TIMESTAMP",
+      "description": "UTC timestamp when record was ingested to gold layer"
+    },
+    "_batch_id": {
+      "type": "VARCHAR",
+      "description": "Unique batch identifier for this ingestion run"
+    },
+    "_layer": {
+      "type": "VARCHAR",
+      "description": "Data layer (always 'gold' for this table)"
+    }
+  },
+  "relationships": [
+    {
+      "table": "dim_og",
+      "join": "dim_og_qualification_standard.og_code = dim_og.og_code",
+      "type": "many-to-one",
+      "description": "Links qualification standard to occupational group"
+    },
+    {
+      "table": "dim_og_subgroup",
+      "join": "dim_og_qualification_standard.og_subgroup_code = dim_og_subgroup.og_subgroup_code",
+      "type": "many-to-one",
+      "description": "Links qualification standard to subgroup if applicable"
+    }
+  ],
+  "usage_hints": [
+    "Use education_level for filtering by standardized education (bachelors, masters, etc.)",
+    "Use min_years_experience for numeric experience filtering",
+    "Use bilingual_reading_level, bilingual_writing_level, bilingual_oral_level for language profile matching",
+    "Use security_clearance for filtering by clearance level (Reliability, Secret, Top Secret)",
+    "Use essential_qualification_text vs asset_qualification_text to distinguish mandatory from preferred",
+    "Use full_text for full-text search queries across entire qualification standard",
+    "Use requires_travel, shift_work, physical_demands for condition of employment filtering",
+    "Use overtime_required, on_call_required, deployments_required for operational requirement filtering"
+  ],
+  "query_examples": [
+    "SELECT og_code, education_level, min_years_experience FROM dim_og_qualification_standard WHERE education_level = 'bachelors'",
+    "SELECT og_code, security_clearance FROM dim_og_qualification_standard WHERE security_clearance = 'Secret'",
+    "SELECT og_code FROM dim_og_qualification_standard WHERE bilingual_reading_level = 'B' AND bilingual_writing_level = 'B'",
+    "SELECT og_code, min_years_experience FROM dim_og_qualification_standard WHERE min_years_experience >= 3"
+  ]
+}
