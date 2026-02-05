@@ -14,8 +14,14 @@ Usage:
     # Or use the scraper class directly
     scraper = CAFScraper()
     listings_en = scraper.scrape_career_listings("en")
+
+    # Fetch full career details with bilingual content
+    from jobforge.external.caf import CAFLinkFetcher, fetch_career_detail
+    with CAFLinkFetcher() as fetcher:
+        occupations = fetcher.fetch_all_career_details()
 """
 
+from .link_fetcher import CAFLinkFetcher, fetch_all_career_details, fetch_career_detail
 from .models import (
     CAFCareerListing,
     CAFJobFamily,
@@ -35,4 +41,8 @@ __all__ = [
     # Scraper
     "CAFScraper",
     "scrape_caf_careers",
+    # Link fetcher
+    "CAFLinkFetcher",
+    "fetch_career_detail",
+    "fetch_all_career_details",
 ]
