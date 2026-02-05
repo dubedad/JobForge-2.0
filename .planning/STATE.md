@@ -7,20 +7,21 @@
 See: .planning/PROJECT.md (updated 2026-01-20)
 
 **Core value:** Auditable provenance from source to output
-**Current focus:** v2.1 Orbit Integration SHIPPED
+**Current focus:** v3.0 Data Layer Expansion
 
 ## Current Position
 
-**Milestone:** v2.1 Orbit Integration
-**Phase:** 13 of 13 (Deployment and Documentation) COMPLETE
-**Plan:** 2 of 2 in current phase
-**Status:** MILESTONE COMPLETE
-**Last activity:** 2026-01-21 - Completed quick task 001 (User-facing landing page)
+**Milestone:** v3.0 Data Layer Expansion
+**Phase:** Not started (defining requirements)
+**Plan:** —
+**Status:** Defining requirements
+**Last activity:** 2026-02-04 - Milestone v3.0 initialized
 
 ```
 v1.0 [####################] 100% SHIPPED 2026-01-19
 v2.0 [####################] 100% SHIPPED 2026-01-20
 v2.1 [####################] 100% SHIPPED 2026-01-21
+v3.0 [                    ]   0% DEFINING REQUIREMENTS
 ```
 
 ## Performance Metrics
@@ -149,15 +150,15 @@ None.
 
 ### Last Session
 
-**Date:** 2026-01-21
-**Activity:** Quick task 001 - User-facing landing page
-**Outcome:** Landing page deployed at root (/), 3 tasks completed in 23m 40s
+**Date:** 2026-02-04
+**Activity:** Session resumed, proceeding to new milestone
+**Outcome:** Context restored from v2.1 completion state
 
 ### Next Session Priorities
 
-1. Archive v2.1 roadmap to `.planning/milestones/v2.1-ROADMAP.md`
-2. Update PROJECT.md with v2.1 outcomes
-3. Plan v3.0 if desired (RAG milestone)
+1. Start v3.0 milestone — data layer expansion
+2. Add Occupational Group Suite tables (from JD Builder Lite context)
+3. Add DND Careers tables (from user's POC artifacts)
 
 ### Context for Claude
 
@@ -191,7 +192,6 @@ When resuming this project:
 - **New:** Automatic fallback from data query to metadata query on client errors (4xx)
 
 ---
-*State updated: 2026-01-21*
-*Session count: 38*
-*v2.1 MILESTONE COMPLETE - SHIPPED 2026-01-21*
-*Quick task 001 COMPLETE - 2026-01-21*
+*State updated: 2026-02-04*
+*Session count: 39*
+*v3.0 MILESTONE INITIALIZED - 2026-02-04*

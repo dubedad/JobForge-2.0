@@ -8,11 +8,21 @@ A workforce intelligence platform that deploys a governed, self-imputing semanti
 
 Auditable provenance from source to output — every artifact traces back to authoritative sources. When asked "where did this come from?", JobForge can answer with the complete pipeline path, including DADM directive chapter and verse.
 
-## Current Milestone: v3.0 (Planning)
+## Current Milestone: v3.0 Data Layer Expansion
 
-**Goal:** TBD - Candidate features include RAG/vector search, Job Description Builder UI, or enhanced integrations.
+**Goal:** Expand the WiQ data layer with TBS Occupational Groups and CAF Careers data, enabling downstream apps (JD Builder Lite, veteran transition tools) to query governed gold models instead of scraping.
 
-**Planning status:** Not started. See Future Requirements below for candidates.
+**Target features:**
+- TBS Occupational Groups suite (65 groups, ~200 subgroups, qualification standards, job evaluation standards, rates of pay)
+- CAF Careers data (107 military occupations from forces.ca with civilian equivalence mappings)
+- NOC → Occupational Group concordance (group/subgroup level, not classification levels)
+- CAF → Job Architecture bridge with confidence scoring
+- CAF → NOC linkage for military-to-civilian transition planning
+- DMBOK practice provenance (track HOW model was engineered)
+
+**Consumer apps:**
+- JD Builder Lite — deterministic OG classification via concordance
+- Veteran transition tools — CAF → civilian career pathways
 
 ## Current State (v2.1 Shipped 2026-01-21)
 
@@ -178,4 +188,4 @@ HR job data across federal government is unstructured, non-standardized, fragmen
 | Mermaid architecture diagrams | Renders in GitHub/VS Code | ✓ Good — visual documentation |
 
 ---
-*Last updated: 2026-01-21 after v2.1 milestone completion*
+*Last updated: 2026-02-04 after v3.0 milestone initialization*
