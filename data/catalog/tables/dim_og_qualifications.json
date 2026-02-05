@@ -1,0 +1,64 @@
+{
+  "table_name": "dim_og_qualifications",
+  "domain": "occupational_groups",
+  "description": "TBS Qualification Standards - education, experience, and certification requirements per occupational group",
+  "source": "Treasury Board Secretariat",
+  "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/staffing/qualification-standards.html",
+  "columns": {
+    "og_code": {
+      "type": "VARCHAR",
+      "description": "Occupational group code",
+      "foreign_key": "dim_og.og_code"
+    },
+    "og_subgroup_code": {
+      "type": "VARCHAR",
+      "description": "Subgroup code if subgroup-specific qualification",
+      "foreign_key": "dim_og_subgroup.og_subgroup_code"
+    },
+    "education_requirement": {
+      "type": "VARCHAR",
+      "description": "Minimum education requirements (extracted from qualification standard text)"
+    },
+    "experience_requirement": {
+      "type": "VARCHAR",
+      "description": "Experience requirements (extracted from qualification standard text)"
+    },
+    "certification_requirement": {
+      "type": "VARCHAR",
+      "description": "Professional/occupational certification requirements"
+    },
+    "language_requirement": {
+      "type": "VARCHAR",
+      "description": "Official language requirements"
+    },
+    "other_requirements": {
+      "type": "VARCHAR",
+      "description": "Other qualification requirements (security clearance, etc.)"
+    },
+    "full_text": {
+      "type": "VARCHAR",
+      "description": "Complete qualification standard text for full-text search"
+    },
+    "page_count": {
+      "type": "INTEGER",
+      "description": "Number of pages in source document"
+    }
+  },
+  "relationships": [
+    {
+      "table": "dim_og",
+      "join": "dim_og_qualifications.og_code = dim_og.og_code",
+      "type": "many-to-one"
+    },
+    {
+      "table": "dim_og_subgroup",
+      "join": "dim_og_qualifications.og_subgroup_code = dim_og_subgroup.og_subgroup_code",
+      "type": "many-to-one"
+    }
+  ],
+  "usage_hints": [
+    "Use education_requirement for filtering by education level",
+    "Use full_text for full-text search queries",
+    "Some OGs have group-level standards (og_subgroup_code is NULL), others have subgroup-specific"
+  ]
+}

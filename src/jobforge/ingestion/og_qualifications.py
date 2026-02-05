@@ -181,10 +181,17 @@ def _load_qualification_text_json(source_path: Path) -> list[dict]:
 
 
 def normalize_qualification_codes(df: pl.LazyFrame) -> pl.LazyFrame:
-    """Normalize OG codes: uppercase and strip whitespace."""
+    """Normalize OG codes: uppercase and strip whitespace.
+
+    Handles null values in og_subgroup_code gracefully.
+    """
     return df.with_columns([
         pl.col("og_code").str.to_uppercase().str.strip_chars(),
-        pl.col("og_subgroup_code").str.to_uppercase().str.strip_chars(),
+        # Handle null subgroup codes - only apply string ops when not null
+        pl.when(pl.col("og_subgroup_code").is_not_null())
+        .then(pl.col("og_subgroup_code").str.to_uppercase().str.strip_chars())
+        .otherwise(None)
+        .alias("og_subgroup_code"),
     ])
 
 
@@ -329,8 +336,26 @@ def ingest_dim_og_qualifications(
         with_structured_fields=structured_count,
     )
 
-    # Create DataFrame
-    df = pl.DataFrame(records)
+    # Create DataFrame with explicit schema to handle nullable columns
+    # This ensures proper String type even when all values are None
+    schema = {
+        "og_code": pl.Utf8,
+        "og_subgroup_code": pl.Utf8,
+        "education_requirement": pl.Utf8,
+        "experience_requirement": pl.Utf8,
+        "certification_requirement": pl.Utf8,
+        "language_requirement": pl.Utf8,
+        "other_requirements": pl.Utf8,
+        "full_text": pl.Utf8,
+        "page_count": pl.Int32,
+        "_source_url": pl.Utf8,
+        "_source_file": pl.Utf8,
+        "_extracted_at": pl.Utf8,
+        "_ingested_at": pl.Utf8,
+        "_batch_id": pl.Utf8,
+        "_layer": pl.Utf8,
+    }
+    df = pl.DataFrame(records, schema=schema)
 
     # Convert to lazy for transforms
     lf = df.lazy()
