@@ -3632,6 +3632,294 @@
       ],
       "primary_key": null,
       "description": ""
+    },
+    {
+      "name": "dim_caf_occupation",
+      "table_type": "dimension",
+      "columns": [
+        {
+          "name": "career_id",
+          "data_type": "VARCHAR",
+          "is_primary_key": true,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "title_en",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "title_fr",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "job_family_id",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": true,
+          "references_table": "dim_caf_job_family",
+          "references_column": "job_family_id"
+        },
+        {
+          "name": "environment",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "commission_status",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "employment_type",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "overview_en",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "overview_fr",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "related_civilian_occupations",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "url_en",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "url_fr",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        }
+      ],
+      "primary_key": "career_id",
+      "description": "CAF (Canadian Armed Forces) occupations - 88 military careers with bilingual content"
+    },
+    {
+      "name": "dim_caf_job_family",
+      "table_type": "dimension",
+      "columns": [
+        {
+          "name": "job_family_id",
+          "data_type": "VARCHAR",
+          "is_primary_key": true,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "job_family_name",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "description",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "career_count",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        }
+      ],
+      "primary_key": "job_family_id",
+      "description": "CAF job families - 11 career categories"
+    },
+    {
+      "name": "bridge_caf_noc",
+      "table_type": "bridge",
+      "columns": [
+        {
+          "name": "caf_occupation_id",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": true,
+          "references_table": "dim_caf_occupation",
+          "references_column": "career_id"
+        },
+        {
+          "name": "noc_unit_group_id",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": true,
+          "references_table": "dim_noc",
+          "references_column": "unit_group_id"
+        },
+        {
+          "name": "noc_title",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "caf_title",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "confidence_score",
+          "data_type": "DOUBLE",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "match_method",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "rationale",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        }
+      ],
+      "primary_key": null,
+      "description": "CAF-to-NOC bridge table - 880 mappings with confidence scores for veteran career transition"
+    },
+    {
+      "name": "bridge_caf_ja",
+      "table_type": "bridge",
+      "columns": [
+        {
+          "name": "caf_occupation_id",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": true,
+          "references_table": "dim_caf_occupation",
+          "references_column": "career_id"
+        },
+        {
+          "name": "ja_job_title_id",
+          "data_type": "BIGINT",
+          "is_primary_key": false,
+          "is_foreign_key": true,
+          "references_table": "job_architecture",
+          "references_column": "jt_id"
+        },
+        {
+          "name": "ja_job_title_en",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "ja_job_function_en",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "ja_job_family_en",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "caf_title_en",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "confidence_score",
+          "data_type": "DOUBLE",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "match_method",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        },
+        {
+          "name": "rationale",
+          "data_type": "VARCHAR",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "references_table": null,
+          "references_column": null
+        }
+      ],
+      "primary_key": null,
+      "description": "CAF-to-Job Architecture bridge table - 880 mappings with confidence scores"
     }
   ],
   "relationships": [
@@ -3830,6 +4118,51 @@
       "to_table": "job_architecture",
       "to_column": "unit_group_id",
       "cardinality": "1:*",
+      "cross_filter_direction": "Single",
+      "is_active": true
+    },
+    {
+      "from_table": "dim_caf_occupation",
+      "from_column": "job_family_id",
+      "to_table": "dim_caf_job_family",
+      "to_column": "job_family_id",
+      "cardinality": "*:1",
+      "cross_filter_direction": "Single",
+      "is_active": true
+    },
+    {
+      "from_table": "bridge_caf_noc",
+      "from_column": "caf_occupation_id",
+      "to_table": "dim_caf_occupation",
+      "to_column": "career_id",
+      "cardinality": "*:1",
+      "cross_filter_direction": "Single",
+      "is_active": true
+    },
+    {
+      "from_table": "bridge_caf_noc",
+      "from_column": "noc_unit_group_id",
+      "to_table": "dim_noc",
+      "to_column": "unit_group_id",
+      "cardinality": "*:1",
+      "cross_filter_direction": "Single",
+      "is_active": true
+    },
+    {
+      "from_table": "bridge_caf_ja",
+      "from_column": "caf_occupation_id",
+      "to_table": "dim_caf_occupation",
+      "to_column": "career_id",
+      "cardinality": "*:1",
+      "cross_filter_direction": "Single",
+      "is_active": true
+    },
+    {
+      "from_table": "bridge_caf_ja",
+      "from_column": "ja_job_title_id",
+      "to_table": "job_architecture",
+      "to_column": "jt_id",
+      "cardinality": "*:1",
       "cross_filter_direction": "Single",
       "is_active": true
     }
