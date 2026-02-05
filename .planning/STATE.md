@@ -46,10 +46,10 @@ v4.0 [--------------------]   0% (Phase 17: 0/TBD plans)
 - Timeline: 2 days (2026-01-20 -> 2026-01-21)
 
 **v3.0:**
-- Plans completed: 19
+- Plans completed: 20
 - Phases complete: 3 (Phases 14-16)
 - Requirements: All complete
-- Tests: 1167 total (1091 + 76 from 16-05)
+- Tests: 1197 total (1167 + 30 from 16-06)
 - Timeline: 2 days (2026-02-04 -> 2026-02-05)
 
 **Quick Tasks:**
@@ -90,8 +90,8 @@ None.
 ### Last Session
 
 **Date:** 2026-02-05
-**Activity:** Executed 16-05-PLAN.md (CAF Training Tables)
-**Outcome:** Created fact_caf_training (152 rows), dim_caf_training_location (18 rows), 76 tests added
+**Activity:** Executed 16-06-PLAN.md (DMBOK Tagging and Governance Metadata)
+**Outcome:** Created DMBOK tagging module, enriched 7 Phase 16 catalogs with 110 columns tagged, 30 tests added
 
 ### Next Session Priorities
 
@@ -104,20 +104,18 @@ When resuming this project:
 - **v1.0 SHIPPED** - 10 requirements, 13 plans (Phases 1-5)
 - **v2.0 SHIPPED** - 17 requirements, 11 plans (Phases 6-10)
 - **v2.1 SHIPPED** - 14 requirements, 7 plans (Phases 11-13)
-- **v3.0 SHIPPED** - 18 plans (Phases 14-16)
+- **v3.0 SHIPPED** - 19 plans (Phases 14-16)
 - **v4.0 IN PROGRESS** - 40 requirements, 7 phases (Phases 17-23)
 - Archives in `.planning/milestones/`
 - Query API: `jobforge api` starts server on localhost:8000
 - Demo web UI: `jobforge demo` starts wizard at localhost:8080
 - Orbit adapter: 85% built in orbit/ directory
 - Stack: Python 3.11, Polars, DuckDB, Pydantic 2, NetworkX, Rich, rapidfuzz, httpx, tenacity, beautifulsoup4, openai, anthropic, fastapi, uvicorn, starlette, sse-starlette
-- **1167 tests passing** (1091 + 76 from 16-05)
-- **New:** src/jobforge/external/caf/training_parser.py - CAF training extraction with duration/location normalization
-- **New:** src/jobforge/ingestion/caf_training.py - CAF training ingestion pipeline
-- **New:** data/gold/fact_caf_training.parquet - 152 training records from 76 occupations
-- **New:** data/gold/dim_caf_training_location.parquet - 18 normalized training locations
-- **New:** data/catalog/tables/fact_caf_training.json - Catalog metadata with FK relationships
-- **New:** data/catalog/tables/dim_caf_training_location.json - Location dimension metadata
+- **1197 tests passing** (1167 + 30 from 16-06)
+- **New:** src/jobforge/catalog/dmbok_tagging.py - DMBOK knowledge areas and element type tagging
+- **New:** tests/catalog/test_dmbok_tagging.py - 30 tests for DMBOK tagging
+- **Updated:** src/jobforge/catalog/enrich.py - Extended with governance metadata and quality metrics
+- **Updated:** All 7 Phase 16 catalog files with dmbok_knowledge_area, dmbok_element_type, governance, quality_metrics
 
 **v4.0 Phase Structure:**
 - Phase 17: Governance Compliance Framework (GOV-10 to GOV-13) - 4 requirements
@@ -140,5 +138,5 @@ When resuming this project:
 
 ---
 *State updated: 2026-02-05*
-*Session count: 56*
-*16-05 CAF Training Tables: 2026-02-05*
+*Session count: 57*
+*16-06 DMBOK Tagging and Governance: 2026-02-05*
