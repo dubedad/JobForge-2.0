@@ -435,7 +435,16 @@ When resuming this project:
 - **New:** Reference data fallback pattern for when TBS pages unavailable
 - **1015 tests passing** (971 + 44 from 16-04)
 
+- **New:** src/jobforge/external/tbs/evaluation_scraper.py - TBS job evaluation standards scraper
+- **New:** src/jobforge/ingestion/og_evaluation.py - Medallion pipeline for dim_og_job_evaluation_standard
+- **New:** data/tbs/og_evaluation_standards.json - 145 scraped records (16 standards, 129 factors)
+- **New:** data/gold/dim_og_job_evaluation_standard.parquet - 145 rows with factor points (gitignored)
+- **New:** data/catalog/tables/dim_og_job_evaluation_standard.json - Catalog metadata with FK to dim_og
+- **New:** EvaluationStandard Pydantic model with factor_points, factor_percentage, level_points
+- **New:** Multi-table parsing for weighting tables and degree tables
+- **1052 tests passing** (1015 + 37 from 16-02)
+
 ---
 *State updated: 2026-02-05*
-*Session count: 52*
-*v3.0 Phase 16: 4/6 plans complete - 2026-02-05*
+*Session count: 53*
+*v3.0 Phase 16: 5/6 plans complete - 2026-02-05*
