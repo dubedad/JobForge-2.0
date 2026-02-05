@@ -1,0 +1,142 @@
+{
+  "table_name": "bridge_caf_noc",
+  "layer": "gold",
+  "domain": "caf",
+  "file_path": "data/gold/bridge_caf_noc.parquet",
+  "row_count": 880,
+  "column_count": 15,
+  "schema_version": "1.0.0",
+  "description": "CAF-to-NOC bridge table mapping military occupations to civilian NOC codes with fuzzy matching confidence scores",
+  "business_purpose": "Enables veteran career transition planning by mapping CAF occupations to civilian NOC codes. Each CAF occupation has up to 10 ranked NOC matches with confidence scores and full audit trail.",
+  "data_owner": "JobForge",
+  "source": "Algorithmic matching",
+  "source_url": null,
+  "upstream_tables": ["dim_caf_occupation", "dim_noc"],
+  "downstream_tables": [],
+  "classification": "public",
+  "columns": [
+    {
+      "name": "caf_occupation_id",
+      "data_type": "VARCHAR",
+      "nullable": false,
+      "description": "CAF career_id - foreign key to dim_caf_occupation",
+      "foreign_key": "dim_caf_occupation.career_id",
+      "example_values": ["financial-services-administrator", "infantry-officer", "pilot"]
+    },
+    {
+      "name": "noc_unit_group_id",
+      "data_type": "VARCHAR",
+      "nullable": false,
+      "description": "NOC unit group ID - foreign key to dim_noc",
+      "foreign_key": "dim_noc.unit_group_id",
+      "example_values": ["10010", "21231", "73100"]
+    },
+    {
+      "name": "noc_title",
+      "data_type": "VARCHAR",
+      "nullable": false,
+      "description": "NOC occupation title for reference",
+      "example_values": ["Financial managers", "Software engineers and designers", "Carpenters"]
+    },
+    {
+      "name": "caf_title",
+      "data_type": "VARCHAR",
+      "nullable": false,
+      "description": "CAF occupation title for reference",
+      "example_values": ["Financial Services Administrator", "Infantry Officer", "Pilot"]
+    },
+    {
+      "name": "confidence_score",
+      "data_type": "DOUBLE",
+      "nullable": false,
+      "description": "Confidence score (0.0-1.0): 1.0=exact, 0.85=high, 0.70=medium, 0.50=low",
+      "example_values": [1.0, 0.85, 0.7, 0.5]
+    },
+    {
+      "name": "match_method",
+      "data_type": "VARCHAR",
+      "nullable": false,
+      "description": "How the match was determined: related_civilian, title_fuzzy, or best_guess",
+      "example_values": ["related_civilian", "title_fuzzy", "best_guess"]
+    },
+    {
+      "name": "algorithm_version",
+      "data_type": "VARCHAR",
+      "nullable": false,
+      "description": "Version of matching algorithm for audit trail",
+      "example_values": ["caf_matcher_v1.0"]
+    },
+    {
+      "name": "fuzzy_score",
+      "data_type": "DOUBLE",
+      "nullable": false,
+      "description": "Raw fuzzy matching score (0.0-1.0) from rapidfuzz",
+      "example_values": [0.97, 0.85, 0.65]
+    },
+    {
+      "name": "matched_text",
+      "data_type": "VARCHAR",
+      "nullable": false,
+      "description": "The text that was matched (related civilian occupation or CAF title)",
+      "example_values": ["Financial Manager", "Aerospace Engineer", "Infantry Officer"]
+    },
+    {
+      "name": "rationale",
+      "data_type": "VARCHAR",
+      "nullable": false,
+      "description": "Human-readable explanation of the match for audit",
+      "example_values": ["Related civilian 'Financial Manager' -> NOC 'Financial managers' (score: 0.97)"]
+    },
+    {
+      "name": "matched_at",
+      "data_type": "VARCHAR",
+      "nullable": false,
+      "description": "ISO timestamp when the match was computed"
+    },
+    {
+      "name": "_source_file",
+      "data_type": "VARCHAR",
+      "nullable": false,
+      "description": "Source tables used for matching (provenance)"
+    },
+    {
+      "name": "_ingested_at",
+      "data_type": "VARCHAR",
+      "nullable": false,
+      "description": "Timestamp when bridge was generated (provenance)"
+    },
+    {
+      "name": "_batch_id",
+      "data_type": "VARCHAR",
+      "nullable": false,
+      "description": "Batch ID for pipeline run (provenance)"
+    },
+    {
+      "name": "_layer",
+      "data_type": "VARCHAR",
+      "nullable": false,
+      "description": "Data layer in medallion architecture (provenance)"
+    }
+  ],
+  "relationships": [
+    {
+      "table": "dim_caf_occupation",
+      "join": "bridge_caf_noc.caf_occupation_id = dim_caf_occupation.career_id",
+      "type": "many-to-one",
+      "description": "Each bridge row references one CAF occupation"
+    },
+    {
+      "table": "dim_noc",
+      "join": "bridge_caf_noc.noc_unit_group_id = dim_noc.unit_group_id",
+      "type": "many-to-one",
+      "description": "Each bridge row references one NOC unit group"
+    }
+  ],
+  "usage_notes": [
+    "Each CAF occupation has up to 10 NOC matches ranked by confidence",
+    "Higher confidence_score indicates better match quality",
+    "related_civilian matches are generally more reliable than title_fuzzy",
+    "best_guess matches are fallback when no good fuzzy match found",
+    "Use caf_noc_mappings.json for human verification workflow"
+  ]
+}
