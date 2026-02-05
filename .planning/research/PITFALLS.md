@@ -1,615 +1,567 @@
-# Pitfalls Research: Orbit Integration
+# Domain Pitfalls: v4.0 Governed Data Foundation
 
-**Domain:** Orbit/DuckDBRetriever integration with existing JobForge 2.0 data platform
-**Researched:** 2026-01-20
-**Confidence:** MEDIUM (Orbit documentation limited; DuckDB and text-to-SQL pitfalls well-documented)
-**Context:** Adding Orbit as deployment target to existing system with 24 gold Parquet tables and working text-to-SQL capability
+**Domain:** Data governance compliance, quality dashboards, taxonomy expansion
+**Researched:** 2026-02-05
+**Context:** Adding governance and data quality features to existing JobForge 2.0 platform
 
 ---
 
-## Configuration Pitfalls
+## Critical Pitfalls
 
-Mistakes in intent configuration and adapter setup that cause routing failures or incorrect behavior.
+Mistakes that cause rewrites or major issues when adding governance features to an existing system.
 
-### Pitfall C1: Intent Pattern Collision
+### Pitfall 1: Governance Audit as Approval Gate
 
-**What goes wrong:** User questions match multiple intent patterns, causing inconsistent routing. For example, "How many tables contain NOC data?" matches both data patterns ("how many") and metadata patterns ("tables contain").
+**What goes wrong:** DAMA DMBOK audit integration becomes a bottleneck that slows development velocity to a crawl. Teams interpret "audit integration" as requiring formal approval before each phase can proceed.
 
-**Why it happens:** Intent patterns are additive and don't account for phrase context. Pattern matching is greedy without priority weighting.
-
-**Warning signs:**
-- Same question routes differently on repeated attempts
-- Users report inconsistent answers to similar questions
-- Orbit logs show intent classification flip-flopping
-- Questions with mixed vocabulary return unexpected results
+**Why it happens:**
+- Governance frameworks are designed for enterprise-scale compliance, not developer-friendly workflows
+- DAMA DMBOK defines principles without prescribing tools or methodologies
+- Organizational interpretation defaults to "more process = more governance"
 
 **Consequences:**
-- Data queries routed to metadata endpoint return error/no results
-- Metadata queries routed to data endpoint generate invalid SQL
-- User trust erodes from inconsistent behavior
-
-**Prevention:**
-- Design intent patterns with mutual exclusivity in mind
-- Add priority ordering to intents (metadata patterns checked before data patterns for ambiguous queries)
-- Include negative patterns: data_query should exclude "where does", "lineage", "come from"
-- Test with ambiguous queries during development:
-  - "How many sources feed dim_noc?" (metadata, not data)
-  - "List tables with employment data" (metadata, not data)
-  - "What is the source of cops_employment?" (metadata)
-
-**Phase to address:** Intent configuration phase (Plan 10-03)
-
-**Source:** [Orbit GitHub - Intent Routing](https://github.com/schmitech/orbit)
-
----
-
-### Pitfall C2: Hardcoded localhost in Production
-
-**What goes wrong:** Adapter configuration uses `http://localhost:8000` which works in development but fails when Orbit and JobForge run in separate containers or hosts.
-
-**Why it happens:** Development convenience becomes production debt. Docker networking differs from local development.
+- Development velocity drops by 60-80%
+- Engineers avoid making changes to avoid triggering audits
+- Compliance becomes theater (check-the-box) rather than substantive
+- Audit logs grow stale because nobody regenerates them
 
 **Warning signs:**
-- Orbit works locally but fails in Docker Compose
-- "Connection refused" errors in Orbit logs
-- curl from Orbit container to JobForge fails
+- `/gsd:verify-work` takes longer than the implementation work
+- Teams skip audit regeneration "to save time"
+- DAMA compliance sections in SUMMARY.md become copy-paste boilerplate
 
-**Consequences:**
-- Deployment fails completely
-- Debugging requires understanding container networking
-- Production rollout delayed
+**Prevention strategy:**
+1. Audit is **informational**, not **blocking** - generate compliance logs but don't require manual approval
+2. Automate regeneration: `jobforge compliance regenerate` runs in CI/CD, not manually
+3. Focus on **delta audits** - only audit what changed, not the entire system
+4. Set explicit scope: audit covers data layer artifacts, not code style or test coverage
 
-**Prevention:**
-- Use environment variable: `base_url: "${JOBFORGE_API_URL:-http://localhost:8000}"`
-- Docker Compose: use service names (`http://jobforge-api:8000`)
-- Document network configuration in deployment guide
-- Test full Docker Compose stack before declaring integration complete
+**Detection checkpoint:**
+- After Phase 17 (Governance Compliance Framework), verify that audit generation completes in under 30 seconds
+- If `/gsd:verify-work` adds more than 5 minutes to phase completion, scope is too broad
 
-**Phase to address:** Deployment configuration phase
-
-**Source:** [Orbit Docker README](https://github.com/schmitech/orbit/blob/main/docker/README.md)
+**Phase mapping:** Phase 17 (Governance Compliance Framework)
 
 ---
 
-### Pitfall C3: Missing API Key Configuration
+### Pitfall 2: Data Quality Metrics Without Actionability
 
-**What goes wrong:** Orbit starts without ANTHROPIC_API_KEY, appears healthy, but fails on first real query. Silent initialization means users discover failure only when querying.
+**What goes wrong:** Dashboard shows 47 quality metrics across 6 dimensions (accuracy, completeness, consistency, timeliness, validity, uniqueness), but nobody knows what to do when metrics degrade. Dashboard becomes background noise.
 
-**Why it happens:** Orbit validates structure but not credentials at startup. API key errors surface at query time, not deployment time.
+**Why it happens:**
+- GC DQMF dimensions are conceptually complete but operationally vague
+- "Completeness" could mean filling every field or only critical fields
+- Metrics without thresholds or owners are just numbers
+- Dashboards designed for executives, not operators
+
+**Consequences:**
+- Quality issues are detected but not fixed
+- Dashboard exists but drives no action
+- Over 70% of enterprises report their lineage is incomplete or outdated (industry pattern)
+- Teams view quality metrics as overhead rather than enablement
 
 **Warning signs:**
-- Orbit health check passes but queries fail
-- First query returns authentication error
-- Logs show "Anthropic API authentication error" only after user interaction
+- No owner assigned to any metric
+- All metrics show "green" but users report data issues
+- Dashboard accessed weekly but no follow-up tickets created
+- Metrics lack temporal context (no trending, no alerts)
 
-**Consequences:**
-- Users experience failure on first interaction
-- Support tickets about "broken" system
-- Difficult to diagnose without checking query-time logs
+**Prevention strategy:**
+1. **6 metrics, not 60** - Start with 6 actionable metrics, one per DQMF dimension
+2. **Owner per metric** - Each metric has a responsible person/team
+3. **Thresholds with consequences** - Green/yellow/red with explicit "yellow means X action"
+4. **Link to source** - Every metric links to the table/column it measures
+5. **Trend, don't snapshot** - Show 7-day trend, not just current value
 
-**Prevention:**
-- Validate ANTHROPIC_API_KEY at retriever initialization, not first query
-- Add startup health check that makes minimal API call
-- Document required environment variables prominently
-- Fail fast: refuse to start if required credentials missing
+**Metrics that matter (per Monte Carlo Data research):**
+| Metric | What it measures | Action when degraded |
+|--------|------------------|---------------------|
+| Freshness | Time since last update | Investigate pipeline failures |
+| Volume | Row count delta vs expected | Check source system availability |
+| Schema | Column changes detected | Review migration scripts |
+| Distribution | Value histograms changed | Validate business rule changes |
+| Null rate | % null by column | Investigate upstream data gaps |
+| Duplicate rate | PK/NK uniqueness | Check deduplication logic |
 
-**Phase to address:** Retriever implementation (DuckDBRetriever.initialize)
+**Detection checkpoint:**
+- After Phase 18, each metric should have: owner, threshold, action, and source link
+- If dashboard shows "all green" on day 1, thresholds are wrong
 
-**Source:** [Anthropic API docs - Authentication](https://docs.claude.com/en/docs/build-with-claude/authentication)
+**Phase mapping:** Phase 18 (Data Quality Dashboard)
 
 ---
 
-### Pitfall C4: Schema DDL Drift
+### Pitfall 3: Policy Provenance at Wrong Granularity
 
-**What goes wrong:** DuckDBRetriever generates schema DDL at initialization but gold tables are updated without restarting Orbit. LLM generates SQL for stale schema.
+**What goes wrong:** Attempt to trace every field to its policy source creates a documentation maintenance nightmare. Policy documents change, but provenance links don't get updated.
 
-**Why it happens:** Schema DDL is cached for performance. No mechanism to detect table changes.
+**Why it happens:**
+- "Paragraph-level provenance indexing" sounds impressive but requires constant maintenance
+- TBS directives get amended (DADM was last amended 2023-10-01)
+- Classification policies reference other documents that reference other documents
+- Over 80% of organizations don't even publish basic provenance metadata (industry pattern)
+
+**Consequences:**
+- Initial mapping takes weeks; becomes outdated within months
+- Broken links to moved/renamed policy documents
+- "Where did this come from?" answers with dead URLs
+- Audit confidence drops because provenance can't be verified
 
 **Warning signs:**
-- Queries fail with "column not found" after schema updates
-- New tables not available in queries
-- Restarting Orbit "fixes" query issues
+- Provenance links return 404s during verification
+- Same policy clause referenced by 50+ fields (copy-paste without understanding)
+- No process for updating provenance when policies change
+- Provenance added to catalog but never queried
 
-**Consequences:**
-- Users can't query new or modified tables
-- SQL generation references stale columns
-- Requires service restart after any schema change
+**Prevention strategy:**
+1. **Document-level, not paragraph-level** - Link to the policy document, not specific clause
+2. **Canonical URL patterns** - Use canada.ca permanent URLs, not session-based links
+3. **Policy version tracking** - Record policy version date alongside link
+4. **Provenance verification job** - Weekly automated check that linked documents still exist
+5. **Start with relationships, not fields** - WiQ has 27 relationships; map those 27 to policy first
 
-**Prevention:**
-- Document that Orbit restart required after schema changes
-- Consider schema DDL TTL (regenerate every N minutes)
-- Add schema version check endpoint
-- Log schema DDL generation with timestamp for debugging
+**Provenance hierarchy (from high to low value):**
+| Level | Example | Maintenance burden |
+|-------|---------|-------------------|
+| Table-level | "dim_og sourced from TBS Qualification Standards" | Low |
+| Relationship-level | "bridge_noc_og concordance per Classification Policy" | Low |
+| Column-level | "og_code follows TBS occupational group taxonomy" | Medium |
+| Value-level | "AS classification level per PA collective agreement" | High (avoid) |
 
-**Phase to address:** Operational documentation and retriever lifecycle
+**Detection checkpoint:**
+- Provenance verification pass rate should be >95% at all times
+- If >10% of provenance links break within 3 months, granularity is wrong
+
+**Phase mapping:** Phase 17 (Governance Compliance Framework)
 
 ---
 
-## Performance Pitfalls
+### Pitfall 4: O*NET API Integration Without Caching Strategy
 
-Issues that cause slow queries, memory problems, or resource exhaustion.
+**What goes wrong:** O*NET API rate limits hit during batch processing, causing incomplete data loads or 429 errors cascading through the pipeline.
 
-### Pitfall P1: DuckDB Connection Memory Leak in Async Environment
+**Why it happens:**
+- O*NET Web Services throttles "more than a certain threshold" (exact limits undisclosed)
+- JobForge processes 516 NOC codes, each potentially mapping to multiple SOC codes
+- Existing O*NET client has retry logic but no persistent caching
+- "Best-effort" service with no SLA for high-volume users
 
-**What goes wrong:** Memory usage grows unbounded in async FastAPI context. DuckDB in-memory connections don't release memory properly when concurrent requests interleave allocations across memory spans.
-
-**Why it happens:** musl malloc (common in Alpine Docker images) keeps entire memory spans resident until all allocations freed. Async request interleaving prevents span cleanup.
+**Consequences:**
+- Partial O*NET data in gold tables (some occupations have attributes, others don't)
+- Pipeline failures during re-runs when cache is cold
+- Unpredictable processing times (5 minutes vs 2 hours depending on rate limiting)
+- Attribution requirements violated if O*NET data displayed without proper credit
 
 **Warning signs:**
-- RSS memory creeps upward over time
-- Memory not released after request completion
-- Eventually OOM kills in Kubernetes
-- Memory profiler shows allocation outside Python runtime
+- `ONetRateLimitError` in logs during pipeline runs
+- O*NET attribute coverage varies between runs
+- Pipeline duration highly variable (>50% variance)
+- Customer service asks about high request volumes
 
-**Consequences:**
-- Production crashes from OOM
-- Requires pod restarts to reclaim memory
-- Memory limits cause early eviction
+**Prevention strategy:**
+1. **Local database cache** - Download O*NET database (available from onetcenter.org) as local fallback
+2. **Request batching** - Group SOC codes, fetch in batches with delays
+3. **Persistent cache** - Store API responses in `data/onet/` with TTL (30-90 days)
+4. **Stale-while-revalidate** - Use cached data immediately, update in background
+5. **Attribution compliance** - Display required link per Terms of Service
 
-**Prevention:**
-- Use jemalloc allocator in production Docker images (designed for concurrent workloads)
-- Monitor memory trends, not just snapshots
-- Set memory limits with buffer for leak growth
-- Consider connection pooling with explicit cleanup
-- Alternative: subprocess pattern for DuckDB CLI execution (subprocess cleanup forces OS memory release)
+**O*NET integration architecture:**
+```
+Pipeline Request
+       |
+       v
+  [Local Cache?] -- Yes --> Return cached data
+       |
+      No
+       v
+  [Database File?] -- Yes --> Query local DB
+       |
+      No
+       v
+  [API Request] --> Store in cache --> Return data
+```
 
-**Phase to address:** Production deployment configuration
+**Key Terms of Service requirements:**
+- Must display "O*NET Web Services" attribution with link
+- Can only use on registered sites/applications
+- High-volume users should use downloadable database
 
-**Sources:**
-- [BetterUp - Async FastAPI Memory Leak with jemalloc fix](https://build.betterup.com/chasing-a-memory-leak-in-our-async-fastapi-service-how-jemalloc-fixed-our-rss-creep/)
-- [DuckDB Issue #18031 - Parallel insertion memory leak](https://github.com/duckdb/duckdb/issues/18031)
+**Detection checkpoint:**
+- O*NET API calls per pipeline run should be <100 (cached)
+- After initial cache population, pipeline should work fully offline
+
+**Phase mapping:** Phase 20 (O*NET Integration)
 
 ---
 
-### Pitfall P2: Full Schema in Every LLM Prompt
+### Pitfall 5: PAA/DRF Data Consistency Across Departments
 
-**What goes wrong:** Schema DDL for all 24 gold tables included in every text-to-SQL request. This increases token usage, slows response time, and can exceed context window for large schemas.
+**What goes wrong:** PAA data structure varies significantly between departments. What works for DND doesn't work for Fisheries and Oceans or Elections Canada.
 
-**Why it happens:** Simpler to include full schema than implement dynamic schema selection. "More context is better" assumption.
+**Why it happens:**
+- PAA was replaced by DRF but not all departments have migrated
+- Each department interprets PAA/DRF differently
+- GC does not operate as a single employer (200+ distinct organizations)
+- 70 different HR Management Systems across government, each non-standardized
+
+**Consequences:**
+- Schema designed for DND PAA breaks on Fisheries PAA
+- Inconsistent granularity (some departments have 5 levels, others have 3)
+- Bridge tables can't be built because keys don't align
+- "Works for one department" ≠ "Works for government"
 
 **Warning signs:**
-- High token usage per query (check Anthropic dashboard)
-- Response time scales with schema size, not query complexity
-- Cost unexpectedly high for simple queries
+- First department works; second department requires schema changes
+- Bridge tables have NULL foreign keys for certain departments
+- "Organizational Context" field means different things per department
+- DRF outcomes don't map to PAA programs
 
-**Consequences:**
-- Higher API costs (input tokens)
-- Slower response times
-- LLM attention diffused across irrelevant tables
-- Schema grows, performance degrades
+**Prevention strategy:**
+1. **One department at a time** - Build, validate, then generalize
+2. **Schema flexibility** - Design for varying granularity (nullable hierarchy levels)
+3. **Department-specific adapters** - Don't force one schema; transform at ingestion
+4. **Explicit mapping tables** - Document what each department calls each concept
+5. **Accept incompleteness** - Some departments won't have certain data; that's okay
 
-**Prevention:**
-- Implement schema pruning: only include tables likely relevant to query
-- Use two-stage approach: first LLM call identifies relevant tables, second generates SQL
-- Group tables by domain (occupation, forecast, attributes) and include relevant groups
-- Monitor token usage per query type
+**Schema pattern for departmental variance:**
+```json
+{
+  "dept_code": "DND",
+  "paa_level_1": "Core Responsibility",
+  "paa_level_2": "Program",
+  "paa_level_3": "Sub-program",
+  "paa_level_4": null,  // DND doesn't use L4
+  "drf_core_responsibility": "...",
+  "drf_result": "...",
+  "drf_indicator": "..."
+}
+```
 
-**Phase to address:** Query optimization iteration (post-MVP)
+**Detection checkpoint:**
+- After first department (DND), schema should accommodate 3-5 hierarchy levels
+- Second department should require <20% schema changes
 
-**Source:** [K2View - LLM text-to-SQL challenges](https://www.k2view.com/blog/llm-text-to-sql/)
+**Phase mapping:** Phase 22 (PAA/DRF Data Layer)
 
 ---
 
-### Pitfall P3: No Query Result Caching
+### Pitfall 6: GC HR Data Model Completeness Assumptions
 
-**What goes wrong:** Same question asked repeatedly generates new LLM call and SQL execution each time. Common questions (e.g., "how many unit groups?") waste resources.
+**What goes wrong:** Planning assumes GC HR Data Model is complete and authoritative, but it's incomplete. Phase scope creep as team tries to "complete" the model.
 
-**Why it happens:** Caching adds complexity. Each query "feels" unique even when semantically identical.
+**Why it happens:**
+- Model status is explicitly "available but incomplete"
+- 70 different HRMS across government means no single source of truth
+- Office of OCHRO is "building out" the model (in progress, not complete)
+- Seven new mandatory measures introduced recently (requirements still settling)
+
+**Consequences:**
+- Gap analysis reveals more gaps than mappings
+- Phase 23 scope balloons as team tries to fill gaps
+- JobForge forced to make design decisions that may conflict with future model updates
+- Alignment recommendations immediately obsolete when model updates
 
 **Warning signs:**
-- API costs scale linearly with query volume
-- Same questions appear repeatedly in logs
-- Response time consistent regardless of query history
+- Gap analysis document > mapping document
+- "Proposed mappings" outnumber "confirmed mappings"
+- Phase 23 delivery date slips repeatedly
+- Stakeholder requests to "just map to what exists"
 
-**Consequences:**
-- Unnecessary API costs
-- Slower than necessary for common queries
-- Resource waste on repeated computations
+**Prevention strategy:**
+1. **Gap analysis, not gap filling** - Document gaps; don't try to fix the model
+2. **Versioned alignment** - "Aligned with GC HR Data Model v1.2 as of 2026-02-05"
+3. **Provisional mappings** - Mark uncertain mappings as provisional, subject to model updates
+4. **Bidirectional gap report** - Both "JobForge has, model lacks" AND "model has, JobForge lacks"
+5. **Recommendation scope** - Recommendations for JobForge, not recommendations for fixing the model
 
-**Prevention:**
-- Implement query result cache with TTL (1 hour for static data)
-- Cache key: normalized question text (lowercased, trimmed)
-- Consider semantic similarity for cache hits (fuzzy matching)
-- Cache both SQL and results (SQL cache enables human review)
+**Alignment output format:**
+| JobForge Entity | GC HR DM Entity | Alignment Status | Notes |
+|-----------------|-----------------|------------------|-------|
+| dim_noc | OccupationClassification | Confirmed | Direct mapping via NOC code |
+| dim_og | TBSOccupationalGroup | Confirmed | Uses OG code |
+| dim_caf_occupation | MilitaryOccupation | Provisional | GC HR DM entity may not exist yet |
+| job_architecture | N/A | Gap | JA is JobForge-specific |
 
-**Phase to address:** Performance optimization phase
+**Detection checkpoint:**
+- Phase 23 should produce a document, not a code change
+- If alignment requires >10% schema changes, model isn't ready
+
+**Phase mapping:** Phase 23 (GC HR Data Model Alignment)
 
 ---
 
-### Pitfall P4: Timeout Too Short for Complex Queries
+### Pitfall 7: Business Metadata Capture Workflow Friction
 
-**What goes wrong:** Complex queries exceed 30-second HTTP timeout. LLM generates valid SQL but Orbit times out before results return.
+**What goes wrong:** Interview workflow for capturing business purpose and business questions creates stakeholder fatigue. Initial enthusiasm fades after first 10 tables.
 
-**Why it happens:** Default timeout reasonable for simple queries. Complex analytical queries (aggregations across multiple tables) take longer.
+**Why it happens:**
+- Stakeholders have day jobs; metadata capture is overhead
+- 28 tables (and growing) is a lot of interviews
+- "What business questions can this table answer?" requires domain expertise
+- Lack of measurable progress erodes buy-in over time
+
+**Consequences:**
+- First 10 tables have rich metadata; remaining 18 have placeholder text
+- Metadata capture backlog grows faster than it's cleared
+- Stakeholders view governance as "extra work without visible benefit"
+- Business metadata becomes another field to ignore
 
 **Warning signs:**
-- Timeout errors for queries involving multiple joins
-- Partial results or connection reset errors
-- Users report intermittent failures for complex questions
+- Interview completion rate drops after first week
+- "Same as X" appears frequently in business purpose fields
+- Stakeholders delegate to people without domain expertise
+- business_questions array is empty for most tables
 
-**Consequences:**
-- Complex queries always fail
-- Users learn to avoid certain question types
-- Capability underutilized
+**Prevention strategy:**
+1. **Prioritize by usage** - Start with most-queried tables (dim_noc, cops_employment)
+2. **Templates, not blank fields** - Provide example purposes and questions
+3. **Batch interviews** - Group related tables (all COPS tables in one session)
+4. **Visible value** - Show metadata in demo UI immediately after capture
+5. **Asynchronous option** - Allow async form submission, not just live interviews
+6. **Minimum viable metadata** - 1 purpose sentence + 3 questions is enough to start
+
+**Interview prioritization matrix:**
+| Priority | Tables | Rationale |
+|----------|--------|-----------|
+| P1 | dim_noc, cops_employment, cops_employment_growth | Core tables, highest query frequency |
+| P2 | dim_og, bridge_noc_og, dim_og_subgroup | New in v3.0, stakeholder interest high |
+| P3 | oasis_* tables | Attribute tables, similar purposes |
+| P4 | dim_caf_*, bridge_caf_* | Specialized audience |
+
+**Detection checkpoint:**
+- 8 of 28 tables should have complete metadata within first sprint
+- If completion rate <50% after 2 sprints, workflow has too much friction
+
+**Phase mapping:** Phase 19 (Business Metadata Capture)
+
+---
+
+## Technical Debt Patterns
+
+Mistakes that cause delays or technical debt when retrofitting governance.
+
+### Pattern 1: Compliance Log Staleness
+
+**What goes wrong:** Compliance logs (DADM, DAMA, Classification) generated once, never regenerated.
 
 **Prevention:**
-- Set realistic timeout based on query complexity (60-120s for analytical queries)
-- Implement async query pattern: submit, poll for results
-- Add query complexity estimation before execution
-- Document expected response times for different query types
+- Add `jobforge compliance check --diff` to CI/CD
+- Alert when compliance logs older than 7 days
+- Include compliance log age in demo UI status
 
-**Phase to address:** Adapter configuration (jobforge.yaml timeout setting)
+**Phase:** 17
 
----
+### Pattern 2: Quality Metric Silos
 
-## Deployment Pitfalls
-
-Common failures when deploying Orbit with JobForge integration.
-
-### Pitfall D1: Port Conflicts
-
-**What goes wrong:** Orbit default ports (3000, 5173) conflict with existing services. Deployment fails silently or takes over wrong port.
-
-**Why it happens:** Common development ports. Existing services may use same defaults.
-
-**Warning signs:**
-- "Port already in use" errors
-- Orbit starts but connects to wrong service
-- React UI unreachable
-
-**Consequences:**
-- Deployment fails or breaks existing services
-- Debugging requires checking all port mappings
-- Production incident from port collision
+**What goes wrong:** Quality metrics computed separately from catalog metadata, creating two sources of truth.
 
 **Prevention:**
-- Survey existing port usage before deployment
-- Use non-standard ports for Orbit (e.g., 3100, 5273)
-- Document all port assignments in deployment guide
-- Docker Compose: explicit port mappings, not defaults
+- Quality metrics stored in same catalog JSON as table metadata
+- Single `data/catalog/tables/{table}.json` contains both
+- Dashboard reads from catalog, not separate quality database
 
-**Phase to address:** Deployment planning phase
+**Phase:** 18
 
-**Source:** [Orbit GitHub README](https://github.com/schmitech/orbit)
+### Pattern 3: O*NET Data Drift
 
----
-
-### Pitfall D2: Python/Node Version Mismatch
-
-**What goes wrong:** Orbit requires Python 3.12+ and Node 18+. Older versions cause cryptic failures during installation or runtime.
-
-**Why it happens:** Version requirements buried in docs. System Python/Node often older.
-
-**Warning signs:**
-- Syntax errors during pip install
-- npm install fails with version warnings
-- Runtime errors about missing features
-
-**Consequences:**
-- Installation fails
-- Partial installation causes confusing errors
-- Requires environment rebuild
+**What goes wrong:** Local O*NET cache diverges from API as O*NET updates their database (semi-annual releases).
 
 **Prevention:**
-- Verify versions before starting installation
-- Use version managers (pyenv, nvm) for isolated environments
-- Docker: base on known-compatible images
-- CI pipeline validates versions match requirements
+- Track O*NET database version in cache metadata
+- Log warning when cached version >6 months old
+- Provide `jobforge onet refresh --force` for manual updates
 
-**Phase to address:** Pre-deployment checklist
+**Phase:** 20
 
-**Source:** [Orbit Prerequisites](https://github.com/schmitech/orbit)
+### Pattern 4: Orphaned Provenance
 
----
-
-### Pitfall D3: DuckDBRetriever Not Registered in Orbit
-
-**What goes wrong:** DuckDBRetriever copied to Orbit but not registered in retriever factory. Adapter references non-existent retriever class.
-
-**Why it happens:** Orbit uses factory pattern for retrievers. Adding a file isn't enough; must register class.
-
-**Warning signs:**
-- "Unknown retriever type: duckdb" errors
-- Adapter configuration looks correct but doesn't work
-- Other retrievers work, DuckDB doesn't
-
-**Consequences:**
-- Integration fails at runtime
-- Confusing error messages about retriever not found
-- Manual registration step easy to miss
+**What goes wrong:** Provenance links to tables/columns that no longer exist after schema changes.
 
 **Prevention:**
-- Document full registration steps:
-  1. Copy duckdb.py to orbit/server/retrievers/
-  2. Add import to orbit/server/retrievers/__init__.py
-  3. Register in retriever factory (if applicable)
-- Verify registration with unit test before deployment
-- Create installation script that handles all steps
+- Provenance validation in `jobforge catalog validate`
+- Provenance links use table/column names, not UUIDs
+- Schema migration includes provenance migration
 
-**Phase to address:** Integration documentation (docs/orbit-integration.md)
+**Phase:** 17
 
 ---
 
-### Pitfall D4: CORS Not Configured for Cross-Origin Requests
+## Integration Gotchas
 
-**What goes wrong:** Orbit React UI running on port 3000 cannot make requests to JobForge API on port 8000 due to CORS policy.
+Specific issues when integrating v4.0 features with existing JobForge 2.0.
 
-**Why it happens:** Browsers enforce CORS. Default FastAPI doesn't allow cross-origin requests.
+### Gotcha 1: Existing O*NET Client Expectations
 
-**Warning signs:**
-- "CORS policy" errors in browser console
-- API calls work from curl but fail from browser
-- Orbit UI shows "network error" for all queries
+**Current state:** `src/jobforge/external/onet/client.py` has `ONetClient` with retry logic for 429s.
 
-**Consequences:**
-- Frontend completely non-functional
-- Users cannot access any queries through UI
-- Works in testing (same origin) but fails in deployment
+**Problem:** v4.0 O*NET integration assumes different architecture (local database + API fallback).
 
-**Prevention:**
-- Configure CORS middleware in FastAPI:
-  ```python
-  from fastapi.middleware.cors import CORSMiddleware
-  app.add_middleware(
-      CORSMiddleware,
-      allow_origins=["http://localhost:3000", "http://orbit:3000"],
-      allow_methods=["*"],
-      allow_headers=["*"],
-  )
-  ```
-- Test cross-origin requests before deployment
-- Document CORS configuration for different deployment scenarios
+**Resolution:**
+- Extend, don't replace: `ONetClient` becomes API-only client
+- New `ONetDataSource` wraps client + local DB + cache
+- Existing crosswalk code continues to work
 
-**Phase to address:** API configuration (routes.py)
+### Gotcha 2: Compliance Log Format Compatibility
 
----
+**Current state:** `data/catalog/compliance/dama.json` uses ComplianceLog model with TraceabilityEntry.
 
-## Integration Pitfalls
+**Problem:** v4.0 DAMA audit may want phase-level compliance, not just artifact-level.
 
-Issues when adding Orbit to existing JobForge system.
+**Resolution:**
+- Add optional `phase_id` field to TraceabilityEntry
+- Existing logs remain valid (field is optional)
+- New audit workflow adds phase context
 
-### Pitfall I1: Text-to-SQL Column Hallucination
+### Gotcha 3: Catalog Enrichment Collision
 
-**What goes wrong:** LLM generates SQL referencing columns that don't exist, especially when column names are similar to common concepts (e.g., generating "job_title" when actual column is "class_title").
+**Current state:** `src/jobforge/catalog/enrich.py` adds workforce_dynamic, descriptions to catalog.
 
-**Why it happens:** LLM guesses based on semantic similarity. Schema provided but model doesn't always use it precisely.
+**Problem:** v4.0 business metadata capture adds more fields to same JSON files.
 
-**Warning signs:**
-- DuckDB errors: "column X does not exist"
-- Generated SQL looks plausible but fails execution
-- Errors correlate with queries about concepts vs specific columns
+**Resolution:**
+- Define clear field ownership (enrich.py owns technical metadata)
+- Business metadata in separate `business_metadata` object within same file
+- Merge strategy: business metadata never overwritten by technical enrichment
 
-**Consequences:**
-- Query failures for valid questions
-- Users receive unhelpful error messages
-- Trust in system degrades
+### Gotcha 4: WiQ Schema Registration Growth
 
-**Prevention:**
-- Include column descriptions in schema DDL, not just names:
-  ```sql
-  CREATE TABLE dim_noc (
-    noc_code VARCHAR,  -- 5-digit NOC code like "21232"
-    class_title VARCHAR,  -- Official occupation title
-    ...
-  );
-  ```
-- Implement SQL validation before execution
-- Return "I couldn't generate a valid query" instead of raw SQL errors
-- Log failed queries for schema improvement
+**Current state:** 28 tables, 27 relationships in `wiq_schema.json`.
 
-**Phase to address:** Schema DDL generation enhancement
+**Problem:** v4.0 adds O*NET tables, PAA/DRF tables - potential for 40+ tables.
 
-**Sources:**
-- [Text-to-SQL LLM Comparison 2026](https://research.aimultiple.com/text-to-sql/)
-- [Six Failures of Text-to-SQL](https://medium.com/google-cloud/the-six-failures-of-text-to-sql-and-how-to-fix-them-with-agents-ef5fd2b74b68)
+**Resolution:**
+- Schema generator handles arbitrary table count
+- Consider schema namespacing: `core.dim_noc`, `onet.dim_soc`, `paa.fact_outcomes`
+- Performance test DDL generation at 50 tables
 
 ---
 
-### Pitfall I2: Join Logic Errors
+## "Looks Done But Isn't" Checklist
 
-**What goes wrong:** LLM generates incorrect JOIN operations between tables, especially for complex questions involving multiple tables. May omit necessary JOINs or use wrong join keys.
+Tests that verify features are actually complete, not just present.
 
-**Why it happens:** Multi-table queries require understanding relationships. LLM may not infer correct join keys from schema alone.
+### Phase 17: Governance Compliance Framework
 
-**Warning signs:**
-- Results include all rows (missing WHERE/JOIN)
-- Cartesian products from missing join conditions
-- Queries return empty when data should exist
+- [ ] DAMA audit generates in <30 seconds
+- [ ] Audit can run without manual approval
+- [ ] Policy provenance links resolve (HTTP 200)
+- [ ] Delta audit works (only changed artifacts)
+- [ ] Compliance check integrates with CI/CD
 
-**Consequences:**
-- Wrong answers that look correct (partial results)
-- Performance issues from Cartesian products
-- Users receive misleading information
+### Phase 18: Data Quality Dashboard
 
-**Prevention:**
-- Include relationship hints in system prompt:
-  ```
-  Relationships:
-  - dim_noc.noc_code joins to cops_employment.noc_code
-  - dim_occupations.group_code joins to job_architecture.group_code
-  ```
-- Implement result validation: check for unexpected row counts
-- Consider agent pattern: LLM plans query, validates, then executes
-- Log and review queries that return 0 rows or >10K rows
+- [ ] Each metric has an owner
+- [ ] Each metric has a threshold
+- [ ] Yellow status triggers defined action
+- [ ] Metrics trend over 7 days (not just snapshot)
+- [ ] Dashboard loads in <3 seconds
 
-**Phase to address:** System prompt enhancement
+### Phase 19: Business Metadata Capture
 
-**Source:** [K2View - Join failures in text-to-SQL](https://www.k2view.com/blog/llm-text-to-sql/)
+- [ ] Interview can be completed async (form, not just live)
+- [ ] Templates provided for common table types
+- [ ] Captured metadata visible in demo UI
+- [ ] Completion tracked (X of Y tables documented)
+- [ ] Business questions searchable in query interface
 
----
+### Phase 20: O*NET Integration
 
-### Pitfall I3: Conflicting Query Interfaces
+- [ ] Pipeline works fully offline (cached data)
+- [ ] O*NET database version tracked
+- [ ] Attribution link displayed per Terms of Service
+- [ ] Rate limit errors don't fail entire pipeline
+- [ ] SOC code coverage matches NOC code count
 
-**What goes wrong:** JobForge has existing text-to-SQL (DataQueryService) and now adds Orbit DuckDBRetriever. Two paths to same data with potentially different behaviors.
+### Phase 21: Job Architecture Enrichment
 
-**Why it happens:** Incremental development. New capability added without deprecating or aligning with existing.
+- [ ] All job functions have descriptions
+- [ ] All job families have descriptions
+- [ ] Metadata completeness >90%
+- [ ] Enrichment follows Phase 12 pattern
+- [ ] No orphaned JA records
 
-**Warning signs:**
-- Same question returns different results via API vs Orbit
-- Different system prompts in each implementation
-- Bug fixes applied to one but not the other
+### Phase 22: PAA/DRF Data Layer
 
-**Consequences:**
-- Inconsistent user experience
-- Maintenance burden doubles
-- Confusion about which interface is "correct"
+- [ ] Schema handles 3-5 hierarchy levels
+- [ ] DND data fully integrated
+- [ ] Second department requires <20% schema change
+- [ ] Bridge tables have valid FKs
+- [ ] Provenance to Open Government Portal
 
-**Prevention:**
-- Single source of truth: DuckDBRetriever should delegate to DataQueryService
-- Or: DataQueryService wraps DuckDBRetriever
-- Avoid duplicating system prompts and SQL generation logic
-- Document authoritative path clearly
+### Phase 23: GC HR Data Model Alignment
 
-**Phase to address:** Architecture decision during integration
-
----
-
-### Pitfall I4: Structured Output Model Compatibility
-
-**What goes wrong:** Structured outputs require specific Claude models (Sonnet 4.5, Opus 4.1). Using unsupported model (Haiku, older Sonnet) causes silent failures or unstructured responses.
-
-**Why it happens:** Model selection based on cost/speed without checking feature compatibility. Beta feature has limited model support.
-
-**Warning signs:**
-- Response is freeform text instead of JSON
-- Parse errors when validating SQLQuery model
-- "structured-outputs" beta header has no effect
-
-**Consequences:**
-- SQL generation fails unpredictably
-- Fallback to freeform parsing unreliable
-- Query success rate drops
-
-**Prevention:**
-- Hardcode compatible model in DuckDBRetriever
-- Validate model supports structured outputs before using
-- Document model requirements in adapter config
-- Add graceful fallback if structured output fails
-
-**Phase to address:** Retriever implementation
-
-**Source:** [Anthropic Structured Outputs](https://platform.claude.com/docs/en/build-with-claude/structured-outputs)
+- [ ] Gap analysis document complete
+- [ ] Bidirectional gaps documented
+- [ ] Provisional mappings clearly marked
+- [ ] No code changes required for alignment
+- [ ] Version date recorded
 
 ---
 
-### Pitfall I5: Error Message Exposure
+## Pitfall-to-Phase Mapping
 
-**What goes wrong:** Raw DuckDB errors, API errors, or stack traces exposed to end users through Orbit responses.
-
-**Why it happens:** Error handling focuses on not crashing, not on user-friendly messages.
-
-**Warning signs:**
-- Users see SQL syntax errors
-- Stack traces in Orbit responses
-- Technical error codes without explanation
-
-**Consequences:**
-- Poor user experience
-- Potential security risk (schema exposure)
-- Support burden from confused users
-
-**Prevention:**
-- Wrap all retriever errors in user-friendly messages
-- Log technical details, return generic message
-- Categorize errors:
-  - "I couldn't understand that question" (parse failure)
-  - "I couldn't find data matching your query" (empty results)
-  - "Something went wrong, please try again" (system error)
-- Never expose raw SQL or column names in errors
-
-**Phase to address:** Error handling in DuckDBRetriever.retrieve()
-
----
-
-## Prevention Strategies Summary
-
-| Pitfall | Category | Prevention Strategy | Phase |
-|---------|----------|---------------------|-------|
-| C1: Intent collision | Config | Mutual exclusivity patterns, priority ordering | 10-03 |
-| C2: Hardcoded localhost | Config | Environment variables, Docker service names | Deployment |
-| C3: Missing API key | Config | Fail-fast validation at initialization | 10-03 |
-| C4: Schema drift | Config | Restart documentation, schema TTL | Operations |
-| P1: Memory leak | Performance | jemalloc allocator, memory monitoring | Deployment |
-| P2: Full schema prompts | Performance | Schema pruning, two-stage approach | Post-MVP |
-| P3: No caching | Performance | Query result cache with TTL | Optimization |
-| P4: Short timeout | Performance | Increase timeout, async pattern | 10-03 |
-| D1: Port conflicts | Deployment | Port survey, explicit mappings | Pre-deployment |
-| D2: Version mismatch | Deployment | Version validation, Docker images | Pre-deployment |
-| D3: Retriever not registered | Deployment | Full registration documentation | 10-03 |
-| D4: CORS not configured | Deployment | CORS middleware, cross-origin testing | 10-02 |
-| I1: Column hallucination | Integration | Column descriptions in DDL | 10-03 |
-| I2: Join errors | Integration | Relationship hints in prompt | 10-03 |
-| I3: Conflicting interfaces | Integration | Single source of truth architecture | 10-03 |
-| I4: Model compatibility | Integration | Hardcode compatible model | 10-03 |
-| I5: Error exposure | Integration | User-friendly error wrapping | 10-03 |
-
----
-
-## Phase-Specific Checklist
-
-### Pre-Deployment (Before Starting Integration)
-- [ ] Verify Python 3.12+ and Node 18+ available
-- [ ] Survey existing port usage (3000, 5173, 8000)
-- [ ] Confirm ANTHROPIC_API_KEY available and valid
-- [ ] Review existing DataQueryService for reuse opportunity
-
-### Plan 10-02 (JobForge HTTP API)
-- [ ] Configure CORS middleware for Orbit origins
-- [ ] Validate API health check includes credential verification
-- [ ] Test cross-origin requests from browser
-
-### Plan 10-03 (Orbit Integration)
-- [ ] Design intent patterns with mutual exclusivity
-- [ ] Add negative patterns to prevent collision
-- [ ] Include relationship hints in system prompt
-- [ ] Add column descriptions to schema DDL
-- [ ] Wrap errors in user-friendly messages
-- [ ] Document retriever registration steps
-- [ ] Test with ambiguous queries
-- [ ] Verify structured outputs model compatibility
-
-### Deployment
-- [ ] Use environment variables for URLs (not hardcoded localhost)
-- [ ] Configure jemalloc or monitor memory trends
-- [ ] Set appropriate timeouts (60s+ for complex queries)
-- [ ] Test full Docker Compose stack end-to-end
-
-### Operations
-- [ ] Document schema change requires Orbit restart
-- [ ] Monitor API costs and token usage
-- [ ] Track query failure rates by error type
-- [ ] Establish memory baseline and alert on drift
+| Pitfall | Phase(s) | Severity | Prevention Complexity |
+|---------|----------|----------|----------------------|
+| Governance Audit as Approval Gate | 17 | Critical | Medium |
+| Data Quality Metrics Without Actionability | 18 | Critical | Medium |
+| Policy Provenance at Wrong Granularity | 17 | Critical | High |
+| O*NET API Integration Without Caching | 20 | Critical | Medium |
+| PAA/DRF Data Consistency Across Departments | 22 | Critical | High |
+| GC HR Data Model Completeness Assumptions | 23 | Critical | Low |
+| Business Metadata Capture Workflow Friction | 19 | Critical | Medium |
+| Compliance Log Staleness | 17, All | Moderate | Low |
+| Quality Metric Silos | 18 | Moderate | Low |
+| O*NET Data Drift | 20 | Moderate | Low |
+| Orphaned Provenance | 17, All | Moderate | Medium |
 
 ---
 
 ## Sources
 
-### Primary (HIGH confidence)
-- [Orbit GitHub Repository](https://github.com/schmitech/orbit) - Official documentation and requirements
-- [Orbit Docker README](https://github.com/schmitech/orbit/blob/main/docker/README.md) - Deployment configuration
-- [Anthropic Structured Outputs](https://platform.claude.com/docs/en/build-with-claude/structured-outputs) - Model compatibility and usage
-- [DuckDB Performance Guide](https://duckdb.org/docs/stable/guides/performance/overview) - Query optimization
+### Official Documentation (HIGH confidence)
 
-### Secondary (MEDIUM confidence)
-- [BetterUp - FastAPI Memory Leak](https://build.betterup.com/chasing-a-memory-leak-in-our-async-fastapi-service-how-jemalloc-fixed-our-rss-creep/) - jemalloc fix for async memory issues
-- [K2View - LLM Text-to-SQL Challenges](https://www.k2view.com/blog/llm-text-to-sql/) - Join and hallucination issues
-- [Six Failures of Text-to-SQL](https://medium.com/google-cloud/the-six-failures-of-text-to-sql-and-how-to-fix-them-with-agents-ef5fd2b74b68) - Agent patterns for error recovery
-- [DuckDB Issue #18031](https://github.com/duckdb/duckdb/issues/18031) - Parallel insertion memory leak
+- [DAMA DMBOK Framework Guide](https://atlan.com/dama-dmbok-framework/) - Framework overview and implementation guidance
+- [DAMA DMBOK 2.0 Revisions](https://www.damadmbok.org/dmbok2-revisions) - DMBOK 3.0 evergreening initiative (2025)
+- [O*NET Web Services](https://services.onetcenter.org/) - API documentation and Terms of Service
+- [O*NET Web Services Reference Manual](https://services.onetcenter.org/reference/) - API v2.0 reference
+- [Directive on Automated Decision-Making](https://www.tbs-sct.canada.ca/pol/doc-eng.aspx?id=32592) - DADM compliance requirements
+- [Algorithmic Impact Assessment tool](https://www.canada.ca/en/government/system/digital-government/digital-government-innovations/responsible-use-ai/algorithmic-impact-assessment.html) - AIA requirements and timeline
+- [2023-2026 Data Strategy for the Federal Public Service](https://www.canada.ca/en/treasury-board-secretariat/corporate/reports/2023-2026-data-strategy.html) - GC data governance priorities
+- [GC HR and Pay Data Standards](https://open.canada.ca/data/en/dataset/67c81048-e230-47f2-ad9a-38bc68f3b51e) - HR data standardization efforts
+- [Next Generation HR and Pay Final Findings Report](https://www.canada.ca/en/shared-services/corporate/about-us/transparency/publications/2023-24/next-generation-hr-pay-final-findings-report.html) - 70 HRMS complexity documented
 
-### Tertiary (LOW confidence - needs validation)
-- [Text-to-SQL Comparison 2026](https://research.aimultiple.com/text-to-sql/) - General accuracy benchmarks
-- [DuckDB Concurrency Discussion #13719](https://github.com/duckdb/duckdb/discussions/13719) - In-memory DuckDB with FastAPI
+### Industry Research (MEDIUM confidence)
+
+- [Data Quality Dashboard Guide](https://datakitchen.io/the-six-types-of-data-quality-dashboards/) - Six dashboard types, design patterns
+- [Data Quality Metrics That Matter](https://www.montecarlodata.com/blog-data-quality-metrics/) - Actionable metrics guidance
+- [Data Quality Issues 2025](https://atlan.com/data-quality-issues/) - Common quality issues and solutions
+- [Data Governance Challenges](https://www.alation.com/blog/data-governance-challenges/) - Retrofit challenges and solutions
+- [Data Provenance and Lineage](https://www.nightfall.ai/ai-security-101/data-provenance-and-lineage) - Implementation challenges
+- [Metadata Management Best Practices](https://www.alation.com/blog/metadata-management-framework/) - Stakeholder engagement patterns
+- [IBM Data Quality Issues](https://www.ibm.com/think/insights/data-quality-issues) - Enterprise data quality challenges
+- [Data Governance Audit Checklist 2025](https://lumenalta.com/insights/data-governance-audit-checklist-updated-2025) - Audit automation guidance
+
+### Project Context (HIGH confidence)
+
+- Existing O*NET client: `src/jobforge/external/onet/client.py`
+- Existing compliance logs: `src/jobforge/governance/compliance/`
+- Existing catalog structure: `data/catalog/tables/*.json`
+- v4.0 proposal: `.planning/proposals/v4.0-governance-agents-vision.md`
 
 ---
 
-## Metadata
+**Confidence Assessment:**
 
-**Research focus:** Integration pitfalls specific to adding Orbit/DuckDBRetriever to existing JobForge 2.0 system
-**Excluded:** Generic pitfalls already documented in existing PITFALLS.md (medallion, DADM, Power BI)
-**Confidence assessment:**
-- Configuration pitfalls: HIGH (well-documented patterns)
-- Performance pitfalls: MEDIUM (DuckDB memory issues confirmed, Orbit-specific less documented)
-- Deployment pitfalls: HIGH (common patterns)
-- Integration pitfalls: MEDIUM (text-to-SQL well-documented, Orbit-specific patterns inferred)
+| Area | Confidence | Reasoning |
+|------|------------|-----------|
+| DAMA/Governance Pitfalls | MEDIUM | Framework guidance is general; project-specific impact requires validation |
+| Data Quality Dashboard | HIGH | Industry patterns well-documented; Monte Carlo and DataKitchen research comprehensive |
+| O*NET Integration | HIGH | Existing client code + official documentation reviewed |
+| PAA/DRF Challenges | MEDIUM | GC-specific; limited public documentation on departmental variance |
+| GC HR Data Model | MEDIUM | Model explicitly incomplete; alignment complexity depends on model state |
+| Business Metadata | MEDIUM | Industry patterns apply; stakeholder-specific friction hard to predict |
 
-**Valid until:** 60 days (Orbit actively developed, patterns may change)
+---
+
+*Researched: 2026-02-05*
+*Valid for: v4.0 milestone planning*

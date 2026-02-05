@@ -1,277 +1,170 @@
-# Research Summary: Orbit Integration (v2.1)
+# Project Research Summary: v4.0 Governed Data Foundation
 
-**Synthesized:** 2026-01-20
-**Overall Confidence:** MEDIUM-HIGH
+**Project:** JobForge v4.0 — Governed Data Foundation
+**Domain:** Data governance, quality measurement, multi-taxonomy integration
+**Researched:** 2026-02-05
+**Confidence:** MEDIUM-HIGH
 
 ---
 
 ## Executive Summary
 
-Orbit integration for JobForge 2.0 is a **low-risk, high-value milestone** because the existing codebase already contains 85% of the required components. The `orbit/` directory has a working DuckDBRetriever implementation, HTTP adapter configuration, and domain-specific intent templates. The v2.1 milestone should focus on **productionizing and hardening** what exists rather than building from scratch. The HTTP adapter pattern is the correct approach: Orbit acts as a conversational gateway that routes queries to JobForge's existing FastAPI endpoints, keeping all DuckDB logic in JobForge and treating Orbit as a UI/routing layer only.
+v4.0 completes JobForge's governed data foundation through three capability pillars: (1) **governance compliance** with DAMA DMBOK auditing, DADM compliance verification, and policy provenance tracking; (2) **data quality measurement** implementing GC DQMF 9-dimension scoring with dashboard visualization; and (3) **5-taxonomy data layer** completing the O*NET integration and adding PAA/DRF organizational context. The existing catalog infrastructure (28 tables, 123 lineage logs, 3 compliance frameworks) provides a strong foundation that v4.0 extends without architectural refactoring.
 
-The primary technical challenge is **text-to-SQL accuracy**, not infrastructure. Research indicates that well-documented schemas with column descriptions and relationship hints can push accuracy from the 70-85% baseline to 90%+. The existing Claude Structured Outputs integration (Nov 2025) provides schema-guaranteed SQL generation without needing additional frameworks like LangChain or Vanna. The key pitfalls center on intent pattern collision, schema DDL drift after updates, and potential memory leaks in async environments using DuckDB.
+The recommended approach uses **minimal stack additions**: cuallee (not Great Expectations) for Polars-native quality validation, ckanapi for Open Government Portal access, and Streamlit for dashboard UI. Total new dependency footprint is approximately 45MB. All new features integrate through 5 established extension points: compliance layer, quality API endpoint, catalog enrichment, ingestion pipeline, and CLI commands. This is an additive build, not a refactor.
 
-Stack changes are minimal: the only optional addition is `schmitech-orbit-client==1.1.6` for CLI testing. All core dependencies (DuckDB 1.4+, anthropic 0.43+, FastAPI, httpx) are already in the project. Deployment uses Docker with the `schmitech/orbit:basic` image. The estimated effort is **5 developer-days** to complete v2.1, making this an efficient milestone with clear deliverables.
+Key risks center on **governance process overhead** (audit becoming an approval gate), **quality metrics without actionability** (dashboard that drives no action), and **O*NET rate limiting** (incomplete data loads). Prevention requires treating audits as informational-not-blocking, limiting to 6 actionable metrics with owners/thresholds, and implementing local database caching for O*NET. The PAA/DRF integration carries moderate risk due to cross-departmental schema variance.
 
 ---
 
 ## Key Findings
 
-### From STACK.md
+### Recommended Stack
 
-- **No new dependencies required** - DuckDB, anthropic, FastAPI, httpx already installed
-- **HTTP adapter pattern recommended** over custom DuckDBRetriever inside Orbit (2ms latency vs. maintenance burden)
-- **Claude Structured Outputs** (Nov 2025 beta) provides schema-guaranteed SQL - no LangChain needed
-- **Orbit v2.3.0** available via Docker (`schmitech/orbit:basic`) or local install
-- **Python 3.11 for JobForge**, Python 3.12+ for Orbit server (runs separately in Docker)
-- Optional CLI client: `schmitech-orbit-client==1.1.6` for testing without full UI
+v4.0 requires only 4 new dependencies. The existing Polars/DuckDB/Pydantic/httpx stack handles most requirements.
 
-### From FEATURES.md
+**Core technologies (new):**
+- **cuallee** (>=0.13.0): GC DQMF data quality validation — native Polars/DuckDB support, 50+ built-in checks, JOSS peer-reviewed, 15MB (vs Great Expectations at 50MB)
+- **ckanapi** (>=4.9): Open Government Portal access — official CKAN client for PAA/DRF datasets, GET-only, no auth needed
+- **Streamlit** (>=1.41.0): Data quality dashboard UI — pure Python, native DuckDB support, production-ready in 2026
+- **plotly** (>=6.0.0): Interactive visualizations — integrates with Streamlit, hover/zoom/filter
 
-- **Table stakes 85% complete** - DuckDBRetriever working, intent routing configured, schema context generated
-- **Remaining work is polish**: error handling improvements, deployment documentation
-- **Differentiators already configured**: entity recognition for NOC codes, TEER levels, broad categories
-- **Anti-features clear**: no vector embeddings (v3.0 scope), no multi-turn conversation, no custom fine-tuned model
-- **Estimated effort: 5 developer-days**
+**Existing stack (reuse, no changes):**
+- httpx/tenacity: O*NET API calls (existing ONetClient sufficient)
+- pydantic/structlog: DAMA audit logging (extend existing patterns)
+- pdfplumber: Policy document parsing (already in pyproject.toml)
+- beautifulsoup4: PAA/DRF scraping fallback (established patterns)
 
-### From ARCHITECTURE.md
+**Do NOT use:** Great Expectations (no Polars support), Soda Core (YAML-first conflicts with code-first), Apache Atlas/OpenMetadata (overkill for single project), Evidence BI (introduces Node.js).
 
-- **Additive integration** - does not modify existing Power BI deployment path
-- **Both paths read same gold layer** - changes to parquet propagate to both consumers
-- **Three routing options**: DATA_QUERY (DuckDB), METADATA_QUERY (lineage API), COMPLIANCE_QUERY (DADM API)
-- **DuckDBRetriever uses in-memory DuckDB** with lazy initialization
-- **Build order**: DuckDBRetriever first, then Orbit configuration, then documentation/testing
+### Expected Features
 
-### From PITFALLS.md
+**Must have (table stakes) — 12 features:**
+- GC DQMF 9-dimension scoring per table
+- Completeness, accuracy, timeliness metrics
+- Data quality API endpoint (`/api/quality/table/{table}`)
+- Business purpose and business questions per table in catalog
+- O*NET occupation dimension (`dim_onet_occupation` with ~900 occupations)
+- O*NET attributes (abilities, skills, knowledge, work activities, work context)
+- NOC-O*NET concordance bridge (516 NOC codes via SOC crosswalk)
+- DAMA compliance evidence links (metrics, not just artifacts)
+- Lineage-to-policy traceability
 
-- **C1: Intent Pattern Collision** - "how many tables contain NOC" matches both data and metadata patterns
-- **P1: Memory Leak in Async** - musl malloc (Alpine) + DuckDB can cause RSS creep; use jemalloc
-- **I1: Column Hallucination** - LLM generates plausible but wrong column names; add descriptions to DDL
-- **I3: Conflicting Interfaces** - JobForge has DataQueryService AND new DuckDBRetriever; avoid duplication
-- **D4: CORS Not Configured** - React UI on 3000 cannot reach API on 8000 without middleware
+**Should have (differentiators) — top 5:**
+- GC DQMF dashboard with 9-dimension radar chart per table
+- Automated DAMA DMBOK audit (phase-level compliance scoring)
+- Policy provenance at document/relationship level
+- PAA/DRF for DND (first department target)
+- GC HR Data Model mapping document with gap analysis
 
----
+**Defer to v5.0:**
+- Automated quality alerts/remediation (agent territory)
+- Natural language quality queries (conversational agent)
+- Full PAA/DRF for all 300+ departments
+- O*NET interests, work styles, tasks tables
 
-## Recommended Stack
+### Architecture Approach
 
-**Additions for v2.1:**
+v4.0 integrates through **5 extension points** in the existing architecture with no refactoring required. All features are additive to established patterns.
 
-| Package | Version | Purpose | Required? |
-|---------|---------|---------|-----------|
-| schmitech-orbit-client | 1.1.6 | CLI testing interface | Optional |
+**Major components:**
+1. **governance/dqmf/** — GC DQMF 9-dimension implementation (dimensions.py, metrics.py, dashboard.py)
+2. **governance/policy/** — Policy provenance (parser.py for PDF extraction, provenance.py for artifact-to-clause mapping)
+3. **external/paa/** — PAA/DRF scraping (scraper.py using ckanapi, models.py for Pydantic schemas)
+4. **ingestion/onet.py** — O*NET occupation ingestion (follows og.py medallion pattern)
+5. **api/quality.py** — Quality dashboard endpoints (follows existing FastAPI router patterns)
 
-**Already Present (No Changes):**
+**Key insight:** O*NET and PAA/DRF use the same PipelineEngine for layer transitions. Quality metrics are stored in catalog JSON files (not a separate database). Dashboard reads from catalog, not separate quality DB.
 
-| Package | Version | Role in Orbit Integration |
-|---------|---------|---------------------------|
-| duckdb | >=1.4.0 | SQL on gold Parquet files |
-| anthropic | >=0.43.0 | Claude Structured Outputs for text-to-SQL |
-| fastapi | >=0.115.0 | HTTP API endpoints for Orbit HTTP adapter |
-| httpx | >=0.27.0 | Async HTTP client |
-| pydantic | >=2.12.0 | SQLQuery response model |
+### Critical Pitfalls
 
-**Deployment:**
+**7 critical pitfalls identified, mapped to phases:**
 
-```bash
-# Orbit via Docker (recommended)
-docker pull schmitech/orbit:basic
-docker run -d --name orbit -p 5173:5173 -p 3000:3000 \
-  -v $(pwd)/orbit/config:/orbit/config schmitech/orbit:basic
-```
+1. **Governance Audit as Approval Gate** (Phase 17) — Prevention: Audit is informational, not blocking; automate regeneration in CI/CD; target <30 second audit generation; delta audits only.
 
----
+2. **Data Quality Metrics Without Actionability** (Phase 18) — Prevention: 6 metrics, not 60; owner per metric; thresholds with explicit actions; trend over 7 days, not snapshot; link every metric to source table/column.
 
-## Feature Scope
+3. **Policy Provenance at Wrong Granularity** (Phase 17) — Prevention: Document/relationship level, not paragraph level; canonical canada.ca URLs; version tracking; weekly provenance verification job.
 
-### Table Stakes (Must Ship)
+4. **O*NET API Integration Without Caching** (Phase 20) — Prevention: Local database cache as primary source; API as fallback; persistent cache with 30-90 day TTL; pipeline works fully offline after initial cache.
 
-| Feature | Status | Notes |
-|---------|--------|-------|
-| DuckDBRetriever working with 24 gold tables | COMPLETE | `orbit/retrievers/duckdb.py` exists |
-| Intent routing for data queries | COMPLETE | `jobforge.yaml` configured |
-| Schema DDL context for LLM | COMPLETE | Generated dynamically from parquet |
-| SELECT-only enforcement | COMPLETE | System prompt enforces |
-| Error handling (user-friendly) | PARTIAL | Needs improvement |
-| Basic deployment documentation | TODO | Required for milestone completion |
+5. **PAA/DRF Data Consistency Across Departments** (Phase 22) — Prevention: One department at a time (DND first); schema accommodates 3-5 hierarchy levels; department-specific adapters; accept incompleteness.
 
-### Differentiators (Should Ship)
+6. **GC HR Data Model Completeness Assumptions** (Phase 23) — Prevention: Gap analysis document, not code changes; version-dated alignment; provisional mappings clearly marked; recommendations for JobForge, not for fixing the model.
 
-| Feature | Value | Build in v2.1? |
-|---------|-------|----------------|
-| Domain entity recognition (NOC, TEER) | Already configured | YES - validate |
-| Query explanation surfacing | Already generated | YES - expose |
-| Metadata query pathway | Already built | YES - wire up |
-
-### Anti-Features (Do Not Build)
-
-| Feature | Why Avoid |
-|---------|-----------|
-| Vector embeddings | RAG-03 is v3.0 scope |
-| Multi-turn conversation | Requires session state |
-| Custom fine-tuned model | Claude Structured Outputs sufficient |
-| Query builder UI | JDB-01 through JDB-05 are v3.0 |
-| Auto-visualization | Different product |
+7. **Business Metadata Capture Workflow Friction** (Phase 19) — Prevention: Prioritize by usage (dim_noc, cops_employment first); templates not blank fields; batch interviews; async form option; 1 purpose + 3 questions minimum.
 
 ---
 
-## Architecture Approach
+## Implications for Roadmap
 
-### Integration Pattern
+Based on research, suggested 7-phase structure (Phases 17-23):
 
-```
-User Question
-     |
-     v
-+------------------+
-|  Orbit Gateway   |  <-- Intent classification, UI, conversation history
-|  localhost:3000  |
-+--------+---------+
-         |
-    HTTP calls to JobForge API (or direct DuckDB)
-         |
-         v
-+------------------+
-|  JobForge API    |  <-- Claude text-to-SQL, DuckDB queries
-|  localhost:8000  |
-+--------+---------+
-         |
-         v
-+------------------+
-|  Gold Parquet    |  <-- 24 tables, star schema
-|  data/gold/*.parquet
-+------------------+
-```
+### Phase 17: Governance Compliance Framework
+**Rationale:** Foundation phase — defines compliance check structure, audit trail models, policy provenance patterns. All subsequent phases depend on these models.
+**Delivers:** DQMFComplianceLog, PolicyProvenanceLink models; DAMA audit enhancement with phase-level evidence; compliance CLI (`jobforge compliance`)
+**Addresses:** DAMA compliance evidence links, lineage-to-policy traceability
+**Avoids:** Pitfall 1 (audit as gate) by implementing informational audits; Pitfall 3 (wrong granularity) by starting with document-level provenance
 
-### Key Architectural Decisions
+### Phase 18: Data Quality Dashboard
+**Rationale:** Depends on Phase 17 models. High visibility deliverable that demonstrates governance value early.
+**Delivers:** GC DQMF 9-dimension scoring engine; `/api/quality/` endpoints; Streamlit dashboard UI with radar charts
+**Uses:** cuallee for Polars-native validation; Streamlit + plotly for visualization
+**Implements:** governance/dqmf/ component
+**Avoids:** Pitfall 2 (metrics without actionability) by limiting to 6 core metrics with owners/thresholds
 
-1. **HTTP adapter over custom retriever** - Keeps DuckDB logic in JobForge; Orbit is pure UI
-2. **Single source of truth** - DuckDBRetriever should delegate to DataQueryService (avoid parallel implementations)
-3. **In-memory DuckDB** - Clean isolation per session; lazy initialization
-4. **Same gold layer** - Both Power BI and Orbit read from `data/gold/*.parquet`
+### Phase 19: Business Metadata Capture
+**Rationale:** Depends on Phase 18 catalog schema extension. Enables stakeholder engagement while technical work proceeds in parallel.
+**Delivers:** business_purpose, business_questions, business_owner fields in catalog; interview workflow (CLI or async form); metadata completeness tracking
+**Addresses:** Business purpose per table, business questions per table
+**Avoids:** Pitfall 7 (workflow friction) by prioritizing high-usage tables and providing templates
 
-### New Components
+### Phase 20: O*NET Integration
+**Rationale:** Can develop in parallel with Phases 18-19 after Phase 17 completes. High business value (completes 5-taxonomy coverage).
+**Delivers:** dim_onet_occupation gold table; 5 O*NET attribute tables; bridge_noc_onet concordance; local database cache
+**Uses:** Existing ONetClient (extended); ckanapi not needed (O*NET has its own download)
+**Implements:** external/onet/scraper.py, ingestion/onet.py
+**Avoids:** Pitfall 4 (rate limiting) by implementing local database cache with API fallback
 
-| Component | Location | Purpose |
-|-----------|----------|---------|
-| DuckDBRetriever | `orbit/retrievers/duckdb.py` | EXISTS - validate |
-| jobforge.yaml | `orbit/config/adapters/` | EXISTS - validate |
-| wiq_intents.yaml | `orbit/config/intents/` | EXISTS - validate |
-| orbit-integration.md | `docs/` | TODO - create |
+### Phase 21: Job Architecture Enrichment
+**Rationale:** Uses business metadata patterns from Phase 19; may leverage O*NET work activities from Phase 20.
+**Delivers:** Complete JA descriptions; enriched job functions and families; metadata completeness >90%
+**Addresses:** Job architecture completeness gap
+**Implements:** Extends Phase 12 enrichment patterns
 
----
+### Phase 22: PAA/DRF Data Layer
+**Rationale:** Similar patterns to O*NET scraping from Phase 20. New data source with higher complexity due to departmental variance.
+**Delivers:** dim_paa_activity, dim_drf_outcome gold tables; bridge_og_paa relationship; DND as first department
+**Uses:** ckanapi for Open Government Portal; existing scraper patterns
+**Avoids:** Pitfall 5 (cross-department inconsistency) by targeting one department, designing for hierarchy variance
 
-## Critical Pitfalls
+### Phase 23: GC HR Data Model Alignment
+**Rationale:** Analysis phase requiring complete data model from prior phases. Produces documentation, not code changes.
+**Delivers:** GC HR Data Model mapping document; bidirectional gap analysis; alignment recommendations; version-dated alignment status
+**Addresses:** Strategic positioning of JobForge in GC ecosystem
+**Avoids:** Pitfall 6 (completeness assumptions) by treating as gap analysis, not gap filling
 
-### 1. Intent Pattern Collision (CRITICAL)
+### Phase Ordering Rationale
 
-**Risk:** "How many tables contain NOC?" matches both data ("how many") and metadata ("tables contain") intents.
-
-**Prevention:**
-- Design mutually exclusive patterns
-- Add priority ordering (metadata checked before data)
-- Include negative patterns in data_query
-
-### 2. Column Hallucination (HIGH)
-
-**Risk:** LLM generates `job_title` when actual column is `class_title`.
-
-**Prevention:**
-- Add column descriptions to schema DDL:
-  ```sql
-  class_title VARCHAR,  -- Official occupation title (not "job_title")
-  ```
-- Validate SQL against actual schema before execution
-- Log failed queries for schema improvement
-
-### 3. Memory Leak in Async (MEDIUM)
-
-**Risk:** DuckDB + musl malloc (Alpine) causes RSS creep in async FastAPI.
-
-**Prevention:**
-- Use jemalloc allocator in production Docker images
-- Monitor memory trends over time
-- Set memory limits with buffer
-
-### 4. CORS Not Configured (HIGH for deployment)
-
-**Risk:** React UI on port 3000 cannot reach API on port 8000.
-
-**Prevention:**
-- Add CORS middleware to FastAPI:
-  ```python
-  app.add_middleware(CORSMiddleware, allow_origins=["http://localhost:3000"])
-  ```
-
-### 5. Schema DDL Drift (MEDIUM)
-
-**Risk:** Gold tables updated but Orbit not restarted; LLM uses stale schema.
-
-**Prevention:**
-- Document that Orbit restart required after schema changes
-- Consider schema DDL TTL (regenerate periodically)
-
----
-
-## Roadmap Implications
-
-### Suggested Phase Structure
-
-Based on dependency analysis and architecture patterns, v2.1 should be structured as:
-
-#### Phase 1: Validation and Hardening (1-2 days)
-
-**Deliverables:**
-- Validate existing DuckDBRetriever works with all 24 gold tables
-- Validate intent routing handles ambiguous queries correctly
-- Test entity recognition patterns (NOC codes, TEER levels)
-
-**Features from FEATURES.md:** Table stakes validation
-**Pitfalls to avoid:** C1 (intent collision), I1 (column hallucination)
-**Research needed:** NO - patterns well-documented
-
-#### Phase 2: Error Handling and API Polish (1 day)
-
-**Deliverables:**
-- User-friendly error messages (not raw SQL errors)
-- CORS configuration for cross-origin requests
-- API health check validates credentials at startup
-
-**Features from FEATURES.md:** Error handling improvement
-**Pitfalls to avoid:** I5 (error exposure), D4 (CORS), C3 (missing API key)
-**Research needed:** NO - standard FastAPI patterns
-
-#### Phase 3: Deployment Configuration (1 day)
-
-**Deliverables:**
-- Docker Compose for Orbit + JobForge
-- Environment variable configuration (not hardcoded localhost)
-- Port conflict resolution
-
-**Features from FEATURES.md:** Deployment configuration
-**Pitfalls to avoid:** C2 (hardcoded localhost), D1 (port conflicts), D2 (version mismatch)
-**Research needed:** NO - Docker patterns standard
-
-#### Phase 4: Documentation and Testing (1 day)
-
-**Deliverables:**
-- `docs/orbit-integration.md` with architecture diagram, quick start, troubleshooting
-- End-to-end test from question to answer
-- Manual verification checklist
-
-**Features from FEATURES.md:** Basic deployment documentation
-**Pitfalls to avoid:** D3 (retriever not registered)
-**Research needed:** NO
+1. **Phase 17 first** — All subsequent phases depend on governance/compliance models
+2. **Phase 18 early** — High-visibility dashboard demonstrates value; uses Phase 17 models
+3. **Phases 18/19 and 20 can parallelize** — Dashboard/metadata (internal) vs O*NET (external) have no dependencies
+4. **Phase 21 after 19-20** — Needs business metadata patterns and may use O*NET data
+5. **Phase 22 after 20** — Uses similar scraping patterns established in O*NET phase
+6. **Phase 23 last** — Analysis phase requiring stable data model
 
 ### Research Flags
 
-| Phase | Needs `/gsd:research-phase`? | Rationale |
-|-------|------------------------------|-----------|
-| Phase 1 | NO | Existing code provides patterns |
-| Phase 2 | NO | Standard FastAPI middleware |
-| Phase 3 | NO | Docker Compose well-documented |
-| Phase 4 | NO | Documentation task |
+**Phases likely needing deeper research during planning:**
+- **Phase 20 (O*NET):** Rate limit behavior undisclosed; verify local database format; confirm attribution requirements
+- **Phase 22 (PAA/DRF):** Departmental variance not fully documented; verify DND data availability on Open Government Portal
 
-**Conclusion:** v2.1 requires NO additional research phases. All patterns are well-documented and existing code provides implementation guidance.
+**Phases with standard patterns (skip research-phase):**
+- **Phase 17 (Governance):** DAMA framework well-documented; extends existing ComplianceLog patterns
+- **Phase 18 (Quality):** cuallee API documented; GC DQMF 9 dimensions defined in official guidance
+- **Phase 19 (Business Metadata):** Extends existing catalog JSON schema; standard field additions
+- **Phase 21 (JA Enrichment):** Follows Phase 12 patterns exactly
+- **Phase 23 (HR Data Model):** Documentation task; no implementation
 
 ---
 
@@ -279,45 +172,51 @@ Based on dependency analysis and architecture patterns, v2.1 should be structure
 
 | Area | Confidence | Notes |
 |------|------------|-------|
-| Stack | HIGH | Verified via PyPI; minimal additions needed |
-| Features | MEDIUM-HIGH | Existing implementation provides grounding; Orbit docs sparse |
-| Architecture | HIGH | HTTP adapter pattern well-documented; existing code validates |
-| Pitfalls | MEDIUM | DuckDB/text-to-SQL well-documented; Orbit-specific patterns inferred |
+| Stack | HIGH | cuallee, ckanapi, Streamlit verified via PyPI and official docs; existing stack reuse confirmed |
+| Features | MEDIUM-HIGH | GC DQMF and O*NET authoritative; PAA/DRF availability varies; GC HR Data Model explicitly incomplete |
+| Architecture | HIGH | 5 extension points verified against existing codebase; no refactoring required |
+| Pitfalls | MEDIUM | Industry patterns well-documented; project-specific impact requires validation during execution |
 
-### Gaps to Address During Planning
+**Overall confidence:** MEDIUM-HIGH
 
-1. **Orbit retriever registration process** - Documentation unclear on exact factory registration steps
-2. **Intent pattern testing methodology** - Need systematic test suite for ambiguous queries
-3. **Memory monitoring baseline** - Establish RSS baseline before deployment to detect leaks
+### Gaps to Address
 
-### Overall Assessment
+1. **O*NET Rate Limits:** Exact thresholds undisclosed. Plan: design for offline-first with cache; monitor during Phase 20 initial load.
 
-**Confidence: MEDIUM-HIGH**
+2. **PAA/DRF Departmental Coverage:** Open Government Portal has DRF data, but department-specific coverage varies. Plan: validate DND data availability in Phase 22 planning.
 
-The integration is well-scoped with minimal unknowns. The primary risk is text-to-SQL accuracy, which is a known challenge with documented mitigations (column descriptions, relationship hints, SQL validation). The existing codebase provides strong implementation guidance.
+3. **GC HR Data Model Current State:** Model is "available but incomplete." Plan: Phase 23 is explicitly a gap analysis, not a completion effort.
+
+4. **Stakeholder Availability for Metadata Capture:** Business metadata interviews require domain experts. Plan: prioritize 8 core tables; offer async form alternative.
+
+5. **Streamlit + FastAPI Coexistence:** Both services need separate ports. Plan: document port configuration; consider reverse proxy for production.
 
 ---
 
 ## Sources
 
-### Stack Research (HIGH Confidence)
-- [PyPI - DuckDB 1.4.3](https://pypi.org/project/duckdb/)
-- [Anthropic Structured Outputs](https://platform.claude.com/docs/en/build-with-claude/structured-outputs)
-- [schmitech/orbit GitHub](https://github.com/schmitech/orbit)
-- [schmitech-orbit-client on Libraries.io](https://libraries.io/pypi/schmitech-orbit-client)
+### Primary (HIGH confidence)
+- [GC Guidance on Data Quality](https://www.canada.ca/en/government/system/digital-government/digital-government-innovations/information-management/guidance-data-quality.html) — 9 dimensions definition
+- [O*NET Web Services](https://services.onetcenter.org/) — API v2.0 specification and Terms of Service
+- [O*NET Resource Center](https://www.onetcenter.org/database.html) — Database download and crosswalk files
+- [DAMA DMBOK Framework](https://dama.org/learning-resources/dama-data-management-body-of-knowledge-dmbok/) — 11 knowledge areas
+- [Directive on Automated Decision-Making](https://www.tbs-sct.canada.ca/pol/doc-eng.aspx?id=32592) — DADM compliance requirements
+- [cuallee PyPI](https://pypi.org/project/cuallee/) — Version 0.13.0, Polars/DuckDB support confirmed
+- [ckanapi PyPI](https://pypi.org/project/ckanapi/) — Version 4.9, CKAN core team maintained
+- [Open Government API](https://open.canada.ca/en/access-our-application-programming-interface-api) — CKAN API for open.canada.ca
 
-### Features Research (MEDIUM Confidence)
-- [Google Cloud - Techniques for improving text-to-SQL](https://cloud.google.com/blog/products/databases/techniques-for-improving-text-to-sql)
-- [Text to SQL: Ultimate Guide 2025](https://medium.com/@ayushgs/text-to-sql-the-ultimate-guide-for-2025-3fa4e78cbdf9)
-- [DuckDB Information Schema](https://duckdb.org/docs/stable/sql/meta/information_schema)
+### Secondary (MEDIUM confidence)
+- [cuallee JOSS Paper](https://joss.theoj.org/papers/10.21105/joss.06684) — Peer-reviewed methodology
+- [Monte Carlo Data Quality Metrics](https://www.montecarlodata.com/blog-data-quality-metrics/) — Actionable metrics guidance
+- [DataKitchen Six Types of Dashboards](https://datakitchen.io/the-six-types-of-data-quality-dashboards/) — Dashboard design patterns
+- [2023-2026 Data Strategy](https://www.canada.ca/en/treasury-board-secretariat/corporate/reports/2023-2026-data-strategy.html) — GC data governance context
+- [Next Generation HR and Pay Report](https://www.canada.ca/en/shared-services/corporate/about-us/transparency/publications/2023-24/next-generation-hr-pay-final-findings-report.html) — 70 HRMS complexity documented
 
-### Architecture Research (HIGH Confidence)
-- [Orbit Adapters Documentation](https://github.com/schmitech/orbit/blob/main/docs/adapters/adapters.md)
-- [Orbit Docker README](https://github.com/schmitech/orbit/blob/main/docker/README.md)
-- [MotherDuck - Semantic Layer with DuckDB](https://motherduck.com/blog/semantic-layer-duckdb-tutorial/)
+### Tertiary (LOW confidence — needs validation)
+- [DRF Datasets on Open Government Portal](https://open.canada.ca/data/en/dataset/320e0439-187a-4db5-b120-4079ed05ff99) — Verify specific department coverage
+- GC HR Data Model completeness — Limited public documentation; model explicitly incomplete
 
-### Pitfalls Research (MEDIUM Confidence)
-- [BetterUp - Async FastAPI Memory Leak with jemalloc](https://build.betterup.com/chasing-a-memory-leak-in-our-async-fastapi-service-how-jemalloc-fixed-our-rss-creep/)
-- [K2View - LLM text-to-SQL challenges](https://www.k2view.com/blog/llm-text-to-sql/)
-- [Six Failures of Text-to-SQL](https://medium.com/google-cloud/the-six-failures-of-text-to-sql-and-how-to-fix-them-with-agents-ef5fd2b74b68)
-- [DuckDB Issue #18031 - Memory leak](https://github.com/duckdb/duckdb/issues/18031)
+---
+
+*Research completed: 2026-02-05*
+*Ready for roadmap: YES*

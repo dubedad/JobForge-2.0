@@ -1,7 +1,7 @@
 # Architecture Patterns
 
 **Domain:** Workforce Intelligence Platform (Data Pipeline + Semantic Model + RAG)
-**Researched:** 2026-01-18 (Updated: 2026-01-20 for Orbit Integration)
+**Researched:** 2026-01-18 (Updated: 2026-01-20 for Orbit Integration, 2026-02-05 for v4.0 Governance)
 **Confidence:** HIGH (patterns verified via authoritative sources)
 
 ## Executive Summary
@@ -13,6 +13,631 @@ JobForge combines three mature architecture patterns that are well-documented in
 3. **Hybrid GraphRAG** combining knowledge graph traversal with vector retrieval
 
 These patterns are synergistic: the medallion pipeline feeds the semantic model, which feeds both the Power BI deployment and the knowledge graph, which powers the RAG interface. The architecture is fundamentally a **data governance platform** with multiple consumption surfaces.
+
+---
+
+## v4.0 Governance Integration Architecture (NEW)
+
+### Overview
+
+v4.0 governance features integrate through **5 architectural extension points** in the existing JobForge architecture:
+
+1. **Compliance Layer** - New `governance/dqmf/` subdirectory extending existing RTM pattern
+2. **Quality API Endpoint** - New `/api/quality/metrics` extending existing FastAPI routes
+3. **Catalog Enrichment** - Business metadata fields in existing `data/catalog/tables/*.json`
+4. **Ingestion Pipeline** - O*NET and PAA/DRF follow established medallion patterns
+5. **CLI Commands** - New Typer subcommands following `jobforge caf` pattern
+
+**Key insight:** No architectural refactoring required. All v4.0 features are **additive** to existing patterns.
+
+### v4.0 System Integration Diagram
+
+```
++-----------------------------------------------------------------------------------+
+|                              JobForge v4.0 Architecture                           |
++-----------------------------------------------------------------------------------+
+|                                                                                   |
+|  +------------------------+     +------------------------+     +---------------+ |
+|  |  External Data Sources |     |  v4.0 NEW Sources      |     | Policy Docs   | |
+|  +------------------------+     +------------------------+     +---------------+ |
+|  | StatCan NOC, COPS      |     | O*NET Web Services     |     | DADM PDF      | |
+|  | OaSIS Proficiencies    |     | TBS InfoBase (PAA/DRF) |     | DAMA DMBOK    | |
+|  | TBS OG, CAF forces.ca  |     | Dept Plans PDF         |     | Classification| |
+|  +----------+-------------+     +----------+-------------+     +-------+-------+ |
+|             |                              |                           |         |
+|             v                              v                           v         |
+|  +----------+-------------+     +----------+-------------+     +-------+-------+ |
+|  | src/jobforge/external/ |     | src/jobforge/external/ |     | governance/   | |
+|  | tbs/, caf/, onet/      |     | onet/, paa/  [NEW]     |     | policy/       | |
+|  +----------+-------------+     +----------+-------------+     | parser.py     | |
+|             |                              |                   +-------+-------+ |
+|             |                              |                           |         |
+|             +---------------+--------------+                           |         |
+|                             |                                          |         |
+|                             v                                          |         |
+|           +------------------------------------------------------+     |         |
+|           |              Medallion Pipeline                       |     |         |
+|           |  staged -> bronze -> silver -> gold (*.parquet)       |     |         |
+|           |  src/jobforge/pipeline/                               |     |         |
+|           |  src/jobforge/ingestion/ (noc, og, caf, onet [NEW])   |     |         |
+|           +----------------------------+-------------------------+     |         |
+|                                        |                               |         |
+|                                        v                               |         |
+|           +------------------------------------------------------+     |         |
+|           |              data/gold/*.parquet                      |     |         |
+|           |  dim_noc, dim_og, dim_caf_*, bridge_*, cops_*, ...    |     |         |
+|           |  + dim_onet_* [NEW]                                   |     |         |
+|           |  + bridge_noc_onet [NEW]                              |     |         |
+|           |  + paa_*, drf_* [NEW]                                 |     |         |
+|           +----------------------------+-------------------------+     |         |
+|                                        |                               |         |
+|                                        v                               |         |
+|  +---------------------------------------------------------------------+---------+
+|  |                        Data Governance Layer                                  |
+|  +-------------------------------------------------------------------------------+
+|  |                                                                               |
+|  |  +---------------------------+  +---------------------------+                 |
+|  |  | data/catalog/             |  | src/jobforge/governance/  |                 |
+|  |  +---------------------------+  +---------------------------+                 |
+|  |  | tables/*.json             |  | compliance/               |                 |
+|  |  |   + business_purpose [NEW]|  |   dama.py (existing)      |                 |
+|  |  |   + business_questions    |  |   dadm.py (existing)      |                 |
+|  |  |   + business_owner        |  |   dqmf.py [NEW]           |                 |
+|  |  | lineage/*.json            |  | dqmf/                     |                 |
+|  |  | schemas/wiq_schema.json   |  |   dimensions.py [NEW]     |                 |
+|  |  | compliance/  [NEW]        |  |   metrics.py [NEW]        |                 |
+|  |  |   dama_audit_*.json       |  | policy/                   |                 |
+|  |  |   dqmf_scores_*.json      |  |   parser.py [NEW]         |                 |
+|  |  +---------------------------+  |   provenance.py [NEW]     |                 |
+|  |                                 +---------------------------+                 |
+|  +-------------------------------------------------------------------------------+
+|                                        |                                         |
+|                                        v                                         |
+|           +------------------------------------------------------+               |
+|           |              FastAPI Service Layer                    |               |
+|           |  src/jobforge/api/                                    |               |
+|           +------------------------------------------------------+               |
+|           | /api/query/data     - Text-to-SQL (existing)          |               |
+|           | /api/query/metadata - Lineage queries (existing)      |               |
+|           | /api/compliance/{f} - RTM logs (existing)             |               |
+|           | /api/quality/metrics [NEW] - DQMF dashboard           |               |
+|           | /api/quality/scores/{table} [NEW] - Table scores      |               |
+|           +------------------------------------------------------+               |
+|                                                                                   |
++-----------------------------------------------------------------------------------+
+```
+
+### v4.0 Component Responsibilities
+
+#### Existing Components (Integration Points)
+
+| Component | Responsibility | v4.0 Integration Point |
+|-----------|----------------|------------------------|
+| `src/jobforge/pipeline/` | Medallion architecture, layer transitions | O*NET/PAA ingestion uses same patterns |
+| `src/jobforge/ingestion/` | Table-specific ETL (noc.py, og.py, caf.py) | Add onet.py, paa.py following same pattern |
+| `src/jobforge/external/` | Web scrapers, API clients (tbs/, caf/, onet/) | Extend onet/, add paa/ with same structure |
+| `src/jobforge/governance/` | Lineage graph, catalogue, compliance logs | Add dqmf/, policy/ subdirectories |
+| `src/jobforge/catalog/` | Catalog enrichment (enrich.py) | Add business metadata enrichment |
+| `src/jobforge/api/routes.py` | FastAPI endpoints | Add /quality endpoint group |
+| `data/catalog/tables/*.json` | Table metadata JSON files | Extend schema with business fields |
+| `data/catalog/compliance/` | (NEW) Compliance artifacts storage | DAMA audits, DQMF scores |
+
+#### New Components (v4.0)
+
+| Component | Responsibility | Integration With |
+|-----------|----------------|------------------|
+| `governance/dqmf/dimensions.py` | GC DQMF 9-dimension definitions | Pydantic models consumed by metrics.py |
+| `governance/dqmf/metrics.py` | Calculate quality scores per dimension | Polars/DuckDB queries on gold tables |
+| `governance/dqmf/dashboard.py` | FastAPI endpoints for quality dashboard | Integrates with routes.py |
+| `governance/policy/parser.py` | Extract paragraphs from policy PDFs | Uses pdfplumber (existing dep) |
+| `governance/policy/provenance.py` | Map artifacts to policy clauses | Extends TraceabilityEntry model |
+| `ingestion/onet.py` | O*NET occupation ingestion pipeline | Same pattern as ingestion/og.py |
+| `external/paa/scraper.py` | TBS InfoBase PAA/DRF scraper | Same pattern as external/tbs/ |
+| `cli/quality.py` | CLI for quality commands | Typer subapp like caf.py |
+
+### v4.0 Recommended Project Structure Additions
+
+```
+src/jobforge/
+|-- governance/
+|   |-- __init__.py                 # Existing
+|   |-- models.py                   # Existing (LineageNode, LineageEdge)
+|   |-- graph.py                    # Existing (LineageGraph)
+|   |-- query.py                    # Existing (LineageQueryEngine)
+|   |-- catalogue.py                # Existing (CatalogueGenerator)
+|   |-- compliance/
+|   |   |-- __init__.py             # Existing
+|   |   |-- models.py               # Existing (TraceabilityEntry, ComplianceLog)
+|   |   |-- dama.py                 # Existing (DAMAComplianceLog)
+|   |   |-- dadm.py                 # Existing (DADMComplianceLog)
+|   |   |-- classification.py       # Existing
+|   |   +-- dqmf.py                 # NEW: DQMFComplianceLog
+|   |-- dqmf/                       # NEW: GC DQMF implementation
+|   |   |-- __init__.py
+|   |   |-- dimensions.py           # 9 dimension enum + check definitions
+|   |   |-- metrics.py              # Quality score calculations
+|   |   |-- dashboard.py            # /api/quality endpoint handlers
+|   |   +-- models.py               # QualityScore, DimensionResult Pydantic
+|   +-- policy/                     # NEW: Policy provenance
+|       |-- __init__.py
+|       |-- parser.py               # PDF paragraph extraction
+|       |-- provenance.py           # Artifact-to-clause mapping
+|       +-- models.py               # PolicyParagraph, ProvenanceLink Pydantic
+|
+|-- external/
+|   |-- onet/
+|   |   |-- __init__.py             # Existing
+|   |   |-- crosswalk.py            # Existing (NOCSOCCrosswalk)
+|   |   |-- client.py               # Existing (ONetClient)
+|   |   |-- adapter.py              # Existing (ONetAdapter)
+|   |   +-- scraper.py              # NEW: Full O*NET taxonomy fetch
+|   +-- paa/                        # NEW: PAA/DRF scraping
+|       |-- __init__.py
+|       |-- scraper.py              # TBS InfoBase scraper
+|       |-- models.py               # PAAActivity, DRFOutcome Pydantic
+|       +-- parser.py               # PDF parsing for Dept Plans
+|
+|-- ingestion/
+|   |-- noc.py                      # Existing
+|   |-- og.py                       # Existing
+|   |-- caf.py                      # Existing
+|   |-- onet.py                     # NEW: O*NET occupation ingestion
+|   +-- paa.py                      # NEW: PAA/DRF ingestion
+|
+|-- api/
+|   |-- __init__.py                 # Existing
+|   |-- routes.py                   # Existing (add quality router)
+|   |-- data_query.py               # Existing
+|   |-- metadata_query.py           # Existing
+|   |-- errors.py                   # Existing
+|   +-- quality.py                  # NEW: Quality dashboard endpoints
+|
++-- cli/
+    |-- __init__.py                 # Existing
+    |-- commands.py                 # Existing
+    +-- quality.py                  # NEW: Quality CLI subcommands
+
+data/
+|-- catalog/
+|   |-- tables/*.json               # Existing (+ business_purpose, business_questions fields)
+|   |-- lineage/*.json              # Existing
+|   |-- schemas/wiq_schema.json     # Existing (+ O*NET tables, PAA tables)
+|   +-- compliance/                 # NEW: Compliance audit storage
+|       |-- dama_audit_YYYYMMDD.json
+|       |-- dqmf_scores_YYYYMMDD.json
+|       +-- policy_provenance.json
+|
++-- gold/
+    |-- dim_noc.parquet             # Existing
+    |-- dim_onet_occupation.parquet # NEW: O*NET occupations
+    |-- bridge_noc_onet.parquet     # NEW: NOC-O*NET concordance
+    |-- fact_onet_abilities.parquet # NEW: O*NET abilities
+    |-- fact_onet_skills.parquet    # NEW: O*NET skills
+    |-- fact_onet_knowledge.parquet # NEW: O*NET knowledge
+    |-- dim_paa_activity.parquet    # NEW: PAA activities
+    +-- dim_drf_outcome.parquet     # NEW: DRF outcomes
+```
+
+### v4.0 Data Flow for New Features
+
+#### 1. DAMA Audit Workflow
+
+Integration with `/gsd:verify-work`:
+
+```
++-------------------+     +------------------------+     +---------------------+
+| /gsd:verify-work  | --> | DAMAComplianceLog      | --> | data/catalog/       |
+| (existing GSD     |     | .generate() with       |     | compliance/         |
+| verification)     |     | phase_artifacts param  |     | dama_audit_*.json   |
++-------------------+     +------------------------+     +---------------------+
+                                    |
+                                    v
+                          +------------------------+
+                          | Phase SUMMARY.md       |
+                          | includes DAMA section: |
+                          | - Knowledge areas hit  |
+                          | - Compliance status    |
+                          +------------------------+
+```
+
+**Implementation hook:**
+```python
+# In /gsd:verify-work phase after technical verification
+def audit_dama_compliance(phase_artifacts: list[str], config: PipelineConfig) -> ComplianceLog:
+    """Audit phase against DAMA DMBOK knowledge areas."""
+    generator = DAMAComplianceLog(config, phase_artifacts=phase_artifacts)
+    return generator.generate()
+```
+
+#### 2. Data Quality Metrics API
+
+```
++-------------------+     +------------------------+     +---------------------+
+| /api/quality/     | --> | DQMFMetricsService     | --> | QualityScore        |
+| metrics?table=X   |     | .calculate_scores()    |     | JSON response       |
++-------------------+     +------------------------+     +---------------------+
+        ^                           |
+        |                           v
+        |                 +------------------------+
+        |                 | DuckDB queries on      |
+        |                 | gold/*.parquet         |
+        |                 | - NULL counts          |
+        |                 | - Distinct counts      |
+        |                 | - Range validations    |
+        |                 +------------------------+
+        |                           |
+        |                           v
+        |                 +------------------------+
+        |                 | data/catalog/          |
+        |                 | compliance/            |
+        |                 | dqmf_scores_*.json     |
+        |                 +------------------------+
+```
+
+**Endpoint structure:**
+```python
+@api_app.get("/api/quality/metrics")
+async def get_quality_metrics(
+    table: str | None = None,
+    dimension: DqmfDimension | None = None,
+) -> QualityMetricsResponse:
+    """Get quality scores, optionally filtered by table or dimension."""
+
+@api_app.get("/api/quality/scores/{table_name}")
+async def get_table_quality(table_name: str) -> TableQualityResponse:
+    """Get all dimension scores for a specific table."""
+
+@api_app.get("/api/quality/dashboard")
+async def get_quality_dashboard() -> DashboardResponse:
+    """Get aggregated quality dashboard data."""
+```
+
+#### 3. Policy Provenance Mapping
+
+```
++-------------------+     +------------------------+     +---------------------+
+| Policy PDF        | --> | policy/parser.py       | --> | PolicyParagraph[]   |
+| (DADM, DMBOK)     |     | extract_paragraphs()   |     | with section IDs    |
++-------------------+     +------------------------+     +---------------------+
+                                    |
+                                    v
+                          +------------------------+
+                          | policy/provenance.py   |
+                          | link_artifact_to_      |
+                          | policy_clause()        |
+                          +------------------------+
+                                    |
+                                    v
+                          +------------------------+
+                          | data/catalog/          |
+                          | compliance/            |
+                          | policy_provenance.json |
+                          +------------------------+
+```
+
+**Provenance model extension:**
+```python
+class PolicyProvenanceLink(BaseModel):
+    """Link from WiQ artifact to policy clause."""
+    artifact_type: Literal["table", "column", "relationship", "transform"]
+    artifact_id: str  # e.g., "gold.dim_noc.noc_code"
+    policy_document: str  # e.g., "DADM-2024"
+    policy_section: str  # e.g., "6.2.1"
+    policy_paragraph: int
+    policy_text_excerpt: str  # First 200 chars
+    content_hash: str  # For change detection
+    created_at: datetime
+    created_by: str  # "system" or user
+```
+
+#### 4. O*NET Ingestion Pipeline
+
+```
++-------------------+     +------------------------+     +---------------------+
+| O*NET Web Services| --> | external/onet/         | --> | data/onet/          |
+| API               |     | scraper.py             |     | occupations.json    |
+|                   |     | (uses existing client) |     | abilities.json      |
++-------------------+     +------------------------+     | skills.json         |
+                                    |                    | knowledge.json      |
+                                    |                    +---------------------+
+                                    v
+                          +------------------------+
+                          | ingestion/onet.py      |
+                          | ingest_dim_onet_*()    |
+                          +------------------------+
+                                    |
+                                    v
+                          +------------------------+
+                          | data/gold/             |
+                          | dim_onet_occupation    |
+                          | bridge_noc_onet        |
+                          | fact_onet_*            |
+                          +------------------------+
+```
+
+**Integration with existing O*NET module:**
+
+The existing `external/onet/` module already has:
+- `crosswalk.py` - NOC-SOC mapping (1,467 mappings)
+- `client.py` - Async HTTP client with retry logic
+- `adapter.py` - Convert O*NET responses to WiQ schema
+
+v4.0 adds:
+- `scraper.py` - Batch fetch all O*NET occupations for gold table creation
+- New ingestion pipeline in `ingestion/onet.py`
+
+#### 5. Business Metadata Capture
+
+```
++-------------------+     +------------------------+     +---------------------+
+| CLI interview     | --> | catalog/               | --> | data/catalog/       |
+| workflow          |     | business_metadata.py   |     | tables/*.json       |
+| (jobforge meta    |     | capture_business_      |     | + business_purpose  |
+|  interview)       |     | context()              |     | + business_questions|
++-------------------+     +------------------------+     +---------------------+
+```
+
+**Catalog JSON schema extension:**
+```json
+{
+  "table_name": "cops_employment",
+  "description": "Employment counts by NOC occupation...",
+  "business_purpose": "Track projected employment levels by occupation to support workforce planning decisions",
+  "business_questions": [
+    "Which occupations are projected to grow fastest over the next 10 years?",
+    "What is the employment outlook for software engineers (NOC 21232)?",
+    "How does projected employment compare between TEER 0 and TEER 1 occupations?"
+  ],
+  "business_owner": "Workforce Planning Division",
+  "business_steward": "Labour Market Analysis Team",
+  "columns": [ ... ]
+}
+```
+
+### v4.0 Integration Points (Detailed)
+
+#### Integration Point 1: Pipeline Engine
+
+**Location:** `src/jobforge/pipeline/engine.py`
+
+**Pattern:** O*NET and PAA/DRF ingestion use the same `PipelineEngine` for layer transitions.
+
+```python
+# Existing pattern (from og.py)
+def ingest_dim_og(config: PipelineConfig) -> pl.DataFrame:
+    """Ingest dim_og through medallion pipeline."""
+    engine = PipelineEngine(config)
+
+    # Load from external JSON
+    df = _load_occupational_groups_json(config)
+
+    # Stage the data
+    engine.stage_dataframe(df, "dim_og")
+
+    # Transition through layers
+    engine.transition_to_bronze("dim_og", transforms=["validate_schema"])
+    engine.transition_to_silver("dim_og", transforms=["deduplicate", "normalize"])
+    engine.transition_to_gold("dim_og", transforms=["add_provenance"])
+
+    return engine.get_gold_table("dim_og")
+
+# NEW: Same pattern for O*NET
+def ingest_dim_onet_occupation(config: PipelineConfig) -> pl.DataFrame:
+    """Ingest O*NET occupations through medallion pipeline."""
+    engine = PipelineEngine(config)
+
+    # Load from O*NET JSON (scraped by external/onet/scraper.py)
+    df = _load_onet_occupations_json(config)
+
+    # Same transitions
+    engine.stage_dataframe(df, "dim_onet_occupation")
+    engine.transition_to_bronze("dim_onet_occupation", transforms=["validate_schema"])
+    engine.transition_to_silver("dim_onet_occupation", transforms=["deduplicate"])
+    engine.transition_to_gold("dim_onet_occupation", transforms=["add_provenance"])
+
+    return engine.get_gold_table("dim_onet_occupation")
+```
+
+#### Integration Point 2: FastAPI Router
+
+**Location:** `src/jobforge/api/routes.py`
+
+**Pattern:** Quality endpoints follow same pattern as compliance endpoints.
+
+```python
+# Existing pattern
+@api_app.get("/api/compliance/{framework}")
+async def get_compliance(framework: str) -> dict:
+    """Get compliance log for a framework."""
+    ...
+
+# NEW: Quality endpoints follow same pattern
+from jobforge.governance.dqmf.dashboard import quality_router
+
+# In create_api_app():
+api_app.include_router(quality_router, prefix="/api/quality", tags=["quality"])
+```
+
+#### Integration Point 3: Catalog Enrichment
+
+**Location:** `src/jobforge/catalog/enrich.py`
+
+**Pattern:** Extend existing enrichment function for business metadata.
+
+```python
+# Existing pattern
+def enrich_catalog(catalog_path: Path | None = None) -> dict[str, int]:
+    """Enrich catalog JSON files with semantic descriptions."""
+    ...
+
+# NEW: Add business metadata enrichment
+def enrich_business_metadata(
+    table_name: str,
+    business_purpose: str,
+    business_questions: list[str],
+    business_owner: str | None = None,
+    catalog_path: Path | None = None,
+) -> bool:
+    """Add business metadata to a table's catalog entry."""
+    ...
+```
+
+#### Integration Point 4: CLI Commands
+
+**Location:** `src/jobforge/cli/commands.py`
+
+**Pattern:** New subcommands follow `jobforge caf` pattern.
+
+```python
+# Existing pattern (from caf commands)
+caf_app = typer.Typer(help="CAF data management commands")
+app.add_typer(caf_app, name="caf")
+
+@caf_app.command("refresh")
+def caf_refresh(...):
+    """Rebuild CAF gold tables."""
+    ...
+
+# NEW: Quality commands
+quality_app = typer.Typer(help="Data quality commands")
+app.add_typer(quality_app, name="quality")
+
+@quality_app.command("score")
+def quality_score(table: str | None = None, dimension: str | None = None):
+    """Calculate and display quality scores."""
+    ...
+
+@quality_app.command("audit")
+def quality_audit(output_format: str = "table"):
+    """Run DAMA DMBOK compliance audit."""
+    ...
+```
+
+#### Integration Point 5: Compliance Models
+
+**Location:** `src/jobforge/governance/compliance/models.py`
+
+**Pattern:** Extend TraceabilityEntry for policy provenance.
+
+```python
+# Existing model
+class TraceabilityEntry(BaseModel):
+    requirement_id: str
+    requirement_text: str
+    section: str
+    status: ComplianceStatus
+    evidence_type: str
+    evidence_references: list[str]
+    notes: str
+    last_verified: datetime
+
+# NEW: Extended for policy provenance
+class PolicyTraceabilityEntry(TraceabilityEntry):
+    """TraceabilityEntry with policy document provenance."""
+    policy_document: str
+    policy_version: str
+    policy_paragraph_id: str
+    policy_text_hash: str
+    policy_url: str | None = None
+```
+
+### v4.0 Build Order
+
+Based on dependencies and integration complexity:
+
+| Phase | Focus | Dependencies | Rationale |
+|-------|-------|--------------|-----------|
+| **17** | Governance Compliance Framework | None | Foundation: defines compliance check structure, audit trail, policy provenance models |
+| **18** | Data Quality Dashboard | Phase 17 (models) | Uses compliance models; adds DQMF metrics |
+| **19** | Business Metadata Capture | Phase 18 (catalog extension) | Extends catalog; needs stable schema |
+| **20** | O*NET Integration | Phase 17 (provenance) | Data ingestion; can run parallel with 18-19 |
+| **21** | Job Architecture Enrichment | Phases 19-20 | Uses business metadata patterns; may use O*NET |
+| **22** | PAA/DRF Data Layer | Phase 20 (scraping patterns) | Similar patterns to O*NET; new data source |
+| **23** | GC HR Data Model Alignment | All above | Analysis phase; requires complete data model |
+
+**Parallelization opportunities:**
+- Phase 18 (DQMF) and Phase 20 (O*NET) can develop in parallel after Phase 17
+- Phase 21 (JA Enrichment) and Phase 22 (PAA/DRF) can develop in parallel
+
+### v4.0 Anti-Patterns to Avoid
+
+#### 1. Separate Governance Service
+
+**Wrong:**
+```
+src/
++-- jobforge/          # Data pipeline
++-- governance_svc/    # Separate service
+```
+
+**Right:**
+```
+src/
++-- jobforge/
+    +-- governance/    # Integrated module
+```
+
+**Why:** JobForge is a single-service architecture. Separate services add deployment complexity without benefit.
+
+#### 2. Database-First Quality Metrics
+
+**Wrong:**
+```python
+# Create separate quality metrics database
+conn = duckdb.connect("data/quality/metrics.duckdb")
+conn.execute("CREATE TABLE quality_scores ...")
+```
+
+**Right:**
+```python
+# Store in catalog JSON files (existing pattern)
+quality_scores = calculate_scores(table)
+save_to_catalog_compliance(quality_scores, "dqmf_scores_{date}.json")
+```
+
+**Why:** JobForge uses JSON catalog files for metadata. Adding a separate database fragments the architecture.
+
+#### 3. Heavy Validation Framework
+
+**Wrong:**
+```python
+# Add Great Expectations with full data context
+from great_expectations import DataContext
+context = DataContext("gx/")
+```
+
+**Right:**
+```python
+# Use Pandera with Pydantic-style schemas
+import pandera.polars as pa
+class DimNocSchema(pa.DataFrameModel):
+    noc_code: str = pa.Field(str_matches=r"^\d{5}$")
+```
+
+**Why:** Great Expectations requires config files and "data context" that conflicts with JobForge's code-first approach.
+
+#### 4. Realtime Quality Monitoring
+
+**Wrong:**
+```python
+# Calculate quality on every query
+@api_app.get("/api/query/data")
+async def query_data(request: QueryRequest):
+    # Recalculate quality scores
+    scores = calculate_quality_scores(tables_used)
+    return DataQueryResult(..., quality=scores)
+```
+
+**Right:**
+```python
+# Batch calculate quality scores on schedule/demand
+@api_app.get("/api/quality/metrics")
+async def get_quality_metrics():
+    # Return pre-calculated scores from catalog
+    return load_cached_quality_scores()
+```
+
+**Why:** Quality calculation is expensive. Batch processing aligns with pipeline architecture.
 
 ---
 
@@ -92,196 +717,6 @@ Orbit provides a conversational gateway layer that sits between users and the Jo
 | **jobforge.yaml** | `orbit/config/adapters/` | Adapter configuration for JobForge | None |
 | **wiq_intents.yaml** | `orbit/config/intents/` | Domain-specific intent templates | None |
 | **orbit-integration.md** | `docs/` | Integration documentation | None |
-
-### Data Flow: User Query to Response
-
-```
-1. USER QUERY
-   "How many software developers are in WiQ?"
-            |
-            v
-2. ORBIT GATEWAY (localhost:3000)
-   - Receives query via React UI, CLI, or widget
-   - Classifies intent using patterns + LLM
-   - Determines: DATA_QUERY (matches "how many")
-            |
-            v
-3. ROUTING DECISION
-   Intent: DATA_QUERY
-   Adapter: DuckDBRetriever (or HTTP to /api/query/data)
-            |
-            v
-4a. DUCKDB RETRIEVER PATH (Direct)
-    - Load parquet files as DuckDB views
-    - Generate SQL via Claude structured outputs
-    - Execute SQL on DuckDB
-    - Return results
-            |
-            v
-4b. HTTP ADAPTER PATH (Via API)
-    - POST to http://localhost:8000/api/query/data
-    - JobForge DataQueryService handles text-to-SQL
-    - Returns SQL + results
-            |
-            v
-5. RESPONSE FORMATTING
-   Orbit formats response for UI/CLI
-   User sees: "There are 12 software developer occupations in WiQ..."
-```
-
-### Component Details
-
-#### DuckDBRetriever (New)
-
-```python
-# orbit/retrievers/duckdb.py
-class DuckDBRetriever:
-    """Orbit retriever for DuckDB parquet queries.
-
-    Configuration (adapters.yaml):
-        implementation: retrievers.duckdb.DuckDBRetriever
-        config:
-            parquet_path: "data/gold/"
-            anthropic_model: "claude-sonnet-4-20250514"
-    """
-
-    def __init__(self, config: dict[str, Any]):
-        self.parquet_path = Path(config.get("parquet_path", "data/gold"))
-        self.model = config.get("anthropic_model", "claude-sonnet-4-20250514")
-        self._conn: duckdb.DuckDBPyConnection | None = None
-        self._schema_ddl: str | None = None
-
-    def initialize(self) -> None:
-        """Register parquet files as DuckDB views."""
-        self._conn = duckdb.connect(":memory:")
-        for parquet in self.parquet_path.glob("*.parquet"):
-            table_name = parquet.stem
-            self._conn.execute(
-                f"CREATE VIEW {table_name} AS SELECT * FROM '{parquet}'"
-            )
-        # Generate DDL for text-to-SQL prompts
-        self._schema_ddl = self._generate_ddl()
-
-    def retrieve(self, query: str, collection_name: str = "") -> list[dict]:
-        """Generate SQL from query and execute."""
-        if self._conn is None:
-            self.initialize()
-        sql = self._text_to_sql(query)
-        return self._conn.execute(sql).fetchdf().to_dict(orient="records")
-```
-
-**Key design decisions:**
-1. **In-memory DuckDB** - No persistent state, clean isolation per session
-2. **Lazy initialization** - Views created on first query, not at startup
-3. **Schema DDL generation** - Same pattern as DataQueryService for consistency
-4. **Claude structured outputs** - Guaranteed SQL schema compliance
-
-#### Adapter Configuration (New)
-
-```yaml
-# orbit/config/adapters/jobforge.yaml
-name: jobforge-wiq
-description: "Workforce Intelligence Query interface for Canadian occupational data"
-enabled: true
-type: http
-
-http:
-  base_url: "http://localhost:8000"
-  endpoints:
-    data:
-      path: "/api/query/data"
-      method: POST
-      body:
-        question: "{{query}}"
-    metadata:
-      path: "/api/query/metadata"
-      method: POST
-      body:
-        question: "{{query}}"
-    compliance:
-      path: "/api/compliance/{{framework}}"
-      method: GET
-
-intents:
-  - name: data_query
-    endpoint: data
-    patterns: ["how many", "count of", "list all", "show me"]
-  - name: metadata_query
-    endpoint: metadata
-    patterns: ["where does", "lineage", "come from", "depends on"]
-  - name: compliance_query
-    endpoint: compliance
-    patterns: ["dadm compliance", "dama compliance"]
-```
-
-#### Intent Templates (New)
-
-```yaml
-# orbit/config/intents/wiq_intents.yaml
-domain: workforce_intelligence
-description: "Canadian Occupational Classification and Workforce Projections"
-
-intent_categories:
-  occupation_queries:
-    keywords: [NOC, occupation, job title, unit group, TEER]
-    sample_questions:
-      - "What occupations are in broad category 2?"
-      - "Show all TEER 1 unit groups"
-
-  forecast_queries:
-    keywords: [projection, forecast, employment growth, retirement]
-    sample_questions:
-      - "What is the projected employment for software developers?"
-
-  lineage_queries:
-    keywords: [source, lineage, come from, transform, upstream]
-    sample_questions:
-      - "Where does dim_noc data come from?"
-```
-
-### Deployment Topology
-
-```
-DEVELOPMENT (Single Machine)
-============================
-
-+------------------+     +------------------+     +------------------+
-| Orbit Gateway    |     | JobForge API     |     | Gold Parquet     |
-| localhost:3000   |---->| localhost:8000   |---->| data/gold/*.pq   |
-+------------------+     +------------------+     +------------------+
-        |
-        +--------------> DuckDB (in-memory) -----> data/gold/*.pq
-
-
-PRODUCTION (Containerized)
-==========================
-
-+------------------+     +------------------+     +------------------+
-| Orbit Container  |     | JobForge API     |     | Object Storage   |
-| orbit:3000       |---->| jobforge:8000    |---->| (S3/Azure Blob)  |
-+------------------+     +------------------+     +------------------+
-        |                        |
-        |                        v
-        |                +------------------+
-        +--------------->| DuckDB           |
-                         | (in container)   |
-                         +------------------+
-```
-
-### Integration with Power BI Path
-
-The Orbit integration is **additive** - it does not modify the existing Power BI deployment path:
-
-| Aspect | Power BI Path (Existing) | Orbit Path (New) |
-|--------|--------------------------|------------------|
-| **Data source** | data/gold/*.parquet | data/gold/*.parquet (same) |
-| **Schema** | WiQ semantic model JSON | DuckDB views from parquet |
-| **Query** | DAX, Power Query | Natural language -> SQL |
-| **User interface** | Power BI Service | Orbit React UI, CLI, widget |
-| **Refresh** | Scheduled import | Real-time (queries parquet directly) |
-| **Governance** | RLS in Power BI | Intent routing in Orbit |
-
-Both paths read from the same gold layer - changes to parquet files propagate to both consumers automatically.
 
 ---
 
@@ -555,296 +990,19 @@ Bridge tables resolve many-to-many relationships that are common in occupational
 
 ---
 
-## Layer 3: Knowledge Graph Architecture
+## v4.0 Scalability Considerations
 
-### Pattern Description
-
-The knowledge graph indexes vocabulary across occupational data sources, enabling:
-- Entity resolution (linking "Software Developer" to NOC 21232)
-- Relationship traversal (what skills does this occupation require?)
-- Semantic search (find occupations similar to X)
-
-**Source:** [Neo4j GraphRAG Tutorial](https://neo4j.com/blog/developer/rag-tutorial/), [Microsoft GraphRAG](https://microsoft.github.io/graphrag/)
-
-### Entity Model
-
-```
-+-------------+         +-------------+         +-------------+
-| OCCUPATION  |-------->| SKILL       |<--------| TASK        |
-| (NOC-based) | requires| (O*NET)     | supports|             |
-+------+------+         +------+------+         +-------------+
-       |                       |
-       | maps_to               | related_to
-       v                       v
-+-------------+         +-------------+
-| JOB_TITLE   |         | ATTRIBUTE   |
-| (Org-based) |         | (Element,   |
-+-------------+         |  Oasis)     |
-                        +-------------+
-```
-
-### Node Types
-
-| Node Type | Source | Attributes | Purpose |
-|-----------|--------|------------|---------|
-| Occupation | NOC, O*NET | code, title, definition, level | Canonical occupation representation |
-| Skill | O*NET | skill_id, name, category, importance | Skills taxonomy |
-| Task | O*NET | task_id, description, occupation_id | Work activities |
-| Attribute | NOC Elements, Oasis | type, value, description | Occupational qualifiers |
-| JobTitle | Job Architecture | title, family, level | Organizational job nomenclature |
-
-### Edge Types
-
-| Edge Type | From | To | Attributes |
-|-----------|------|-----|------------|
-| REQUIRES_SKILL | Occupation | Skill | importance, level |
-| PERFORMS_TASK | Occupation | Task | frequency |
-| HAS_ATTRIBUTE | Occupation | Attribute | value |
-| MAPS_TO | JobTitle | Occupation | confidence, method |
-| FORECASTS | Occupation | COPSForecast | year, scenario |
-| RELATED_TO | Skill | Skill | similarity_score |
-
-### Storage Options
-
-| Option | Pros | Cons | Recommendation |
-|--------|------|------|----------------|
-| **Neo4j** | Native graph, Cypher queries, mature GraphRAG tooling | Separate service, licensing | Best for production |
-| **NetworkX + SQLite** | Pure Python, no external deps, embeddings in SQLite | Limited scale, in-memory | Good for MVP |
-| **Property Graph in Postgres** | Single DB, SQL + graph queries via extensions | Less native graph features | Good if already using Postgres |
-
-**Recommendation:** Start with NetworkX for MVP development, migrate to Neo4j for production scale.
+| Concern | Current (100 tables) | v4.0 (~150 tables) | Future (500+ tables) |
+|---------|----------------------|--------------------|-----------------------|
+| Quality metrics calculation | Single-threaded Polars | Parallel per table | Consider Dask/Ray |
+| Compliance audit | Sequential | Sequential (acceptable) | Batch with priority queue |
+| O*NET API calls | Serial with retry | Batch with asyncio.gather | Rate-limited worker pool |
+| Catalog JSON files | Individual files | Individual files | Consider JSON-lines or single DB |
+| Policy provenance | Full document scan | Indexed paragraphs | Vector embeddings for semantic search |
 
 ---
 
-## Layer 4: Hybrid RAG Architecture
-
-### Pattern Description
-
-The RAG interface combines two retrieval channels:
-1. **Vector search** for semantic similarity (find occupations "like" a description)
-2. **Graph traversal** for structured relationships (what skills does NOC 21232 require?)
-
-This hybrid approach outperforms either method alone, particularly for multi-hop reasoning queries common in workforce intelligence.
-
-**Source:** [Memgraph HybridRAG](https://memgraph.com/blog/why-hybridrag), [Neo4j RAG Tutorial](https://neo4j.com/blog/developer/rag-tutorial/)
-
-### Component Architecture
-
-```
-User Query: "What skills are at risk of shortage for software roles?"
-    |
-    v
-+-------------------+
-| Query Analyzer    |  Determine query type and routing
-+--------+----------+
-         |
-    +----+----+
-    |         |
-    v         v
-+-------+  +----------+
-|Vector |  |Graph     |
-|Search |  |Traversal |
-+---+---+  +----+-----+
-    |           |
-    v           v
-+-------+  +----------+
-|Similar|  |Structured|
-|Docs   |  |Results   |
-+---+---+  +----+-----+
-    |           |
-    +-----+-----+
-          |
-          v
-+-------------------+
-| Result Merger     |  Combine and rank results
-+--------+----------+
-         |
-         v
-+-------------------+
-| Context Builder   |  Format context for LLM
-+--------+----------+
-         |
-         v
-+-------------------+
-| LLM Generator     |  Generate natural language response
-+--------+----------+
-         |
-         v
-Response: "Based on COPS forecasting data, the following skills
-associated with software occupations (NOC 21232, 21234) show
-projected shortages by 2028: ..."
-```
-
-### Query Routing
-
-| Query Type | Example | Primary Retrieval | Secondary |
-|------------|---------|-------------------|-----------|
-| **Semantic** | "Jobs like data scientist" | Vector search | Graph (related occupations) |
-| **Structured** | "Skills for NOC 21232" | Graph traversal | Vector (similar skills) |
-| **Aggregation** | "Fastest growing occupations" | Graph (facts) | None |
-| **Multi-hop** | "Skills at risk for tech roles" | Graph + Graph | Vector (fallback) |
-| **Lineage** | "Where does this data come from?" | Graph (metadata) | None |
-
-### Vector Store Requirements
-
-| Requirement | Specification |
-|-------------|---------------|
-| Embedding model | text-embedding-3-small or similar |
-| Chunk strategy | Entity descriptions, not documents |
-| Index type | HNSW for production scale |
-| Metadata filters | source_type, noc_code, date |
-
----
-
-## Layer 5: Power BI Deployment Architecture
-
-### Pattern Description
-
-The WiQ semantic model deploys to Power BI using Direct Lake mode for optimal performance with parquet files, combined with Import mode for smaller reference tables.
-
-**Source:** [Microsoft Fabric Direct Lake](https://learn.microsoft.com/en-us/fabric/fundamentals/direct-lake-develop), [Power BI Semantic Models](https://learn.microsoft.com/en-us/power-bi/connect-data/service-datasets-understand)
-
-### Deployment Model
-
-```
-Gold Layer (Parquet)          Power BI Semantic Model
---------------------          ----------------------
-
-dim_noc.parquet       ---->   DIM_NOC (Direct Lake)
-dim_job_arch.parquet  ---->   DIM_JOB_ARCH (Direct Lake)
-fact_cops.parquet     ---->   FACT_COPS (Direct Lake)
-bridge_noc_job.parquet ---->  BRIDGE_NOC_JOB (Direct Lake)
-
-Reference tables      ---->   Imported (small, static)
-DAX measures          ---->   Calculated in model
-RLS rules             ---->   Per-department access
-```
-
-### Model Artifacts
-
-| Artifact | Purpose | Format |
-|----------|---------|--------|
-| Semantic model | Tables, relationships, measures | PBIX or TMDL |
-| DAX measures | Business calculations | Embedded in model |
-| RLS rules | Row-level security | Embedded in model |
-| Display folders | Organization | Embedded in model |
-| Descriptions | Business glossary | Table/column properties |
-
-### Best Practices Applied
-
-1. **Star schema maintained**: Even with bridge tables, fact tables reference dimensions
-2. **Narrow dimensions**: Only include columns needed for filtering/slicing
-3. **Calculation groups**: Reduce measure proliferation (time intelligence, etc.)
-4. **No snowflaking**: Flatten hierarchies into dimensions
-5. **Business key preservation**: Maintain natural keys alongside surrogates
-
----
-
-## Layer 6: Artifact Export Architecture
-
-### Pattern Description
-
-Export governance artifacts in platform-native formats for Purview (Azure data catalog) and Denodo (data virtualization).
-
-**Source:** [Microsoft Purview Data Lineage](https://learn.microsoft.com/en-us/purview/data-gov-classic-lineage-user-guide)
-
-### Export Flow
-
-```
-WiQ Metadata                    Export Targets
-------------                    --------------
-
-Table definitions   -----+
-Column descriptions      |----> Data Dictionary
-Business glossary   -----+      (Excel, JSON, Purview format)
-
-Source mappings     -----+
-Transformation log       |----> Lineage Documentation
-Pipeline metadata   -----+      (Purview API, SVG diagrams)
-
-DADM mapping        -----+
-Compliance scores        |----> Compliance Reports
-Audit trail         -----+      (PDF, JSON)
-```
-
-### Export Formats
-
-| Target | Format | Key Fields |
-|--------|--------|------------|
-| **Purview** | JSON (Atlas API) | qualifiedName, typeName, attributes, lineage edges |
-| **Denodo** | VQL metadata | view definitions, source mappings |
-| **Data Dictionary** | Excel/JSON | table, column, type, description, source, glossary_term |
-| **Lineage** | JSON/SVG | source_table, target_table, transformation, timestamp |
-
----
-
-## Build Order: Orbit Integration (v2.1 Milestone)
-
-Based on the architecture, the Orbit integration should be built in this order:
-
-### Phase 1: DuckDBRetriever (Core Component)
-
-```
-[1.1] Create orbit/retrievers/duckdb.py
-      - DuckDBRetriever class following Orbit BaseRetriever pattern
-      - Initialize DuckDB connection with gold parquet views
-      - Text-to-SQL using Claude structured outputs
-      - retrieve() method returning list[dict]
-
-[1.2] Create orbit/retrievers/__init__.py
-      - Export DuckDBRetriever
-```
-
-**Rationale:** DuckDBRetriever is the core integration point. It can be tested independently before Orbit configuration.
-
-### Phase 2: Orbit Configuration
-
-```
-[2.1] Create orbit/config/adapters/jobforge.yaml
-      - HTTP adapter pointing to JobForge API
-      - Intent routing rules
-      - Endpoint mappings
-
-[2.2] Create orbit/config/intents/wiq_intents.yaml
-      - Domain-specific intent templates
-      - Sample questions for each category
-```
-
-**Rationale:** Configuration files define how Orbit routes queries. Depends on understanding JobForge API structure.
-
-### Phase 3: Documentation and Testing
-
-```
-[3.1] Create docs/orbit-integration.md
-      - Architecture diagram
-      - Quick start guide
-      - API examples
-      - Troubleshooting
-
-[3.2] Manual verification
-      - Start JobForge API
-      - Test endpoints with curl
-      - Deploy Orbit (optional)
-      - End-to-end test
-```
-
-**Rationale:** Documentation ensures the integration is usable. Manual testing validates the full flow.
-
-### Dependency Graph
-
-```
-Phase 1 (DuckDBRetriever)
-    |
-    v
-Phase 2 (Configuration)
-    |
-    v
-Phase 3 (Documentation + Testing)
-```
-
----
-
-## Anti-Patterns to Avoid
+## Anti-Patterns to Avoid (All Versions)
 
 ### Anti-Pattern 1: Skipping Bronze Layer
 
@@ -876,24 +1034,11 @@ Phase 3 (Documentation + Testing)
 **Why bad:** Lineage becomes untraceable; access control impossible
 **Instead:** Separate workspaces per medallion layer
 
-### Anti-Pattern 6: Duplicating Query Logic in Orbit (New)
+### Anti-Pattern 6: Duplicating Query Logic in Orbit
 
 **What:** Rebuilding DataQueryService logic inside DuckDBRetriever
 **Why bad:** Two implementations to maintain; potential drift
 **Instead:** DuckDBRetriever can use HTTP adapter to call existing JobForge API, or share code via imports
-
----
-
-## Scalability Considerations
-
-| Concern | 100 Users | 10K Users | 100K Users |
-|---------|-----------|-----------|------------|
-| **Query latency** | Direct Lake sufficient | Add aggregations | Pre-computed aggregates |
-| **RAG throughput** | Single LLM endpoint | Load balanced endpoints | Cached common queries |
-| **Graph size** | NetworkX in-memory | Neo4j single node | Neo4j cluster |
-| **Pipeline refresh** | Full refresh OK | Incremental only | Streaming ingestion |
-| **Artifact export** | On-demand | Scheduled | Event-driven |
-| **Orbit gateway** | Single instance | Load balanced | CDN + caching |
 
 ---
 
@@ -908,6 +1053,7 @@ Phase 3 (Documentation + Testing)
 | **LLM** | Claude API | OpenAI, local models | Quality for reasoning queries |
 | **Power BI deployment** | python-pptx + REST API | Tabular Editor | Python-native for consistency |
 | **Conversational gateway** | Orbit | Custom build | Pre-built UI, intent routing, multi-LLM |
+| **Data quality validation** | Pandera[polars] | Great Expectations | Code-first, Pydantic-style (v4.0) |
 
 ---
 
@@ -945,3 +1091,8 @@ Phase 3 (Documentation + Testing)
 - [Orbit GitHub Repository](https://github.com/schmitech/orbit)
 - [Orbit Adapters Documentation](https://github.com/schmitech/orbit/blob/main/docs/adapters/adapters.md)
 - [MotherDuck - Semantic Layer with DuckDB](https://motherduck.com/blog/semantic-layer-duckdb-tutorial/)
+
+**v4.0 Governance:**
+- [GC DQMF Guidance](https://www.canada.ca/en/government/system/digital-government/digital-government-innovations/information-management/guidance-data-quality.html)
+- [DAMA DMBOK Framework](https://dama.org/learning-resources/dama-data-management-body-of-knowledge-dmbok/)
+- [Pandera Polars Documentation](https://pandera.readthedocs.io/en/latest/polars.html)

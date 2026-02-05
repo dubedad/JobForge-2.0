@@ -1,80 +1,304 @@
-# Features Research: Orbit Integration (v2.1)
+# Feature Landscape: v4.0 Governed Data Foundation
 
-**Domain:** Text-to-SQL gateway for workforce intelligence data
-**Researched:** 2026-01-20
-**Confidence:** MEDIUM (existing implementation provides grounding; Orbit documentation sparse)
+**Domain:** Data governance, quality measurement, multi-taxonomy integration
+**Researched:** 2026-02-05
+**Confidence:** MEDIUM-HIGH (GC frameworks well-documented; O*NET authoritative; business metadata patterns established)
 
 ---
 
 ## Executive Summary
 
-JobForge 2.0 already has most of the hard work done. The existing `orbit/` directory contains:
-- A working DuckDBRetriever implementation (`orbit/retrievers/duckdb.py`)
-- An HTTP adapter configuration (`orbit/config/adapters/jobforge.yaml`)
-- Domain-specific intent configuration (`orbit/config/intents/wiq_intents.yaml`)
+v4.0 completes JobForge's governed data foundation through three major capability areas:
 
-The v2.1 milestone should focus on **productionizing and hardening** what exists, not building from scratch. Orbit (schmitech/orbit) is an open-source inference gateway that routes natural language queries to appropriate backends via intent classification.
+1. **Governance Compliance** - DAMA DMBOK auditing, DADM compliance verification, policy provenance tracking
+2. **Data Quality Measurement** - GC DQMF 9-dimension scoring, dashboard visualization, per-table/column metrics
+3. **5-Taxonomy Data Layer** - O*NET integration (completing NOC, OG, CAF, JA, O*NET coverage), PAA/DRF for organizational context
+
+The existing catalog infrastructure (24 tables, 123 lineage logs, 3 compliance frameworks) provides strong foundation. v4.0 extends this with quantitative quality metrics, structured business metadata, and the fifth occupational taxonomy.
 
 ---
 
 ## Table Stakes (Must Have)
 
-Features every Orbit deployment needs to be considered functional.
+Features users expect from a governed data platform. Missing = credibility gap with GC stakeholders.
 
-| Feature | Why Expected | Complexity | Existing Coverage | Notes |
-|---------|--------------|------------|-------------------|-------|
-| **Working retriever** | Core functionality - query data via NL | High | COMPLETE | `DuckDBRetriever` in `orbit/retrievers/duckdb.py` |
-| **Intent routing** | Route questions to correct endpoint | Medium | COMPLETE | `jobforge.yaml` has data/metadata/compliance intents |
-| **Schema context** | LLM needs schema for accurate SQL | Medium | COMPLETE | DDL generated dynamically from parquet files |
-| **Error handling** | Users need clear feedback on failures | Low | PARTIAL | Basic try/catch exists; needs user-friendly messages |
-| **Query result formatting** | Return structured, usable results | Low | COMPLETE | Returns list of dicts from DuckDB |
-| **SELECT-only enforcement** | Security - prevent data modification | Low | COMPLETE | System prompt enforces SELECT only |
-| **Intent fallback strategy** | Handle ambiguous queries gracefully | Low | COMPLETE | `wiq_intents.yaml` has fallback to metadata_first |
-
-**Assessment:** Table stakes are 85% complete. Remaining work is polish and hardening.
+| Feature | Why Expected | Complexity | Existing Coverage | Dependencies |
+|---------|--------------|------------|-------------------|--------------|
+| **GC DQMF 9-dimension scoring** | GC standard for data quality; required for TBS compliance discussions | Medium | 0% - not measured | catalog tables exist |
+| **Completeness metric per table** | Most basic DQ dimension; "how much is null?" | Low | 0% - row counts only | parquet files |
+| **Accuracy validation rules** | Can data be verified against known values? | Medium | 0% - no rules defined | reference data |
+| **Timeliness tracking** | When was data last refreshed? | Low | Partial - `updated_at` in catalog | catalog metadata |
+| **Data quality API endpoint** | Programmatic access to DQ metrics | Low | 0% - no DQ endpoints | FastAPI existing |
+| **Business purpose per table** | "What is this table FOR?" in catalog | Low | Partial - generic descriptions | catalog schema |
+| **Business questions per table** | "What can I ask this table?" | Low | 0% - not captured | catalog schema |
+| **O*NET occupation dimension** | 5th taxonomy; US DOL authoritative source | High | Existing NOC-SOC crosswalk | O*NET database download |
+| **O*NET attribute tables** | Skills, abilities, work activities, work context | Medium | 0% - not ingested | O*NET integration |
+| **NOC-O*NET concordance bridge** | Link NOC to O*NET via SOC crosswalk | Medium | Existing SOC crosswalk has 1,467 mappings | bridge_noc_og pattern |
+| **DAMA compliance evidence links** | Current dama.json has artifacts, not metrics | Low | 80% - structure exists | dama.json entries |
+| **Lineage-to-policy traceability** | Which policy authorizes this data relationship? | Medium | 0% - lineage exists, policy refs don't | governance module |
 
 ---
 
-## Differentiators
+## Differentiators (Competitive Advantage in GC Context)
 
-Features that would make this integration stand out compared to generic text-to-SQL deployments.
+Features that set JobForge apart from generic data catalogs or governance tools.
 
-| Feature | Value Proposition | Complexity | Build in v2.1? | Notes |
+| Feature | Value Proposition | Complexity | Build in v4.0? | Notes |
 |---------|-------------------|------------|----------------|-------|
-| **Domain-specific entity recognition** | Understand "21232", "TEER 1", "broad category 2" | Medium | YES | Already configured in `wiq_intents.yaml` - needs testing |
-| **Metadata query pathway** | Answer "where does X come from?" without SQL | Low | YES | Existing FastAPI `/api/query/metadata` endpoint |
-| **Compliance reporting** | Show DADM/DAMA compliance on demand | Low | YES | Existing `/api/compliance/{framework}` endpoint |
-| **Multi-intent classification** | Handle compound questions | High | NO | Future enhancement - single intent is fine for v2.1 |
-| **Query explanation** | Show SQL + explain what it does | Low | YES | Already in `SQLQuery` model - surface to users |
-| **Rich column descriptions** | Domain context in schema DDL | Medium | MAYBE | Would improve SQL accuracy; investigate ROI |
-| **Confidence scoring** | Tell users when LLM is uncertain | High | NO | Nice to have but adds complexity |
-| **Query history/caching** | Avoid re-running identical queries | Medium | NO | Optimization for v2.2+ |
-| **Semantic similarity examples** | Few-shot examples matched to user query | High | NO | RAG enhancement for v3.0 scope |
+| **GC DQMF dashboard in demo UI** | Visual DQ at a glance; executive-friendly | Medium | YES | Extends existing demo UI |
+| **9-dimension radar chart per table** | Intuitive quality visualization | Low | YES | Chart.js in existing demo |
+| **Automated DAMA DMBOK audit** | "How DAMA-compliant is this phase?" | Medium | YES | Use managing-data-governance skill |
+| **Policy provenance paragraph-level** | Link data element to exact TBS clause | High | YES | mapping-policy-provenance skill |
+| **Business metadata interview workflow** | Guided capture of table purpose/questions | Medium | YES | Stakeholder engagement value |
+| **O*NET work activities for NOC codes** | "What tasks does this occupation do?" | Medium | YES | Via crosswalk imputation |
+| **O*NET abilities/skills profiles** | Rich competency data beyond OaSIS | Medium | YES | Expands attribute coverage |
+| **Quality trend over time** | "Is DQ improving or degrading?" | Medium | MAYBE | Requires historical storage |
+| **PAA/DRF organizational context** | Job factors for classification decisions | High | YES | DND, DFO, Elections target |
+| **GC HR Data Model mapping document** | Positions JobForge in GC ecosystem | Medium | YES | Strategic value |
+| **Automated quality alerts** | Notify on quality degradation | Medium | NO | v5.0 agent territory |
+| **Natural language quality queries** | "What's the quality of COPS data?" | Medium | NO | v5.0 agent territory |
 
-**Recommended differentiators for v2.1:**
-1. Entity recognition patterns (already configured)
-2. Query explanation surfacing (already generated, just expose)
-3. Metadata pathway integration (already built)
+**Recommended differentiators for v4.0:**
+1. GC DQMF dashboard (executive visibility)
+2. Policy provenance tracking (audit-ready)
+3. Business metadata capture workflow (stakeholder engagement)
+4. O*NET integration (completes 5-taxonomy coverage)
 
 ---
 
-## Anti-Features (Out of Scope for v2.1)
+## Anti-Features (Out of Scope)
 
-Features to deliberately NOT build. Some are distractions; others belong in future milestones.
+Features to deliberately NOT build. Some distract; others belong in v5.0 agents phase.
 
 | Anti-Feature | Why Avoid | What to Do Instead |
 |--------------|-----------|-------------------|
-| **Vector embeddings for retrieval** | RAG-03 is v3.0 scope; adds complexity without proportional value for structured data | Use schema-based text-to-SQL only |
-| **Custom fine-tuned model** | DuckDB-NSQL exists but Claude structured outputs work well already | Stick with Claude Sonnet 4 |
-| **Multi-turn conversation** | Requires session state, history management | Single-shot queries only for v2.1 |
-| **Auto-visualization** | Chart generation is a different product | Return data; let downstream tools visualize |
-| **Query builder UI** | JDB-01 through JDB-05 are v3.0 scope | CLI/API only for v2.1 |
-| **Cross-database joins** | Only one database (WiQ) | Don't architect for multi-DB |
-| **Real-time data sync** | Out of scope per PROJECT.md | Manual export/import workflow |
-| **User authentication in retriever** | Orbit handles auth at gateway level | Trust Orbit's API key system |
-| **Billing/usage tracking** | Not needed for internal deployment | Defer unless GC requires chargeback |
+| **Real-time data quality monitoring** | Adds operational complexity; JobForge is analytical, not transactional | Batch quality scoring on pipeline runs |
+| **ML-based anomaly detection** | Overly complex for current state; rule-based is sufficient | Define explicit validation rules |
+| **Custom quality dimensions** | GC DQMF has 9 standard dimensions; custom adds confusion | Use GC standard dimensions only |
+| **Quality remediation workflows** | v5.0 agent territory; requires human-in-loop | Surface issues, don't auto-fix |
+| **Third-party DQ tool integration** | Adds dependencies; JobForge should be self-contained | Build native quality scoring |
+| **Individual-level DADM compliance** | JobForge is decision-SUPPORT, not decision-MAKING | Document decision-support exemption clearly |
+| **Automated AIA completion** | AIA requires human judgment on impact levels | Provide AIA documentation template only |
+| **Full GC HR Data Model implementation** | Model incomplete per proposal; incremental alignment | Mapping document + gap analysis only |
+| **PAA for all departments** | 300+ departments; scope explosion | Target 3 departments (DND, DFO, Elections) |
+| **O*NET full database import** | 900+ occupations, most not relevant to Canadian context | Import attributes for NOC-mapped occupations only |
 
-**Rationale:** v2.1 is about proving Orbit works for WiQ. Keep scope tight.
+**Rationale:** v4.0 is about completing the governed data foundation. Autonomous quality management belongs in v5.0's agent layer.
+
+---
+
+## Feature Dependencies
+
+```
+EXISTING JobForge v3.0 Features
+        |
+        v
++-------------------+
+| Gold Parquet      |  <-- DQ metrics calculated from parquet files
+| (28 tables)       |
++-------------------+
+        |
+        v
++-------------------+
+| Catalog Metadata  |  <-- business_purpose, business_questions extend catalog
+| (data/catalog/)   |
++-------------------+
+        |
+        +----------------------+
+        |                      |
+        v                      v
++-------------------+  +-------------------+
+| DAMA/DADM Logs    |  | Lineage Graph     |
+| (compliance/)     |  | (lineage/)        |
++-------------------+  +-------------------+
+        |                      |
+        +----------+-----------+
+                   |
+                   v
+        +-------------------+
+        | Policy Provenance |  <-- NEW: links lineage to TBS directives
+        | (NEW)             |
+        +-------------------+
+                   |
+                   v
+        +-------------------+
+        | GC DQMF Metrics   |  <-- NEW: 9-dimension scoring
+        | (NEW API)         |
+        +-------------------+
+                   |
+                   v
+        +-------------------+
+        | Quality Dashboard |  <-- NEW: extends demo UI
+        | (demo/quality.html)|
+        +-------------------+
+
+
+O*NET INTEGRATION PATH
++-------------------+
+| Existing          |
+| NOC-SOC Crosswalk |  <-- 1,467 mappings already exist
+| (data/reference)  |
++-------------------+
+        |
+        v
++-------------------+
+| O*NET Database    |  <-- DOWNLOAD: from onetcenter.org
+| (External)        |
++-------------------+
+        |
+        v
++-------------------+
+| dim_onet_occupation|  <-- NEW: O*NET occupation dimension
+| (gold)            |
++-------------------+
+        |
+        v
++-------------------+
+| O*NET Attributes  |  <-- NEW: abilities, skills, work_activities, work_context
+| (gold)            |
++-------------------+
+        |
+        v
++-------------------+
+| bridge_noc_onet   |  <-- NEW: NOC-to-O*NET via SOC crosswalk
+| (gold)            |
++-------------------+
+
+
+PAA/DRF INTEGRATION PATH
++-------------------+
+| Open Government   |  <-- SOURCE: open.canada.ca datasets
+| Portal (DRF)      |
++-------------------+
+        |
+        v
++-------------------+
+| dim_paa_program   |  <-- NEW: Program Alignment Architecture
+| (gold)            |
++-------------------+
+        |
+        v
++-------------------+
+| dim_drf_result    |  <-- NEW: Departmental Results Framework
+| (gold)            |
++-------------------+
+        |
+        v
++-------------------+
+| bridge_og_paa     |  <-- NEW: OG to PAA program mapping
+| (gold)            |
++-------------------+
+```
+
+**Critical Path:**
+1. Catalog schema must extend BEFORE business metadata capture
+2. Quality metrics must calculate BEFORE dashboard displays
+3. O*NET download must complete BEFORE attribute ingestion
+4. Policy provenance requires lineage EXISTS (already done)
+
+---
+
+## GC DQMF: The 9 Quality Dimensions
+
+Based on [Government of Canada Guidance on Data Quality](https://www.canada.ca/en/government/system/digital-government/digital-government-innovations/information-management/guidance-data-quality.html) and [GC Data Quality Framework wiki](https://wiki.gccollab.ca/index.php?title=GC_Data_Quality_Framework).
+
+| Dimension | Definition | Measurement Approach | Complexity |
+|-----------|------------|---------------------|------------|
+| **Access** | How easy it is to discover, retrieve, process and use data | API availability, documentation completeness | Low |
+| **Accuracy** | Degree to which data describes real-world phenomena | Validation rules, reference data comparison | Medium |
+| **Coherence** | How easily a user can compare and link data from sources | FK integrity, standard codes adherence | Low |
+| **Completeness** | Degree to which data values are sufficiently populated | NULL rate per column, required field coverage | Low |
+| **Consistency** | Degree to which data is internally non-contradictory | Cross-table validation, duplicate detection | Medium |
+| **Interpretability** | How much data can be understood in context | Description completeness, glossary linkage | Low |
+| **Relevance** | How well data supports a specific goal/objective | Business purpose documentation, usage tracking | Low |
+| **Reliability** | How well differences in data can be explained | Source attribution, transformation logging | Low |
+| **Timeliness** | Time between reference period end and data availability | Refresh date tracking, lag calculation | Low |
+
+**Implementation Priority:**
+1. **Completeness** - Easiest to calculate (NULL counts)
+2. **Timeliness** - Already have `updated_at` in catalog
+3. **Coherence** - FK validation exists in ingestion
+4. **Interpretability** - Extends catalog descriptions
+5. **Accuracy** - Requires defining validation rules (more effort)
+
+---
+
+## O*NET Data Categories
+
+Based on [O*NET Resource Center](https://www.onetcenter.org/database.html).
+
+| Category | Tables | Purpose | JobForge Relevance |
+|----------|--------|---------|-------------------|
+| **Abilities** | Abilities.xlsx | Cognitive, psychomotor, physical, sensory | Extends OaSIS abilities coverage |
+| **Skills** | Skills.xlsx | Basic (reading, math) + cross-functional (social, technical) | Extends OaSIS skills coverage |
+| **Knowledge** | Knowledge.xlsx | Subject matter expertise areas | Extends OaSIS knowledge coverage |
+| **Work Activities** | Work_Activities.xlsx | Generalized work activities taxonomy | NEW - not in current model |
+| **Work Context** | Work_Context.xlsx | Working conditions, interaction requirements | Extends OaSIS work context |
+| **Interests** | Interests.xlsx | RIASEC vocational interest profiles | NEW - career matching value |
+| **Work Styles** | Work_Styles.xlsx | Personal characteristics for job success | NEW - person-job fit |
+| **Tasks** | Tasks.xlsx | Occupation-specific task statements | NEW - job description generation |
+
+**v4.0 Scope:** Abilities, Skills, Knowledge, Work Activities, Work Context (matches existing OaSIS pattern).
+**Defer:** Interests, Work Styles, Tasks (v5.0 career matching agents).
+
+---
+
+## MVP Definition: v4.0 Launch
+
+### Must Ship (Governance Foundation Complete)
+
+| Feature | Deliverable | Success Criteria |
+|---------|-------------|------------------|
+| GC DQMF scoring | `/api/quality/table/{table_name}` endpoint | Returns 9-dimension scores |
+| Completeness metric | NULL rate per column | Calculated for all 28+ tables |
+| Timeliness metric | Days since last refresh | Calculated from catalog metadata |
+| Quality dashboard | Demo UI `/quality` page | Displays table scores, trends |
+| Business purpose capture | Extended catalog schema | All tables have purpose documented |
+| Business questions capture | Extended catalog schema | At least 3 questions per core table |
+| O*NET occupation dimension | `dim_onet_occupation` gold table | ~900 occupations loaded |
+| O*NET attributes | 5 attribute tables in gold | Abilities, Skills, Knowledge, Work Activities, Work Context |
+| NOC-O*NET bridge | `bridge_noc_onet` gold table | 516 NOC codes mapped via SOC |
+| Policy provenance | Catalog field for policy references | Core tables link to TBS directives |
+| DAMA audit enhancement | Metrics-based compliance scoring | Quantitative DAMA compliance % |
+| GC HR Data Model mapping | Mapping document in `.planning/` | Gap analysis completed |
+
+### Should Ship (Enhanced Governance)
+
+| Feature | Deliverable | Notes |
+|---------|-------------|-------|
+| PAA/DRF for DND | `dim_paa_dnd`, `dim_drf_dnd` tables | First department target |
+| Coherence metric | FK integrity scores | Leverage existing validation |
+| Accuracy validation rules | Rule definitions in catalog | At least for NOC codes |
+| Quality trend storage | Historical DQ scores | Enables degradation detection |
+| Business metadata interview CLI | `jobforge metadata interview` | Guided stakeholder workflow |
+
+### Defer to v5.0 (Agent-Powered Features)
+
+| Feature | Reason |
+|---------|--------|
+| Natural language quality queries | Requires conversational agent |
+| Automated quality remediation | Requires autonomous agent |
+| Quality anomaly detection | ML-based, agent territory |
+| DAMA audit automation in verify-work | Needs `/gsd:verify-work` integration |
+| Full PAA/DRF for all departments | Scope management |
+
+---
+
+## Feature Prioritization Matrix
+
+| Feature | Business Value | Technical Effort | Risk | Priority |
+|---------|---------------|------------------|------|----------|
+| GC DQMF scoring | HIGH | Medium | Low | P1 |
+| O*NET integration | HIGH | High | Medium | P1 |
+| Business metadata capture | HIGH | Low | Low | P1 |
+| Quality dashboard | MEDIUM | Low | Low | P1 |
+| Policy provenance | HIGH | Medium | Medium | P2 |
+| PAA/DRF DND | MEDIUM | High | Medium | P2 |
+| GC HR Data Model mapping | MEDIUM | Medium | Low | P2 |
+| Quality trends | LOW | Medium | Low | P3 |
+| Business metadata interview CLI | MEDIUM | Medium | Low | P3 |
+
+**P1 = Phase 17-19** | **P2 = Phase 20-22** | **P3 = Phase 23 or defer**
 
 ---
 
@@ -82,151 +306,71 @@ Features to deliberately NOT build. Some are distractions; others belong in futu
 
 | Feature Area | Complexity | Effort (days) | Risk | Notes |
 |--------------|------------|---------------|------|-------|
-| **DuckDBRetriever completion** | Low | 0.5 | Low | Already implemented; needs integration test |
-| **Intent routing validation** | Low | 0.5 | Low | Test all intent patterns work correctly |
-| **Entity recognition testing** | Medium | 1 | Medium | Regex patterns need validation against real queries |
-| **Error message improvement** | Low | 0.5 | Low | Map exceptions to user-friendly messages |
-| **Deployment configuration** | Medium | 1 | Medium | Docker compose, env vars, secrets management |
-| **End-to-end testing** | Medium | 1 | Low | User journey from question to answer |
-| **Documentation** | Low | 0.5 | Low | How to deploy, configure, use |
+| **Catalog schema extension** | Low | 1 | Low | Add `business_purpose`, `business_questions` fields |
+| **GC DQMF scoring engine** | Medium | 3 | Low | 9-dimension calculation per table |
+| **Quality API endpoints** | Low | 1 | Low | FastAPI patterns established |
+| **Quality dashboard** | Medium | 2 | Low | Extends demo UI with charts |
+| **O*NET database download** | Low | 0.5 | Low | Public download, no API needed |
+| **O*NET ingestion pipeline** | Medium | 3 | Medium | Follow existing medallion pattern |
+| **O*NET attribute tables** | Medium | 2 | Low | 5 tables, similar to OaSIS pattern |
+| **NOC-O*NET bridge** | Medium | 2 | Low | Leverage existing SOC crosswalk |
+| **Policy provenance tracking** | High | 4 | Medium | Paragraph-level citation mapping |
+| **PAA/DRF scraping** | High | 3 | Medium | Open Government Portal API |
+| **PAA/DRF ingestion** | Medium | 2 | Low | Standard medallion pipeline |
+| **GC HR Data Model mapping** | Medium | 3 | Low | Documentation task |
+| **Business metadata interview** | Medium | 2 | Low | CLI workflow |
+| **DAMA audit enhancement** | Low | 1 | Low | Extend existing dama.json |
 
-**Total estimated effort:** 5 developer-days for v2.1
-
----
-
-## Feature Dependencies
-
-```
-Existing JobForge v2.0 Features
-        |
-        v
-+-------------------+
-| Gold Parquet      |  <-- DuckDBRetriever reads from here
-| (24 tables)       |
-+-------------------+
-        |
-        v
-+-------------------+
-| Schema DDL Gen    |  <-- schema_ddl.py generates DDL for LLM context
-| (api/schema_ddl)  |
-+-------------------+
-        |
-        v
-+-------------------+
-| DuckDBRetriever   |  <-- Core component for Orbit
-| (orbit/retrievers)|
-+-------------------+
-        |
-        v
-+-------------------+
-| Intent Config     |  <-- Routes queries to correct handler
-| (orbit/config)    |
-+-------------------+
-        |
-        v
-+-------------------+
-| Orbit Gateway     |  <-- External dependency (schmitech/orbit)
-| (Docker deploy)   |
-+-------------------+
-```
-
-**Critical path:** DuckDBRetriever must work before Orbit can serve queries.
-
----
-
-## Enterprise Text-to-SQL Expectations (Industry Context)
-
-Based on research into enterprise deployments, users expect:
-
-### Accuracy Expectations
-- **Baseline:** 70-85% query accuracy is typical for text-to-SQL systems
-- **With semantic layer:** Can reach 90%+ with proper schema documentation
-- **Failure mode:** Users tolerate "I don't understand" better than wrong answers
-
-### User Experience Patterns
-- **Ambiguous queries:** System should ask clarifying questions rather than guess
-- **Confidence indication:** Users want to know when system is uncertain
-- **SQL visibility:** Technical users want to see and verify generated SQL
-- **Result limits:** Default to reasonable limits (100 rows) to prevent overwhelming results
-
-### Common Failure Modes to Guard Against
-1. **Hallucinated table/column names** - Always validate SQL against actual schema
-2. **Wrong JOIN conditions** - Star schema helps but complex queries can still fail
-3. **Aggregate confusion** - COUNT vs SUM vs AVG ambiguity
-4. **Date/time handling** - COPS data has specific time semantics
-5. **NULL handling** - IS NULL vs = NULL confusion
-
-### JobForge-Specific Considerations
-- NOC codes can be 4 or 5 digits - pattern matching must handle both
-- TEER levels 0-5 - users may say "tier" instead of "TEER"
-- Bilingual data - some TBS content is French
-- Hierarchy navigation - "parent of 21232" type queries
-
----
-
-## Orbit-Specific Features (from schmitech/orbit)
-
-Based on research, Orbit provides:
-
-| Feature | Description | JobForge Relevance |
-|---------|-------------|-------------------|
-| **Multi-provider support** | 20+ LLM providers + Ollama | Currently using Anthropic; could switch if needed |
-| **Intent-aware routing** | Pattern + LLM-based classification | Using for data/metadata/compliance routing |
-| **API key per adapter** | Scoped keys create "agents" | Each WiQ query type could have its own key |
-| **YAML configuration** | Adapters, intents, models | Already configured in `orbit/config/` |
-| **Circuit breaker** | Exponential backoff for failures | Built-in resilience |
-| **Docker deployment** | Containerized with volumes | Standard deployment pattern |
-
-**Key insight:** Orbit is designed as a gateway, not a database. It expects backends (like JobForge API) to do the actual work. The DuckDBRetriever is a custom extension that brings SQL capability inside Orbit.
-
----
-
-## MVP Recommendation for v2.1
-
-**Must ship:**
-1. DuckDBRetriever working with all 24 gold tables
-2. Intent routing for data queries
-3. Error handling that doesn't expose internals
-4. Basic deployment documentation
-
-**Should ship if time permits:**
-1. Metadata query integration (already built, just wire up)
-2. Compliance query integration (already built)
-3. Entity recognition validation (already configured)
-
-**Defer to v2.2+:**
-1. Rich column descriptions in schema DDL
-2. Query caching
-3. Multi-turn conversation
-4. Confidence scoring
+**Total estimated effort:** 29-32 developer-days for v4.0
 
 ---
 
 ## Sources
 
-### Orbit (schmitech/orbit)
-- [GitHub - schmitech/orbit](https://github.com/schmitech/orbit) - Main repository
-- [Orbit Docker README](https://github.com/schmitech/orbit/blob/main/docker/README.md) - Deployment configuration
-- [schmitech-orbit-client on PyPI](https://libraries.io/pypi/schmitech-orbit-client) - Python client library
+### GC Data Quality Framework
+- [Guidance on Data Quality - Canada.ca](https://www.canada.ca/en/government/system/digital-government/digital-government-innovations/information-management/guidance-data-quality.html) - **Official 9-dimension framework**
+- [GC Data Quality Framework - GCcollab Wiki](https://wiki.gccollab.ca/index.php?title=GC_Data_Quality_Framework) - Community documentation
+- [Statistics Canada Quality Assurance Framework](https://www150.statcan.gc.ca/n1/en/catalogue/12-586-X) - Statistical quality standards
 
-### Text-to-SQL Best Practices
-- [Google Cloud: Techniques for improving text-to-SQL](https://cloud.google.com/blog/products/databases/techniques-for-improving-text-to-sql)
-- [Text to SQL: The Ultimate Guide for 2025](https://medium.com/@ayushgs/text-to-sql-the-ultimate-guide-for-2025-3fa4e78cbdf9)
-- [LLM & AI Models for Text-to-SQL: Modern Frameworks](https://promethium.ai/guides/llm-ai-models-text-to-sql/)
-- [Exploring RAG based approaches for Text-to-SQL](https://blog.nilenso.com/blog/2025/05/15/exploring-rag-based-approach-for-text-to-sql/)
+### DADM Compliance
+- [Directive on Automated Decision-Making - TBS](https://www.tbs-sct.canada.ca/pol/doc-eng.aspx?id=32592) - **Official directive**
+- [Algorithmic Impact Assessment tool - Canada.ca](https://www.canada.ca/en/government/system/digital-government/digital-government-innovations/responsible-use-ai/algorithmic-impact-assessment.html) - AIA tool and requirements
+- [Guide on the Scope of the Directive](https://www.canada.ca/en/government/system/digital-government/digital-government-innovations/responsible-use-ai/guide-scope-directive-automated-decision-making.html) - Scope clarification
 
-### DuckDB Documentation
-- [DuckDB: Describe](https://duckdb.org/docs/stable/guides/meta/describe) - Schema introspection
-- [DuckDB: Information Schema](https://duckdb.org/docs/stable/sql/meta/information_schema) - Metadata views
-- [Agentic AI with DuckDB and smolagents](https://buckenhofer.com/2025/11/agentic-ai-with-duckdb-and-smolagents-natural-language-queries-for-analytics/)
-- [duckdb-nsql on Ollama](https://ollama.com/library/duckdb-nsql) - Specialized DuckDB text-to-SQL model
+### DAMA DMBOK
+- [DAMA DMBOK Framework Guide - Atlan](https://atlan.com/dama-dmbok-framework/) - Framework overview
+- [DAMA International - DMBOK](https://dama.org/learning-resources/dama-data-management-body-of-knowledge-dmbok/) - Official DAMA source
+- [Data Governance Framework 2026 - Atlan](https://atlan.com/data-governance-framework/) - Modern governance practices
 
-### LLM Gateway Patterns
-- [Top 5 LLM Gateways in 2025](https://www.getmaxim.ai/articles/top-5-llm-gateways-in-2025-the-definitive-guide-for-production-ai-applications/)
-- [Intent-Driven Natural Language Interface](https://medium.com/data-science-collective/intent-driven-natural-language-interface-a-hybrid-llm-intent-classification-approach-e1d96ad6f35d)
+### O*NET Integration
+- [O*NET Database - Resource Center](https://www.onetcenter.org/database.html) - **Official database download**
+- [O*NET-SOC Taxonomy](https://www.onetcenter.org/taxonomy.html) - Taxonomy structure
+- [O*NET Crosswalk Files](https://www.onetcenter.org/crosswalks.html) - SOC-O*NET mappings
+
+### PAA/DRF
+- [Departmental Results Framework - Open Government Portal](https://open.canada.ca/data/en/dataset/320e0439-187a-4db5-b120-4079ed05ff99) - DRF dataset
+- [National Defence PAA - Open Government Portal](https://open.canada.ca/data/en/dataset/1812c4ba-b74a-48c3-8be0-9fccbd0689cb) - DND PAA data
+- [Departmental Results Reports - Canada.ca](https://www.canada.ca/en/treasury-board-secretariat/services/departmental-performance-reports.html) - DRR context
+
+### Business Metadata
+- [Data Catalog vs Metadata Management 2026 - OvalEdge](https://www.ovaledge.com/blog/data-catalog-vs-metadata-management) - Catalog patterns
+- [Business Glossary for Data Governance - Select Star](https://www.selectstar.com/resources/business-glossary-data-governance) - Glossary best practices
+- [Data Governance Best Practices 2026 - Alation](https://www.alation.com/blog/data-governance-best-practices/) - Governance framework
+
+### Data Quality Dashboards
+- [Six Types of Data Quality Dashboards - DataKitchen](https://datakitchen.io/the-six-types-of-data-quality-dashboards/) - Dashboard patterns
+- [How to Make a Data Quality Dashboard - DQOps](https://dqops.com/how-to-make-a-data-quality-dashboard/) - Implementation guide
+- [Data Quality Scorecard Guide - Datafold](https://www.datafold.com/blog/crafting-a-data-quality-scorecard) - Scorecard design
 
 ### Confidence Notes
-- **HIGH:** Existing JobForge implementation details (direct code inspection)
-- **MEDIUM:** Orbit features and configuration patterns (documentation + WebSearch)
-- **MEDIUM:** Text-to-SQL best practices (multiple authoritative sources agree)
-- **LOW:** Specific Orbit DuckDBRetriever patterns (sparse documentation; inferred from similar retrievers)
+- **HIGH:** GC DQMF dimensions (official Canada.ca source)
+- **HIGH:** DADM/AIA requirements (TBS official directive)
+- **HIGH:** O*NET database structure (official onetcenter.org)
+- **MEDIUM:** Dashboard visualization patterns (industry best practices, multiple sources agree)
+- **MEDIUM:** PAA/DRF data availability (Open Government Portal exists, structure varies by department)
+- **LOW:** GC HR Data Model completeness (proposal notes model is incomplete)
+
+---
+
+*Last updated: 2026-02-05*
+*Research mode: Features dimension for subsequent milestone*
