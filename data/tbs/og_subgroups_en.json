@@ -1,0 +1,1302 @@
+[
+  {
+    "og_code": "AI",
+    "subgroup_code": "AI-NOP",
+    "subgroup_name": "Non-Operational",
+    "definition_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups/definitions.html#def-ai-nop",
+    "qualification_standard_url": "https://www.canada.ca/en/treasury-board-secretariat/services/staffing/qualification-standards/core.html#ai",
+    "rates_of_pay_url": null,
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups.html",
+    "scraped_at": "2026-01-20T00:21:24.352592Z"
+  },
+  {
+    "og_code": "AO",
+    "subgroup_code": "AO-CAI",
+    "subgroup_name": "Civil Aviation Inspection",
+    "definition_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups/definitions.html#def-ao-cai",
+    "qualification_standard_url": "https://www.canada.ca/en/treasury-board-secretariat/services/staffing/qualification-standards/core.html#ao",
+    "rates_of_pay_url": null,
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups.html",
+    "scraped_at": "2026-01-20T00:21:24.352592Z"
+  },
+  {
+    "og_code": "AO",
+    "subgroup_code": "AO-ETP",
+    "subgroup_name": "Engineering Test Pilots",
+    "definition_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups/definitions.html#def-ao-etp",
+    "qualification_standard_url": "https://www.canada.ca/en/treasury-board-secretariat/services/staffing/qualification-standards/core.html#ao",
+    "rates_of_pay_url": null,
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups.html",
+    "scraped_at": "2026-01-20T00:21:24.352592Z"
+  },
+  {
+    "og_code": "AO",
+    "subgroup_code": "AO-HPS",
+    "subgroup_name": "Helicopter Pilots and Supervisors",
+    "definition_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups/definitions.html#def-ao-hps",
+    "qualification_standard_url": "https://www.canada.ca/en/treasury-board-secretariat/services/staffing/qualification-standards/core.html#ao",
+    "rates_of_pay_url": null,
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups.html",
+    "scraped_at": "2026-01-20T00:21:24.352592Z"
+  },
+  {
+    "og_code": "CT",
+    "subgroup_code": "CT-EAV",
+    "subgroup_name": "External Audit",
+    "definition_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups/definitions.html#def-ct-eav",
+    "qualification_standard_url": "https://www.canada.ca/en/treasury-board-secretariat/services/staffing/qualification-standards/core.html#ct-eav",
+    "rates_of_pay_url": null,
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups.html",
+    "scraped_at": "2026-01-20T00:21:24.352592Z"
+  },
+  {
+    "og_code": "CT",
+    "subgroup_code": "CT-FIN",
+    "subgroup_name": "Financial Management",
+    "definition_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups/definitions.html#def-ct-fin",
+    "qualification_standard_url": "https://www.canada.ca/en/treasury-board-secretariat/services/staffing/qualification-standards/core.html#ct-fin",
+    "rates_of_pay_url": null,
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups.html",
+    "scraped_at": "2026-01-20T00:21:24.352592Z"
+  },
+  {
+    "og_code": "CT",
+    "subgroup_code": "CT-IAU",
+    "subgroup_name": "Internal Audit",
+    "definition_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups/definitions.html#def-ct-iau",
+    "qualification_standard_url": "https://www.canada.ca/en/treasury-board-secretariat/services/staffing/qualification-standards/core.html#ct-iau",
+    "rates_of_pay_url": null,
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups.html",
+    "scraped_at": "2026-01-20T00:21:24.352592Z"
+  },
+  {
+    "og_code": "EB",
+    "subgroup_code": "ED-EDS",
+    "subgroup_name": "Education Services",
+    "definition_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups/definitions.html#def-ed-eds",
+    "qualification_standard_url": "https://www.canada.ca/en/treasury-board-secretariat/services/staffing/qualification-standards/core.html#ed",
+    "rates_of_pay_url": null,
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups.html",
+    "scraped_at": "2026-01-20T00:21:24.352592Z"
+  },
+  {
+    "og_code": "EB",
+    "subgroup_code": "ED-EST",
+    "subgroup_name": "Elementary and Secondary Teaching",
+    "definition_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups/definitions.html#def-ed-est",
+    "qualification_standard_url": "https://www.canada.ca/en/treasury-board-secretariat/services/staffing/qualification-standards/core.html#ed",
+    "rates_of_pay_url": null,
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups.html",
+    "scraped_at": "2026-01-20T00:21:24.352592Z"
+  },
+  {
+    "og_code": "EB",
+    "subgroup_code": "ED-LAT",
+    "subgroup_name": "Language Teaching",
+    "definition_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups/definitions.html#def-ed-lat",
+    "qualification_standard_url": "https://www.canada.ca/en/treasury-board-secretariat/services/staffing/qualification-standards/core.html#ed",
+    "rates_of_pay_url": null,
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups.html",
+    "scraped_at": "2026-01-20T00:21:24.352592Z"
+  },
+  {
+    "og_code": "EB",
+    "subgroup_code": "EU-LAI",
+    "subgroup_name": "Language Instructor",
+    "definition_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups/definitions.html#def-eu-lai",
+    "qualification_standard_url": "https://www.canada.ca/en/treasury-board-secretariat/services/staffing/qualification-standards/core.html#eu",
+    "rates_of_pay_url": null,
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups.html",
+    "scraped_at": "2026-01-20T00:21:24.352592Z"
+  },
+  {
+    "og_code": "EB",
+    "subgroup_code": "EU-PEI",
+    "subgroup_name": "Physical Education Instructor",
+    "definition_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups/definitions.html#def-eu-pei",
+    "qualification_standard_url": "https://www.canada.ca/en/treasury-board-secretariat/services/staffing/qualification-standards/core.html#eu",
+    "rates_of_pay_url": null,
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups.html",
+    "scraped_at": "2026-01-20T00:21:24.352592Z"
+  },
+  {
+    "og_code": "EB",
+    "subgroup_code": "EU-TEA",
+    "subgroup_name": "Teachers’ Aide",
+    "definition_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups/definitions.html#def-eu-tea",
+    "qualification_standard_url": "https://www.canada.ca/en/treasury-board-secretariat/services/staffing/qualification-standards/core.html#eu",
+    "rates_of_pay_url": null,
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups.html",
+    "scraped_at": "2026-01-20T00:21:24.352592Z"
+  },
+  {
+    "og_code": "NR",
+    "subgroup_code": "EN-ENG",
+    "subgroup_name": "Engineering",
+    "definition_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups/definitions.html#def-en-eng",
+    "qualification_standard_url": "https://www.canada.ca/en/treasury-board-secretariat/services/staffing/qualification-standards/core.html#en",
+    "rates_of_pay_url": null,
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups.html",
+    "scraped_at": "2026-01-20T00:21:24.352592Z"
+  },
+  {
+    "og_code": "NR",
+    "subgroup_code": "EN-SUR",
+    "subgroup_name": "Land Survey",
+    "definition_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups/definitions.html#def-en-sur",
+    "qualification_standard_url": "https://www.canada.ca/en/treasury-board-secretariat/services/staffing/qualification-standards/core.html#en",
+    "rates_of_pay_url": null,
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups.html",
+    "scraped_at": "2026-01-20T00:21:24.352592Z"
+  },
+  {
+    "og_code": "PA",
+    "subgroup_code": "DA-CON",
+    "subgroup_name": "Data Conversion",
+    "definition_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups/definitions.html#def-da-con",
+    "qualification_standard_url": "https://www.canada.ca/en/treasury-board-secretariat/services/staffing/qualification-standards/core.html#da",
+    "rates_of_pay_url": null,
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups.html",
+    "scraped_at": "2026-01-20T00:21:24.352592Z"
+  },
+  {
+    "og_code": "PA",
+    "subgroup_code": "DA-PRO",
+    "subgroup_name": "Data Production",
+    "definition_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups/definitions.html#def-da-pro",
+    "qualification_standard_url": "https://www.canada.ca/en/treasury-board-secretariat/services/staffing/qualification-standards/core.html#da",
+    "rates_of_pay_url": null,
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups.html",
+    "scraped_at": "2026-01-20T00:21:24.352592Z"
+  },
+  {
+    "og_code": "PA",
+    "subgroup_code": "OE-BEO",
+    "subgroup_name": "Bookkeeping Equipment Operator",
+    "definition_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups/definitions.html#def-oe-beo",
+    "qualification_standard_url": "https://www.canada.ca/en/treasury-board-secretariat/services/staffing/qualification-standards/core.html#oe",
+    "rates_of_pay_url": null,
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups.html",
+    "scraped_at": "2026-01-20T00:21:24.352592Z"
+  },
+  {
+    "og_code": "PA",
+    "subgroup_code": "OE-CEO",
+    "subgroup_name": "Calculating Equipment Operator",
+    "definition_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups/definitions.html#def-oe-ceo",
+    "qualification_standard_url": "https://www.canada.ca/en/treasury-board-secretariat/services/staffing/qualification-standards/core.html#oe",
+    "rates_of_pay_url": null,
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups.html",
+    "scraped_at": "2026-01-20T00:21:24.352592Z"
+  },
+  {
+    "og_code": "PA",
+    "subgroup_code": "OE-DEO",
+    "subgroup_name": "Duplicating Equipment Operator",
+    "definition_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups/definitions.html#def-oe-deo",
+    "qualification_standard_url": "https://www.canada.ca/en/treasury-board-secretariat/services/staffing/qualification-standards/core.html#oe",
+    "rates_of_pay_url": null,
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups.html",
+    "scraped_at": "2026-01-20T00:21:24.352592Z"
+  },
+  {
+    "og_code": "PA",
+    "subgroup_code": "OE-MEO",
+    "subgroup_name": "Microphotography Equipment Operator",
+    "definition_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups/definitions.html#def-oe-meo",
+    "qualification_standard_url": "https://www.canada.ca/en/treasury-board-secretariat/services/staffing/qualification-standards/core.html#oe",
+    "rates_of_pay_url": null,
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups.html",
+    "scraped_at": "2026-01-20T00:21:24.352592Z"
+  },
+  {
+    "og_code": "PA",
+    "subgroup_code": "OE-MSE",
+    "subgroup_name": "Mailing Service Equipment Operator",
+    "definition_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups/definitions.html#def-oe-mse",
+    "qualification_standard_url": "https://www.canada.ca/en/treasury-board-secretariat/services/staffing/qualification-standards/core.html#oe",
+    "rates_of_pay_url": null,
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups.html",
+    "scraped_at": "2026-01-20T00:21:24.352592Z"
+  },
+  {
+    "og_code": "PA",
+    "subgroup_code": "PM-MCO",
+    "subgroup_name": "Negotiation, Mediation and Conciliation Officer",
+    "definition_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups/definitions.html#def-pm-mco",
+    "qualification_standard_url": "https://www.canada.ca/en/treasury-board-secretariat/services/staffing/qualification-standards/core.html#pm",
+    "rates_of_pay_url": null,
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups.html",
+    "scraped_at": "2026-01-20T00:21:24.352592Z"
+  },
+  {
+    "og_code": "PA",
+    "subgroup_code": "ST-COR",
+    "subgroup_name": "Court Reporter",
+    "definition_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups/definitions.html#def-st-cor",
+    "qualification_standard_url": "https://www.canada.ca/en/treasury-board-secretariat/services/staffing/qualification-standards/core.html#st",
+    "rates_of_pay_url": null,
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups.html",
+    "scraped_at": "2026-01-20T00:21:24.352592Z"
+  },
+  {
+    "og_code": "PA",
+    "subgroup_code": "ST-OCE",
+    "subgroup_name": "Office Composing Equipment",
+    "definition_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups/definitions.html#def-st-oce",
+    "qualification_standard_url": "https://www.canada.ca/en/treasury-board-secretariat/services/staffing/qualification-standards/core.html#st",
+    "rates_of_pay_url": null,
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups.html",
+    "scraped_at": "2026-01-20T00:21:24.352592Z"
+  },
+  {
+    "og_code": "PA",
+    "subgroup_code": "ST-SCY",
+    "subgroup_name": "Secretary",
+    "definition_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups/definitions.html#def-st-scy",
+    "qualification_standard_url": "https://www.canada.ca/en/treasury-board-secretariat/services/staffing/qualification-standards/core.html#st",
+    "rates_of_pay_url": null,
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups.html",
+    "scraped_at": "2026-01-20T00:21:24.352592Z"
+  },
+  {
+    "og_code": "PA",
+    "subgroup_code": "ST-STN",
+    "subgroup_name": "Stenographer",
+    "definition_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups/definitions.html#def-st-stn",
+    "qualification_standard_url": "https://www.canada.ca/en/treasury-board-secretariat/services/staffing/qualification-standards/core.html#st",
+    "rates_of_pay_url": null,
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups.html",
+    "scraped_at": "2026-01-20T00:21:24.352592Z"
+  },
+  {
+    "og_code": "PA",
+    "subgroup_code": "ST-TYP",
+    "subgroup_name": "Typist",
+    "definition_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups/definitions.html#def-st-typ",
+    "qualification_standard_url": "https://www.canada.ca/en/treasury-board-secretariat/services/staffing/qualification-standards/core.html#st",
+    "rates_of_pay_url": null,
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups.html",
+    "scraped_at": "2026-01-20T00:21:24.352592Z"
+  },
+  {
+    "og_code": "PO",
+    "subgroup_code": "PO-IMA",
+    "subgroup_name": "Intercept Monitoring and Analysis",
+    "definition_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups/definitions.html#def-po-ima",
+    "qualification_standard_url": "https://www.canada.ca/en/treasury-board-secretariat/services/staffing/qualification-standards/core.html#po",
+    "rates_of_pay_url": null,
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups.html",
+    "scraped_at": "2026-01-20T00:21:24.352592Z"
+  },
+  {
+    "og_code": "PO",
+    "subgroup_code": "PO-TCO",
+    "subgroup_name": "Telecommunications Operations",
+    "definition_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups/definitions.html#def-po-tco",
+    "qualification_standard_url": "https://www.canada.ca/en/treasury-board-secretariat/services/staffing/qualification-standards/core.html#po",
+    "rates_of_pay_url": null,
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups.html",
+    "scraped_at": "2026-01-20T00:21:24.352592Z"
+  },
+  {
+    "og_code": "PO",
+    "subgroup_code": "LES-IM",
+    "subgroup_name": "Intercept Monitoring and Analysis",
+    "definition_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups/definitions.html#def-po-ima",
+    "qualification_standard_url": "https://www.canada.ca/en/treasury-board-secretariat/services/staffing/qualification-standards/core.html#po",
+    "rates_of_pay_url": null,
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups.html",
+    "scraped_at": "2026-01-20T00:21:24.352592Z"
+  },
+  {
+    "og_code": "PO",
+    "subgroup_code": "LES-TO",
+    "subgroup_name": "Telecommunications Operations",
+    "definition_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups/definitions.html#def-po-tco",
+    "qualification_standard_url": "https://www.canada.ca/en/treasury-board-secretariat/services/staffing/qualification-standards/core.html#po",
+    "rates_of_pay_url": null,
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups.html",
+    "scraped_at": "2026-01-20T00:21:24.352592Z"
+  },
+  {
+    "og_code": "PR",
+    "subgroup_code": "PR-BIN",
+    "subgroup_name": "Bindery",
+    "definition_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups/definitions.html#def-pr-bin",
+    "qualification_standard_url": "https://www.canada.ca/en/treasury-board-secretariat/services/staffing/qualification-standards/core.html#pr",
+    "rates_of_pay_url": null,
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups.html",
+    "scraped_at": "2026-01-20T00:21:24.352592Z"
+  },
+  {
+    "og_code": "PR",
+    "subgroup_code": "PR-COM",
+    "subgroup_name": "Composition",
+    "definition_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups/definitions.html#def-pr-com",
+    "qualification_standard_url": "https://www.canada.ca/en/treasury-board-secretariat/services/staffing/qualification-standards/core.html#pr",
+    "rates_of_pay_url": null,
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups.html",
+    "scraped_at": "2026-01-20T00:21:24.352592Z"
+  },
+  {
+    "og_code": "PR",
+    "subgroup_code": "PR-MAI",
+    "subgroup_name": "Maintenance",
+    "definition_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups/definitions.html#def-pr-mai",
+    "qualification_standard_url": "https://www.canada.ca/en/treasury-board-secretariat/services/staffing/qualification-standards/core.html#pr",
+    "rates_of_pay_url": null,
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups.html",
+    "scraped_at": "2026-01-20T00:21:24.352592Z"
+  },
+  {
+    "og_code": "PR",
+    "subgroup_code": "PR-OFE",
+    "subgroup_name": "Pre-Press Preparation",
+    "definition_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups/definitions.html#def-pr-ofe",
+    "qualification_standard_url": "https://www.canada.ca/en/treasury-board-secretariat/services/staffing/qualification-standards/core.html#pr",
+    "rates_of_pay_url": null,
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups.html",
+    "scraped_at": "2026-01-20T00:21:24.352592Z"
+  },
+  {
+    "og_code": "PR",
+    "subgroup_code": "PR-OFO",
+    "subgroup_name": "Press Operations",
+    "definition_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups/definitions.html#def-pr-ofo",
+    "qualification_standard_url": "https://www.canada.ca/en/treasury-board-secretariat/services/staffing/qualification-standards/core.html#pr",
+    "rates_of_pay_url": null,
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups.html",
+    "scraped_at": "2026-01-20T00:21:24.352592Z"
+  },
+  {
+    "og_code": "PR",
+    "subgroup_code": "PR-PRC",
+    "subgroup_name": "Job Planning and Control",
+    "definition_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups/definitions.html#def-pr-prc",
+    "qualification_standard_url": "https://www.canada.ca/en/treasury-board-secretariat/services/staffing/qualification-standards/core.html#pr",
+    "rates_of_pay_url": null,
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups.html",
+    "scraped_at": "2026-01-20T00:21:24.352592Z"
+  },
+  {
+    "og_code": "RE",
+    "subgroup_code": "SE-REM",
+    "subgroup_name": "Research Manager",
+    "definition_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups/definitions.html#def-se-rem",
+    "qualification_standard_url": "https://www.canada.ca/en/treasury-board-secretariat/services/staffing/qualification-standards/core.html#se",
+    "rates_of_pay_url": null,
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups.html",
+    "scraped_at": "2026-01-20T00:21:24.352592Z"
+  },
+  {
+    "og_code": "RE",
+    "subgroup_code": "SE-RES",
+    "subgroup_name": "Research Scientist",
+    "definition_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups/definitions.html#def-se-res",
+    "qualification_standard_url": "https://www.canada.ca/en/treasury-board-secretariat/services/staffing/qualification-standards/core.html#se",
+    "rates_of_pay_url": null,
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups.html",
+    "scraped_at": "2026-01-20T00:21:24.352592Z"
+  },
+  {
+    "og_code": "SH",
+    "subgroup_code": "MD-MOF",
+    "subgroup_name": "Medical Officer",
+    "definition_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups/definitions.html#def-md-mof",
+    "qualification_standard_url": "https://www.canada.ca/en/treasury-board-secretariat/services/staffing/qualification-standards/core.html#md",
+    "rates_of_pay_url": null,
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups.html",
+    "scraped_at": "2026-01-20T00:21:24.352592Z"
+  },
+  {
+    "og_code": "SH",
+    "subgroup_code": "MD-MSP",
+    "subgroup_name": "Medical Specialist",
+    "definition_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups/definitions.html#def-md-msp",
+    "qualification_standard_url": "https://www.canada.ca/en/treasury-board-secretariat/services/staffing/qualification-standards/core.html#md",
+    "rates_of_pay_url": null,
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups.html",
+    "scraped_at": "2026-01-20T00:21:24.352592Z"
+  },
+  {
+    "og_code": "SH",
+    "subgroup_code": "ND-ADV",
+    "subgroup_name": "Advisory",
+    "definition_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups/definitions.html#def-nd-adv",
+    "qualification_standard_url": "https://www.canada.ca/en/treasury-board-secretariat/services/staffing/qualification-standards/core.html#nd",
+    "rates_of_pay_url": null,
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups.html",
+    "scraped_at": "2026-01-20T00:21:24.352592Z"
+  },
+  {
+    "og_code": "SH",
+    "subgroup_code": "ND-DIT",
+    "subgroup_name": "Dietitian",
+    "definition_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups/definitions.html#def-nd-dit",
+    "qualification_standard_url": "https://www.canada.ca/en/treasury-board-secretariat/services/staffing/qualification-standards/core.html#nd",
+    "rates_of_pay_url": null,
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups.html",
+    "scraped_at": "2026-01-20T00:21:24.352592Z"
+  },
+  {
+    "og_code": "SH",
+    "subgroup_code": "ND-HME",
+    "subgroup_name": "Home Economist",
+    "definition_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups/definitions.html#def-nd-hme",
+    "qualification_standard_url": "https://www.canada.ca/en/treasury-board-secretariat/services/staffing/qualification-standards/core.html#nd",
+    "rates_of_pay_url": null,
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups.html",
+    "scraped_at": "2026-01-20T00:21:24.352592Z"
+  },
+  {
+    "og_code": "SH",
+    "subgroup_code": "NU-CHN",
+    "subgroup_name": "Community Health",
+    "definition_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups/definitions.html#def-nu-chn",
+    "qualification_standard_url": "https://www.canada.ca/en/treasury-board-secretariat/services/staffing/qualification-standards/core.html#nu",
+    "rates_of_pay_url": null,
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups.html",
+    "scraped_at": "2026-01-20T00:21:24.352592Z"
+  },
+  {
+    "og_code": "SH",
+    "subgroup_code": "NU-EMA",
+    "subgroup_name": "Medical Adjudicator Nursing Sub-Group",
+    "definition_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups/definitions.html#def-nu-ema",
+    "qualification_standard_url": "https://www.canada.ca/en/treasury-board-secretariat/services/staffing/qualification-standards/core.html#nu",
+    "rates_of_pay_url": null,
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups.html",
+    "scraped_at": "2026-01-20T00:21:24.352592Z"
+  },
+  {
+    "og_code": "SH",
+    "subgroup_code": "NU-HOS",
+    "subgroup_name": "Hospital Nursing",
+    "definition_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups/definitions.html#def-nu-hos",
+    "qualification_standard_url": "https://www.canada.ca/en/treasury-board-secretariat/services/staffing/qualification-standards/core.html#nu",
+    "rates_of_pay_url": null,
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups.html",
+    "scraped_at": "2026-01-20T00:21:24.352592Z"
+  },
+  {
+    "og_code": "SH",
+    "subgroup_code": "SW-CHA",
+    "subgroup_name": "Chaplain",
+    "definition_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups/definitions.html#def-sw-cha",
+    "qualification_standard_url": "https://www.canada.ca/en/treasury-board-secretariat/services/staffing/qualification-standards/core.html#sw",
+    "rates_of_pay_url": null,
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups.html",
+    "scraped_at": "2026-01-20T00:21:24.352592Z"
+  },
+  {
+    "og_code": "SH",
+    "subgroup_code": "SW-SCW",
+    "subgroup_name": "Social Welfare",
+    "definition_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups/definitions.html#def-sw-scw",
+    "qualification_standard_url": "https://www.canada.ca/en/treasury-board-secretariat/services/staffing/qualification-standards/core.html#sw",
+    "rates_of_pay_url": null,
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups.html",
+    "scraped_at": "2026-01-20T00:21:24.352592Z"
+  },
+  {
+    "og_code": "SO",
+    "subgroup_code": "SO-FLP",
+    "subgroup_name": "Floating Plant",
+    "definition_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups/definitions.html#def-so-flp",
+    "qualification_standard_url": "https://www.canada.ca/en/treasury-board-secretariat/services/staffing/qualification-standards/core.html#so",
+    "rates_of_pay_url": null,
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups.html",
+    "scraped_at": "2026-01-20T00:21:24.352592Z"
+  },
+  {
+    "og_code": "SO",
+    "subgroup_code": "SO-INS",
+    "subgroup_name": "Instructor",
+    "definition_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups/definitions.html#def-so-ins",
+    "qualification_standard_url": "https://www.canada.ca/en/treasury-board-secretariat/services/staffing/qualification-standards/core.html#so",
+    "rates_of_pay_url": null,
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups.html",
+    "scraped_at": "2026-01-20T00:21:24.352592Z"
+  },
+  {
+    "og_code": "SO",
+    "subgroup_code": "SO-MAO",
+    "subgroup_name": "Marine Operations",
+    "definition_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups/definitions.html#def-so-mao",
+    "qualification_standard_url": "https://www.canada.ca/en/treasury-board-secretariat/services/staffing/qualification-standards/core.html#so",
+    "rates_of_pay_url": null,
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups.html",
+    "scraped_at": "2026-01-20T00:21:24.352592Z"
+  },
+  {
+    "og_code": "SO",
+    "subgroup_code": "SO-RAD",
+    "subgroup_name": "Radio",
+    "definition_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups/definitions.html#def-so-rad",
+    "qualification_standard_url": "https://www.canada.ca/en/treasury-board-secretariat/services/staffing/qualification-standards/core.html#so",
+    "rates_of_pay_url": null,
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups.html",
+    "scraped_at": "2026-01-20T00:21:24.352592Z"
+  },
+  {
+    "og_code": "SP",
+    "subgroup_code": "SP-SCI",
+    "subgroup_name": "Applied Science Sub-Group",
+    "definition_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups/definitions.html#def-sp-sci",
+    "qualification_standard_url": null,
+    "rates_of_pay_url": null,
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups.html",
+    "scraped_at": "2026-01-20T00:21:24.352592Z"
+  },
+  {
+    "og_code": "SP",
+    "subgroup_code": "SP-PEB",
+    "subgroup_name": "Patent Examination Sub-Group",
+    "definition_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups/definitions.html#def-sp-peb",
+    "qualification_standard_url": null,
+    "rates_of_pay_url": null,
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups.html",
+    "scraped_at": "2026-01-20T00:21:24.352592Z"
+  },
+  {
+    "og_code": "SP",
+    "subgroup_code": "SG-PAT",
+    "subgroup_name": "Patent Examination",
+    "definition_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups/definitions.html#def-sg-pat",
+    "qualification_standard_url": "https://www.canada.ca/en/treasury-board-secretariat/services/staffing/qualification-standards/core.html#sg",
+    "rates_of_pay_url": null,
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups.html",
+    "scraped_at": "2026-01-20T00:21:24.352592Z"
+  },
+  {
+    "og_code": "SP",
+    "subgroup_code": "SG-SRE",
+    "subgroup_name": "Scientific Regulation",
+    "definition_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups/definitions.html#def-sg-sre",
+    "qualification_standard_url": "https://www.canada.ca/en/treasury-board-secretariat/services/staffing/qualification-standards/core.html#sg",
+    "rates_of_pay_url": null,
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups.html",
+    "scraped_at": "2026-01-20T00:21:24.352592Z"
+  },
+  {
+    "og_code": "SRE",
+    "subgroup_code": "SR-APP",
+    "subgroup_name": "Apprentice",
+    "definition_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups/definitions.html#def-sre-app",
+    "qualification_standard_url": "https://www.canada.ca/en/treasury-board-secretariat/services/staffing/qualification-standards/core.html#sre",
+    "rates_of_pay_url": null,
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups.html",
+    "scraped_at": "2026-01-20T00:21:24.352592Z"
+  },
+  {
+    "og_code": "SRE",
+    "subgroup_code": "SR-BOB",
+    "subgroup_name": "Boilermaking-Blacksmithing",
+    "definition_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups/definitions.html#def-sre-bob",
+    "qualification_standard_url": "https://www.canada.ca/en/treasury-board-secretariat/services/staffing/qualification-standards/core.html#sre",
+    "rates_of_pay_url": null,
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups.html",
+    "scraped_at": "2026-01-20T00:21:24.352592Z"
+  },
+  {
+    "og_code": "SRE",
+    "subgroup_code": "SR-EEW",
+    "subgroup_name": "Electrical and Electronics Working",
+    "definition_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups/definitions.html#def-sre-eew",
+    "qualification_standard_url": "https://www.canada.ca/en/treasury-board-secretariat/services/staffing/qualification-standards/core.html#sre",
+    "rates_of_pay_url": null,
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups.html",
+    "scraped_at": "2026-01-20T00:21:24.352592Z"
+  },
+  {
+    "og_code": "SRE",
+    "subgroup_code": "SR-ELE",
+    "subgroup_name": "Elemental",
+    "definition_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups/definitions.html#def-sre-ele",
+    "qualification_standard_url": "https://www.canada.ca/en/treasury-board-secretariat/services/staffing/qualification-standards/core.html#sre",
+    "rates_of_pay_url": null,
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups.html",
+    "scraped_at": "2026-01-20T00:21:24.352592Z"
+  },
+  {
+    "og_code": "SRE",
+    "subgroup_code": "SR-EME",
+    "subgroup_name": "Engine and Mechanical Equipment Maintaining",
+    "definition_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups/definitions.html#def-sre-eme",
+    "qualification_standard_url": "https://www.canada.ca/en/treasury-board-secretariat/services/staffing/qualification-standards/core.html#sre",
+    "rates_of_pay_url": null,
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups.html",
+    "scraped_at": "2026-01-20T00:21:24.352592Z"
+  },
+  {
+    "og_code": "SRE",
+    "subgroup_code": "SR-INM",
+    "subgroup_name": "Instrument Maintaining",
+    "definition_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups/definitions.html#def-sre-inm",
+    "qualification_standard_url": "https://www.canada.ca/en/treasury-board-secretariat/services/staffing/qualification-standards/core.html#sre",
+    "rates_of_pay_url": null,
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups.html",
+    "scraped_at": "2026-01-20T00:21:24.352592Z"
+  },
+  {
+    "og_code": "SRE",
+    "subgroup_code": "SR-MAC",
+    "subgroup_name": "Machining and Toolmaking",
+    "definition_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups/definitions.html#def-sre-mac",
+    "qualification_standard_url": "https://www.canada.ca/en/treasury-board-secretariat/services/staffing/qualification-standards/core.html#sre",
+    "rates_of_pay_url": null,
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups.html",
+    "scraped_at": "2026-01-20T00:21:24.352592Z"
+  },
+  {
+    "og_code": "SRE",
+    "subgroup_code": "SR-MAM",
+    "subgroup_name": "Machinery Maintaining",
+    "definition_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups/definitions.html#def-sre-mam",
+    "qualification_standard_url": "https://www.canada.ca/en/treasury-board-secretariat/services/staffing/qualification-standards/core.html#sre",
+    "rates_of_pay_url": null,
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups.html",
+    "scraped_at": "2026-01-20T00:21:24.352592Z"
+  },
+  {
+    "og_code": "SRE",
+    "subgroup_code": "SR-MAN",
+    "subgroup_name": "Manipulating",
+    "definition_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups/definitions.html#def-sre-man",
+    "qualification_standard_url": "https://www.canada.ca/en/treasury-board-secretariat/services/staffing/qualification-standards/core.html#sre",
+    "rates_of_pay_url": null,
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups.html",
+    "scraped_at": "2026-01-20T00:21:24.352592Z"
+  },
+  {
+    "og_code": "SRE",
+    "subgroup_code": "SR-MAT",
+    "subgroup_name": "Machine Tending",
+    "definition_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups/definitions.html#def-sre-mat",
+    "qualification_standard_url": "https://www.canada.ca/en/treasury-board-secretariat/services/staffing/qualification-standards/core.html#sre",
+    "rates_of_pay_url": null,
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups.html",
+    "scraped_at": "2026-01-20T00:21:24.352592Z"
+  },
+  {
+    "og_code": "SRE",
+    "subgroup_code": "SR-MDO",
+    "subgroup_name": "Machine Driving-Operating",
+    "definition_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups/definitions.html#def-sre-mdo",
+    "qualification_standard_url": "https://www.canada.ca/en/treasury-board-secretariat/services/staffing/qualification-standards/core.html#sre",
+    "rates_of_pay_url": null,
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups.html",
+    "scraped_at": "2026-01-20T00:21:24.352592Z"
+  },
+  {
+    "og_code": "SRE",
+    "subgroup_code": "SR-MOC",
+    "subgroup_name": "Machine Operating-Controlling",
+    "definition_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups/definitions.html#def-sre-moc",
+    "qualification_standard_url": "https://www.canada.ca/en/treasury-board-secretariat/services/staffing/qualification-standards/core.html#sre",
+    "rates_of_pay_url": null,
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups.html",
+    "scraped_at": "2026-01-20T00:21:24.352592Z"
+  },
+  {
+    "og_code": "SRE",
+    "subgroup_code": "SR-PIP",
+    "subgroup_name": "Pipefitting",
+    "definition_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups/definitions.html#def-sre-pip",
+    "qualification_standard_url": "https://www.canada.ca/en/treasury-board-secretariat/services/staffing/qualification-standards/core.html#sre",
+    "rates_of_pay_url": null,
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups.html",
+    "scraped_at": "2026-01-20T00:21:24.352592Z"
+  },
+  {
+    "og_code": "SRE",
+    "subgroup_code": "SR-PLE",
+    "subgroup_name": "Planning-Estimating",
+    "definition_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups/definitions.html#def-sre-ple",
+    "qualification_standard_url": "https://www.canada.ca/en/treasury-board-secretariat/services/staffing/qualification-standards/core.html#sre",
+    "rates_of_pay_url": null,
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups.html",
+    "scraped_at": "2026-01-20T00:21:24.352592Z"
+  },
+  {
+    "og_code": "SRE",
+    "subgroup_code": "SR-PRW",
+    "subgroup_name": "Precision Working",
+    "definition_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups/definitions.html#def-sre-prw",
+    "qualification_standard_url": "https://www.canada.ca/en/treasury-board-secretariat/services/staffing/qualification-standards/core.html#sre",
+    "rates_of_pay_url": null,
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups.html",
+    "scraped_at": "2026-01-20T00:21:24.352592Z"
+  },
+  {
+    "og_code": "SRE",
+    "subgroup_code": "SR-QCW",
+    "subgroup_name": "Quality Control and Weapons Examining",
+    "definition_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups/definitions.html#def-sre-qcw",
+    "qualification_standard_url": "https://www.canada.ca/en/treasury-board-secretariat/services/staffing/qualification-standards/core.html#sre",
+    "rates_of_pay_url": null,
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups.html",
+    "scraped_at": "2026-01-20T00:21:24.352592Z"
+  },
+  {
+    "og_code": "SRE",
+    "subgroup_code": "SR-SMW",
+    "subgroup_name": "Sheet Metal Working",
+    "definition_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups/definitions.html#def-sre-smw",
+    "qualification_standard_url": "https://www.canada.ca/en/treasury-board-secretariat/services/staffing/qualification-standards/core.html#sre",
+    "rates_of_pay_url": null,
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups.html",
+    "scraped_at": "2026-01-20T00:21:24.352592Z"
+  },
+  {
+    "og_code": "SRE",
+    "subgroup_code": "SR-SPS",
+    "subgroup_name": "Ship Painting and Surface Protecting",
+    "definition_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups/definitions.html#def-sre-sps",
+    "qualification_standard_url": "https://www.canada.ca/en/treasury-board-secretariat/services/staffing/qualification-standards/core.html#sre",
+    "rates_of_pay_url": null,
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups.html",
+    "scraped_at": "2026-01-20T00:21:24.352592Z"
+  },
+  {
+    "og_code": "SRE",
+    "subgroup_code": "SR-WOW",
+    "subgroup_name": "Woodworking",
+    "definition_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups/definitions.html#def-sre-wow",
+    "qualification_standard_url": "https://www.canada.ca/en/treasury-board-secretariat/services/staffing/qualification-standards/core.html#sre",
+    "rates_of_pay_url": null,
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups.html",
+    "scraped_at": "2026-01-20T00:21:24.352592Z"
+  },
+  {
+    "og_code": "SRW",
+    "subgroup_code": "SR-APP",
+    "subgroup_name": "Apprentice",
+    "definition_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups/definitions.html#def-srw-app",
+    "qualification_standard_url": "https://www.canada.ca/en/treasury-board-secretariat/services/staffing/qualification-standards/core.html#srw",
+    "rates_of_pay_url": null,
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups.html",
+    "scraped_at": "2026-01-20T00:21:24.352592Z"
+  },
+  {
+    "og_code": "SRW",
+    "subgroup_code": "SR-BOB",
+    "subgroup_name": "Boilermaking-Blacksmithing",
+    "definition_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups/definitions.html#def-srw-bob",
+    "qualification_standard_url": "https://www.canada.ca/en/treasury-board-secretariat/services/staffing/qualification-standards/core.html#srw",
+    "rates_of_pay_url": null,
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups.html",
+    "scraped_at": "2026-01-20T00:21:24.352592Z"
+  },
+  {
+    "og_code": "SRW",
+    "subgroup_code": "SR-EEW",
+    "subgroup_name": "Electrical and Electronics Working",
+    "definition_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups/definitions.html#def-srw-eew",
+    "qualification_standard_url": "https://www.canada.ca/en/treasury-board-secretariat/services/staffing/qualification-standards/core.html#srw",
+    "rates_of_pay_url": null,
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups.html",
+    "scraped_at": "2026-01-20T00:21:24.352592Z"
+  },
+  {
+    "og_code": "SRW",
+    "subgroup_code": "SR-ELE",
+    "subgroup_name": "Elemental",
+    "definition_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups/definitions.html#def-srw-ele",
+    "qualification_standard_url": "https://www.canada.ca/en/treasury-board-secretariat/services/staffing/qualification-standards/core.html#srw",
+    "rates_of_pay_url": null,
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups.html",
+    "scraped_at": "2026-01-20T00:21:24.352592Z"
+  },
+  {
+    "og_code": "SRW",
+    "subgroup_code": "SR-EME",
+    "subgroup_name": "Engine and Mechanical Equipment Maintaining",
+    "definition_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups/definitions.html#def-srw-eme",
+    "qualification_standard_url": "https://www.canada.ca/en/treasury-board-secretariat/services/staffing/qualification-standards/core.html#srw",
+    "rates_of_pay_url": null,
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups.html",
+    "scraped_at": "2026-01-20T00:21:24.352592Z"
+  },
+  {
+    "og_code": "SRW",
+    "subgroup_code": "SR-INM",
+    "subgroup_name": "Instrument Maintaining",
+    "definition_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups/definitions.html#def-srw-inm",
+    "qualification_standard_url": "https://www.canada.ca/en/treasury-board-secretariat/services/staffing/qualification-standards/core.html#srw",
+    "rates_of_pay_url": null,
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups.html",
+    "scraped_at": "2026-01-20T00:21:24.352592Z"
+  },
+  {
+    "og_code": "SRW",
+    "subgroup_code": "SR-MAC",
+    "subgroup_name": "Machining and Toolmaking",
+    "definition_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups/definitions.html#def-srw-mac",
+    "qualification_standard_url": "https://www.canada.ca/en/treasury-board-secretariat/services/staffing/qualification-standards/core.html#srw",
+    "rates_of_pay_url": null,
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups.html",
+    "scraped_at": "2026-01-20T00:21:24.352592Z"
+  },
+  {
+    "og_code": "SRW",
+    "subgroup_code": "SR-MAM",
+    "subgroup_name": "Machinery Maintaining",
+    "definition_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups/definitions.html#def-srw-mam",
+    "qualification_standard_url": "https://www.canada.ca/en/treasury-board-secretariat/services/staffing/qualification-standards/core.html#srw",
+    "rates_of_pay_url": null,
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups.html",
+    "scraped_at": "2026-01-20T00:21:24.352592Z"
+  },
+  {
+    "og_code": "SRW",
+    "subgroup_code": "SR-MAN",
+    "subgroup_name": "Manipulating",
+    "definition_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups/definitions.html#def-srw-man",
+    "qualification_standard_url": "https://www.canada.ca/en/treasury-board-secretariat/services/staffing/qualification-standards/core.html#srw",
+    "rates_of_pay_url": null,
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups.html",
+    "scraped_at": "2026-01-20T00:21:24.352592Z"
+  },
+  {
+    "og_code": "SRW",
+    "subgroup_code": "SR-MAT",
+    "subgroup_name": "Machine Tending",
+    "definition_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups/definitions.html#def-srw-mat",
+    "qualification_standard_url": "https://www.canada.ca/en/treasury-board-secretariat/services/staffing/qualification-standards/core.html#srw",
+    "rates_of_pay_url": null,
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups.html",
+    "scraped_at": "2026-01-20T00:21:24.352592Z"
+  },
+  {
+    "og_code": "SRW",
+    "subgroup_code": "SR-MDO",
+    "subgroup_name": "Machine Driving-Operating",
+    "definition_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups/definitions.html#def-srw-mdo",
+    "qualification_standard_url": "https://www.canada.ca/en/treasury-board-secretariat/services/staffing/qualification-standards/core.html#srw",
+    "rates_of_pay_url": null,
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups.html",
+    "scraped_at": "2026-01-20T00:21:24.352592Z"
+  },
+  {
+    "og_code": "SRW",
+    "subgroup_code": "SR-MGT",
+    "subgroup_name": "Management",
+    "definition_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups/definitions.html#def-srw-mgt",
+    "qualification_standard_url": "https://www.canada.ca/en/treasury-board-secretariat/services/staffing/qualification-standards/core.html#srw",
+    "rates_of_pay_url": null,
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups.html",
+    "scraped_at": "2026-01-20T00:21:24.352592Z"
+  },
+  {
+    "og_code": "SRW",
+    "subgroup_code": "SR-MOC",
+    "subgroup_name": "Machine Operating-Controlling",
+    "definition_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups/definitions.html#def-srw-moc",
+    "qualification_standard_url": "https://www.canada.ca/en/treasury-board-secretariat/services/staffing/qualification-standards/core.html#srw",
+    "rates_of_pay_url": null,
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups.html",
+    "scraped_at": "2026-01-20T00:21:24.352592Z"
+  },
+  {
+    "og_code": "SRW",
+    "subgroup_code": "SR-PIP",
+    "subgroup_name": "Pipefitting",
+    "definition_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups/definitions.html#def-srw-pip",
+    "qualification_standard_url": "https://www.canada.ca/en/treasury-board-secretariat/services/staffing/qualification-standards/core.html#srw",
+    "rates_of_pay_url": null,
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups.html",
+    "scraped_at": "2026-01-20T00:21:24.352592Z"
+  },
+  {
+    "og_code": "SRW",
+    "subgroup_code": "SR-PLE",
+    "subgroup_name": "Planning-Estimating",
+    "definition_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups/definitions.html#def-srw-ple",
+    "qualification_standard_url": "https://www.canada.ca/en/treasury-board-secretariat/services/staffing/qualification-standards/core.html#srw",
+    "rates_of_pay_url": null,
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups.html",
+    "scraped_at": "2026-01-20T00:21:24.352592Z"
+  },
+  {
+    "og_code": "SRW",
+    "subgroup_code": "SR-PRW",
+    "subgroup_name": "Precision Working",
+    "definition_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups/definitions.html#def-srw-prw",
+    "qualification_standard_url": "https://www.canada.ca/en/treasury-board-secretariat/services/staffing/qualification-standards/core.html#srw",
+    "rates_of_pay_url": null,
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups.html",
+    "scraped_at": "2026-01-20T00:21:24.352592Z"
+  },
+  {
+    "og_code": "SRW",
+    "subgroup_code": "SR-QCW",
+    "subgroup_name": "Quality Control and Weapons Examining",
+    "definition_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups/definitions.html#def-srw-qcw",
+    "qualification_standard_url": "https://www.canada.ca/en/treasury-board-secretariat/services/staffing/qualification-standards/core.html#srw",
+    "rates_of_pay_url": null,
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups.html",
+    "scraped_at": "2026-01-20T00:21:24.352592Z"
+  },
+  {
+    "og_code": "SRW",
+    "subgroup_code": "SR-SMW",
+    "subgroup_name": "Sheet Metal Working",
+    "definition_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups/definitions.html#def-srw-smw",
+    "qualification_standard_url": "https://www.canada.ca/en/treasury-board-secretariat/services/staffing/qualification-standards/core.html#srw",
+    "rates_of_pay_url": null,
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups.html",
+    "scraped_at": "2026-01-20T00:21:24.352592Z"
+  },
+  {
+    "og_code": "SRW",
+    "subgroup_code": "SR-SPS",
+    "subgroup_name": "Ship Painting and Surface Protecting",
+    "definition_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups/definitions.html#def-srw-sps",
+    "qualification_standard_url": "https://www.canada.ca/en/treasury-board-secretariat/services/staffing/qualification-standards/core.html#srw",
+    "rates_of_pay_url": null,
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups.html",
+    "scraped_at": "2026-01-20T00:21:24.352592Z"
+  },
+  {
+    "og_code": "SRW",
+    "subgroup_code": "SR-WOW",
+    "subgroup_name": "Woodworking",
+    "definition_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups/definitions.html#def-srw-wow",
+    "qualification_standard_url": "https://www.canada.ca/en/treasury-board-secretariat/services/staffing/qualification-standards/core.html#srw",
+    "rates_of_pay_url": null,
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups.html",
+    "scraped_at": "2026-01-20T00:21:24.352592Z"
+  },
+  {
+    "og_code": "SV",
+    "subgroup_code": "GL-AIM",
+    "subgroup_name": "Aircraft Maintaining",
+    "definition_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups/definitions.html#def-gl-aim",
+    "qualification_standard_url": "https://www.canada.ca/en/treasury-board-secretariat/services/staffing/qualification-standards/core.html#gl",
+    "rates_of_pay_url": null,
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups.html",
+    "scraped_at": "2026-01-20T00:21:24.352592Z"
+  },
+  {
+    "og_code": "SV",
+    "subgroup_code": "GL-AMW",
+    "subgroup_name": "Ammunition Working",
+    "definition_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups/definitions.html#def-gl-amw",
+    "qualification_standard_url": "https://www.canada.ca/en/treasury-board-secretariat/services/staffing/qualification-standards/core.html#gl",
+    "rates_of_pay_url": null,
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups.html",
+    "scraped_at": "2026-01-20T00:21:24.352592Z"
+  },
+  {
+    "og_code": "SV",
+    "subgroup_code": "GL-COI",
+    "subgroup_name": "Construction Inspecting",
+    "definition_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups/definitions.html#def-gl-coi",
+    "qualification_standard_url": "https://www.canada.ca/en/treasury-board-secretariat/services/staffing/qualification-standards/core.html#gl",
+    "rates_of_pay_url": null,
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups.html",
+    "scraped_at": "2026-01-20T00:21:24.352592Z"
+  },
+  {
+    "og_code": "SV",
+    "subgroup_code": "GL-EIM",
+    "subgroup_name": "Electrical Installing and Maintaining",
+    "definition_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups/definitions.html#def-gl-eim",
+    "qualification_standard_url": "https://www.canada.ca/en/treasury-board-secretariat/services/staffing/qualification-standards/core.html#gl",
+    "rates_of_pay_url": null,
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups.html",
+    "scraped_at": "2026-01-20T00:21:24.352592Z"
+  },
+  {
+    "og_code": "SV",
+    "subgroup_code": "GL-ELE",
+    "subgroup_name": "Elemental",
+    "definition_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups/definitions.html#def-gl-ele",
+    "qualification_standard_url": "https://www.canada.ca/en/treasury-board-secretariat/services/staffing/qualification-standards/core.html#gl",
+    "rates_of_pay_url": null,
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups.html",
+    "scraped_at": "2026-01-20T00:21:24.352592Z"
+  },
+  {
+    "og_code": "SV",
+    "subgroup_code": "GL-GHW",
+    "subgroup_name": "Grain Handling and Weighing",
+    "definition_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups/definitions.html#def-gl-ghw",
+    "qualification_standard_url": "https://www.canada.ca/en/treasury-board-secretariat/services/staffing/qualification-standards/core.html#gl",
+    "rates_of_pay_url": null,
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups.html",
+    "scraped_at": "2026-01-20T00:21:24.352592Z"
+  },
+  {
+    "og_code": "SV",
+    "subgroup_code": "GL-INM",
+    "subgroup_name": "Instrument Maintaining",
+    "definition_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups/definitions.html#def-gl-inm",
+    "qualification_standard_url": "https://www.canada.ca/en/treasury-board-secretariat/services/staffing/qualification-standards/core.html#gl",
+    "rates_of_pay_url": null,
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups.html",
+    "scraped_at": "2026-01-20T00:21:24.352592Z"
+  },
+  {
+    "og_code": "SV",
+    "subgroup_code": "GL-MAM",
+    "subgroup_name": "Machinery Maintaining",
+    "definition_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups/definitions.html#def-gl-mam",
+    "qualification_standard_url": "https://www.canada.ca/en/treasury-board-secretariat/services/staffing/qualification-standards/core.html#gl",
+    "rates_of_pay_url": null,
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups.html",
+    "scraped_at": "2026-01-20T00:21:24.352592Z"
+  },
+  {
+    "og_code": "SV",
+    "subgroup_code": "GL-MAN",
+    "subgroup_name": "Manipulating",
+    "definition_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups/definitions.html#def-gl-man",
+    "qualification_standard_url": "https://www.canada.ca/en/treasury-board-secretariat/services/staffing/qualification-standards/core.html#gl",
+    "rates_of_pay_url": null,
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups.html",
+    "scraped_at": "2026-01-20T00:21:24.352592Z"
+  },
+  {
+    "og_code": "SV",
+    "subgroup_code": "GL-MDO",
+    "subgroup_name": "Machine Driving-Operating",
+    "definition_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups/definitions.html#def-gl-mdo",
+    "qualification_standard_url": "https://www.canada.ca/en/treasury-board-secretariat/services/staffing/qualification-standards/core.html#gl",
+    "rates_of_pay_url": null,
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups.html",
+    "scraped_at": "2026-01-20T00:21:24.352592Z"
+  },
+  {
+    "og_code": "SV",
+    "subgroup_code": "GL-MOC",
+    "subgroup_name": "Machine Operating-Controlling",
+    "definition_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups/definitions.html#def-gl-moc",
+    "qualification_standard_url": "https://www.canada.ca/en/treasury-board-secretariat/services/staffing/qualification-standards/core.html#gl",
+    "rates_of_pay_url": null,
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups.html",
+    "scraped_at": "2026-01-20T00:21:24.352592Z"
+  },
+  {
+    "og_code": "SV",
+    "subgroup_code": "GL-MST",
+    "subgroup_name": "Metal Machining",
+    "definition_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups/definitions.html#def-gl-mst",
+    "qualification_standard_url": "https://www.canada.ca/en/treasury-board-secretariat/services/staffing/qualification-standards/core.html#gl",
+    "rates_of_pay_url": null,
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups.html",
+    "scraped_at": "2026-01-20T00:21:24.352592Z"
+  },
+  {
+    "og_code": "SV",
+    "subgroup_code": "GL-PCF",
+    "subgroup_name": "Painting and Construction Finishing",
+    "definition_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups/definitions.html#def-gl-pcf",
+    "qualification_standard_url": "https://www.canada.ca/en/treasury-board-secretariat/services/staffing/qualification-standards/core.html#gl",
+    "rates_of_pay_url": null,
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups.html",
+    "scraped_at": "2026-01-20T00:21:24.352592Z"
+  },
+  {
+    "og_code": "SV",
+    "subgroup_code": "GL-PIP",
+    "subgroup_name": "Pipefitting",
+    "definition_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups/definitions.html#def-gl-pip",
+    "qualification_standard_url": "https://www.canada.ca/en/treasury-board-secretariat/services/staffing/qualification-standards/core.html#gl",
+    "rates_of_pay_url": null,
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups.html",
+    "scraped_at": "2026-01-20T00:21:24.352592Z"
+  },
+  {
+    "og_code": "SV",
+    "subgroup_code": "GL-PRW",
+    "subgroup_name": "Precision Working",
+    "definition_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups/definitions.html#def-gl-prw",
+    "qualification_standard_url": "https://www.canada.ca/en/treasury-board-secretariat/services/staffing/qualification-standards/core.html#gl",
+    "rates_of_pay_url": null,
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups.html",
+    "scraped_at": "2026-01-20T00:21:24.352592Z"
+  },
+  {
+    "og_code": "SV",
+    "subgroup_code": "GL-SMW",
+    "subgroup_name": "Sheet Metal Working",
+    "definition_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups/definitions.html#def-gl-smw",
+    "qualification_standard_url": "https://www.canada.ca/en/treasury-board-secretariat/services/staffing/qualification-standards/core.html#gl",
+    "rates_of_pay_url": null,
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups.html",
+    "scraped_at": "2026-01-20T00:21:24.352592Z"
+  },
+  {
+    "og_code": "SV",
+    "subgroup_code": "GL-VHE",
+    "subgroup_name": "Vehicle Heavy Equipment Maintaining",
+    "definition_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups/definitions.html#def-gl-vhe",
+    "qualification_standard_url": "https://www.canada.ca/en/treasury-board-secretariat/services/staffing/qualification-standards/core.html#gl",
+    "rates_of_pay_url": null,
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups.html",
+    "scraped_at": "2026-01-20T00:21:24.352592Z"
+  },
+  {
+    "og_code": "SV",
+    "subgroup_code": "GL-WOW",
+    "subgroup_name": "Woodworking",
+    "definition_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups/definitions.html#def-gl-wow",
+    "qualification_standard_url": "https://www.canada.ca/en/treasury-board-secretariat/services/staffing/qualification-standards/core.html#gl",
+    "rates_of_pay_url": null,
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups.html",
+    "scraped_at": "2026-01-20T00:21:24.352592Z"
+  },
+  {
+    "og_code": "SV",
+    "subgroup_code": "GS-BUS",
+    "subgroup_name": "Building Services",
+    "definition_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups/definitions.html#def-gs-bus",
+    "qualification_standard_url": "https://www.canada.ca/en/treasury-board-secretariat/services/staffing/qualification-standards/core.html#gs",
+    "rates_of_pay_url": null,
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups.html",
+    "scraped_at": "2026-01-20T00:21:24.352592Z"
+  },
+  {
+    "og_code": "SV",
+    "subgroup_code": "GS-FOS",
+    "subgroup_name": "Food Services",
+    "definition_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups/definitions.html#def-gs-fos",
+    "qualification_standard_url": "https://www.canada.ca/en/treasury-board-secretariat/services/staffing/qualification-standards/core.html#gs",
+    "rates_of_pay_url": null,
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups.html",
+    "scraped_at": "2026-01-20T00:21:24.352592Z"
+  },
+  {
+    "og_code": "SV",
+    "subgroup_code": "GS-LAS",
+    "subgroup_name": "Laundry Services",
+    "definition_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups/definitions.html#def-gs-las",
+    "qualification_standard_url": "https://www.canada.ca/en/treasury-board-secretariat/services/staffing/qualification-standards/core.html#gs",
+    "rates_of_pay_url": null,
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups.html",
+    "scraped_at": "2026-01-20T00:21:24.352592Z"
+  },
+  {
+    "og_code": "SV",
+    "subgroup_code": "GS-MES",
+    "subgroup_name": "Messenger Services",
+    "definition_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups/definitions.html#def-gs-mes",
+    "qualification_standard_url": "https://www.canada.ca/en/treasury-board-secretariat/services/staffing/qualification-standards/core.html#gs",
+    "rates_of_pay_url": null,
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups.html",
+    "scraped_at": "2026-01-20T00:21:24.352592Z"
+  },
+  {
+    "og_code": "SV",
+    "subgroup_code": "GS-MPS",
+    "subgroup_name": "Miscellaneous Personal Services",
+    "definition_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups/definitions.html#def-gs-mps",
+    "qualification_standard_url": "https://www.canada.ca/en/treasury-board-secretariat/services/staffing/qualification-standards/core.html#gs",
+    "rates_of_pay_url": null,
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups.html",
+    "scraped_at": "2026-01-20T00:21:24.352592Z"
+  },
+  {
+    "og_code": "SV",
+    "subgroup_code": "GS-PRC",
+    "subgroup_name": "Protective and Custodial Services",
+    "definition_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups/definitions.html#def-gs-prc",
+    "qualification_standard_url": "https://www.canada.ca/en/treasury-board-secretariat/services/staffing/qualification-standards/core.html#gs",
+    "rates_of_pay_url": null,
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups.html",
+    "scraped_at": "2026-01-20T00:21:24.352592Z"
+  },
+  {
+    "og_code": "SV",
+    "subgroup_code": "GS-STS",
+    "subgroup_name": "Stores Services",
+    "definition_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups/definitions.html#def-gs-sts",
+    "qualification_standard_url": "https://www.canada.ca/en/treasury-board-secretariat/services/staffing/qualification-standards/core.html#gs",
+    "rates_of_pay_url": null,
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups.html",
+    "scraped_at": "2026-01-20T00:21:24.352592Z"
+  },
+  {
+    "og_code": "SV",
+    "subgroup_code": "HS-HDO",
+    "subgroup_name": "Housekeeping, Dietary and Other Services",
+    "definition_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups/definitions.html#def-hs-hdo",
+    "qualification_standard_url": "https://www.canada.ca/en/treasury-board-secretariat/services/staffing/qualification-standards/core.html#hs",
+    "rates_of_pay_url": null,
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups.html",
+    "scraped_at": "2026-01-20T00:21:24.352592Z"
+  },
+  {
+    "og_code": "SV",
+    "subgroup_code": "HS-PHS",
+    "subgroup_name": "Patient and Health Services",
+    "definition_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups/definitions.html#def-hs-phs",
+    "qualification_standard_url": "https://www.canada.ca/en/treasury-board-secretariat/services/staffing/qualification-standards/core.html#hs",
+    "rates_of_pay_url": null,
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups.html",
+    "scraped_at": "2026-01-20T00:21:24.352592Z"
+  },
+  {
+    "og_code": "SV",
+    "subgroup_code": "SC-DED",
+    "subgroup_name": "Deck Department",
+    "definition_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups/definitions.html#def-sc-ded",
+    "qualification_standard_url": "https://www.canada.ca/en/treasury-board-secretariat/services/staffing/qualification-standards/core.html#sc",
+    "rates_of_pay_url": null,
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups.html",
+    "scraped_at": "2026-01-20T00:21:24.352592Z"
+  },
+  {
+    "og_code": "SV",
+    "subgroup_code": "SC-EQO",
+    "subgroup_name": "Equipment Operation Department",
+    "definition_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups/definitions.html#def-sc-eqo",
+    "qualification_standard_url": "https://www.canada.ca/en/treasury-board-secretariat/services/staffing/qualification-standards/core.html#sc",
+    "rates_of_pay_url": null,
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups.html",
+    "scraped_at": "2026-01-20T00:21:24.352592Z"
+  },
+  {
+    "og_code": "SV",
+    "subgroup_code": "SC-ERD",
+    "subgroup_name": "Engine Room Department",
+    "definition_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups/definitions.html#def-sc-erd",
+    "qualification_standard_url": "https://www.canada.ca/en/treasury-board-secretariat/services/staffing/qualification-standards/core.html#sc",
+    "rates_of_pay_url": null,
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups.html",
+    "scraped_at": "2026-01-20T00:21:24.352592Z"
+  },
+  {
+    "og_code": "SV",
+    "subgroup_code": "SC-SPT",
+    "subgroup_name": "Specialist Trades Department",
+    "definition_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups/definitions.html#def-sc-spt",
+    "qualification_standard_url": "https://www.canada.ca/en/treasury-board-secretariat/services/staffing/qualification-standards/core.html#sc",
+    "rates_of_pay_url": null,
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups.html",
+    "scraped_at": "2026-01-20T00:21:24.352592Z"
+  },
+  {
+    "og_code": "SV",
+    "subgroup_code": "SC-STD",
+    "subgroup_name": "Supply Department",
+    "definition_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups/definitions.html#def-sc-std",
+    "qualification_standard_url": "https://www.canada.ca/en/treasury-board-secretariat/services/staffing/qualification-standards/core.html#sc",
+    "rates_of_pay_url": null,
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups.html",
+    "scraped_at": "2026-01-20T00:21:24.352592Z"
+  },
+  {
+    "og_code": "TC",
+    "subgroup_code": "PI-CGC",
+    "subgroup_name": "Grain Inspection",
+    "definition_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups/definitions.html#def-pi-cgc",
+    "qualification_standard_url": "https://www.canada.ca/en/treasury-board-secretariat/services/staffing/qualification-standards/core.html#pi",
+    "rates_of_pay_url": null,
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups.html",
+    "scraped_at": "2026-01-20T00:21:24.352592Z"
+  }
+]

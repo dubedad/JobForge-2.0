@@ -12,8 +12,9 @@ from pathlib import Path
 import requests
 import structlog
 
-from .models import ScrapedPage
-from .parser import extract_embedded_links, parse_occupational_groups_table
+from .link_fetcher import fetch_og_definition
+from .models import OGDefinition, OGScrapedData, OGSubgroup, ScrapedPage
+from .parser import extract_embedded_links, parse_occupational_groups_table, parse_og_subgroups
 
 logger = structlog.get_logger(__name__)
 
@@ -134,6 +135,147 @@ class TBSScraper:
         """
         pages = self.scrape_both_languages()
         return {lang: self.save_to_json(page) for lang, page in pages.items()}
+
+    def scrape_og_complete(self, language: str = "en", timeout: int = 30) -> OGScrapedData:
+        """Scrape complete OG data including subgroups and definitions.
+
+        Performs a comprehensive scrape that:
+        1. Scrapes the main OG table for groups/rows
+        2. Parses subgroup information from rows
+        3. Follows unique definition URLs to fetch definition text
+
+        Args:
+            language: Language code ('en' or 'fr').
+            timeout: HTTP request timeout in seconds.
+
+        Returns:
+            OGScrapedData with groups, subgroups, and definitions.
+
+        Note:
+            Definition fetching includes rate limiting (1.5s between requests).
+            This may take several minutes for a full scrape.
+        """
+        # Step 1: Scrape main table
+        page = self.scrape_page(language=language, timeout=timeout)
+        scraped_at = page.scraped_at
+        source_url = page.url
+
+        logger.info(
+            "scrape_og_complete_main_table",
+            language=language,
+            row_count=len(page.rows),
+        )
+
+        # Step 2: Parse subgroups from rows
+        subgroups = parse_og_subgroups(page.rows, source_url, scraped_at)
+
+        logger.info(
+            "scrape_og_complete_subgroups_parsed",
+            subgroup_count=len(subgroups),
+        )
+
+        # Step 3: Fetch definitions from unique URLs
+        definitions: list[OGDefinition] = []
+        seen_urls: set[str] = set()
+
+        for row in page.rows:
+            if row.definition_url and row.definition_url not in seen_urls:
+                seen_urls.add(row.definition_url)
+
+                # Determine if this is a subgroup definition
+                subgroup_code = None
+                if row.subgroup and row.subgroup.strip().upper() != "N/A":
+                    # Try to extract subgroup code from subgroup text
+                    if "(" in row.subgroup and ")" in row.subgroup:
+                        code_start = row.subgroup.rfind("(") + 1
+                        code_end = row.subgroup.rfind(")")
+                        subgroup_code = row.subgroup[code_start:code_end].strip()
+
+                definition = fetch_og_definition(
+                    url=row.definition_url,
+                    og_code=row.group_abbrev,
+                    subgroup_code=subgroup_code,
+                    timeout=timeout,
+                )
+
+                if definition:
+                    definitions.append(definition)
+
+        logger.info(
+            "scrape_og_complete_definitions_fetched",
+            definition_count=len(definitions),
+            urls_attempted=len(seen_urls),
+        )
+
+        return OGScrapedData(
+            groups=page.rows,
+            subgroups=subgroups,
+            definitions=definitions,
+            scraped_at=datetime.now(timezone.utc),
+            source_url=source_url,
+        )
+
+    def save_og_data(self, data: OGScrapedData, language: str = "en") -> dict[str, Path]:
+        """Save OG scraped data to JSON files.
+
+        Creates two files:
+        - og_subgroups_{lang}.json: List of OGSubgroup objects
+        - og_definitions_{lang}.json: List of OGDefinition objects
+
+        Args:
+            data: OGScrapedData containing subgroups and definitions.
+            language: Language code for filename suffix.
+
+        Returns:
+            Dictionary with 'subgroups' and 'definitions' keys mapping to file paths.
+        """
+        paths = {}
+
+        # Save subgroups
+        subgroups_file = self.output_dir / f"og_subgroups_{language}.json"
+        subgroups_data = [s.model_dump(mode="json") for s in data.subgroups]
+        with open(subgroups_file, "w", encoding="utf-8") as f:
+            json.dump(subgroups_data, f, indent=2, ensure_ascii=False)
+        paths["subgroups"] = subgroups_file
+
+        logger.info(
+            "saved_og_subgroups",
+            filepath=str(subgroups_file),
+            count=len(data.subgroups),
+        )
+
+        # Save definitions
+        definitions_file = self.output_dir / f"og_definitions_{language}.json"
+        definitions_data = [d.model_dump(mode="json") for d in data.definitions]
+        with open(definitions_file, "w", encoding="utf-8") as f:
+            json.dump(definitions_data, f, indent=2, ensure_ascii=False)
+        paths["definitions"] = definitions_file
+
+        logger.info(
+            "saved_og_definitions",
+            filepath=str(definitions_file),
+            count=len(data.definitions),
+        )
+
+        return paths
+
+    def scrape_and_save_complete(self, language: str = "en") -> dict[str, Path]:
+        """Scrape complete OG data and save to JSON files.
+
+        Convenience method that performs full OG scrape workflow including
+        subgroup parsing and definition fetching.
+
+        Args:
+            language: Language code ('en' or 'fr').
+
+        Returns:
+            Dictionary with file paths for saved data.
+
+        Note:
+            This may take several minutes due to rate limiting on definition fetches.
+        """
+        data = self.scrape_og_complete(language=language)
+        return self.save_og_data(data, language=language)
 
 
 def scrape_occupational_groups(
