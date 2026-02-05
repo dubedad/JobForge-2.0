@@ -13,15 +13,15 @@ See: .planning/PROJECT.md (updated 2026-01-20)
 
 **Milestone:** v3.0 Data Layer Expansion
 **Phase:** 15-caf-core (CAF Core Tables) - COMPLETE
-**Plan:** 4 of 4 complete (Wave 4)
+**Plan:** 5 of 5 complete (Wave 4)
 **Status:** Phase complete
-**Last activity:** 2026-02-05 - Completed 15-04-PLAN.md (CAF-NOC Bridge Table)
+**Last activity:** 2026-02-05 - Completed 15-05-PLAN.md (CAF-JA Bridge Table)
 
 ```
 v1.0 [####################] 100% SHIPPED 2026-01-19
 v2.0 [####################] 100% SHIPPED 2026-01-20
 v2.1 [####################] 100% SHIPPED 2026-01-21
-v3.0 [###########         ]  55% IN PROGRESS (Phase 15 COMPLETE)
+v3.0 [############        ]  60% IN PROGRESS (Phase 15 COMPLETE)
 ```
 
 ## Performance Metrics
@@ -228,13 +228,14 @@ None.
 ### Last Session
 
 **Date:** 2026-02-05
-**Activity:** Executed 15-04-PLAN.md (CAF-NOC Bridge Table)
-**Outcome:** Created bridge_caf_noc (880 rows) with fuzzy matching, confidence scores, and full audit trail; 27 tests
+**Activity:** Executed 15-05-PLAN.md (CAF-JA Bridge Table)
+**Outcome:** Created bridge_caf_ja (880 rows) with JA context (job_function, job_family), confidence scores, and full audit trail; 19 tests
 
 ### Next Session Priorities
 
-1. Execute Phase 16 (Extended Metadata)
-2. Complete v3.0 milestone
+1. Execute 15-06-PLAN.md (Integration Tests) if exists
+2. Execute Phase 16 (Extended Metadata)
+3. Complete v3.0 milestone
 
 ### Pending Milestone Proposal
 
@@ -348,7 +349,17 @@ When resuming this project:
 - **New:** ingest_bridge_caf_noc() generates bridge table with full audit trail
 - **833 tests passing** (806 + 27 from 15-04)
 
+- **New:** CAFJAMatcher class in matchers.py - CAF-JA fuzzy matching with JA context capture
+- **New:** data/gold/bridge_caf_ja.parquet - 880 CAF-JA mappings with job_function/job_family (gitignored)
+- **New:** data/reference/caf_ja_mappings.json - Human-reviewable JA mapping file
+- **New:** data/catalog/tables/bridge_caf_ja.json - Catalog metadata with FK relationships
+- **New:** tests/external/test_caf_ja_matcher.py - 19 tests for CAF-JA matching
+- **New:** CAFJAMapping model with JA context columns (ja_job_function_en, ja_job_family_en)
+- **New:** match_caf_to_ja() convenience function for CAF-to-JA matching
+- **New:** ingest_bridge_caf_ja() generates JA bridge table with full audit trail
+- **852 tests passing** (833 + 19 from 15-05)
+
 ---
 *State updated: 2026-02-05*
-*Session count: 49*
-*v3.0 Phase 15 COMPLETE - 2026-02-05*
+*Session count: 50*
+*v3.0 Phase 15 Plan 05 COMPLETE - 2026-02-05*
