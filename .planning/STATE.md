@@ -12,16 +12,16 @@ See: .planning/PROJECT.md (updated 2026-01-20)
 ## Current Position
 
 **Milestone:** v3.0 Data Layer Expansion
-**Phase:** 15-caf-core (CAF Core Tables) - COMPLETE
-**Plan:** 6 of 6 complete (Wave 5)
-**Status:** Phase complete - ready for Phase 16
-**Last activity:** 2026-02-05 - Completed 15-06-PLAN.md (Integration Tests, CLI, WiQ Schema)
+**Phase:** 16-extended-metadata (Extended Metadata)
+**Plan:** 1 of 6 complete (Wave 1)
+**Status:** In progress
+**Last activity:** 2026-02-05 - Completed 16-01-PLAN.md (Enhanced Qualification Standards)
 
 ```
 v1.0 [####################] 100% SHIPPED 2026-01-19
 v2.0 [####################] 100% SHIPPED 2026-01-20
 v2.1 [####################] 100% SHIPPED 2026-01-21
-v3.0 [##############      ]  67% IN PROGRESS (Phase 15 COMPLETE, Phase 16 remaining)
+v3.0 [################    ]  78% IN PROGRESS (Phase 16: 1/6 plans complete)
 ```
 
 ## Performance Metrics
@@ -188,6 +188,14 @@ All v1.0 and v2.0 decisions archived in:
 | 4 tables not 6 | Plan mentioned 6 but actual CAF data yields 4 | 2 dim + 2 bridge tables in WiQ schema |
 | 80% overview threshold | Actual data has 86% coverage from forces.ca | Adjusted from original 90% threshold |
 
+**v3.0 Phase 16-01 Decisions:**
+| Decision | Rationale | Outcome |
+|----------|-----------|---------|
+| Full text fallback for education | Section extraction sometimes gets wrong text | 100% education_level extraction rate |
+| 7 standardized education levels | Cover TBS range from high_school to phd | Enum-like filtering capability |
+| Soft FK validation | Preserve all records even if og_code orphaned | All 75 records preserved with warnings |
+| Boolean flags for conditions | Enable simple filtering | requires_travel, shift_work, physical_demands, etc. |
+
 ### Technical Discoveries
 
 From v2.1 research:
@@ -235,36 +243,43 @@ None.
 ### Last Session
 
 **Date:** 2026-02-05
-**Activity:** Executed 15-06-PLAN.md (Integration Tests, CLI, WiQ Schema)
-**Outcome:** Added caf CLI commands, registered 4 CAF tables in WiQ schema, created 47 integration tests verifying all Phase 15 success criteria
+**Activity:** Executed 16-01-PLAN.md (Enhanced Qualification Standards)
+**Outcome:** Created qualification_parser.py with EnhancedQualification model, ingestion pipeline for dim_og_qualification_standard (75 rows, 27 columns), 72 tests
 
 ### Next Session Priorities
 
-1. Execute Phase 16 (Extended Metadata)
+1. Continue Phase 16 (Plans 02-06)
 2. Complete v3.0 milestone
 3. Consider v4.0 proposal
 
 ### Pending Milestone Proposal
 
-**v4.0 Governance Compliance & Conversational Agents**
+**v4.0 Governed Data Foundation**
 - Proposal: `.planning/proposals/v4.0-governance-agents-vision.md`
-- Status: READY — all decisions finalized
-- Phases: 17-24 (8 phases planned)
-- Key features: DAMA audit in verify-work, DQ dashboard, 4 conversational agents
+- Status: READY — repackaged 2026-02-05
+- Phases: 17-23 (7 phases planned)
+- Key features:
+  1. Governance compliance (DAMA audit, policy provenance, DADM)
+  2. Data quality dashboard (GC DQMF)
+  3. Business metadata capture
+  4. O*NET integration (5th taxonomy)
+  5. Job Architecture enrichment
+  6. PAA/DRF data layer (job factors)
+  7. GC HR Data Model alignment
 - **ACTION:** Load this proposal when running `/gsd:new-milestone` after v3.0 completes
 
 ### Future Milestone Proposals
 
-**v5.0 Ecosystem Expansion & Megatrend Intelligence**
+**v5.0 Conversational Intelligence**
 - Proposal: `.planning/proposals/v5.0-ecosystem-expansion-vision.md`
-- Status: DRAFT — capturing ideas
-- Phases: 25-31 (7 phases suggested)
-- Key themes:
-  1. New open data (PAA, DRF, TBS Business Capability Model for DND/Fisheries/Elections)
-  2. 5 Organizational CSR agents (Business, Architecture, Engineering, Governance, Exec Influencer)
-  3. JobForge 5-taxonomy model reconfirmation (NOC, JA, TBS OG, CAF, O*NET)
-  4. Megatrend Monitor (spider-in-web control chart monitoring)
-  5. EPM Benefits Realization tracking
+- Status: READY — repackaged 2026-02-05
+- Phases: 24-30 (7 phases planned)
+- Key features:
+  1. Agent infrastructure (Orbit extensions, unified chat UI)
+  2. 6 specialized agents (Business, Architecture, Engineering, Governance, Performance, Exec Influencer)
+  3. Megatrend Monitor (spider-in-web control chart monitoring)
+  4. Benefits Realization tracking
+- **Prerequisite:** v4.0 complete (governed data foundation)
 - **ACTION:** Load this proposal when running `/gsd:new-milestone` after v4.0 completes
 
 ### Context for Claude
@@ -386,7 +401,15 @@ When resuming this project:
 - **New:** tests/test_caf_integration.py - 47 integration tests for Phase 15 success criteria
 - **899 tests passing** (852 + 47 from 15-06)
 
+- **New:** src/jobforge/external/tbs/qualification_parser.py - Enhanced qualification parser with 20+ structured fields
+- **New:** src/jobforge/ingestion/og_qualification_standards.py - Medallion pipeline for dim_og_qualification_standard
+- **New:** data/gold/dim_og_qualification_standard.parquet - 75 rows, 27 columns (gitignored)
+- **New:** data/catalog/tables/dim_og_qualification_standard.json - Catalog metadata with FK relationships
+- **New:** EnhancedQualification Pydantic model with education_level, min_years_experience, bilingual levels, security_clearance
+- **New:** parse_enhanced_qualification() extracts CONTEXT.md fields from TBS qualification text
+- **971 tests passing** (899 + 72 from 16-01)
+
 ---
 *State updated: 2026-02-05*
-*Session count: 51*
-*v3.0 Phase 15 COMPLETE - 2026-02-05*
+*Session count: 52*
+*v3.0 Phase 16: 1/6 plans complete - 2026-02-05*
