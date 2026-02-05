@@ -456,6 +456,246 @@ def ingest_dim_caf_job_family(
     }
 
 
+def ingest_bridge_caf_noc(
+    config: Optional[PipelineConfig] = None,
+    table_name: str = "bridge_caf_noc",
+    save_json: bool = True,
+) -> dict:
+    """Build CAF-to-NOC bridge table with fuzzy matching.
+
+    Runs CAFNOCMatcher against all CAF occupations to generate
+    confidence-scored NOC mappings. Also saves JSON for human review.
+
+    Args:
+        config: Pipeline configuration (defaults to PipelineConfig()).
+        table_name: Output table name (defaults to "bridge_caf_noc").
+        save_json: Whether to save caf_noc_mappings.json for human review.
+
+    Returns:
+        Dict with gold_path, row_count, caf_count, json_path (if saved).
+    """
+    from jobforge.external.caf.matchers import CAFNOCMatcher
+
+    if config is None:
+        config = PipelineConfig()
+
+    gold_dir = config.gold_path()
+    gold_dir.mkdir(parents=True, exist_ok=True)
+
+    batch_id = generate_batch_id()
+    ingested_at = datetime.now(timezone.utc).isoformat()
+
+    # Run matcher for all CAF occupations
+    matcher = CAFNOCMatcher(gold_dir)
+    all_matches = matcher.build_all_matches()
+
+    # Get algorithm version from first match (or default)
+    algorithm_version = "caf_matcher_v1.0"
+
+    # Convert to records for DataFrame
+    records = []
+    for m in all_matches:
+        records.append({
+            "caf_occupation_id": m.caf_occupation_id,
+            "noc_unit_group_id": m.noc_unit_group_id,
+            "noc_title": m.noc_title,
+            "caf_title": m.caf_title_en,
+            "confidence_score": m.confidence,
+            "match_method": m.match_method,
+            "algorithm_version": algorithm_version,
+            "fuzzy_score": m.similarity_score,
+            "matched_text": m.matched_text,
+            "rationale": m.rationale,
+            "matched_at": m.matched_at.isoformat(),
+            # Provenance columns
+            "_source_file": "dim_caf_occupation + dim_noc",
+            "_ingested_at": ingested_at,
+            "_batch_id": batch_id,
+            "_layer": "gold",
+        })
+
+    # Create DataFrame
+    df = pl.DataFrame(records)
+
+    # Write to gold
+    output_path = gold_dir / f"{table_name}.parquet"
+    df.write_parquet(output_path, compression="zstd")
+
+    result = {
+        "gold_path": output_path,
+        "batch_id": batch_id,
+        "row_count": len(df),
+        "caf_count": len(set(m.caf_occupation_id for m in all_matches)),
+    }
+
+    # Optionally save JSON for human review
+    if save_json:
+        reference_dir = Path("data/reference")
+        reference_dir.mkdir(parents=True, exist_ok=True)
+        json_path = reference_dir / "caf_noc_mappings.json"
+
+        # Group by CAF occupation for easier review
+        mappings_by_caf = {}
+        for m in all_matches:
+            if m.caf_occupation_id not in mappings_by_caf:
+                mappings_by_caf[m.caf_occupation_id] = {
+                    "caf_occupation_id": m.caf_occupation_id,
+                    "caf_title": m.caf_title_en,
+                    "noc_matches": [],
+                }
+            mappings_by_caf[m.caf_occupation_id]["noc_matches"].append({
+                "noc_unit_group_id": m.noc_unit_group_id,
+                "noc_title": m.noc_title,
+                "confidence_score": m.confidence,
+                "match_method": m.match_method,
+                "fuzzy_score": m.similarity_score,
+                "matched_text": m.matched_text,
+                "rationale": m.rationale,
+            })
+
+        json_data = {
+            "generated_at": ingested_at,
+            "algorithm_version": "caf_noc_v1.0",
+            "caf_count": len(mappings_by_caf),
+            "total_mappings": len(all_matches),
+            "mappings": list(mappings_by_caf.values()),
+        }
+
+        json_path.write_text(
+            json.dumps(json_data, indent=2, ensure_ascii=False),
+            encoding="utf-8",
+        )
+        result["json_path"] = json_path
+
+    return result
+
+
+def ingest_bridge_caf_ja(
+    config: Optional[PipelineConfig] = None,
+    table_name: str = "bridge_caf_ja",
+    save_json: bool = True,
+) -> dict:
+    """Build CAF-to-Job Architecture bridge table with fuzzy matching.
+
+    Runs CAFJAMatcher against all CAF occupations to generate
+    confidence-scored JA mappings with job_function and job_family context.
+    Also saves JSON for human review.
+
+    Args:
+        config: Pipeline configuration (defaults to PipelineConfig()).
+        table_name: Output table name (defaults to "bridge_caf_ja").
+        save_json: Whether to save caf_ja_mappings.json for human review.
+
+    Returns:
+        Dict with gold_path, row_count, caf_count, json_path (if saved).
+    """
+    from jobforge.external.caf.matchers import CAFJAMatcher
+
+    if config is None:
+        config = PipelineConfig()
+
+    gold_dir = config.gold_path()
+    gold_dir.mkdir(parents=True, exist_ok=True)
+
+    batch_id = generate_batch_id()
+    ingested_at = datetime.now(timezone.utc).isoformat()
+
+    # Load CAF occupations
+    caf_path = gold_dir / "dim_caf_occupation.parquet"
+    caf_data = pl.read_parquet(caf_path).to_dicts() if caf_path.exists() else []
+
+    # Run matcher for all CAF occupations
+    matcher = CAFJAMatcher(gold_dir)
+    all_matches = []
+    for caf_occ in caf_data:
+        matches = matcher.match(caf_occ["career_id"])
+        all_matches.extend(matches)
+
+    # Algorithm version
+    algorithm_version = "caf_ja_matcher_v1.0"
+
+    # Convert to records for DataFrame
+    records = []
+    for m in all_matches:
+        records.append({
+            "caf_occupation_id": m.caf_occupation_id,
+            "ja_job_title_id": m.ja_job_title_id,
+            "ja_job_title_en": m.ja_job_title_en,
+            "ja_job_function_en": m.ja_job_function_en,
+            "ja_job_family_en": m.ja_job_family_en,
+            "caf_title_en": m.caf_title_en,
+            "confidence_score": m.confidence,
+            "match_method": m.match_method,
+            "algorithm_version": algorithm_version,
+            "fuzzy_score": m.similarity_score,
+            "matched_text": m.matched_text,
+            "rationale": m.rationale,
+            "matched_at": m.matched_at.isoformat(),
+            # Provenance columns
+            "_source_file": "dim_caf_occupation + job_architecture",
+            "_ingested_at": ingested_at,
+            "_batch_id": batch_id,
+            "_layer": "gold",
+        })
+
+    # Create DataFrame
+    df = pl.DataFrame(records)
+
+    # Write to gold
+    output_path = gold_dir / f"{table_name}.parquet"
+    df.write_parquet(output_path, compression="zstd")
+
+    result = {
+        "gold_path": output_path,
+        "batch_id": batch_id,
+        "row_count": len(df),
+        "caf_count": len(set(m.caf_occupation_id for m in all_matches)),
+    }
+
+    # Optionally save JSON for human review
+    if save_json:
+        reference_dir = Path("data/reference")
+        reference_dir.mkdir(parents=True, exist_ok=True)
+        json_path = reference_dir / "caf_ja_mappings.json"
+
+        # Group by CAF occupation for easier review
+        mappings_by_caf = {}
+        for m in all_matches:
+            if m.caf_occupation_id not in mappings_by_caf:
+                mappings_by_caf[m.caf_occupation_id] = {
+                    "caf_occupation_id": m.caf_occupation_id,
+                    "caf_title_en": m.caf_title_en,
+                    "ja_matches": [],
+                }
+            mappings_by_caf[m.caf_occupation_id]["ja_matches"].append({
+                "ja_job_title_id": m.ja_job_title_id,
+                "ja_job_title_en": m.ja_job_title_en,
+                "ja_job_function_en": m.ja_job_function_en,
+                "ja_job_family_en": m.ja_job_family_en,
+                "confidence_score": m.confidence,
+                "match_method": m.match_method,
+                "fuzzy_score": m.similarity_score,
+                "matched_text": m.matched_text,
+                "rationale": m.rationale,
+            })
+
+        json_data = {
+            "generated_at": ingested_at,
+            "algorithm_version": algorithm_version,
+            "caf_count": len(mappings_by_caf),
+            "total_mappings": len(all_matches),
+            "mappings": list(mappings_by_caf.values()),
+        }
+
+        json_path.write_text(
+            json.dumps(json_data, indent=2, ensure_ascii=False),
+            encoding="utf-8",
+        )
+        result["json_path"] = json_path
+
+    return result
+
+
 if __name__ == "__main__":
     # Quick manual test
     print("Ingesting dim_caf_occupation...")
@@ -467,3 +707,17 @@ if __name__ == "__main__":
     result_fam = ingest_dim_caf_job_family()
     print(f"  Rows: {result_fam['row_count']}")
     print(f"  Path: {result_fam['gold_path']}")
+
+    print("\nIngesting bridge_caf_noc...")
+    result_noc = ingest_bridge_caf_noc()
+    print(f"  Rows: {result_noc['row_count']}")
+    print(f"  Path: {result_noc['gold_path']}")
+    if "json_path" in result_noc:
+        print(f"  JSON: {result_noc['json_path']}")
+
+    print("\nIngesting bridge_caf_ja...")
+    result_ja = ingest_bridge_caf_ja()
+    print(f"  Rows: {result_ja['row_count']}")
+    print(f"  Path: {result_ja['gold_path']}")
+    if "json_path" in result_ja:
+        print(f"  JSON: {result_ja['json_path']}")
