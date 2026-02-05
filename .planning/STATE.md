@@ -13,15 +13,15 @@ See: .planning/PROJECT.md (updated 2026-01-20)
 
 **Milestone:** v3.0 Data Layer Expansion
 **Phase:** 16-extended-metadata (Extended Metadata)
-**Plan:** 1 of 6 complete (Wave 1)
+**Plan:** 5 of 6 complete (Wave 1)
 **Status:** In progress
-**Last activity:** 2026-02-05 - Completed 16-01-PLAN.md (Enhanced Qualification Standards)
+**Last activity:** 2026-02-05 - Completed 16-02-PLAN.md (Job Evaluation Standards)
 
 ```
 v1.0 [####################] 100% SHIPPED 2026-01-19
 v2.0 [####################] 100% SHIPPED 2026-01-20
 v2.1 [####################] 100% SHIPPED 2026-01-21
-v3.0 [################    ]  78% IN PROGRESS (Phase 16: 1/6 plans complete)
+v3.0 [################### ]  94% IN PROGRESS (Phase 16: 5/6 plans complete)
 ```
 
 ## Performance Metrics
@@ -196,6 +196,23 @@ All v1.0 and v2.0 decisions archived in:
 | Soft FK validation | Preserve all records even if og_code orphaned | All 75 records preserved with warnings |
 | Boolean flags for conditions | Enable simple filtering | requires_travel, shift_work, physical_demands, etc. |
 
+**v3.0 Phase 16-04 Decisions:**
+| Decision | Rationale | Outcome |
+|----------|-----------|---------|
+| Reference data fallback | TBS pages return 404; need reliable data | create_*_reference() functions provide known values |
+| 5 allowance types | Cover main supplemental compensation categories | bilingual_bonus, supervisory, isolated_post, shift, standby |
+| Nullable og_code FK | Some allowances apply universally (bilingual bonus) | og_code NULL means "applies to all OG codes" |
+| Percentage + amount columns | Support both fixed ($800) and percentage (5%) rates | rate_type column indicates interpretation |
+| $800 bilingual bonus | TBS standard since 2014, well-documented | Hardcoded when scraping fails |
+
+**v3.0 Phase 16-02 Decisions:**
+| Decision | Rationale | Outcome |
+|----------|-----------|---------|
+| URL-based OG code extraction | TBS URLs follow predictable patterns (e.g., information-technology -> IT) | Mapping dict handles 15+ URL patterns |
+| Multi-table parsing | TBS pages have both weighting tables (summary) and degree tables (detail) | Dual parser captures both data types |
+| Soft FK validation | Some OG codes (UNKNOWN, GENERIC) not in dim_og | Log warnings, preserve all records |
+| Factor points vs level points | Weighting tables have max points, degree tables have level-specific points | Separate columns for each |
+
 ### Technical Discoveries
 
 From v2.1 research:
@@ -243,12 +260,12 @@ None.
 ### Last Session
 
 **Date:** 2026-02-05
-**Activity:** Executed 16-01-PLAN.md (Enhanced Qualification Standards)
-**Outcome:** Created qualification_parser.py with EnhancedQualification model, ingestion pipeline for dim_og_qualification_standard (75 rows, 27 columns), 72 tests
+**Activity:** Executed 16-02-PLAN.md (Job Evaluation Standards)
+**Outcome:** Created evaluation_scraper.py, scraped 16 TBS job evaluation pages, dim_og_job_evaluation_standard (145 rows), 37 tests
 
 ### Next Session Priorities
 
-1. Continue Phase 16 (Plans 02-06)
+1. Continue Phase 16 (Plans 05-06)
 2. Complete v3.0 milestone
 3. Consider v4.0 proposal
 
@@ -409,7 +426,16 @@ When resuming this project:
 - **New:** parse_enhanced_qualification() extracts CONTEXT.md fields from TBS qualification text
 - **971 tests passing** (899 + 72 from 16-01)
 
+- **New:** src/jobforge/external/tbs/allowances_scraper.py - TBS allowances scraper with 5 allowance types
+- **New:** src/jobforge/ingestion/og_allowances.py - Medallion pipeline for fact_og_allowances
+- **New:** data/tbs/og_allowances.json - 14 allowance records (bilingual bonus, supervisory, isolated post, shift, standby)
+- **New:** data/gold/fact_og_allowances.parquet - 14 rows with nullable og_code FK (gitignored)
+- **New:** data/catalog/tables/fact_og_allowances.json - Catalog metadata with FK to dim_og
+- **New:** Allowance Pydantic model with amount/percentage duality for fixed vs percentage rates
+- **New:** Reference data fallback pattern for when TBS pages unavailable
+- **1015 tests passing** (971 + 44 from 16-04)
+
 ---
 *State updated: 2026-02-05*
 *Session count: 52*
-*v3.0 Phase 16: 1/6 plans complete - 2026-02-05*
+*v3.0 Phase 16: 4/6 plans complete - 2026-02-05*
