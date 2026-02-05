@@ -13,15 +13,15 @@ See: .planning/PROJECT.md (updated 2026-01-20)
 
 **Milestone:** v3.0 Data Layer Expansion
 **Phase:** 14-og-core (OG Core Tables)
-**Plan:** 03 of 3 complete
-**Status:** Phase complete
-**Last activity:** 2026-02-05 - Completed 14-03-PLAN.md (OG Gold Tables)
+**Plan:** 05 of 6 complete
+**Status:** In progress
+**Last activity:** 2026-02-05 - Completed 14-05-PLAN.md (Qualification Standards Gold Table)
 
 ```
 v1.0 [####################] 100% SHIPPED 2026-01-19
 v2.0 [####################] 100% SHIPPED 2026-01-20
 v2.1 [####################] 100% SHIPPED 2026-01-21
-v3.0 [###                 ]  15% IN PROGRESS
+v3.0 [####                ]  20% IN PROGRESS
 ```
 
 ## Performance Metrics
@@ -129,6 +129,14 @@ All v1.0 and v2.0 decisions archived in:
 | Clean group names | Remove "(AS)" suffix from names | Cleaner "Administrative Services" display |
 | FK validation optional | Allow ingestion without dim_og dependency | validate_fk=False parameter |
 
+**v3.0 Phase 14-05 Decisions:**
+| Decision | Rationale | Outcome |
+|----------|-----------|---------|
+| Soft FK validation | Allow ingestion even if dim_og not yet created | Log warnings for orphan og_codes but preserve all records |
+| Explicit DataFrame schema | Polars requires explicit String type when all values may be null | Schema dict with pl.Utf8 types |
+| 100% structured extraction | Regex patterns successfully extract common TBS sections | All 75 records have education/experience/certification |
+| Preserve full_text always | Enables full-text search | full_text column alongside structured fields |
+
 ### Technical Discoveries
 
 From v2.1 research:
@@ -176,14 +184,14 @@ None.
 ### Last Session
 
 **Date:** 2026-02-05
-**Activity:** Executed 14-03-PLAN.md (OG Gold Tables)
-**Outcome:** Created dim_og (31 groups) and dim_og_subgroup (111 subgroups) gold tables with FK validation, catalog metadata, and 22 tests
+**Activity:** Executed 14-05-PLAN.md (Qualification Standards Gold Table)
+**Outcome:** Created dim_og_qualifications with 75 records, structured fields extracted (education, experience, certification), 23 tests
 
 ### Next Session Priorities
 
-1. Continue v3.0 Phase 14 — if 14-04 exists, execute next plan
-2. Or start Phase 15 (CAF Core) for Canadian Armed Forces data
-3. NOC-OG concordance bridge table pending future phase
+1. Continue v3.0 Phase 14 — execute 14-04 (Pay Rates) or 14-06 (NOC-OG Concordance)
+2. 14-04 requires web scraping; 14-06 requires dim_og (already exists)
+3. Phase 15 (CAF Core) ready to start after Phase 14 completes
 
 ### Context for Claude
 
@@ -229,7 +237,14 @@ When resuming this project:
 - **New:** 22 tests for OG ingestion and FK validation
 - **652 tests passing** (630 + 22 from 14-03)
 
+- **New:** src/jobforge/ingestion/og_qualifications.py - Qualification text parser and ingestion
+- **New:** data/gold/dim_og_qualifications.parquet - 75 qualification standards with structured fields
+- **New:** data/catalog/tables/dim_og_qualifications.json - Catalog metadata for qualifications
+- **New:** 23 tests for qualification parsing and ingestion
+- **New:** parse_qualification_text() for extracting education/experience/certification
+- **675 tests passing** (652 + 23 from 14-05)
+
 ---
 *State updated: 2026-02-05*
-*Session count: 42*
-*v3.0 Phase 14-03 COMPLETE - 2026-02-05*
+*Session count: 43*
+*v3.0 Phase 14-05 COMPLETE - 2026-02-05*
