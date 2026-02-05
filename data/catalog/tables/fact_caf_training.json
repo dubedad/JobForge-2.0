@@ -1,0 +1,163 @@
+{
+  "table_name": "fact_caf_training",
+  "layer": "gold",
+  "domain": "caf",
+  "file_path": "data/gold/fact_caf_training.parquet",
+  "row_count": 152,
+  "column_count": 19,
+  "schema_version": "1.0.0",
+  "description": "Canadian Armed Forces training requirements per occupation including BMQ and occupation-specific training",
+  "business_purpose": "Enable querying CAF training paths including duration, locations, certifications, and civilian equivalencies for career planning and military-civilian transition support",
+  "data_owner": "Canadian Armed Forces",
+  "source": "forces.ca",
+  "source_url": "https://forces.ca/",
+  "upstream_tables": ["dim_caf_occupation", "dim_caf_training_location"],
+  "downstream_tables": [],
+  "classification": "public",
+  "columns": [
+    {
+      "name": "caf_occupation_id",
+      "data_type": "VARCHAR",
+      "nullable": false,
+      "description": "Foreign key to dim_caf_occupation career_id",
+      "foreign_key": "dim_caf_occupation.career_id",
+      "example_values": ["infantry-soldier", "pilot", "aerospace-engineering-officer"]
+    },
+    {
+      "name": "training_type",
+      "data_type": "VARCHAR",
+      "nullable": false,
+      "description": "Training type: 'bmq' (Basic Military Qualification) or 'occupation_specific'",
+      "example_values": ["bmq", "occupation_specific"]
+    },
+    {
+      "name": "duration_weeks",
+      "data_type": "FLOAT",
+      "nullable": true,
+      "description": "Training duration standardized to weeks (null if unparseable)",
+      "example_values": [12.0, 17.0, 26.0, 52.0]
+    },
+    {
+      "name": "duration_text",
+      "data_type": "VARCHAR",
+      "nullable": true,
+      "description": "Original duration text from source for verification",
+      "example_values": ["12 weeks", "approximately 6 months", "8-11 weeks"]
+    },
+    {
+      "name": "training_location_id",
+      "data_type": "VARCHAR",
+      "nullable": true,
+      "description": "Foreign key to dim_caf_training_location",
+      "foreign_key": "dim_caf_training_location.training_location_id",
+      "example_values": ["cflrs-saint-jean-sur-richelieu", "cfb-borden", "cfb-gagetown"]
+    },
+    {
+      "name": "training_location_text",
+      "data_type": "VARCHAR",
+      "nullable": true,
+      "description": "Original location text from source for verification",
+      "example_values": ["Saint-Jean-sur-Richelieu, Quebec", "CFB Borden, Ontario"]
+    },
+    {
+      "name": "certifications_awarded",
+      "data_type": "VARCHAR",
+      "nullable": true,
+      "description": "JSON array of certifications awarded upon training completion",
+      "example_values": ["[\"First Aid\", \"CPR\"]", "[]"]
+    },
+    {
+      "name": "qualifications_awarded",
+      "data_type": "VARCHAR",
+      "nullable": true,
+      "description": "JSON array of military qualifications awarded (BMOQ, DP1, QL3, etc.)",
+      "example_values": ["[\"BMOQ\", \"DP1\"]", "[\"BMQ\", \"QL3\"]"]
+    },
+    {
+      "name": "prerequisite_courses",
+      "data_type": "VARCHAR",
+      "nullable": true,
+      "description": "JSON array of prerequisite courses required before this training",
+      "example_values": ["[]", "[\"Basic Training\"]"]
+    },
+    {
+      "name": "minimum_rank",
+      "data_type": "VARCHAR",
+      "nullable": true,
+      "description": "Minimum rank required to begin this training",
+      "example_values": ["Private", "Captain", null]
+    },
+    {
+      "name": "civilian_credential_level",
+      "data_type": "VARCHAR",
+      "nullable": true,
+      "description": "Standardized civilian equivalency level: certificate, diploma, degree, professional, trade",
+      "example_values": ["certificate", "diploma", "degree", "trade", null]
+    },
+    {
+      "name": "civilian_equivalency_text",
+      "data_type": "VARCHAR",
+      "nullable": true,
+      "description": "Original text describing civilian credential equivalency",
+      "example_values": ["Skills transferable to commercial aviation", "Equivalent to Red Seal trade"]
+    },
+    {
+      "name": "recertification_required",
+      "data_type": "BOOLEAN",
+      "nullable": false,
+      "description": "Whether periodic recertification is required",
+      "example_values": [true, false]
+    },
+    {
+      "name": "recertification_frequency",
+      "data_type": "VARCHAR",
+      "nullable": true,
+      "description": "Frequency of recertification if required",
+      "example_values": ["annually", "every 5 years", null]
+    },
+    {
+      "name": "_source_url",
+      "data_type": "VARCHAR",
+      "nullable": true,
+      "description": "Source URL for this training record (provenance)"
+    },
+    {
+      "name": "_extracted_at",
+      "data_type": "VARCHAR",
+      "nullable": true,
+      "description": "Timestamp when training info was extracted (provenance)"
+    },
+    {
+      "name": "_ingested_at",
+      "data_type": "VARCHAR",
+      "nullable": false,
+      "description": "Timestamp when data was ingested (provenance)"
+    },
+    {
+      "name": "_batch_id",
+      "data_type": "VARCHAR",
+      "nullable": false,
+      "description": "Batch ID for pipeline run (provenance)"
+    },
+    {
+      "name": "_layer",
+      "data_type": "VARCHAR",
+      "nullable": false,
+      "description": "Data layer in medallion architecture (provenance)"
+    }
+  ],
+  "relationships": [
+    {
+      "table": "dim_caf_occupation",
+      "join": "fact_caf_training.caf_occupation_id = dim_caf_occupation.career_id",
+      "type": "many-to-one",
+      "description": "Each training record belongs to one CAF occupation"
+    },
+    {
+      "table": "dim_caf_training_location",
+      "join": "fact_caf_training.training_location_id = dim_caf_training_location.training_location_id",
+      "type": "many-to-one",
+      "description": "Each training record may be conducted at one normalized training location"
+    }
+  ]
+}

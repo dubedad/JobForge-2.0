@@ -1,0 +1,80 @@
+{
+  "table_name": "dim_caf_training_location",
+  "layer": "gold",
+  "domain": "caf",
+  "file_path": "data/gold/dim_caf_training_location.parquet",
+  "row_count": 18,
+  "column_count": 9,
+  "schema_version": "1.0.0",
+  "description": "Normalized Canadian Armed Forces training locations including Canadian Forces Bases (CFB) and training schools",
+  "business_purpose": "Reference dimension for normalizing training location names enabling consistent querying and analysis across CAF occupations",
+  "data_owner": "Canadian Armed Forces",
+  "source": "Canadian Armed Forces",
+  "source_url": "https://www.canada.ca/en/department-national-defence.html",
+  "upstream_tables": [],
+  "downstream_tables": ["fact_caf_training"],
+  "classification": "public",
+  "columns": [
+    {
+      "name": "training_location_id",
+      "data_type": "VARCHAR",
+      "nullable": false,
+      "description": "Primary key - slugified canonical location name",
+      "primary_key": true,
+      "example_values": ["cfb-borden", "cflrs-saint-jean-sur-richelieu", "cfb-gagetown", "cfb-kingston"]
+    },
+    {
+      "name": "location_name",
+      "data_type": "VARCHAR",
+      "nullable": false,
+      "description": "Canonical location name (official base/school name)",
+      "example_values": ["CFB Borden", "CFLRS Saint-Jean-sur-Richelieu", "CFB Gagetown", "CFB Kingston"]
+    },
+    {
+      "name": "province",
+      "data_type": "VARCHAR",
+      "nullable": false,
+      "description": "Canadian province/territory code",
+      "example_values": ["ON", "QC", "NB", "BC", "NS", "AB", "MB", "SK"]
+    },
+    {
+      "name": "country",
+      "data_type": "VARCHAR",
+      "nullable": false,
+      "description": "Country (always Canada for CAF training locations)",
+      "example_values": ["Canada"]
+    },
+    {
+      "name": "base_type",
+      "data_type": "VARCHAR",
+      "nullable": false,
+      "description": "Type of military installation: cfb (Canadian Forces Base), cflrs (Leadership and Recruit School)",
+      "example_values": ["cfb", "cflrs"]
+    },
+    {
+      "name": "_source",
+      "data_type": "VARCHAR",
+      "nullable": false,
+      "description": "Source of location data (canonical reference data)"
+    },
+    {
+      "name": "_ingested_at",
+      "data_type": "VARCHAR",
+      "nullable": false,
+      "description": "Timestamp when data was ingested (provenance)"
+    },
+    {
+      "name": "_batch_id",
+      "data_type": "VARCHAR",
+      "nullable": false,
+      "description": "Batch ID for pipeline run (provenance)"
+    },
+    {
+      "name": "_layer",
+      "data_type": "VARCHAR",
+      "nullable": false,
+      "description": "Data layer in medallion architecture (provenance)"
+    }
+  ],
+  "relationships": []
+}
