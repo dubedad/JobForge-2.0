@@ -23,10 +23,21 @@ Usage:
     # Match CAF occupations to NOC codes
     from jobforge.external.caf import CAFNOCMatcher, match_caf_to_noc
     matches = match_caf_to_noc("infantry-officer")
+
+    # Match CAF occupations to Job Architecture
+    from jobforge.external.caf import CAFJAMatcher, match_caf_to_ja
+    matches = match_caf_to_ja("pilot")
 """
 
 from .link_fetcher import CAFLinkFetcher, fetch_all_career_details, fetch_career_detail
-from .matchers import CAFNOCMapping, CAFNOCMatcher, match_caf_to_noc
+from .matchers import (
+    CAFJAMapping,
+    CAFJAMatcher,
+    CAFNOCMapping,
+    CAFNOCMatcher,
+    match_caf_to_ja,
+    match_caf_to_noc,
+)
 from .models import (
     CAFCareerListing,
     CAFJobFamily,
@@ -50,8 +61,12 @@ __all__ = [
     "CAFLinkFetcher",
     "fetch_career_detail",
     "fetch_all_career_details",
-    # Matchers
+    # NOC Matchers
     "CAFNOCMapping",
     "CAFNOCMatcher",
     "match_caf_to_noc",
+    # JA Matchers
+    "CAFJAMapping",
+    "CAFJAMatcher",
+    "match_caf_to_ja",
 ]
