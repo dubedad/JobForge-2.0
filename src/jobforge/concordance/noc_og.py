@@ -9,6 +9,10 @@ Confidence tiers:
 - 0.85: High similarity (Jaro-Winkler >= 0.90)
 - 0.70: Medium similarity (Jaro-Winkler >= 0.80)
 - 0.50: Low similarity (Jaro-Winkler >= 0.70)
+
+Keyword boosting:
+- Domain-specific keywords boost scores for relevant OG groups
+- Addresses semantic gaps in pure fuzzy string matching
 """
 
 from datetime import datetime, timezone
@@ -28,6 +32,34 @@ CONFIDENCE_EXACT = 1.00
 CONFIDENCE_HIGH = 0.85
 CONFIDENCE_MEDIUM = 0.70
 CONFIDENCE_LOW = 0.50
+
+# Keyword boosting for semantic matching
+# Maps (keywords tuple) -> (og_code, boost_value)
+# Boost is added to fuzzy score when any keyword found in NOC title
+KEYWORD_BOOSTS: dict[tuple[str, ...], tuple[str, float]] = {
+    # IT-related -> IT (Information Technology)
+    # Higher boost (0.6) to overcome false positives from fuzzy matching
+    ("software", "developer", "programmer", "computer", "systems analyst",
+     "database", "network", "cyber", "web developer", "cloud", "devops",
+     "it specialist", "it manager", "information technology"): ("IT", 0.6),
+    # Finance-related -> CT (Comptrollership)
+    ("financial", "finance manager", "accountant", "accounting",
+     "auditor", "budget", "comptroller"): ("CT", 0.4),
+    # HR-related -> HM (Human Resources Management)
+    ("human resources", "hr manager", "recruitment", "staffing",
+     "personnel", "talent acquisition"): ("HM", 0.4),
+    # Research-related -> RE (Research)
+    ("research scientist", "researcher", "research manager"): ("RE", 0.3),
+    # University-related -> UT (University Teaching)
+    ("professor", "lecturer", "university teacher", "academic",
+     "postsecondary instructor"): ("UT", 0.5),
+    # Economics -> EC (Economics and Social Science Services)
+    ("economist", "economic analyst", "economics"): ("EC", 0.4),
+    # Translation -> TR (Translation)
+    ("translator", "interpreter", "translation"): ("TR", 0.5),
+    # Foreign service -> FS (Foreign Service)
+    ("diplomat", "foreign service", "embassy", "consular"): ("FS", 0.5),
+}
 
 
 class NOCOGMatch(BaseModel):
@@ -64,11 +96,37 @@ def _load_og_subgroups(gold_path: Path) -> list[dict]:
     return df.to_dicts()
 
 
-def _compute_similarity(noc_title: str, og_name: str) -> float:
+def _get_keyword_boost(noc_title: str, og_code: str) -> float:
+    """Get keyword boost for NOC title matching to OG code.
+
+    Returns boost value (0.0-0.5) if NOC title contains keywords
+    associated with the OG code, otherwise 0.0.
+    """
+    noc_lower = noc_title.lower()
+
+    for keywords, (target_og, boost) in KEYWORD_BOOSTS.items():
+        if target_og != og_code:
+            continue
+        # Check if any keyword appears in the NOC title
+        for keyword in keywords:
+            if keyword in noc_lower:
+                return boost
+    return 0.0
+
+
+def _compute_similarity(noc_title: str, og_name: str, og_code: str = "") -> float:
     """Compute best similarity score using multiple strategies.
 
     Uses rapidfuzz with multiple strategies (ratio, token_sort_ratio, WRatio)
-    and returns the best score.
+    and applies keyword boosting for semantic matching.
+
+    Args:
+        noc_title: The NOC occupation title
+        og_name: The OG group/subgroup name
+        og_code: The OG code (for keyword boosting)
+
+    Returns:
+        Similarity score between 0.0 and 1.0
     """
     noc_lower = noc_title.lower()
     og_lower = og_name.lower()
@@ -78,7 +136,13 @@ def _compute_similarity(noc_title: str, og_name: str) -> float:
     token_score = fuzz.token_sort_ratio(noc_lower, og_lower) / 100.0
     wratio_score = fuzz.WRatio(noc_lower, og_lower) / 100.0
 
-    return max(ratio_score, token_score, wratio_score)
+    base_score = max(ratio_score, token_score, wratio_score)
+
+    # Apply keyword boosting
+    boost = _get_keyword_boost(noc_title, og_code)
+
+    # Cap total score at 1.0
+    return min(base_score + boost, 1.0)
 
 
 def _score_to_confidence(score: float) -> tuple[float, str]:
@@ -142,7 +206,7 @@ def match_noc_to_og(
     now = datetime.now(timezone.utc)
 
     for candidate in candidates:
-        best_score = _compute_similarity(noc_title, candidate["og_name"])
+        best_score = _compute_similarity(noc_title, candidate["og_name"], candidate["og_code"])
 
         if best_score < min_threshold:
             continue
@@ -170,7 +234,7 @@ def match_noc_to_og(
         best_candidate = None
         best_score = 0.0
         for candidate in candidates:
-            score = _compute_similarity(noc_title, candidate["og_name"])
+            score = _compute_similarity(noc_title, candidate["og_name"], candidate["og_code"])
             if score > best_score:
                 best_score = score
                 best_candidate = candidate
