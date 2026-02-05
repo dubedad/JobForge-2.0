@@ -1,0 +1,199 @@
+{
+  "table_name": "bridge_caf_ja",
+  "layer": "gold",
+  "domain": "caf",
+  "file_path": "data/gold/bridge_caf_ja.parquet",
+  "row_count": 880,
+  "column_count": 17,
+  "schema_version": "1.0.0",
+  "description": "CAF-to-Job Architecture bridge table mapping military occupations to federal job titles with fuzzy matching confidence scores and JA context",
+  "business_purpose": "Enables veteran career transition planning by mapping CAF occupations to Job Architecture job titles. Each CAF occupation has up to 10 ranked JA matches with confidence scores, job_function, job_family context, and full audit trail.",
+  "data_owner": "JobForge",
+  "source": "Algorithmic matching",
+  "source_url": null,
+  "created_at": "2026-02-05T13:57:44.908895+00:00",
+  "updated_at": "2026-02-05T13:57:44.908895+00:00",
+  "upstream_tables": [
+    "dim_caf_occupation",
+    "job_architecture"
+  ],
+  "downstream_tables": [],
+  "classification": "public",
+  "columns": [
+    {
+      "name": "caf_occupation_id",
+      "data_type": "VARCHAR",
+      "nullable": false,
+      "description": "CAF career_id - foreign key to dim_caf_occupation",
+      "foreign_key": "dim_caf_occupation.career_id",
+      "example_values": [
+        "pilot",
+        "infantry-officer",
+        "medical-officer"
+      ]
+    },
+    {
+      "name": "ja_job_title_id",
+      "data_type": "INTEGER",
+      "nullable": false,
+      "description": "Job Architecture job title ID - foreign key to job_architecture.jt_id",
+      "foreign_key": "job_architecture.jt_id",
+      "example_values": [
+        "123",
+        "456",
+        "789"
+      ]
+    },
+    {
+      "name": "ja_job_title_en",
+      "data_type": "VARCHAR",
+      "nullable": false,
+      "description": "Job Architecture job title in English",
+      "example_values": [
+        "Pilot",
+        "Financial Analyst",
+        "Administrative Officer"
+      ]
+    },
+    {
+      "name": "ja_job_function_en",
+      "data_type": "VARCHAR",
+      "nullable": true,
+      "description": "JA job function category for context filtering",
+      "example_values": [
+        "Transportation",
+        "Finance",
+        "Administration"
+      ]
+    },
+    {
+      "name": "ja_job_family_en",
+      "data_type": "VARCHAR",
+      "nullable": true,
+      "description": "JA job family category for context filtering",
+      "example_values": [
+        "Aviation",
+        "Financial Services",
+        "Administrative Support"
+      ]
+    },
+    {
+      "name": "caf_title_en",
+      "data_type": "VARCHAR",
+      "nullable": false,
+      "description": "CAF occupation title in English",
+      "example_values": [
+        "Pilot",
+        "Infantry Officer",
+        "Medical Officer"
+      ]
+    },
+    {
+      "name": "confidence_score",
+      "data_type": "FLOAT",
+      "nullable": false,
+      "description": "Confidence score (0.0-1.0) indicating match quality. 1.0=exact, 0.85=high, 0.70=medium, 0.50=low",
+      "example_values": [
+        "0.95",
+        "0.85",
+        "0.70"
+      ]
+    },
+    {
+      "name": "match_method",
+      "data_type": "VARCHAR",
+      "nullable": false,
+      "description": "How the match was determined: related_civilian, title_fuzzy, or best_guess",
+      "example_values": [
+        "related_civilian",
+        "title_fuzzy",
+        "best_guess"
+      ]
+    },
+    {
+      "name": "algorithm_version",
+      "data_type": "VARCHAR",
+      "nullable": false,
+      "description": "Version of matching algorithm for audit trail",
+      "example_values": [
+        "caf_ja_matcher_v1.0"
+      ]
+    },
+    {
+      "name": "fuzzy_score",
+      "data_type": "FLOAT",
+      "nullable": false,
+      "description": "Raw fuzzy matching score from rapidfuzz",
+      "example_values": [
+        "0.92",
+        "0.87",
+        "0.65"
+      ]
+    },
+    {
+      "name": "matched_text",
+      "data_type": "VARCHAR",
+      "nullable": false,
+      "description": "The text that was matched (civilian occupation or CAF title)",
+      "example_values": [
+        "Airline Pilot",
+        "Infantry Officer",
+        "Physician"
+      ]
+    },
+    {
+      "name": "rationale",
+      "data_type": "VARCHAR",
+      "nullable": false,
+      "description": "Human-readable explanation of the match",
+      "example_values": [
+        "Related civilian 'Airline Pilot' -> JA 'Pilot' (score: 0.92)"
+      ]
+    },
+    {
+      "name": "matched_at",
+      "data_type": "VARCHAR",
+      "nullable": false,
+      "description": "ISO timestamp when match was computed",
+      "example_values": [
+        "2026-02-05T13:30:00+00:00"
+      ]
+    },
+    {
+      "name": "_source_file",
+      "data_type": "VARCHAR",
+      "nullable": false,
+      "description": "Source tables used for matching",
+      "example_values": [
+        "dim_caf_occupation + job_architecture"
+      ]
+    },
+    {
+      "name": "_ingested_at",
+      "data_type": "VARCHAR",
+      "nullable": false,
+      "description": "ISO timestamp when record was ingested",
+      "example_values": [
+        "2026-02-05T13:30:00+00:00"
+      ]
+    },
+    {
+      "name": "_batch_id",
+      "data_type": "VARCHAR",
+      "nullable": false,
+      "description": "Batch ID for pipeline traceability",
+      "example_values": [
+        "abc123-def456-ghi789"
+      ]
+    },
+    {
+      "name": "_layer",
+      "data_type": "VARCHAR",
+      "nullable": false,
+      "description": "Medallion layer (always 'gold' for this table)",
+      "example_values": [
+        "gold"
+      ]
+    }
+  ]
+}
