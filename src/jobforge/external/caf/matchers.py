@@ -252,8 +252,8 @@ class CAFJAMapping(BaseModel):
     caf_title_en: str
     ja_job_title_id: int
     ja_job_title_en: str
-    ja_job_function_en: str
-    ja_job_family_en: str
+    ja_job_function_en: Optional[str] = None  # May be null in JA table
+    ja_job_family_en: Optional[str] = None  # May be null in JA table
     confidence: float
     similarity_score: float
     match_method: str
