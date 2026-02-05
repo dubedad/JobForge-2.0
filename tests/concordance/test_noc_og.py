@@ -1,6 +1,10 @@
 """Tests for NOC-OG concordance matching."""
+from pathlib import Path
+
+import polars as pl
 import pytest
-from jobforge.concordance.noc_og import match_noc_to_og, NOCOGMatch
+
+from jobforge.concordance.noc_og import match_noc_to_og, build_bridge_noc_og, NOCOGMatch
 
 
 class TestMatchNocToOg:
@@ -114,3 +118,66 @@ class TestSubgroupMatching:
         subgroup_matches = [m for m in matches if m.og_subgroup_code is not None]
         # It's okay if no subgroups match for some titles, but the field should exist
         assert all(hasattr(m, "og_subgroup_code") for m in matches)
+
+
+class TestBuildBridgeNocOg:
+    """Test bridge table builder."""
+
+    def test_bridge_table_exists(self):
+        """Verify bridge_noc_og.parquet was created."""
+        from jobforge.pipeline.config import PipelineConfig
+
+        bridge_path = PipelineConfig().gold_path() / "bridge_noc_og.parquet"
+        assert bridge_path.exists(), f"Bridge table not found at {bridge_path}"
+
+    def test_bridge_table_has_expected_columns(self):
+        """Bridge table should have all required columns."""
+        from jobforge.pipeline.config import PipelineConfig
+
+        df = pl.read_parquet(PipelineConfig().gold_path() / "bridge_noc_og.parquet")
+        required_columns = [
+            "noc_code",
+            "og_code",
+            "og_subgroup_code",
+            "og_name",
+            "confidence",
+            "similarity_score",
+            "source_attribution",
+            "rationale",
+            "matched_at",
+        ]
+        for col in required_columns:
+            assert col in df.columns, f"Missing column: {col}"
+
+    def test_bridge_table_has_rows(self):
+        """Bridge table should have multiple rows."""
+        from jobforge.pipeline.config import PipelineConfig
+
+        df = pl.read_parquet(PipelineConfig().gold_path() / "bridge_noc_og.parquet")
+        # 516 NOC codes, up to 5 matches each = potentially 2580 max
+        # Should have at least as many rows as NOC codes
+        assert df.shape[0] >= 516, f"Expected at least 516 rows, got {df.shape[0]}"
+
+    def test_bridge_table_has_provenance_columns(self):
+        """Bridge table should have provenance columns."""
+        from jobforge.pipeline.config import PipelineConfig
+
+        df = pl.read_parquet(PipelineConfig().gold_path() / "bridge_noc_og.parquet")
+        provenance_columns = ["_source_file", "_ingested_at", "_batch_id", "_layer"]
+        for col in provenance_columns:
+            assert col in df.columns, f"Missing provenance column: {col}"
+
+    def test_bridge_table_confidence_range(self):
+        """All confidence values should be in 0.0-1.0 range."""
+        from jobforge.pipeline.config import PipelineConfig
+
+        df = pl.read_parquet(PipelineConfig().gold_path() / "bridge_noc_og.parquet")
+        assert (df["confidence"] >= 0.0).all()
+        assert (df["confidence"] <= 1.0).all()
+
+    def test_bridge_table_all_source_attribution_algorithmic(self):
+        """All source attributions should start with algorithmic_."""
+        from jobforge.pipeline.config import PipelineConfig
+
+        df = pl.read_parquet(PipelineConfig().gold_path() / "bridge_noc_og.parquet")
+        assert df["source_attribution"].str.starts_with("algorithmic_").all()

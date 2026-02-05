@@ -1,0 +1,80 @@
+{
+  "table_name": "bridge_noc_og",
+  "domain": "concordance",
+  "description": "NOC to Occupational Group concordance - maps NOC codes to TBS OG groups with confidence scores. Many-to-many relationship: each NOC can map to multiple OGs (ranked by confidence) and each OG can receive mappings from multiple NOCs.",
+  "source": "Algorithmically derived from dim_noc and dim_og/dim_og_subgroup using rapidfuzz fuzzy matching. No official TBS concordance exists.",
+  "columns": {
+    "noc_code": {
+      "type": "VARCHAR",
+      "description": "NOC unit group code (5 digits)",
+      "foreign_key": "dim_noc.unit_group_id"
+    },
+    "og_code": {
+      "type": "VARCHAR",
+      "description": "Matched occupational group code (e.g., CT, PA, IT)",
+      "foreign_key": "dim_og.og_code"
+    },
+    "og_subgroup_code": {
+      "type": "VARCHAR",
+      "description": "Matched subgroup code if subgroup-level match (e.g., CT-FIN, PA-01), NULL for group-level match",
+      "foreign_key": "dim_og_subgroup.og_subgroup_code",
+      "nullable": true
+    },
+    "og_name": {
+      "type": "VARCHAR",
+      "description": "Name of matched OG group or subgroup"
+    },
+    "confidence": {
+      "type": "DOUBLE",
+      "description": "Confidence score: 1.0=exact match, 0.85=high similarity (>=0.90), 0.70=medium (>=0.80), 0.50=low (>=0.70)"
+    },
+    "similarity_score": {
+      "type": "DOUBLE",
+      "description": "Raw fuzzy similarity score from rapidfuzz (0.0-1.0)"
+    },
+    "source_attribution": {
+      "type": "VARCHAR",
+      "description": "How mapping was derived: algorithmic_rapidfuzz_exact, _high, _medium, _low, or _best_guess"
+    },
+    "rationale": {
+      "type": "VARCHAR",
+      "description": "Human-readable explanation of why this mapping was made"
+    },
+    "matched_at": {
+      "type": "TIMESTAMP",
+      "description": "When mapping was computed (UTC)"
+    }
+  },
+  "relationships": [
+    {
+      "table": "dim_noc",
+      "join": "bridge_noc_og.noc_code = dim_noc.unit_group_id",
+      "type": "many-to-one",
+      "description": "Each bridge row references one NOC code"
+    },
+    {
+      "table": "dim_og",
+      "join": "bridge_noc_og.og_code = dim_og.og_code",
+      "type": "many-to-one",
+      "description": "Each bridge row references one OG group"
+    },
+    {
+      "table": "dim_og_subgroup",
+      "join": "bridge_noc_og.og_subgroup_code = dim_og_subgroup.og_subgroup_code",
+      "type": "many-to-one",
+      "description": "Each bridge row may reference one OG subgroup (if subgroup-level match)"
+    }
+  ],
+  "usage_hints": [
+    "Use for JD Builder OG classification - look up NOC and get ranked OG suggestions",
+    "Filter by confidence >= 0.70 for reliable mappings",
+    "Check source_attribution for audit trail (algorithmic_* vs future published sources)",
+    "Each NOC may have multiple OG matches (ranked by confidence, top 5 per NOC)",
+    "Use rationale field for explanations in UI tooltips"
+  ],
+  "provenance": {
+    "algorithm": "rapidfuzz fuzzy matching with multiple strategies (ratio, token_sort_ratio, WRatio)",
+    "inputs": ["dim_noc.parquet", "dim_og.parquet", "dim_og_subgroup.parquet"],
+    "refresh_frequency": "on-demand (rebuild when dimension tables change)"
+  }
+}
