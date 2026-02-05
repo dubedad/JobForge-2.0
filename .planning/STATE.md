@@ -13,15 +13,15 @@ See: .planning/PROJECT.md (updated 2026-01-20)
 
 **Milestone:** v3.0 Data Layer Expansion
 **Phase:** 15-caf-core (CAF Core Tables) - IN PROGRESS
-**Plan:** 1 of 4 complete (Wave 1)
+**Plan:** 2 of 4 complete (Wave 2)
 **Status:** In progress
-**Last activity:** 2026-02-05 - Completed 15-01-PLAN.md (CAF Scraper Module)
+**Last activity:** 2026-02-05 - Completed 15-02-PLAN.md (CAF Career Detail Scraping)
 
 ```
 v1.0 [####################] 100% SHIPPED 2026-01-19
 v2.0 [####################] 100% SHIPPED 2026-01-20
 v2.1 [####################] 100% SHIPPED 2026-01-21
-v3.0 [######              ]  30% IN PROGRESS (Phase 15 started)
+v3.0 [########            ]  40% IN PROGRESS (Phase 15 Plan 02 complete)
 ```
 
 ## Performance Metrics
@@ -160,6 +160,13 @@ All v1.0 and v2.0 decisions archived in:
 | Pending content hash for listings | Full hashes require page fetches; sitemap approach is lightweight | content_hash field present with "pending" value |
 | Follow TBS scraper pattern | Proven pattern with provenance, rate limiting, retry logic | CAFScraper mirrors TBSScraper structure |
 
+**v3.0 Phase 15-02 Decisions:**
+| Decision | Rationale | Outcome |
+|----------|-----------|---------|
+| Bilingual content in separate columns | Per CONTEXT.md, store EN/FR in separate columns rather than separate rows | All 88 occupations have bilingual content in same record |
+| Job family inference from title patterns | forces.ca sitemap from 2019 doesn't expose job family metadata; infer from career titles | 11 job families inferred (medical-health, engineering-technical, etc.) |
+| FR URL extraction from locale-switcher | EN and FR career IDs differ (pilot vs pilote); extract FR URL from EN page HTML | 100% bilingual coverage by following locale-switcher links |
+
 ### Technical Discoveries
 
 From v2.1 research:
@@ -207,15 +214,14 @@ None.
 ### Last Session
 
 **Date:** 2026-02-05
-**Activity:** Executed 15-01-PLAN.md (CAF Scraper Module)
-**Outcome:** Created CAF external module with models, scraper, parser; scraped 88 EN / 90 FR career listings; 36 tests
+**Activity:** Executed 15-02-PLAN.md (CAF Career Detail Scraping)
+**Outcome:** Created CAFLinkFetcher; 88 bilingual occupations with full content; 11 job families inferred; 24 tests
 
 ### Next Session Priorities
 
-1. **Execute 15-02-PLAN.md** - CAF Career Detail Scraping
-2. **Execute 15-03-PLAN.md** - CAF Gold Tables (dim_caf_occupation, dim_caf_job_family)
-3. **Execute 15-04-PLAN.md** - CAF Bridge Tables (NOC, Job Architecture)
-4. Execute Phase 16 (Extended Metadata)
+1. **Execute 15-03-PLAN.md** - CAF Gold Tables (dim_caf_occupation, dim_caf_job_family)
+2. **Execute 15-04-PLAN.md** - CAF Bridge Tables (NOC, Job Architecture)
+3. Execute Phase 16 (Extended Metadata)
 
 ### Pending Milestone Proposal
 
@@ -303,7 +309,15 @@ When resuming this project:
 - **New:** tests/external/caf/test_caf_scraper.py - 36 tests for CAF scraper
 - **761 tests passing** (725 + 36 from 15-01)
 
+- **New:** src/jobforge/external/caf/link_fetcher.py - Career detail fetcher with bilingual merge
+- **New:** data/caf/occupations.json - 88 bilingual occupations with full content and provenance
+- **New:** data/caf/job_families.json - 11 inferred job families
+- **New:** tests/external/test_caf_link_fetcher.py - 24 tests for link fetcher
+- **New:** CAFLinkFetcher class following TBS link_fetcher pattern
+- **New:** Job family inference from career title patterns
+- **785 tests passing** (761 + 24 from 15-02)
+
 ---
 *State updated: 2026-02-05*
-*Session count: 46*
-*v3.0 Phase 15 Plan 01 COMPLETE - 2026-02-05*
+*Session count: 47*
+*v3.0 Phase 15 Plan 02 COMPLETE - 2026-02-05*
