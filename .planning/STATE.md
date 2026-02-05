@@ -13,15 +13,15 @@ See: .planning/PROJECT.md (updated 2026-01-20)
 
 **Milestone:** v3.0 Data Layer Expansion
 **Phase:** 15-caf-core (CAF Core Tables) - IN PROGRESS
-**Plan:** 2 of 4 complete (Wave 2)
+**Plan:** 3 of 4 complete (Wave 3)
 **Status:** In progress
-**Last activity:** 2026-02-05 - Completed 15-02-PLAN.md (CAF Career Detail Scraping)
+**Last activity:** 2026-02-05 - Completed 15-03-PLAN.md (CAF Gold Tables)
 
 ```
 v1.0 [####################] 100% SHIPPED 2026-01-19
 v2.0 [####################] 100% SHIPPED 2026-01-20
 v2.1 [####################] 100% SHIPPED 2026-01-21
-v3.0 [########            ]  40% IN PROGRESS (Phase 15 Plan 02 complete)
+v3.0 [#########           ]  45% IN PROGRESS (Phase 15 Plan 03 complete)
 ```
 
 ## Performance Metrics
@@ -167,6 +167,13 @@ All v1.0 and v2.0 decisions archived in:
 | Job family inference from title patterns | forces.ca sitemap from 2019 doesn't expose job family metadata; infer from career titles | 11 job families inferred (medical-health, engineering-technical, etc.) |
 | FR URL extraction from locale-switcher | EN and FR career IDs differ (pilot vs pilote); extract FR URL from EN page HTML | 100% bilingual coverage by following locale-switcher links |
 
+**v3.0 Phase 15-03 Decisions:**
+| Decision | Rationale | Outcome |
+|----------|-----------|---------|
+| JSON array columns for multi-valued fields | Polars handles nested JSON well; avoids separate bridge tables | environment, employment_type, related_civilian_occupations as JSON strings |
+| Job family inference in ingestion module | Link fetcher already provides job_families.json; ingestion validates FK | career_id pattern matching mirrors link_fetcher logic |
+| Gold files gitignored | Generated data should be regenerated, not versioned | Parquet files excluded; regenerate with ingest_dim_* functions |
+
 ### Technical Discoveries
 
 From v2.1 research:
@@ -214,14 +221,14 @@ None.
 ### Last Session
 
 **Date:** 2026-02-05
-**Activity:** Executed 15-02-PLAN.md (CAF Career Detail Scraping)
-**Outcome:** Created CAFLinkFetcher; 88 bilingual occupations with full content; 11 job families inferred; 24 tests
+**Activity:** Executed 15-03-PLAN.md (CAF Gold Tables)
+**Outcome:** Created dim_caf_occupation (88 rows) and dim_caf_job_family (11 rows) with bilingual content and provenance; 21 tests
 
 ### Next Session Priorities
 
-1. **Execute 15-03-PLAN.md** - CAF Gold Tables (dim_caf_occupation, dim_caf_job_family)
-2. **Execute 15-04-PLAN.md** - CAF Bridge Tables (NOC, Job Architecture)
-3. Execute Phase 16 (Extended Metadata)
+1. **Execute 15-04-PLAN.md** - CAF Bridge Tables (NOC, Job Architecture)
+2. Execute Phase 16 (Extended Metadata)
+3. Complete v3.0 milestone
 
 ### Pending Milestone Proposal
 
@@ -317,7 +324,16 @@ When resuming this project:
 - **New:** Job family inference from career title patterns
 - **785 tests passing** (761 + 24 from 15-02)
 
+- **New:** src/jobforge/ingestion/caf.py - Medallion pipeline for CAF gold tables
+- **New:** data/gold/dim_caf_occupation.parquet - 88 CAF occupations with bilingual content (gitignored)
+- **New:** data/gold/dim_caf_job_family.parquet - 11 job families (gitignored)
+- **New:** data/catalog/tables/dim_caf_occupation.json - Catalog metadata with FK relationships
+- **New:** data/catalog/tables/dim_caf_job_family.json - Catalog metadata for job families
+- **New:** tests/ingestion/test_caf.py - 21 tests for CAF ingestion and FK validation
+- **New:** ingest_dim_caf_occupation() and ingest_dim_caf_job_family() functions
+- **806 tests passing** (785 + 21 from 15-03)
+
 ---
 *State updated: 2026-02-05*
-*Session count: 47*
-*v3.0 Phase 15 Plan 02 COMPLETE - 2026-02-05*
+*Session count: 48*
+*v3.0 Phase 15 Plan 03 COMPLETE - 2026-02-05*
