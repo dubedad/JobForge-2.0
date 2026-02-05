@@ -54,7 +54,14 @@ See archived roadmap: `.planning/milestones/v2.1-ROADMAP.md`
   3. User can look up which occupational group(s) a NOC code maps to
   4. All tables have full provenance (source URL, scrape timestamp)
   5. JD Builder Lite can consume `bridge_noc_og` for deterministic classification
-**Plans**: TBD (created during /gsd:plan-phase 14)
+**Plans:** 6 plans
+Plans:
+- [ ] 14-01-PLAN.md - Extend TBS scraper for subgroups and definitions
+- [ ] 14-02-PLAN.md - Add pdfplumber and create PDF extractor
+- [ ] 14-03-PLAN.md - Create dim_og and dim_og_subgroup pipelines
+- [ ] 14-04-PLAN.md - Create pay rates fact table
+- [ ] 14-05-PLAN.md - Create qualification standards table
+- [ ] 14-06-PLAN.md - Build NOC-OG concordance bridge (TDD)
 
 ### Phase 15: CAF Core
 **Goal**: CAF Careers data scraped and loaded into gold tables with bridges to NOC and Job Architecture
@@ -91,10 +98,11 @@ Phases execute in numeric order: 14 -> 14.1 (if any) -> 15 -> 15.1 (if any) -> 1
 
 | Phase | Milestone | Plans Complete | Status | Completed |
 |-------|-----------|----------------|--------|-----------|
-| 14. OG Core | v3.0 | 0/? | Pending | — |
+| 14. OG Core | v3.0 | 0/6 | Planned | — |
 | 15. CAF Core | v3.0 | 0/? | Pending | — |
 | 16. Extended Metadata | v3.0 | 0/? | Pending | — |
 
 ---
 *Roadmap created: 2026-01-20*
 *v3.0 phases added: 2026-02-04*
+*Phase 14 planned: 2026-02-04*
