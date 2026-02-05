@@ -94,9 +94,14 @@ Plans:
   4. User can query CAF training requirements per occupation
   5. All new tables have DMBOK practice provenance
   6. Data catalogue updated with all new table metadata
-**Plans**: TBD (created during /gsd:plan-phase 16)
-
-**Note:** Phase 16 may be deferred to v3.1 if v3.0 timeline requires it.
+**Plans:** 6 plans
+Plans:
+- [ ] 16-01-PLAN.md - Enhanced qualification standards parser with CONTEXT.md structured fields
+- [ ] 16-02-PLAN.md - Job evaluation standards scraper and gold table
+- [ ] 16-03-PLAN.md - Represented pay rates, collective agreements, extended fact_og_pay_rates
+- [ ] 16-04-PLAN.md - Allowances scraper and fact_og_allowances table
+- [ ] 16-05-PLAN.md - CAF training extraction and fact_caf_training table
+- [ ] 16-06-PLAN.md - DMBOK tagging and governance metadata enrichment
 
 ## Progress
 
@@ -107,7 +112,7 @@ Phases execute in numeric order: 14 -> 14.1 (if any) -> 15 -> 15.1 (if any) -> 1
 |-------|-----------|----------------|--------|-----------|
 | 14. OG Core | v3.0 | 6/6 | ✓ Complete | 2026-02-05 |
 | 15. CAF Core | v3.0 | 0/6 | Planned | — |
-| 16. Extended Metadata | v3.0 | 0/? | Pending | — |
+| 16. Extended Metadata | v3.0 | 0/6 | Planned | — |
 
 ---
 *Roadmap created: 2026-01-20*
@@ -115,3 +120,4 @@ Phases execute in numeric order: 14 -> 14.1 (if any) -> 15 -> 15.1 (if any) -> 1
 *Phase 14 planned: 2026-02-04*
 *Phase 15 planned: 2026-02-05*
 *Phase 14 complete: 2026-02-05*
+*Phase 16 planned: 2026-02-05*
