@@ -1,0 +1,1329 @@
+{
+  "language": "en",
+  "scraped_at": "2026-02-05T12:33:28.755025Z",
+  "source": "sitemap",
+  "careers": [
+    {
+      "career_id": "aerospace-engineering-officer",
+      "title": "Aerospace Engineering Officer",
+      "url": "https://www.forces.ca/en/career/aerospace-engineering-officer/",
+      "environment": [],
+      "commission_status": "unknown",
+      "employment_type": [],
+      "provenance": {
+        "source_url": "https://www.forces.ca/en/career/aerospace-engineering-officer/",
+        "scraped_at": "2026-02-05T12:33:28.755025Z",
+        "content_hash": "pending",
+        "scraper_version": "CAFScraper-1.0.0",
+        "extraction_method": "sitemap"
+      }
+    },
+    {
+      "career_id": "biomedical-electronics-technologist",
+      "title": "Biomedical Electronics Technologist",
+      "url": "https://www.forces.ca/en/career/biomedical-electronics-technologist/",
+      "environment": [],
+      "commission_status": "unknown",
+      "employment_type": [],
+      "provenance": {
+        "source_url": "https://www.forces.ca/en/career/biomedical-electronics-technologist/",
+        "scraped_at": "2026-02-05T12:33:28.755025Z",
+        "content_hash": "pending",
+        "scraper_version": "CAFScraper-1.0.0",
+        "extraction_method": "sitemap"
+      }
+    },
+    {
+      "career_id": "intelligence-officer",
+      "title": "Intelligence Officer",
+      "url": "https://www.forces.ca/en/career/intelligence-officer/",
+      "environment": [],
+      "commission_status": "unknown",
+      "employment_type": [],
+      "provenance": {
+        "source_url": "https://www.forces.ca/en/career/intelligence-officer/",
+        "scraped_at": "2026-02-05T12:33:28.755025Z",
+        "content_hash": "pending",
+        "scraper_version": "CAFScraper-1.0.0",
+        "extraction_method": "sitemap"
+      }
+    },
+    {
+      "career_id": "logistics-officer",
+      "title": "Logistics Officer",
+      "url": "https://www.forces.ca/en/career/logistics-officer/",
+      "environment": [],
+      "commission_status": "unknown",
+      "employment_type": [],
+      "provenance": {
+        "source_url": "https://www.forces.ca/en/career/logistics-officer/",
+        "scraped_at": "2026-02-05T12:33:28.755025Z",
+        "content_hash": "pending",
+        "scraper_version": "CAFScraper-1.0.0",
+        "extraction_method": "sitemap"
+      }
+    },
+    {
+      "career_id": "avionics-systems-technician",
+      "title": "Avionics Systems Technician",
+      "url": "https://www.forces.ca/en/career/avionics-systems-technician/",
+      "environment": [],
+      "commission_status": "unknown",
+      "employment_type": [],
+      "provenance": {
+        "source_url": "https://www.forces.ca/en/career/avionics-systems-technician/",
+        "scraped_at": "2026-02-05T12:33:28.755025Z",
+        "content_hash": "pending",
+        "scraper_version": "CAFScraper-1.0.0",
+        "extraction_method": "sitemap"
+      }
+    },
+    {
+      "career_id": "steward",
+      "title": "Steward",
+      "url": "https://www.forces.ca/en/career/steward/",
+      "environment": [],
+      "commission_status": "unknown",
+      "employment_type": [],
+      "provenance": {
+        "source_url": "https://www.forces.ca/en/career/steward/",
+        "scraped_at": "2026-02-05T12:33:28.755025Z",
+        "content_hash": "pending",
+        "scraper_version": "CAFScraper-1.0.0",
+        "extraction_method": "sitemap"
+      }
+    },
+    {
+      "career_id": "naval-warfare-officer",
+      "title": "Naval Warfare Officer",
+      "url": "https://www.forces.ca/en/career/naval-warfare-officer/",
+      "environment": [],
+      "commission_status": "unknown",
+      "employment_type": [],
+      "provenance": {
+        "source_url": "https://www.forces.ca/en/career/naval-warfare-officer/",
+        "scraped_at": "2026-02-05T12:33:28.755025Z",
+        "content_hash": "pending",
+        "scraper_version": "CAFScraper-1.0.0",
+        "extraction_method": "sitemap"
+      }
+    },
+    {
+      "career_id": "armoured-soldier",
+      "title": "Armoured Soldier",
+      "url": "https://www.forces.ca/en/career/armoured-soldier/",
+      "environment": [],
+      "commission_status": "unknown",
+      "employment_type": [],
+      "provenance": {
+        "source_url": "https://www.forces.ca/en/career/armoured-soldier/",
+        "scraped_at": "2026-02-05T12:33:28.755025Z",
+        "content_hash": "pending",
+        "scraper_version": "CAFScraper-1.0.0",
+        "extraction_method": "sitemap"
+      }
+    },
+    {
+      "career_id": "physiotherapy-officer",
+      "title": "Physiotherapy Officer",
+      "url": "https://www.forces.ca/en/career/physiotherapy-officer/",
+      "environment": [],
+      "commission_status": "unknown",
+      "employment_type": [],
+      "provenance": {
+        "source_url": "https://www.forces.ca/en/career/physiotherapy-officer/",
+        "scraped_at": "2026-02-05T12:33:28.755025Z",
+        "content_hash": "pending",
+        "scraper_version": "CAFScraper-1.0.0",
+        "extraction_method": "sitemap"
+      }
+    },
+    {
+      "career_id": "musician",
+      "title": "Musician",
+      "url": "https://www.forces.ca/en/career/musician/",
+      "environment": [],
+      "commission_status": "unknown",
+      "employment_type": [],
+      "provenance": {
+        "source_url": "https://www.forces.ca/en/career/musician/",
+        "scraped_at": "2026-02-05T12:33:28.755025Z",
+        "content_hash": "pending",
+        "scraper_version": "CAFScraper-1.0.0",
+        "extraction_method": "sitemap"
+      }
+    },
+    {
+      "career_id": "artillery-officer",
+      "title": "Artillery Officer",
+      "url": "https://www.forces.ca/en/career/artillery-officer/",
+      "environment": [],
+      "commission_status": "unknown",
+      "employment_type": [],
+      "provenance": {
+        "source_url": "https://www.forces.ca/en/career/artillery-officer/",
+        "scraped_at": "2026-02-05T12:33:28.755025Z",
+        "content_hash": "pending",
+        "scraper_version": "CAFScraper-1.0.0",
+        "extraction_method": "sitemap"
+      }
+    },
+    {
+      "career_id": "vehicle-technician",
+      "title": "Vehicle Technician",
+      "url": "https://www.forces.ca/en/career/vehicle-technician/",
+      "environment": [],
+      "commission_status": "unknown",
+      "employment_type": [],
+      "provenance": {
+        "source_url": "https://www.forces.ca/en/career/vehicle-technician/",
+        "scraped_at": "2026-02-05T12:33:28.755025Z",
+        "content_hash": "pending",
+        "scraper_version": "CAFScraper-1.0.0",
+        "extraction_method": "sitemap"
+      }
+    },
+    {
+      "career_id": "aerospace-telecommunication-and-information-systems-technician",
+      "title": "Aerospace Telecommunication And Information Systems Technician",
+      "url": "https://www.forces.ca/en/career/aerospace-telecommunication-and-information-systems-technician/",
+      "environment": [],
+      "commission_status": "unknown",
+      "employment_type": [],
+      "provenance": {
+        "source_url": "https://www.forces.ca/en/career/aerospace-telecommunication-and-information-systems-technician/",
+        "scraped_at": "2026-02-05T12:33:28.755025Z",
+        "content_hash": "pending",
+        "scraper_version": "CAFScraper-1.0.0",
+        "extraction_method": "sitemap"
+      }
+    },
+    {
+      "career_id": "military-police",
+      "title": "Military Police",
+      "url": "https://www.forces.ca/en/career/military-police/",
+      "environment": [],
+      "commission_status": "unknown",
+      "employment_type": [],
+      "provenance": {
+        "source_url": "https://www.forces.ca/en/career/military-police/",
+        "scraped_at": "2026-02-05T12:33:28.755025Z",
+        "content_hash": "pending",
+        "scraper_version": "CAFScraper-1.0.0",
+        "extraction_method": "sitemap"
+      }
+    },
+    {
+      "career_id": "supply-technician",
+      "title": "Supply Technician",
+      "url": "https://www.forces.ca/en/career/supply-technician/",
+      "environment": [],
+      "commission_status": "unknown",
+      "employment_type": [],
+      "provenance": {
+        "source_url": "https://www.forces.ca/en/career/supply-technician/",
+        "scraped_at": "2026-02-05T12:33:28.755025Z",
+        "content_hash": "pending",
+        "scraper_version": "CAFScraper-1.0.0",
+        "extraction_method": "sitemap"
+      }
+    },
+    {
+      "career_id": "naval-communicator",
+      "title": "Naval Communicator",
+      "url": "https://www.forces.ca/en/career/naval-communicator/",
+      "environment": [],
+      "commission_status": "unknown",
+      "employment_type": [],
+      "provenance": {
+        "source_url": "https://www.forces.ca/en/career/naval-communicator/",
+        "scraped_at": "2026-02-05T12:33:28.755025Z",
+        "content_hash": "pending",
+        "scraper_version": "CAFScraper-1.0.0",
+        "extraction_method": "sitemap"
+      }
+    },
+    {
+      "career_id": "airborne-electronic-sensor-operator",
+      "title": "Airborne Electronic Sensor Operator",
+      "url": "https://www.forces.ca/en/career/airborne-electronic-sensor-operator/",
+      "environment": [],
+      "commission_status": "unknown",
+      "employment_type": [],
+      "provenance": {
+        "source_url": "https://www.forces.ca/en/career/airborne-electronic-sensor-operator/",
+        "scraped_at": "2026-02-05T12:33:28.755025Z",
+        "content_hash": "pending",
+        "scraper_version": "CAFScraper-1.0.0",
+        "extraction_method": "sitemap"
+      }
+    },
+    {
+      "career_id": "electrical-generating-systems-technician",
+      "title": "Electrical Generating Systems Technician",
+      "url": "https://www.forces.ca/en/career/electrical-generating-systems-technician/",
+      "environment": [],
+      "commission_status": "unknown",
+      "employment_type": [],
+      "provenance": {
+        "source_url": "https://www.forces.ca/en/career/electrical-generating-systems-technician/",
+        "scraped_at": "2026-02-05T12:33:28.755025Z",
+        "content_hash": "pending",
+        "scraper_version": "CAFScraper-1.0.0",
+        "extraction_method": "sitemap"
+      }
+    },
+    {
+      "career_id": "meteorological-technician",
+      "title": "Meteorological Technician",
+      "url": "https://www.forces.ca/en/career/meteorological-technician/",
+      "environment": [],
+      "commission_status": "unknown",
+      "employment_type": [],
+      "provenance": {
+        "source_url": "https://www.forces.ca/en/career/meteorological-technician/",
+        "scraped_at": "2026-02-05T12:33:28.755025Z",
+        "content_hash": "pending",
+        "scraper_version": "CAFScraper-1.0.0",
+        "extraction_method": "sitemap"
+      }
+    },
+    {
+      "career_id": "postal-clerk",
+      "title": "Postal Clerk",
+      "url": "https://www.forces.ca/en/career/postal-clerk/",
+      "environment": [],
+      "commission_status": "unknown",
+      "employment_type": [],
+      "provenance": {
+        "source_url": "https://www.forces.ca/en/career/postal-clerk/",
+        "scraped_at": "2026-02-05T12:33:28.755025Z",
+        "content_hash": "pending",
+        "scraper_version": "CAFScraper-1.0.0",
+        "extraction_method": "sitemap"
+      }
+    },
+    {
+      "career_id": "military-police-officer",
+      "title": "Military Police Officer",
+      "url": "https://www.forces.ca/en/career/military-police-officer/",
+      "environment": [],
+      "commission_status": "unknown",
+      "employment_type": [],
+      "provenance": {
+        "source_url": "https://www.forces.ca/en/career/military-police-officer/",
+        "scraped_at": "2026-02-05T12:33:28.755025Z",
+        "content_hash": "pending",
+        "scraper_version": "CAFScraper-1.0.0",
+        "extraction_method": "sitemap"
+      }
+    },
+    {
+      "career_id": "personnel-selection-officer",
+      "title": "Personnel Selection Officer",
+      "url": "https://www.forces.ca/en/career/personnel-selection-officer/",
+      "environment": [],
+      "commission_status": "unknown",
+      "employment_type": [],
+      "provenance": {
+        "source_url": "https://www.forces.ca/en/career/personnel-selection-officer/",
+        "scraped_at": "2026-02-05T12:33:28.755025Z",
+        "content_hash": "pending",
+        "scraper_version": "CAFScraper-1.0.0",
+        "extraction_method": "sitemap"
+      }
+    },
+    {
+      "career_id": "dental-technician",
+      "title": "Dental Technician",
+      "url": "https://www.forces.ca/en/career/dental-technician/",
+      "environment": [],
+      "commission_status": "unknown",
+      "employment_type": [],
+      "provenance": {
+        "source_url": "https://www.forces.ca/en/career/dental-technician/",
+        "scraped_at": "2026-02-05T12:33:28.755025Z",
+        "content_hash": "pending",
+        "scraper_version": "CAFScraper-1.0.0",
+        "extraction_method": "sitemap"
+      }
+    },
+    {
+      "career_id": "water-fuels-and-environmental-technician",
+      "title": "Water Fuels And Environmental Technician",
+      "url": "https://www.forces.ca/en/career/water-fuels-and-environmental-technician/",
+      "environment": [],
+      "commission_status": "unknown",
+      "employment_type": [],
+      "provenance": {
+        "source_url": "https://www.forces.ca/en/career/water-fuels-and-environmental-technician/",
+        "scraped_at": "2026-02-05T12:33:28.755025Z",
+        "content_hash": "pending",
+        "scraper_version": "CAFScraper-1.0.0",
+        "extraction_method": "sitemap"
+      }
+    },
+    {
+      "career_id": "traffic-technician",
+      "title": "Traffic Technician",
+      "url": "https://www.forces.ca/en/career/traffic-technician/",
+      "environment": [],
+      "commission_status": "unknown",
+      "employment_type": [],
+      "provenance": {
+        "source_url": "https://www.forces.ca/en/career/traffic-technician/",
+        "scraped_at": "2026-02-05T12:33:28.755025Z",
+        "content_hash": "pending",
+        "scraper_version": "CAFScraper-1.0.0",
+        "extraction_method": "sitemap"
+      }
+    },
+    {
+      "career_id": "pilot",
+      "title": "Pilot",
+      "url": "https://www.forces.ca/en/career/pilot/",
+      "environment": [],
+      "commission_status": "unknown",
+      "employment_type": [],
+      "provenance": {
+        "source_url": "https://www.forces.ca/en/career/pilot/",
+        "scraped_at": "2026-02-05T12:33:28.755025Z",
+        "content_hash": "pending",
+        "scraper_version": "CAFScraper-1.0.0",
+        "extraction_method": "sitemap"
+      }
+    },
+    {
+      "career_id": "combat-engineer",
+      "title": "Combat Engineer",
+      "url": "https://www.forces.ca/en/career/combat-engineer/",
+      "environment": [],
+      "commission_status": "unknown",
+      "employment_type": [],
+      "provenance": {
+        "source_url": "https://www.forces.ca/en/career/combat-engineer/",
+        "scraped_at": "2026-02-05T12:33:28.755025Z",
+        "content_hash": "pending",
+        "scraper_version": "CAFScraper-1.0.0",
+        "extraction_method": "sitemap"
+      }
+    },
+    {
+      "career_id": "cook",
+      "title": "Cook",
+      "url": "https://www.forces.ca/en/career/cook/",
+      "environment": [],
+      "commission_status": "unknown",
+      "employment_type": [],
+      "provenance": {
+        "source_url": "https://www.forces.ca/en/career/cook/",
+        "scraped_at": "2026-02-05T12:33:28.755025Z",
+        "content_hash": "pending",
+        "scraper_version": "CAFScraper-1.0.0",
+        "extraction_method": "sitemap"
+      }
+    },
+    {
+      "career_id": "firefighter",
+      "title": "Firefighter",
+      "url": "https://www.forces.ca/en/career/firefighter/",
+      "environment": [],
+      "commission_status": "unknown",
+      "employment_type": [],
+      "provenance": {
+        "source_url": "https://www.forces.ca/en/career/firefighter/",
+        "scraped_at": "2026-02-05T12:33:28.755025Z",
+        "content_hash": "pending",
+        "scraper_version": "CAFScraper-1.0.0",
+        "extraction_method": "sitemap"
+      }
+    },
+    {
+      "career_id": "materials-technician",
+      "title": "Materials Technician",
+      "url": "https://www.forces.ca/en/career/materials-technician/",
+      "environment": [],
+      "commission_status": "unknown",
+      "employment_type": [],
+      "provenance": {
+        "source_url": "https://www.forces.ca/en/career/materials-technician/",
+        "scraped_at": "2026-02-05T12:33:28.755025Z",
+        "content_hash": "pending",
+        "scraper_version": "CAFScraper-1.0.0",
+        "extraction_method": "sitemap"
+      }
+    },
+    {
+      "career_id": "operating-room-technician",
+      "title": "Operating Room Technician",
+      "url": "https://www.forces.ca/en/career/operating-room-technician/",
+      "environment": [],
+      "commission_status": "unknown",
+      "employment_type": [],
+      "provenance": {
+        "source_url": "https://www.forces.ca/en/career/operating-room-technician/",
+        "scraped_at": "2026-02-05T12:33:28.755025Z",
+        "content_hash": "pending",
+        "scraper_version": "CAFScraper-1.0.0",
+        "extraction_method": "sitemap"
+      }
+    },
+    {
+      "career_id": "armour-officer",
+      "title": "Armour Officer",
+      "url": "https://www.forces.ca/en/career/armour-officer/",
+      "environment": [],
+      "commission_status": "unknown",
+      "employment_type": [],
+      "provenance": {
+        "source_url": "https://www.forces.ca/en/career/armour-officer/",
+        "scraped_at": "2026-02-05T12:33:28.755025Z",
+        "content_hash": "pending",
+        "scraper_version": "CAFScraper-1.0.0",
+        "extraction_method": "sitemap"
+      }
+    },
+    {
+      "career_id": "aircraft-structures-technician",
+      "title": "Aircraft Structures Technician",
+      "url": "https://www.forces.ca/en/career/aircraft-structures-technician/",
+      "environment": [],
+      "commission_status": "unknown",
+      "employment_type": [],
+      "provenance": {
+        "source_url": "https://www.forces.ca/en/career/aircraft-structures-technician/",
+        "scraped_at": "2026-02-05T12:33:28.755025Z",
+        "content_hash": "pending",
+        "scraper_version": "CAFScraper-1.0.0",
+        "extraction_method": "sitemap"
+      }
+    },
+    {
+      "career_id": "communication-electronics-engineering-officer",
+      "title": "Communication Electronics Engineering Officer",
+      "url": "https://www.forces.ca/en/career/communication-electronics-engineering-officer/",
+      "environment": [],
+      "commission_status": "unknown",
+      "employment_type": [],
+      "provenance": {
+        "source_url": "https://www.forces.ca/en/career/communication-electronics-engineering-officer/",
+        "scraped_at": "2026-02-05T12:33:28.755025Z",
+        "content_hash": "pending",
+        "scraper_version": "CAFScraper-1.0.0",
+        "extraction_method": "sitemap"
+      }
+    },
+    {
+      "career_id": "air-weapons-systems-technician",
+      "title": "Air Weapons Systems Technician",
+      "url": "https://www.forces.ca/en/career/air-weapons-systems-technician/",
+      "environment": [],
+      "commission_status": "unknown",
+      "employment_type": [],
+      "provenance": {
+        "source_url": "https://www.forces.ca/en/career/air-weapons-systems-technician/",
+        "scraped_at": "2026-02-05T12:33:28.755025Z",
+        "content_hash": "pending",
+        "scraper_version": "CAFScraper-1.0.0",
+        "extraction_method": "sitemap"
+      }
+    },
+    {
+      "career_id": "chaplain",
+      "title": "Chaplain",
+      "url": "https://www.forces.ca/en/career/chaplain/",
+      "environment": [],
+      "commission_status": "unknown",
+      "employment_type": [],
+      "provenance": {
+        "source_url": "https://www.forces.ca/en/career/chaplain/",
+        "scraped_at": "2026-02-05T12:33:28.755025Z",
+        "content_hash": "pending",
+        "scraper_version": "CAFScraper-1.0.0",
+        "extraction_method": "sitemap"
+      }
+    },
+    {
+      "career_id": "medical-radiation-technologist",
+      "title": "Medical Radiation Technologist",
+      "url": "https://www.forces.ca/en/career/medical-radiation-technologist/",
+      "environment": [],
+      "commission_status": "unknown",
+      "employment_type": [],
+      "provenance": {
+        "source_url": "https://www.forces.ca/en/career/medical-radiation-technologist/",
+        "scraped_at": "2026-02-05T12:33:28.755025Z",
+        "content_hash": "pending",
+        "scraper_version": "CAFScraper-1.0.0",
+        "extraction_method": "sitemap"
+      }
+    },
+    {
+      "career_id": "public-affairs-officer",
+      "title": "Public Affairs Officer",
+      "url": "https://www.forces.ca/en/career/public-affairs-officer/",
+      "environment": [],
+      "commission_status": "unknown",
+      "employment_type": [],
+      "provenance": {
+        "source_url": "https://www.forces.ca/en/career/public-affairs-officer/",
+        "scraped_at": "2026-02-05T12:33:28.755025Z",
+        "content_hash": "pending",
+        "scraper_version": "CAFScraper-1.0.0",
+        "extraction_method": "sitemap"
+      }
+    },
+    {
+      "career_id": "geomatics-technician",
+      "title": "Geomatics Technician",
+      "url": "https://www.forces.ca/en/career/geomatics-technician/",
+      "environment": [],
+      "commission_status": "unknown",
+      "employment_type": [],
+      "provenance": {
+        "source_url": "https://www.forces.ca/en/career/geomatics-technician/",
+        "scraped_at": "2026-02-05T12:33:28.755025Z",
+        "content_hash": "pending",
+        "scraper_version": "CAFScraper-1.0.0",
+        "extraction_method": "sitemap"
+      }
+    },
+    {
+      "career_id": "air-combat-systems-officer",
+      "title": "Air Combat Systems Officer",
+      "url": "https://www.forces.ca/en/career/air-combat-systems-officer/",
+      "environment": [],
+      "commission_status": "unknown",
+      "employment_type": [],
+      "provenance": {
+        "source_url": "https://www.forces.ca/en/career/air-combat-systems-officer/",
+        "scraped_at": "2026-02-05T12:33:28.755025Z",
+        "content_hash": "pending",
+        "scraper_version": "CAFScraper-1.0.0",
+        "extraction_method": "sitemap"
+      }
+    },
+    {
+      "career_id": "army-communication-and-information-systems-specialist",
+      "title": "Army Communication And Information Systems Specialist",
+      "url": "https://www.forces.ca/en/career/army-communication-and-information-systems-specialist/",
+      "environment": [],
+      "commission_status": "unknown",
+      "employment_type": [],
+      "provenance": {
+        "source_url": "https://www.forces.ca/en/career/army-communication-and-information-systems-specialist/",
+        "scraped_at": "2026-02-05T12:33:28.755025Z",
+        "content_hash": "pending",
+        "scraper_version": "CAFScraper-1.0.0",
+        "extraction_method": "sitemap"
+      }
+    },
+    {
+      "career_id": "dental-officer",
+      "title": "Dental Officer",
+      "url": "https://www.forces.ca/en/career/dental-officer/",
+      "environment": [],
+      "commission_status": "unknown",
+      "employment_type": [],
+      "provenance": {
+        "source_url": "https://www.forces.ca/en/career/dental-officer/",
+        "scraped_at": "2026-02-05T12:33:28.755025Z",
+        "content_hash": "pending",
+        "scraper_version": "CAFScraper-1.0.0",
+        "extraction_method": "sitemap"
+      }
+    },
+    {
+      "career_id": "communicator-research-operator",
+      "title": "Communicator Research Operator",
+      "url": "https://www.forces.ca/en/career/communicator-research-operator/",
+      "environment": [],
+      "commission_status": "unknown",
+      "employment_type": [],
+      "provenance": {
+        "source_url": "https://www.forces.ca/en/career/communicator-research-operator/",
+        "scraped_at": "2026-02-05T12:33:28.755025Z",
+        "content_hash": "pending",
+        "scraper_version": "CAFScraper-1.0.0",
+        "extraction_method": "sitemap"
+      }
+    },
+    {
+      "career_id": "signals-officer",
+      "title": "Signals Officer",
+      "url": "https://www.forces.ca/en/career/signals-officer/",
+      "environment": [],
+      "commission_status": "unknown",
+      "employment_type": [],
+      "provenance": {
+        "source_url": "https://www.forces.ca/en/career/signals-officer/",
+        "scraped_at": "2026-02-05T12:33:28.755025Z",
+        "content_hash": "pending",
+        "scraper_version": "CAFScraper-1.0.0",
+        "extraction_method": "sitemap"
+      }
+    },
+    {
+      "career_id": "weapons-engineering-technician",
+      "title": "Weapons Engineering Technician",
+      "url": "https://www.forces.ca/en/career/weapons-engineering-technician/",
+      "environment": [],
+      "commission_status": "unknown",
+      "employment_type": [],
+      "provenance": {
+        "source_url": "https://www.forces.ca/en/career/weapons-engineering-technician/",
+        "scraped_at": "2026-02-05T12:33:28.755025Z",
+        "content_hash": "pending",
+        "scraper_version": "CAFScraper-1.0.0",
+        "extraction_method": "sitemap"
+      }
+    },
+    {
+      "career_id": "sonar-operator",
+      "title": "Sonar Operator",
+      "url": "https://www.forces.ca/en/career/sonar-operator/",
+      "environment": [],
+      "commission_status": "unknown",
+      "employment_type": [],
+      "provenance": {
+        "source_url": "https://www.forces.ca/en/career/sonar-operator/",
+        "scraped_at": "2026-02-05T12:33:28.755025Z",
+        "content_hash": "pending",
+        "scraper_version": "CAFScraper-1.0.0",
+        "extraction_method": "sitemap"
+      }
+    },
+    {
+      "career_id": "cyber-operator",
+      "title": "Cyber Operator",
+      "url": "https://www.forces.ca/en/career/cyber-operator/",
+      "environment": [],
+      "commission_status": "unknown",
+      "employment_type": [],
+      "provenance": {
+        "source_url": "https://www.forces.ca/en/career/cyber-operator/",
+        "scraped_at": "2026-02-05T12:33:28.755025Z",
+        "content_hash": "pending",
+        "scraper_version": "CAFScraper-1.0.0",
+        "extraction_method": "sitemap"
+      }
+    },
+    {
+      "career_id": "imagery-technician",
+      "title": "Imagery Technician",
+      "url": "https://www.forces.ca/en/career/imagery-technician/",
+      "environment": [],
+      "commission_status": "unknown",
+      "employment_type": [],
+      "provenance": {
+        "source_url": "https://www.forces.ca/en/career/imagery-technician/",
+        "scraped_at": "2026-02-05T12:33:28.755025Z",
+        "content_hash": "pending",
+        "scraper_version": "CAFScraper-1.0.0",
+        "extraction_method": "sitemap"
+      }
+    },
+    {
+      "career_id": "health-care-administration-officer",
+      "title": "Health Care Administration Officer",
+      "url": "https://www.forces.ca/en/career/health-care-administration-officer/",
+      "environment": [],
+      "commission_status": "unknown",
+      "employment_type": [],
+      "provenance": {
+        "source_url": "https://www.forces.ca/en/career/health-care-administration-officer/",
+        "scraped_at": "2026-02-05T12:33:28.755025Z",
+        "content_hash": "pending",
+        "scraper_version": "CAFScraper-1.0.0",
+        "extraction_method": "sitemap"
+      }
+    },
+    {
+      "career_id": "engineer-officer",
+      "title": "Engineer Officer",
+      "url": "https://www.forces.ca/en/career/engineer-officer/",
+      "environment": [],
+      "commission_status": "unknown",
+      "employment_type": [],
+      "provenance": {
+        "source_url": "https://www.forces.ca/en/career/engineer-officer/",
+        "scraped_at": "2026-02-05T12:33:28.755025Z",
+        "content_hash": "pending",
+        "scraper_version": "CAFScraper-1.0.0",
+        "extraction_method": "sitemap"
+      }
+    },
+    {
+      "career_id": "naval-electronic-sensor-operator",
+      "title": "Naval Electronic Sensor Operator",
+      "url": "https://www.forces.ca/en/career/naval-electronic-sensor-operator/",
+      "environment": [],
+      "commission_status": "unknown",
+      "employment_type": [],
+      "provenance": {
+        "source_url": "https://www.forces.ca/en/career/naval-electronic-sensor-operator/",
+        "scraped_at": "2026-02-05T12:33:28.755025Z",
+        "content_hash": "pending",
+        "scraper_version": "CAFScraper-1.0.0",
+        "extraction_method": "sitemap"
+      }
+    },
+    {
+      "career_id": "aviation-systems-technician",
+      "title": "Aviation Systems Technician",
+      "url": "https://www.forces.ca/en/career/aviation-systems-technician/",
+      "environment": [],
+      "commission_status": "unknown",
+      "employment_type": [],
+      "provenance": {
+        "source_url": "https://www.forces.ca/en/career/aviation-systems-technician/",
+        "scraped_at": "2026-02-05T12:33:28.755025Z",
+        "content_hash": "pending",
+        "scraper_version": "CAFScraper-1.0.0",
+        "extraction_method": "sitemap"
+      }
+    },
+    {
+      "career_id": "gunner",
+      "title": "Gunner",
+      "url": "https://www.forces.ca/en/career/gunner/",
+      "environment": [],
+      "commission_status": "unknown",
+      "employment_type": [],
+      "provenance": {
+        "source_url": "https://www.forces.ca/en/career/gunner/",
+        "scraped_at": "2026-02-05T12:33:28.755025Z",
+        "content_hash": "pending",
+        "scraper_version": "CAFScraper-1.0.0",
+        "extraction_method": "sitemap"
+      }
+    },
+    {
+      "career_id": "physician-assistant",
+      "title": "Physician Assistant",
+      "url": "https://www.forces.ca/en/career/physician-assistant/",
+      "environment": [],
+      "commission_status": "unknown",
+      "employment_type": [],
+      "provenance": {
+        "source_url": "https://www.forces.ca/en/career/physician-assistant/",
+        "scraped_at": "2026-02-05T12:33:28.755025Z",
+        "content_hash": "pending",
+        "scraper_version": "CAFScraper-1.0.0",
+        "extraction_method": "sitemap"
+      }
+    },
+    {
+      "career_id": "electrical-and-mechanical-engineering-officer",
+      "title": "Electrical And Mechanical Engineering Officer",
+      "url": "https://www.forces.ca/en/career/electrical-and-mechanical-engineering-officer/",
+      "environment": [],
+      "commission_status": "unknown",
+      "employment_type": [],
+      "provenance": {
+        "source_url": "https://www.forces.ca/en/career/electrical-and-mechanical-engineering-officer/",
+        "scraped_at": "2026-02-05T12:33:28.755025Z",
+        "content_hash": "pending",
+        "scraper_version": "CAFScraper-1.0.0",
+        "extraction_method": "sitemap"
+      }
+    },
+    {
+      "career_id": "naval-combat-systems-engineering-officer",
+      "title": "Naval Combat Systems Engineering Officer",
+      "url": "https://www.forces.ca/en/career/naval-combat-systems-engineering-officer/",
+      "environment": [],
+      "commission_status": "unknown",
+      "employment_type": [],
+      "provenance": {
+        "source_url": "https://www.forces.ca/en/career/naval-combat-systems-engineering-officer/",
+        "scraped_at": "2026-02-05T12:33:28.755025Z",
+        "content_hash": "pending",
+        "scraper_version": "CAFScraper-1.0.0",
+        "extraction_method": "sitemap"
+      }
+    },
+    {
+      "career_id": "mobile-support-equipment-operator",
+      "title": "Mobile Support Equipment Operator",
+      "url": "https://www.forces.ca/en/career/mobile-support-equipment-operator/",
+      "environment": [],
+      "commission_status": "unknown",
+      "employment_type": [],
+      "provenance": {
+        "source_url": "https://www.forces.ca/en/career/mobile-support-equipment-operator/",
+        "scraped_at": "2026-02-05T12:33:28.755025Z",
+        "content_hash": "pending",
+        "scraper_version": "CAFScraper-1.0.0",
+        "extraction_method": "sitemap"
+      }
+    },
+    {
+      "career_id": "medical-assistant",
+      "title": "Medical Assistant",
+      "url": "https://www.forces.ca/en/career/medical-assistant/",
+      "environment": [],
+      "commission_status": "unknown",
+      "employment_type": [],
+      "provenance": {
+        "source_url": "https://www.forces.ca/en/career/medical-assistant/",
+        "scraped_at": "2026-02-05T12:33:28.755025Z",
+        "content_hash": "pending",
+        "scraper_version": "CAFScraper-1.0.0",
+        "extraction_method": "sitemap"
+      }
+    },
+    {
+      "career_id": "electrical-distribution-technician",
+      "title": "Electrical Distribution Technician",
+      "url": "https://www.forces.ca/en/career/electrical-distribution-technician/",
+      "environment": [],
+      "commission_status": "unknown",
+      "employment_type": [],
+      "provenance": {
+        "source_url": "https://www.forces.ca/en/career/electrical-distribution-technician/",
+        "scraped_at": "2026-02-05T12:33:28.755025Z",
+        "content_hash": "pending",
+        "scraper_version": "CAFScraper-1.0.0",
+        "extraction_method": "sitemap"
+      }
+    },
+    {
+      "career_id": "pharmacy-officer",
+      "title": "Pharmacy Officer",
+      "url": "https://www.forces.ca/en/career/pharmacy-officer/",
+      "environment": [],
+      "commission_status": "unknown",
+      "employment_type": [],
+      "provenance": {
+        "source_url": "https://www.forces.ca/en/career/pharmacy-officer/",
+        "scraped_at": "2026-02-05T12:33:28.755025Z",
+        "content_hash": "pending",
+        "scraper_version": "CAFScraper-1.0.0",
+        "extraction_method": "sitemap"
+      }
+    },
+    {
+      "career_id": "naval-combat-information-operator",
+      "title": "Naval Combat Information Operator",
+      "url": "https://www.forces.ca/en/career/naval-combat-information-operator/",
+      "environment": [],
+      "commission_status": "unknown",
+      "employment_type": [],
+      "provenance": {
+        "source_url": "https://www.forces.ca/en/career/naval-combat-information-operator/",
+        "scraped_at": "2026-02-05T12:33:28.755025Z",
+        "content_hash": "pending",
+        "scraper_version": "CAFScraper-1.0.0",
+        "extraction_method": "sitemap"
+      }
+    },
+    {
+      "career_id": "financial-services-administrator",
+      "title": "Financial Services Administrator",
+      "url": "https://www.forces.ca/en/career/financial-services-administrator/",
+      "environment": [],
+      "commission_status": "unknown",
+      "employment_type": [],
+      "provenance": {
+        "source_url": "https://www.forces.ca/en/career/financial-services-administrator/",
+        "scraped_at": "2026-02-05T12:33:28.755025Z",
+        "content_hash": "pending",
+        "scraper_version": "CAFScraper-1.0.0",
+        "extraction_method": "sitemap"
+      }
+    },
+    {
+      "career_id": "boatswain",
+      "title": "Boatswain",
+      "url": "https://www.forces.ca/en/career/boatswain/",
+      "environment": [],
+      "commission_status": "unknown",
+      "employment_type": [],
+      "provenance": {
+        "source_url": "https://www.forces.ca/en/career/boatswain/",
+        "scraped_at": "2026-02-05T12:33:28.755025Z",
+        "content_hash": "pending",
+        "scraper_version": "CAFScraper-1.0.0",
+        "extraction_method": "sitemap"
+      }
+    },
+    {
+      "career_id": "training-development-officer",
+      "title": "Training Development Officer",
+      "url": "https://www.forces.ca/en/career/training-development-officer/",
+      "environment": [],
+      "commission_status": "unknown",
+      "employment_type": [],
+      "provenance": {
+        "source_url": "https://www.forces.ca/en/career/training-development-officer/",
+        "scraped_at": "2026-02-05T12:33:28.755025Z",
+        "content_hash": "pending",
+        "scraper_version": "CAFScraper-1.0.0",
+        "extraction_method": "sitemap"
+      }
+    },
+    {
+      "career_id": "plumbing-heat-technician",
+      "title": "Plumbing Heat Technician",
+      "url": "https://www.forces.ca/en/career/plumbing-heat-technician/",
+      "environment": [],
+      "commission_status": "unknown",
+      "employment_type": [],
+      "provenance": {
+        "source_url": "https://www.forces.ca/en/career/plumbing-heat-technician/",
+        "scraped_at": "2026-02-05T12:33:28.755025Z",
+        "content_hash": "pending",
+        "scraper_version": "CAFScraper-1.0.0",
+        "extraction_method": "sitemap"
+      }
+    },
+    {
+      "career_id": "construction-engineering-officer",
+      "title": "Construction Engineering Officer",
+      "url": "https://www.forces.ca/en/career/construction-engineering-officer/",
+      "environment": [],
+      "commission_status": "unknown",
+      "employment_type": [],
+      "provenance": {
+        "source_url": "https://www.forces.ca/en/career/construction-engineering-officer/",
+        "scraped_at": "2026-02-05T12:33:28.755025Z",
+        "content_hash": "pending",
+        "scraper_version": "CAFScraper-1.0.0",
+        "extraction_method": "sitemap"
+      }
+    },
+    {
+      "career_id": "infantry-soldier",
+      "title": "Infantry Soldier",
+      "url": "https://www.forces.ca/en/career/infantry-soldier/",
+      "environment": [],
+      "commission_status": "unknown",
+      "employment_type": [],
+      "provenance": {
+        "source_url": "https://www.forces.ca/en/career/infantry-soldier/",
+        "scraped_at": "2026-02-05T12:33:28.755025Z",
+        "content_hash": "pending",
+        "scraper_version": "CAFScraper-1.0.0",
+        "extraction_method": "sitemap"
+      }
+    },
+    {
+      "career_id": "legal-officer",
+      "title": "Legal Officer",
+      "url": "https://www.forces.ca/en/career/legal-officer/",
+      "environment": [],
+      "commission_status": "unknown",
+      "employment_type": [],
+      "provenance": {
+        "source_url": "https://www.forces.ca/en/career/legal-officer/",
+        "scraped_at": "2026-02-05T12:33:28.755025Z",
+        "content_hash": "pending",
+        "scraper_version": "CAFScraper-1.0.0",
+        "extraction_method": "sitemap"
+      }
+    },
+    {
+      "career_id": "port-inspection-diver",
+      "title": "Port Inspection Diver",
+      "url": "https://www.forces.ca/en/career/port-inspection-diver/",
+      "environment": [],
+      "commission_status": "unknown",
+      "employment_type": [],
+      "provenance": {
+        "source_url": "https://www.forces.ca/en/career/port-inspection-diver/",
+        "scraped_at": "2026-02-05T12:33:28.755025Z",
+        "content_hash": "pending",
+        "scraper_version": "CAFScraper-1.0.0",
+        "extraction_method": "sitemap"
+      }
+    },
+    {
+      "career_id": "marine-technician",
+      "title": "Marine Technician",
+      "url": "https://www.forces.ca/en/career/marine-technician/",
+      "environment": [],
+      "commission_status": "unknown",
+      "employment_type": [],
+      "provenance": {
+        "source_url": "https://www.forces.ca/en/career/marine-technician/",
+        "scraped_at": "2026-02-05T12:33:28.755025Z",
+        "content_hash": "pending",
+        "scraper_version": "CAFScraper-1.0.0",
+        "extraction_method": "sitemap"
+      }
+    },
+    {
+      "career_id": "refrigeration-and-mechanical-systems-technician",
+      "title": "Refrigeration And Mechanical Systems Technician",
+      "url": "https://www.forces.ca/en/career/refrigeration-and-mechanical-systems-technician/",
+      "environment": [],
+      "commission_status": "unknown",
+      "employment_type": [],
+      "provenance": {
+        "source_url": "https://www.forces.ca/en/career/refrigeration-and-mechanical-systems-technician/",
+        "scraped_at": "2026-02-05T12:33:28.755025Z",
+        "content_hash": "pending",
+        "scraper_version": "CAFScraper-1.0.0",
+        "extraction_method": "sitemap"
+      }
+    },
+    {
+      "career_id": "construction-technician",
+      "title": "Construction Technician",
+      "url": "https://www.forces.ca/en/career/construction-technician/",
+      "environment": [],
+      "commission_status": "unknown",
+      "employment_type": [],
+      "provenance": {
+        "source_url": "https://www.forces.ca/en/career/construction-technician/",
+        "scraped_at": "2026-02-05T12:33:28.755025Z",
+        "content_hash": "pending",
+        "scraper_version": "CAFScraper-1.0.0",
+        "extraction_method": "sitemap"
+      }
+    },
+    {
+      "career_id": "social-work-officer",
+      "title": "Social Work Officer",
+      "url": "https://www.forces.ca/en/career/social-work-officer/",
+      "environment": [],
+      "commission_status": "unknown",
+      "employment_type": [],
+      "provenance": {
+        "source_url": "https://www.forces.ca/en/career/social-work-officer/",
+        "scraped_at": "2026-02-05T12:33:28.755025Z",
+        "content_hash": "pending",
+        "scraper_version": "CAFScraper-1.0.0",
+        "extraction_method": "sitemap"
+      }
+    },
+    {
+      "career_id": "aerospace-control-officer",
+      "title": "Aerospace Control Officer",
+      "url": "https://www.forces.ca/en/career/aerospace-control-officer/",
+      "environment": [],
+      "commission_status": "unknown",
+      "employment_type": [],
+      "provenance": {
+        "source_url": "https://www.forces.ca/en/career/aerospace-control-officer/",
+        "scraped_at": "2026-02-05T12:33:28.755025Z",
+        "content_hash": "pending",
+        "scraper_version": "CAFScraper-1.0.0",
+        "extraction_method": "sitemap"
+      }
+    },
+    {
+      "career_id": "bioscience-officer",
+      "title": "Bioscience Officer",
+      "url": "https://www.forces.ca/en/career/bioscience-officer/",
+      "environment": [],
+      "commission_status": "unknown",
+      "employment_type": [],
+      "provenance": {
+        "source_url": "https://www.forces.ca/en/career/bioscience-officer/",
+        "scraped_at": "2026-02-05T12:33:28.755025Z",
+        "content_hash": "pending",
+        "scraper_version": "CAFScraper-1.0.0",
+        "extraction_method": "sitemap"
+      }
+    },
+    {
+      "career_id": "weapons-technician",
+      "title": "Weapons Technician",
+      "url": "https://www.forces.ca/en/career/weapons-technician/",
+      "environment": [],
+      "commission_status": "unknown",
+      "employment_type": [],
+      "provenance": {
+        "source_url": "https://www.forces.ca/en/career/weapons-technician/",
+        "scraped_at": "2026-02-05T12:33:28.755025Z",
+        "content_hash": "pending",
+        "scraper_version": "CAFScraper-1.0.0",
+        "extraction_method": "sitemap"
+      }
+    },
+    {
+      "career_id": "electronic-optronic-technician",
+      "title": "Electronic Optronic Technician",
+      "url": "https://www.forces.ca/en/career/electronic-optronic-technician/",
+      "environment": [],
+      "commission_status": "unknown",
+      "employment_type": [],
+      "provenance": {
+        "source_url": "https://www.forces.ca/en/career/electronic-optronic-technician/",
+        "scraped_at": "2026-02-05T12:33:28.755025Z",
+        "content_hash": "pending",
+        "scraper_version": "CAFScraper-1.0.0",
+        "extraction_method": "sitemap"
+      }
+    },
+    {
+      "career_id": "medical-technician",
+      "title": "Medical Technician",
+      "url": "https://www.forces.ca/en/career/medical-technician/",
+      "environment": [],
+      "commission_status": "unknown",
+      "employment_type": [],
+      "provenance": {
+        "source_url": "https://www.forces.ca/en/career/medical-technician/",
+        "scraped_at": "2026-02-05T12:33:28.755025Z",
+        "content_hash": "pending",
+        "scraper_version": "CAFScraper-1.0.0",
+        "extraction_method": "sitemap"
+      }
+    },
+    {
+      "career_id": "human-resources-administrator",
+      "title": "Human Resources Administrator",
+      "url": "https://www.forces.ca/en/career/human-resources-administrator/",
+      "environment": [],
+      "commission_status": "unknown",
+      "employment_type": [],
+      "provenance": {
+        "source_url": "https://www.forces.ca/en/career/human-resources-administrator/",
+        "scraped_at": "2026-02-05T12:33:28.755025Z",
+        "content_hash": "pending",
+        "scraper_version": "CAFScraper-1.0.0",
+        "extraction_method": "sitemap"
+      }
+    },
+    {
+      "career_id": "ammunition-technician",
+      "title": "Ammunition Technician",
+      "url": "https://www.forces.ca/en/career/ammunition-technician/",
+      "environment": [],
+      "commission_status": "unknown",
+      "employment_type": [],
+      "provenance": {
+        "source_url": "https://www.forces.ca/en/career/ammunition-technician/",
+        "scraped_at": "2026-02-05T12:33:28.755025Z",
+        "content_hash": "pending",
+        "scraper_version": "CAFScraper-1.0.0",
+        "extraction_method": "sitemap"
+      }
+    },
+    {
+      "career_id": "drafting-and-survey-technician",
+      "title": "Drafting And Survey Technician",
+      "url": "https://www.forces.ca/en/career/drafting-and-survey-technician/",
+      "environment": [],
+      "commission_status": "unknown",
+      "employment_type": [],
+      "provenance": {
+        "source_url": "https://www.forces.ca/en/career/drafting-and-survey-technician/",
+        "scraped_at": "2026-02-05T12:33:28.755025Z",
+        "content_hash": "pending",
+        "scraper_version": "CAFScraper-1.0.0",
+        "extraction_method": "sitemap"
+      }
+    },
+    {
+      "career_id": "marine-systems-engineering-officer",
+      "title": "Marine Systems Engineering Officer",
+      "url": "https://www.forces.ca/en/career/marine-systems-engineering-officer/",
+      "environment": [],
+      "commission_status": "unknown",
+      "employment_type": [],
+      "provenance": {
+        "source_url": "https://www.forces.ca/en/career/marine-systems-engineering-officer/",
+        "scraped_at": "2026-02-05T12:33:28.755025Z",
+        "content_hash": "pending",
+        "scraper_version": "CAFScraper-1.0.0",
+        "extraction_method": "sitemap"
+      }
+    },
+    {
+      "career_id": "intelligence-operator",
+      "title": "Intelligence Operator",
+      "url": "https://www.forces.ca/en/career/intelligence-operator/",
+      "environment": [],
+      "commission_status": "unknown",
+      "employment_type": [],
+      "provenance": {
+        "source_url": "https://www.forces.ca/en/career/intelligence-operator/",
+        "scraped_at": "2026-02-05T12:33:28.755025Z",
+        "content_hash": "pending",
+        "scraper_version": "CAFScraper-1.0.0",
+        "extraction_method": "sitemap"
+      }
+    },
+    {
+      "career_id": "nursing-officer",
+      "title": "Nursing Officer",
+      "url": "https://www.forces.ca/en/career/nursing-officer/",
+      "environment": [],
+      "commission_status": "unknown",
+      "employment_type": [],
+      "provenance": {
+        "source_url": "https://www.forces.ca/en/career/nursing-officer/",
+        "scraped_at": "2026-02-05T12:33:28.755025Z",
+        "content_hash": "pending",
+        "scraper_version": "CAFScraper-1.0.0",
+        "extraction_method": "sitemap"
+      }
+    },
+    {
+      "career_id": "medical-officer",
+      "title": "Medical Officer",
+      "url": "https://www.forces.ca/en/career/medical-officer/",
+      "environment": [],
+      "commission_status": "unknown",
+      "employment_type": [],
+      "provenance": {
+        "source_url": "https://www.forces.ca/en/career/medical-officer/",
+        "scraped_at": "2026-02-05T12:33:28.755025Z",
+        "content_hash": "pending",
+        "scraper_version": "CAFScraper-1.0.0",
+        "extraction_method": "sitemap"
+      }
+    },
+    {
+      "career_id": "medical-laboratory-technologist",
+      "title": "Medical Laboratory Technologist",
+      "url": "https://www.forces.ca/en/career/medical-laboratory-technologist/",
+      "environment": [],
+      "commission_status": "unknown",
+      "employment_type": [],
+      "provenance": {
+        "source_url": "https://www.forces.ca/en/career/medical-laboratory-technologist/",
+        "scraped_at": "2026-02-05T12:33:28.755025Z",
+        "content_hash": "pending",
+        "scraper_version": "CAFScraper-1.0.0",
+        "extraction_method": "sitemap"
+      }
+    },
+    {
+      "career_id": "aerospace-control-operator",
+      "title": "Aerospace Control Operator",
+      "url": "https://www.forces.ca/en/career/aerospace-control-operator/",
+      "environment": [],
+      "commission_status": "unknown",
+      "employment_type": [],
+      "provenance": {
+        "source_url": "https://www.forces.ca/en/career/aerospace-control-operator/",
+        "scraped_at": "2026-02-05T12:33:28.755025Z",
+        "content_hash": "pending",
+        "scraper_version": "CAFScraper-1.0.0",
+        "extraction_method": "sitemap"
+      }
+    },
+    {
+      "career_id": "infantry-officer",
+      "title": "Infantry Officer",
+      "url": "https://www.forces.ca/en/career/infantry-officer/",
+      "environment": [],
+      "commission_status": "unknown",
+      "employment_type": [],
+      "provenance": {
+        "source_url": "https://www.forces.ca/en/career/infantry-officer/",
+        "scraped_at": "2026-02-05T12:33:28.755025Z",
+        "content_hash": "pending",
+        "scraper_version": "CAFScraper-1.0.0",
+        "extraction_method": "sitemap"
+      }
+    }
+  ],
+  "career_count": 88,
+  "scraper_version": "CAFScraper-1.0.0"
+}
