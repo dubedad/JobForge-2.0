@@ -1,0 +1,475 @@
+[
+  {
+    "agreement_id": "4d3fe973-00e1-574b-9624-e368954bd290",
+    "agreement_name": "Air Traffic Control (AI)",
+    "og_code": "AI",
+    "og_subgroup_codes": [
+      "AI"
+    ],
+    "bargaining_agent": "Canadian Air Traffic Control Association (CATCA) Unifor Local 5454",
+    "employer": "Treasury Board of Canada Secretariat",
+    "signing_date": "2025-12-19",
+    "effective_date": "2025-12-19",
+    "expiry_date": "2026-06-30",
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/topics/pay/collective-agreements.html",
+    "scraped_at": "2026-02-05T16:50:41.653542+00:00"
+  },
+  {
+    "agreement_id": "77627ba8-7264-5d4f-922b-be412af778e1",
+    "agreement_name": "Aircraft Operations (AO)",
+    "og_code": "AO",
+    "og_subgroup_codes": [
+      "AO"
+    ],
+    "bargaining_agent": "Canadian Federal Pilots Association",
+    "employer": "Treasury Board of Canada Secretariat",
+    "signing_date": "2025-03-17",
+    "effective_date": "2025-03-17",
+    "expiry_date": "2027-01-25",
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/topics/pay/collective-agreements.html",
+    "scraped_at": "2026-02-05T16:50:41.653542+00:00"
+  },
+  {
+    "agreement_id": "1cbadb37-c53b-5539-9e55-b660dd22827c",
+    "agreement_name": "Commerce and Purchasing (CPAV)",
+    "og_code": "CP",
+    "og_subgroup_codes": [
+      "PG",
+      "CP",
+      "CO"
+    ],
+    "bargaining_agent": "Professional Institute of the Public Service of Canada",
+    "employer": "Treasury Board of Canada Secretariat",
+    "signing_date": "2024-12-18",
+    "effective_date": "2024-12-18",
+    "expiry_date": "2026-06-21",
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/topics/pay/collective-agreements.html",
+    "scraped_at": "2026-02-05T16:50:41.653542+00:00"
+  },
+  {
+    "agreement_id": "9a176d5d-f248-534b-a320-a3a0b48275c7",
+    "agreement_name": "Comptrollership (CTFI)",
+    "og_code": "CT",
+    "og_subgroup_codes": [
+      "FIN",
+      "EAV",
+      "CT",
+      "IAU"
+    ],
+    "bargaining_agent": "Association of Canadian Financial Officers",
+    "employer": "Treasury Board of Canada Secretariat",
+    "signing_date": "2022-12-02",
+    "effective_date": "2022-12-02",
+    "expiry_date": "2026-11-06",
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/topics/pay/collective-agreements.html",
+    "scraped_at": "2026-02-05T16:50:41.653542+00:00"
+  },
+  {
+    "agreement_id": "9bf921ae-79a8-5d2c-9d8e-c5bf4d6e1ac7",
+    "agreement_name": "Correctional Services (CX)",
+    "og_code": "CX",
+    "og_subgroup_codes": [
+      "CX"
+    ],
+    "bargaining_agent": "Union of Canadian Correctional Officers",
+    "employer": "Treasury Board of Canada Secretariat",
+    "signing_date": "2025-02-26",
+    "effective_date": "2025-02-26",
+    "expiry_date": "2026-05-31",
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/topics/pay/collective-agreements.html",
+    "scraped_at": "2026-02-05T16:50:41.653542+00:00"
+  },
+  {
+    "agreement_id": "5d659a47-ddb4-5de1-bf18-14ccd5a3ff56",
+    "agreement_name": "Education and Library Science (EB)",
+    "og_code": "EB",
+    "og_subgroup_codes": [
+      "EB",
+      "LS",
+      "ED",
+      "EU"
+    ],
+    "bargaining_agent": "Public Service Alliance of Canada",
+    "employer": "Treasury Board of Canada Secretariat",
+    "signing_date": "2023-07-11",
+    "effective_date": "2023-07-11",
+    "expiry_date": "2025-06-30",
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/topics/pay/collective-agreements.html",
+    "scraped_at": "2026-02-05T16:50:41.653542+00:00"
+  },
+  {
+    "agreement_id": "b4eb1e9f-9059-58e3-ac66-a6dda6fa0b24",
+    "agreement_name": "Economics and Social Science Services (EC)",
+    "og_code": "EC",
+    "og_subgroup_codes": [
+      "EC"
+    ],
+    "bargaining_agent": "Canadian Association of Professional Employees",
+    "employer": "Treasury Board of Canada Secretariat",
+    "signing_date": "2023-06-29",
+    "effective_date": "2023-06-29",
+    "expiry_date": "2026-06-21",
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/topics/pay/collective-agreements.html",
+    "scraped_at": "2026-02-05T16:50:41.653542+00:00"
+  },
+  {
+    "agreement_id": "f6f8924e-8a42-5a34-b350-ff1fdd50da5e",
+    "agreement_name": "Electronics (EL)",
+    "og_code": "EL",
+    "og_subgroup_codes": [
+      "EL"
+    ],
+    "bargaining_agent": "Local 2228 of the International Brotherhood of Electrical Workers",
+    "employer": "Treasury Board of Canada Secretariat",
+    "signing_date": "2023-06-20",
+    "effective_date": "2023-06-20",
+    "expiry_date": "2026-08-31",
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/topics/pay/collective-agreements.html",
+    "scraped_at": "2026-02-05T16:50:41.653542+00:00"
+  },
+  {
+    "agreement_id": "d4a846e5-5713-5c90-8d13-17c396ced5fb",
+    "agreement_name": "Border Services (FB)",
+    "og_code": "FB",
+    "og_subgroup_codes": [
+      "FB"
+    ],
+    "bargaining_agent": "Public Service Alliance of Canada",
+    "employer": "Treasury Board of Canada Secretariat",
+    "signing_date": "2024-08-08",
+    "effective_date": "2024-08-08",
+    "expiry_date": "2026-06-20",
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/topics/pay/collective-agreements.html",
+    "scraped_at": "2026-02-05T16:50:41.653542+00:00"
+  },
+  {
+    "agreement_id": "f4dada18-3c97-52b0-81c0-ea0511f27fcb",
+    "agreement_name": "Foreign Service (FS)",
+    "og_code": "FS",
+    "og_subgroup_codes": [
+      "FS"
+    ],
+    "bargaining_agent": "Professional Association of Foreign Service Officers",
+    "employer": "Treasury Board of Canada Secretariat",
+    "signing_date": "2023-06-30",
+    "effective_date": "2023-06-30",
+    "expiry_date": "2026-06-30",
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/topics/pay/collective-agreements.html",
+    "scraped_at": "2026-02-05T16:50:41.653542+00:00"
+  },
+  {
+    "agreement_id": "b3433a9a-0f97-5402-8033-bd9d8805685e",
+    "agreement_name": "Information Technology (ITCS)",
+    "og_code": "IT",
+    "og_subgroup_codes": [
+      "IT"
+    ],
+    "bargaining_agent": "Professional Institute of the Public Service of Canada",
+    "employer": "Treasury Board of Canada Secretariat",
+    "signing_date": "2023-12-22",
+    "effective_date": "2023-12-22",
+    "expiry_date": "2025-12-21",
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/topics/pay/collective-agreements.html",
+    "scraped_at": "2026-02-05T16:50:41.653542+00:00"
+  },
+  {
+    "agreement_id": "ab788bb9-6a3c-5321-a3d1-25e5e0274a9e",
+    "agreement_name": "Law Practitioner (LPLA)",
+    "og_code": "LP",
+    "og_subgroup_codes": [
+      "LP"
+    ],
+    "bargaining_agent": "Association of Justice Counsel",
+    "employer": "Treasury Board of Canada Secretariat",
+    "signing_date": "2024-05-03",
+    "effective_date": "2024-05-03",
+    "expiry_date": "2026-05-09",
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/topics/pay/collective-agreements.html",
+    "scraped_at": "2026-02-05T16:50:41.653542+00:00"
+  },
+  {
+    "agreement_id": "241c18f5-e44f-5753-b430-01b5fc349038",
+    "agreement_name": "Architecture, Engineering and Land Survey (NR)",
+    "og_code": "NR",
+    "og_subgroup_codes": [
+      "EN",
+      "NR",
+      "AR"
+    ],
+    "bargaining_agent": "Professional Institute of the Public Service of Canada",
+    "employer": "Treasury Board of Canada Secretariat",
+    "signing_date": "2024-03-08",
+    "effective_date": "2024-03-08",
+    "expiry_date": "2026-09-30",
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/topics/pay/collective-agreements.html",
+    "scraped_at": "2026-02-05T16:50:41.653542+00:00"
+  },
+  {
+    "agreement_id": "367b75a8-3175-5470-9d0e-b0d670d41ca2",
+    "agreement_name": "Program and Administrative Services (PA)",
+    "og_code": "PA",
+    "og_subgroup_codes": [
+      "PM",
+      "WP",
+      "OE",
+      "CM",
+      "IS",
+      "PA",
+      "AS",
+      "CR",
+      "DA",
+      "ST"
+    ],
+    "bargaining_agent": "Public Service Alliance of Canada",
+    "employer": "Treasury Board of Canada Secretariat",
+    "signing_date": "2023-06-27",
+    "effective_date": "2023-06-27",
+    "expiry_date": "2025-06-20",
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/topics/pay/collective-agreements.html",
+    "scraped_at": "2026-02-05T16:50:41.653542+00:00"
+  },
+  {
+    "agreement_id": "53a96e50-eab7-5eb7-b6fe-19b06abdb8b6",
+    "agreement_name": "Law Enforcement Support and Police Operations Support (PO)",
+    "og_code": "PO",
+    "og_subgroup_codes": [
+      "LES",
+      "PO"
+    ],
+    "bargaining_agent": "Canadian Union of Public Employees, Local 104",
+    "employer": "Treasury Board of Canada Secretariat",
+    "signing_date": "2023-07-19",
+    "effective_date": "2023-07-19",
+    "expiry_date": "2025-12-31",
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/topics/pay/collective-agreements.html",
+    "scraped_at": "2026-02-05T16:50:41.653542+00:00"
+  },
+  {
+    "agreement_id": "1e0e7071-9908-5c97-9efa-2909dc1b6d54",
+    "agreement_name": "Research (RE)",
+    "og_code": "RE",
+    "og_subgroup_codes": [
+      "RE",
+      "DS",
+      "MA",
+      "SE",
+      "HR"
+    ],
+    "bargaining_agent": "Professional Institute of the Public Service of Canada",
+    "employer": "Treasury Board of Canada Secretariat",
+    "signing_date": "2024-03-01",
+    "effective_date": "2024-03-01",
+    "expiry_date": "2026-09-30",
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/topics/pay/collective-agreements.html",
+    "scraped_at": "2026-02-05T16:50:41.653542+00:00"
+  },
+  {
+    "agreement_id": "4838aea6-0a87-560a-a6ae-11b6a458c9b3",
+    "agreement_name": "RCMP Regular Members and Reservists (RM)",
+    "og_code": "RM",
+    "og_subgroup_codes": [
+      "RM"
+    ],
+    "bargaining_agent": "National Police Federation",
+    "employer": "Treasury Board of Canada Secretariat",
+    "signing_date": "2024-06-24",
+    "effective_date": "2024-06-24",
+    "expiry_date": "2025-03-31",
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/topics/pay/collective-agreements.html",
+    "scraped_at": "2026-02-05T16:50:41.653542+00:00"
+  },
+  {
+    "agreement_id": "8773f5c4-e3c4-53cd-a85a-c3ce7ee38654",
+    "agreement_name": "Radio Operations (RO)",
+    "og_code": "RO",
+    "og_subgroup_codes": [
+      "RO"
+    ],
+    "bargaining_agent": "Unifor Local 2182",
+    "employer": "Treasury Board of Canada Secretariat",
+    "signing_date": "2023-10-20",
+    "effective_date": "2023-10-20",
+    "expiry_date": "2026-04-30",
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/topics/pay/collective-agreements.html",
+    "scraped_at": "2026-02-05T16:50:41.653542+00:00"
+  },
+  {
+    "agreement_id": "6da649d0-5229-56aa-aa07-e3a212358e8d",
+    "agreement_name": "Health Services (SH)",
+    "og_code": "SH",
+    "og_subgroup_codes": [
+      "VM",
+      "NU",
+      "MD",
+      "OP",
+      "SH",
+      "PH",
+      "SW",
+      "ND",
+      "DE",
+      "PS"
+    ],
+    "bargaining_agent": "Professional Institute of the Public Service of Canada",
+    "employer": "Treasury Board of Canada Secretariat",
+    "signing_date": "2024-11-12",
+    "effective_date": "2024-11-12",
+    "expiry_date": "2026-09-30",
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/topics/pay/collective-agreements.html",
+    "scraped_at": "2026-02-05T16:50:41.653542+00:00"
+  },
+  {
+    "agreement_id": "c025ea39-bbaf-5016-a7cd-e9b2f7542016",
+    "agreement_name": "Ships’ Officers (SO)",
+    "og_code": "SO",
+    "og_subgroup_codes": [
+      "SO"
+    ],
+    "bargaining_agent": "Canadian Merchant Service Guild",
+    "employer": "Treasury Board of Canada Secretariat",
+    "signing_date": "2024-03-01",
+    "effective_date": "2024-03-01",
+    "expiry_date": "2026-03-31",
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/topics/pay/collective-agreements.html",
+    "scraped_at": "2026-02-05T16:50:41.653542+00:00"
+  },
+  {
+    "agreement_id": "81218c2a-5296-58cd-841d-188bbbb55fd7",
+    "agreement_name": "Applied Science and Patent Examination (SPAP)",
+    "og_code": "SP",
+    "og_subgroup_codes": [
+      "AG",
+      "FO",
+      "AC",
+      "CH",
+      "SP",
+      "MT",
+      "PC",
+      "BI"
+    ],
+    "bargaining_agent": "Professional Institute of the Public Service of Canada",
+    "employer": "Treasury Board of Canada Secretariat",
+    "signing_date": "2023-12-14",
+    "effective_date": "2023-12-14",
+    "expiry_date": "2026-09-30",
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/topics/pay/collective-agreements.html",
+    "scraped_at": "2026-02-05T16:50:41.653542+00:00"
+  },
+  {
+    "agreement_id": "bb89d92f-de45-55bd-aaf1-7217dfdb6805",
+    "agreement_name": "Ship Repair (All Chargehand and Production Supervisor Employees Located on the East Coast) (SRC)",
+    "og_code": "SRC",
+    "og_subgroup_codes": [
+      "SR"
+    ],
+    "bargaining_agent": "Federal Government Dockyard Chargehands Association",
+    "employer": "Treasury Board of Canada Secretariat",
+    "signing_date": "2025-07-17",
+    "effective_date": "2025-07-17",
+    "expiry_date": "2026-03-31",
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/topics/pay/collective-agreements.html",
+    "scraped_at": "2026-02-05T16:50:41.653542+00:00"
+  },
+  {
+    "agreement_id": "95f0da96-d865-5c33-abc0-47f632be0fc9",
+    "agreement_name": "Ship Repair (East) (SRE)",
+    "og_code": "SRE",
+    "og_subgroup_codes": [
+      "SR"
+    ],
+    "bargaining_agent": "Federal Government Dockyard Trades and Labour Council (East)",
+    "employer": "Treasury Board of Canada Secretariat",
+    "signing_date": "2025-04-25",
+    "effective_date": "2025-04-25",
+    "expiry_date": "2026-12-31",
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/topics/pay/collective-agreements.html",
+    "scraped_at": "2026-02-05T16:50:41.653542+00:00"
+  },
+  {
+    "agreement_id": "3a533c4a-1c1e-5359-8ee4-a89b0e0d385d",
+    "agreement_name": "Ship Repair (West) (SRW)",
+    "og_code": "SRW",
+    "og_subgroup_codes": [
+      "SR"
+    ],
+    "bargaining_agent": "Federal Government Dockyard Trades and Labour Council (Esquimalt)",
+    "employer": "Treasury Board of Canada Secretariat",
+    "signing_date": "2019-08-30",
+    "effective_date": "2019-08-30",
+    "expiry_date": "2023-01-30",
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/topics/pay/collective-agreements.html",
+    "scraped_at": "2026-02-05T16:50:41.653542+00:00"
+  },
+  {
+    "agreement_id": "36e8529d-6858-5aac-83b7-3e5326f34286",
+    "agreement_name": "Operational Services (SV)",
+    "og_code": "SV",
+    "og_subgroup_codes": [
+      "GS",
+      "LI",
+      "SC",
+      "FR",
+      "SV",
+      "HS",
+      "HP",
+      "GL"
+    ],
+    "bargaining_agent": "Public Service Alliance of Canada",
+    "employer": "Treasury Board of Canada Secretariat",
+    "signing_date": "2023-07-11",
+    "effective_date": "2023-07-11",
+    "expiry_date": "2025-08-04",
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/topics/pay/collective-agreements.html",
+    "scraped_at": "2026-02-05T16:50:41.653542+00:00"
+  },
+  {
+    "agreement_id": "c5c50ebe-c3e1-595a-943a-eacbfe85af5d",
+    "agreement_name": "Technical Services (TC)",
+    "og_code": "TC",
+    "og_subgroup_codes": [
+      "DD",
+      "TC",
+      "EG",
+      "PI",
+      "TI",
+      "PY",
+      "GT"
+    ],
+    "bargaining_agent": "Public Service Alliance of Canada",
+    "employer": "Treasury Board of Canada Secretariat",
+    "signing_date": "2023-06-27",
+    "effective_date": "2023-06-27",
+    "expiry_date": "2025-06-21",
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/topics/pay/collective-agreements.html",
+    "scraped_at": "2026-02-05T16:50:41.653542+00:00"
+  },
+  {
+    "agreement_id": "4c372446-562f-557a-9086-77e55b9cbd78",
+    "agreement_name": "Translation (TR)",
+    "og_code": "TR",
+    "og_subgroup_codes": [
+      "TR"
+    ],
+    "bargaining_agent": "Canadian Association of Professional Employees",
+    "employer": "Treasury Board of Canada Secretariat",
+    "signing_date": "2023-06-29",
+    "effective_date": "2023-06-29",
+    "expiry_date": "2026-04-18",
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/topics/pay/collective-agreements.html",
+    "scraped_at": "2026-02-05T16:50:41.653542+00:00"
+  },
+  {
+    "agreement_id": "8df59c41-cf85-54b7-943c-71cd8e2cb64e",
+    "agreement_name": "University Teaching (UT)",
+    "og_code": "UT",
+    "og_subgroup_codes": [
+      "UT"
+    ],
+    "bargaining_agent": "Canadian Military Colleges Faculty Association",
+    "employer": "Treasury Board of Canada Secretariat",
+    "signing_date": "2019-08-30",
+    "effective_date": "2019-08-30",
+    "expiry_date": "2022-06-30",
+    "source_url": "https://www.canada.ca/en/treasury-board-secretariat/topics/pay/collective-agreements.html",
+    "scraped_at": "2026-02-05T16:50:41.653542+00:00"
+  }
+]
