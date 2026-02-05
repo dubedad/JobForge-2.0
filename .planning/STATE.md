@@ -253,6 +253,20 @@ None.
 - Key features: DAMA audit in verify-work, DQ dashboard, 4 conversational agents
 - **ACTION:** Load this proposal when running `/gsd:new-milestone` after v3.0 completes
 
+### Future Milestone Proposals
+
+**v5.0 Ecosystem Expansion & Megatrend Intelligence**
+- Proposal: `.planning/proposals/v5.0-ecosystem-expansion-vision.md`
+- Status: DRAFT — capturing ideas
+- Phases: 25-31 (7 phases suggested)
+- Key themes:
+  1. New open data (PAA, DRF, TBS Business Capability Model for DND/Fisheries/Elections)
+  2. 5 Organizational CSR agents (Business, Architecture, Engineering, Governance, Exec Influencer)
+  3. JobForge 5-taxonomy model reconfirmation (NOC, JA, TBS OG, CAF, O*NET)
+  4. Megatrend Monitor (spider-in-web control chart monitoring)
+  5. EPM Benefits Realization tracking
+- **ACTION:** Load this proposal when running `/gsd:new-milestone` after v4.0 completes
+
 ### Context for Claude
 
 When resuming this project:

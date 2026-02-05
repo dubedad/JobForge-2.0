@@ -39,7 +39,7 @@ See archived roadmap: `.planning/milestones/v2.1-ROADMAP.md`
 - Decimal phases (14.1, 14.2): Urgent insertions (marked with INSERTED)
 
 - [x] **Phase 14: OG Core** - TBS Occupational Groups scraping, gold tables, NOC concordance ✓
-- [ ] **Phase 15: CAF Core** - CAF Careers scraping, gold tables, bridges to NOC/JA
+- [x] **Phase 15: CAF Core** - CAF Careers scraping, gold tables, bridges to NOC/JA ✓
 - [ ] **Phase 16: Extended Metadata** - Qualification standards, job evaluation, training, governance
 
 ## Phase Details
@@ -76,12 +76,12 @@ Plans:
   6. All tables have full provenance (source URL, scrape timestamp, match algorithm)
 **Plans:** 6 plans
 Plans:
-- [ ] 15-01-PLAN.md - Create CAF scraper module and listing page scraper
-- [ ] 15-02-PLAN.md - Fetch career details and infer job families
-- [ ] 15-03-PLAN.md - Create CAF gold tables (dim_caf_occupation, dim_caf_job_family)
-- [ ] 15-04-PLAN.md - Create CAF-NOC bridge with fuzzy matching
-- [ ] 15-05-PLAN.md - Create CAF-JA bridge with fuzzy matching
-- [ ] 15-06-PLAN.md - CLI commands, WiQ schema integration, integration tests
+- [x] 15-01-PLAN.md - Create CAF scraper module and listing page scraper ✓
+- [x] 15-02-PLAN.md - Fetch career details and infer job families ✓
+- [x] 15-03-PLAN.md - Create CAF gold tables (dim_caf_occupation, dim_caf_job_family) ✓
+- [x] 15-04-PLAN.md - Create CAF-NOC bridge with fuzzy matching ✓
+- [x] 15-05-PLAN.md - Create CAF-JA bridge with fuzzy matching ✓
+- [x] 15-06-PLAN.md - CLI commands, WiQ schema integration, integration tests ✓
 
 ### Phase 16: Extended Metadata
 **Goal**: Enrich OG and CAF data with qualification standards, job evaluation, training requirements, and governance
@@ -111,7 +111,7 @@ Phases execute in numeric order: 14 -> 14.1 (if any) -> 15 -> 15.1 (if any) -> 1
 | Phase | Milestone | Plans Complete | Status | Completed |
 |-------|-----------|----------------|--------|-----------|
 | 14. OG Core | v3.0 | 6/6 | ✓ Complete | 2026-02-05 |
-| 15. CAF Core | v3.0 | 0/6 | Planned | — |
+| 15. CAF Core | v3.0 | 6/6 | ✓ Complete | 2026-02-05 |
 | 16. Extended Metadata | v3.0 | 0/6 | Planned | — |
 
 ---
@@ -121,3 +121,4 @@ Phases execute in numeric order: 14 -> 14.1 (if any) -> 15 -> 15.1 (if any) -> 1
 *Phase 15 planned: 2026-02-05*
 *Phase 14 complete: 2026-02-05*
 *Phase 16 planned: 2026-02-05*
+*Phase 15 complete: 2026-02-05*
