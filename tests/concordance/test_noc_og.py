@@ -4,7 +4,12 @@ from pathlib import Path
 import polars as pl
 import pytest
 
-from jobforge.concordance.noc_og import match_noc_to_og, build_bridge_noc_og, NOCOGMatch
+from jobforge.concordance.noc_og import (
+    match_noc_to_og,
+    build_bridge_noc_og,
+    NOCOGMatch,
+    _get_keyword_boost,
+)
 
 
 class TestMatchNocToOg:
@@ -181,3 +186,56 @@ class TestBuildBridgeNocOg:
 
         df = pl.read_parquet(PipelineConfig().gold_path() / "bridge_noc_og.parquet")
         assert df["source_attribution"].str.starts_with("algorithmic_").all()
+
+
+class TestKeywordBoosting:
+    """Test keyword-based semantic boosting for NOC-OG matching."""
+
+    def test_software_developers_maps_to_it(self):
+        """Software developers should map to IT as top match via keyword boosting."""
+        matches = match_noc_to_og(noc_code="21231", noc_title="Software developers and programmers")
+
+        assert len(matches) >= 1
+        assert matches[0].og_code == "IT", f"Expected IT as top match, got {matches[0].og_code}"
+        assert matches[0].confidence >= 0.70  # At least medium confidence
+
+    def test_professors_map_to_ut(self):
+        """University professors should map to UT (University Teaching) via keyword boosting."""
+        matches = match_noc_to_og(noc_code="41200", noc_title="University professors and lecturers")
+
+        assert len(matches) >= 1
+        assert matches[0].og_code == "UT", f"Expected UT as top match, got {matches[0].og_code}"
+
+    def test_accountants_map_to_ct(self):
+        """Financial managers/accountants should map to CT (Comptrollership) via keyword boosting."""
+        matches = match_noc_to_og(noc_code="11100", noc_title="Financial managers")
+
+        assert len(matches) >= 1
+        assert matches[0].og_code == "CT", f"Expected CT as top match, got {matches[0].og_code}"
+
+    def test_hr_managers_map_to_hm(self):
+        """Human resources managers should map to HM via keyword boosting."""
+        matches = match_noc_to_og(noc_code="12100", noc_title="Human resources managers")
+
+        assert len(matches) >= 1
+        assert matches[0].og_code == "HM", f"Expected HM as top match, got {matches[0].og_code}"
+
+    def test_keyword_boost_returns_positive_for_matching_keywords(self):
+        """_get_keyword_boost should return positive boost for matching keywords."""
+        boost = _get_keyword_boost("Software developers", "IT")
+        assert boost > 0, "Expected positive boost for IT with 'software' keyword"
+
+        boost = _get_keyword_boost("University professor", "UT")
+        assert boost > 0, "Expected positive boost for UT with 'professor' keyword"
+
+    def test_keyword_boost_returns_zero_for_non_matching(self):
+        """_get_keyword_boost should return 0 for non-matching OG codes."""
+        boost = _get_keyword_boost("Software developers", "SRE")
+        assert boost == 0.0, "Expected zero boost for SRE with 'software' keyword"
+
+    def test_scores_capped_at_one(self):
+        """Similarity scores should be capped at 1.0 even with boosting."""
+        matches = match_noc_to_og(noc_code="21231", noc_title="Software developers and programmers")
+
+        for match in matches:
+            assert match.similarity_score <= 1.0, f"Score {match.similarity_score} exceeds 1.0"
