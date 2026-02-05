@@ -6,15 +6,19 @@ from jobforge.concordance.noc_og import match_noc_to_og, NOCOGMatch
 class TestMatchNocToOg:
     """Test match_noc_to_og function."""
 
-    def test_financial_manager_matches_fi_group(self):
-        """Financial managers should match FI group with high confidence."""
+    def test_financial_manager_matches_ct_group(self):
+        """Financial managers should match CT (Comptrollership) group with good confidence.
+
+        CT group includes "Financial Management" subgroup, which fuzzy-matches well.
+        """
         matches = match_noc_to_og(noc_code="10010", noc_title="Financial managers")
 
         assert len(matches) >= 1
-        assert any(m.og_code == "FI" for m in matches)
+        # CT (Comptrollership) includes "Financial Management" subgroup
+        assert any(m.og_code == "CT" for m in matches)
 
-        fi_match = next(m for m in matches if m.og_code == "FI")
-        assert fi_match.confidence >= 0.70  # At least medium confidence
+        ct_match = next(m for m in matches if m.og_code == "CT")
+        assert ct_match.confidence >= 0.70  # At least medium confidence
 
     def test_returns_ranked_list(self):
         """Should return list sorted by confidence (highest first)."""
@@ -87,13 +91,16 @@ class TestNOCOGMatchModel:
 class TestAdministrativeMatch:
     """Test administrative assistants mapping."""
 
-    def test_administrative_assistants_match_as_group(self):
-        """Administrative assistants should match AS group."""
+    def test_administrative_assistants_match_pa_group(self):
+        """Administrative assistants should match PA (Program and Administrative Services) group.
+
+        PA group name explicitly contains "Administrative Services".
+        """
         matches = match_noc_to_og(noc_code="13110", noc_title="Administrative assistants")
 
-        # Should have at least one match to AS (Administrative Services)
-        as_matches = [m for m in matches if m.og_code == "AS"]
-        assert len(as_matches) >= 1, f"Expected AS match, got: {[m.og_code for m in matches]}"
+        # Should have at least one match to PA (Program and Administrative Services)
+        pa_matches = [m for m in matches if m.og_code == "PA"]
+        assert len(pa_matches) >= 1, f"Expected PA match, got: {[m.og_code for m in matches]}"
 
 
 class TestSubgroupMatching:
