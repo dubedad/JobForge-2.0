@@ -1,0 +1,119 @@
+{
+  "table_name": "dim_og_job_evaluation_standard",
+  "domain": "occupational_groups",
+  "description": "TBS Job Evaluation Standards per occupational group with evaluation factors, points, and level descriptions",
+  "source": "Treasury Board Secretariat Classification Standards",
+  "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/job-evaluation/",
+  "layer": "gold",
+  "columns": {
+    "og_code": {
+      "type": "VARCHAR",
+      "description": "Primary key - TBS occupational group code (FK to dim_og)",
+      "foreign_key": "dim_og.og_code"
+    },
+    "og_subgroup_code": {
+      "type": "VARCHAR",
+      "description": "Subgroup code if standard is subgroup-specific",
+      "foreign_key": "dim_og_subgroup.og_subgroup_code"
+    },
+    "standard_name": {
+      "type": "VARCHAR",
+      "description": "Name of the classification or evaluation standard (e.g., 'Information Technology Job Evaluation Standard')"
+    },
+    "standard_type": {
+      "type": "VARCHAR",
+      "description": "Type: 'classification_standard' (overview) or 'evaluation_factor' (individual factor with points)"
+    },
+    "factor_name": {
+      "type": "VARCHAR",
+      "description": "Evaluation factor name (e.g., 'Knowledge', 'Decision Making', 'Communication')"
+    },
+    "factor_description": {
+      "type": "VARCHAR",
+      "description": "Description of what this evaluation factor measures"
+    },
+    "factor_points": {
+      "type": "INTEGER",
+      "description": "Maximum point value for this factor (where available)"
+    },
+    "factor_percentage": {
+      "type": "DOUBLE",
+      "description": "Percentage of total points for this factor (e.g., 30.0 for 30%)"
+    },
+    "factor_level": {
+      "type": "VARCHAR",
+      "description": "Level/degree within evaluation factor (e.g., 'Degree 1', 'Level 2')"
+    },
+    "level_points": {
+      "type": "INTEGER",
+      "description": "Point value for this specific level/degree"
+    },
+    "level_description": {
+      "type": "VARCHAR",
+      "description": "Description of what this level entails"
+    },
+    "full_text": {
+      "type": "VARCHAR",
+      "description": "Complete text content for full-text search"
+    },
+    "effective_date": {
+      "type": "VARCHAR",
+      "description": "Date standard became effective"
+    },
+    "version": {
+      "type": "VARCHAR",
+      "description": "Version identifier (e.g., '2018 version')"
+    },
+    "_source_url": {
+      "type": "VARCHAR",
+      "description": "Per-record URL to authoritative TBS page"
+    },
+    "_scraped_at": {
+      "type": "VARCHAR",
+      "description": "ISO timestamp when data was scraped from TBS"
+    },
+    "_ingested_at": {
+      "type": "VARCHAR",
+      "description": "ISO timestamp when data was ingested to gold layer"
+    },
+    "_batch_id": {
+      "type": "VARCHAR",
+      "description": "Unique batch identifier for this ingestion run"
+    },
+    "_layer": {
+      "type": "VARCHAR",
+      "description": "Data layer: 'gold'"
+    }
+  },
+  "relationships": [
+    {
+      "table": "dim_og",
+      "join": "dim_og_job_evaluation_standard.og_code = dim_og.og_code",
+      "type": "many-to-one",
+      "description": "Links evaluation standards to occupational groups"
+    },
+    {
+      "table": "dim_og_subgroup",
+      "join": "dim_og_job_evaluation_standard.og_subgroup_code = dim_og_subgroup.og_subgroup_code",
+      "type": "many-to-one",
+      "description": "Links subgroup-specific standards to subgroups"
+    }
+  ],
+  "usage_hints": [
+    "Filter by standard_type='evaluation_factor' to get individual factors with points",
+    "Filter by standard_type='classification_standard' to get standard overview records",
+    "Use factor_points and factor_percentage for classification level determination",
+    "Use full_text for full-text search queries",
+    "Join to dim_og using og_code for occupational group context"
+  ],
+  "sample_queries": [
+    {
+      "description": "Get all evaluation factors for IT group",
+      "sql": "SELECT factor_name, factor_points, factor_percentage FROM dim_og_job_evaluation_standard WHERE og_code = 'IT' AND standard_type = 'evaluation_factor'"
+    },
+    {
+      "description": "Find standards with highest factor point values",
+      "sql": "SELECT og_code, factor_name, factor_points FROM dim_og_job_evaluation_standard WHERE factor_points IS NOT NULL ORDER BY factor_points DESC LIMIT 10"
+    }
+  ]
+}
