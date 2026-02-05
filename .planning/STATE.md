@@ -13,9 +13,9 @@ See: .planning/PROJECT.md (updated 2026-01-20)
 
 **Milestone:** v3.0 Data Layer Expansion
 **Phase:** 14-og-core (OG Core Tables)
-**Plan:** 05 of 6 complete
+**Plan:** 04 of 6 complete (Wave 2)
 **Status:** In progress
-**Last activity:** 2026-02-05 - Completed 14-05-PLAN.md (Qualification Standards Gold Table)
+**Last activity:** 2026-02-05 - Completed 14-04-PLAN.md (Pay Rates Scraper and Fact Table)
 
 ```
 v1.0 [####################] 100% SHIPPED 2026-01-19
@@ -137,6 +137,14 @@ All v1.0 and v2.0 decisions archived in:
 | 100% structured extraction | Regex patterns successfully extract common TBS sections | All 75 records have education/experience/certification |
 | Preserve full_text always | Enables full-text search | full_text column alongside structured fields |
 
+**v3.0 Phase 14-04 Decisions:**
+| Decision | Rationale | Outcome |
+|----------|-----------|---------|
+| Dual table format detection | TBS pages use inconsistent structures (steps vs dates columns) | Auto-detect via header patterns |
+| Excluded employees only | Available via single index page with consistent URL pattern | 26 OG pages scraped |
+| Dedupe by natural key | (og_subgroup_code, classification_level, step, effective_date) | 991 unique rows from 3,520 raw |
+| 1.5s request delay | Rate limiting for respectful scraping | All pages scraped successfully |
+
 ### Technical Discoveries
 
 From v2.1 research:
@@ -184,13 +192,13 @@ None.
 ### Last Session
 
 **Date:** 2026-02-05
-**Activity:** Executed 14-05-PLAN.md (Qualification Standards Gold Table)
-**Outcome:** Created dim_og_qualifications with 75 records, structured fields extracted (education, experience, certification), 23 tests
+**Activity:** Executed 14-04-PLAN.md (Pay Rates Scraper and Fact Table)
+**Outcome:** Created fact_og_pay_rates with 991 pay rate rows, dual-format scraper, 34 tests
 
 ### Next Session Priorities
 
-1. Continue v3.0 Phase 14 — execute 14-04 (Pay Rates) or 14-06 (NOC-OG Concordance)
-2. 14-04 requires web scraping; 14-06 requires dim_og (already exists)
+1. Continue v3.0 Phase 14 — execute 14-06 (NOC-OG Concordance)
+2. All dimension tables now exist (dim_og, dim_og_subgroup, dim_og_qualifications, fact_og_pay_rates)
 3. Phase 15 (CAF Core) ready to start after Phase 14 completes
 
 ### Context for Claude
@@ -244,7 +252,15 @@ When resuming this project:
 - **New:** parse_qualification_text() for extracting education/experience/certification
 - **675 tests passing** (652 + 23 from 14-05)
 
+- **New:** src/jobforge/external/tbs/pay_rates_scraper.py - TBS pay rates scraper with dual-format detection
+- **New:** src/jobforge/ingestion/og_pay_rates.py - Medallion pipeline for fact_og_pay_rates
+- **New:** data/tbs/og_pay_rates_en.json - 3,520 scraped pay rate rows with provenance
+- **New:** data/gold/fact_og_pay_rates.parquet - 991 unique pay rates (12 OG codes, steps 1-19)
+- **New:** data/catalog/tables/fact_og_pay_rates.json - Catalog metadata with FK relationships
+- **New:** 34 tests for pay rates scraper and ingestion
+- **709 tests passing** (675 + 34 from 14-04)
+
 ---
 *State updated: 2026-02-05*
-*Session count: 43*
-*v3.0 Phase 14-05 COMPLETE - 2026-02-05*
+*Session count: 44*
+*v3.0 Phase 14-04 COMPLETE - 2026-02-05*
