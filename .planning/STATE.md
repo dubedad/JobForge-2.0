@@ -46,10 +46,10 @@ v4.0 [--------------------]   0% (Phase 17: 0/TBD plans)
 - Timeline: 2 days (2026-01-20 -> 2026-01-21)
 
 **v3.0:**
-- Plans completed: 18
+- Plans completed: 19
 - Phases complete: 3 (Phases 14-16)
 - Requirements: All complete
-- Tests: 1091 total
+- Tests: 1167 total (1091 + 76 from 16-05)
 - Timeline: 2 days (2026-02-04 -> 2026-02-05)
 
 **Quick Tasks:**
@@ -90,8 +90,8 @@ None.
 ### Last Session
 
 **Date:** 2026-02-05
-**Activity:** Created v4.0 roadmap with 7 phases (17-23) covering 40 requirements
-**Outcome:** ROADMAP.md updated, STATE.md updated, REQUIREMENTS.md traceability verified
+**Activity:** Executed 16-05-PLAN.md (CAF Training Tables)
+**Outcome:** Created fact_caf_training (152 rows), dim_caf_training_location (18 rows), 76 tests added
 
 ### Next Session Priorities
 
@@ -111,7 +111,13 @@ When resuming this project:
 - Demo web UI: `jobforge demo` starts wizard at localhost:8080
 - Orbit adapter: 85% built in orbit/ directory
 - Stack: Python 3.11, Polars, DuckDB, Pydantic 2, NetworkX, Rich, rapidfuzz, httpx, tenacity, beautifulsoup4, openai, anthropic, fastapi, uvicorn, starlette, sse-starlette
-- **1091 tests passing**
+- **1167 tests passing** (1091 + 76 from 16-05)
+- **New:** src/jobforge/external/caf/training_parser.py - CAF training extraction with duration/location normalization
+- **New:** src/jobforge/ingestion/caf_training.py - CAF training ingestion pipeline
+- **New:** data/gold/fact_caf_training.parquet - 152 training records from 76 occupations
+- **New:** data/gold/dim_caf_training_location.parquet - 18 normalized training locations
+- **New:** data/catalog/tables/fact_caf_training.json - Catalog metadata with FK relationships
+- **New:** data/catalog/tables/dim_caf_training_location.json - Location dimension metadata
 
 **v4.0 Phase Structure:**
 - Phase 17: Governance Compliance Framework (GOV-10 to GOV-13) - 4 requirements
@@ -134,5 +140,5 @@ When resuming this project:
 
 ---
 *State updated: 2026-02-05*
-*Session count: 55*
-*v4.0 roadmap created: 2026-02-05*
+*Session count: 56*
+*16-05 CAF Training Tables: 2026-02-05*
