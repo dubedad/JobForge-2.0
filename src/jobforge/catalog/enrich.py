@@ -1,8 +1,18 @@
-"""Catalog enrichment script for adding semantic column descriptions and workforce dynamics."""
+"""Catalog enrichment script for adding semantic column descriptions and workforce dynamics.
+
+Extended with DMBOK tagging (table-level knowledge areas, field-level element types) and
+governance metadata (data_steward, refresh_frequency, security_classification, etc.).
+"""
 
 import json
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
+
+from jobforge.catalog.dmbok_tagging import (
+    add_dmbok_field_tags,
+    add_dmbok_table_tags,
+)
 
 
 # COPS column descriptions
@@ -169,8 +179,217 @@ def enrich_catalog(catalog_path: Path | None = None) -> dict[str, int]:
     return {"tables_updated": tables_updated, "columns_enriched": columns_enriched}
 
 
+# Phase 16 tables for DMBOK enrichment
+PHASE_16_TABLES = [
+    "dim_og_qualification_standard",
+    "dim_og_job_evaluation_standard",
+    "fact_og_pay_rates",
+    "fact_og_allowances",
+    "dim_collective_agreement",
+    "fact_caf_training",
+    "dim_caf_training_location",
+]
+
+
+def add_governance_metadata(table_metadata: dict[str, Any], table_name: str) -> dict[str, Any]:
+    """
+    Add governance metadata to table catalog entry.
+
+    Per CONTEXT.md Governance Granularity requirements:
+    - data_steward and data_owner based on domain
+    - refresh_frequency, retention_period, security_classification
+    - intended_consumers for downstream systems
+
+    Args:
+        table_metadata: The table catalog metadata dictionary
+        table_name: Name of the table
+
+    Returns:
+        Updated table_metadata dict with governance object
+    """
+    # Determine data steward and owner by domain
+    domain = table_metadata.get("domain", "")
+
+    if domain == "occupational_groups" or table_name.startswith(("dim_og", "fact_og")):
+        data_steward = "OG Data Team"
+        data_owner = "Treasury Board Secretariat"
+    elif domain in ("caf", "caf_careers") or table_name.startswith(("dim_caf", "fact_caf")):
+        data_steward = "CAF Data Team"
+        data_owner = "Department of National Defence"
+    elif domain == "noc" or table_name.startswith("dim_noc"):
+        data_steward = "NOC Data Team"
+        data_owner = "Statistics Canada"
+    elif "cops" in table_name:
+        data_steward = "COPS Data Team"
+        data_owner = "Employment and Social Development Canada"
+    elif "oasis" in table_name:
+        data_steward = "Skills Data Team"
+        data_owner = "JobForge"
+    else:
+        data_steward = "Data Governance Team"
+        data_owner = "JobForge"
+
+    table_metadata["governance"] = {
+        "data_steward": data_steward,
+        "data_owner": data_owner,
+        "refresh_frequency": "as_published",  # TBS/CAF update irregularly
+        "retention_period": "indefinite",  # Historical data preserved
+        "security_classification": "Unclassified",  # All public data
+        "intended_consumers": ["JD Builder", "WiQ", "Public API"],
+    }
+
+    return table_metadata
+
+
+def add_quality_metrics(
+    table_metadata: dict[str, Any], gold_path: Path | None = None
+) -> dict[str, Any]:
+    """
+    Add data quality metrics to table catalog entry.
+
+    Computes completeness percentage and row count from parquet file if available.
+
+    Args:
+        table_metadata: The table catalog metadata dictionary
+        gold_path: Optional path to the gold parquet file
+
+    Returns:
+        Updated table_metadata dict with quality_metrics object
+    """
+    completeness_pct = None
+    row_count = table_metadata.get("row_count")  # Use existing if present
+
+    if gold_path and gold_path.exists():
+        try:
+            import polars as pl
+
+            df = pl.read_parquet(gold_path)
+            row_count = len(df)
+
+            # Compute completeness as % of non-null values
+            if len(df) > 0 and len(df.columns) > 0:
+                total_cells = len(df) * len(df.columns)
+                non_null_cells = sum(len(df) - df[col].null_count() for col in df.columns)
+                completeness_pct = (
+                    round(non_null_cells / total_cells * 100, 1) if total_cells > 0 else None
+                )
+        except Exception:
+            pass  # If parquet read fails, continue with None values
+
+    table_metadata["quality_metrics"] = {
+        "completeness_pct": completeness_pct,
+        "freshness_date": datetime.now(timezone.utc).isoformat(),
+        "row_count": row_count,
+    }
+
+    return table_metadata
+
+
+def _enrich_table_with_dmbok(
+    table_metadata: dict[str, Any], table_name: str, gold_path: Path | None = None
+) -> dict[str, Any]:
+    """
+    Enrich a table with DMBOK tags and governance metadata.
+
+    Args:
+        table_metadata: The table catalog metadata dictionary
+        table_name: Name of the table
+        gold_path: Optional path to the gold parquet file
+
+    Returns:
+        Updated table_metadata with DMBOK and governance fields
+    """
+    # Add DMBOK table-level tag
+    table_metadata = add_dmbok_table_tags(table_metadata, table_name)
+
+    # Add DMBOK field-level tags to columns
+    if "columns" in table_metadata:
+        table_metadata["columns"] = add_dmbok_field_tags(table_metadata["columns"])
+
+    # Add governance metadata
+    table_metadata = add_governance_metadata(table_metadata, table_name)
+
+    # Add quality metrics
+    table_metadata = add_quality_metrics(table_metadata, gold_path)
+
+    return table_metadata
+
+
+def enrich_phase_16_tables(catalog_path: Path | None = None, gold_dir: Path | None = None) -> dict:
+    """
+    Enrich Phase 16 tables with DMBOK and governance metadata.
+
+    For each Phase 16 table:
+    1. Load existing catalog JSON
+    2. Add DMBOK table tags (knowledge area)
+    3. Add DMBOK field tags to all columns (element types)
+    4. Add governance metadata
+    5. Add quality metrics
+    6. Write updated catalog JSON
+
+    Args:
+        catalog_path: Path to catalog tables directory. Defaults to data/catalog/tables.
+        gold_dir: Path to gold parquet directory. Defaults to data/gold.
+
+    Returns:
+        Dictionary with counts: {"tables_updated": N, "columns_tagged": M, "tables_missing": L}
+    """
+    if catalog_path is None:
+        catalog_path = Path("data/catalog/tables")
+    else:
+        catalog_path = Path(catalog_path)
+
+    if gold_dir is None:
+        gold_dir = Path("data/gold")
+    else:
+        gold_dir = Path(gold_dir)
+
+    tables_updated = 0
+    columns_tagged = 0
+    tables_missing = 0
+
+    for table_name in PHASE_16_TABLES:
+        json_path = catalog_path / f"{table_name}.json"
+
+        if not json_path.exists():
+            tables_missing += 1
+            continue
+
+        # Load existing catalog data
+        with open(json_path, encoding="utf-8") as f:
+            table_data = json.load(f)
+
+        # Determine gold parquet path
+        gold_path = gold_dir / f"{table_name}.parquet"
+
+        # Count columns before enrichment
+        columns = table_data.get("columns", [])
+        if isinstance(columns, list):
+            col_count = len(columns)
+        elif isinstance(columns, dict):
+            col_count = len(columns)
+        else:
+            col_count = 0
+
+        # Enrich with DMBOK and governance
+        table_data = _enrich_table_with_dmbok(table_data, table_name, gold_path)
+
+        # Write back the enriched data
+        with open(json_path, "w", encoding="utf-8") as f:
+            json.dump(table_data, f, indent=2, ensure_ascii=False)
+
+        tables_updated += 1
+        columns_tagged += col_count
+
+    return {
+        "tables_updated": tables_updated,
+        "columns_tagged": columns_tagged,
+        "tables_missing": tables_missing,
+    }
+
+
 if __name__ == "__main__":
     results = enrich_catalog()
-    print(f"Enrichment complete:")
+    print("Enrichment complete:")
     print(f"  Tables updated: {results['tables_updated']}")
     print(f"  Columns enriched: {results['columns_enriched']}")
