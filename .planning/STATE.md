@@ -12,16 +12,16 @@ See: .planning/PROJECT.md (updated 2026-01-20)
 ## Current Position
 
 **Milestone:** v3.0 Data Layer Expansion
-**Phase:** 14-og-core (OG Core Tables)
-**Plan:** 04 of 6 complete (Wave 2)
-**Status:** In progress
-**Last activity:** 2026-02-05 - Completed 14-04-PLAN.md (Pay Rates Scraper and Fact Table)
+**Phase:** 14-og-core (OG Core Tables) - COMPLETE
+**Plan:** 6 of 6 complete (Wave 3)
+**Status:** Phase complete
+**Last activity:** 2026-02-05 - Completed 14-06-PLAN.md (NOC-OG Concordance)
 
 ```
 v1.0 [####################] 100% SHIPPED 2026-01-19
 v2.0 [####################] 100% SHIPPED 2026-01-20
 v2.1 [####################] 100% SHIPPED 2026-01-21
-v3.0 [####                ]  20% IN PROGRESS
+v3.0 [#####               ]  25% IN PROGRESS (Phase 14 complete)
 ```
 
 ## Performance Metrics
@@ -145,6 +145,14 @@ All v1.0 and v2.0 decisions archived in:
 | Dedupe by natural key | (og_subgroup_code, classification_level, step, effective_date) | 991 unique rows from 3,520 raw |
 | 1.5s request delay | Rate limiting for respectful scraping | All pages scraped successfully |
 
+**v3.0 Phase 14-06 Decisions:**
+| Decision | Rationale | Outcome |
+|----------|-----------|---------|
+| CT/PA test targets | Plan assumed FI/AS OG codes, but actual TBS data uses different codes | Tests updated to use real OG codes (CT, PA) |
+| Confidence tiers | RESEARCH.md specified thresholds for algorithmic matching | 0.95+=exact, 0.90+=high, 0.80+=medium, 0.70+=low |
+| Best guess fallback | CONTEXT.md requires always providing suggestion | algorithmic_rapidfuzz_best_guess for weak matches |
+| Parquet gitignored | Generated data should be regenerated, not versioned | build_bridge_noc_og() called on demand |
+
 ### Technical Discoveries
 
 From v2.1 research:
@@ -192,14 +200,14 @@ None.
 ### Last Session
 
 **Date:** 2026-02-05
-**Activity:** Executed 14-04-PLAN.md (Pay Rates Scraper and Fact Table)
-**Outcome:** Created fact_og_pay_rates with 991 pay rate rows, dual-format scraper, 34 tests
+**Activity:** Executed 14-06-PLAN.md (NOC-OG Concordance)
+**Outcome:** Created bridge_noc_og with 2486 mappings, match_noc_to_og() function, 16 tests
 
 ### Next Session Priorities
 
-1. Continue v3.0 Phase 14 — execute 14-06 (NOC-OG Concordance)
-2. All dimension tables now exist (dim_og, dim_og_subgroup, dim_og_qualifications, fact_og_pay_rates)
-3. Phase 15 (CAF Core) ready to start after Phase 14 completes
+1. **Phase 14 COMPLETE** - All 6 plans executed
+2. Start Phase 15 (CAF Core Tables)
+3. OG tables ready for JD Builder integration
 
 ### Context for Claude
 
@@ -260,7 +268,16 @@ When resuming this project:
 - **New:** 34 tests for pay rates scraper and ingestion
 - **709 tests passing** (675 + 34 from 14-04)
 
+- **New:** src/jobforge/concordance/__init__.py - Concordance module exports
+- **New:** src/jobforge/concordance/noc_og.py - NOC-OG fuzzy matching with confidence scoring
+- **New:** data/gold/bridge_noc_og.parquet - 2486 NOC-OG mappings (gitignored, regenerated)
+- **New:** data/catalog/tables/bridge_noc_og.json - Catalog metadata with FK relationships
+- **New:** tests/concordance/test_noc_og.py - 16 tests for concordance matching
+- **New:** match_noc_to_og() returns ranked OG matches with source attribution and rationale
+- **New:** build_bridge_noc_og() generates bridge table for all 516 NOC codes
+- **725 tests passing** (709 + 16 from 14-06)
+
 ---
 *State updated: 2026-02-05*
-*Session count: 44*
-*v3.0 Phase 14-04 COMPLETE - 2026-02-05*
+*Session count: 45*
+*v3.0 Phase 14 COMPLETE - 2026-02-05*
