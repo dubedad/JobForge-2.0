@@ -1,0 +1,90 @@
+{
+  "table_name": "dim_caf_job_family",
+  "layer": "gold",
+  "domain": "caf",
+  "file_path": "data/gold/dim_caf_job_family.parquet",
+  "row_count": 11,
+  "column_count": 10,
+  "schema_version": "1.0.0",
+  "description": "CAF (Canadian Armed Forces) job families - 11 career categories inferred from occupation patterns",
+  "business_purpose": "Reference dimension grouping CAF occupations into career families for career exploration and analysis",
+  "data_owner": "Canadian Armed Forces",
+  "source": "forces.ca (inferred)",
+  "source_url": "https://forces.ca/en/careers/",
+  "upstream_tables": [],
+  "downstream_tables": ["dim_caf_occupation"],
+  "classification": "public",
+  "columns": [
+    {
+      "name": "job_family_id",
+      "data_type": "VARCHAR",
+      "nullable": false,
+      "description": "Unique job family identifier slug",
+      "primary_key": true,
+      "example_values": ["engineering-technical", "medical-health", "combat-operations", "intelligence-signals", "administration-hr"]
+    },
+    {
+      "name": "job_family_name",
+      "data_type": "VARCHAR",
+      "nullable": false,
+      "description": "Human-readable job family name",
+      "example_values": ["Engineering Technical", "Medical Health", "Combat Operations", "Intelligence Signals"]
+    },
+    {
+      "name": "description",
+      "data_type": "VARCHAR",
+      "nullable": true,
+      "description": "Description of the job family category"
+    },
+    {
+      "name": "career_count",
+      "data_type": "INT64",
+      "nullable": true,
+      "description": "Number of CAF careers in this job family"
+    },
+    {
+      "name": "_source_url",
+      "data_type": "VARCHAR",
+      "nullable": true,
+      "description": "Source URL (null for inferred families)"
+    },
+    {
+      "name": "_generated_at",
+      "data_type": "VARCHAR",
+      "nullable": false,
+      "description": "Timestamp when job families were inferred (provenance)"
+    },
+    {
+      "name": "_source_file",
+      "data_type": "VARCHAR",
+      "nullable": false,
+      "description": "Path to source file (provenance)"
+    },
+    {
+      "name": "_ingested_at",
+      "data_type": "VARCHAR",
+      "nullable": false,
+      "description": "Timestamp when data was ingested (provenance)"
+    },
+    {
+      "name": "_batch_id",
+      "data_type": "VARCHAR",
+      "nullable": false,
+      "description": "Batch ID for pipeline run (provenance)"
+    },
+    {
+      "name": "_layer",
+      "data_type": "VARCHAR",
+      "nullable": false,
+      "description": "Data layer in medallion architecture (provenance)"
+    }
+  ],
+  "relationships": [
+    {
+      "table": "dim_caf_occupation",
+      "join": "dim_caf_job_family.job_family_id = dim_caf_occupation.job_family_id",
+      "type": "one-to-many",
+      "description": "Each job family contains multiple occupations"
+    }
+  ]
+}

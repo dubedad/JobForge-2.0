@@ -1,0 +1,230 @@
+{
+  "table_name": "dim_caf_occupation",
+  "layer": "gold",
+  "domain": "caf",
+  "file_path": "data/gold/dim_caf_occupation.parquet",
+  "row_count": 88,
+  "column_count": 32,
+  "schema_version": "1.0.0",
+  "description": "CAF (Canadian Armed Forces) occupations with bilingual content - 88 military careers",
+  "business_purpose": "Reference dimension for CAF military occupations enabling career exploration, civilian-military occupation mapping, and bilingual content delivery",
+  "data_owner": "Canadian Armed Forces",
+  "source": "forces.ca",
+  "source_url": "https://forces.ca/en/careers/",
+  "upstream_tables": [],
+  "downstream_tables": ["bridge_caf_noc", "bridge_caf_job_architecture"],
+  "classification": "public",
+  "columns": [
+    {
+      "name": "career_id",
+      "data_type": "VARCHAR",
+      "nullable": false,
+      "description": "Unique career identifier slug (e.g., aerospace-engineering-officer, pilot)",
+      "primary_key": true,
+      "example_values": ["aerospace-engineering-officer", "pilot", "infantry-soldier", "medical-technician"]
+    },
+    {
+      "name": "title_en",
+      "data_type": "VARCHAR",
+      "nullable": false,
+      "description": "English career title",
+      "example_values": ["Aerospace Engineering Officer", "Pilot", "Infantry Soldier"]
+    },
+    {
+      "name": "title_fr",
+      "data_type": "VARCHAR",
+      "nullable": true,
+      "description": "French career title",
+      "example_values": ["Officier du genie aerospatial", "Pilote", "Soldat d'infanterie"]
+    },
+    {
+      "name": "job_family_id",
+      "data_type": "VARCHAR",
+      "nullable": false,
+      "description": "Foreign key to dim_caf_job_family - inferred job family category",
+      "foreign_key": "dim_caf_job_family.job_family_id",
+      "example_values": ["engineering-technical", "combat-operations", "medical-health"]
+    },
+    {
+      "name": "environment",
+      "data_type": "VARCHAR",
+      "nullable": true,
+      "description": "JSON array of service branches (army, navy, air_force)",
+      "example_values": ["[\"army\"]", "[\"air_force\", \"navy\"]", "[\"army\", \"navy\", \"air_force\"]"]
+    },
+    {
+      "name": "commission_status",
+      "data_type": "VARCHAR",
+      "nullable": true,
+      "description": "Officer or NCM (Non-Commissioned Member) status",
+      "example_values": ["officer", "ncm"]
+    },
+    {
+      "name": "employment_type",
+      "data_type": "VARCHAR",
+      "nullable": true,
+      "description": "JSON array of employment options (full_time, part_time)",
+      "example_values": ["[\"full_time\"]", "[\"full_time\", \"part_time\"]"]
+    },
+    {
+      "name": "overview_en",
+      "data_type": "VARCHAR",
+      "nullable": true,
+      "description": "English career overview and responsibilities"
+    },
+    {
+      "name": "overview_fr",
+      "data_type": "VARCHAR",
+      "nullable": true,
+      "description": "French career overview and responsibilities"
+    },
+    {
+      "name": "work_environment_en",
+      "data_type": "VARCHAR",
+      "nullable": true,
+      "description": "English description of work environment"
+    },
+    {
+      "name": "work_environment_fr",
+      "data_type": "VARCHAR",
+      "nullable": true,
+      "description": "French description of work environment"
+    },
+    {
+      "name": "training_en",
+      "data_type": "VARCHAR",
+      "nullable": true,
+      "description": "English training requirements and programs"
+    },
+    {
+      "name": "training_fr",
+      "data_type": "VARCHAR",
+      "nullable": true,
+      "description": "French training requirements and programs"
+    },
+    {
+      "name": "entry_plans_en",
+      "data_type": "VARCHAR",
+      "nullable": true,
+      "description": "English entry plan options (direct entry, paid education)"
+    },
+    {
+      "name": "entry_plans_fr",
+      "data_type": "VARCHAR",
+      "nullable": true,
+      "description": "French entry plan options"
+    },
+    {
+      "name": "part_time_options_en",
+      "data_type": "VARCHAR",
+      "nullable": true,
+      "description": "English Reserve Force and part-time options"
+    },
+    {
+      "name": "part_time_options_fr",
+      "data_type": "VARCHAR",
+      "nullable": true,
+      "description": "French Reserve Force and part-time options"
+    },
+    {
+      "name": "related_civilian_occupations",
+      "data_type": "VARCHAR",
+      "nullable": true,
+      "description": "JSON array of related civilian occupation titles for career transition",
+      "example_values": ["[\"Aerospace Engineer\", \"Engineering Project Manager\"]"]
+    },
+    {
+      "name": "related_careers",
+      "data_type": "VARCHAR",
+      "nullable": true,
+      "description": "JSON array of related CAF career_ids",
+      "example_values": ["[\"marine-systems-engineering-officer\", \"avionics-systems-technician\"]"]
+    },
+    {
+      "name": "keywords",
+      "data_type": "VARCHAR",
+      "nullable": true,
+      "description": "JSON array of search keywords for career discovery"
+    },
+    {
+      "name": "description_meta",
+      "data_type": "VARCHAR",
+      "nullable": true,
+      "description": "Short meta description from page metadata"
+    },
+    {
+      "name": "url_en",
+      "data_type": "VARCHAR",
+      "nullable": true,
+      "description": "English career page URL on forces.ca"
+    },
+    {
+      "name": "url_fr",
+      "data_type": "VARCHAR",
+      "nullable": true,
+      "description": "French career page URL on forces.ca"
+    },
+    {
+      "name": "_source_url_en",
+      "data_type": "VARCHAR",
+      "nullable": true,
+      "description": "Source URL for English content (provenance)"
+    },
+    {
+      "name": "_source_url_fr",
+      "data_type": "VARCHAR",
+      "nullable": true,
+      "description": "Source URL for French content (provenance)"
+    },
+    {
+      "name": "_content_hash_en",
+      "data_type": "VARCHAR",
+      "nullable": true,
+      "description": "SHA-256 hash of English page content (provenance)"
+    },
+    {
+      "name": "_content_hash_fr",
+      "data_type": "VARCHAR",
+      "nullable": true,
+      "description": "SHA-256 hash of French page content (provenance)"
+    },
+    {
+      "name": "_scraped_at",
+      "data_type": "VARCHAR",
+      "nullable": false,
+      "description": "Timestamp when source was scraped (provenance)"
+    },
+    {
+      "name": "_source_file",
+      "data_type": "VARCHAR",
+      "nullable": false,
+      "description": "Path to source file (provenance)"
+    },
+    {
+      "name": "_ingested_at",
+      "data_type": "VARCHAR",
+      "nullable": false,
+      "description": "Timestamp when data was ingested (provenance)"
+    },
+    {
+      "name": "_batch_id",
+      "data_type": "VARCHAR",
+      "nullable": false,
+      "description": "Batch ID for pipeline run (provenance)"
+    },
+    {
+      "name": "_layer",
+      "data_type": "VARCHAR",
+      "nullable": false,
+      "description": "Data layer in medallion architecture (provenance)"
+    }
+  ],
+  "relationships": [
+    {
+      "table": "dim_caf_job_family",
+      "join": "dim_caf_occupation.job_family_id = dim_caf_job_family.job_family_id",
+      "type": "many-to-one",
+      "description": "Each occupation belongs to one job family"
+    }
+  ]
+}
