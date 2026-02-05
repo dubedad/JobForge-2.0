@@ -13,15 +13,15 @@ See: .planning/PROJECT.md (updated 2026-01-20)
 
 **Milestone:** v3.0 Data Layer Expansion
 **Phase:** 14-og-core (OG Core Tables)
-**Plan:** 02 of 3 complete
-**Status:** In progress
-**Last activity:** 2026-02-05 - Completed 14-02-PLAN.md (PDF Extractor Module)
+**Plan:** 03 of 3 complete
+**Status:** Phase complete
+**Last activity:** 2026-02-05 - Completed 14-03-PLAN.md (OG Gold Tables)
 
 ```
 v1.0 [####################] 100% SHIPPED 2026-01-19
 v2.0 [####################] 100% SHIPPED 2026-01-20
 v2.1 [####################] 100% SHIPPED 2026-01-21
-v3.0 [##                  ]  10% IN PROGRESS
+v3.0 [###                 ]  15% IN PROGRESS
 ```
 
 ## Performance Metrics
@@ -120,6 +120,15 @@ All v1.0 and v2.0 decisions archived in:
 | Extract from existing linked_metadata | Leverage already-scraped HTML data | 75 qualification standards instantly available |
 | Text validation >= 100 chars | Detect extraction failures early | Real standards are much longer; catches errors |
 
+**v3.0 Phase 14-03 Decisions:**
+| Decision | Rationale | Outcome |
+|----------|-----------|---------|
+| 31 unique groups (not 65) | Actual data had 217 rows with duplicates | Correct count in dim_og gold table |
+| 111 unique subgroups (not ~200) | Actual og_subgroups_en.json had 130 records with dupes | Correct count in dim_og_subgroup |
+| Custom JSON parser | Source JSON nested (rows array with provenance), not NDJSON | _load_occupational_groups_json() helper |
+| Clean group names | Remove "(AS)" suffix from names | Cleaner "Administrative Services" display |
+| FK validation optional | Allow ingestion without dim_og dependency | validate_fk=False parameter |
+
 ### Technical Discoveries
 
 From v2.1 research:
@@ -167,14 +176,14 @@ None.
 ### Last Session
 
 **Date:** 2026-02-05
-**Activity:** Executed 14-02-PLAN.md (PDF Extractor Module)
-**Outcome:** Added pdfplumber dependency, created pdf_extractor.py with dual PDF/HTML extraction, extracted 75 qualification standards with provenance
+**Activity:** Executed 14-03-PLAN.md (OG Gold Tables)
+**Outcome:** Created dim_og (31 groups) and dim_og_subgroup (111 subgroups) gold tables with FK validation, catalog metadata, and 22 tests
 
 ### Next Session Priorities
 
-1. Continue v3.0 Phase 14 — execute 14-03-PLAN.md (OG Gold Tables and NOC Concordance)
-2. Create dim_og and dim_og_subgroup gold tables from extracted data
-3. Add NOC-OG concordance bridge table with confidence scoring
+1. Continue v3.0 Phase 14 — if 14-04 exists, execute next plan
+2. Or start Phase 15 (CAF Core) for Canadian Armed Forces data
+3. NOC-OG concordance bridge table pending future phase
 
 ### Context for Claude
 
@@ -212,7 +221,15 @@ When resuming this project:
 - **New:** data/tbs/og_qualification_text.json - 75 qualification standards with provenance
 - **New:** QualificationStandardText model supporting both PDF and HTML sources
 
+- **New:** src/jobforge/ingestion/og.py - Medallion pipelines for dim_og and dim_og_subgroup
+- **New:** data/gold/dim_og.parquet - 31 TBS occupational groups with full provenance
+- **New:** data/gold/dim_og_subgroup.parquet - 111 subgroups with FK to dim_og
+- **New:** data/catalog/tables/dim_og.json - Catalog metadata for occupational groups
+- **New:** data/catalog/tables/dim_og_subgroup.json - Catalog metadata for subgroups
+- **New:** 22 tests for OG ingestion and FK validation
+- **652 tests passing** (630 + 22 from 14-03)
+
 ---
 *State updated: 2026-02-05*
-*Session count: 41*
-*v3.0 Phase 14-02 COMPLETE - 2026-02-05*
+*Session count: 42*
+*v3.0 Phase 14-03 COMPLETE - 2026-02-05*
