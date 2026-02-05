@@ -7,40 +7,49 @@
   "columns": {
     "agreement_id": {
       "type": "VARCHAR",
-      "description": "Unique identifier for the collective agreement (UUID)"
+      "description": "Unique identifier for the collective agreement (UUID)",
+      "dmbok_element_type": "reference_code"
     },
     "agreement_name": {
       "type": "VARCHAR",
-      "description": "Full name of the collective agreement (e.g., 'Economics and Social Science Services (EC)')"
+      "description": "Full name of the collective agreement (e.g., 'Economics and Social Science Services (EC)')",
+      "dmbok_element_type": "descriptive_text"
     },
     "og_code": {
       "type": "VARCHAR",
       "description": "Primary occupational group code covered by this agreement",
-      "foreign_key": "dim_og.og_code"
+      "foreign_key": "dim_og.og_code",
+      "dmbok_element_type": "reference_code"
     },
     "og_subgroup_codes": {
       "type": "VARCHAR",
-      "description": "JSON array of all subgroup codes covered by this agreement"
+      "description": "JSON array of all subgroup codes covered by this agreement",
+      "dmbok_element_type": "structured_array"
     },
     "bargaining_agent": {
       "type": "VARCHAR",
-      "description": "Union or bargaining agent representing employees (e.g., 'Public Service Alliance of Canada')"
+      "description": "Union or bargaining agent representing employees (e.g., 'Public Service Alliance of Canada')",
+      "dmbok_element_type": "descriptive_text"
     },
     "employer": {
       "type": "VARCHAR",
-      "description": "Employer signatory (typically 'Treasury Board of Canada Secretariat')"
+      "description": "Employer signatory (typically 'Treasury Board of Canada Secretariat')",
+      "dmbok_element_type": "descriptive_text"
     },
     "signing_date": {
       "type": "DATE",
-      "description": "Date the collective agreement was signed (YYYY-MM-DD)"
+      "description": "Date the collective agreement was signed (YYYY-MM-DD)",
+      "dmbok_element_type": "temporal_effective"
     },
     "effective_date": {
       "type": "DATE",
-      "description": "Date the agreement became effective (YYYY-MM-DD)"
+      "description": "Date the agreement became effective (YYYY-MM-DD)",
+      "dmbok_element_type": "temporal_effective"
     },
     "expiry_date": {
       "type": "DATE",
-      "description": "Date the agreement expires (YYYY-MM-DD), null if evergreen"
+      "description": "Date the agreement expires (YYYY-MM-DD), null if evergreen",
+      "dmbok_element_type": "temporal_expiry"
     }
   },
   "relationships": [
@@ -60,5 +69,23 @@
     "Each agreement covers one or more occupational groups/subgroups",
     "Expiry dates indicate when agreement needs to be renegotiated",
     "Bargaining agents represent employees in collective bargaining"
-  ]
+  ],
+  "dmbok_knowledge_area": "Reference and Master Data",
+  "governance": {
+    "data_steward": "OG Data Team",
+    "data_owner": "Treasury Board Secretariat",
+    "refresh_frequency": "as_published",
+    "retention_period": "indefinite",
+    "security_classification": "Unclassified",
+    "intended_consumers": [
+      "JD Builder",
+      "WiQ",
+      "Public API"
+    ]
+  },
+  "quality_metrics": {
+    "completeness_pct": 100.0,
+    "freshness_date": "2026-02-05T20:18:31.572570+00:00",
+    "row_count": 28
+  }
 }

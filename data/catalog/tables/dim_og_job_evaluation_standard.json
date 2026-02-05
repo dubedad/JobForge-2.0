@@ -9,80 +9,99 @@
     "og_code": {
       "type": "VARCHAR",
       "description": "Primary key - TBS occupational group code (FK to dim_og)",
-      "foreign_key": "dim_og.og_code"
+      "foreign_key": "dim_og.og_code",
+      "dmbok_element_type": "reference_code"
     },
     "og_subgroup_code": {
       "type": "VARCHAR",
       "description": "Subgroup code if standard is subgroup-specific",
-      "foreign_key": "dim_og_subgroup.og_subgroup_code"
+      "foreign_key": "dim_og_subgroup.og_subgroup_code",
+      "dmbok_element_type": "reference_code"
     },
     "standard_name": {
       "type": "VARCHAR",
-      "description": "Name of the classification or evaluation standard (e.g., 'Information Technology Job Evaluation Standard')"
+      "description": "Name of the classification or evaluation standard (e.g., 'Information Technology Job Evaluation Standard')",
+      "dmbok_element_type": "descriptive_text"
     },
     "standard_type": {
       "type": "VARCHAR",
-      "description": "Type: 'classification_standard' (overview) or 'evaluation_factor' (individual factor with points)"
+      "description": "Type: 'classification_standard' (overview) or 'evaluation_factor' (individual factor with points)",
+      "dmbok_element_type": "categorical_attribute"
     },
     "factor_name": {
       "type": "VARCHAR",
-      "description": "Evaluation factor name (e.g., 'Knowledge', 'Decision Making', 'Communication')"
+      "description": "Evaluation factor name (e.g., 'Knowledge', 'Decision Making', 'Communication')",
+      "dmbok_element_type": "data_attribute"
     },
     "factor_description": {
       "type": "VARCHAR",
-      "description": "Description of what this evaluation factor measures"
+      "description": "Description of what this evaluation factor measures",
+      "dmbok_element_type": "descriptive_text"
     },
     "factor_points": {
       "type": "INTEGER",
-      "description": "Maximum point value for this factor (where available)"
+      "description": "Maximum point value for this factor (where available)",
+      "dmbok_element_type": "numeric_attribute"
     },
     "factor_percentage": {
       "type": "DOUBLE",
-      "description": "Percentage of total points for this factor (e.g., 30.0 for 30%)"
+      "description": "Percentage of total points for this factor (e.g., 30.0 for 30%)",
+      "dmbok_element_type": "numeric_attribute"
     },
     "factor_level": {
       "type": "VARCHAR",
-      "description": "Level/degree within evaluation factor (e.g., 'Degree 1', 'Level 2')"
+      "description": "Level/degree within evaluation factor (e.g., 'Degree 1', 'Level 2')",
+      "dmbok_element_type": "categorical_attribute"
     },
     "level_points": {
       "type": "INTEGER",
-      "description": "Point value for this specific level/degree"
+      "description": "Point value for this specific level/degree",
+      "dmbok_element_type": "numeric_attribute"
     },
     "level_description": {
       "type": "VARCHAR",
-      "description": "Description of what this level entails"
+      "description": "Description of what this level entails",
+      "dmbok_element_type": "descriptive_text"
     },
     "full_text": {
       "type": "VARCHAR",
-      "description": "Complete text content for full-text search"
+      "description": "Complete text content for full-text search",
+      "dmbok_element_type": "descriptive_text"
     },
     "effective_date": {
       "type": "VARCHAR",
-      "description": "Date standard became effective"
+      "description": "Date standard became effective",
+      "dmbok_element_type": "temporal_effective"
     },
     "version": {
       "type": "VARCHAR",
-      "description": "Version identifier (e.g., '2018 version')"
+      "description": "Version identifier (e.g., '2018 version')",
+      "dmbok_element_type": "version_identifier"
     },
     "_source_url": {
       "type": "VARCHAR",
-      "description": "Per-record URL to authoritative TBS page"
+      "description": "Per-record URL to authoritative TBS page",
+      "dmbok_element_type": "provenance_identifier"
     },
     "_scraped_at": {
       "type": "VARCHAR",
-      "description": "ISO timestamp when data was scraped from TBS"
+      "description": "ISO timestamp when data was scraped from TBS",
+      "dmbok_element_type": "temporal_provenance"
     },
     "_ingested_at": {
       "type": "VARCHAR",
-      "description": "ISO timestamp when data was ingested to gold layer"
+      "description": "ISO timestamp when data was ingested to gold layer",
+      "dmbok_element_type": "temporal_provenance"
     },
     "_batch_id": {
       "type": "VARCHAR",
-      "description": "Unique batch identifier for this ingestion run"
+      "description": "Unique batch identifier for this ingestion run",
+      "dmbok_element_type": "provenance_identifier"
     },
     "_layer": {
       "type": "VARCHAR",
-      "description": "Data layer: 'gold'"
+      "description": "Data layer: 'gold'",
+      "dmbok_element_type": "provenance_marker"
     }
   },
   "relationships": [
@@ -115,5 +134,23 @@
       "description": "Find standards with highest factor point values",
       "sql": "SELECT og_code, factor_name, factor_points FROM dim_og_job_evaluation_standard WHERE factor_points IS NOT NULL ORDER BY factor_points DESC LIMIT 10"
     }
-  ]
+  ],
+  "dmbok_knowledge_area": "Metadata Management",
+  "governance": {
+    "data_steward": "OG Data Team",
+    "data_owner": "Treasury Board Secretariat",
+    "refresh_frequency": "as_published",
+    "retention_period": "indefinite",
+    "security_classification": "Unclassified",
+    "intended_consumers": [
+      "JD Builder",
+      "WiQ",
+      "Public API"
+    ]
+  },
+  "quality_metrics": {
+    "completeness_pct": 68.5,
+    "freshness_date": "2026-02-05T20:18:31.536669+00:00",
+    "row_count": 145
+  }
 }

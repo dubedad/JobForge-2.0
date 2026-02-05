@@ -8,49 +8,60 @@
     "og_subgroup_code": {
       "type": "VARCHAR",
       "description": "Occupational group subgroup code (e.g., 'AO', 'PE', 'EC')",
-      "foreign_key": "dim_og_subgroup.og_subgroup_code"
+      "foreign_key": "dim_og_subgroup.og_subgroup_code",
+      "dmbok_element_type": "reference_code"
     },
     "og_code": {
       "type": "VARCHAR",
       "description": "Parent occupational group code",
-      "foreign_key": "dim_og.og_code"
+      "foreign_key": "dim_og.og_code",
+      "dmbok_element_type": "reference_code"
     },
     "classification_level": {
       "type": "VARCHAR",
-      "description": "Classification level within subgroup (e.g., 'PE-01', 'EC-04')"
+      "description": "Classification level within subgroup (e.g., 'PE-01', 'EC-04')",
+      "dmbok_element_type": "reference_code"
     },
     "step": {
       "type": "INTEGER",
-      "description": "Pay step within level (typically 1-10, some up to 19)"
+      "description": "Pay step within level (typically 1-10, some up to 19)",
+      "dmbok_element_type": "numeric_attribute"
     },
     "annual_rate": {
       "type": "DOUBLE",
-      "description": "Annual salary rate in CAD"
+      "description": "Annual salary rate in CAD",
+      "dmbok_element_type": "numeric_attribute"
     },
     "hourly_rate": {
       "type": "DOUBLE",
-      "description": "Hourly rate in CAD (if available)"
+      "description": "Hourly rate in CAD (if available)",
+      "dmbok_element_type": "numeric_attribute"
     },
     "effective_date": {
       "type": "DATE",
-      "description": "Date pay rate became effective (YYYY-MM-DD format)"
+      "description": "Date pay rate became effective (YYYY-MM-DD format)",
+      "dmbok_element_type": "temporal_effective"
     },
     "is_represented": {
       "type": "BOOLEAN",
-      "description": "True if unionized/represented employee, False if excluded/unrepresented"
+      "description": "True if unionized/represented employee, False if excluded/unrepresented",
+      "dmbok_element_type": "boolean_flag"
     },
     "collective_agreement": {
       "type": "VARCHAR",
-      "description": "Collective agreement name if represented (null for excluded) - legacy column"
+      "description": "Collective agreement name if represented (null for excluded) - legacy column",
+      "dmbok_element_type": "descriptive_text"
     },
     "collective_agreement_id": {
       "type": "VARCHAR",
       "description": "Foreign key to dim_collective_agreement for represented employees",
-      "foreign_key": "dim_collective_agreement.agreement_id"
+      "foreign_key": "dim_collective_agreement.agreement_id",
+      "dmbok_element_type": "reference_code"
     },
     "pay_progression_type": {
       "type": "VARCHAR",
-      "description": "Type of pay progression: 'step' (most common), 'performance', or 'hybrid'"
+      "description": "Type of pay progression: 'step' (most common), 'performance', or 'hybrid'",
+      "dmbok_element_type": "categorical_attribute"
     }
   },
   "relationships": [
@@ -78,5 +89,23 @@
     "Annual rates range from ~$36k to ~$200k+ CAD depending on classification",
     "Effective dates reflect Treasury Board pay adjustments",
     "Historical rates are preserved (multiple effective_dates per classification)"
-  ]
+  ],
+  "dmbok_knowledge_area": "Reference and Master Data",
+  "governance": {
+    "data_steward": "OG Data Team",
+    "data_owner": "Treasury Board Secretariat",
+    "refresh_frequency": "as_published",
+    "retention_period": "indefinite",
+    "security_classification": "Unclassified",
+    "intended_consumers": [
+      "JD Builder",
+      "WiQ",
+      "Public API"
+    ]
+  },
+  "quality_metrics": {
+    "completeness_pct": 87.4,
+    "freshness_date": "2026-02-05T20:18:31.548671+00:00",
+    "row_count": 6765
+  }
 }

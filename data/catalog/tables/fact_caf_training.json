@@ -11,7 +11,10 @@
   "data_owner": "Canadian Armed Forces",
   "source": "forces.ca",
   "source_url": "https://forces.ca/",
-  "upstream_tables": ["dim_caf_occupation", "dim_caf_training_location"],
+  "upstream_tables": [
+    "dim_caf_occupation",
+    "dim_caf_training_location"
+  ],
   "downstream_tables": [],
   "classification": "public",
   "columns": [
@@ -21,28 +24,48 @@
       "nullable": false,
       "description": "Foreign key to dim_caf_occupation career_id",
       "foreign_key": "dim_caf_occupation.career_id",
-      "example_values": ["infantry-soldier", "pilot", "aerospace-engineering-officer"]
+      "example_values": [
+        "infantry-soldier",
+        "pilot",
+        "aerospace-engineering-officer"
+      ],
+      "dmbok_element_type": "reference_code"
     },
     {
       "name": "training_type",
       "data_type": "VARCHAR",
       "nullable": false,
       "description": "Training type: 'bmq' (Basic Military Qualification) or 'occupation_specific'",
-      "example_values": ["bmq", "occupation_specific"]
+      "example_values": [
+        "bmq",
+        "occupation_specific"
+      ],
+      "dmbok_element_type": "categorical_attribute"
     },
     {
       "name": "duration_weeks",
       "data_type": "FLOAT",
       "nullable": true,
       "description": "Training duration standardized to weeks (null if unparseable)",
-      "example_values": [12.0, 17.0, 26.0, 52.0]
+      "example_values": [
+        12.0,
+        17.0,
+        26.0,
+        52.0
+      ],
+      "dmbok_element_type": "numeric_attribute"
     },
     {
       "name": "duration_text",
       "data_type": "VARCHAR",
       "nullable": true,
       "description": "Original duration text from source for verification",
-      "example_values": ["12 weeks", "approximately 6 months", "8-11 weeks"]
+      "example_values": [
+        "12 weeks",
+        "approximately 6 months",
+        "8-11 weeks"
+      ],
+      "dmbok_element_type": "descriptive_text"
     },
     {
       "name": "training_location_id",
@@ -50,100 +73,151 @@
       "nullable": true,
       "description": "Foreign key to dim_caf_training_location",
       "foreign_key": "dim_caf_training_location.training_location_id",
-      "example_values": ["cflrs-saint-jean-sur-richelieu", "cfb-borden", "cfb-gagetown"]
+      "example_values": [
+        "cflrs-saint-jean-sur-richelieu",
+        "cfb-borden",
+        "cfb-gagetown"
+      ],
+      "dmbok_element_type": "reference_code"
     },
     {
       "name": "training_location_text",
       "data_type": "VARCHAR",
       "nullable": true,
       "description": "Original location text from source for verification",
-      "example_values": ["Saint-Jean-sur-Richelieu, Quebec", "CFB Borden, Ontario"]
+      "example_values": [
+        "Saint-Jean-sur-Richelieu, Quebec",
+        "CFB Borden, Ontario"
+      ],
+      "dmbok_element_type": "descriptive_text"
     },
     {
       "name": "certifications_awarded",
       "data_type": "VARCHAR",
       "nullable": true,
       "description": "JSON array of certifications awarded upon training completion",
-      "example_values": ["[\"First Aid\", \"CPR\"]", "[]"]
+      "example_values": [
+        "[\"First Aid\", \"CPR\"]",
+        "[]"
+      ],
+      "dmbok_element_type": "structured_array"
     },
     {
       "name": "qualifications_awarded",
       "data_type": "VARCHAR",
       "nullable": true,
       "description": "JSON array of military qualifications awarded (BMOQ, DP1, QL3, etc.)",
-      "example_values": ["[\"BMOQ\", \"DP1\"]", "[\"BMQ\", \"QL3\"]"]
+      "example_values": [
+        "[\"BMOQ\", \"DP1\"]",
+        "[\"BMQ\", \"QL3\"]"
+      ],
+      "dmbok_element_type": "structured_array"
     },
     {
       "name": "prerequisite_courses",
       "data_type": "VARCHAR",
       "nullable": true,
       "description": "JSON array of prerequisite courses required before this training",
-      "example_values": ["[]", "[\"Basic Training\"]"]
+      "example_values": [
+        "[]",
+        "[\"Basic Training\"]"
+      ],
+      "dmbok_element_type": "structured_array"
     },
     {
       "name": "minimum_rank",
       "data_type": "VARCHAR",
       "nullable": true,
       "description": "Minimum rank required to begin this training",
-      "example_values": ["Private", "Captain", null]
+      "example_values": [
+        "Private",
+        "Captain",
+        null
+      ],
+      "dmbok_element_type": "categorical_attribute"
     },
     {
       "name": "civilian_credential_level",
       "data_type": "VARCHAR",
       "nullable": true,
       "description": "Standardized civilian equivalency level: certificate, diploma, degree, professional, trade",
-      "example_values": ["certificate", "diploma", "degree", "trade", null]
+      "example_values": [
+        "certificate",
+        "diploma",
+        "degree",
+        "trade",
+        null
+      ],
+      "dmbok_element_type": "categorical_attribute"
     },
     {
       "name": "civilian_equivalency_text",
       "data_type": "VARCHAR",
       "nullable": true,
       "description": "Original text describing civilian credential equivalency",
-      "example_values": ["Skills transferable to commercial aviation", "Equivalent to Red Seal trade"]
+      "example_values": [
+        "Skills transferable to commercial aviation",
+        "Equivalent to Red Seal trade"
+      ],
+      "dmbok_element_type": "descriptive_text"
     },
     {
       "name": "recertification_required",
       "data_type": "BOOLEAN",
       "nullable": false,
       "description": "Whether periodic recertification is required",
-      "example_values": [true, false]
+      "example_values": [
+        true,
+        false
+      ],
+      "dmbok_element_type": "boolean_flag"
     },
     {
       "name": "recertification_frequency",
       "data_type": "VARCHAR",
       "nullable": true,
       "description": "Frequency of recertification if required",
-      "example_values": ["annually", "every 5 years", null]
+      "example_values": [
+        "annually",
+        "every 5 years",
+        null
+      ],
+      "dmbok_element_type": "structured_array"
     },
     {
       "name": "_source_url",
       "data_type": "VARCHAR",
       "nullable": true,
-      "description": "Source URL for this training record (provenance)"
+      "description": "Source URL for this training record (provenance)",
+      "dmbok_element_type": "provenance_identifier"
     },
     {
       "name": "_extracted_at",
       "data_type": "VARCHAR",
       "nullable": true,
-      "description": "Timestamp when training info was extracted (provenance)"
+      "description": "Timestamp when training info was extracted (provenance)",
+      "dmbok_element_type": "temporal_provenance"
     },
     {
       "name": "_ingested_at",
       "data_type": "VARCHAR",
       "nullable": false,
-      "description": "Timestamp when data was ingested (provenance)"
+      "description": "Timestamp when data was ingested (provenance)",
+      "dmbok_element_type": "temporal_provenance"
     },
     {
       "name": "_batch_id",
       "data_type": "VARCHAR",
       "nullable": false,
-      "description": "Batch ID for pipeline run (provenance)"
+      "description": "Batch ID for pipeline run (provenance)",
+      "dmbok_element_type": "provenance_identifier"
     },
     {
       "name": "_layer",
       "data_type": "VARCHAR",
       "nullable": false,
-      "description": "Data layer in medallion architecture (provenance)"
+      "description": "Data layer in medallion architecture (provenance)",
+      "dmbok_element_type": "provenance_marker"
     }
   ],
   "relationships": [
@@ -159,5 +233,23 @@
       "type": "many-to-one",
       "description": "Each training record may be conducted at one normalized training location"
     }
-  ]
+  ],
+  "dmbok_knowledge_area": "Metadata Management",
+  "governance": {
+    "data_steward": "CAF Data Team",
+    "data_owner": "Department of National Defence",
+    "refresh_frequency": "as_published",
+    "retention_period": "indefinite",
+    "security_classification": "Unclassified",
+    "intended_consumers": [
+      "JD Builder",
+      "WiQ",
+      "Public API"
+    ]
+  },
+  "quality_metrics": {
+    "completeness_pct": 71.8,
+    "freshness_date": "2026-02-05T20:18:31.584568+00:00",
+    "row_count": 152
+  }
 }

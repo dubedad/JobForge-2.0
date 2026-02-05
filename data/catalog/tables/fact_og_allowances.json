@@ -8,69 +8,85 @@
   "columns": {
     "allowance_id": {
       "type": "VARCHAR",
-      "description": "Primary key - unique allowance identifier (UUID)"
+      "description": "Primary key - unique allowance identifier (UUID)",
+      "dmbok_element_type": "reference_code"
     },
     "allowance_type": {
       "type": "VARCHAR",
-      "description": "Category: bilingual_bonus, supervisory, isolated_post, shift, standby"
+      "description": "Category: bilingual_bonus, supervisory, isolated_post, shift, standby",
+      "dmbok_element_type": "categorical_attribute"
     },
     "allowance_name": {
       "type": "VARCHAR",
-      "description": "Official allowance name from TBS"
+      "description": "Official allowance name from TBS",
+      "dmbok_element_type": "descriptive_text"
     },
     "amount": {
       "type": "DOUBLE",
-      "description": "Dollar amount (annual unless rate_type differs), null for variable/negotiated rates"
+      "description": "Dollar amount (annual unless rate_type differs), null for variable/negotiated rates",
+      "dmbok_element_type": "numeric_attribute"
     },
     "rate_type": {
       "type": "VARCHAR",
-      "description": "Rate type: annual, hourly, percentage, per_diem"
+      "description": "Rate type: annual, hourly, percentage, per_diem",
+      "dmbok_element_type": "categorical_attribute"
     },
     "percentage": {
       "type": "DOUBLE",
-      "description": "Percentage value for percentage-based allowances (e.g., 5% supervisory premium)"
+      "description": "Percentage value for percentage-based allowances (e.g., 5% supervisory premium)",
+      "dmbok_element_type": "numeric_attribute"
     },
     "og_code": {
       "type": "VARCHAR",
       "description": "FK to dim_og (null if allowance applies universally to all occupational groups)",
       "foreign_key": "dim_og.og_code",
-      "nullable": true
+      "nullable": true,
+      "dmbok_element_type": "reference_code"
     },
     "classification_level": {
       "type": "VARCHAR",
-      "description": "Classification level if level-specific (e.g., 'EX-01'), null if applies to all levels"
+      "description": "Classification level if level-specific (e.g., 'EX-01'), null if applies to all levels",
+      "dmbok_element_type": "reference_code"
     },
     "eligibility_criteria": {
       "type": "VARCHAR",
-      "description": "Text description of eligibility requirements for the allowance"
+      "description": "Text description of eligibility requirements for the allowance",
+      "dmbok_element_type": "descriptive_text"
     },
     "effective_date": {
       "type": "DATE",
-      "description": "Date allowance rate became effective (YYYY-MM-DD format)"
+      "description": "Date allowance rate became effective (YYYY-MM-DD format)",
+      "dmbok_element_type": "temporal_effective"
     },
     "_source_url": {
       "type": "VARCHAR",
-      "description": "URL from which allowance data was scraped"
+      "description": "URL from which allowance data was scraped",
+      "dmbok_element_type": "provenance_identifier"
     },
     "_scraped_at": {
       "type": "TIMESTAMP",
-      "description": "UTC timestamp when data was scraped"
+      "description": "UTC timestamp when data was scraped",
+      "dmbok_element_type": "temporal_provenance"
     },
     "_source_file": {
       "type": "VARCHAR",
-      "description": "Path to source JSON file"
+      "description": "Path to source JSON file",
+      "dmbok_element_type": "provenance_identifier"
     },
     "_ingested_at": {
       "type": "TIMESTAMP",
-      "description": "UTC timestamp when data was ingested to gold layer"
+      "description": "UTC timestamp when data was ingested to gold layer",
+      "dmbok_element_type": "temporal_provenance"
     },
     "_batch_id": {
       "type": "VARCHAR",
-      "description": "Batch identifier for provenance tracking"
+      "description": "Batch identifier for provenance tracking",
+      "dmbok_element_type": "provenance_identifier"
     },
     "_layer": {
       "type": "VARCHAR",
-      "description": "Data layer: bronze, silver, or gold"
+      "description": "Data layer: bronze, silver, or gold",
+      "dmbok_element_type": "provenance_marker"
     }
   },
   "relationships": [
@@ -96,6 +112,16 @@
     "refresh_frequency": "as_published",
     "retention_period": "indefinite",
     "security_classification": "Unclassified",
-    "intended_consumers": ["JD Builder", "WiQ", "Public API"]
+    "intended_consumers": [
+      "JD Builder",
+      "WiQ",
+      "Public API"
+    ]
+  },
+  "dmbok_knowledge_area": "Reference and Master Data",
+  "quality_metrics": {
+    "completeness_pct": 71.0,
+    "freshness_date": "2026-02-05T20:18:31.561669+00:00",
+    "row_count": 14
   }
 }

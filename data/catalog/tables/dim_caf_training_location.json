@@ -12,7 +12,9 @@
   "source": "Canadian Armed Forces",
   "source_url": "https://www.canada.ca/en/department-national-defence.html",
   "upstream_tables": [],
-  "downstream_tables": ["fact_caf_training"],
+  "downstream_tables": [
+    "fact_caf_training"
+  ],
   "classification": "public",
   "columns": [
     {
@@ -21,60 +23,111 @@
       "nullable": false,
       "description": "Primary key - slugified canonical location name",
       "primary_key": true,
-      "example_values": ["cfb-borden", "cflrs-saint-jean-sur-richelieu", "cfb-gagetown", "cfb-kingston"]
+      "example_values": [
+        "cfb-borden",
+        "cflrs-saint-jean-sur-richelieu",
+        "cfb-gagetown",
+        "cfb-kingston"
+      ],
+      "dmbok_element_type": "reference_code"
     },
     {
       "name": "location_name",
       "data_type": "VARCHAR",
       "nullable": false,
       "description": "Canonical location name (official base/school name)",
-      "example_values": ["CFB Borden", "CFLRS Saint-Jean-sur-Richelieu", "CFB Gagetown", "CFB Kingston"]
+      "example_values": [
+        "CFB Borden",
+        "CFLRS Saint-Jean-sur-Richelieu",
+        "CFB Gagetown",
+        "CFB Kingston"
+      ],
+      "dmbok_element_type": "descriptive_text"
     },
     {
       "name": "province",
       "data_type": "VARCHAR",
       "nullable": false,
       "description": "Canadian province/territory code",
-      "example_values": ["ON", "QC", "NB", "BC", "NS", "AB", "MB", "SK"]
+      "example_values": [
+        "ON",
+        "QC",
+        "NB",
+        "BC",
+        "NS",
+        "AB",
+        "MB",
+        "SK"
+      ],
+      "dmbok_element_type": "categorical_attribute"
     },
     {
       "name": "country",
       "data_type": "VARCHAR",
       "nullable": false,
       "description": "Country (always Canada for CAF training locations)",
-      "example_values": ["Canada"]
+      "example_values": [
+        "Canada"
+      ],
+      "dmbok_element_type": "categorical_attribute"
     },
     {
       "name": "base_type",
       "data_type": "VARCHAR",
       "nullable": false,
       "description": "Type of military installation: cfb (Canadian Forces Base), cflrs (Leadership and Recruit School)",
-      "example_values": ["cfb", "cflrs"]
+      "example_values": [
+        "cfb",
+        "cflrs"
+      ],
+      "dmbok_element_type": "categorical_attribute"
     },
     {
       "name": "_source",
       "data_type": "VARCHAR",
       "nullable": false,
-      "description": "Source of location data (canonical reference data)"
+      "description": "Source of location data (canonical reference data)",
+      "dmbok_element_type": "provenance_identifier"
     },
     {
       "name": "_ingested_at",
       "data_type": "VARCHAR",
       "nullable": false,
-      "description": "Timestamp when data was ingested (provenance)"
+      "description": "Timestamp when data was ingested (provenance)",
+      "dmbok_element_type": "temporal_provenance"
     },
     {
       "name": "_batch_id",
       "data_type": "VARCHAR",
       "nullable": false,
-      "description": "Batch ID for pipeline run (provenance)"
+      "description": "Batch ID for pipeline run (provenance)",
+      "dmbok_element_type": "provenance_identifier"
     },
     {
       "name": "_layer",
       "data_type": "VARCHAR",
       "nullable": false,
-      "description": "Data layer in medallion architecture (provenance)"
+      "description": "Data layer in medallion architecture (provenance)",
+      "dmbok_element_type": "provenance_marker"
     }
   ],
-  "relationships": []
+  "relationships": [],
+  "dmbok_knowledge_area": "Reference and Master Data",
+  "governance": {
+    "data_steward": "CAF Data Team",
+    "data_owner": "Department of National Defence",
+    "refresh_frequency": "as_published",
+    "retention_period": "indefinite",
+    "security_classification": "Unclassified",
+    "intended_consumers": [
+      "JD Builder",
+      "WiQ",
+      "Public API"
+    ]
+  },
+  "quality_metrics": {
+    "completeness_pct": 100.0,
+    "freshness_date": "2026-02-05T20:18:31.596569+00:00",
+    "row_count": 18
+  }
 }
