@@ -12,16 +12,16 @@ See: .planning/PROJECT.md (updated 2026-01-20)
 ## Current Position
 
 **Milestone:** v3.0 Data Layer Expansion
-**Phase:** 14-og-core (OG Core Tables) - COMPLETE
-**Plan:** 6 of 6 complete (Wave 3)
-**Status:** Phase complete
-**Last activity:** 2026-02-05 - Completed 14-06-PLAN.md (NOC-OG Concordance)
+**Phase:** 15-caf-core (CAF Core Tables) - IN PROGRESS
+**Plan:** 1 of 4 complete (Wave 1)
+**Status:** In progress
+**Last activity:** 2026-02-05 - Completed 15-01-PLAN.md (CAF Scraper Module)
 
 ```
 v1.0 [####################] 100% SHIPPED 2026-01-19
 v2.0 [####################] 100% SHIPPED 2026-01-20
 v2.1 [####################] 100% SHIPPED 2026-01-21
-v3.0 [#####               ]  25% IN PROGRESS (Phase 14 complete)
+v3.0 [######              ]  30% IN PROGRESS (Phase 15 started)
 ```
 
 ## Performance Metrics
@@ -153,6 +153,13 @@ All v1.0 and v2.0 decisions archived in:
 | Best guess fallback | CONTEXT.md requires always providing suggestion | algorithmic_rapidfuzz_best_guess for weak matches |
 | Parquet gitignored | Generated data should be regenerated, not versioned | build_bridge_noc_og() called on demand |
 
+**v3.0 Phase 15-01 Decisions:**
+| Decision | Rationale | Outcome |
+|----------|-----------|---------|
+| Sitemap-based URL discovery | Per RESEARCH.md, extract URLs from sitemap rather than constructing | 88 EN / 90 FR career URLs from forces.ca/sitemap.xml |
+| Pending content hash for listings | Full hashes require page fetches; sitemap approach is lightweight | content_hash field present with "pending" value |
+| Follow TBS scraper pattern | Proven pattern with provenance, rate limiting, retry logic | CAFScraper mirrors TBSScraper structure |
+
 ### Technical Discoveries
 
 From v2.1 research:
@@ -200,14 +207,24 @@ None.
 ### Last Session
 
 **Date:** 2026-02-05
-**Activity:** Executed 14-06-PLAN.md (NOC-OG Concordance)
-**Outcome:** Created bridge_noc_og with 2486 mappings, match_noc_to_og() function, 16 tests
+**Activity:** Executed 15-01-PLAN.md (CAF Scraper Module)
+**Outcome:** Created CAF external module with models, scraper, parser; scraped 88 EN / 90 FR career listings; 36 tests
 
 ### Next Session Priorities
 
-1. **Phase 14 COMPLETE** - All 6 plans executed
-2. Start Phase 15 (CAF Core Tables)
-3. OG tables ready for JD Builder integration
+1. **Execute 15-02-PLAN.md** - CAF Career Detail Scraping
+2. **Execute 15-03-PLAN.md** - CAF Gold Tables (dim_caf_occupation, dim_caf_job_family)
+3. **Execute 15-04-PLAN.md** - CAF Bridge Tables (NOC, Job Architecture)
+4. Execute Phase 16 (Extended Metadata)
+
+### Pending Milestone Proposal
+
+**v4.0 Governance Compliance & Conversational Agents**
+- Proposal: `.planning/proposals/v4.0-governance-agents-vision.md`
+- Status: READY — all decisions finalized
+- Phases: 17-24 (8 phases planned)
+- Key features: DAMA audit in verify-work, DQ dashboard, 4 conversational agents
+- **ACTION:** Load this proposal when running `/gsd:new-milestone` after v3.0 completes
 
 ### Context for Claude
 
@@ -277,7 +294,16 @@ When resuming this project:
 - **New:** build_bridge_noc_og() generates bridge table for all 516 NOC codes
 - **725 tests passing** (709 + 16 from 14-06)
 
+- **New:** src/jobforge/external/caf/__init__.py - CAF module package exports
+- **New:** src/jobforge/external/caf/models.py - CAF Pydantic models with provenance
+- **New:** src/jobforge/external/caf/parser.py - HTML parsing for CAF career pages
+- **New:** src/jobforge/external/caf/scraper.py - Sitemap-based scraper with rate limiting
+- **New:** data/caf/careers_en.json - 88 EN career listings with provenance
+- **New:** data/caf/careers_fr.json - 90 FR career listings with provenance
+- **New:** tests/external/caf/test_caf_scraper.py - 36 tests for CAF scraper
+- **761 tests passing** (725 + 36 from 15-01)
+
 ---
 *State updated: 2026-02-05*
-*Session count: 45*
-*v3.0 Phase 14 COMPLETE - 2026-02-05*
+*Session count: 46*
+*v3.0 Phase 15 Plan 01 COMPLETE - 2026-02-05*
