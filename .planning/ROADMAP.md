@@ -74,7 +74,14 @@ Plans:
   4. User can find NOC codes associated with CAF occupations
   5. User can find Job Architecture matches with confidence scores
   6. All tables have full provenance (source URL, scrape timestamp, match algorithm)
-**Plans**: TBD (created during /gsd:plan-phase 15)
+**Plans:** 6 plans
+Plans:
+- [ ] 15-01-PLAN.md - Create CAF scraper module and listing page scraper
+- [ ] 15-02-PLAN.md - Fetch career details and infer job families
+- [ ] 15-03-PLAN.md - Create CAF gold tables (dim_caf_occupation, dim_caf_job_family)
+- [ ] 15-04-PLAN.md - Create CAF-NOC bridge with fuzzy matching
+- [ ] 15-05-PLAN.md - Create CAF-JA bridge with fuzzy matching
+- [ ] 15-06-PLAN.md - CLI commands, WiQ schema integration, integration tests
 
 ### Phase 16: Extended Metadata
 **Goal**: Enrich OG and CAF data with qualification standards, job evaluation, training requirements, and governance
@@ -99,10 +106,11 @@ Phases execute in numeric order: 14 -> 14.1 (if any) -> 15 -> 15.1 (if any) -> 1
 | Phase | Milestone | Plans Complete | Status | Completed |
 |-------|-----------|----------------|--------|-----------|
 | 14. OG Core | v3.0 | 0/6 | Planned | — |
-| 15. CAF Core | v3.0 | 0/? | Pending | — |
+| 15. CAF Core | v3.0 | 0/6 | Planned | — |
 | 16. Extended Metadata | v3.0 | 0/? | Pending | — |
 
 ---
 *Roadmap created: 2026-01-20*
 *v3.0 phases added: 2026-02-04*
 *Phase 14 planned: 2026-02-04*
+*Phase 15 planned: 2026-02-05*
