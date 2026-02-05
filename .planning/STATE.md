@@ -13,15 +13,15 @@ See: .planning/PROJECT.md (updated 2026-01-20)
 
 **Milestone:** v3.0 Data Layer Expansion
 **Phase:** 16-extended-metadata (Extended Metadata)
-**Plan:** 5 of 6 complete (Wave 1)
-**Status:** In progress
-**Last activity:** 2026-02-05 - Completed 16-02-PLAN.md (Job Evaluation Standards)
+**Plan:** 6 of 6 complete (Wave 1)
+**Status:** Phase 16 complete
+**Last activity:** 2026-02-05 - Completed 16-03-PLAN.md (Represented Pay Rates)
 
 ```
 v1.0 [####################] 100% SHIPPED 2026-01-19
 v2.0 [####################] 100% SHIPPED 2026-01-20
 v2.1 [####################] 100% SHIPPED 2026-01-21
-v3.0 [################### ]  94% IN PROGRESS (Phase 16: 5/6 plans complete)
+v3.0 [####################] 100% COMPLETE (Phase 16: 6/6 plans complete)
 ```
 
 ## Performance Metrics
@@ -213,6 +213,14 @@ All v1.0 and v2.0 decisions archived in:
 | Soft FK validation | Some OG codes (UNKNOWN, GENERIC) not in dim_og | Log warnings, preserve all records |
 | Factor points vs level points | Weighting tables have max points, degree tables have level-specific points | Separate columns for each |
 
+**v3.0 Phase 16-03 Decisions:**
+| Decision | Rationale | Outcome |
+|----------|-----------|---------|
+| Scrape from index table | TBS index has all metadata in single HTML table | 28 agreements without following individual links |
+| Classification in captions | EC-01 style levels in `<caption>` elements | Reliable extraction of classification levels |
+| Cast _ingested_at to string | Excluded parquet Datetime vs represented String | Schema alignment for Polars concat |
+| 28 agreements (not 30+) | TBS publishes 28 in current index | Adjusted from plan estimate |
+
 ### Technical Discoveries
 
 From v2.1 research:
@@ -235,7 +243,7 @@ From Phase 12 execution:
 - DDL with COMMENT clauses improves Claude's text-to-SQL context
 - Numeric column names must be quoted in DuckDB DDL
 - RELATIONSHIPS section provides FK join hints to Claude
-- Source attribution maps domain to friendly names (forecasting→COPS, noc→Statistics Canada NOC)
+- Source attribution maps domain to friendly names (forecasting->COPS, noc->Statistics Canada NOC)
 - Workforce intelligence patterns guide Claude on gap calculations (demand vs supply)
 - Entity recognition hints improve NOC code and occupation name handling
 - Orbit retriever can import jobforge modules for enhanced DDL with graceful fallback
@@ -260,20 +268,19 @@ None.
 ### Last Session
 
 **Date:** 2026-02-05
-**Activity:** Executed 16-02-PLAN.md (Job Evaluation Standards)
-**Outcome:** Created evaluation_scraper.py, scraped 16 TBS job evaluation pages, dim_og_job_evaluation_standard (145 rows), 37 tests
+**Activity:** Executed 16-03-PLAN.md (Represented Pay Rates)
+**Outcome:** Created represented_pay_scraper.py, scraped 9,174 represented pay rates from 28 collective agreements, extended fact_og_pay_rates to 6,765 rows (991 excluded + 5,774 represented), 61 total tests
 
 ### Next Session Priorities
 
-1. Continue Phase 16 (Plans 05-06)
-2. Complete v3.0 milestone
-3. Consider v4.0 proposal
+1. Complete v3.0 milestone (run UAT if needed)
+2. Prepare v4.0 proposal for new milestone
 
 ### Pending Milestone Proposal
 
 **v4.0 Governed Data Foundation**
 - Proposal: `.planning/proposals/v4.0-governance-agents-vision.md`
-- Status: READY — repackaged 2026-02-05
+- Status: READY - repackaged 2026-02-05
 - Phases: 17-23 (7 phases planned)
 - Key features:
   1. Governance compliance (DAMA audit, policy provenance, DADM)
@@ -289,7 +296,7 @@ None.
 
 **v5.0 Conversational Intelligence**
 - Proposal: `.planning/proposals/v5.0-ecosystem-expansion-vision.md`
-- Status: READY — repackaged 2026-02-05
+- Status: READY - repackaged 2026-02-05
 - Phases: 24-30 (7 phases planned)
 - Key features:
   1. Agent infrastructure (Orbit extensions, unified chat UI)
@@ -353,7 +360,7 @@ When resuming this project:
 - **New:** src/jobforge/external/tbs/pay_rates_scraper.py - TBS pay rates scraper with dual-format detection
 - **New:** src/jobforge/ingestion/og_pay_rates.py - Medallion pipeline for fact_og_pay_rates
 - **New:** data/tbs/og_pay_rates_en.json - 3,520 scraped pay rate rows with provenance
-- **New:** data/gold/fact_og_pay_rates.parquet - 991 unique pay rates (12 OG codes, steps 1-19)
+- **New:** data/gold/fact_og_pay_rates.parquet - 6,765 pay rates (991 excluded + 5,774 represented)
 - **New:** data/catalog/tables/fact_og_pay_rates.json - Catalog metadata with FK relationships
 - **New:** 34 tests for pay rates scraper and ingestion
 - **709 tests passing** (675 + 34 from 14-04)
@@ -444,7 +451,19 @@ When resuming this project:
 - **New:** Multi-table parsing for weighting tables and degree tables
 - **1052 tests passing** (1015 + 37 from 16-02)
 
+- **New:** src/jobforge/external/tbs/represented_pay_scraper.py - Represented pay rates from collective agreements
+- **New:** src/jobforge/external/tbs/collective_agreement_scraper.py - Collective agreement metadata scraper
+- **New:** src/jobforge/ingestion/og_represented_pay.py - Ingestion for dim_collective_agreement and extended pay rates
+- **New:** data/tbs/og_represented_pay_rates.json - 9,174 represented pay rates from 28 agreements
+- **New:** data/tbs/collective_agreements.json - 28 collective agreements with metadata
+- **New:** data/gold/dim_collective_agreement.parquet - 28 agreements with bargaining agents/dates (gitignored)
+- **New:** data/gold/fact_og_pay_rates.parquet - Extended to 6,765 rows (991 excluded + 5,774 represented)
+- **New:** data/catalog/tables/dim_collective_agreement.json - Catalog metadata with FK relationships
+- **New:** is_represented flag distinguishes excluded vs unionized employees
+- **New:** collective_agreement_id FK links pay rates to collective agreements
+- **1091 tests passing** (1052 + 38 from 16-03)
+
 ---
 *State updated: 2026-02-05*
-*Session count: 53*
-*v3.0 Phase 16: 5/6 plans complete - 2026-02-05*
+*Session count: 54*
+*v3.0 Phase 16 COMPLETE - 2026-02-05*
