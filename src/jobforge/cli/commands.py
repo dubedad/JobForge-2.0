@@ -8,6 +8,7 @@ Commands:
     demo: Start demo web server for live deployment narration
     api: Start the Query API server for conversational data/metadata queries
     compliance: Generate governance compliance traceability logs
+    caf: CAF data management commands (refresh, status)
 
 Example:
     $ jobforge stagegold
@@ -17,6 +18,8 @@ Example:
     $ jobforge api -p 8080                      # Custom port
     $ jobforge compliance dadm --summary
     $ jobforge compliance dama -o dama_compliance.json
+    $ jobforge caf status                       # Show CAF table status
+    $ jobforge caf refresh                      # Refresh CAF data
 """
 
 from pathlib import Path
@@ -402,6 +405,207 @@ def compliance(
 def version() -> None:
     """Show JobForge version."""
     typer.echo("JobForge 2.0.0")
+
+
+# CAF command group
+caf_app = typer.Typer(
+    name="caf",
+    help="CAF (Canadian Armed Forces) data management commands",
+)
+
+
+@caf_app.command("refresh")
+def caf_refresh(
+    scrape: bool = typer.Option(
+        False,
+        "--scrape/--no-scrape",
+        help="Scrape fresh data from forces.ca before building tables",
+    ),
+    match: bool = typer.Option(
+        True,
+        "--match/--no-match",
+        help="Run fuzzy matching to build bridge tables (NOC and JA)",
+    ),
+) -> None:
+    """Refresh CAF data tables.
+
+    Rebuilds CAF gold layer tables from source data. Optionally scrapes
+    fresh data from forces.ca and runs fuzzy matching to build bridge tables.
+
+    The refresh process:
+    1. (Optional) Scrape fresh career data from forces.ca
+    2. Build dim_caf_occupation (88 occupations with bilingual content)
+    3. Build dim_caf_job_family (11 job families)
+    4. (Optional) Build bridge_caf_noc (880 NOC mappings)
+    5. (Optional) Build bridge_caf_ja (880 JA mappings)
+
+    Examples:
+        # Refresh tables using existing scraped data
+        jobforge caf refresh
+
+        # Scrape fresh data and refresh all tables
+        jobforge caf refresh --scrape
+
+        # Refresh dimension tables only (skip bridge table matching)
+        jobforge caf refresh --no-match
+    """
+    from rich.console import Console
+    from rich.table import Table
+
+    from jobforge.ingestion.caf import (
+        ingest_bridge_caf_ja,
+        ingest_bridge_caf_noc,
+        ingest_dim_caf_job_family,
+        ingest_dim_caf_occupation,
+    )
+
+    console = Console()
+
+    results = []
+
+    # Optionally scrape fresh data
+    if scrape:
+        console.print("[bold]Scraping fresh data from forces.ca...[/bold]")
+        try:
+            from jobforge.external.caf import CAFLinkFetcher, scrape_caf_careers
+
+            # Scrape career listings
+            console.print("  Scraping career listings...")
+            scrape_caf_careers()
+
+            # Fetch detailed career pages with bilingual content
+            console.print("  Fetching career details...")
+            with CAFLinkFetcher() as fetcher:
+                fetcher.fetch_all_career_details()
+
+            console.print("[green]  Scrape complete[/green]")
+        except Exception as e:
+            console.print(f"[red]Error scraping: {e}[/red]")
+            raise typer.Exit(code=1)
+
+    # Build dimension tables
+    console.print("\n[bold]Building gold tables...[/bold]")
+
+    try:
+        console.print("  Building dim_caf_occupation...")
+        result_occ = ingest_dim_caf_occupation()
+        results.append(("dim_caf_occupation", result_occ["row_count"], "OK"))
+
+        console.print("  Building dim_caf_job_family...")
+        result_fam = ingest_dim_caf_job_family()
+        results.append(("dim_caf_job_family", result_fam["row_count"], "OK"))
+    except Exception as e:
+        console.print(f"[red]Error building dimension tables: {e}[/red]")
+        raise typer.Exit(code=1)
+
+    # Optionally build bridge tables via fuzzy matching
+    if match:
+        try:
+            console.print("  Building bridge_caf_noc...")
+            result_noc = ingest_bridge_caf_noc()
+            results.append(("bridge_caf_noc", result_noc["row_count"], "OK"))
+
+            console.print("  Building bridge_caf_ja...")
+            result_ja = ingest_bridge_caf_ja()
+            results.append(("bridge_caf_ja", result_ja["row_count"], "OK"))
+        except Exception as e:
+            console.print(f"[red]Error building bridge tables: {e}[/red]")
+            raise typer.Exit(code=1)
+
+    # Display results summary
+    console.print("\n[bold green]CAF refresh complete[/bold green]\n")
+
+    table = Table(title="CAF Tables Refreshed")
+    table.add_column("Table", style="cyan")
+    table.add_column("Rows", justify="right", style="green")
+    table.add_column("Status", style="green")
+
+    for name, rows, status in results:
+        table.add_row(name, str(rows), status)
+
+    console.print(table)
+
+
+@caf_app.command("status")
+def caf_status() -> None:
+    """Show CAF table status and row counts.
+
+    Displays the current state of all CAF gold layer tables including:
+    - dim_caf_occupation: CAF occupations with bilingual content
+    - dim_caf_job_family: Inferred job families
+    - bridge_caf_noc: CAF-to-NOC occupation mappings
+    - bridge_caf_ja: CAF-to-Job Architecture mappings
+
+    Examples:
+        jobforge caf status
+    """
+    from pathlib import Path
+
+    import polars as pl
+    from rich.console import Console
+    from rich.table import Table
+
+    console = Console()
+
+    gold_dir = Path("data/gold")
+
+    caf_tables = [
+        ("dim_caf_occupation", "88 CAF occupations with bilingual content"),
+        ("dim_caf_job_family", "11 inferred job families"),
+        ("bridge_caf_noc", "CAF-to-NOC occupation mappings"),
+        ("bridge_caf_ja", "CAF-to-Job Architecture mappings"),
+    ]
+
+    table = Table(title="CAF Table Status")
+    table.add_column("Table", style="cyan")
+    table.add_column("Rows", justify="right", style="green")
+    table.add_column("Status", style="green")
+    table.add_column("Description", style="dim")
+
+    for table_name, description in caf_tables:
+        file_path = gold_dir / f"{table_name}.parquet"
+        if file_path.exists():
+            try:
+                df = pl.read_parquet(file_path)
+                rows = len(df)
+                status = "OK"
+            except Exception as e:
+                rows = "?"
+                status = f"Error: {e}"
+        else:
+            rows = "-"
+            status = "Not found"
+
+        table.add_row(table_name, str(rows), status, description)
+
+    console.print(table)
+
+    # Also show reference JSON files if they exist
+    reference_dir = Path("data/reference")
+    reference_files = [
+        "caf_noc_mappings.json",
+        "caf_ja_mappings.json",
+    ]
+
+    ref_table = Table(title="CAF Reference Files")
+    ref_table.add_column("File", style="cyan")
+    ref_table.add_column("Status", style="green")
+    ref_table.add_column("Size", justify="right", style="dim")
+
+    for ref_file in reference_files:
+        ref_path = reference_dir / ref_file
+        if ref_path.exists():
+            size_kb = ref_path.stat().st_size / 1024
+            ref_table.add_row(ref_file, "OK", f"{size_kb:.1f} KB")
+        else:
+            ref_table.add_row(ref_file, "Not found", "-")
+
+    console.print()
+    console.print(ref_table)
+
+
+# Register CAF command group with main app
+app.add_typer(caf_app, name="caf")
 
 
 if __name__ == "__main__":
