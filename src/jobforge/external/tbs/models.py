@@ -108,3 +108,58 @@ class LinkedMetadataCollection(BaseModel):
     successful_fetches: int = Field(description="Number of successful fetches")
     failed_fetches: int = Field(description="Number of failed fetches")
     metadata: list[LinkedPageMetadata] = Field(description="Results for each link")
+
+
+# Alias for backward compatibility
+OGRow = OccupationalGroupRow
+
+
+class OGSubgroup(BaseModel):
+    """Structured subgroup data parsed from TBS occupational groups table.
+
+    Represents a single subgroup within an occupational group with
+    its code, name, and related URLs. Separated from OGRow for
+    cleaner data modeling and downstream processing.
+    """
+
+    og_code: str = Field(description="Parent group abbreviation (e.g., 'AS', 'AI')")
+    subgroup_code: str = Field(description="Full subgroup code (e.g., 'AS-01', 'AI-NOP')")
+    subgroup_name: str = Field(description="Subgroup name extracted from parentheses")
+    definition_url: str | None = Field(default=None, description="Link to subgroup definition page")
+    qualification_standard_url: str | None = Field(
+        default=None, description="Link to qualification standard"
+    )
+    rates_of_pay_url: str | None = Field(default=None, description="Link to pay rates page")
+    source_url: str = Field(description="TBS page URL from which data was scraped")
+    scraped_at: datetime = Field(description="UTC timestamp when scraping occurred")
+
+
+class OGDefinition(BaseModel):
+    """Definition text extracted from a TBS linked page.
+
+    Contains the definition content for an occupational group or
+    subgroup, with full provenance tracking.
+    """
+
+    og_code: str = Field(description="Parent group abbreviation (e.g., 'AS', 'AI')")
+    subgroup_code: str | None = Field(
+        default=None, description="Subgroup code if this is a subgroup definition, None for parent OG"
+    )
+    definition_text: str = Field(description="Full definition text extracted from linked page")
+    page_title: str = Field(description="Title of the source page")
+    source_url: str = Field(description="URL of the definition page")
+    scraped_at: datetime = Field(description="UTC timestamp when definition was fetched")
+
+
+class OGScrapedData(BaseModel):
+    """Container for complete OG scrape result including subgroups and definitions.
+
+    Aggregates all occupational group data from a full scrape session,
+    including groups, subgroups, and fetched definitions with provenance.
+    """
+
+    groups: list[OccupationalGroupRow] = Field(description="All rows from main OG table")
+    subgroups: list[OGSubgroup] = Field(description="Parsed subgroup data")
+    definitions: list[OGDefinition] = Field(description="Fetched definition content")
+    scraped_at: datetime = Field(description="UTC timestamp when scrape completed")
+    source_url: str = Field(description="Main TBS page URL")
