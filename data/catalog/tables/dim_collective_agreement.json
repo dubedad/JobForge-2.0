@@ -1,0 +1,64 @@
+{
+  "table_name": "dim_collective_agreement",
+  "domain": "occupational_groups",
+  "description": "TBS Collective Agreements - metadata for federal public service unionized employee bargaining agreements",
+  "source": "Treasury Board Secretariat",
+  "source_url": "https://www.canada.ca/en/treasury-board-secretariat/topics/pay/collective-agreements.html",
+  "columns": {
+    "agreement_id": {
+      "type": "VARCHAR",
+      "description": "Unique identifier for the collective agreement (UUID)"
+    },
+    "agreement_name": {
+      "type": "VARCHAR",
+      "description": "Full name of the collective agreement (e.g., 'Economics and Social Science Services (EC)')"
+    },
+    "og_code": {
+      "type": "VARCHAR",
+      "description": "Primary occupational group code covered by this agreement",
+      "foreign_key": "dim_og.og_code"
+    },
+    "og_subgroup_codes": {
+      "type": "VARCHAR",
+      "description": "JSON array of all subgroup codes covered by this agreement"
+    },
+    "bargaining_agent": {
+      "type": "VARCHAR",
+      "description": "Union or bargaining agent representing employees (e.g., 'Public Service Alliance of Canada')"
+    },
+    "employer": {
+      "type": "VARCHAR",
+      "description": "Employer signatory (typically 'Treasury Board of Canada Secretariat')"
+    },
+    "signing_date": {
+      "type": "DATE",
+      "description": "Date the collective agreement was signed (YYYY-MM-DD)"
+    },
+    "effective_date": {
+      "type": "DATE",
+      "description": "Date the agreement became effective (YYYY-MM-DD)"
+    },
+    "expiry_date": {
+      "type": "DATE",
+      "description": "Date the agreement expires (YYYY-MM-DD), null if evergreen"
+    }
+  },
+  "relationships": [
+    {
+      "table": "dim_og",
+      "join": "dim_collective_agreement.og_code = dim_og.og_code",
+      "type": "many-to-one"
+    },
+    {
+      "table": "fact_og_pay_rates",
+      "join": "dim_collective_agreement.agreement_id = fact_og_pay_rates.collective_agreement_id",
+      "type": "one-to-many"
+    }
+  ],
+  "notes": [
+    "Contains metadata for represented/unionized federal public service collective agreements",
+    "Each agreement covers one or more occupational groups/subgroups",
+    "Expiry dates indicate when agreement needs to be renegotiated",
+    "Bargaining agents represent employees in collective bargaining"
+  ]
+}

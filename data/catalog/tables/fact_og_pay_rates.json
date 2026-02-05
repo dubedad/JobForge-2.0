@@ -1,13 +1,13 @@
 {
   "table_name": "fact_og_pay_rates",
   "domain": "occupational_groups",
-  "description": "TBS Rates of Pay - federal public service pay scales by occupational group, level, and step",
+  "description": "TBS Rates of Pay - federal public service pay scales by occupational group, level, and step for both excluded and represented employees",
   "source": "Treasury Board Secretariat",
-  "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/pay/rates-pay/rates-pay-unrepresented-senior-excluded-employees.html",
+  "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/pay/rates-pay/",
   "columns": {
     "og_subgroup_code": {
       "type": "VARCHAR",
-      "description": "Occupational group subgroup code (e.g., 'AO', 'PE', 'NU')",
+      "description": "Occupational group subgroup code (e.g., 'AO', 'PE', 'EC')",
       "foreign_key": "dim_og_subgroup.og_subgroup_code"
     },
     "og_code": {
@@ -17,7 +17,7 @@
     },
     "classification_level": {
       "type": "VARCHAR",
-      "description": "Classification level within subgroup (e.g., 'PE-01', 'NU-CHN')"
+      "description": "Classification level within subgroup (e.g., 'PE-01', 'EC-04')"
     },
     "step": {
       "type": "INTEGER",
@@ -37,11 +37,20 @@
     },
     "is_represented": {
       "type": "BOOLEAN",
-      "description": "True if unionized/represented, False if excluded/unrepresented"
+      "description": "True if unionized/represented employee, False if excluded/unrepresented"
     },
     "collective_agreement": {
       "type": "VARCHAR",
-      "description": "Collective agreement name if represented (null for excluded)"
+      "description": "Collective agreement name if represented (null for excluded) - legacy column"
+    },
+    "collective_agreement_id": {
+      "type": "VARCHAR",
+      "description": "Foreign key to dim_collective_agreement for represented employees",
+      "foreign_key": "dim_collective_agreement.agreement_id"
+    },
+    "pay_progression_type": {
+      "type": "VARCHAR",
+      "description": "Type of pay progression: 'step' (most common), 'performance', or 'hybrid'"
     }
   },
   "relationships": [
@@ -54,12 +63,20 @@
       "table": "dim_og",
       "join": "fact_og_pay_rates.og_code = dim_og.og_code",
       "type": "many-to-one"
+    },
+    {
+      "table": "dim_collective_agreement",
+      "join": "fact_og_pay_rates.collective_agreement_id = dim_collective_agreement.agreement_id",
+      "type": "many-to-one"
     }
   ],
   "notes": [
-    "Pay rates are for excluded/unrepresented employees in the core public administration",
+    "Contains pay rates for both excluded/unrepresented AND represented/unionized employees",
+    "is_represented=False: excluded employees from rates-pay-unrepresented-senior-excluded-employees pages",
+    "is_represented=True: unionized employees from collective agreement annexes",
     "Step progression varies by occupational group (1-10 typical, some up to 19)",
-    "Annual rates range from ~$36k to ~$196k CAD",
-    "Effective dates reflect Treasury Board pay adjustments"
+    "Annual rates range from ~$36k to ~$200k+ CAD depending on classification",
+    "Effective dates reflect Treasury Board pay adjustments",
+    "Historical rates are preserved (multiple effective_dates per classification)"
   ]
 }
