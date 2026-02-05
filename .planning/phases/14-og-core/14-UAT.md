@@ -49,15 +49,11 @@ skipped: 0
 ## Gaps
 
 - truth: "NOC 21231 (Software developers and programmers) should map to IT (Information Technology) as top match"
-  status: failed
+  status: fixed
   reason: "User reported: 21231 FAIL - Software developers and programmers mapped to Ship Repair instead of IT"
   severity: major
   test: 5
   root_cause: "Pure fuzzy string matching (rapidfuzz WRatio) finds higher similarity for unrelated terms. 'Ship Repair...Production Supervisors' scores 85.5 due to 'pro' matching in programmers/production, while 'Information Technology' scores only 33.4 due to no character overlap."
-  artifacts:
-    - path: "src/jobforge/concordance/noc_og.py"
-      issue: "_compute_similarity() uses only character-level fuzzy matching without semantic awareness"
-  missing:
-    - "Add keyword-based boosting for IT-related terms (software, developer, programmer, computer, IT, systems)"
-    - "Consider adding a manual override table for known problem cases"
-  debug_session: "inline-uat-diagnosis"
+  fix_plan: "14-07-PLAN.md"
+  fix_summary: "14-07-SUMMARY.md"
+  verification: "All 23 concordance tests pass. Software developers now maps to IT (0.92 score)."
