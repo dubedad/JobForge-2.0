@@ -1,0 +1,104 @@
+{
+  "table_name": "dim_og_subgroup",
+  "layer": "gold",
+  "domain": "occupational_groups",
+  "file_path": "data/gold/dim_og_subgroup.parquet",
+  "row_count": 111,
+  "column_count": 12,
+  "schema_version": "1.0.0",
+  "description": "TBS Occupational Group Subgroups - 111 classification subgroups linked to parent groups",
+  "business_purpose": "Reference dimension for federal public service subgroup classification within occupational groups",
+  "data_owner": "Treasury Board Secretariat",
+  "source": "Treasury Board Secretariat",
+  "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups.html",
+  "upstream_tables": ["dim_og"],
+  "downstream_tables": [],
+  "classification": "public",
+  "columns": [
+    {
+      "name": "og_subgroup_code",
+      "data_type": "VARCHAR",
+      "nullable": false,
+      "description": "Subgroup code (e.g., AS-01, FI-02, EC-04)",
+      "primary_key": true,
+      "example_values": ["AS-01", "FI-02", "PM-04", "CR-05", "EC-06"]
+    },
+    {
+      "name": "og_code",
+      "data_type": "VARCHAR",
+      "nullable": false,
+      "description": "Parent occupational group code",
+      "foreign_key": "dim_og.og_code",
+      "example_values": ["AS", "FI", "PM", "CR", "EC"]
+    },
+    {
+      "name": "og_subgroup_name",
+      "data_type": "VARCHAR",
+      "nullable": false,
+      "description": "Full name of subgroup",
+      "example_values": ["Non-Operational", "Engineering", "Financial Management", "External Audit"]
+    },
+    {
+      "name": "definition_url",
+      "data_type": "VARCHAR",
+      "nullable": true,
+      "description": "URL to subgroup definition page on TBS website"
+    },
+    {
+      "name": "qualification_standard_url",
+      "data_type": "VARCHAR",
+      "nullable": true,
+      "description": "URL to qualification standard page on TBS website"
+    },
+    {
+      "name": "rates_of_pay_url",
+      "data_type": "VARCHAR",
+      "nullable": true,
+      "description": "URL to rates of pay page on TBS website"
+    },
+    {
+      "name": "_source_url",
+      "data_type": "VARCHAR",
+      "nullable": false,
+      "description": "URL of source data page (provenance)"
+    },
+    {
+      "name": "_scraped_at",
+      "data_type": "VARCHAR",
+      "nullable": false,
+      "description": "Timestamp when source was scraped (provenance)"
+    },
+    {
+      "name": "_source_file",
+      "data_type": "VARCHAR",
+      "nullable": false,
+      "description": "Path to source file (provenance)"
+    },
+    {
+      "name": "_ingested_at",
+      "data_type": "VARCHAR",
+      "nullable": false,
+      "description": "Timestamp when data was ingested (provenance)"
+    },
+    {
+      "name": "_batch_id",
+      "data_type": "VARCHAR",
+      "nullable": false,
+      "description": "Batch ID for pipeline run (provenance)"
+    },
+    {
+      "name": "_layer",
+      "data_type": "VARCHAR",
+      "nullable": false,
+      "description": "Data layer in medallion architecture (provenance)"
+    }
+  ],
+  "relationships": [
+    {
+      "table": "dim_og",
+      "join": "dim_og_subgroup.og_code = dim_og.og_code",
+      "type": "many-to-one",
+      "description": "Each subgroup belongs to one occupational group"
+    }
+  ]
+}

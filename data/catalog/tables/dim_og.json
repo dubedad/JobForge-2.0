@@ -1,0 +1,103 @@
+{
+  "table_name": "dim_og",
+  "layer": "gold",
+  "domain": "occupational_groups",
+  "file_path": "data/gold/dim_og.parquet",
+  "row_count": 31,
+  "column_count": 12,
+  "schema_version": "1.0.0",
+  "description": "TBS Occupational Groups - 31 federal public service classification groups",
+  "business_purpose": "Reference dimension for federal public service occupational group classification",
+  "data_owner": "Treasury Board Secretariat",
+  "source": "Treasury Board Secretariat",
+  "source_url": "https://www.canada.ca/en/treasury-board-secretariat/services/collective-agreements/occupational-groups.html",
+  "upstream_tables": [],
+  "downstream_tables": ["dim_og_subgroup"],
+  "classification": "public",
+  "columns": [
+    {
+      "name": "og_code",
+      "data_type": "VARCHAR",
+      "nullable": false,
+      "description": "Occupational group code (e.g., AS, FI, EC)",
+      "primary_key": true,
+      "example_values": ["AS", "FI", "EC", "PM", "CR"]
+    },
+    {
+      "name": "og_numeric_code",
+      "data_type": "VARCHAR",
+      "nullable": true,
+      "description": "Numeric group code used in TBS classification system",
+      "example_values": ["501", "502", "304", "310"]
+    },
+    {
+      "name": "og_name",
+      "data_type": "VARCHAR",
+      "nullable": false,
+      "description": "Full name of occupational group",
+      "example_values": ["Administrative Services", "Financial Management", "Economics and Social Science Services"]
+    },
+    {
+      "name": "definition_url",
+      "data_type": "VARCHAR",
+      "nullable": true,
+      "description": "URL to group definition page on TBS website"
+    },
+    {
+      "name": "qualification_standard_url",
+      "data_type": "VARCHAR",
+      "nullable": true,
+      "description": "URL to qualification standard page on TBS website"
+    },
+    {
+      "name": "rates_of_pay_url",
+      "data_type": "VARCHAR",
+      "nullable": true,
+      "description": "URL to rates of pay page on TBS website"
+    },
+    {
+      "name": "_source_url",
+      "data_type": "VARCHAR",
+      "nullable": false,
+      "description": "URL of source data page (provenance)"
+    },
+    {
+      "name": "_scraped_at",
+      "data_type": "VARCHAR",
+      "nullable": false,
+      "description": "Timestamp when source was scraped (provenance)"
+    },
+    {
+      "name": "_source_file",
+      "data_type": "VARCHAR",
+      "nullable": false,
+      "description": "Path to source file (provenance)"
+    },
+    {
+      "name": "_ingested_at",
+      "data_type": "VARCHAR",
+      "nullable": false,
+      "description": "Timestamp when data was ingested (provenance)"
+    },
+    {
+      "name": "_batch_id",
+      "data_type": "VARCHAR",
+      "nullable": false,
+      "description": "Batch ID for pipeline run (provenance)"
+    },
+    {
+      "name": "_layer",
+      "data_type": "VARCHAR",
+      "nullable": false,
+      "description": "Data layer in medallion architecture (provenance)"
+    }
+  ],
+  "relationships": [
+    {
+      "table": "dim_og_subgroup",
+      "join": "dim_og.og_code = dim_og_subgroup.og_code",
+      "type": "one-to-many",
+      "description": "Each occupational group has multiple subgroups"
+    }
+  ]
+}
