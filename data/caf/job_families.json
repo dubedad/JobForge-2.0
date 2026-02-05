@@ -1,0 +1,83 @@
+{
+  "generated_at": "2026-02-05T12:55:34.961430+00:00",
+  "family_count": 11,
+  "families": [
+    {
+      "family_id": "administration-hr",
+      "family_name": "Administration Hr",
+      "description": "CAF careers in the Administration Hr category.",
+      "career_count": 6,
+      "source_url": null
+    },
+    {
+      "family_id": "combat-operations",
+      "family_name": "Combat Operations",
+      "description": "CAF careers in the Combat Operations category.",
+      "career_count": 10,
+      "source_url": null
+    },
+    {
+      "family_id": "engineering-technical",
+      "family_name": "Engineering Technical",
+      "description": "CAF careers in the Engineering Technical category.",
+      "career_count": 37,
+      "source_url": null
+    },
+    {
+      "family_id": "intelligence-signals",
+      "family_name": "Intelligence Signals",
+      "description": "CAF careers in the Intelligence Signals category.",
+      "career_count": 10,
+      "source_url": null
+    },
+    {
+      "family_id": "medical-health",
+      "family_name": "Medical Health",
+      "description": "CAF careers in the Medical Health category.",
+      "career_count": 13,
+      "source_url": null
+    },
+    {
+      "family_id": "music",
+      "family_name": "Music",
+      "description": "CAF careers in the Music category.",
+      "career_count": 1,
+      "source_url": null
+    },
+    {
+      "family_id": "ncm-general",
+      "family_name": "Ncm General",
+      "description": "CAF careers in the Ncm General category.",
+      "career_count": 1,
+      "source_url": null
+    },
+    {
+      "family_id": "officer-general",
+      "family_name": "Officer General",
+      "description": "CAF careers in the Officer General category.",
+      "career_count": 2,
+      "source_url": null
+    },
+    {
+      "family_id": "police-security",
+      "family_name": "Police Security",
+      "description": "CAF careers in the Police Security category.",
+      "career_count": 2,
+      "source_url": null
+    },
+    {
+      "family_id": "support-logistics",
+      "family_name": "Support Logistics",
+      "description": "CAF careers in the Support Logistics category.",
+      "career_count": 5,
+      "source_url": null
+    },
+    {
+      "family_id": "training-development",
+      "family_name": "Training Development",
+      "description": "CAF careers in the Training Development category.",
+      "career_count": 1,
+      "source_url": null
+    }
+  ]
+}
