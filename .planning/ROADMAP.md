@@ -89,7 +89,15 @@ Plans:
   3. User can view timeliness (days since refresh) for any table
   4. User can view data quality dashboard with radar charts showing quality dimensions
   5. User can see quality trends over time to detect degradation
-**Plans:** TBD (estimated 5-7 plans)
+**Plans:** 6 plans
+
+Plans:
+- [ ] 18-01-PLAN.md - Quality models and weights (TDD)
+- [ ] 18-02-PLAN.md - Core metrics implementation (TDD)
+- [ ] 18-03-PLAN.md - Quality service and history
+- [ ] 18-04-PLAN.md - API and CLI integration
+- [ ] 18-05-PLAN.md - Streamlit dashboard foundation
+- [ ] 18-06-PLAN.md - Dashboard pages and export
 
 ### Phase 19: Business Metadata Capture
 **Goal**: Every core table has business context (purpose, questions, owner) captured from domain stakeholders
@@ -159,7 +167,7 @@ Phases execute in numeric order: 17 -> 17.1 (if any) -> 18 -> 18.1 (if any) -> 1
 | Phase | Milestone | Plans Complete | Status | Completed |
 |-------|-----------|----------------|--------|-----------|
 | 17. Governance Compliance | v4.0 | 0/5 | Ready | - |
-| 18. Data Quality Dashboard | v4.0 | 0/TBD | Planned | - |
+| 18. Data Quality Dashboard | v4.0 | 0/6 | Planned | - |
 | 19. Business Metadata | v4.0 | 0/TBD | Planned | - |
 | 20. O*NET Integration | v4.0 | 0/TBD | Planned | - |
 | 21. JA Enrichment | v4.0 | 0/TBD | Planned | - |
@@ -172,3 +180,4 @@ Phases execute in numeric order: 17 -> 17.1 (if any) -> 18 -> 18.1 (if any) -> 1
 *v3.0 complete: 2026-02-05*
 *v4.0 phases added: 2026-02-05*
 *Phase 17 planned: 2026-02-05*
+*Phase 18 planned: 2026-02-05*
