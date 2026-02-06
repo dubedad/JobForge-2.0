@@ -71,3 +71,8 @@ nul
 
 # Power BI
 *.pbix
+data/catalog/lineage/
+.swarm-poc/
+src/poc/
+tests/poc/
+proposals/
