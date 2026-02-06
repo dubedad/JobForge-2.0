@@ -112,7 +112,30 @@ Auditable provenance from source to output — every artifact traces back to aut
 - [x] **ORB-13**: Orbit integration guide with architecture diagram — v2.1
 - [x] **ORB-14**: Intent configuration reference for extending patterns — v2.1
 
-### Future (v3.0+ Scope)
+**v3.0 (Shipped 2026-02-05):**
+- [x] **OG-01**: Scrape TBS Occupational Groups page — v3.0 (31 groups)
+- [x] **OG-02**: Follow secondary links for subgroup definitions — v3.0 (111 subgroups)
+- [x] **OG-03**: Scrape qualification standards per group/subgroup — v3.0 (75 standards)
+- [x] **OG-04**: Scrape job evaluation standards — v3.0 (145 records)
+- [x] **OG-05**: Scrape rates of pay (represented/unrepresented) — v3.0 (6,765 rows)
+- [x] **OG-06**: Create dim_og gold table — v3.0 (31 rows)
+- [x] **OG-07**: Create dim_og_subgroup gold table — v3.0 (111 rows)
+- [x] **OG-08**: Create dim_og_qualification_standard gold table — v3.0 (75 rows)
+- [x] **OG-09**: Create dim_og_job_evaluation_standard gold table — v3.0 (145 rows)
+- [x] **OG-10**: Create bridge_noc_og concordance — v3.0 (2,486 mappings)
+- [x] **CAF-01**: Scrape forces.ca job family pages — v3.0 (11 families)
+- [x] **CAF-02**: Scrape all CAF occupations with full metadata — v3.0 (88 occupations)
+- [x] **CAF-03**: Extract related civilian occupations — v3.0 (76/88 have mappings)
+- [x] **CAF-04**: Create dim_caf_occupation gold table — v3.0 (88 rows)
+- [x] **CAF-05**: Create dim_caf_job_family gold table — v3.0 (11 rows)
+- [x] **CAF-06**: Create fact_caf_training gold table — v3.0 (152 records)
+- [x] **CAF-07**: Create bridge_caf_civilian (embedded in dim_caf_occupation) — v3.0
+- [x] **CAF-08**: Create bridge_caf_noc — v3.0 (880 mappings)
+- [x] **CAF-09**: Create bridge_caf_ja — v3.0 (880 mappings)
+- [x] **GOV-09**: DMBOK practice provenance for all new tables — v3.0 (7 tables tagged)
+- [x] **GOV-10**: Update data catalogue with new table metadata — v3.0 (7 catalog JSON files)
+
+### Future (v4.0+ Scope)
 
 **Semantic Search & RAG:**
 - [ ] **RAG-01**: Vector database for semantic similarity search
@@ -154,11 +177,10 @@ Auditable provenance from source to output — every artifact traces back to aut
 ## Context
 
 **Current State (v3.0 shipped 2026-02-05):**
-- 28 gold tables in parquet format
-- 27 relationships in WiQ semantic model
-- 1,091 tests passing
+- 39 gold tables in parquet format (14 new in v3.0)
+- 36 relationships in WiQ semantic model (9 new FK relationships)
+- 1,197 tests passing
 - Docker Compose deployment ready
-- 3 documentation pages (1,493 lines)
 - Stack: Python 3.11, Polars, DuckDB, Pydantic 2, NetworkX, Rich, rapidfuzz, httpx, tenacity, beautifulsoup4, openai, anthropic, fastapi, uvicorn, starlette, sse-starlette, pdfplumber, Docker
 
 **v4.0 planned additions:**
@@ -209,4 +231,4 @@ HR job data across federal government is unstructured, non-standardized, fragmen
 | Mermaid architecture diagrams | Renders in GitHub/VS Code | ✓ Good — visual documentation |
 
 ---
-*Last updated: 2026-02-05 after v4.0 milestone initialization*
+*Last updated: 2026-02-05 after v3.0 milestone completion*
